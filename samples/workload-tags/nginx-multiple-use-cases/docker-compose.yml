@@ -1,0 +1,42 @@
+---
+services:
+
+  load-balancer:
+    image: nginx:latest
+    container_name: nginx-lb
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-lb/ssl:/etc/letsencrypt
+      - ./nginx-lb/conf.d:/etc/nginx/conf.d
+      - ./nginx-lb/nginx.conf:/etc/nginx/nginx.conf
+
+  web-server:
+    image: nginx:latest
+    container_name: web-server
+    ports:
+      - "3000:80"
+    volumes:
+      - ./web-server/build:/usr/share/nginx/html
+
+  api-server1:
+    image: api-server:latest
+    container_name: api-server1
+    environment:
+      - "SERVER_ID=Api Server #1"
+    ports:
+      - "9000:80"
+    volumes:
+      - ./api-server:/rf
+  
+  api-server2:
+    image: api-server:latest
+    container_name: api-server2
+    environment:
+      - "SERVER_ID=Api Server #2"
+    ports:
+      - "8000:80"
+    volumes:
+      - ./api-server:/rf
+

@@ -2,16 +2,18 @@
 services:
 
   load-balancer:
-    image: nginx:latest
-    container_name: nginx-load-balancer
+    image: nginx:latest-load-balancer
+    container_name: nginx-lb
+    cap_add: [ SYS_PTRACE ]
     ports:
       - "80:80"
     volumes:
       - ./nginx-load-balancer/nginx.conf:/etc/nginx/nginx.conf
 
   web-server:
-    image: nginx:latest
+    image: nginx:latest-web-server
     container_name: web-server
+    cap_add: [ SYS_PTRACE ]
     ports:
       - "3000:80"
     volumes:

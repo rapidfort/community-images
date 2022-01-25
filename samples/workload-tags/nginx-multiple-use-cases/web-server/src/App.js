@@ -4,22 +4,29 @@ import './App.css';
 const baseUrl = '/api/date';
 
 const GetRemoteDate = () => {
-    const [ date, setDate ] = useState([])
+
+    const [ date, setDate ] = useState("")
+    const [ server, setServer ] = useState("")
+
     useEffect(() => {
         function getDate() {
             fetch(baseUrl)
-                .then(output => output.json())
-                .then(output => setDate(output))
+                .then(res => res.json())
+                .then(res => { setServer(res.server); setDate(res.date) })
             }
         getDate()
-        const interval = setInterval(() => getDate(), 50000)
+        const interval = setInterval(() => getDate(), 1000)
         return () => {
             clearInterval(interval);
         }
     }, [])
 
     return (
-        <div> {date} </div>
+        <div>
+            {server}
+            <br/>
+            {date}
+        </div>
     )
 
 }

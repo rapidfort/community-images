@@ -1,0 +1,13 @@
+image:
+  repository: rapidfort/redis-rfstub
+  pullSecrets: ["rf-regcred"]
+master:
+  containerSecurityContext:
+    enabled: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+replica:
+  containerSecurityContext:
+    enabled: true
+    capabilities:
+      add: ["SYS_PTRACE"]

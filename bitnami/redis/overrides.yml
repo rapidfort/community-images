@@ -1,6 +1,7 @@
 image:
   repository: rapidfort/redis-rfstub
   pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
 master:
   containerSecurityContext:
     enabled: true

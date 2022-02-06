@@ -1,5 +1,6 @@
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <k8s-namespace> <tag>"
+    exit 1
 fi
 
 NAMESPACE=$1 #ci-dev
@@ -12,7 +13,8 @@ OREPO=rapidfort/redis-rfstub
 PUB_REPO=rapidfort/redis
 HELM_RELEASE=stub-run-release
 
-setup()
+
+create_stub()
 {
     # Pull docker image
     docker pull ${IREGISTRY}/${IREPO}:${TAG}
@@ -61,9 +63,10 @@ harden_image()
     echo "Hardened images pushed to ${PUB_REPO}:${TAG}" 
 }
 
+
 main()
 {
-    setup
+    create_stub
 
     # sleep for 3 min
     echo "waiting for 3 min"

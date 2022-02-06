@@ -40,7 +40,7 @@ test()
 }
 
 
-def harden_image()
+harden_image()
 {
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
@@ -61,7 +61,7 @@ def harden_image()
     echo "Hardened images pushed to ${PUB_REPO}:${TAG}" 
 }
 
-def main()
+main()
 {
     setup
 

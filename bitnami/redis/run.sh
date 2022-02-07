@@ -30,7 +30,7 @@ create_stub()
 }
 
 
-test1()
+test_no_tls()
 {
     echo "Testing redis without TLS"
     # Install redis
@@ -112,7 +112,7 @@ harden_image()
 main()
 {
     create_stub
-    test
+    test_no_tls
     test_tls
     harden_image
 }

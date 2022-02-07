@@ -44,7 +44,7 @@ test_no_tls()
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE}-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
 
     #exec into container
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-redis-master-0 -- /bin/bash -c "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h localhost --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt  EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-redis-master-0 -- /bin/bash -c "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h localhost EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
 
     # sleep for 30 sec
     echo "waiting for 30 sec"
@@ -65,6 +65,10 @@ test_tls()
 
     # Install certs
     kubectl apply -f tls_certs.yml
+
+    #sleep 1 min
+    echo "waiting for 1 min for setup"
+    sleep 1m
 
     # Install redis
     helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} --set tls.enabled=true --set tls.existingSecret=localhost-server-tls -f overrides.yml

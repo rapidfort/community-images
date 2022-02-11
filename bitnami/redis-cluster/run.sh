@@ -40,22 +40,22 @@ test_no_tls()
     echo "waiting for 3 min for setup"
     sleep 3m
 
-    # # get Redis passwordk
-    # REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE}-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
+    # get Redis passwordk
+    REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
 
-    # #exec into container
-    # kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-redis-master-0 -- /bin/bash -c "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h localhost EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
+    #exec into container
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h localhost EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
 
-    # # sleep for 30 sec
-    # echo "waiting for 30 sec"
-    # sleep 30
+    # sleep for 30 sec
+    echo "waiting for 30 sec"
+    sleep 30
 
-    # # bring down helm install
-    # helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
+    # bring down helm install
+    helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
-    # # sleep for 30 sec
-    # echo "waiting for 30 sec"
-    # sleep 30
+    # sleep for 30 sec
+    echo "waiting for 30 sec"
+    sleep 30
 }
 
 

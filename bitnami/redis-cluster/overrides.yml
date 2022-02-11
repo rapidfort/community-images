@@ -1,6 +1,6 @@
-global:
-  imageRegistry: rapidfort/redis-cluster-rfstub
-  imagePullSecrets: ["rf-regcred"]
+image:
+  repository: rapidfort/redis-cluster-rfstub
+  pullSecrets: ["rf-regcred"]
   pullPolicy: Always
 containerSecurityContext:
   enabled: true

@@ -4,14 +4,14 @@ if [ "$#" -ne 2 ]; then
 fi
 
 NAMESPACE=$1 #ci-dev
-TAG=$2 #6.2.6-debian-10-r103
+TAG=$2 #6.2.6-debian-10-r95
 echo "Running image generation for $0 $1 $2"
 
 IREGISTRY=docker.io
-IREPO=bitnami/redis
-OREPO=rapidfort/redis-rfstub
-PUB_REPO=rapidfort/redis
-HELM_RELEASE=stub-run-release
+IREPO=bitnami/redis-cluster
+OREPO=rapidfort/redis-cluster-rfstub
+PUB_REPO=rapidfort/redis-cluster
+HELM_RELEASE=redis-cluster-release
 
 
 create_stub()
@@ -40,22 +40,22 @@ test_no_tls()
     echo "waiting for 3 min for setup"
     sleep 3m
 
-    # get Redis passwordk
-    REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE}-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
+    # # get Redis passwordk
+    # REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE}-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
 
-    #exec into container
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-redis-master-0 -- /bin/bash -c "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h localhost EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
+    # #exec into container
+    # kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-redis-master-0 -- /bin/bash -c "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h localhost EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
 
-    # sleep for 30 sec
-    echo "waiting for 30 sec"
-    sleep 30
+    # # sleep for 30 sec
+    # echo "waiting for 30 sec"
+    # sleep 30
 
-    # bring down helm install
-    helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
+    # # bring down helm install
+    # helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
-    # sleep for 30 sec
-    echo "waiting for 30 sec"
-    sleep 30
+    # # sleep for 30 sec
+    # echo "waiting for 30 sec"
+    # sleep 30
 }
 
 
@@ -117,7 +117,7 @@ main()
 {
     create_stub
     test_no_tls
-    test_tls
+    # test_tls
     harden_image
 }
 

@@ -1,14 +1,8 @@
-image:
-  repository: rapidfort/redis-rfstub
-  pullSecrets: ["rf-regcred"]
+global:
+  imageRegistry: rapidfort/redis-cluster-rfstub
+  imagePullSecrets: ["rf-regcred"]
   pullPolicy: Always
-master:
-  containerSecurityContext:
-    enabled: true
-    capabilities:
-      add: ["SYS_PTRACE"]
-replica:
-  containerSecurityContext:
-    enabled: true
-    capabilities:
-      add: ["SYS_PTRACE"]
+containerSecurityContext:
+  enabled: true
+  capabilities:
+    add: ["SYS_PTRACE"]

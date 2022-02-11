@@ -117,7 +117,7 @@ main()
 {
     create_stub
     test_no_tls
-    # test_tls
+    test_tls
     harden_image
 }
 

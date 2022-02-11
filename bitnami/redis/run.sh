@@ -1,3 +1,5 @@
+set -x
+
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <k8s-namespace> <tag>"
     exit 1

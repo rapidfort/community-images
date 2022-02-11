@@ -1,16 +1,16 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: localhost-server
+  name: redis-cluster-release
   namespace: ci-dev
 spec:
-  secretName: localhost-server-tls
+  secretName: redis-cluster-release-tls
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   subject:
     organizations:
       - rapidfort
-  commonName: localhost
+  commonName: redis-cluster-release
   isCA: false
   privateKey:
     algorithm: RSA
@@ -20,9 +20,7 @@ spec:
     - server auth
     - client auth
   dnsNames:
-    - localhost
-  ipAddresses:
-    - 127.0.0.1
+    - redis-cluster-release
   # Issuer references are always required.
   issuerRef:
     name: ci-ca-issuer

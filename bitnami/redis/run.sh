@@ -15,7 +15,7 @@ IREGISTRY=docker.io
 IREPO=bitnami/redis
 OREPO=rapidfort/redis-rfstub
 PUB_REPO=rapidfort/redis
-HELM_RELEASE=stub-run-release
+HELM_RELEASE=redis-release
 
 
 create_stub()

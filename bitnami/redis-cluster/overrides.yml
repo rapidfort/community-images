@@ -1,0 +1,16 @@
+image:
+  repository: rapidfort/redis-cluster-rfstub
+  pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
+containerSecurityContext:
+  enabled: true
+  capabilities:
+    add: ["SYS_PTRACE"]
+redis:
+  resources:
+      limits:
+        cpu: 1000m
+        memory: 2048Mi
+      requests:
+        cpu: 500m
+        memory: 1024Mi

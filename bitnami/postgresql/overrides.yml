@@ -1,0 +1,30 @@
+image:
+  repository: rapidfort/postgresql-rfstub
+  pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
+primary:
+  containerSecurityContext:
+    enabled: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+readReplicas:
+  containerSecurityContext:
+    enabled: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+primary:
+  resources:
+      limits:
+        cpu: 1000m
+        memory: 2048Mi
+      requests:
+        cpu: 500m
+        memory: 1024Mi
+readReplicas:
+  resources:
+      limits:
+        cpu: 1000m
+        memory: 2048Mi
+      requests:
+        cpu: 500m
+        memory: 1024Mi

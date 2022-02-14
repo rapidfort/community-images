@@ -47,8 +47,11 @@ test()
     # get postgresql passwordk
     POSTGRES_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.postgres-password}" | base64 --decode)
 
+    # copy test.sql into container
+    kubectl -n ${NAMESPACE} cp test.sql ${HELM_RELEASE}-0:/tmp/test.sql
+
     # exec into container
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host ${HELM_RELEASE} -U postgres -d postgres -p 5432"
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host ${HELM_RELEASE} -U postgres -d postgres -p 5432 -f /tmp/test.sql"
 
     # sleep for 30 sec
     echo "waiting for 30 sec"

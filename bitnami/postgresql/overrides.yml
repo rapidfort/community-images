@@ -5,14 +5,9 @@ image:
 primary:
   containerSecurityContext:
     enabled: true
+    runAsUser: 1001
     capabilities:
       add: ["SYS_PTRACE"]
-readReplicas:
-  containerSecurityContext:
-    enabled: true
-    capabilities:
-      add: ["SYS_PTRACE"]
-primary:
   resources:
       limits:
         cpu: 1000m
@@ -21,6 +16,11 @@ primary:
         cpu: 500m
         memory: 1024Mi
 readReplicas:
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    capabilities:
+      add: ["SYS_PTRACE"]
   resources:
       limits:
         cpu: 1000m

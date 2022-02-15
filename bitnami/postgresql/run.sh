@@ -61,7 +61,7 @@ test()
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
     # delete the PVC associated
-    kubectl -n -n ${NAMESPACE} delete pvc ${HELM_RELEASE}-0
+    kubectl -n ${NAMESPACE} delete pvc data-${HELM_RELEASE}-0
 
     # sleep for 30 sec
     echo "waiting for 30 sec"

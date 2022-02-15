@@ -8,7 +8,7 @@ if [ "$#" -ne 2 ]; then
 fi
 
 NAMESPACE=$1 #ci-dev
-TAG=$2 #6.2.6-debian-10-r95
+TAG=$2 #14.1.0-debian-10-r80
 echo "Running image generation for $0 $1 $2"
 
 IREGISTRY=docker.io
@@ -40,9 +40,9 @@ test()
     # Install postgresql
     helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} -f overrides.yml
 
-    # sleep for 2 min
-    echo "waiting for 2 min for setup"
-    sleep 2m
+    # sleep for 1 min
+    echo "waiting for 1 min for setup"
+    sleep 1m
 
     # get postgresql passwordk
     POSTGRES_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.postgres-password}" | base64 --decode)
@@ -59,6 +59,9 @@ test()
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
+
+    # delete the PVC associated
+    kubectl -n -n ${NAMESPACE} delete pvc ${HELM_RELEASE}-0
 
     # sleep for 30 sec
     echo "waiting for 30 sec"

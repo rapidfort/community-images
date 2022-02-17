@@ -29,54 +29,29 @@ create_stub()
 
     # Push stub to our dockerhub account
     docker push ${OREPO}:${TAG}
-
 }
 
 
 test()
 {
     echo "Testing yugabytedb"
-    docker run -d --name yugabyte-$1 -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
+    docker run -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
 
     # exec into docker
-    docker exec -it yugabyte-$1 bash
+    docker exec -it yugabyte-${TAG} bash
 
     #curl into UI
     curl http://localhost:7000
     curl http://localhost:9000
 
+    # copy sql script
+    docker cp test.sql yugabyte-${TAG}:/tmp/test.sql
+
     #run script
-    docker exec -it yugabyte-$1 ysqlsh
+    docker exec -it yugabyte-${TAG} ysqlsh -f /tmp/test.sql
 
-    # # Install postgresql
-    # helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} -f overrides.yml
-
-    # # sleep for 1 min
-    # echo "waiting for 1 min for setup"
-    # sleep 1m
-
-    # # get postgresql passwordk
-    # POSTGRES_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.postgres-password}" | base64 --decode)
-
-    # # copy test.sql into container
-    # kubectl -n ${NAMESPACE} cp test.sql ${HELM_RELEASE}-0:/tmp/test.sql
-
-    # # exec into container
-    # kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host ${HELM_RELEASE} -U postgres -d postgres -p 5432 -f /tmp/test.sql"
-
-    # # sleep for 30 sec
-    # echo "waiting for 30 sec"
-    # sleep 30
-
-    # # bring down helm install
-    # helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
-
-    # # delete the PVC associated
-    # kubectl -n ${NAMESPACE} delete pvc data-${HELM_RELEASE}-0
-
-    # # sleep for 30 sec
-    # echo "waiting for 30 sec"
-    # sleep 30
+    # kill docker container
+    docker kill yugabyte-${TAG}
 }
 
 harden_image()

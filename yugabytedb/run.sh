@@ -35,7 +35,7 @@ create_stub()
 test()
 {
     echo "Testing yugabytedb"
-    docker run -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
+    docker run --rm -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
 
     #curl into UI
     curl http://localhost:7000

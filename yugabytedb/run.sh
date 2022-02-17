@@ -36,6 +36,18 @@ create_stub()
 test()
 {
     echo "Testing yugabytedb"
+    docker run -d --name yugabyte-$1 -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
+
+    # exec into docker
+    docker exec -it yugabyte-$1 bash
+
+    #curl into UI
+    curl http://localhost:7000
+    curl http://localhost:9000
+
+    #run script
+    docker exec -it yugabyte-$1 ysqlsh
+
     # # Install postgresql
     # helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} -f overrides.yml
 

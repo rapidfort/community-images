@@ -37,9 +37,6 @@ test()
     echo "Testing yugabytedb"
     docker run -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
 
-    # exec into docker
-    docker exec -it yugabyte-${TAG} bash
-
     #curl into UI
     curl http://localhost:7000
     curl http://localhost:9000
@@ -48,7 +45,7 @@ test()
     docker cp test.sql yugabyte-${TAG}:/tmp/test.sql
 
     #run script
-    docker exec -it yugabyte-${TAG} ysqlsh -f /tmp/test.sql
+    docker exec -it yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql
 
     # kill docker container
     docker kill yugabyte-${TAG}

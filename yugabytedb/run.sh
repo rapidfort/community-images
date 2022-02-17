@@ -37,6 +37,10 @@ test()
     echo "Testing yugabytedb"
     docker run --rm -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
 
+    # sleep for 1 min
+    echo "waiting for 1 min for setup"
+    sleep 1m
+
     #curl into UI
     curl http://localhost:7000
     curl http://localhost:9000

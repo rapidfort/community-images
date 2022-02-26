@@ -39,9 +39,6 @@ test()
     # sleep for 30 min
     echo "waiting for 30 sec"
     sleep 30s
-
-    # kill docker container
-    docker kill transformers-pytorch-cpu-${TAG}
 }
 
 harden_image()

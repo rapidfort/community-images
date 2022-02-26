@@ -35,8 +35,7 @@ create_stub()
 test()
 {
     echo "Testing hugging face transformers-pytorch-cpu"
-    docker run -it --rm=true --name transformers-pytorch-cpu-${TAG} --cap-add=SYS_PTRACE ${OREPO}:${TAG} -v "$(pwd)"/src:/app --base_dir=/app python3 sample.py
-
+    docker run -it --rm=true --name transformers-pytorch-cpu-${TAG} --cap-add=SYS_PTRACE -v "$(pwd)"/src:/app --workdir=/app ${OREPO}:${TAG} python3 sample.py
     # sleep for 30 min
     echo "waiting for 30 sec"
     sleep 30s

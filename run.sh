@@ -18,4 +18,8 @@ echo "Creating hardened image for yugabyte"
 cd ../postgresql
 ./run.sh 2.8.1.1-b5
 
+echo "Creating hardened image for huggingface/transformers-pytorch-cpu"
+cd ../huggingface/transformers-pytorch-cpu
+./run.sh 4.9.1
+
 echo "Image generation completed"

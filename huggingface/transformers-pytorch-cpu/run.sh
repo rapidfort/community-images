@@ -7,20 +7,20 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-TAG=$1 #2.8.1.1-b5
-echo "Running image generation for $0 $1 $2"
+TAG=$1 #4.9.1
+echo "Running image generation for $0 $1"
 
 IREGISTRY=docker.io
-IREPO=yugabytedb/yugabyte
-OREPO=rapidfort/yugabyte-rfstub
-PUB_REPO=rapidfort/yugabyte
+IREPO=huggingface/transformers-pytorch-cpu
+OREPO=rapidfort/transformers-pytorch-cpu-rfstub
+PUB_REPO=rapidfort/transformers-pytorch-cpu
 
 
 create_stub()
 {
     # Pull docker image
     docker pull ${IREGISTRY}/${IREPO}:${TAG}
-    
+
     # Create stub for docker image
     rfstub ${IREGISTRY}/${IREPO}:${TAG}
 
@@ -34,25 +34,11 @@ create_stub()
 
 test()
 {
-    echo "Testing yugabytedb"
-    docker run --rm -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
-
-    # sleep for 1 min
-    echo "waiting for 1 min for setup"
-    sleep 1m
-
-    #curl into UI
-    curl http://localhost:7000
-    curl http://localhost:9000
-
-    # copy sql script
-    docker cp test.sql yugabyte-${TAG}:/tmp/test.sql
-
-    #run script
-    docker exec -it yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql
-
-    # kill docker container
-    docker kill yugabyte-${TAG}
+    echo "Testing hugging face transformers-pytorch-cpu"
+    docker run -it --rm=true --name transformers-pytorch-cpu-${TAG} --cap-add=SYS_PTRACE -v "$(pwd)"/src:/app --workdir=/app ${OREPO}:${TAG} python3 sample.py
+    # sleep for 30 min
+    echo "waiting for 30 sec"
+    sleep 30s
 }
 
 harden_image()

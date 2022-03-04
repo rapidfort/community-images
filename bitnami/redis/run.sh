@@ -36,9 +36,10 @@ create_stub()
 
 test_no_tls()
 {
+    local IMAGE_REPOSITORY=$1
     echo "Testing redis without TLS"
     # Install redis
-    helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} -f overrides.yml
+    helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f overrides.yml
 
     # sleep for 3 min
     echo "waiting for 3 min for setup"
@@ -65,6 +66,7 @@ test_no_tls()
 
 test_tls()
 {
+    local IMAGE_REPOSITORY=$1
     echo "Testing redis with TLS"
 
     # Install certs
@@ -75,7 +77,7 @@ test_tls()
     sleep 1m
 
     # Install redis
-    helm install ${HELM_RELEASE} ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f overrides.yml
+    helm install ${HELM_RELEASE} ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f overrides.yml
 
     # sleep for 3 min
     echo "waiting for 3 min for setup"
@@ -120,9 +122,14 @@ harden_image()
 main()
 {
     create_stub
-    test_no_tls
-    test_tls
+    #test with stub
+    test_no_tls ${OREPO}
+    test_tls ${OREPO}
     harden_image
+
+    #test hardened images
+    test_no_tls ${PUB_REPO}
+    test_tls ${PUB_REPO}
 }
 
 main

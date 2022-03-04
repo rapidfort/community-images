@@ -124,9 +124,12 @@ harden_image()
 main()
 {
     create_stub
+    #test with stub
     test_no_tls ${OREPO}
     test_tls ${OREPO}
     harden_image
+
+    #test hardened images
     test_no_tls ${PUB_REPO}
     test_tls ${PUB_REPO}
 }

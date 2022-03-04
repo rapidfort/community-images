@@ -34,8 +34,9 @@ create_stub()
 
 test()
 {
+    local IMAGE_REPOSITORY=$1
     echo "Testing yugabytedb"
-    docker run --rm -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${OREPO}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
+    docker run --rm -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${IMAGE_REPOSITORY}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
 
     # sleep for 1 min
     echo "waiting for 1 min for setup"
@@ -73,8 +74,9 @@ harden_image()
 main()
 {
     create_stub
-    test
+    test ${OREPO}
     harden_image
+    test ${PUB_REPO}
 }
 
 main

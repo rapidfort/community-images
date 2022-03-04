@@ -36,9 +36,10 @@ create_stub()
 
 test()
 {
+    local IMAGE_REPOSITORY=$1
     echo "Testing postgresql"
     # Install postgresql
-    helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} -f overrides.yml
+    helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f overrides.yml
 
     # sleep for 1 min
     echo "waiting for 1 min for setup"
@@ -86,8 +87,9 @@ harden_image()
 main()
 {
     create_stub
-    test
+    test ${OREPO}
     harden_image
+    test ${PUB_REPO}
 }
 
 main

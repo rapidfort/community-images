@@ -1,4 +1,5 @@
 # plenum
+[![Plenum Build](https://github.com/rapidfort/plenum/actions/workflows/main.yml/badge.svg)](https://github.com/rapidfort/plenum/actions/workflows/main.yml)
 
 ## Rapidfort Supported Images:
 

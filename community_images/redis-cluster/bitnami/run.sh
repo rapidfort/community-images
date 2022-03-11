@@ -59,6 +59,14 @@ test_no_tls()
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
+    # delete the PVC associated
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-0
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-1
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-2
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-3
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-4
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-5
+
     # sleep for 30 sec
     echo "waiting for 30 sec"
     sleep 30
@@ -100,6 +108,14 @@ test_tls()
 
     # delete certs
     kubectl delete -f tls_certs.yml
+
+    # delete the PVC associated
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-0
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-1
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-2
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-3
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-4
+    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-5
 
     # sleep for 30 sec
     echo "waiting for 30 sec"

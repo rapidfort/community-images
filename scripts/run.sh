@@ -2,7 +2,7 @@
 
 set -x
 
-BASEDIR=$(pwd)/../community_images
+BASEDIR=$(pwd)/community_images
 
 echo "Creating hardened image for redis"
 cd ${BASEDIR}/../scripts

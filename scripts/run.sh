@@ -25,7 +25,7 @@ cd ${BASEDIR}/postgresql/bitnami
 echo "Creating hardened image for yugabyte"
 cd ${BASEDIR}/../scripts
 LATEST_TAG=$(./dockertags yugabytedb/yugabyte 2.8.1.1-b)
-cd ${BASEDIR}/yugabytedb/yugabyte
+cd ${BASEDIR}/yugabyte/yugabytedb
 ./run.sh ${LATEST_TAG}
 
 echo "Creating hardened image for huggingface/transformers-pytorch-cpu"

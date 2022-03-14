@@ -22,7 +22,7 @@ AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID_COMMERCIAL}" \
 AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY_COMMERCIAL}" \
 aws ec2 create-store-image-task \
     --image-id "${AMI_ID}" \
-    --bucket "${S3_BUCKET_COMMERCIAL}" | jq .ObjectKey)
+    --bucket "${S3_BUCKET_COMMERCIAL}" | jq -r .ObjectKey)
 
 # Check status of ami export
 STS=$(AWS_REGION="${AWS_REGION_COMMERCIAL}" \

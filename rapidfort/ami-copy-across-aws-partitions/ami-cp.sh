@@ -2,7 +2,7 @@
 
 source .env
 
-#exec > >(ts "%.s" | tee build.log) 2>&1
+exec > >(ts "%.s" | tee build.log) 2>&1
 
 AMI_ID="${1}"
 TARGET_AMI_NAME="${2:-my-cool-ami}"
@@ -10,7 +10,7 @@ TARGET_AMI_NAME="${2:-my-cool-ami}"
 if test -n "${AMI_ID}"; then
     echo "exporting ami ${AMI_ID} to ${S3_BUCKET_COMMERCIAL}"
 else
-    echo "Usage: ./build.sh com_create_ami_bin ami-id"
+    echo "Usage: ./build.sh ami-id"
     echo "missing source ami-id"
     echo "exiting..."
     exit 1

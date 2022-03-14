@@ -1,5 +1,4 @@
-# I.
-### Source AWS Partition setup
+# I. Source AWS Partition setup
 ```
 #. Create S3 bucket on source AWS partition e.g. s3://rapidfort-transit
 #. Assign aws-policy.json & generate AWS_ACCESS_KEY_ID & AWS_SECRET_ACCESS_KEY
@@ -11,8 +10,7 @@ AWS_SECRET_ACCESS_KEY_COMMERCIAL=M******************
 S3_BUCKET_COMMERCIAL=rapidfort-transit
 ```
 
-# II.
-### Target AWS Partition setup
+# II. Target AWS Partition setup
 ```
 #. Create S3 bucket on target AWS partition e.g. s3://rapidfort-transit-gov
 #. Assign aws-gov-policy.json & generate AWS_ACCESS_KEY_ID & AWS_SECRET_ACCESS_KEY
@@ -22,4 +20,9 @@ AWS_REGION_GOV=us-gov-east-1
 AWS_ACCESS_KEY_ID_GOV=AK******************
 AWS_SECRET_ACCESS_KEY_GOV=G******************
 S3_BUCKET_GOV=rapidfort-transit-gov
+```
+
+# III. Run command
+```
+    ./ami-cp.sh ami-0f13611d775b11b8a my-gov-ami
 ```

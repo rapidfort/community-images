@@ -2,7 +2,7 @@
 
 source .env
 
-exec > >(ts "%.s" | tee build.log) 2>&1
+#exec > >(ts "%.s" | tee build.log) 2>&1
 
 AMI_ID="${1}"
 TARGET_AMI_NAME="${2:-my-cool-ami}"
@@ -17,12 +17,12 @@ else
 fi
 
 # Copy AMI from aws commercial
-AWS_REGION="${AWS_REGION_COMMERCIAL}" \
+AMI_ID_BIN=$(AWS_REGION="${AWS_REGION_COMMERCIAL}" \
 AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID_COMMERCIAL}" \
 AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY_COMMERCIAL}" \
 aws ec2 create-store-image-task \
     --image-id "${AMI_ID}" \
-    --bucket "${S3_BUCKET_COMMERCIAL}"
+    --bucket "${S3_BUCKET_COMMERCIAL}" | jq .ObjectKey)
 
 # Check status of ami export
 STS=$(AWS_REGION="${AWS_REGION_COMMERCIAL}" \
@@ -44,7 +44,6 @@ until [ "$STS" -eq 100 ]; do
         |  jq -c ".StoreImageTaskResults | map(select(.AmiId == \"${AMI_ID}\"))[0].ProgressPercentage")
 done
 
-AMI_ID_BIN="${1}".bin
 AMI_NAME=${2:-ami-from-aws-commercial}
 
 echo "AMI_ID=${1}, AMI_NAME=${TARGET_AMI_NAME}, S3_BUCKET_GOV=${S3_BUCKET_GOV}, AWS_REGION_GOV=${AWS_REGION_GOV}"

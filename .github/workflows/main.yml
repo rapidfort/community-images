@@ -33,3 +33,48 @@ jobs:
       # Clean dangling images
       - name: Clean up dangling images
         run: docker image prune -a -f
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/postgresql
+          readme-filepath: ./community_images/postgresql/bitnami/README.md
+          short-description: Rapidfort image for bitnami/postgresql
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis
+          readme-filepath: ./community_images/redis/bitnami/README.md
+          short-description: Rapidfort image for bitnami/redis
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis-cluster
+          readme-filepath: ./community_images/redis-cluster/bitnami/README.md
+          short-description: Rapidfort image for bitnami/redis-cluster
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/transformers-pytorch-cpu
+          readme-filepath: ./community_images/transformers-pytorch-cpu/huggingface/README.md
+          short-description: Rapidfort image for huggingface/transformers-pytorch-cpu
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/yugabyte
+          readme-filepath: ./community_images/yugabyte/yugabytedb/README.md
+          short-description: Rapidfort image for yugabyte/yugabytedb

@@ -2,35 +2,13 @@
 
 set -x
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <tag>"
-    exit 1
-fi
-
-TAG=$1 #4.9.1
-echo "Running image generation for $0 $1"
-
-IREGISTRY=docker.io
-IREPO=huggingface/transformers-pytorch-cpu
-OREPO=rapidfort/transformers-pytorch-cpu-rfstub
-PUB_REPO=rapidfort/transformers-pytorch-cpu
+. ../../common/helpers.sh
 
 
-create_stub()
-{
-    # Pull docker image
-    docker pull ${IREGISTRY}/${IREPO}:${TAG}
-
-    # Create stub for docker image
-    rfstub ${IREGISTRY}/${IREPO}:${TAG}
-
-    # Change tag to point to rapidfort docker account
-    docker tag ${IREGISTRY}/${IREPO}:${TAG}-rfstub ${OREPO}:${TAG}
-
-    # Push stub to our dockerhub account
-    docker push ${OREPO}:${TAG}
-}
-
+TAG=$1
+INPUT_REGISTRY=docker.io
+INPUT_ACCOUNT=huggingface
+REPOSITORY=transformers-pytorch-cpu
 
 test()
 {
@@ -42,27 +20,4 @@ test()
     sleep 30s
 }
 
-harden_image()
-{
-    # Create stub for docker image
-    rfharden ${IREGISTRY}/${IREPO}:${TAG}-rfstub
-
-    # Change tag to point to rapidfort docker account
-    docker tag ${IREGISTRY}/${IREPO}:${TAG}-rfhardened ${PUB_REPO}:${TAG}
-
-    # Push stub to our dockerhub account
-    docker push ${PUB_REPO}:${TAG}
-
-    echo "Hardened images pushed to ${PUB_REPO}:${TAG}" 
-}
-
-
-main()
-{
-    create_stub
-    test ${OREPO}
-    harden_image
-    test ${PUB_REPO}
-}
-
-main
+build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} test

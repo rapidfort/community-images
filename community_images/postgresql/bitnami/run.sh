@@ -2,44 +2,23 @@
 
 set -x
 
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <k8s-namespace> <tag>"
-    exit 1
-fi
-
-NAMESPACE=$1 #ci-dev
-TAG=$2 #14.1.0-debian-10-r80
-echo "Running image generation for $0 $1 $2"
-
-IREGISTRY=docker.io
-IREPO=bitnami/postgresql
-OREPO=rapidfort/postgresql-rfstub
-PUB_REPO=rapidfort/postgresql
-HELM_RELEASE=postgresql-release
+. ../common/helpers.sh
 
 
-create_stub()
-{
-    # Pull docker image
-    docker pull ${IREGISTRY}/${IREPO}:${TAG}
-    # Create stub for docker image
-    rfstub ${IREGISTRY}/${IREPO}:${TAG}
-
-    # Change tag to point to rapidfort docker account
-    docker tag ${IREGISTRY}/${IREPO}:${TAG}-rfstub ${OREPO}:${TAG}
-
-    # Push stub to our dockerhub account
-    docker push ${OREPO}:${TAG}
-
-}
-
+TAG=$1
+INPUT_REGISTRY=docker.io
+INPUT_ACCOUNT=bitnami
+REPOSITORY=postgresql
 
 test()
 {
     local IMAGE_REPOSITORY=$1
+    local INPUT_ACCOUNT=$2
+    local HELM_RELEASE=postgresql-release
+    
     echo "Testing postgresql"
     # Install postgresql
-    helm install ${HELM_RELEASE}  ${IREPO} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f overrides.yml
+    helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f overrides.yml
 
     # sleep for 1 min
     echo "waiting for 1 min for setup"
@@ -69,27 +48,4 @@ test()
     sleep 30
 }
 
-harden_image()
-{
-    # Create stub for docker image
-    rfharden ${IREGISTRY}/${IREPO}:${TAG}-rfstub
-
-    # Change tag to point to rapidfort docker account
-    docker tag ${IREGISTRY}/${IREPO}:${TAG}-rfhardened ${PUB_REPO}:${TAG}
-
-    # Push stub to our dockerhub account
-    docker push ${PUB_REPO}:${TAG}
-
-    echo "Hardened images pushed to ${PUB_REPO}:${TAG}" 
-}
-
-
-main()
-{
-    create_stub
-    test ${OREPO}
-    harden_image
-    test ${PUB_REPO}
-}
-
-main
+build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}

@@ -49,7 +49,7 @@ harden_image()
     local TAG=$2
 
     local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub:${TAG}
-    local HARDENED_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfhardened
+    local HARDENED_IMAGE_FULL=${STUB_IMAGE_FULL}-rfhardened
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
     
     # Create stub for docker image

@@ -2,7 +2,7 @@
 
 set -x
 
-. ../common/helpers.sh
+. ../../common/helpers.sh
 
 
 TAG=$1
@@ -13,7 +13,6 @@ REPOSITORY=postgresql
 test()
 {
     local IMAGE_REPOSITORY=$1
-    local INPUT_ACCOUNT=$2
     local HELM_RELEASE=postgresql-release
     
     echo "Testing postgresql"

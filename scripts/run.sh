@@ -8,19 +8,19 @@ echo "Creating hardened image for redis"
 cd ${BASEDIR}/../scripts
 LATEST_TAG=$(./dockertags bitnami/redis 6.2.6-debian-10-r)
 cd ${BASEDIR}/redis/bitnami
-./run.sh ci-dev ${LATEST_TAG}
+./run.sh ${LATEST_TAG}
 
 echo "Creating hardened image for redis-cluster"
 cd ${BASEDIR}/../scripts
 LATEST_TAG=$(./dockertags bitnami/redis-cluster 6.2.6-debian-10-r)
 cd ${BASEDIR}/redis-cluster/bitnami
-./run.sh ci-dev ${LATEST_TAG}
+./run.sh ${LATEST_TAG}
 
 echo "Creating hardened image for postgresql"
 cd ${BASEDIR}/../scripts
 LATEST_TAG=$(./dockertags bitnami/postgresql 14.1.0-debian-10-r)
 cd ${BASEDIR}/postgresql/bitnami
-./run.sh ci-dev ${LATEST_TAG}
+./run.sh ${LATEST_TAG}
 
 echo "Creating hardened image for yugabyte"
 cd ${BASEDIR}/../scripts

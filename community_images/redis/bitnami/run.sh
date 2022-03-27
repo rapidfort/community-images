@@ -52,6 +52,7 @@ test_no_tls()
 test_tls()
 {
     local IMAGE_REPOSITORY=$1
+    local HELM_RELEASE=redis-release
     echo "Testing redis with TLS"
 
     # Install certs

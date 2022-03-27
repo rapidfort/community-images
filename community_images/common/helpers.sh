@@ -45,18 +45,19 @@ create_stub()
 
 harden_image()
 {
-    local REPOSITORY=$1
-    local TAG=$2
+    local INPUT_REGISTRY=$1
+    local INPUT_ACCOUNT=$2
+    local REPOSITORY=$3
+    local TAG=$4
 
-    local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub:${TAG}
-    local HARDENED_IMAGE_FULL=${STUB_IMAGE_FULL}-rfhardened
+    local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
     
     # Create stub for docker image
-    rfharden ${STUB_IMAGE_FULL}
+    rfharden ${INPUT_IMAGE_FULL}-rfstub
 
     # Change tag to point to rapidfort docker account
-    docker tag ${HARDENED_IMAGE_FULL} ${OUTPUT_IMAGE_FULL}
+    docker tag ${INPUT_IMAGE_FULL}-rfhardened ${OUTPUT_IMAGE_FULL}
 
     # Push stub to our dockerhub account
     docker push ${OUTPUT_IMAGE_FULL}
@@ -73,6 +74,6 @@ build_images()
 
     create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
     test ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub
-    harden_image ${REPOSITORY} ${TAG}
+    harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
     test ${RAPIDFORT_ACCOUNT}/${REPOSITORY}
 }

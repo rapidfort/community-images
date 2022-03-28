@@ -2,23 +2,10 @@
 
 set -x
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <tag>"
-    exit 1
-fi
-
-TAG=$1 #4.9.1
-echo "Running image generation for $0 $1"
-
-# IREGISTRY=docker.io
-# IREPO=huggingface/transformers-pytorch-cpu
-# OREPO=rapidfort/transformers-pytorch-cpu-rfstub
-# PUB_REPO=rapidfort/transformers-pytorch-cpu
-
-# INPUT_REGISTRY=docker.io
 DOCKERHUB_REGISTRY=docker.io
 RAPIDFORT_ACCOUNT=rapidfort
 NAMESPACE=ci-dev
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 create_stub()
 {
@@ -70,11 +57,17 @@ build_images()
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2
     local REPOSITORY=$3
-    local TAG=$4
+    local BASE_TAG=$4
     local TEST_FUNCTION=$5
+
+    local TAG=$(${SCRIPTPATH}/dockertags ${INPUT_ACCOUNT}/${REPOSITORY} ${BASE_TAG})
+
+    echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 
     create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
     ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub
     harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
     ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}
+
+    echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }

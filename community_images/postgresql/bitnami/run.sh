@@ -5,7 +5,7 @@ set -x
 . ../../common/helpers.sh
 
 
-TAG=$1
+BASE_TAG=14.1.0-debian-10-r
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
 REPOSITORY=postgresql
@@ -13,6 +13,7 @@ REPOSITORY=postgresql
 test()
 {
     local IMAGE_REPOSITORY=$1
+    local TAG=$2
     local HELM_RELEASE=postgresql-release
     
     echo "Testing postgresql"
@@ -47,4 +48,4 @@ test()
     sleep 30
 }
 
-build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} test
+build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test

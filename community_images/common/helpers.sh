@@ -60,14 +60,14 @@ build_images()
     local BASE_TAG=$4
     local TEST_FUNCTION=$5
 
-    local TAG=$(${SCRIPTPATH}/dockertags ${INPUT_ACCOUNT}/${REPOSITORY} ${BASE_TAG})
+    local TAG=$(${SCRIPTPATH}/../../common/dockertags ${INPUT_ACCOUNT}/${REPOSITORY} ${BASE_TAG})
 
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 
     create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
-    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub
+    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub ${TAG}
     harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
-    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}
+    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG}
 
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }

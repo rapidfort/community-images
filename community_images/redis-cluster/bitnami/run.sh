@@ -5,7 +5,7 @@ set -x
 . ../../common/helpers.sh
 
 
-TAG=$1
+BASE_TAG=6.2.6-debian-10-r
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
 REPOSITORY=redis-cluster
@@ -14,6 +14,7 @@ REPOSITORY=redis-cluster
 test_no_tls()
 {
     local IMAGE_REPOSITORY=$1
+    local TAG=$2
     local HELM_RELEASE=redis-cluster-release
 
     echo "Testing redis without TLS"
@@ -55,6 +56,7 @@ test_no_tls()
 test_tls()
 {
     local IMAGE_REPOSITORY=$1
+    local TAG=$2
     local HELM_RELEASE=redis-cluster-release
 
     echo "Testing redis with TLS"
@@ -103,5 +105,5 @@ test_tls()
     sleep 30
 }
 
-build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} test_no_tls
-build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} test_tls
+build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test_no_tls
+build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test_tls

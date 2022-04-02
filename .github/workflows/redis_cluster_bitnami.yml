@@ -3,8 +3,8 @@ name: Redis Cluster Bitnami Build
 on:
   push:
     branches: [ main ]
-  paths:
-  - 'community_images/redis-cluster/bitnami/**'
+    paths:
+    - 'community_images/redis-cluster/bitnami/**'
   schedule:
   - cron: '0 0 * * *'
   - cron: '0 12 * * *'

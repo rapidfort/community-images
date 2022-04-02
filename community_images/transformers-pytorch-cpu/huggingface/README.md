@@ -1,5 +1,7 @@
 ![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg) 
 
+[![Huggingface Build](https://github.com/rapidfort/plenum/actions/workflows/transformers_pytorch_cpu_huggingface.yml/badge.svg)](https://github.com/rapidfort/plenum/actions/workflows/transformers_pytorch_cpu_huggingface.yml)
+
 # Rapidfort hardened image for Transformers Pytorch CPU
 
 🤗 Transformers provides thousands of pretrained models to perform tasks on different modalities such as text, vision, and audio. 

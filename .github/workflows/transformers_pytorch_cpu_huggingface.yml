@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
     - main
+    paths:
+    - 'community_images/transformers-pytorch-cpu/huggingface/**'
   push:
     branches: [ main ]
     paths:

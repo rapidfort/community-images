@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
     - main
+    paths:
+    - 'community_images/yugabyte/yugabytedb/**'
   push:
     branches: [ main ]
     paths:

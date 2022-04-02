@@ -1,0 +1,39 @@
+name: Redis Cluster Bitnami Build
+
+on:
+  push:
+    branches: [ main ]
+  paths:
+  - 'community_images/redis-cluster/bitnami/**'
+  schedule:
+  - cron: '0 0 * * *'
+  - cron: '0 12 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    environment: actions-cicd
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs script for the test
+      - name: Run a multi-line script
+        run: sh community_images/redis-cluster/bitnami/run.sh
+
+      # Clean dangling images
+      - name: Clean up dangling images
+        run: docker image prune -a -f
+
+      # Update readme to dockerhub
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis-cluster
+          readme-filepath: ./community_images/redis-cluster/bitnami/README.md
+          short-description: Rapidfort image for bitnami/redis-cluster

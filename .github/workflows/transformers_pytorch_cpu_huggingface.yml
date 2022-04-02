@@ -3,8 +3,8 @@ name: Huggingface Build
 on:
   push:
     branches: [ main ]
-  paths:
-  - 'community_images/transformers-pytorch-cpu/huggingface/**'
+    paths:
+    - 'community_images/transformers-pytorch-cpu/huggingface/**'
   schedule:
   - cron: '0 0 * * *'
   - cron: '0 12 * * *'

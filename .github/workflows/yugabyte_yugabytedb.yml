@@ -3,8 +3,8 @@ name: Yugabyte Build
 on:
   push:
     branches: [ main ]
-  paths:
-  - 'community_images/yugabyte/yugabytedb/**'
+    paths:
+    - 'community_images/yugabyte/yugabytedb/**'
   schedule:
   - cron: '0 0 * * *'
   - cron: '0 12 * * *'

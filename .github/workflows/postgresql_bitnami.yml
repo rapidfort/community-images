@@ -3,8 +3,8 @@ name: Postgresql Bitnami Build
 on:
   push:
     branches: [ main ]
-  paths:
-  - 'community_images/postgresql/bitnami/**'
+    paths:
+    - 'community_images/postgresql/bitnami/**'
   schedule:
   - cron: '0 0 * * *'
   - cron: '0 12 * * *'

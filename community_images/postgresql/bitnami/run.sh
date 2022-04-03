@@ -34,19 +34,11 @@ test()
     # exec into container
     kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host ${HELM_RELEASE} -U postgres -d postgres -p 5432 -f /tmp/test.sql"
 
-    # sleep for 30 sec
-    echo "waiting for 30 sec"
-    sleep 30
-
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
     # delete the PVC associated
     kubectl -n ${NAMESPACE} delete pvc data-${HELM_RELEASE}-0
-
-    # sleep for 30 sec
-    echo "waiting for 30 sec"
-    sleep 30
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test

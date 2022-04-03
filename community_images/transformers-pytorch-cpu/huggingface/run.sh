@@ -18,7 +18,7 @@ test()
     local TAG=$2
 
     echo "Testing hugging face transformers-pytorch-cpu"
-    docker run -it --rm=true --name transformers-pytorch-cpu-${TAG} --cap-add=SYS_PTRACE -v "$(pwd)"/src:/app --workdir=/app ${IMAGE_REPOSITORY}:${TAG} python3 sample.py
+    docker run -i --rm=true --name transformers-pytorch-cpu-${TAG} --cap-add=SYS_PTRACE -v "$(pwd)"/src:/app --workdir=/app ${IMAGE_REPOSITORY}:${TAG} python3 sample.py
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test

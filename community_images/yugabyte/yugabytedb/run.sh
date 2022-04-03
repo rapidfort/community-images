@@ -33,7 +33,7 @@ test()
     docker cp ${SCRIPTPATH}/test.sql yugabyte-${TAG}:/tmp/test.sql
 
     #run script
-    docker exec -it yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql
+    docker exec -i yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql
 
     # kill docker container
     docker kill yugabyte-${TAG}

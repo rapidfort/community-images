@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -x
+set -e
 
 DOCKERHUB_REGISTRY=docker.io
 RAPIDFORT_ACCOUNT=rapidfort

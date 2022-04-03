@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -x
+set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . ${SCRIPTPATH}/../../common/helpers.sh
@@ -28,7 +29,7 @@ test()
     curl http://localhost:9000
 
     # copy sql script
-    docker cp test.sql yugabyte-${TAG}:/tmp/test.sql
+    docker cp ${SCRIPTPATH}/test.sql yugabyte-${TAG}:/tmp/test.sql
 
     #run script
     docker exec -it yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -x
+set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . ${SCRIPTPATH}/../../common/helpers.sh
@@ -20,7 +21,7 @@ test_no_tls()
 
     echo "Testing redis without TLS"
     # Install redis
-    helm install ${HELM_RELEASE}  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f overrides.yml
+    helm install ${HELM_RELEASE}  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
 
     # sleep for 1.5 min
     echo "waiting for 1.5 min for setup"
@@ -51,10 +52,10 @@ test_tls()
     echo "Testing redis with TLS"
 
     # Install certs
-    kubectl apply -f tls_certs.yml
+    kubectl apply -f ${SCRIPTPATH}/tls_certs.yml
 
     # Install redis
-    helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f overrides.yml
+    helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f ${SCRIPTPATH}/overrides.yml
 
     # sleep for 1.5 min
     echo "waiting for 1.5 min for setup"
@@ -70,7 +71,7 @@ test_tls()
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
     # delete certs
-    kubectl delete -f tls_certs.yml
+    kubectl delete -f ${SCRIPTPATH}/tls_certs.yml
 
     # delete the PVC associated
     kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-master-0

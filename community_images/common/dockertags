@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -x
+set -e
+
 if [ $# -ne 2 ]
 then
 cat << HELP

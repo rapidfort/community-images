@@ -18,10 +18,6 @@ test()
     local IMAGE_REPOSITORY=$1
     local TAG=$2
 
-    echo "cleanup old images"
-    docker stop $(docker ps -a -q)
-    docker rm $(docker ps -a -q)
-
     echo "Testing yugabytedb"
     docker run --rm -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${IMAGE_REPOSITORY}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
 

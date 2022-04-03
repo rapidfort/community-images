@@ -17,10 +17,6 @@ test()
     local IMAGE_REPOSITORY=$1
     local TAG=$2
 
-    echo "cleanup old images"
-    docker stop $(docker ps -a -q)
-    docker rm $(docker ps -a -q)
-
     echo "Testing hugging face transformers-pytorch-cpu"
     docker run -it --rm=true --name transformers-pytorch-cpu-${TAG} --cap-add=SYS_PTRACE -v "$(pwd)"/src:/app --workdir=/app ${IMAGE_REPOSITORY}:${TAG} python3 sample.py
 }

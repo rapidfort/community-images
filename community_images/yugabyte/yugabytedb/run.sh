@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -x
+set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . ${SCRIPTPATH}/../../common/helpers.sh
@@ -16,6 +17,7 @@ test()
 {
     local IMAGE_REPOSITORY=$1
     local TAG=$2
+
     echo "Testing yugabytedb"
     docker run --rm -d --name yugabyte-${TAG} -p7000:7000 -p9000:9000 -p5433:5433 -p9042:9042 --cap-add=SYS_PTRACE ${IMAGE_REPOSITORY}:${TAG} bin/yugabyted start --base_dir=/home/yugabyte/yb_data --daemon=false
 
@@ -28,10 +30,10 @@ test()
     curl http://localhost:9000
 
     # copy sql script
-    docker cp test.sql yugabyte-${TAG}:/tmp/test.sql
+    docker cp ${SCRIPTPATH}/test.sql yugabyte-${TAG}:/tmp/test.sql
 
     #run script
-    docker exec -it yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql
+    docker exec -i yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql
 
     # kill docker container
     docker kill yugabyte-${TAG}

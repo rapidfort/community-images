@@ -30,8 +30,11 @@ test_no_tls()
     # get Redis passwordk
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
 
-    #exec into container
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-master-0 -- /bin/bash -c "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h localhost EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
+    # copy test.redis into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.redis ${HELM_RELEASE}-master-0:/tmp/test.redis
+
+    # run script
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-master-0 -- /bin/bash -c "cat /tmp/test.redis | REDISCLI_AUTH=\"${REDIS_PASSWORD}\" redis-cli -h localhost --pipe"
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
@@ -64,8 +67,11 @@ test_tls()
     # get Redis passwordk
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
 
-    #exec into container
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-master-0 -- /bin/bash -c "REDISCLI_AUTH=\"${REDIS_PASSWORD}\" redis-cli -h localhost --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 key1 key2 first second"
+    # copy test.redis into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.redis ${HELM_RELEASE}-master-0:/tmp/test.redis
+
+    # run script
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-master-0 -- /bin/bash -c "cat /tmp/test.redis | REDISCLI_AUTH=\"${REDIS_PASSWORD}\" redis-cli -h localhost --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt --pipe"
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}

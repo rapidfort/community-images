@@ -21,7 +21,7 @@ test_no_tls()
 
     echo "Testing redis without TLS"
     # Install redis
-    helm install ${HELM_RELEASE}  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set redis.livenessProbe.enabled=false --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
+    helm install ${HELM_RELEASE}  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set redis.readinessProbe.enabled=false --set redis.livenessProbe.enabled=false --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
     # disabled liveness check due to https://github.com/bitnami/charts/issues/8978
 
     # sleep for 2 min
@@ -59,7 +59,7 @@ test_tls()
     kubectl apply -f ${SCRIPTPATH}/tls_certs.yml
 
     # Install redis
-    helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=${HELM_RELEASE}-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key --set redis.livenessProbe.enabled=false -f ${SCRIPTPATH}/overrides.yml
+    helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=${HELM_RELEASE}-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key --set redis.readinessProbe.enabled=false --set redis.livenessProbe.enabled=false -f ${SCRIPTPATH}/overrides.yml
     # disabled liveness check due to https://github.com/bitnami/charts/issues/8978
 
     # sleep for 2 min

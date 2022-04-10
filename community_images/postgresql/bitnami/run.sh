@@ -19,6 +19,10 @@ test()
     local HELM_RELEASE=postgresql-release
     
     echo "Testing postgresql"
+
+    # upgrade helm
+    helm repo update
+
     # Install postgresql
     helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
 

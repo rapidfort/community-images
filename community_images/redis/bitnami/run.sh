@@ -20,6 +20,10 @@ test_no_tls()
     local HELM_RELEASE=redis-release
 
     echo "Testing redis without TLS"
+
+    # upgrade helm
+    helm repo update
+
     # Install redis
     helm install ${HELM_RELEASE}  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
 
@@ -56,6 +60,9 @@ test_tls()
 
     # Install certs
     kubectl apply -f ${SCRIPTPATH}/tls_certs.yml
+
+    # upgrade helm
+    helm repo update
 
     # Install redis
     helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f ${SCRIPTPATH}/overrides.yml

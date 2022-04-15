@@ -28,7 +28,7 @@ test()
 
     # sleep for 1 min
     echo "waiting for 1.5 min for setup"
-    sleep 90sm
+    sleep 90s
 
     # get postgresql passwordk
     POSTGRES_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.postgres-password}" | base64 --decode)

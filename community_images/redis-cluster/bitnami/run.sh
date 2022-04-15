@@ -27,9 +27,9 @@ test_no_tls()
     # Install redis
     helm install ${HELM_RELEASE}  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
 
-    # sleep for 2 min
-    echo "waiting for 1.5 min for setup"
-    sleep 90s
+    # sleep for 3 min
+    echo "waiting for 3 min for setup"
+    sleep 3m
 
     # get Redis passwordk
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
@@ -67,9 +67,9 @@ test_tls()
     # Install redis
     helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=${HELM_RELEASE}-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f ${SCRIPTPATH}/overrides.yml
 
-    # sleep for 2 min
-    echo "waiting for 1.5 min for setup"
-    sleep 90s
+    # sleep for 3 min
+    echo "waiting for 3 min for setup"
+    sleep 3m
 
     # get Redis passwordk
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)

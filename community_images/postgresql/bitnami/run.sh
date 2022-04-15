@@ -27,8 +27,8 @@ test()
     helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
 
     # sleep for 1 min
-    echo "waiting for 1.5 min for setup"
-    sleep 90s
+    echo "waiting for 2 min for setup"
+    sleep 2m
 
     # get postgresql passwordk
     POSTGRES_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.postgres-password}" | base64 --decode)

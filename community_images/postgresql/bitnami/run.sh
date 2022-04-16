@@ -43,7 +43,7 @@ test()
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
     # delete the PVC associated
-    kubectl -n ${NAMESPACE} delete pvc data-${HELM_RELEASE}-0
+    kubectl -n ${NAMESPACE} delete pvc --all
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test

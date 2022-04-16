@@ -30,7 +30,7 @@ test()
     curl http://localhost:9000
 
     # copy sql script
-    docker cp ${SCRIPTPATH}/test.sql yugabyte-${TAG}:/tmp/test.sql
+    docker cp ${SCRIPTPATH}/../../common/tests/test.sql yugabyte-${TAG}:/tmp/test.sql
 
     #run script
     docker exec -i yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.sql

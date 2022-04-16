@@ -19,21 +19,25 @@ test()
     local HELM_RELEASE=postgresql-release
     
     echo "Testing postgresql"
+
+    # upgrade helm
+    helm repo update
+
     # Install postgresql
     helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} -f ${SCRIPTPATH}/overrides.yml
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
-    kubectl wait pods ${HELM_RELEASE}-0 -n ${NAMESPACE} --for=condition=ready --timeout=5m
+    kubectl wait pods ${HELM_RELEASE}-0 -n ${NAMESPACE} --for=condition=ready --timeout=10m
 
     # get postgresql passwordk
     POSTGRES_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.postgres-password}" | base64 --decode)
 
     # copy test.sql into container
-    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/test.sql ${HELM_RELEASE}-0:/tmp/test.sql
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.sql ${HELM_RELEASE}-0:/tmp/test.sql
 
-    # exec into container
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host ${HELM_RELEASE} -U postgres -d postgres -p 5432 -f /tmp/test.sql"
+    # run script
+    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host ${HELM_RELEASE} -U postgres -d postgres -p 5432 -f /tmp/test.sql"
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}

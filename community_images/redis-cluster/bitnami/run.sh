@@ -41,12 +41,7 @@ test_no_tls()
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
     # delete the PVC associated
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-0
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-1
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-2
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-3
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-4
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-5
+    kubectl -n ${NAMESPACE} delete pvc --all
 }
 
 
@@ -84,12 +79,7 @@ test_tls()
     kubectl delete -f ${SCRIPTPATH}/tls_certs.yml
 
     # delete the PVC associated
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-0
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-1
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-2
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-3
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-4
-    kubectl -n ${NAMESPACE} delete pvc redis-data-${HELM_RELEASE}-5
+    kubectl -n ${NAMESPACE} delete pvc --all
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test_no_tls

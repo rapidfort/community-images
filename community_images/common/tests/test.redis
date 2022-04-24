@@ -22,7 +22,6 @@ ACL SETUSER virginia on +GET allkeys
 ROLE
 INFO
 SADD testmember "test set"
-FLUSHALL
 SETEX name 10 kyle
 LPUSH test_member test_group
 HSET test test test

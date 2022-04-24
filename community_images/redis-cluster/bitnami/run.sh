@@ -38,7 +38,7 @@ test_no_tls()
     kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.redis ${HELM_RELEASE}-0:/tmp/test.redis
 
     # copy redis_cluster_runner.sh into container
-    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/redis_cluster_runner.sh ${HELM_RELEASE}-0:/tmp/redis_cluster_runner.sh
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/redis_cluster_runner.sh ${HELM_RELEASE}-0:/tmp/redis_cluster_runner.sh
 
     # run command on cluster
     kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "/tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} ${HELM_RELEASE} /tmp/test.redis"
@@ -79,7 +79,7 @@ test_tls()
     kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.redis ${HELM_RELEASE}-0:/tmp/test.redis
 
     # copy redis_cluster_runner.sh into container
-    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/redis_cluster_runner.sh ${HELM_RELEASE}-0:/tmp/redis_cluster_runner.sh
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/redis_cluster_runner.sh ${HELM_RELEASE}-0:/tmp/redis_cluster_runner.sh
 
     # run command on cluster
     kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "/tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} ${HELM_RELEASE} /tmp/test.redis --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt"

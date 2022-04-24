@@ -5,10 +5,12 @@ on:
     branches:
     - main
     paths:
+    - 'community_images/common/**'
     - 'community_images/transformers-pytorch-cpu/huggingface/**'
   push:
     branches: [ main ]
     paths:
+    - 'community_images/common/**'
     - 'community_images/transformers-pytorch-cpu/huggingface/**'
   schedule:
   - cron: '0 0 * * *'

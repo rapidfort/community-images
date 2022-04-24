@@ -5,10 +5,12 @@ on:
     branches:
     - main
     paths:
+    - 'community_images/common/**'
     - 'community_images/redis/bitnami/**'
   push:
     branches: [ main ]
     paths:
+    - 'community_images/common/**'
     - 'community_images/redis/bitnami/**'
   schedule:
   - cron: '0 0 * * *'

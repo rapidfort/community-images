@@ -34,8 +34,14 @@ test_no_tls()
     # get Redis passwordk
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
 
+    # copy test.redis into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.redis ${HELM_RELEASE}-0:/tmp/test.redis
+
+    # copy redis_cluster_runner.sh into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/redis_cluster_runner.sh ${HELM_RELEASE}-0:/tmp/redis_cluster_runner.sh
+
     # run command on cluster
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "REDISCLI_AUTH=\"${REDIS_PASSWORD}\" redis-cli -h ${HELM_RELEASE} -c EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 {user1}:key1 {user1}:key2 first second"
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "/tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} ${HELM_RELEASE} /tmp/test.redis"
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
@@ -69,8 +75,14 @@ test_tls()
     # get Redis passwordk
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
 
+    # copy test.redis into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.redis ${HELM_RELEASE}-0:/tmp/test.redis
+
+    # copy redis_cluster_runner.sh into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/redis_cluster_runner.sh ${HELM_RELEASE}-0:/tmp/redis_cluster_runner.sh
+
     # run command on cluster
-    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "REDISCLI_AUTH=\"${REDIS_PASSWORD}\" redis-cli -h ${HELM_RELEASE} --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt -c EVAL \"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}\" 2 {user1}:key1 {user1}:key2 first second"
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "/tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} ${HELM_RELEASE} /tmp/test.redis --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt"
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}

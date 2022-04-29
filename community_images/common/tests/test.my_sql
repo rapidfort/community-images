@@ -1,5 +1,5 @@
 CREATE TABLE users(
-    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    id BIGINT NOT NULL AUTO_INCREMENT
     PRIMARY KEY(id),
     hash_firstname TEXT NOT NULL,
     hash_lastname TEXT NOT NULL,

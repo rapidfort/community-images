@@ -28,16 +28,16 @@ test()
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
-    kubectl wait pods ${HELM_RELEASE}-mysql-0 -n ${NAMESPACE} --for=condition=ready --timeout=10m
+    kubectl wait pods ${HELM_RELEASE}-0 -n ${NAMESPACE} --for=condition=ready --timeout=10m
 
     # get mysql password
-    MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE}-mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode)
+    MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.mysql-root-password}" | base64 --decode)
 
     # copy test.sql into container
-    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.my_sql ${HELM_RELEASE}-mysql-0:/tmp/test.my_sql
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.my_sql ${HELM_RELEASE}-0:/tmp/test.my_sql
 
     # run script
-    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-mysql-0 -- /bin/bash -c "mysql -h ${HELM_RELEASE}-mysql.${NAMESPACE}.svc.cluster.local -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
+    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-0 -- /bin/bash -c "mysql -h ${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}

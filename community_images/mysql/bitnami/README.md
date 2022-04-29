@@ -1,7 +1,7 @@
 [![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
 
 [![Msql Build](https://github.com/rapidfort/plenum/actions/workflows/mysql_bitnami.yml/badge.svg)](https://github.com/rapidfort/plenum/actions/workflows/mysql_bitnami.yml)
-# Rapidfort hardened image for Postgresql
+# Rapidfort hardened image for MySQL
 
 ## What is MySQL?
 

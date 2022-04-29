@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS users;
 CREATE TABLE users(
     id BIGINT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(id),
@@ -6,7 +7,23 @@ CREATE TABLE users(
     gender VARCHAR(6) NOT NULL CHECK (gender IN ('male', 'female'))
 );
 
-INSERT INTO users(hash_firstname, hash_lastname, gender) SELECT md5(RAND()), md5(RAND()), CASE WHEN RAND() < 0.5 THEN 'male' ELSE 'female' END FROM generate_series(1, 10000);
+DROP PROCEDURE IF EXISTS InsertRand;
+
+DELIMITER $$
+CREATE PROCEDURE InsertRand(IN NumRows INT, IN MinVal INT, IN MaxVal INT)
+    BEGIN
+        DECLARE i INT;
+        SET i = 1;
+        START TRANSACTION;
+        WHILE i <= NumRows DO
+            INSERT INTO users VALUES (i, md5(RAND()), md5(RAND()), CASE WHEN RAND() < 0.5 THEN 'male' ELSE 'female' END);
+            SET i = i + 1;
+        END WHILE;
+        COMMIT;
+    END$$
+DELIMITER ;
+
+CALL InsertRand(10000, 1, 10000);
 
 SELECT COUNT(*) FROM users;
 

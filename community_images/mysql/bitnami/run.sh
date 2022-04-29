@@ -34,10 +34,10 @@ test()
     MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE}-mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode)
 
     # copy test.sql into container
-    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.sql ${HELM_RELEASE}-mysql-0:/tmp/test.sql
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.my_sql ${HELM_RELEASE}-mysql-0:/tmp/test.my_sql
 
     # run script
-    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-mysql-0 -- /bin/bash -c "mysql -h ${HELM_RELEASE}-mysql.${NAMESPACE}.svc.cluster.local -uroot -p\"$MYSQL_ROOT_PASSWORD\" < /tmp/test.sql"
+    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-mysql-0 -- /bin/bash -c "mysql -h ${HELM_RELEASE}-mysql.${NAMESPACE}.svc.cluster.local -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}

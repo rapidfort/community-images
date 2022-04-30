@@ -5,7 +5,7 @@
 
 ## What is MongoDB?
 
-> MongoDB is a fast, reliable, scalable, and easy to use open source relational database system. Designed to handle mission-critical, heavy-load production applications.
+> MongoDB® is a relational open source NoSQL database. Easy to use, it stores data in JSON-like documents. Automated scalability and high-performance. Ideal for developing cloud native applications.
 
 [Overview of MongoDB](https://www.mongodb.com/)
 

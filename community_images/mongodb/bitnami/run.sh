@@ -40,7 +40,10 @@ test()
         --image ${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG} \
         --command -- /bin/bash -c "while true; do sleep 30; done;"
 
-    # copy test.sql into container
+    # wait for mongodb client to be ready
+    kubectl wait pods ${HELM_RELEASE}-client -n ${NAMESPACE} --for=condition=ready --timeout=10m
+
+    # copy test.mongo into container
     kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.mongo ${HELM_RELEASE}-client:/tmp/test.mongo
 
     # run script

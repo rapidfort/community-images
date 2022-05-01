@@ -1,0 +1,29 @@
+image:
+  pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
+primary:
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    capabilities:
+      add: ["SYS_PTRACE"]
+  resources:
+      limits:
+        cpu: 1000m
+        memory: 2048Mi
+      requests:
+        cpu: 500m
+        memory: 1024Mi
+secondary:
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    capabilities:
+      add: ["SYS_PTRACE"]
+  resources:
+      limits:
+        cpu: 1000m
+        memory: 2048Mi
+      requests:
+        cpu: 500m
+        memory: 1024Mi

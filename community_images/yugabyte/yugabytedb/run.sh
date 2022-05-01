@@ -7,7 +7,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . ${SCRIPTPATH}/../../common/helpers.sh
 
 
-BASE_TAG=2.8.1.1-b
+BASE_TAG=2.6.18.0-b
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=yugabytedb
 REPOSITORY=yugabyte

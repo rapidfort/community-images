@@ -28,37 +28,22 @@ test()
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
-    kubectl wait deployments ${HELM_RELEASE} -n ${NAMESPACE} --for=condition=Available=True --timeout=10m
+    kubectl wait pods ${HELM_RELEASE}-0 -n ${NAMESPACE} --for=condition=ready --timeout=10m
 
     # get mariadb password
     MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
 
-    # create MariaDB client
-    kubectl run -n ${NAMESPACE} ${HELM_RELEASE}-client \
-        --restart='Never' \
-        --env="MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" \
-        --image ${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG} \
-        --command -- /bin/bash -c "while true; do sleep 30; done;"
+    # copy test.sql into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.my_sql ${HELM_RELEASE}-0:/tmp/test.my_sql
 
-    # wait for mariadb client to be ready
-    kubectl wait pods ${HELM_RELEASE}-client -n ${NAMESPACE} --for=condition=ready --timeout=10m
+    # run script
+    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-0 -- /bin/bash -c "mysql -h ${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local -uroot -p\"$MARIADB_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
-    # # copy test.mongo into container
-    # kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/test.mongo ${HELM_RELEASE}-client:/tmp/test.mongo
+    # bring down helm install
+    helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
-    # # run script
-    # kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-client \
-    #     -- /bin/bash -c "mongosh admin --host \"mongodb-release\" \
-    #     --authenticationDatabase admin -u root -p ${MONGODB_ROOT_PASSWORD} --file /tmp/test.mongo"
-
-    # # delete client container
-    # kubectl -n ${NAMESPACE} delete pod ${HELM_RELEASE}-client
-
-    # # bring down helm install
-    # helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
-
-    # # delete the PVC associated
-    # kubectl -n ${NAMESPACE} delete pvc --all
+    # delete the PVC associated
+    kubectl -n ${NAMESPACE} delete pvc --all
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test

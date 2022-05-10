@@ -1,6 +1,6 @@
 [![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
 
-[![Huggingface Build](https://github.com/rapidfort/plenum/actions/workflows/transformers_pytorch_cpu_huggingface.yml/badge.svg)](https://github.com/rapidfort/plenum/actions/workflows/transformers_pytorch_cpu_huggingface.yml)
+[![Huggingface Build](https://github.com/rapidfort/community-images/actions/workflows/transformers_pytorch_cpu_huggingface.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/transformers_pytorch_cpu_huggingface.yml)
 
 # Rapidfort hardened image for Transformers Pytorch CPU
 
@@ -19,4 +19,4 @@ Trademarks: This software listing is packaged by Rapidfort. The respective trade
 
 ### Original Image: https://hub.docker.com/r/huggingface/transformers-pytorch-cpu
 ### Sign up now: https://rapidfort.com
-### Github: https://github.com/rapidfort/plenum
+### Github: https://github.com/rapidfort/community-images

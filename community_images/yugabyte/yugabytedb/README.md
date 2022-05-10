@@ -1,6 +1,6 @@
 [![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
 
-[![Yugabyte Build](https://github.com/rapidfort/plenum/actions/workflows/yugabyte_yugabytedb.yml/badge.svg)](https://github.com/rapidfort/plenum/actions/workflows/yugabyte_yugabytedb.yml)
+[![Yugabyte Build](https://github.com/rapidfort/community-images/actions/workflows/yugabyte_yugabytedb.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/yugabyte_yugabytedb.yml)
 
 # Rapidfort hardened image for YugabyteDB
 
@@ -15,4 +15,4 @@ Trademarks: This software listing is packaged by Rapidfort. The respective trade
 
 ### Original Image: https://hub.docker.com/r/yugabytedb/yugabyte
 ### Sign up now: https://rapidfort.com
-### Github: https://github.com/rapidfort/plenum
+### Github: https://github.com/rapidfort/community-images

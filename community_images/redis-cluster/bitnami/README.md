@@ -1,6 +1,6 @@
 [![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
 
-[![Redis Cluster Build](https://github.com/rapidfort/plenum/actions/workflows/redis_cluster_bitnami.yml/badge.svg)](https://github.com/rapidfort/plenum/actions/workflows/redis_cluster_bitnami.yml)
+[![Redis Cluster Build](https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_bitnami.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_bitnami.yml)
 
 # Rapidfort hardened image for Redis&trade;
 
@@ -19,4 +19,4 @@ Trademarks: This software listing is packaged by Rapidfort. The respective trade
 
 ### Original Image: https://hub.docker.com/r/bitnami/redis-cluster/
 ### Sign up now: https://rapidfort.com
-### Github: https://github.com/rapidfort/plenum
+### Github: https://github.com/rapidfort/community-images

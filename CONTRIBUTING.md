@@ -16,7 +16,7 @@ Any type of contribution is welcome; from new features, bug fixes, [tests](#test
 ### Technical Requirements
 
 When submitting a PR make sure that it:
-- Must pass CI jobs for linting and test the changes on top of different k8s platforms. (Automatically done by the Plenum CI/CD pipeline).
+- Must pass CI jobs for linting and test the changes on top of different k8s platforms. (Automatically done by the community-images CI/CD pipeline).
 
 #### Sign Your Work
 
@@ -51,7 +51,7 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't your PR will 
 ### PR Approval and Release Process
 
 1. Changes are automatically linted and tested using Github actions.
-1. Changes are manually reviewed by Plenum team members. 
+1. Changes are manually reviewed by community-images team members. 
 1. When the PR passes all tests, the PR is merged by the reviewer(s) in the GitHub `master` branch.
 1. Then our CI/CD system is going to push the image to the Rapidfort Dockerhub registry.
 
@@ -63,7 +63,7 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't your PR will 
 ### Adding a new image to the repository
 
 There are two major technical requirements to add a new image to our catalog:
-- Follow the same structure/patterns that the rest of the Plenum images (you can find a basic scaffolding in the [`template` directory](https://github.com/rapidfort/plenum/tree/master/template)).
+- Follow the same structure/patterns that the rest of the community-images images (you can find a basic scaffolding in the [`template` directory](https://github.com/rapidfort/community-images/tree/master/template)).
 - Use an [OSI approved license](https://opensource.org/licenses) for all the software.
 
 Please, note we will need to check internally and evaluate the feasibility of adding the new solution to the catalog. Due to limited resources this step could take some time.

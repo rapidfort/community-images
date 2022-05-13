@@ -40,6 +40,7 @@ harden_image()
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
+    local OUTPUT_IMAGE_LATEST_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:latest
     
     # Create stub for docker image
     rfharden ${INPUT_IMAGE_FULL}-rfstub
@@ -49,6 +50,12 @@ harden_image()
 
     # Push stub to our dockerhub account
     docker push ${OUTPUT_IMAGE_FULL}
+
+    # create latest tag
+    docker tag ${OUTPUT_IMAGE_FULL} ${OUTPUT_IMAGE_LATEST_FULL}
+
+    # Push latest tag
+    docker push ${OUTPUT_IMAGE_LATEST_FULL}
 
     echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
 }

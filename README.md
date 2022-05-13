@@ -1,5 +1,5 @@
 
-![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg) 
+![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)
 
 <h1> community-images </h1>
 
@@ -11,7 +11,7 @@
 [Contributing](CONTRIBUTING.md) ·
 [Additional resources](#additional-resources)
 
-**Rapidfort is a solution for building secure, optimized Docker containers.**
+**RapidFort is a solution for building secure, optimized Docker containers.**
 
 Every day, we scan the most popular Docker Hub container images and remove unused code. Then we publish the results to share with you.
 
@@ -24,7 +24,7 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 ![Demo][demo]
 
-Rapidfort scans your Docker containers, looks for unused code and vulnerabilities, and lets you delete everything you don’t need. It’s a simple command line tool that’s part of [RapidFort](https://rapidfort.com), our commercial product.
+RapidFort scans your Docker containers, looks for unused code and vulnerabilities, and lets you delete everything you don’t need. It’s a simple command line tool that’s part of [RapidFort](https://rapidfort.com), our commercial product.
 
 ## What containers are supported?
 
@@ -47,7 +47,7 @@ Here’s what you can do with Community Images.
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-# install redis, just replace repository with rapidfort registry
+# install redis, just replace repository with RapidFort registry
 $ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
 
 # install postgresql

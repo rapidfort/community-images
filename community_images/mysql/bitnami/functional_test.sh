@@ -3,7 +3,7 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-mysql-cluster
+HELM_RELEASE=rf-mysql
 NAMESPACE=ci-test
 
 test()

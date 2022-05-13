@@ -3,7 +3,7 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-postgresql-cluster
+HELM_RELEASE=rf-postgresql
 NAMESPACE=ci-test
 
 test()

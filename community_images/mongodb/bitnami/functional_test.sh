@@ -3,7 +3,7 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-mongodb-cluster
+HELM_RELEASE=rf-mongodb
 NAMESPACE=ci-test
 
 test()

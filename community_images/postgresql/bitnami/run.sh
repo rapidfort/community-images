@@ -13,10 +13,10 @@ INPUT_ACCOUNT=bitnami
 REPOSITORY=postgresql
 
 if [ "$#" -ne 1 ]; then
-    PUBLISH_IMAGE=no
+    PUBLISH_IMAGE="no"
+else
+    PUBLISH_IMAGE=$1
 fi
-
-PUBLISH_IMAGE=$1
 
 test()
 {

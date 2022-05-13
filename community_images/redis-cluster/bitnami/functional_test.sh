@@ -3,7 +3,7 @@
 set -x
 set -e
 
-HELM_RELEASE=my-redis
+HELM_RELEASE=rf-redis-cluster
 NAMESPACE=ci-test
 
 test()

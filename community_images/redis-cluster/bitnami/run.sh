@@ -7,7 +7,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . ${SCRIPTPATH}/../../common/helpers.sh
 
 
-BASE_TAG=6.2.6-debian-10-r
+BASE_TAG=6.2.7-debian-10-r
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
 REPOSITORY=redis-cluster

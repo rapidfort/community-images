@@ -12,6 +12,11 @@ INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
 REPOSITORY=redis
 
+if [ "$#" -ne 1 ]; then
+    PUBLISH_IMAGE="no"
+else
+    PUBLISH_IMAGE=$1
+fi
 
 test()
 {
@@ -84,4 +89,4 @@ test()
 }
 
 
-build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test
+build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test ${PUBLISH_IMAGE}

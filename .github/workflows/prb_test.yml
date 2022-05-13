@@ -1,0 +1,31 @@
+name: Community Images Pull Request Test
+
+on:
+  pull_request:
+    branches:
+    - main
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    environment: actions-cicd
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Build mariadb image
+        run: sh community_images/mariadb/bitnami/run.sh
+      - name: Build mongodb image
+        run: sh community_images/mongodb/bitnami/run.sh
+      - name: Build mysql image
+        run: sh community_images/mysql/bitnami/run.sh
+      - name: Build postgresql image
+        run: sh community_images/postgresql/bitnami/run.sh
+      - name: Build redis image
+        run: sh community_images/redis/bitnami/run.sh
+      - name: Build redis-cluster image
+        run: sh community_images/redis-cluster/bitnami/run.sh
+      - name: Clean up dangling images
+        run: docker image prune -a -f

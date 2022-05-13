@@ -22,7 +22,7 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 ## Getting Started
 
-ANIMATED GIF GOES HERE
+![Demo][demo]
 
 Rapidfort scans your Docker containers, looks for unused code and vulnerabilities, and lets you delete everything you don’t need. It’s a simple command line tool that’s part of [RapidFort](https://rapidfort.com), our commercial product.
 
@@ -66,6 +66,7 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [dockerhub-rf]: https://hub.docker.com/u/rapidfort
 [license-badge]: https://img.shields.io/github/license/rapidfort/community-images?color=lightgray&style=flat-square
 [license]: https://github.com/rapidfort/community-images/blob/main/LICENSE
+[demo]: contrib/demo.gif
 
 [redis]: https://github.com/rapidfort/community-images/tree/main/community_images/redis/bitnami
 [redis-original-image]: https://hub.docker.com/r/bitnami/redis

@@ -10,9 +10,7 @@ Our container optimization process reduces the software attack surface and chanc
 Stop downloading container images with thousands of vulnerabilities. Start using secure containers with minimized attack surfaces.
 
 [Getting started](#getting-started) ·
-[Hardened images](#rapidfort-hardened-images) ·
 [Contributing](CONTRIBUTING.md) ·
-[Credits](#credits) ·
 [Additional resources](#additional-resources)
 
 ## Getting Started
@@ -21,41 +19,34 @@ ANIMATED GIF GOES HERE
 
 Rapidfort scans your Docker containers, looks for unused code and vulnerabilities, and lets you delete everything you don’t need. It’s a simple command line tool that’s part of [RapidFort](https://rapidfort.com), our commercial product.
 
-### What containers are supported?
-
-TBD
-
-### How to use Community Images
-
-Here’s what you can do with Community Images.
-
-```sh
-helm install --image x  # Do x
-
-docker run y  # Do y
-```
-
-### Step 1: Get your container
-
-TBD
-
-## Rapidfort Hardened Images
+## What containers are supported?
 
 We’ve optimized and hardened some of the most popular container images available on Docker Hub and are making them available to the community.
 
-| Repository                            | Original Image                                              | Rapidfort Image                                       | Rapidfort Status                              | Build Status                                                        |
+| Repository                            | Original Image                                              | Rapidfort Image                                       | View Report                              | Build Status                                                        |
 |---------------------------------------| ----------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------- |
 | [Redis][redis]                        | [Bitnami Redis][redis-original-image]                       | [Rf Redis][redis-rf-image]                   | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![Redis Build][redis-badge]][redis-badge-link]                              |
 | [Redis Cluster][redis-cluster]        | [Bitnami Redis Cluster][redis-cluster-original-image]       | [Rf Redis Cluster][redis-cluster-rf-image]   | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![Redis Cluster Build][redis-cluster-badge]][redis-cluster-badge-link]      |
 | [PostgreSQL][postgresql]              | [Bitnami PostgreSQL][postgresql-original-image]             | [Rf PostgreSQL][postgresql-rf-image]         | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![PostgreSQL Build][postgresql-badge]][redis-badge-link]                    |
 | [MySQL][mysql]                        | [Bitnami MySQL][mysql-original-image]                       | [Rf MySQL][mysql-rf-image]                   | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![MySQL Build][redis-badge]][mysql-badge-link]                              |
 | [MongoDB][mongodb]                    | [Bitnami MongoDB][mongodb-original-image]                   | [Rf MongoDB][mongodb-rf-image]               | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![MongoDB Build][redis-badge]][mongodb-badge-link]                          |
-| [Yugabyte][yugabyte]                  | [Bitnami Yugabyte][yugabyte-original-image]                 | [Rf Yugabyte][yugabyte-rf-image]             | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![Redis Yugabyte][yugabyte-badge]][yugabyte-badge-link]                     |
-| [Huggingface][transformers]           | [Bitnami Huggingface][transformers-original-image]          | [Rf Huggingface][transformers-rf-image]      | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![Huggingface Build][transformers-badge]][transformers-badge-link]          |
+| [Yugabyte][yugabyte]                  | [YugabyteDB Yugabyte][yugabyte-original-image]                 | [Rf Yugabyte][yugabyte-rf-image]             | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![Redis Yugabyte][yugabyte-badge]][yugabyte-badge-link]                     |
+| [Huggingface][transformers]           | [Huggingface][transformers-original-image]          | [Rf Huggingface][transformers-rf-image]      | [![RF Hardened][rf-hardened-badge]][rf-link]  | [![Huggingface Build][transformers-badge]][transformers-badge-link]          |
 
-## Credits
+### How to use Community Images
 
-* [RapidFort](https://github.com/RapidFort)
+Here’s what you can do with Community Images.
+
+```sh
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+# install redis, just replace repository with rapidfort registry
+$ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
+
+# install postgresql
+$ helm install my-postgresql bitnami/postgresql --set image.repository=rapidfort/postgresql
+
+```
 
 ## Additional Resources
 

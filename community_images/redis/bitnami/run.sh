@@ -67,6 +67,12 @@ test()
     # run script
     kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-master-0 -- /bin/bash -c "cat /tmp/test.redis | REDISCLI_AUTH=\"${REDIS_PASSWORD}\" redis-cli -h localhost --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt --pipe"
 
+    # copy common_commands.sh into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/common_commands.sh ${HELM_RELEASE}-master-0:/tmp/common_commands.sh
+
+    # run command on cluster
+    kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-master-0 -- /bin/bash -c "/tmp/common_commands.sh"
+
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 

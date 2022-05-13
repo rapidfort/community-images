@@ -79,7 +79,6 @@ test()
     # run command on cluster
     kubectl -n ${NAMESPACE} exec -it ${HELM_RELEASE}-0 -- /bin/bash -c "/tmp/common_commands.sh"
 
-
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 

@@ -1,0 +1,21 @@
+name: MariaDB Functional Test
+
+on:
+  schedule:
+  - cron: '0 6 * * *'
+  - cron: '0 18 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    environment: actions-cicd
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs script for the test
+      - name: Run a multi-line script
+        run: sh community_images/mariadb/bitnami/functional_test.sh

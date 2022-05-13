@@ -35,6 +35,7 @@ We’ve optimized and hardened some of the most popular container images availab
 | [Redis][redis]                    | [![dh][dh-rf-badge]][redis-rf-image]           | [![rf-h][rf-h-badge]][rf-link]  | [![redis-ft][redis-badge]][redis-badge-link]                           |
 | [Redis Cluster][redis-cluster]    | [![dh][dh-rf-badge]][redis-cluster-rf-image]   | [![rf-h][rf-h-badge]][rf-link]  | [![redis-cluster-ft][redis-cluster-badge]][redis-cluster-badge-link]   |
 | [PostgreSQL][postgresql]          | [![dh][dh-rf-badge]][postgresql-rf-image]      | [![rf-h][rf-h-badge]][rf-link]  | [![postgresql-ft][postgresql-badge]][postgresql-badge-link]                 |
+| [MariaDB][mariadb]                | [![dh][dh-rf-badge]][mariadb-rf-image]         | [![rf-h][rf-h-badge]][rf-link]  | [![mariadb-ft][mariadb-badge]][mariadb-badge-link]                       |
 | [MySQL][mysql]                    | [![dh][dh-rf-badge]][mysql-rf-image]           | [![rf-h][rf-h-badge]][rf-link]  | [![mysql-ft][mysql-badge]][mysql-badge-link]                           |
 | [MongoDB][mongodb]                | [![dh][dh-rf-badge]][mongodb-rf-image]         | [![rf-h][rf-h-badge]][rf-link]  | [![mongodb-ft][mongodb-badge]][mongodb-badge-link]                       |
 
@@ -95,3 +96,9 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [mongodb-rf-image]: https://hub.docker.com/r/rapidfort/mongodb
 [mongodb-badge]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_ft.yml/badge.svg
 [mongodb-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_ft.yml
+
+[mariadb]: https://github.com/rapidfort/community-images/tree/main/community_images/mariadb/bitnami
+[mariadb-original-image]: https://hub.docker.com/r/bitnami/mariadb
+[mariadb-rf-image]: https://hub.docker.com/r/rapidfort/mariadb
+[mariadb-badge]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml/badge.svg
+[mariadb-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml

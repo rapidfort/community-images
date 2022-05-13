@@ -35,6 +35,12 @@ test()
     #run script
     docker exec -i yugabyte-${TAG} ysqlsh -h localhost -p 5433 -f /tmp/test.psql
 
+    # copy common_commands.sh into container
+    docker cp ${SCRIPTPATH}/../../common/tests/common_commands.sh yugabyte-${TAG}:/tmp/common_commands.sh
+
+    # run command on cluster
+    docker exec -i yugabyte-${TAG} /tmp/common_commands.sh
+
     # kill docker container
     docker kill yugabyte-${TAG}
 }

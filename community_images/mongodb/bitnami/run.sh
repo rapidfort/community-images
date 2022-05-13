@@ -12,6 +12,12 @@ INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
 REPOSITORY=mongodb
 
+if [ "$#" -ne 1 ]; then
+    PUBLISH_IMAGE=no
+fi
+
+PUBLISH_IMAGE=$1
+
 test()
 {
     local IMAGE_REPOSITORY=$1
@@ -61,4 +67,4 @@ test()
     kubectl -n ${NAMESPACE} delete pvc --all
 }
 
-build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test
+build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test ${PUBLISH_IMAGE}

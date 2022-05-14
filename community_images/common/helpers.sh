@@ -82,7 +82,12 @@ build_images()
     create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
     ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub ${TAG}
     harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} ${PUBLISH_IMAGE}
-    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG}
+
+    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
+        ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG}
+    else
+        echo "Non publish mode, cant test image as image not published"
+    fi
 
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }

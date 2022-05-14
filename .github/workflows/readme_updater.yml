@@ -17,13 +17,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Update readme for dockerhub
+        run: ./scripts/update_readme_dh.sh
+
       - name: Docker Hub Description mariadb
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/mariadb
-          readme-filepath: ./community_images/mariadb/bitnami/README.md
+          readme-filepath: ./community_images/mariadb/bitnami/README.md.dockerhub
           short-description: RapidFort image for bitnami/mariadb
 
       - name: Docker Hub Description mongodb
@@ -32,7 +35,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/mongodb
-          readme-filepath: ./community_images/mongodb/bitnami/README.md
+          readme-filepath: ./community_images/mongodb/bitnami/README.md.dockerhub
           short-description: RapidFort image for bitnami/mongodb
 
       - name: Docker Hub Description mysql
@@ -41,7 +44,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/mysql
-          readme-filepath: ./community_images/mysql/bitnami/README.md
+          readme-filepath: ./community_images/mysql/bitnami/README.md.dockerhub
           short-description: RapidFort image for bitnami/mysql
 
       - name: Docker Hub Description postgresql
@@ -50,7 +53,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/postgresql
-          readme-filepath: ./community_images/postgresql/bitnami/README.md
+          readme-filepath: ./community_images/postgresql/bitnami/README.md.dockerhub
           short-description: RapidFort image for bitnami/postgresql
 
       - name: Docker Hub Description redis
@@ -59,7 +62,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/redis
-          readme-filepath: ./community_images/redis/bitnami/README.md
+          readme-filepath: ./community_images/redis/bitnami/README.md.dockerhub
           short-description: RapidFort image for bitnami/redis
 
       - name: Docker Hub Description redis-cluster
@@ -68,5 +71,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/redis-cluster
-          readme-filepath: ./community_images/redis-cluster/bitnami/README.md
+          readme-filepath: ./community_images/redis-cluster/bitnami/README.md.dockerhub
           short-description: RapidFort image for bitnami/redis-cluster
+
+      - name: Cleanup readme for dockerhub
+        run: ./scripts/cleanup_readme_dh.sh

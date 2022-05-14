@@ -18,4 +18,4 @@ jobs:
 
       # Runs script for the test
       - name: Run a multi-line script
-        run: sh community_images/redis/bitnami/functional_test.sh
+        run: ./community_images/redis/bitnami/functional_test.sh

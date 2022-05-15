@@ -78,6 +78,12 @@ test()
     # run command on cluster
     kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-master-0 -- /bin/bash -c "/tmp/common_commands.sh"
 
+    # copy redis_coverage.sh into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/redis_coverage.sh ${HELM_RELEASE}-master-0:/tmp/redis_coverage.sh
+
+    # run command on cluster
+    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-master-0 -- /bin/bash -c "/tmp/redis_coverage.sh"
+
     # bring down helm install
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 

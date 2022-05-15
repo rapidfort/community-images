@@ -21,20 +21,11 @@ test()
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
 
     # run redis-client
-    kubectl run --namespace ${NAMESPACE} redis-client --restart='Never'  --env REDIS_PASSWORD=${REDIS_PASSWORD}  --image rapidfort/redis:latest --command -- sleep infinity
-
-    # wait for client to be ready
-    kubectl wait pods redis-client -n ${NAMESPACE} --for=condition=ready --timeout=10m
-
-    # run benchmark test
-    kubectl exec -i redis-client --namespace ${NAMESPACE} -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
+    kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/redis-cluster --command -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
 }
 
 clean()
 {
-    # delete client
-    kubectl -n ${NAMESPACE} delete pod redis-client
-
     # delete cluster
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 

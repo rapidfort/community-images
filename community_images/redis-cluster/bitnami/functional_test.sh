@@ -27,7 +27,7 @@ test()
     kubectl wait pods redis-client -n ${NAMESPACE} --for=condition=ready --timeout=10m
 
     # run benchmark test
-    kubectl exec -i redis-client --namespace ${NAMESPACE} -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD"
+    kubectl exec -i redis-client --namespace ${NAMESPACE} -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
 }
 
 clean()

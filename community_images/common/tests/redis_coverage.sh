@@ -1,9 +1,9 @@
 #!/bin/bash
 
 set -x
-set +e # some of these commands return non-0 exit code
+set -e
 
 # add common commands here which should be present in all hardened images
 
 redis-benchmark --help
-redis-cli --help
+redis-cli --version

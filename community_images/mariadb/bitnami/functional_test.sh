@@ -3,7 +3,7 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-mariadb-cluster
+HELM_RELEASE=rf-mariadb
 NAMESPACE=ci-test
 
 test()

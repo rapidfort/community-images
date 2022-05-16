@@ -22,6 +22,9 @@ test()
     
     # run redis-client
     kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/redis --command -- redis-benchmark -h ${HELM_RELEASE}-master -p 6379 -a "$REDIS_PASSWORD"
+
+    # add redis container tests
+    docker run --rm -d -p 6379:6379 --name rf-redis rapidfort/redis:latest
 }
 
 clean()

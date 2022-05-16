@@ -24,7 +24,7 @@ test()
     kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/postgresql --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- pgbench --host rf-postgresql -U postgres -d postgres -p 5432 -i -s 50
 
     # create docker container
-    docker run -d -e 'POSTGRES_PASSWORD=PgPwd' -p 5432:5432 --name rf-postgresql rapidfort/postgresql:latest
+    docker run --rm -d -e 'POSTGRES_PASSWORD=PgPwd' -p 5432:5432 --name rf-postgresql rapidfort/postgresql:latest
 
     # get docker host ip
     PG_HOST=`docker inspect rf-postgresql | jq '.[].NetworkSettings.Networks.bridge.IPAddress'`

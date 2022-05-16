@@ -27,7 +27,7 @@ test()
     docker run --rm -d -e 'POSTGRES_PASSWORD=PgPwd' -p 5432:5432 --name rf-postgresql rapidfort/postgresql:latest
 
     # get docker host ip
-    PG_HOST=`docker inspect rf-postgresql | jq '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    PG_HOST=`docker inspect rf-postgresql | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
 
     # run test on docker container
     docker run --rm -i --env="PGPASSWORD=PgPwd" --name rf-pgbench rapidfort/postgresql -- pgbench --host ${PG_HOST} -U postgres -d postgres -p 5432 -i -s 50

@@ -24,11 +24,23 @@ test()
     kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/redis --command -- redis-benchmark -h ${HELM_RELEASE}-master -p 6379 -a "$REDIS_PASSWORD"
 
     # add redis container tests
-    docker run --rm -d -p 6379:6379 --name rf-redis rapidfort/redis:latest
+    docker run --rm -d -p 6379:6379 -e "REDIS_PASSWORD=${REDIS_PASSWORD}" --name rf-redis rapidfort/redis:latest
+
+    # get host
+    REDIS_HOST=`docker inspect rf-redis | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+
+    # run redis-client tests
+    docker run --rm -i --name redis-bench rapidfort/redis:latest redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
 }
 
 clean()
 {
+    # clean up docker container
+    docker kill rf-redis
+
+    # prune containers
+    docker image prune -a -f
+
     # delete cluster
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
     

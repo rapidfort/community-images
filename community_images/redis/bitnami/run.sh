@@ -94,7 +94,7 @@ test()
     kubectl -n ${NAMESPACE} delete pvc --all
 
     # install redis container
-    docker run --rm -d -p 6379:6379 --name rf-redis rapidfort/redis:latest
+    docker run --rm -d -p 6379:6379 --name rf-redis ${IMAGE_REPOSITORY}:${TAG}
 
     # kill docker container
     docker kill rf-redis

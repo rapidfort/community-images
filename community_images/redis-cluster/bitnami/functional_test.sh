@@ -5,6 +5,7 @@ set -e
 
 HELM_RELEASE=rf-redis-cluster
 NAMESPACE=ci-test
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 test()
 {
@@ -22,10 +23,50 @@ test()
 
     # run redis-client
     kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/redis-cluster --command -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
+
+    # update image in docker-compose yml
+    sed "s#@IMAGE#rapidfort/redis-cluster#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+
+    # install redis container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+
+    # sleep for 30 sec
+    sleep 30
+
+    # password
+    REDIS_PASSWORD=bitnami
+
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+
+    # run redis-client tests
+    docker run --rm -d --network="bitnami_default" --name redis-bench rapidfort/redis-cluster:latest sleep infinity
+
+    # copy test.redis into container
+    docker cp ${SCRIPTPATH}/../../common/tests/test.redis redis-bench:/tmp/test.redis
+
+    # copy redis_cluster_runner.sh into container
+    docker cp ${SCRIPTPATH}/redis_cluster_runner.sh redis-bench:/tmp/redis_cluster_runner.sh
+
+    # run script in docker
+    docker exec -i redis-bench /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0 /tmp/test.redis
 }
 
 clean()
 {
+
+    # kill redis-bench
+    docker kill redis-bench
+
+    # kill docker-compose setup container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
+
+    # prune containers
+    docker image prune -a -f
+
     # delete cluster
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 

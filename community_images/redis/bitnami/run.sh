@@ -56,7 +56,7 @@ test()
     # Install certs
     kubectl apply -f ${SCRIPTPATH}/tls_certs.yml
 
-    # Install redis
+    # Install redis with tls
     helm install ${HELM_RELEASE} ${INPUT_ACCOUNT}/${REPOSITORY} --namespace ${NAMESPACE} --set image.tag=${TAG} --set image.repository=${IMAGE_REPOSITORY} --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f ${SCRIPTPATH}/overrides.yml
 
     # waiting for pod to be ready
@@ -92,6 +92,15 @@ test()
 
     # delete the PVC associated
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # install redis container
+    docker run --rm -d -p 6379:6379 --cap-add=SYS_PTRACE -e "REDIS_PASSWORD=${REDIS_PASSWORD}" --name ${HELM_RELEASE} ${IMAGE_REPOSITORY}:${TAG}
+
+    # sleep for 30 sec
+    sleep 30
+
+    # kill docker container
+    docker kill ${HELM_RELEASE}
 }
 
 

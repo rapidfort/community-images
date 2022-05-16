@@ -107,6 +107,9 @@ test()
     # sleep for 30 sec
     sleep 30
 
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
 

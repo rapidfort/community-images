@@ -37,7 +37,7 @@ test()
         --mysql-host=${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local \
         --mysql-port=3306 \
         --mysql-user=root \
-        --mysql-password="$MYSQL_ROOT_PASSWORD" \
+        --mysql-password="$MARIADB_ROOT_PASSWORD" \
         --mysql-debug=on \
         /usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \
         run
@@ -57,7 +57,7 @@ test()
         --mysql-host=${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local \
         --mysql-port=3306 \
         --mysql-user=root \
-        --mysql-password="$MYSQL_ROOT_PASSWORD" \
+        --mysql-password="$MARIADB_ROOT_PASSWORD" \
         /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
         run
 }

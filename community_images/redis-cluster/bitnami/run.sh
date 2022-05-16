@@ -101,7 +101,7 @@ test()
 
     # install redis container
     # update image with our image
-    sed "\'s/#IMAGE/${IMAGE_REPOSITORY}:${TAG}\/g\'" ${SCRIPTPATH}/docker-compose.yml.base > docker-compose.yml
+    sed "\'s/#IMAGE/${IMAGE_REPOSITORY}:${TAG}\/g\'" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
 
     # sleep for 30 sec
@@ -109,6 +109,9 @@ test()
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test ${PUBLISH_IMAGE}

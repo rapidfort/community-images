@@ -101,7 +101,8 @@ test()
 
     # install redis container
     # update image with our image
-    sed "\'s/#IMAGE/${IMAGE_REPOSITORY}:${TAG}\/g\'" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+    sed "s/#IMAGE/${IMAGE_REPOSITORY}/g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+    sed "s/#TAG/${TAG}/g" ${SCRIPTPATH}/docker-compose.yml > ${SCRIPTPATH}/docker-compose.yml
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
 
     # sleep for 30 sec

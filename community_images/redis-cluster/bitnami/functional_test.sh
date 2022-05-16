@@ -49,7 +49,7 @@ test()
     docker cp ${SCRIPTPATH}/redis_cluster_runner.sh redis-bench:/tmp/redis_cluster_runner.sh
 
     # run script in docker
-    docker exec -i redis-bench /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0
+    docker exec -i redis-bench /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0 /tmp/test.redis
 }
 
 clean()

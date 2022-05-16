@@ -100,13 +100,15 @@ test()
     kubectl -n ${NAMESPACE} delete pvc --all
 
     # install redis container
-    docker run --rm -d -p 6379:6379 --cap-add=SYS_PTRACE -e "REDIS_PASSWORD=${REDIS_PASSWORD}" --name ${HELM_RELEASE} ${IMAGE_REPOSITORY}:${TAG}
+    # update image with our image
+    sed 's/#IMAGE/${IMAGE_REPOSITORY}:${TAG}/g' docker-compose.yml.base > docker-compose.yml
+    docker-compose up -d
 
     # sleep for 30 sec
     sleep 30
 
-    # kill docker container
-    docker kill ${HELM_RELEASE}
+    # kill docker-compose setup container
+    docker-compose down
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test ${PUBLISH_IMAGE}

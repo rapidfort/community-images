@@ -33,17 +33,32 @@ test()
     # sleep for 30 sec
     sleep 30
 
+    # password
+    REDIS_PASSWORD=bitnami
+
     # logs for tracking
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
 
     # run redis-client tests
-    docker run --rm -i --network="bitnami_default" --name redis-bench rapidfort/redis-cluster:latest redis-benchmark -h bitnami_redis-node-0_1 -p 6379 -a "$REDIS_PASSWORD"
+    docker run --rm -d --network="bitnami_default" --name redis-bench rapidfort/redis-cluster:latest sleep infinity
+
+    # copy test.redis into container
+    docker cp ${SCRIPTPATH}/../../common/tests/test.redis redis-bench:/tmp/test.redis
+
+    # copy redis_cluster_runner.sh into container
+    docker cp ${SCRIPTPATH}/redis_cluster_runner.sh redis-bench:/tmp/redis_cluster_runner.sh
+
+    # run script in docker
+    docker exec -i redis-bench /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0
 }
 
 clean()
 {
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # kill redis-bench
+    docker kill redis-bench
 
     # clean up docker file
     rm -rf ${SCRIPTPATH}/docker-compose.yml

@@ -101,6 +101,9 @@ test()
 
     # kill docker container
     docker kill rf-redis
+
+    # prune containers
+    docker image prune -a -f
 }
 
 

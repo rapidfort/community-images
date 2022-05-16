@@ -23,11 +23,17 @@ test()
     # run redis-client
     kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/redis-cluster --command -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
 
-    # add redis container tests
-    docker run --rm -d -p 6379:6379 -e "REDIS_PASSWORD=${REDIS_PASSWORD}" --name rf-redis-cluster rapidfort/redis-cluster:latest
+    # update image in docker-compose yml
+    sed "s#@IMAGE#rapidfort/redis-cluster#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
-    # get host
-    REDIS_HOST=`docker inspect rf-redis-cluster | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    # install redis container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+
+    # sleep for 30 sec
+    sleep 30
+
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
 
     # run redis-client tests
     docker run --rm -i --name redis-bench rapidfort/redis-cluster:latest redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
@@ -35,8 +41,11 @@ test()
 
 clean()
 {
-    # clean up docker container
-    docker kill rf-redis-cluster
+    # kill docker-compose setup container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
 
     # prune containers
     docker image prune -a -f

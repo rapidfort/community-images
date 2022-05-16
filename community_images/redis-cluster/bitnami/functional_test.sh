@@ -37,7 +37,7 @@ test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
 
     # run redis-client tests
-    docker run --rm -i --name redis-bench rapidfort/redis-cluster:latest redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
+    docker run --rm -i --network="bitnami_default" --name redis-bench rapidfort/redis-cluster:latest redis-benchmark -h bitnami_redis-node-0_1 -p 6379 -a "$REDIS_PASSWORD"
 }
 
 clean()

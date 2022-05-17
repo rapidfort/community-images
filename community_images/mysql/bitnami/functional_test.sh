@@ -83,7 +83,7 @@ docker_test()
 
     # create role
     docker run --rm -i --name mysql-client rapidfort/mysql:latest \
-        -- "mysql -h ${MYSQL_HOST} -uroot -p\"$MYSQL_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
+        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE SCHEMA sbtest;"
 
     # run sys bench prepare
     docker run \

@@ -22,7 +22,7 @@ clean()
 main()
 {
     test
-    clean
+    # clean
 }
 
 main

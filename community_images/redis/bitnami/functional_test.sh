@@ -80,6 +80,9 @@ docker_compose_test()
 
     # prune containers
     docker image prune -a -f
+
+    # prune volumes
+    docker volume prune
 }
 
 main()

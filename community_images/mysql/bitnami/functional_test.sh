@@ -71,7 +71,7 @@ k8s_test()
 
 docker_test()
 {
-    MYSQL_ROOT_PASSWORD=MysqlPwd
+    MYSQL_ROOT_PASSWORD=my_root_password
     # create docker container
     docker run --rm -d -e 'MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}' -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
 

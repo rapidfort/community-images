@@ -7,7 +7,7 @@ HELM_RELEASE=rf-redis-cluster
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-test()
+k8s_test()
 {
     # install redis
     helm install ${HELM_RELEASE} bitnami/redis-cluster --set image.repository=rapidfort/redis-cluster --namespace ${NAMESPACE}
@@ -24,6 +24,15 @@ test()
     # run redis-client
     kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/redis-cluster --command -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
 
+    # delete cluster
+    helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
+
+    # delete pvc
+    kubectl -n ${NAMESPACE} delete pvc --all
+}
+
+docker_compose_test()
+{
     # update image in docker-compose yml
     sed "s#@IMAGE#rapidfort/redis-cluster#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
@@ -50,10 +59,6 @@ test()
 
     # run script in docker
     docker exec -i redis-bench /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0 /tmp/test.redis
-}
-
-clean()
-{
 
     # kill redis-bench
     docker kill redis-bench
@@ -66,18 +71,12 @@ clean()
 
     # prune containers
     docker image prune -a -f
-
-    # delete cluster
-    helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
-
-    # delete pvc
-    kubectl -n ${NAMESPACE} delete pvc --all
 }
 
 main()
 {
-    test
-    clean
+    k8s_test
+    docker_compose_test
 }
 
 main

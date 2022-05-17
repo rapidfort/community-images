@@ -33,8 +33,14 @@ k8s_test()
 
 docker_test()
 {
+    # password
+    REDIS_PASSWORD=my_password
+
     # add redis container tests
     docker run --rm -d -p 6379:6379 -e "REDIS_PASSWORD=${REDIS_PASSWORD}" --name rf-redis rapidfort/redis:latest
+
+    # sleep for 30 sec
+    sleep 30
 
     # get host
     REDIS_HOST=`docker inspect rf-redis | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
@@ -49,7 +55,7 @@ docker_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/redis-cluster#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+    sed "s#@IMAGE#rapidfort/redis#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
     # install redis container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
@@ -65,9 +71,6 @@ docker_compose_test()
 
     # copy test.redis into container
     docker run --rm -i --network="bitnami_default" --name redis-bench rapidfort/redis:latest redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
-
-    # kill redis-bench
-    docker kill redis-bench
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down

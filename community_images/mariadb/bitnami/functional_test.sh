@@ -96,7 +96,35 @@ docker_test()
 
 docker_compose_test()
 {
-    echo "hi"
+    # update image in docker-compose yml
+    sed "s#@IMAGE#rapidfort/mariadb#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+
+    # install postgresql container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+
+    # sleep for 30 sec
+    sleep 30
+
+    # password
+    MARIADB_ROOT_PASSWORD=my_root_password
+
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+
+    # run pg benchmark container
+    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD bitnami_default
+
+    # kill docker-compose setup container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
+
+    # prune containers
+    docker image prune -a -f
+
+    # prune volumes
+    docker volume prune -f
 }
 
 main()

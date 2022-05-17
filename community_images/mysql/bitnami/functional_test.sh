@@ -69,17 +69,11 @@ k8s_test()
     kubectl -n ${NAMESPACE} delete pvc --all
 }
 
-docker_test()
+run_sys_bench_test()
 {
-    MYSQL_ROOT_PASSWORD=my_root_password
-    # create docker container
-    docker run --rm -d -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
-
-    # sleep for few seconds
-    sleep 30
-
-    # get docker host ip
-    MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    MYSQL_HOST=$1
+    MYSQL_ROOT_PASSWORD=$2
+    DOCKER_NETWORK=$3
 
     # create schema
     docker run --rm -i --name mysql-client rapidfort/mysql:latest \
@@ -97,6 +91,7 @@ docker_test()
     docker run \
         --rm=true \
         --name=sb-prepare \
+        --network=$DOCKER_NETWORK \
         severalnines/sysbench \
         sysbench \
         --db-driver=mysql \
@@ -113,6 +108,7 @@ docker_test()
     # run sys bench test
     docker run \
         --name=sb-run \
+        --network=$DOCKER_NETWORK \
         severalnines/sysbench \
         sysbench \
         --db-driver=mysql \
@@ -128,6 +124,21 @@ docker_test()
         --mysql-password=password \
         /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
         run
+}
+
+docker_test()
+{
+    MYSQL_ROOT_PASSWORD=my_root_password
+    # create docker container
+    docker run --rm -d -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
+
+    # sleep for few seconds
+    sleep 30
+
+    # get docker host ip
+    MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+
+    run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD bridge
 
     # clean up docker container
     docker kill ${HELM_RELEASE}
@@ -138,14 +149,39 @@ docker_test()
 
 docker_compose_test()
 {
-    echo "temp"
+    # update image in docker-compose yml
+    sed "s#@IMAGE#rapidfort/mysql#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+
+    # install postgresql container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+
+    # sleep for 30 sec
+    sleep 30
+
+    # password
+    MYSQL_ROOT_PASSWORD=my_root_password
+
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+
+    # run pg benchmark container
+    run_sys_bench_test mysql-master $MYSQL_ROOT_PASSWORD bitnami_default
+
+    # kill docker-compose setup container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
+
+    # prune containers
+    docker image prune -a -f
 }
 
 main()
 {
     k8s_test
     docker_test
-    # docker_compose_test
+    docker_compose_test
 }
 
 main

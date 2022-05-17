@@ -1,0 +1,21 @@
+name: MongoDB perfomance test Build
+
+on:
+  schedule:
+  - cron: '0 0 * * *'
+  - cron: '0 12 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    environment: actions-cicd
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Build mongoDB perf test
+        run: docker build -t rapidfort/mongodb-perfomance-test ./community_images/mongodb/bitnami/perf_test
+      - name: Build mongoDB perf test
+        run: docker push rapidfort/mongodb-perfomance-test

@@ -74,7 +74,7 @@ docker_test()
 {
     MARIADB_ROOT_PASSWORD=my_root_password
     # create docker container
-    docker run --rm -d -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
+    docker run --rm -d -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mariadb:latest
 
     # sleep for few seconds
     sleep 30

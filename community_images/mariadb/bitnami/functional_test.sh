@@ -5,8 +5,10 @@ set -e
 
 HELM_RELEASE=rf-mariadb
 NAMESPACE=ci-test
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/sysbench_tests.sh
 
-test()
+k8s_test()
 {
     # install mysql
     helm install ${HELM_RELEASE} bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace ${NAMESPACE}
@@ -60,10 +62,7 @@ test()
         --mysql-password="$MARIADB_ROOT_PASSWORD" \
         /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
         run
-}
 
-clean()
-{
     # delte cluster
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
@@ -71,10 +70,40 @@ clean()
     kubectl -n ${NAMESPACE} delete pvc --all
 }
 
+docker_test()
+{
+    MARIADB_ROOT_PASSWORD=my_root_password
+    # create docker container
+    docker run --rm -d -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
+
+    # sleep for few seconds
+    sleep 30
+
+    # get docker host ip
+    MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+
+    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD bridge
+
+    # clean up docker container
+    docker kill ${HELM_RELEASE}
+
+    # prune containers
+    docker image prune -a -f
+
+    # prune volumes
+    docker volume prune -f
+}
+
+docker_compose_test()
+{
+    echo "hi"
+}
+
 main()
 {
-    test
-    clean
+    k8s_test
+    docker_test
+    docker_compose_test
 }
 
 main

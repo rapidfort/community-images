@@ -121,7 +121,7 @@ docker_test()
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
         --threads=64 \
-        --time=99999 \
+        --time=30 \
         --mysql-host=${MYSQL_HOST} \
         --mysql-port=3306 \
         --mysql-user=sbtest \
@@ -138,14 +138,14 @@ docker_test()
 
 docker_compose_test()
 {
-
+    echo "temp"
 }
 
 main()
 {
     k8s_test
     docker_test
-    docker_compose_test
+    # docker_compose_test
 }
 
 main

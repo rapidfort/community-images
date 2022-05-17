@@ -70,7 +70,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
 
     # run pg benchmark container
-    docker run --rm -i --env="PGPASSWORD=${POSTGRES_PASSWORD}" --name rf-pgbench rapidfort/postgresql -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
+    docker run --rm -i --network="bitnami_default" --env="PGPASSWORD=${POSTGRES_PASSWORD}" --name rf-pgbench rapidfort/postgresql -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down

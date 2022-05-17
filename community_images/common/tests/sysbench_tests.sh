@@ -19,7 +19,7 @@ run_sys_bench_test()
     fi
 
     docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \
-        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e ${CREATE_USER_STR}
+        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "${CREATE_USER_STR}"
 
     # grant privelege
     docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \

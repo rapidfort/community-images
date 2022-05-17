@@ -48,7 +48,6 @@ k8s_test()
 main()
 {
     k8s_test
-    clean
 }
 
 main

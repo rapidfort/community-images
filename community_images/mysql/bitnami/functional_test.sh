@@ -88,7 +88,7 @@ run_sys_bench_test()
         -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
 
     # run sys bench prepare
-    docker run \
+    docker run --rm \
         --rm=true \
         --name=sb-prepare \
         --network=$DOCKER_NETWORK \
@@ -106,7 +106,7 @@ run_sys_bench_test()
         run
 
     # run sys bench test
-    docker run \
+    docker run --rm \
         --name=sb-run \
         --network=$DOCKER_NETWORK \
         severalnines/sysbench \

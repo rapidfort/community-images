@@ -15,6 +15,9 @@ services:
       - POSTGRESQL_PASSWORD=my_password
       - POSTGRESQL_DATABASE=my_database
       - ALLOW_EMPTY_PASSWORD=yes
+    cap_add:
+      - SYS_PTRACE
+
   postgresql-slave:
     image: @IMAGE
     ports:
@@ -29,6 +32,8 @@ services:
       - POSTGRESQL_PASSWORD=my_password
       - POSTGRESQL_MASTER_PORT_NUMBER=5432
       - ALLOW_EMPTY_PASSWORD=yes
+    cap_add:
+      - SYS_PTRACE
 
 volumes:
   postgresql_master_data:

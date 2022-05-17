@@ -11,6 +11,8 @@ services:
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     volumes:
       - 'redis_data:/bitnami/redis/data'
+    cap_add:
+      - SYS_PTRACE
 
   redis-secondary:
     image: @IMAGE
@@ -25,6 +27,8 @@ services:
       - REDIS_MASTER_PASSWORD=my_password
       - REDIS_PASSWORD=my_password
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    cap_add:
+      - SYS_PTRACE
 
 volumes:
   redis_data:

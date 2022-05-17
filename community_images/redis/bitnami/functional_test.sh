@@ -50,6 +50,12 @@ docker_test()
 
     # clean up docker container
     docker kill rf-redis
+
+    # prune containers
+    docker image prune -a -f
+
+    # prune volumes
+    docker volume prune -f
 }
 
 docker_compose_test()
@@ -82,7 +88,7 @@ docker_compose_test()
     docker image prune -a -f
 
     # prune volumes
-    docker volume prune
+    docker volume prune -f
 }
 
 main()

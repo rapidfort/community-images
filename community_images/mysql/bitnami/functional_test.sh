@@ -6,6 +6,7 @@ set -e
 HELM_RELEASE=rf-mysql
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/tests/sysbench_tests.sh
 
 k8s_test()
 {
@@ -69,63 +70,6 @@ k8s_test()
     kubectl -n ${NAMESPACE} delete pvc --all
 }
 
-run_sys_bench_test()
-{
-    MYSQL_HOST=$1
-    MYSQL_ROOT_PASSWORD=$2
-    DOCKER_NETWORK=$3
-
-    # create schema
-    docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \
-        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE SCHEMA sbtest;"
-
-    # create user
-    docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \
-        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE USER sbtest@'%' IDENTIFIED WITH mysql_native_password BY 'password';"
-
-    # grant privelege
-    docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \
-        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
-
-    # run sys bench prepare
-    docker run --rm \
-        --rm=true \
-        --name=sb-prepare \
-        --network=$DOCKER_NETWORK \
-        severalnines/sysbench \
-        sysbench \
-        --db-driver=mysql \
-        --oltp-table-size=100000 \
-        --oltp-tables-count=24 \
-        --threads=1 \
-        --mysql-host=${MYSQL_HOST} \
-        --mysql-port=3306 \
-        --mysql-user=sbtest \
-        --mysql-password=password \
-        /usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \
-        run
-
-    # run sys bench test
-    docker run --rm \
-        --name=sb-run \
-        --network=$DOCKER_NETWORK \
-        severalnines/sysbench \
-        sysbench \
-        --db-driver=mysql \
-        --report-interval=2 \
-        --mysql-table-engine=innodb \
-        --oltp-table-size=100000 \
-        --oltp-tables-count=24 \
-        --threads=64 \
-        --time=30 \
-        --mysql-host=${MYSQL_HOST} \
-        --mysql-port=3306 \
-        --mysql-user=sbtest \
-        --mysql-password=password \
-        /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
-        run
-}
-
 docker_test()
 {
     MYSQL_ROOT_PASSWORD=my_root_password
@@ -138,7 +82,7 @@ docker_test()
     # get docker host ip
     MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
 
-    run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD bridge
+    run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD bridge yes
 
     # clean up docker container
     docker kill ${HELM_RELEASE}
@@ -168,7 +112,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
 
     # run pg benchmark container
-    run_sys_bench_test mysql-master $MYSQL_ROOT_PASSWORD bitnami_default
+    run_sys_bench_test mysql-master $MYSQL_ROOT_PASSWORD bitnami_default yes
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down

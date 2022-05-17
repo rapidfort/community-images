@@ -5,13 +5,15 @@ set -e
 
 HELM_RELEASE=rf-mariadb
 NAMESPACE=ci-test
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/tests/sysbench_tests.sh
 
-test()
+k8s_test()
 {
-    # install mysql
+    # install mariadb
     helm install ${HELM_RELEASE} bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace ${NAMESPACE}
 
-    # wait for mysql
+    # wait for mariadb
     kubectl wait pods ${HELM_RELEASE}-0 -n ${NAMESPACE} --for=condition=ready --timeout=10m
 
     # log pods
@@ -60,10 +62,7 @@ test()
         --mysql-password="$MARIADB_ROOT_PASSWORD" \
         /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
         run
-}
 
-clean()
-{
     # delte cluster
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
 
@@ -71,10 +70,68 @@ clean()
     kubectl -n ${NAMESPACE} delete pvc --all
 }
 
+docker_test()
+{
+    MARIADB_ROOT_PASSWORD=my_root_password
+    # create docker container
+    docker run --rm -d -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mariadb:latest
+
+    # sleep for few seconds
+    sleep 30
+
+    # get docker host ip
+    MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+
+    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD bridge no
+
+    # clean up docker container
+    docker kill ${HELM_RELEASE}
+
+    # prune containers
+    docker image prune -a -f
+
+    # prune volumes
+    docker volume prune -f
+}
+
+docker_compose_test()
+{
+    # update image in docker-compose yml
+    sed "s#@IMAGE#rapidfort/mariadb#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+
+    # install postgresql container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+
+    # sleep for 30 sec
+    sleep 30
+
+    # password
+    MARIADB_ROOT_PASSWORD=my_root_password
+
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+
+    # run pg benchmark container
+    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD bitnami_default no
+
+    # kill docker-compose setup container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
+
+    # prune containers
+    docker image prune -a -f
+
+    # prune volumes
+    docker volume prune -f
+}
+
 main()
 {
-    test
-    clean
+    k8s_test
+    docker_test
+    docker_compose_test
 }
 
 main

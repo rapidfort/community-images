@@ -81,9 +81,17 @@ docker_test()
     # get docker host ip
     MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
 
-    # create role
+    # create schema
     docker run --rm -i --name mysql-client rapidfort/mysql:latest \
         -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE SCHEMA sbtest;"
+
+    # create user
+    docker run --rm -i --name mysql-client rapidfort/mysql:latest \
+        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE USER sbtest@'%' IDENTIFIED WITH mysql_native_password BY 'password';"
+
+    # grant privelege
+    docker run --rm -i --name mysql-client rapidfort/mysql:latest \
+        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
 
     # run sys bench prepare
     docker run \
@@ -97,8 +105,8 @@ docker_test()
         --threads=1 \
         --mysql-host=${MYSQL_HOST} \
         --mysql-port=3306 \
-        --mysql-user=root \
-        --mysql-password=${MYSQL_ROOT_PASSWORD} \
+        --mysql-user=sbtest \
+        --mysql-password=password \
         /usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \
         run
 
@@ -116,8 +124,8 @@ docker_test()
         --time=99999 \
         --mysql-host=${MYSQL_HOST} \
         --mysql-port=3306 \
-        --mysql-user=root \
-        --mysql-password=${MYSQL_ROOT_PASSWORD} \
+        --mysql-user=sbtest \
+        --mysql-password=password \
         /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
         run
 

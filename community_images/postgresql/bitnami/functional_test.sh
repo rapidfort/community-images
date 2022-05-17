@@ -51,10 +51,41 @@ docker_test()
     docker image prune -a -f
 }
 
+docker_compose_test()
+{
+    # update image in docker-compose yml
+    sed "s#@IMAGE#rapidfort/redis#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+
+    # install redis container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+
+    # sleep for 30 sec
+    sleep 30
+
+    # password
+    POSTGRES_PASSWORD=my_password
+
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+
+    # run pg benchmark container
+    docker run --rm -i --env="PGPASSWORD=${POSTGRES_PASSWORD}" --name rf-pgbench rapidfort/postgresql -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
+
+    # kill docker-compose setup container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
+
+    # prune containers
+    docker image prune -a -f
+}
+
 main()
 {
     k8s_test
     docker_test
+    docker_compose_test
 }
 
 main

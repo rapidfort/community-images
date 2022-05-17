@@ -10,10 +10,10 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 k8s_test()
 {
-    # install mysql
+    # install mariadb
     helm install ${HELM_RELEASE} bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace ${NAMESPACE}
 
-    # wait for mysql
+    # wait for mariadb
     kubectl wait pods ${HELM_RELEASE}-0 -n ${NAMESPACE} --for=condition=ready --timeout=10m
 
     # log pods
@@ -82,7 +82,7 @@ docker_test()
     # get docker host ip
     MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
 
-    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD bridge
+    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD bridge no
 
     # clean up docker container
     docker kill ${HELM_RELEASE}
@@ -112,7 +112,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
 
     # run pg benchmark container
-    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD bitnami_default
+    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD bitnami_default no
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down

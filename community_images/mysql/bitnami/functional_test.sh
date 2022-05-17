@@ -82,7 +82,7 @@ docker_test()
     # get docker host ip
     MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
 
-    run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD bridge
+    run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD bridge yes
 
     # clean up docker container
     docker kill ${HELM_RELEASE}
@@ -112,7 +112,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
 
     # run pg benchmark container
-    run_sys_bench_test mysql-master $MYSQL_ROOT_PASSWORD bitnami_default
+    run_sys_bench_test mysql-master $MYSQL_ROOT_PASSWORD bitnami_default yes
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml down

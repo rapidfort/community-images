@@ -4,14 +4,22 @@ run_sys_bench_test()
     MYSQL_HOST=$1
     MYSQL_ROOT_PASSWORD=$2
     DOCKER_NETWORK=$3
+    USE_MYSQL_NATIVE_PASSWORD_PLUGIN=$4
 
     # create schema
     docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \
         -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE SCHEMA sbtest;"
 
     # create user
+    CREATE_USER_STR=
+    if [[ "${USE_MYSQL_NATIVE_PASSWORD_PLUGIN}" = "yes" ]]; then
+        CREATE_USER_STR="CREATE USER sbtest@'%' IDENTIFIED WITH mysql_native_password BY 'password';"
+    else
+        CREATE_USER_STR="CREATE USER sbtest@'%' IDENTIFIED BY 'password';"
+    fi
+
     docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \
-        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE USER sbtest@'%' IDENTIFIED WITH mysql_native_password BY 'password';"
+        -- mysql -h ${MYSQL_HOST} -uroot -p"$MYSQL_ROOT_PASSWORD" -e ${CREATE_USER_STR}
 
     # grant privelege
     docker run --rm -i --network=$DOCKER_NETWORK --name mysql-client rapidfort/mysql:latest \

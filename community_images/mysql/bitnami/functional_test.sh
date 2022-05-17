@@ -97,7 +97,7 @@ docker_test()
         --threads=1 \
         --mysql-host=${MYSQL_HOST} \
         --mysql-port=3306 \
-        --mysql-user=sbtest \
+        --mysql-user=root \
         --mysql-password=${MYSQL_ROOT_PASSWORD} \
         /usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \
         run
@@ -116,7 +116,7 @@ docker_test()
         --time=99999 \
         --mysql-host=${MYSQL_HOST} \
         --mysql-port=3306 \
-        --mysql-user=sbtest \
+        --mysql-user=root \
         --mysql-password=${MYSQL_ROOT_PASSWORD} \
         /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
         run

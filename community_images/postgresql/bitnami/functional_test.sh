@@ -55,9 +55,9 @@ docker_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/redis#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+    sed "s#@IMAGE#rapidfort/postgresql#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
-    # install redis container
+    # install postgresql container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
 
     # sleep for 30 sec

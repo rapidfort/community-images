@@ -6,7 +6,7 @@ set -e
 HELM_RELEASE=rf-mariadb
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-. ${SCRIPTPATH}/../../common/sysbench_tests.sh
+. ${SCRIPTPATH}/../../common/tests/sysbench_tests.sh
 
 k8s_test()
 {

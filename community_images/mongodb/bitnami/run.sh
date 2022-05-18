@@ -39,6 +39,15 @@ test()
     # get mongodb password
     MONGODB_ROOT_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.mongodb-root-password}" | base64 --decode)
 
+    # get pod name
+    POD_NAME=`kubectl -n ${NAMESPACE} get pods -l app.kubernetes.io/name=mongodb -o jsonpath="{.items[0].metadata.name}"`
+
+    # copy common_commands.sh into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/common_commands.sh ${POD_NAME}:/tmp/common_commands.sh
+
+    # run command on cluster
+    kubectl -n ${NAMESPACE} exec -i ${POD_NAME} -- /bin/bash -c "/tmp/common_commands.sh"
+
     # create MongoDB client
     kubectl run -n ${NAMESPACE} ${HELM_RELEASE}-client \
         --restart='Never' \
@@ -65,6 +74,24 @@ test()
 
     # delete the PVC associated
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # update image in docker-compose yml
+    sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+
+    # install redis container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+
+    # sleep for 30 sec
+    sleep 30
+
+    # logs for tracking
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+
+    # kill docker-compose setup container
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+
+    # clean up docker file
+    rm -rf ${SCRIPTPATH}/docker-compose.yml
 }
 
 build_images ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${BASE_TAG} test ${PUBLISH_IMAGE}

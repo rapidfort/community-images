@@ -11,6 +11,9 @@ NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install redis
     helm install ${HELM_RELEASE} bitnami/redis-cluster --set image.repository=rapidfort/redis-cluster --namespace ${NAMESPACE}
 
@@ -31,6 +34,9 @@ k8s_test()
 
     # delete pvc
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_compose_test()
@@ -74,10 +80,8 @@ docker_compose_test()
 
 main()
 {
-    setup_namespace ${NAMESPACE}
     k8s_test
     docker_compose_test
-    cleanup_namespace ${NAMESPACE}
 }
 
 main

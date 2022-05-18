@@ -11,6 +11,9 @@ NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install postgres
     helm install ${HELM_RELEASE} bitnami/postgresql --set image.repository=rapidfort/postgresql --namespace ${NAMESPACE}
     
@@ -31,6 +34,9 @@ k8s_test()
 
     # clean up PVC
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_test()
@@ -80,11 +86,9 @@ docker_compose_test()
 
 main()
 {
-    setup_namespace ${NAMESPACE}
     k8s_test
     docker_test
     docker_compose_test
-    cleanup_namespace ${NAMESPACE}
 }
 
 main

@@ -12,6 +12,9 @@ NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install mariadb
     helm install ${HELM_RELEASE} bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace ${NAMESPACE}
 
@@ -70,13 +73,21 @@ k8s_test()
 
     # delete pvc
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_test()
 {
     MARIADB_ROOT_PASSWORD=my_root_password
+
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
     # create docker container
-    docker run --rm -d -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mariadb:latest
+    docker run --rm -d --network=${NAMESPACE} \
+        -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mariadb:latest
 
     # sleep for few seconds
     sleep 30
@@ -84,10 +95,13 @@ docker_test()
     # get docker host ip
     MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
 
-    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD bridge no
+    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD ${NAMESPACE} no
 
     # clean up docker container
     docker kill ${HELM_RELEASE}
+
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()
@@ -119,11 +133,9 @@ docker_compose_test()
 
 main()
 {
-    setup_namespace ${NAMESPACE}
     k8s_test
     docker_test
     docker_compose_test
-    cleanup_namespace ${NAMESPACE}
 }
 
 main

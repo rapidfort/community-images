@@ -49,6 +49,9 @@ run_mongodb_test()
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install mongodb
     helm install ${HELM_RELEASE} bitnami/mongodb --set image.repository=rapidfort/mongodb --namespace ${NAMESPACE}
 
@@ -72,6 +75,9 @@ k8s_test()
 
     # delete pvc
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_test()
@@ -123,11 +129,9 @@ docker_compose_test()
 
 main()
 {
-    setup_namespace ${NAMESPACE}
     k8s_test
     docker_test
     docker_compose_test
-    cleanup_namespace ${NAMESPACE}
 }
 
 main

@@ -74,8 +74,10 @@ docker_compose_test()
 
 main()
 {
+    setup_namespace ${NAMESPACE}
     k8s_test
     docker_compose_test
+    cleanup_namespace ${NAMESPACE}
 }
 
 main

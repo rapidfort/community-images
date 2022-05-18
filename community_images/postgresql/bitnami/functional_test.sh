@@ -41,6 +41,9 @@ k8s_test()
 
 docker_test()
 {
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
     # create docker container
     docker run --rm -d -e 'POSTGRES_PASSWORD=PgPwd' -p 5432:5432 --name rf-postgresql rapidfort/postgresql:latest
 
@@ -48,13 +51,16 @@ docker_test()
     sleep 30
 
     # get docker host ip
-    PG_HOST=`docker inspect rf-postgresql | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    PG_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run test on docker container
     docker run --rm -i --env="PGPASSWORD=PgPwd" --name rf-pgbench rapidfort/postgresql -- pgbench --host ${PG_HOST} -U postgres -d postgres -p 5432 -i -s 50
 
     # clean up docker container
     docker kill rf-postgresql
+
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()

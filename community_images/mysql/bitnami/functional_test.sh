@@ -81,6 +81,10 @@ k8s_test()
 docker_test()
 {
     MYSQL_ROOT_PASSWORD=my_root_password
+
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
     # create docker container
     docker run --rm -d -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
 
@@ -88,12 +92,15 @@ docker_test()
     sleep 30
 
     # get docker host ip
-    MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD bridge yes
 
     # clean up docker container
     docker kill ${HELM_RELEASE}
+
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()

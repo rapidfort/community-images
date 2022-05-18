@@ -83,6 +83,10 @@ k8s_test()
 docker_test()
 {
     MONGODB_ROOT_PASSWORD=password123
+
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
     # create docker container
     docker run --rm -d -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" -p 27017:27017 \
         --name ${HELM_RELEASE} rapidfort/mongodb:latest
@@ -91,13 +95,16 @@ docker_test()
     sleep 30
 
     # get docker host ip
-    MONGODB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    MONGODB_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run tests
     run_mongodb_test $MONGODB_HOST $MONGODB_ROOT_PASSWORD bridge
 
     # clean up docker container
     docker kill ${HELM_RELEASE}
+
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()

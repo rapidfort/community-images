@@ -47,7 +47,7 @@ docker_test()
     # create docker container
     docker run --rm -d --network=${NAMESPACE} \
         -e 'POSTGRES_PASSWORD=PgPwd' \
-        -p 5432:5432 --name rf-postgresql rapidfort/postgresql:latest
+        --name rf-postgresql rapidfort/postgresql:latest
 
     # sleep for few seconds
     sleep 30

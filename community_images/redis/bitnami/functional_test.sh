@@ -49,7 +49,7 @@ docker_test()
 
     # add redis container tests
     docker run --rm -d --network=${NAMESPACE} \
-        -p 6379:6379 -e "REDIS_PASSWORD=${REDIS_PASSWORD}" \
+        -e "REDIS_PASSWORD=${REDIS_PASSWORD}" \
         --name rf-redis rapidfort/redis:latest
 
     # sleep for 30 sec

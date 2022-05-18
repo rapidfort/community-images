@@ -89,7 +89,7 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network=${NAMESPACE} \
-        -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" -p 27017:27017 \
+        -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
         --name ${HELM_RELEASE} rapidfort/mongodb:latest
 
     # sleep for few seconds

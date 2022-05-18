@@ -88,7 +88,7 @@ docker_test()
     # create docker container
     docker run --rm -d --network=${NAMESPACE} \
         -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" \
-        -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
+        --name ${HELM_RELEASE} rapidfort/mysql:latest
 
     # sleep for few seconds
     sleep 30

@@ -2,7 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: localhost-server
-  namespace: ci-dev
 spec:
   secretName: localhost-server-tls
   duration: 2160h # 90d

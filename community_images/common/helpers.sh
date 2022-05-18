@@ -68,13 +68,13 @@ harden_image()
 setup_namespace()
 {
     local NAMESPACE=$1
-    kubectl create ${NAMESPACE}
+    kubectl create namespace ${NAMESPACE}
 }
 
 cleanup_namespace()
 {
     local NAMESPACE=$1
-    kubectl delete ${NAMESPACE}
+    kubectl delete namespace ${NAMESPACE}
 }
 
 

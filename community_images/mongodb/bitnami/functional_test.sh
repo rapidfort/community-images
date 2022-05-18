@@ -80,8 +80,8 @@ docker_compose_test()
     # install postgresql container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
 
-    # sleep for 30 sec
-    sleep 30
+    # sleep for 60 sec
+    sleep 60
 
     # password
     MONGODB_ROOT_PASSWORD=password123
@@ -107,7 +107,8 @@ docker_compose_test()
 
 main()
 {
-    k8s_test
+    # k8s_test
+    docker_compose_test
 }
 
 main

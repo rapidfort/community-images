@@ -32,7 +32,6 @@ helm install \
 kubectl apply -f cert_manager.yml
 
 # install some helpers
-apt-get install jq -y
-apt-get install parallel -y
+sudo apt-get install jq parallel docker-compose -y
 
 # do docker login as well before completion

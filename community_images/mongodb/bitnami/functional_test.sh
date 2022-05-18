@@ -27,7 +27,6 @@ run_mongodb_test_op()
     OPERATION=$4
 
     docker run --rm -i --network=${DOCKER_NETWORK} --name mongodb-perf \
-        --rm -i --restart='Never' \
         -e "MONGODB_OPERATION=${OPERATION}" \
         -e "MONGODB_HOST=${MONGODB_HOST}" \
         -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \

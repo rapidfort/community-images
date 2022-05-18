@@ -1,4 +1,4 @@
-#!/usr/bin/parallel
+#!/usr/bin/bash
 
 set -x
 set -e
@@ -9,3 +9,4 @@ for i in "${ci_list[@]}"; do
     sem -j10 ./community_images/"${i}"/run.sh ";" echo done
 done
 sem --wait
+

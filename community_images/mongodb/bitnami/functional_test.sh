@@ -72,6 +72,32 @@ k8s_test()
     kubectl -n ${NAMESPACE} delete pvc --all
 }
 
+docker_test()
+{
+    MONGODB_ROOT_PASSWORD=password123
+    # create docker container
+    docker run --rm -d -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" -p 27017:27017 \
+        --name ${HELM_RELEASE} rapidfort/mongodb:latest
+
+    # sleep for few seconds
+    sleep 30
+
+    # get docker host ip
+    MONGODB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+
+    # run tests
+    run_mongodb_test $MONGODB_HOST $MONGODB_ROOT_PASSWORD bridge
+
+    # clean up docker container
+    docker kill ${HELM_RELEASE}
+
+    # prune containers
+    docker image prune -a -f
+
+    # prune volumes
+    docker volume prune -f
+}
+
 docker_compose_test()
 {
     # update image in docker-compose yml
@@ -108,7 +134,8 @@ docker_compose_test()
 main()
 {
     # k8s_test
-    docker_compose_test
+    docker_test
+    #docker_compose_test
 }
 
 main

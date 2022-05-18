@@ -14,6 +14,9 @@ primary:
       requests:
         cpu: 500m
         memory: 1024Mi
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "1"
 secondary:
   containerSecurityContext:
     enabled: true
@@ -27,3 +30,6 @@ secondary:
       requests:
         cpu: 500m
         memory: 1024Mi
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "1"

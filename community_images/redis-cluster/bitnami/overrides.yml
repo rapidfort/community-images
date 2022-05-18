@@ -13,3 +13,6 @@ redis:
       requests:
         cpu: 500m
         memory: 1024Mi
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "1"

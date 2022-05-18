@@ -6,6 +6,9 @@ containerSecurityContext:
   runAsUser: 1001
   capabilities:
     add: ["SYS_PTRACE"]
+extraEnvVars:
+  - name: "RF_VERBOSE"
+    value: "1"
 resources:
     limits:
       cpu: 1000m
@@ -26,6 +29,9 @@ arbiter:
       requests:
         cpu: 500m
         memory: 1024Mi
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "1"
 hidden:
   containerSecurityContext:
     enabled: true
@@ -39,3 +45,6 @@ hidden:
       requests:
         cpu: 500m
         memory: 1024Mi
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "1"

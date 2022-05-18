@@ -7,13 +7,13 @@ master:
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:
-    - name: RF_VERBOSE
-      value: 1
+    - name: "RF_VERBOSE"
+      value: "1"
 replica:
   containerSecurityContext:
     enabled: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:
-    - name: RF_VERBOSE
-      value: 1
+    - name: "RF_VERBOSE"
+      value: "1"

@@ -93,7 +93,7 @@ docker_test()
     sleep 30
 
     # get docker host ip
-    MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.${NAMESPACE}.IPAddress'`
 
     run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD ${NAMESPACE} no
 

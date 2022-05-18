@@ -3,10 +3,11 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-redis
-NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . ${SCRIPTPATH}/../../common/helpers.sh
+
+HELM_RELEASE=rf-redis
+NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {

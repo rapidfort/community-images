@@ -3,11 +3,12 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-mariadb
-NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . ${SCRIPTPATH}/../../common/helpers.sh
 . ${SCRIPTPATH}/../../common/tests/sysbench_tests.sh
+
+HELM_RELEASE=rf-mariadb
+NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {

@@ -54,7 +54,7 @@ test()
         --restart='Never' \
         --env="MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
         --image ${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG} \
-        --command -- /bin/bash -c "while true; do sleep 30; done;"
+        --command -- /bin/bash -c "sleep infinity"
 
     # wait for mongodb client to be ready
     kubectl wait pods ${HELM_RELEASE}-client -n ${NAMESPACE} --for=condition=ready --timeout=10m

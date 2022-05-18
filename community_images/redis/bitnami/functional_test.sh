@@ -48,7 +48,9 @@ docker_test()
     docker network create -d bridge ${NAMESPACE}
 
     # add redis container tests
-    docker run --rm -d -p 6379:6379 -e "REDIS_PASSWORD=${REDIS_PASSWORD}" --name rf-redis rapidfort/redis:latest
+    docker run --rm -d --network=${NAMESPACE} \
+        -p 6379:6379 -e "REDIS_PASSWORD=${REDIS_PASSWORD}" \
+        --name rf-redis rapidfort/redis:latest
 
     # sleep for 30 sec
     sleep 30
@@ -57,7 +59,9 @@ docker_test()
     REDIS_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run redis-client tests
-    docker run --rm -i --name redis-bench rapidfort/redis:latest redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
+    docker run --rm -i --network=${NAMESPACE} \
+        --name redis-bench rapidfort/redis:latest \
+        redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
 
     # clean up docker container
     docker kill rf-redis
@@ -84,7 +88,9 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # copy test.redis into container
-    docker run --rm -i --network="${NAMESPACE}_default" --name redis-bench rapidfort/redis:latest redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
+    docker run --rm -i --network="${NAMESPACE}_default" \
+        --name redis-bench rapidfort/redis:latest \
+        redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down

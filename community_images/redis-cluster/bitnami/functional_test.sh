@@ -27,7 +27,10 @@ k8s_test()
     REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
 
     # run redis-client
-    kubectl run ${HELM_RELEASE}-client --rm -i --restart='Never' --namespace ${NAMESPACE} --image rapidfort/redis-cluster --command -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
+    kubectl run ${HELM_RELEASE}-client --rm -i \
+        --restart='Never' --namespace ${NAMESPACE} \
+        --image rapidfort/redis-cluster --command \
+        -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
 
     # delete cluster
     helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
@@ -57,7 +60,9 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run redis-client tests
-    docker run --rm -d --network="${NAMESPACE}_default" --name redis-bench rapidfort/redis-cluster:latest sleep infinity
+    docker run --rm -d --network="${NAMESPACE}_default" \
+        --name redis-bench rapidfort/redis-cluster:latest \
+        sleep infinity
 
     # copy test.redis into container
     docker cp ${SCRIPTPATH}/../../common/tests/test.redis redis-bench:/tmp/test.redis

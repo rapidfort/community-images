@@ -45,7 +45,9 @@ docker_test()
     docker network create -d bridge ${NAMESPACE}
 
     # create docker container
-    docker run --rm -d -e 'POSTGRES_PASSWORD=PgPwd' -p 5432:5432 --name rf-postgresql rapidfort/postgresql:latest
+    docker run --rm -d --network=${NAMESPACE} \
+        -e 'POSTGRES_PASSWORD=PgPwd' \
+        -p 5432:5432 --name rf-postgresql rapidfort/postgresql:latest
 
     # sleep for few seconds
     sleep 30
@@ -54,7 +56,9 @@ docker_test()
     PG_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run test on docker container
-    docker run --rm -i --env="PGPASSWORD=PgPwd" --name rf-pgbench rapidfort/postgresql -- pgbench --host ${PG_HOST} -U postgres -d postgres -p 5432 -i -s 50
+    docker run --rm --network=${NAMESPACE} \
+        -i --env="PGPASSWORD=PgPwd" --name rf-pgbench rapidfort/postgresql \
+        -- pgbench --host ${PG_HOST} -U postgres -d postgres -p 5432 -i -s 50
 
     # clean up docker container
     docker kill rf-postgresql
@@ -81,7 +85,9 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run pg benchmark container
-    docker run --rm -i --network="${NAMESPACE}_default" --env="PGPASSWORD=${POSTGRES_PASSWORD}" --name rf-pgbench rapidfort/postgresql -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
+    docker run --rm -i --network="${NAMESPACE}_default" \
+        --env="PGPASSWORD=${POSTGRES_PASSWORD}" --name rf-pgbench rapidfort/postgresql \
+        -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down

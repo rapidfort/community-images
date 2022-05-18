@@ -88,7 +88,8 @@ docker_test()
     docker network create -d bridge ${NAMESPACE}
 
     # create docker container
-    docker run --rm -d -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" -p 27017:27017 \
+    docker run --rm -d --network=${NAMESPACE} \
+        -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" -p 27017:27017 \
         --name ${HELM_RELEASE} rapidfort/mongodb:latest
 
     # sleep for few seconds
@@ -98,7 +99,7 @@ docker_test()
     MONGODB_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run tests
-    run_mongodb_test $MONGODB_HOST $MONGODB_ROOT_PASSWORD bridge
+    run_mongodb_test $MONGODB_HOST $MONGODB_ROOT_PASSWORD ${NAMESPACE}
 
     # clean up docker container
     docker kill ${HELM_RELEASE}

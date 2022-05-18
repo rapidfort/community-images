@@ -10,6 +10,8 @@ services:
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
     volumes:
       - 'mongodb_master_data:/bitnami/mongodb'
+    cap_add:
+      - SYS_PTRACE
 
   mongodb-secondary:
     image: @IMAGE
@@ -21,6 +23,8 @@ services:
       - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
       - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
+    cap_add:
+      - SYS_PTRACE
 
   mongodb-arbiter:
     image: @IMAGE
@@ -32,6 +36,8 @@ services:
       - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
       - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
+    cap_add:
+      - SYS_PTRACE
 
 volumes:
   mongodb_master_data:

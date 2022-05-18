@@ -5,7 +5,6 @@ set -e
 
 DOCKERHUB_REGISTRY=docker.io
 RAPIDFORT_ACCOUNT=rapidfort
-NAMESPACE=ci-dev
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 create_stub()
@@ -66,6 +65,19 @@ harden_image()
     fi
 }
 
+setup_namespace()
+{
+    local NAMESPACE=$1
+    kubectl create ${NAMESPACE}
+}
+
+cleanup_namespace()
+{
+    local NAMESPACE=$1
+    kubectl delete ${NAMESPACE}
+}
+
+
 build_images()
 {
     local INPUT_REGISTRY=$1
@@ -76,18 +88,22 @@ build_images()
     local PUBLISH_IMAGE=$6
 
     local TAG=$(${SCRIPTPATH}/../../common/dockertags ${INPUT_ACCOUNT}/${REPOSITORY} ${BASE_TAG})
+    local NAMESPACE=${REPOSITORY}-`echo $RANDOM | md5sum | head -c 10; echo;`
 
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
+    setup_namespace ${NAMESPACE}
 
     create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
-    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub ${TAG}
+    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub ${TAG} ${NAMESPACE}
     harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} ${PUBLISH_IMAGE}
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
-        ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG}
+        ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG} ${NAMESPACE}
     else
         echo "Non publish mode, cant test image as image not published"
     fi
+
+    cleanup_namespace ${NAMESPACE}
 
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }

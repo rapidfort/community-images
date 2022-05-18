@@ -87,7 +87,8 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network=${NAMESPACE} \
-        -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mariadb:latest
+        -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" \
+        --name ${HELM_RELEASE} rapidfort/mariadb:latest
 
     # sleep for few seconds
     sleep 30

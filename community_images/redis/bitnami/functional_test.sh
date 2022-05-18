@@ -50,12 +50,6 @@ docker_test()
 
     # clean up docker container
     docker kill rf-redis
-
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
 }
 
 docker_compose_test()
@@ -64,7 +58,7 @@ docker_compose_test()
     sed "s#@IMAGE#rapidfort/redis#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
     # install redis container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
     # sleep for 30 sec
     sleep 30
@@ -73,22 +67,16 @@ docker_compose_test()
     REDIS_PASSWORD=my_password
 
     # logs for tracking
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # copy test.redis into container
     docker run --rm -i --network="bitnami_default" --name redis-bench rapidfort/redis:latest redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
 
     # kill docker-compose setup container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down
 
     # clean up docker file
     rm -rf ${SCRIPTPATH}/docker-compose.yml
-
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
 }
 
 main()

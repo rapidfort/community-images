@@ -37,7 +37,7 @@ docker_compose_test()
     sed "s#@IMAGE#rapidfort/redis-cluster#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
     # install redis container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
     # sleep for 30 sec
     sleep 30
@@ -46,7 +46,7 @@ docker_compose_test()
     REDIS_PASSWORD=bitnami
 
     # logs for tracking
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run redis-client tests
     docker run --rm -d --network="bitnami_default" --name redis-bench rapidfort/redis-cluster:latest sleep infinity
@@ -64,16 +64,10 @@ docker_compose_test()
     docker kill redis-bench
 
     # kill docker-compose setup container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down
 
     # clean up docker file
     rm -rf ${SCRIPTPATH}/docker-compose.yml
-
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
 }
 
 main()

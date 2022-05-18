@@ -7,9 +7,9 @@ set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-cat ${SCRIPTPATH}/image_list.txt | parallel -j0 "${SCRIPTPATH}/../community_images/{.}/run.sh"
+cat ${SCRIPTPATH}/../image.lst | parallel -j0 "${SCRIPTPATH}/../community_images/{.}/run.sh"
 
-cat ${SCRIPTPATH}/image_list.txt | parallel -j0 "${SCRIPTPATH}/../community_images/{.}/functional_test.sh"
+cat ${SCRIPTPATH}/../image.lst | parallel -j0 "${SCRIPTPATH}/../community_images/{.}/functional_test.sh"
 
 
 # prune containers

@@ -2,11 +2,6 @@
 
 set -x
 set -e
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-ci_list=("mariadb/bitnami" "mongodb/bitnami" "mysql/bitnami" "postgresql/bitnami" "redis/bitnami" "redis-cluster/bitnami")
-
-for i in "${ci_list[@]}"; do
-    sem -j10 ./community_images/"${i}"/run.sh ";" echo done
-done
-sem --wait
-
+cat ${SCRIPTPATH}/scripts/image_list.txt | parallel "${SCRIPTPATH}/../community_images/{.}/run.sh"

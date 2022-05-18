@@ -6,6 +6,7 @@ set -e
 HELM_RELEASE=rf-mariadb
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
 . ${SCRIPTPATH}/../../common/tests/sysbench_tests.sh
 
 k8s_test()
@@ -106,7 +107,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run pg benchmark container
-    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD bitnami_default no
+    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD ${NAMESPACE}_default no
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down

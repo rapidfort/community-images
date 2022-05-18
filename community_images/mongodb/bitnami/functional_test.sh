@@ -6,6 +6,7 @@ set -e
 HELM_RELEASE=rf-mongodb
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
 
 k8s_perf_runner()
 {
@@ -110,7 +111,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run pg benchmark container
-    run_mongodb_test mongodb-primary $MONGODB_ROOT_PASSWORD bitnami_default
+    run_mongodb_test mongodb-primary $MONGODB_ROOT_PASSWORD ${NAMESPACE}_default
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down

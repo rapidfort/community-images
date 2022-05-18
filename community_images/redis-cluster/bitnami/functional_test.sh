@@ -6,6 +6,7 @@ set -e
 HELM_RELEASE=rf-redis-cluster
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
 
 k8s_test()
 {
@@ -49,7 +50,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run redis-client tests
-    docker run --rm -d --network="bitnami_default" --name redis-bench rapidfort/redis-cluster:latest sleep infinity
+    docker run --rm -d --network="${NAMESPACE}_default" --name redis-bench rapidfort/redis-cluster:latest sleep infinity
 
     # copy test.redis into container
     docker cp ${SCRIPTPATH}/../../common/tests/test.redis redis-bench:/tmp/test.redis

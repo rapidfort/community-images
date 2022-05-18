@@ -6,6 +6,7 @@ set -e
 HELM_RELEASE=rf-redis
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
 
 k8s_test()
 {
@@ -70,7 +71,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # copy test.redis into container
-    docker run --rm -i --network="bitnami_default" --name redis-bench rapidfort/redis:latest redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
+    docker run --rm -i --network="${NAMESPACE}_default" --name redis-bench rapidfort/redis:latest redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down

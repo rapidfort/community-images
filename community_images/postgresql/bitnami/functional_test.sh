@@ -6,6 +6,7 @@ set -e
 HELM_RELEASE=rf-postgresql
 NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
 
 k8s_test()
 {
@@ -67,7 +68,7 @@ docker_compose_test()
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run pg benchmark container
-    docker run --rm -i --network="bitnami_default" --env="PGPASSWORD=${POSTGRES_PASSWORD}" --name rf-pgbench rapidfort/postgresql -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
+    docker run --rm -i --network="${NAMESPACE}_default" --env="PGPASSWORD=${POSTGRES_PASSWORD}" --name rf-pgbench rapidfort/postgresql -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down

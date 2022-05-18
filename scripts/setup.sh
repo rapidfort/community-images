@@ -1,3 +1,5 @@
+# this script keeps track of all things which need to be installed on github actions worker VM
+
 # Install rf
 curl  https://frontrow.rapidfort.com/cli/ | bash
 rflogin vg@vinodgupta.org ${RF_PASSWORD}
@@ -9,9 +11,6 @@ chmod 700 get_helm.sh
 
 # Add bitnami repo
 helm repo add bitnami https://charts.bitnami.com/bitnami
-
-# Create namespace
-kubectl create namespace ci-dev
 
 # Add secret
 kubectl --namespace ci-dev create secret generic rf-regcred --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json --type=kubernetes.io/dockerconfigjson
@@ -31,3 +30,9 @@ helm install \
 
 # create CA issuer
 kubectl apply -f cert_manager.yml
+
+# install some helpers
+apt-get install jq -y
+apt-get install parallel -y
+
+# do docker login as well before completion

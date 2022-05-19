@@ -3,9 +3,11 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-mongodb
-NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
+
+HELM_RELEASE=rf-mongodb
+NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_perf_runner()
 {
@@ -26,7 +28,7 @@ run_mongodb_test_op()
     DOCKER_NETWORK=$3
     OPERATION=$4
 
-    docker run --rm -i --network=${DOCKER_NETWORK} --name mongodb-perf \
+    docker run --rm -i --network=${DOCKER_NETWORK} \
         -e "MONGODB_OPERATION=${OPERATION}" \
         -e "MONGODB_HOST=${MONGODB_HOST}" \
         -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
@@ -47,6 +49,9 @@ run_mongodb_test()
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install mongodb
     helm install ${HELM_RELEASE} bitnami/mongodb --set image.repository=rapidfort/mongodb --namespace ${NAMESPACE}
 
@@ -70,32 +75,37 @@ k8s_test()
 
     # delete pvc
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_test()
 {
     MONGODB_ROOT_PASSWORD=password123
+
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
     # create docker container
-    docker run --rm -d -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" -p 27017:27017 \
-        --name ${HELM_RELEASE} rapidfort/mongodb:latest
+    docker run --rm -d --network=${NAMESPACE} \
+        -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
+        --name ${NAMESPACE} rapidfort/mongodb:latest
 
     # sleep for few seconds
     sleep 30
 
     # get docker host ip
-    MONGODB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    MONGODB_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run tests
-    run_mongodb_test $MONGODB_HOST $MONGODB_ROOT_PASSWORD bridge
+    run_mongodb_test $MONGODB_HOST $MONGODB_ROOT_PASSWORD ${NAMESPACE}
 
     # clean up docker container
-    docker kill ${HELM_RELEASE}
+    docker kill ${NAMESPACE}
 
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()
@@ -104,7 +114,7 @@ docker_compose_test()
     sed "s#@IMAGE#rapidfort/mongodb#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
     # install postgresql container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
     # sleep for 60 sec
     sleep 60
@@ -113,22 +123,16 @@ docker_compose_test()
     MONGODB_ROOT_PASSWORD=password123
 
     # logs for tracking
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run pg benchmark container
-    run_mongodb_test mongodb-primary $MONGODB_ROOT_PASSWORD bitnami_default
+    run_mongodb_test mongodb-primary $MONGODB_ROOT_PASSWORD ${NAMESPACE}_default
 
     # kill docker-compose setup container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down
 
     # clean up docker file
     rm -rf ${SCRIPTPATH}/docker-compose.yml
-
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
 }
 
 main()

@@ -3,13 +3,18 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-mariadb
-NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
 . ${SCRIPTPATH}/../../common/tests/sysbench_tests.sh
+
+HELM_RELEASE=rf-mariadb
+NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install mariadb
     helm install ${HELM_RELEASE} bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace ${NAMESPACE}
 
@@ -68,30 +73,36 @@ k8s_test()
 
     # delete pvc
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_test()
 {
     MARIADB_ROOT_PASSWORD=my_root_password
+
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
     # create docker container
-    docker run --rm -d -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mariadb:latest
+    docker run --rm -d --network=${NAMESPACE} \
+        -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" \
+        --name ${NAMESPACE} rapidfort/mariadb:latest
 
     # sleep for few seconds
     sleep 30
 
     # get docker host ip
-    MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    MARIADB_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
-    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD bridge no
+    run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD ${NAMESPACE} no
 
     # clean up docker container
-    docker kill ${HELM_RELEASE}
+    docker kill ${NAMESPACE}
 
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()
@@ -100,7 +111,7 @@ docker_compose_test()
     sed "s#@IMAGE#rapidfort/mariadb#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
     # install postgresql container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
     # sleep for 30 sec
     sleep 30
@@ -109,22 +120,16 @@ docker_compose_test()
     MARIADB_ROOT_PASSWORD=my_root_password
 
     # logs for tracking
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run pg benchmark container
-    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD bitnami_default no
+    run_sys_bench_test mariadb-master $MARIADB_ROOT_PASSWORD ${NAMESPACE}_default no
 
     # kill docker-compose setup container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down
 
     # clean up docker file
     rm -rf ${SCRIPTPATH}/docker-compose.yml
-
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
 }
 
 main()

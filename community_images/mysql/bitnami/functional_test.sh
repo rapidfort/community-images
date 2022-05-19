@@ -3,13 +3,18 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-mysql
-NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
 . ${SCRIPTPATH}/../../common/tests/sysbench_tests.sh
+
+HELM_RELEASE=rf-mysql
+NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install mysql
     helm install ${HELM_RELEASE} bitnami/mysql --set image.repository=rapidfort/mysql --namespace ${NAMESPACE}
 
@@ -55,7 +60,7 @@ k8s_test()
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
         --threads=64 \
-        --time=30 \
+        --time=45 \
         --mysql-host=${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local \
         --mysql-port=3306 \
         --mysql-user=root \
@@ -68,30 +73,36 @@ k8s_test()
 
     # delete pvc
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_test()
 {
     MYSQL_ROOT_PASSWORD=my_root_password
-    # create docker container
-    docker run --rm -d -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" -p 3306:3306 --name ${HELM_RELEASE} rapidfort/mysql:latest
 
-    # sleep for few seconds
-    sleep 30
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
+    # create docker container
+    docker run --rm -d --network=${NAMESPACE} \
+        -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" \
+        --name ${NAMESPACE} rapidfort/mysql:latest
+
+    # sleep for 60 seconds
+    sleep 60
 
     # get docker host ip
-    MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    MYSQL_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
-    run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD bridge yes
+    run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD ${NAMESPACE} yes
 
     # clean up docker container
-    docker kill ${HELM_RELEASE}
+    docker kill ${NAMESPACE}
 
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()
@@ -100,31 +111,25 @@ docker_compose_test()
     sed "s#@IMAGE#rapidfort/mysql#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
     # install postgresql container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
-    # sleep for 30 sec
-    sleep 30
+    # sleep for 60 sec
+    sleep 60
 
     # password
     MYSQL_ROOT_PASSWORD=my_root_password
 
     # logs for tracking
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # run pg benchmark container
-    run_sys_bench_test mysql-master $MYSQL_ROOT_PASSWORD bitnami_default yes
+    run_sys_bench_test mysql-master $MYSQL_ROOT_PASSWORD ${NAMESPACE}_default yes
 
     # kill docker-compose setup container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down
 
     # clean up docker file
     rm -rf ${SCRIPTPATH}/docker-compose.yml
-
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
 }
 
 main()

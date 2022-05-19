@@ -90,8 +90,8 @@ docker_test()
         -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" \
         --name ${NAMESPACE} rapidfort/mysql:latest
 
-    # sleep for few seconds
-    sleep 45
+    # sleep for 60 seconds
+    sleep 60
 
     # get docker host ip
     MYSQL_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
@@ -113,8 +113,8 @@ docker_compose_test()
     # install postgresql container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
-    # sleep for 45 sec
-    sleep 45
+    # sleep for 60 sec
+    sleep 60
 
     # password
     MYSQL_ROOT_PASSWORD=my_root_password

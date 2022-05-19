@@ -15,7 +15,7 @@ create_stub()
     local TAG=$4
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
-    local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub:${TAG}
+    local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfstub
 
     # Pull docker image
     docker pull ${INPUT_IMAGE_FULL}
@@ -106,7 +106,7 @@ build_images()
     setup_namespace ${NAMESPACE}
 
     create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
-    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY}-rfstub ${TAG} ${NAMESPACE}
+    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG}-rfstub ${NAMESPACE}
     harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} ${PUBLISH_IMAGE}
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
@@ -115,6 +115,7 @@ build_images()
         echo "Non publish mode, cant test image as image not published"
     fi
 
+    bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${REPOSITORY} ${TAG}-rfstub"
     cleanup_namespace ${NAMESPACE}
 
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"

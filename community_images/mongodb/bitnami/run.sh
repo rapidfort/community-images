@@ -53,7 +53,7 @@ test()
     kubectl run -n ${NAMESPACE} ${HELM_RELEASE}-client \
         --restart='Never' \
         --env="MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
-        --image ${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG} \
+        --image ${IMAGE_REPOSITORY}:${TAG} \
         --command -- /bin/bash -c "sleep infinity"
 
     # wait for mongodb client to be ready

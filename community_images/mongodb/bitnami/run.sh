@@ -49,6 +49,12 @@ test()
     # run command on cluster
     kubectl -n ${NAMESPACE} exec -i ${POD_NAME} -- /bin/bash -c "/tmp/common_commands.sh"
 
+    # copy mongodb_coverage.sh into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/mongodb_coverage.sh ${HELM_RELEASE}-0:/tmp/mongodb_coverage.sh
+
+    # run mongodb_coverage on cluster
+    kubectl -n ${NAMESPACE} exec -i ${HELM_RELEASE}-0 -- /bin/bash -c "/tmp/mongodb_coverage.sh"
+
     # create MongoDB client
     kubectl run -n ${NAMESPACE} ${HELM_RELEASE}-client \
         --restart='Never' \

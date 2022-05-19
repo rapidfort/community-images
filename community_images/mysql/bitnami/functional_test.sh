@@ -60,7 +60,7 @@ k8s_test()
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
         --threads=64 \
-        --time=30 \
+        --time=45 \
         --mysql-host=${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local \
         --mysql-port=3306 \
         --mysql-user=root \
@@ -113,8 +113,8 @@ docker_compose_test()
     # install postgresql container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
-    # sleep for 30 sec
-    sleep 30
+    # sleep for 45 sec
+    sleep 45
 
     # password
     MYSQL_ROOT_PASSWORD=my_root_password

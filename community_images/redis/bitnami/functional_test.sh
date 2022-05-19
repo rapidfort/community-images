@@ -3,12 +3,17 @@
 set -x
 set -e
 
-HELM_RELEASE=rf-redis
-NAMESPACE=ci-test
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+. ${SCRIPTPATH}/../../common/helpers.sh
+
+HELM_RELEASE=rf-redis
+NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
 
 k8s_test()
 {
+    # setup namespace
+    setup_namespace ${NAMESPACE}
+
     # install redis
     helm install ${HELM_RELEASE} bitnami/redis --set image.repository=rapidfort/redis --namespace ${NAMESPACE}
     
@@ -29,6 +34,9 @@ k8s_test()
     
     # delete pvc
     kubectl -n ${NAMESPACE} delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace ${NAMESPACE}
 }
 
 docker_test()
@@ -36,26 +44,30 @@ docker_test()
     # password
     REDIS_PASSWORD=my_password
 
+    # create network
+    docker network create -d bridge ${NAMESPACE}
+
     # add redis container tests
-    docker run --rm -d -p 6379:6379 -e "REDIS_PASSWORD=${REDIS_PASSWORD}" --name rf-redis rapidfort/redis:latest
+    docker run --rm -d --network=${NAMESPACE} \
+        -e "REDIS_PASSWORD=${REDIS_PASSWORD}" \
+        --name ${NAMESPACE} rapidfort/redis:latest
 
     # sleep for 30 sec
     sleep 30
 
     # get host
-    REDIS_HOST=`docker inspect rf-redis | jq -r '.[].NetworkSettings.Networks.bridge.IPAddress'`
+    REDIS_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run redis-client tests
-    docker run --rm -i --name redis-bench rapidfort/redis:latest redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
+    docker run --rm -i --network=${NAMESPACE} \
+        rapidfort/redis:latest \
+        redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
 
     # clean up docker container
-    docker kill rf-redis
+    docker kill ${NAMESPACE}
 
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
+    # delete network
+    docker network rm ${NAMESPACE}
 }
 
 docker_compose_test()
@@ -64,7 +76,7 @@ docker_compose_test()
     sed "s#@IMAGE#rapidfort/redis#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
 
     # install redis container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml up -d
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
 
     # sleep for 30 sec
     sleep 30
@@ -73,22 +85,18 @@ docker_compose_test()
     REDIS_PASSWORD=my_password
 
     # logs for tracking
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml logs
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
 
     # copy test.redis into container
-    docker run --rm -i --network="bitnami_default" --name redis-bench rapidfort/redis:latest redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
+    docker run --rm -i --network="${NAMESPACE}_default" \
+        rapidfort/redis:latest \
+        redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
 
     # kill docker-compose setup container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml down
+    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down
 
     # clean up docker file
     rm -rf ${SCRIPTPATH}/docker-compose.yml
-
-    # prune containers
-    docker image prune -a -f
-
-    # prune volumes
-    docker volume prune -f
 }
 
 main()

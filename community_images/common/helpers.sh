@@ -65,6 +65,12 @@ harden_image()
     fi
 }
 
+get_namespace_string()
+{
+    local REPOSITORY=$1
+    echo "${REPOSITORY}-`echo $RANDOM | md5sum | head -c 10; echo;`"
+}
+
 setup_namespace()
 {
     local NAMESPACE=$1
@@ -94,7 +100,7 @@ build_images()
     local PUBLISH_IMAGE=$6
 
     local TAG=$(${SCRIPTPATH}/../../common/dockertags ${INPUT_ACCOUNT}/${REPOSITORY} ${BASE_TAG})
-    local NAMESPACE=${REPOSITORY}-`echo $RANDOM | md5sum | head -c 10; echo;`
+    local NAMESPACE=$(get_namespace_string ${REPOSITORY})
 
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
     setup_namespace ${NAMESPACE}

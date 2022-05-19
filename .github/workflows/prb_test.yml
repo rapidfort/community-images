@@ -15,29 +15,5 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Build mariadb image
-        run: ./community_images/mariadb/bitnami/run.sh
-      - name: Build mongodb image
-        run: ./community_images/mongodb/bitnami/run.sh
-      - name: Build mysql image
-        run: ./community_images/mysql/bitnami/run.sh
-      - name: Build postgresql image
-        run: ./community_images/postgresql/bitnami/run.sh
-      - name: Build redis image
-        run: ./community_images/redis/bitnami/run.sh
-      - name: Build redis-cluster image
-        run: ./community_images/redis-cluster/bitnami/run.sh
-      - name: Run mariadb functional_test
-        run: ./community_images/mariadb/bitnami/functional_test.sh
-      - name: Run mongodb functional_test
-        run: ./community_images/mongodb/bitnami/functional_test.sh
-      - name: Run mysql functional_test
-        run: ./community_images/mysql/bitnami/functional_test.sh
-      - name: Run postgresql functional_test
-        run: ./community_images/postgresql/bitnami/functional_test.sh
-      - name: Run redis functional_test
-        run: ./community_images/redis/bitnami/functional_test.sh
-      - name: Run redis-cluster functional_test
-        run: ./community_images/redis-cluster/bitnami/functional_test.sh
-      - name: Clean up dangling images
-        run: docker image prune -a -f
+      - name: Run PRB parallel executor tests
+        run: ./scripts/prb_executor.sh

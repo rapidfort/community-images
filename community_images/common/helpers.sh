@@ -107,7 +107,7 @@ build_images()
 
     create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
     ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG}-rfstub ${NAMESPACE}
-    ./${SCRIPTPATH}/../../delete_tag ${REPOSITORY} ${TAG}-rfstub
+    .${SCRIPTPATH}/../../common/delete_tag ${REPOSITORY} ${TAG}-rfstub
     harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} ${PUBLISH_IMAGE}
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then

@@ -49,6 +49,12 @@ test()
     # run command on cluster
     kubectl -n ${NAMESPACE} exec -i ${POD_NAME} -- /bin/bash -c "/tmp/common_commands.sh"
 
+    # copy mongodb_coverage.sh into container
+    kubectl -n ${NAMESPACE} cp ${SCRIPTPATH}/../../common/tests/mongodb_coverage.sh ${POD_NAME}:/tmp/mongodb_coverage.sh
+
+    # run mongodb_coverage on cluster
+    kubectl -n ${NAMESPACE} exec -i ${POD_NAME} -- /bin/bash -c "/tmp/mongodb_coverage.sh"
+
     # create MongoDB client
     MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD} \
         IMAGE_REPOSITORY=${IMAGE_REPOSITORY} \

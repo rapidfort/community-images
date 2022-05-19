@@ -50,7 +50,7 @@ test()
     kubectl -n ${NAMESPACE} exec -i ${POD_NAME} -- /bin/bash -c "/tmp/common_commands.sh"
 
     # create MongoDB client
-    envsubst < ${SCRIPTPATH}/client.yml | kubectl -n ${NAMESPACE} apply -f -
+    envsubst < ${SCRIPTPATH}/client.yml.base | kubectl -n ${NAMESPACE} apply -f -
 
     # kubectl run -n ${NAMESPACE} ${HELM_RELEASE}-client \
     #     --restart='Never' \

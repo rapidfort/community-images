@@ -64,7 +64,7 @@ docker_test()
         redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
 
     # clean up docker container
-    docker kill ${NAMESPACE
+    docker kill ${NAMESPACE}
 
     # delete network
     docker network rm ${NAMESPACE}
@@ -89,7 +89,7 @@ docker_compose_test()
 
     # copy test.redis into container
     docker run --rm -i --network="${NAMESPACE}_default" \
-        --name redis-bench rapidfort/redis:latest \
+        rapidfort/redis:latest \
         redis-benchmark -h redis-primary -p 6379 -a "$REDIS_PASSWORD"
 
     # kill docker-compose setup container

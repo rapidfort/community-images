@@ -50,8 +50,7 @@ test()
     kubectl -n ${NAMESPACE} exec -i ${POD_NAME} -- /bin/bash -c "/tmp/common_commands.sh"
 
     # create MongoDB client
-    kubectl -n ${NAMESPACE} --env="MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
-        --image ${IMAGE_REPOSITORY}:${TAG} \
+    kubectl -n ${NAMESPACE} --image ${IMAGE_REPOSITORY}:${TAG} \
         apply -f ${SCRIPTPATH}/client.yml
 
     # kubectl run -n ${NAMESPACE} ${HELM_RELEASE}-client \

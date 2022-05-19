@@ -16,3 +16,4 @@ ln --version
 rmdir --version
 chgrp --version
 chown --version
+touch --version

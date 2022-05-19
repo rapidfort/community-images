@@ -10,7 +10,11 @@ spec:
     - /bin/bash
     - -c
     - sleep infinity
+    env:
+    - name: MONGODB_ROOT_PASSWORD
+      value: ${MONGODB_ROOT_PASSWORD}
     name: mongodb-release-client
+    image: ${IMAGE_REPOSITORY}:${TAG}
     securityContext:
       capabilities:
         add: ["SYS_PTRACE"]

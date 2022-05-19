@@ -28,7 +28,6 @@ run_sys_bench_test()
     # run sys bench prepare
     docker run --rm \
         --rm=true \
-        --name=sb-prepare \
         --network=$DOCKER_NETWORK \
         severalnines/sysbench \
         sysbench \
@@ -45,7 +44,6 @@ run_sys_bench_test()
 
     # run sys bench test
     docker run --rm \
-        --name=sb-run \
         --network=$DOCKER_NETWORK \
         severalnines/sysbench \
         sysbench \

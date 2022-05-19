@@ -91,7 +91,7 @@ docker_test()
         --name ${NAMESPACE} rapidfort/mysql:latest
 
     # sleep for few seconds
-    sleep 30
+    sleep 45
 
     # get docker host ip
     MYSQL_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`

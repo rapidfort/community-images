@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: mongodb-release-client
+  name: mongodb-release-client
+spec:
+  containers:
+  - command:
+    - /bin/bash
+    - -c
+    - sleep infinity
+    name: mongodb-release-client
+    securityContext:
+      capabilities:
+        add: ["SYS_PTRACE"]

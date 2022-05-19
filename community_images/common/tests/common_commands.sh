@@ -17,3 +17,8 @@ rmdir --version
 chgrp --version
 chown --version
 touch --version
+cat --version
+less --version
+grep --version
+sed --version
+awk --version

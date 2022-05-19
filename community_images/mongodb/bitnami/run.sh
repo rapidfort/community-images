@@ -50,11 +50,9 @@ test()
     kubectl -n ${NAMESPACE} exec -i ${POD_NAME} -- /bin/bash -c "/tmp/common_commands.sh"
 
     # create MongoDB client
-    kubectl run -n ${NAMESPACE} ${HELM_RELEASE}-client \
-        --restart='Never' \
-        --env="MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
-        --image ${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG} \
-        --command -- /bin/bash -c "sleep infinity"
+    MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD} \
+        IMAGE_REPOSITORY=${IMAGE_REPOSITORY} \
+        TAG=${TAG} envsubst < ${SCRIPTPATH}/client.yml.base | kubectl -n ${NAMESPACE} apply -f -
 
     # wait for mongodb client to be ready
     kubectl wait pods ${HELM_RELEASE}-client -n ${NAMESPACE} --for=condition=ready --timeout=10m

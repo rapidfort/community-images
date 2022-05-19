@@ -88,18 +88,18 @@ docker_test()
     # create docker container
     docker run --rm -d --network=${NAMESPACE} \
         -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" \
-        --name ${HELM_RELEASE} rapidfort/mysql:latest
+        --name ${NAMESPACE} rapidfort/mysql:latest
 
     # sleep for few seconds
     sleep 30
 
     # get docker host ip
-    MYSQL_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
+    MYSQL_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     run_sys_bench_test $MYSQL_HOST $MYSQL_ROOT_PASSWORD ${NAMESPACE} yes
 
     # clean up docker container
-    docker kill ${HELM_RELEASE}
+    docker kill ${NAMESPACE}
 
     # delete network
     docker network rm ${NAMESPACE}

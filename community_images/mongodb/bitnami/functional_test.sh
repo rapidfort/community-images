@@ -28,7 +28,7 @@ run_mongodb_test_op()
     DOCKER_NETWORK=$3
     OPERATION=$4
 
-    docker run --rm -i --network=${DOCKER_NETWORK} --name mongodb-perf \
+    docker run --rm -i --network=${DOCKER_NETWORK} \
         -e "MONGODB_OPERATION=${OPERATION}" \
         -e "MONGODB_HOST=${MONGODB_HOST}" \
         -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
@@ -90,19 +90,19 @@ docker_test()
     # create docker container
     docker run --rm -d --network=${NAMESPACE} \
         -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
-        --name ${HELM_RELEASE} rapidfort/mongodb:latest
+        --name ${NAMESPACE} rapidfort/mongodb:latest
 
     # sleep for few seconds
     sleep 30
 
     # get docker host ip
-    MONGODB_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
+    MONGODB_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run tests
     run_mongodb_test $MONGODB_HOST $MONGODB_ROOT_PASSWORD ${NAMESPACE}
 
     # clean up docker container
-    docker kill ${HELM_RELEASE}
+    docker kill ${NAMESPACE}
 
     # delete network
     docker network rm ${NAMESPACE}

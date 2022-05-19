@@ -88,18 +88,18 @@ docker_test()
     # create docker container
     docker run --rm -d --network=${NAMESPACE} \
         -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" \
-        --name ${HELM_RELEASE} rapidfort/mariadb:latest
+        --name ${NAMESPACE} rapidfort/mariadb:latest
 
     # sleep for few seconds
     sleep 30
 
     # get docker host ip
-    MARIADB_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
+    MARIADB_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     run_sys_bench_test $MARIADB_HOST $MARIADB_ROOT_PASSWORD ${NAMESPACE} no
 
     # clean up docker container
-    docker kill ${HELM_RELEASE}
+    docker kill ${NAMESPACE}
 
     # delete network
     docker network rm ${NAMESPACE}

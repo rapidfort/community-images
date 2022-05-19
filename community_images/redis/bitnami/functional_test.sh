@@ -50,21 +50,21 @@ docker_test()
     # add redis container tests
     docker run --rm -d --network=${NAMESPACE} \
         -e "REDIS_PASSWORD=${REDIS_PASSWORD}" \
-        --name rf-redis rapidfort/redis:latest
+        --name ${NAMESPACE} rapidfort/redis:latest
 
     # sleep for 30 sec
     sleep 30
 
     # get host
-    REDIS_HOST=`docker inspect ${HELM_RELEASE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
+    REDIS_HOST=`docker inspect ${NAMESPACE} | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress"`
 
     # run redis-client tests
     docker run --rm -i --network=${NAMESPACE} \
-        --name redis-bench rapidfort/redis:latest \
+        rapidfort/redis:latest \
         redis-benchmark -h ${REDIS_HOST} -p 6379 -a "$REDIS_PASSWORD"
 
     # clean up docker container
-    docker kill rf-redis
+    docker kill ${NAMESPACE
 
     # delete network
     docker network rm ${NAMESPACE}

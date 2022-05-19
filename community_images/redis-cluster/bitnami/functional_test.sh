@@ -61,20 +61,20 @@ docker_compose_test()
 
     # run redis-client tests
     docker run --rm -d --network="${NAMESPACE}_default" \
-        --name redis-bench rapidfort/redis-cluster:latest \
+        --name redis-bench-${NAMESPACE} rapidfort/redis-cluster:latest \
         sleep infinity
 
     # copy test.redis into container
-    docker cp ${SCRIPTPATH}/../../common/tests/test.redis redis-bench:/tmp/test.redis
+    docker cp ${SCRIPTPATH}/../../common/tests/test.redis redis-bench-${NAMESPACE}:/tmp/test.redis
 
     # copy redis_cluster_runner.sh into container
-    docker cp ${SCRIPTPATH}/redis_cluster_runner.sh redis-bench:/tmp/redis_cluster_runner.sh
+    docker cp ${SCRIPTPATH}/redis_cluster_runner.sh redis-bench-${NAMESPACE}:/tmp/redis_cluster_runner.sh
 
     # run script in docker
-    docker exec -i redis-bench /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0 /tmp/test.redis
+    docker exec -i redis-bench-${NAMESPACE} /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0 /tmp/test.redis
 
     # kill redis-bench
-    docker kill redis-bench
+    docker kill redis-bench-${NAMESPACE}
 
     # kill docker-compose setup container
     docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down

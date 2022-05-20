@@ -9,11 +9,22 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v2
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_USERNAME: ${{ secrets.RF_USERNAME }}
+          RF_PASSWORD: ${{ secrets.RF_PASSWORD }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
       - name: Run PRB parallel executor tests
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}

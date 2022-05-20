@@ -99,8 +99,15 @@ build_images()
     local TEST_FUNCTION=$5
     local PUBLISH_IMAGE=$6
 
-    local TAG NAMESPACE
+    local TAG RAPIDFORT_TAG NAMESPACE
     TAG=$("${SCRIPTPATH}"/../../common/dockertags "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    RAPIDFORT_TAG=$("${SCRIPTPATH}"/../../common/dockertags "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+
+    if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
+        echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
+        exit 0
+    fi
+
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")
 
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"

@@ -28,14 +28,11 @@ k8s_test()
     # get password
     REDIS_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.redis-password}" | base64 --decode)
 
-    # get mysql service ip
-    REDIS_SVC=$(kubectl get -n "${NAMESPACE}" services/"${HELM_RELEASE}" -ojsonpath='{.spec.clusterIP}')
-
     # run redis-client
     kubectl run "${HELM_RELEASE}"-client --rm -i \
         --restart='Never' --namespace "${NAMESPACE}" \
         --image rapidfort/redis-cluster --command \
-        -- redis-benchmark -h "${REDIS_SVC}" -a "$REDIS_PASSWORD" --cluster
+        -- redis-benchmark -h "${HELM_RELEASE}" -c 20 -n 10000 -a "$REDIS_PASSWORD" --cluster
 
     # delete cluster
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

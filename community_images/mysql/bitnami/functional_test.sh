@@ -30,9 +30,6 @@ k8s_test()
 
     # get password
     MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.mysql-root-password}" | base64 --decode)
-    
-    # get mysql service ip
-    MYSQL_SVC=$(kubectl get -n "${NAMESPACE}" services/"${HELM_RELEASE}" -ojsonpath='{.spec.clusterIP}')
 
     # create sbtest schema
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 \
@@ -48,7 +45,7 @@ k8s_test()
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
         --threads=1 \
-        --mysql-host="${MYSQL_SVC}" \
+        --mysql-host="${HELM_RELEASE}" \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MYSQL_ROOT_PASSWORD}" \
@@ -68,7 +65,7 @@ k8s_test()
         --oltp-tables-count=24 \
         --threads=64 \
         --time=45 \
-        --mysql-host="${MYSQL_SVC}" \
+        --mysql-host="${HELM_RELEASE}" \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MYSQL_ROOT_PASSWORD}" \

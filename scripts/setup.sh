@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # this script keeps track of all things which need to be installed on github actions worker VM
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
 # Install rf
 curl  https://frontrow.rapidfort.com/cli/ | bash

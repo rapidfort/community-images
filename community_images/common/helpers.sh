@@ -21,13 +21,13 @@ create_stub()
     docker pull "${INPUT_IMAGE_FULL}"
     
     # Create stub for docker image
-    rfstub ${INPUT_IMAGE_FULL}
+    rfstub "${INPUT_IMAGE_FULL}"
 
     # Change tag to point to rapidfort docker account
-    docker tag ${INPUT_IMAGE_FULL}-rfstub ${STUB_IMAGE_FULL}
+    docker tag "${INPUT_IMAGE_FULL}"-rfstub "${STUB_IMAGE_FULL}"
 
     # Push stub to our dockerhub account
-    docker push ${STUB_IMAGE_FULL}
+    docker push "${STUB_IMAGE_FULL}"
 }
 
 harden_image()
@@ -43,21 +43,21 @@ harden_image()
     local OUTPUT_IMAGE_LATEST_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:latest
     
     # Create stub for docker image
-    rfharden ${INPUT_IMAGE_FULL}-rfstub
+    rfharden "${INPUT_IMAGE_FULL}"-rfstub
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
 
         # Change tag to point to rapidfort docker account
-        docker tag ${INPUT_IMAGE_FULL}-rfhardened ${OUTPUT_IMAGE_FULL}
+        docker tag "${INPUT_IMAGE_FULL}"-rfhardened "${OUTPUT_IMAGE_FULL}"
 
         # Push stub to our dockerhub account
-        docker push ${OUTPUT_IMAGE_FULL}
+        docker push "${OUTPUT_IMAGE_FULL}"
 
         # create latest tag
-        docker tag ${OUTPUT_IMAGE_FULL} ${OUTPUT_IMAGE_LATEST_FULL}
+        docker tag "${OUTPUT_IMAGE_FULL}" "${OUTPUT_IMAGE_LATEST_FULL}"
 
         # Push latest tag
-        docker push ${OUTPUT_IMAGE_LATEST_FULL}
+        docker push "${OUTPUT_IMAGE_LATEST_FULL}"
 
         echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
     else
@@ -68,25 +68,25 @@ harden_image()
 get_namespace_string()
 {
     local REPOSITORY=$1
-    echo "${REPOSITORY}-`echo $RANDOM | md5sum | head -c 10; echo;`"
+    echo "${REPOSITORY}-$(echo $RANDOM | md5sum | head -c 10; echo;)"
 }
 
 setup_namespace()
 {
     local NAMESPACE=$1
-    kubectl create namespace ${NAMESPACE}
+    kubectl create namespace "${NAMESPACE}"
 
     # add rapidfortbot credentials
-    kubectl --namespace ${NAMESPACE} create secret generic rf-regcred --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json --type=kubernetes.io/dockerconfigjson
+    kubectl --namespace "${NAMESPACE}" create secret generic rf-regcred --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json --type=kubernetes.io/dockerconfigjson
 
     # add tls certs
-    kubectl apply -f ${SCRIPTPATH}/../../common/cert_managet_ns.yml --namespace ${NAMESPACE} 
+    kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}" 
 }
 
 cleanup_namespace()
 {
     local NAMESPACE=$1
-    kubectl delete namespace ${NAMESPACE}
+    kubectl delete namespace "${NAMESPACE}"
 }
 
 
@@ -99,24 +99,25 @@ build_images()
     local TEST_FUNCTION=$5
     local PUBLISH_IMAGE=$6
 
-    local TAG=$(${SCRIPTPATH}/../../common/dockertags ${INPUT_ACCOUNT}/${REPOSITORY} ${BASE_TAG})
-    local NAMESPACE=$(get_namespace_string ${REPOSITORY})
+    local TAG NAMESPACE
+    TAG=$("${SCRIPTPATH}"/../../common/dockertags "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    NAMESPACE=$(get_namespace_string "${REPOSITORY}")
 
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
-    setup_namespace ${NAMESPACE}
+    setup_namespace "${NAMESPACE}"
 
-    create_stub ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG}
-    ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG}-rfstub ${NAMESPACE}
-    harden_image ${INPUT_REGISTRY} ${INPUT_ACCOUNT} ${REPOSITORY} ${TAG} ${PUBLISH_IMAGE}
+    create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}"
+    "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
+    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${PUBLISH_IMAGE}"
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
-        ${TEST_FUNCTION} ${RAPIDFORT_ACCOUNT}/${REPOSITORY} ${TAG} ${NAMESPACE}
+        "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}" "${NAMESPACE}"
     else
         echo "Non publish mode, cant test image as image not published"
     fi
 
     bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${REPOSITORY} ${TAG}-rfstub"
-    cleanup_namespace ${NAMESPACE}
+    cleanup_namespace "${NAMESPACE}"
 
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }

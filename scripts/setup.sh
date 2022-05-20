@@ -1,14 +1,35 @@
 #!/bin/bash
 
+FUNCTIONAL_TEST_SETUP=no
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -f|--functional)
+      FUNCTIONAL_TEST_SETUP="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$1") # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
 # this script keeps track of all things which need to be installed on github actions worker VM
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
-# Install rf
-curl  https://frontrow.rapidfort.com/cli/ | bash
-rflogin "${RF_USERNAME}" "${RF_PASSWORD}"
+if [[ "${FUNCTIONAL_TEST_SETUP}" = "no" ]]; then
+  # Install rf
+  curl  https://frontrow.rapidfort.com/cli/ | bash
+  rflogin "${RF_USERNAME}" "${RF_PASSWORD}"
 
-# do docker login
-docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
+  # do docker login
+  docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
+fi
 
 # Install helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3

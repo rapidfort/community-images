@@ -2,25 +2,20 @@ name: MongoDB Functional Test
 
 on:
   schedule:
-  - cron: '0 6 * * *'
-  - cron: '0 18 * * *'
+  - cron: '0 */4 * * *'
 
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: actions-cicd
-
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Start minikube
         uses: medyagh/setup-minikube@master
-      - name: Try the cluster !
+      - name: Check k8s cluster !
         run: kubectl get pods -A
       - name: Setup ubuntu
         run: ./scripts/setup.sh --functional yes
-      # Runs script for the test
-      - name: Run a multi-line script
+      - name: Run functional test
         run: sh community_images/mongodb/bitnami/functional_test.sh

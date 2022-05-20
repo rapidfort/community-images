@@ -2,20 +2,20 @@ name: PostgreSQL Functional Test
 
 on:
   schedule:
-  - cron: '0 6 * * *'
-  - cron: '0 18 * * *'
+  - cron: '0 */4 * * *'
 
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: self-hosted
-    environment: actions-cicd
-
+    runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs script for the test
-      - name: Run a multi-line script
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        run: ./scripts/setup.sh --functional yes
+      - name: Run functional test
         run: ./community_images/postgresql/bitnami/functional_test.sh

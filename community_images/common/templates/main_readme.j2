@@ -1,0 +1,73 @@
+
+![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)
+
+<h1> community-images </h1>
+
+[![RF Hardened][rf-h-badge]][rf-link]
+[![Dockerhub][dh-rf-badge]][dh-rf]
+[![License][license-badge]][license]
+
+[Getting started](#getting-started) ·
+[Contributing](CONTRIBUTING.md) ·
+[Additional resources](#additional-resources)
+
+**RapidFort is a solution for building secure, optimized Docker containers.**
+
+Every day, we scan the most popular Docker Hub container images and remove unused code. Then we publish the results to share with you.
+
+Our container optimization process reduces the software attack surface and chance of a vulnerability exploit.
+
+Stop downloading container images with thousands of vulnerabilities. Start using secure containers with minimized attack surfaces.
+
+
+## Getting Started
+
+![Demo][demo]
+
+RapidFort scans your Docker containers, looks for unused code and vulnerabilities, and lets you delete everything you don’t need. It’s a simple command line tool that’s part of [RapidFort](https://rapidfort.com), our commercial product.
+
+## What containers are supported?
+
+We’ve optimized and hardened some of the most popular container images available on Docker Hub and are making them available to the community.
+
+| Repository                        | RapidFort Image                                | View Report                     |  Status    |
+|-----------------------------------| ------------------------------------------     | ------------------------------- | --------   | 
+{%- for image in image_list %}
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![ {{- image.name -}} -image-ft][ {{- image.name -}} -ft-badge]][ {{- image.name -}} -ft-badge-link] |
+{%- endfor %}
+
+### How to use Community Images
+
+Here’s what you can do with Community Images.
+
+```sh
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+# install redis, just replace repository with RapidFort registry
+$ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
+
+# install postgresql
+$ helm install my-postgresql bitnami/postgresql --set image.repository=rapidfort/postgresql
+
+```
+
+## Additional Resources
+
+Learn more about container optimization at [RapidFort.com](https://rapidfort.com).
+
+[rf-link]: https://rapidfort.com 
+[rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
+
+[dh-rf-badge]: https://img.shields.io/badge/dockerhub-images-important.svg?logo=Docker
+[dh-rf]: https://hub.docker.com/u/rapidfort
+[license-badge]: https://img.shields.io/github/license/rapidfort/community-images?color=lightgray&style=flat-square
+[license]: https://github.com/rapidfort/community-images/blob/main/LICENSE
+[demo]: contrib/demo.gif
+
+{% for image in image_list %}
+[ {{- image.name -}} -github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/{{- image.github_location }}
+[ {{- image.name -}} -rf-dh-image-link]: https://hub.docker.com/r/{{- image.rf_docker_link }}
+[ {{- image.name -}} -ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.ft_workflow_name -}} .yml/badge.svg
+[ {{- image.name -}} -ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.ft_workflow_name -}} .yml
+[ {{- image.name -}} -source-dh-link]: https://hub.docker.com/r/{{- image.source_image_dh_link }}
+{% endfor %}

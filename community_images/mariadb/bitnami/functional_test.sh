@@ -35,7 +35,7 @@ k8s_test()
     # create sbtest schema
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 \
         -- /bin/bash -c \
-        "mysql -h ${HELM_RELEASE} -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
+        "mysql -h ${HELM_RELEASE}-0 -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
 
     # prepare benchmark
     kubectl run -n "${NAMESPACE}" sb-prepare \
@@ -46,7 +46,7 @@ k8s_test()
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
         --threads=1 \
-        --mysql-host="${HELM_RELEASE}" \
+        --mysql-host="${HELM_RELEASE}"-0 \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MARIADB_ROOT_PASSWORD}" \
@@ -66,7 +66,7 @@ k8s_test()
         --oltp-tables-count=24 \
         --threads=64 \
         --time=30 \
-        --mysql-host="${HELM_RELEASE}" \
+        --mysql-host="${HELM_RELEASE}"-0 \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MARIADB_ROOT_PASSWORD}" \

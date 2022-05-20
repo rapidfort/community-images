@@ -4,51 +4,53 @@ set -x
 set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-. ${SCRIPTPATH}/../../common/helpers.sh
+
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/helpers.sh
 
 HELM_RELEASE=rf-redis-cluster
-NAMESPACE=$(get_namespace_string ${HELM_RELEASE})
+NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 
 k8s_test()
 {
     # setup namespace
-    setup_namespace ${NAMESPACE}
+    setup_namespace "${NAMESPACE}"
 
     # install redis
-    helm install ${HELM_RELEASE} bitnami/redis-cluster --set image.repository=rapidfort/redis-cluster --namespace ${NAMESPACE}
+    helm install "${HELM_RELEASE}" bitnami/redis-cluster --set image.repository=rapidfort/redis-cluster --namespace "${NAMESPACE}"
 
     # wait for redis
-    kubectl wait pods ${HELM_RELEASE}-0 -n ${NAMESPACE} --for=condition=ready --timeout=10m
+    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
     # for logs dump pods
-    kubectl -n ${NAMESPACE} get pods
+    kubectl -n "${NAMESPACE}" get pods
 
     # get password
-    REDIS_PASSWORD=$(kubectl get secret --namespace ${NAMESPACE} ${HELM_RELEASE} -o jsonpath="{.data.redis-password}" | base64 --decode)
+    REDIS_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.redis-password}" | base64 --decode)
 
     # run redis-client
-    kubectl run ${HELM_RELEASE}-client --rm -i \
-        --restart='Never' --namespace ${NAMESPACE} \
+    kubectl run "${HELM_RELEASE}"-client --rm -i \
+        --restart='Never' --namespace "${NAMESPACE}" \
         --image rapidfort/redis-cluster --command \
-        -- redis-benchmark -h ${HELM_RELEASE} -a "$REDIS_PASSWORD" --cluster
+        -- redis-benchmark -h "${HELM_RELEASE}" -a "$REDIS_PASSWORD" --cluster
 
     # delete cluster
-    helm delete ${HELM_RELEASE} --namespace ${NAMESPACE}
+    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 
     # delete pvc
-    kubectl -n ${NAMESPACE} delete pvc --all
+    kubectl -n "${NAMESPACE}" delete pvc --all
 
     # clean up namespace
-    cleanup_namespace ${NAMESPACE}
+    cleanup_namespace "${NAMESPACE}"
 }
 
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/redis-cluster#g" ${SCRIPTPATH}/docker-compose.yml.base > ${SCRIPTPATH}/docker-compose.yml
+    sed "s#@IMAGE#rapidfort/redis-cluster#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
     # install redis container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} up -d
+    docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
 
     # sleep for 30 sec
     sleep 30
@@ -57,30 +59,30 @@ docker_compose_test()
     REDIS_PASSWORD=bitnami
 
     # logs for tracking
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} logs
+    docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # run redis-client tests
     docker run --rm -d --network="${NAMESPACE}_default" \
-        --name redis-bench-${NAMESPACE} rapidfort/redis-cluster:latest \
+        --name redis-bench-"${NAMESPACE}" rapidfort/redis-cluster:latest \
         sleep infinity
 
     # copy test.redis into container
-    docker cp ${SCRIPTPATH}/../../common/tests/test.redis redis-bench-${NAMESPACE}:/tmp/test.redis
+    docker cp "${SCRIPTPATH}"/../../common/tests/test.redis redis-bench-"${NAMESPACE}":/tmp/test.redis
 
     # copy redis_cluster_runner.sh into container
-    docker cp ${SCRIPTPATH}/redis_cluster_runner.sh redis-bench-${NAMESPACE}:/tmp/redis_cluster_runner.sh
+    docker cp "${SCRIPTPATH}"/redis_cluster_runner.sh redis-bench-"${NAMESPACE}":/tmp/redis_cluster_runner.sh
 
     # run script in docker
-    docker exec -i redis-bench-${NAMESPACE} /tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} redis-node-0 /tmp/test.redis
+    docker exec -i redis-bench-"${NAMESPACE}" /tmp/redis_cluster_runner.sh "${REDIS_PASSWORD}" redis-node-0 /tmp/test.redis
 
     # kill redis-bench
-    docker kill redis-bench-${NAMESPACE}
+    docker kill redis-bench-"${NAMESPACE}"
 
     # kill docker-compose setup container
-    docker-compose -f ${SCRIPTPATH}/docker-compose.yml -p ${NAMESPACE} down
+    docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down
 
     # clean up docker file
-    rm -rf ${SCRIPTPATH}/docker-compose.yml
+    rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
 main()

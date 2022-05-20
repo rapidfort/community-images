@@ -31,12 +31,14 @@ k8s_test()
 
     # get password
     MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
+
+    # get mysql service ip
     MARIADB_SVC=$(kubectl get -n "${NAMESPACE}" services/"${HELM_RELEASE}" -ojsonpath='{.spec.clusterIP}')
 
     # create sbtest schema
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 \
         -- /bin/bash -c \
-        "mysql -h ${MARIADB_SVC} -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
+        "mysql -h localhost -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
 
     # prepare benchmark
     kubectl run -n "${NAMESPACE}" sb-prepare \

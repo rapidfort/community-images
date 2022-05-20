@@ -37,7 +37,7 @@ We’ve optimized and hardened some of the most popular container images availab
 | [MySQL][ mysql-github-link]| [![dh][dh-rf-badge]][mysql-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![mysql-image-ft][mysql-ft-badge]][mysql-ft-badge-link] |
 | [PostgreSQL][ postgresql-github-link]| [![dh][dh-rf-badge]][postgresql-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![postgresql-image-ft][postgresql-ft-badge]][postgresql-ft-badge-link] |
 | [Redis&trade;][ redis-github-link]| [![dh][dh-rf-badge]][redis-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![redis-image-ft][redis-ft-badge]][redis-ft-badge-link] |
-| [Redis&trade Cluster;][ redis-cluster-github-link]| [![dh][dh-rf-badge]][redis-cluster-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![redis-cluster-image-ft][redis-cluster-ft-badge]][redis-cluster-ft-badge-link] |
+| [Redis&trade; Cluster][ redis-cluster-github-link]| [![dh][dh-rf-badge]][redis-cluster-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![redis-cluster-image-ft][redis-cluster-ft-badge]][redis-cluster-ft-badge-link] |
 
 ### How to use Community Images
 

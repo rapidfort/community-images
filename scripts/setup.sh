@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # this script keeps track of all things which need to be installed on github actions worker VM
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 # Install rf
 curl  https://frontrow.rapidfort.com/cli/ | bash
-rflogin vg@vinodgupta.org "${RF_PASSWORD}"
+rflogin "${RF_USERNAME}" "${RF_PASSWORD}"
 
 # Install helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -31,9 +32,10 @@ helm install \
   --set installCRDs=true
 
 # create CA issuer
-kubectl apply -f cert_manager.yml
+kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 
 # install some helpers
 sudo apt-get install jq parallel docker-compose -y
 
 # do docker login as well before completion
+docker login -u "${RF_USERNAME}" -p "${RF_PASSWORD}"

@@ -31,7 +31,8 @@ k8s_test()
 
     # get password
     MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
-    MARIADB_SVC=$(kubectl get -n "${NAMESPACE}" services/"${HELM_RELEASE}" -o go-template='{{(index.spec.clusterIP)}}')
+    MARIADB_SVC=$(kubectl get -n "${NAMESPACE}" services/"${HELM_RELEASE}" -ojsonpath='{.spec.clusterIP}')
+
     # create sbtest schema
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 \
         -- /bin/bash -c \

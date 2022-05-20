@@ -34,7 +34,7 @@ We’ve optimized and hardened some of the most popular container images availab
 |-----------------------------------| ------------------------------------------     | ------------------------------- | --------   | 
 {%- for image in image_list %}
 | [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![ {{- image.name -}} -image-ft][ {{- image.name -}} -ft-badge]][ {{- image.name -}} -ft-badge-link] |
-{% endfor %}
+{%- endfor %}
 
 ### How to use Community Images
 

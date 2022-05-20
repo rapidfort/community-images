@@ -8,9 +8,32 @@ set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-pip install jinja-cli
+pip install jinja-cli PyYAML
 
-while IFS="" read -r p || [ -n "$p" ]
-do
-  jinja -d community_images/"${p}"/readme.yml -f yaml community_images/common/templates/image_readme.j2 > community_images/"${p}"/README.md
-done < "${SCRIPTPATH}"/../image.lst
+gen_image_readme()
+{
+  while IFS="" read -r p || [ -n "$p" ]
+  do
+    jinja -d community_images/"${p}"/readme.yml \
+      -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
+  done < "${SCRIPTPATH}"/../image.lst
+}
+echo "Generating main readme"
+
+gen_main_readme()
+{
+  rm -f "${SCRIPTPATH}"/../image_list.yml
+  python "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/
+
+  jinja -d "${SCRIPTPATH}"/../image_list.yml \
+    -f yaml "${SCRIPTPATH}"/../community_images/common/templates/main_readme.j2 > "${SCRIPTPATH}"/../README.md
+  rm -f "${SCRIPTPATH}"/../image_list.yml
+}
+
+main()
+{
+  gen_main_readme
+  gen_image_readme
+}
+
+main

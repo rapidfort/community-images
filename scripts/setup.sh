@@ -7,6 +7,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 curl  https://frontrow.rapidfort.com/cli/ | bash
 rflogin "${RF_USERNAME}" "${RF_PASSWORD}"
 
+# do docker login
+docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
+
 # Install helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
@@ -14,9 +17,6 @@ chmod 700 get_helm.sh
 
 # Add bitnami repo
 helm repo add bitnami https://charts.bitnami.com/bitnami
-
-# Add secret
-kubectl --namespace ci-dev create secret generic rf-regcred --from-file=.dockerconfigjson=/home/ubuntu/.docker/config.json --type=kubernetes.io/dockerconfigjson
 
 # remove file
 rm -f get_helm.sh
@@ -36,6 +36,3 @@ kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 
 # install some helpers
 sudo apt-get install jq parallel docker-compose -y
-
-# do docker login as well before completion
-docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"

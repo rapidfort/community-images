@@ -27,6 +27,7 @@ k8s_test()
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods
+    kubectl -n "${NAMESPACE}" get svc
 
     # get password
     MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)

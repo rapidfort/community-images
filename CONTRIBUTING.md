@@ -16,7 +16,7 @@ Any type of contribution is welcome; from new features, bug fixes, [tests](#test
 ### Technical Requirements
 
 When submitting a PR make sure that it:
-- Must pass CI jobs for linting and test the changes on top of different k8s platforms. (Automatically done by the community-images CI/CD pipeline).
+- Must pass CI jobs for changes on top of different k8s platforms, docker and docker-compose. (Automatically done by the community-images CI/CD pipeline).
 
 #### Sign Your Work
 

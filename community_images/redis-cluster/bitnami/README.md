@@ -4,22 +4,22 @@
 [![rf-h][rf-h-badge]][rf-link] 
 [![image-ft][ft-badge]][ft-badge-link]
 
-# RapidFort hardened image for Redis&trade Cluster;
+# RapidFort hardened image for Redis&trade; Cluster
 
-This Redis&trade Cluster; container was hardened by RapidFort’s container optimization process. This container is free to use and has no license limitations.
+This Redis&trade; Cluster container was hardened by RapidFort’s container optimization process. This container is free to use and has no license limitations.
 
 It is the same as [bitnami/redis-cluster][source-image-dh-link] image, but much more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most popular images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
-## What is Redis&trade Cluster;?
+## What is Redis&trade; Cluster?
 
 > Redis&trade; is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
 
 
-[Overview of Redis&trade Cluster;](http://redis.io)
+[Overview of Redis&trade; Cluster](http://redis.io)
 
-## How do I use this hardened Redis&trade Cluster; image?
+## How do I use this hardened Redis&trade; Cluster image?
 
 The runtime instructions for this container are no different than the official release. Follow the instructions in their readme, but use our hardened image.
 

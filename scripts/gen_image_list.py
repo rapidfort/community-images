@@ -21,6 +21,7 @@ def merge_yaml_files():
             try:
                 with open(image_yml_path, "r") as image_yml_stream:
                     image_dict=yaml.safe_load(image_yml_stream)
+                    image_dict["github_location"] = image_path.rstrip().lstrip()
                     image_list.append(image_dict)
             except yaml.YAMLError as exc:
                 print(exc)

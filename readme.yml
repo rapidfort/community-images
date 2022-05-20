@@ -1,16 +1,3 @@
-| [ {{- official_name -}} ][ {{ name -}} -github-link] 
-| [![dh][dh-rf-badge]][ {{- name -}} -rf-dh-image-link]           
-| [![rf-h][rf-h-badge]][rf-link]  
-| [![ {{- name -}} -image-ft][ {{- name -}} -ft-badge]][ {{- name -}} -ft-badge-link]                           
-|
-
-[ {{- name -}} -github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/{{- github_location }}
-[ {{- name -}} -rf-dh-image-link]: https://hub.docker.com/r/{{- rf_docker_link }}
-[ {{- name -}} -ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/ {{- ft_workflow_name -}} .yml/badge.svg
-[ {{- name -}} -ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/ {{- ft_workflow_name -}} .yml
-[ {{- name -}} -source-dh-link]: https://hub.docker.com/r/{{- source_image_dh_link }}
-
-
 image_list:
   - name: redis
     official_name: Redis&trade;

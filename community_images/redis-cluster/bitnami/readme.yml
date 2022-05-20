@@ -1,15 +1,13 @@
+name: redis-cluster
+official_name: Redis&trade;
+official_website: http://redis.io
+source_image_dh_link: bitnami/redis-cluster
+rf_docker_link: rapidfort/redis-cluster
+ft_workflow_name: redis_cluster_ft
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install redis-cluster, just replace repository with RapidFort registry
   $ helm install my-redis-cluster bitnami/redis-cluster --set image.repository=rapidfort/redis-cluster
-
-official_name: Redis&trade;
-official_website: http://redis.io
-
 what_is_text: |
   Redis&trade; is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
-
-source_image_dh_link: bitnami/redis-cluster
-rf_docker_link: rapidfort/redis-cluster
-ft_workflow_name: redis_cluster_ft

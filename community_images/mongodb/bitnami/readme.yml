@@ -1,15 +1,13 @@
+name: mongodb
+official_name: MongoDB®
+official_website: https://www.mongodb.com/
+source_image_dh_link: bitnami/mongodb
+rf_docker_link: rapidfort/mongodb
+ft_workflow_name: mongodb_ft
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install mongodb, just replace repository with RapidFort registry
   $ helm install my-mongodb bitnami/mongodb --set image.repository=rapidfort/mongodb
-
-official_name: MongoDB®
-official_website: https://www.mongodb.com/
-
 what_is_text: |
   MongoDB® is a relational open source NoSQL database. Easy to use, it stores data in JSON-like documents. Automated scalability and high-performance. Ideal for developing cloud native applications.
-
-source_image_dh_link: bitnami/mongodb
-rf_docker_link: rapidfort/mongodb
-ft_workflow_name: mongodb_ft

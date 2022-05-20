@@ -18,7 +18,7 @@ create_stub()
     local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfstub
 
     # Pull docker image
-    docker pull ${INPUT_IMAGE_FULL}
+    docker pull "${INPUT_IMAGE_FULL}"
     
     # Create stub for docker image
     rfstub ${INPUT_IMAGE_FULL}

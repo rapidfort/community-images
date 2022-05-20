@@ -1,11 +1,14 @@
-set -x
+#!/bin/bash
 
+# This script generates readme for image using readme.yml present in each directory
+# master jinja2 tempalte exists at common/templates/image_readme.j2
+
+set -x
 set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 pip install jinja-cli
-
 
 while IFS="" read -r p || [ -n "$p" ]
 do

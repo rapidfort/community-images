@@ -20,7 +20,7 @@ jobs:
       - name: Try the cluster !
         run: kubectl get pods -A
       - name: Setup ubuntu
-        run: ./scripts/setup.sh --functional=yes
+        run: ./scripts/setup.sh --functional yes
       # Runs script for the test
       - name: Run a multi-line script
         run: sh community_images/mongodb/bitnami/functional_test.sh

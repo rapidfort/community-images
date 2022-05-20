@@ -1,8 +1,10 @@
+#!/bin/bash
+
 # this script keeps track of all things which need to be installed on github actions worker VM
 
 # Install rf
 curl  https://frontrow.rapidfort.com/cli/ | bash
-rflogin vg@vinodgupta.org ${RF_PASSWORD}
+rflogin vg@vinodgupta.org "${RF_PASSWORD}"
 
 # Install helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3

@@ -38,4 +38,4 @@ kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 sudo apt-get install jq parallel docker-compose -y
 
 # do docker login as well before completion
-docker login -u "${RF_USERNAME}" -p "${RF_PASSWORD}"
+docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"

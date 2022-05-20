@@ -15,3 +15,4 @@ jobs:
           pattern: "*.sh" # Optional.
           exclude: "./.git/*" # Optional.
           check_all_files_with_shebangs: "false" # Optional.
+          fail_on_error: true

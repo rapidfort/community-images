@@ -16,6 +16,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most popular image
 
 > MariaDB is an open source, community-developed SQL database server that is widely in use around the world due to its enterprise features, flexibility, and collaboration with leading tech firms.
 
+
 [Overview of MariaDB](https://www.mariadb.com/)
 
 ## How do I use this hardened MariaDB image?
@@ -40,9 +41,6 @@ RapidFort is an industry-leading container optimization solution that minimizes 
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
-
-Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-
 ## What’s the difference between the official XXX image and this hardened image?
 RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open source software, containerized infrastructure, and security.
 
@@ -52,6 +50,9 @@ We are making available secure copies of the images we use every day, as well as
 If you’d like to learn more about how RapidFort works or our container optimization process:
 
 * https://rapidfort.com
+
+
+Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 <br>
 <br>

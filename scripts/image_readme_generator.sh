@@ -2,6 +2,11 @@ set -x
 
 set -e
 
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
 pip install jinja-cli
 
-jinja -d community_images/mariadb/bitnami/readme.yml -f yaml community_images/common/templates/image_readme.j2 > community_images/mariadb/bitnami/README.md
+
+while read p; do
+  jinja -d community_images/"${p}"/readme.yml -f yaml community_images/common/templates/image_readme.j2 > community_images/"${p}"/README.md
+done <"${SCRIPTPATH}"/../image.lst

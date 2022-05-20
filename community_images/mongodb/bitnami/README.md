@@ -41,7 +41,7 @@ RapidFort is an industry-leading container optimization solution that minimizes 
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
-## What’s the difference between the official XXX image and this hardened image?
+## What’s the difference between the official [bitnami/mongodb][source-image-dh-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/mongodb][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open source software, containerized infrastructure, and security.
 
 We are making available secure copies of the images we use every day, as well as the most popular ones on Docker Hub. We want to make the world a safer place to operate.

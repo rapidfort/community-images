@@ -23,15 +23,12 @@ jobs:
       - name: Generate new readme files
         run: ./scripts/image_readme_generator.sh
 
+      # Push all the changes
       - name: Push changes
         run: |
-          # Push all the changes
-          cd charts
-          if git status -s | grep bitnami; then
-            git config user.name "Rapidfort Readme Bot"
-            git config user.email "info@rapidfort.com"
-            git add . && git commit -am "Update README.md via script" --signoff && git push
-          fi
+          git config user.name "Rapidfort Readme Bot"
+          git config user.email "info@rapidfort.com"
+          git add . && git commit -am "Update README.md via script" --signoff && git push
 
       - name: Update readme for dockerhub
         run: ./scripts/update_readme_dh.sh

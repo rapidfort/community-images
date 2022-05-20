@@ -46,7 +46,7 @@ k8s_test()
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
         --threads=1 \
-        --mysql-host="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local \
+        --mysql-host="${HELM_RELEASE}" \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MARIADB_ROOT_PASSWORD}" \
@@ -66,7 +66,7 @@ k8s_test()
         --oltp-tables-count=24 \
         --threads=64 \
         --time=30 \
-        --mysql-host="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local \
+        --mysql-host="${HELM_RELEASE}" \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MARIADB_ROOT_PASSWORD}" \

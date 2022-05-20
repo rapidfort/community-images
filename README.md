@@ -30,14 +30,14 @@ RapidFort scans your Docker containers, looks for unused code and vulnerabilitie
 
 We’ve optimized and hardened some of the most popular container images available on Docker Hub and are making them available to the community.
 
-| Repository                        | RapidFort Image                                | View Report                     |  Status                                                                |
-|-----------------------------------| ------------------------------------------     | ------------------------------- | --------------------------------------------------------------------   | 
-| [Redis][redis]                    | [![dh][dh-rf-badge]][redis-rf-image]           | [![rf-h][rf-h-badge]][rf-link]  | [![redis-ft][redis-badge]][redis-badge-link]                           |
-| [Redis Cluster][redis-cluster]    | [![dh][dh-rf-badge]][redis-cluster-rf-image]   | [![rf-h][rf-h-badge]][rf-link]  | [![redis-cluster-ft][redis-cluster-badge]][redis-cluster-badge-link]   |
-| [PostgreSQL][postgresql]          | [![dh][dh-rf-badge]][postgresql-rf-image]      | [![rf-h][rf-h-badge]][rf-link]  | [![postgresql-ft][postgresql-badge]][postgresql-badge-link]                 |
-| [MariaDB][mariadb]                | [![dh][dh-rf-badge]][mariadb-rf-image]         | [![rf-h][rf-h-badge]][rf-link]  | [![mariadb-ft][mariadb-badge]][mariadb-badge-link]                       |
-| [MySQL][mysql]                    | [![dh][dh-rf-badge]][mysql-rf-image]           | [![rf-h][rf-h-badge]][rf-link]  | [![mysql-ft][mysql-badge]][mysql-badge-link]                           |
-| [MongoDB][mongodb]                | [![dh][dh-rf-badge]][mongodb-rf-image]         | [![rf-h][rf-h-badge]][rf-link]  | [![mongodb-ft][mongodb-badge]][mongodb-badge-link]                       |
+| Repository                        | RapidFort Image                                | View Report                     |  Status    |
+|-----------------------------------| ------------------------------------------     | ------------------------------- | --------   |
+| [MariaDB][ mariadb-github-link]| [![dh][dh-rf-badge]][mariadb-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![mariadb-image-ft][mariadb-ft-badge]][mariadb-ft-badge-link] |
+| [MongoDB®][ mongodb-github-link]| [![dh][dh-rf-badge]][mongodb-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![mongodb-image-ft][mongodb-ft-badge]][mongodb-ft-badge-link] |
+| [MySQL][ mysql-github-link]| [![dh][dh-rf-badge]][mysql-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![mysql-image-ft][mysql-ft-badge]][mysql-ft-badge-link] |
+| [PostgreSQL][ postgresql-github-link]| [![dh][dh-rf-badge]][postgresql-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![postgresql-image-ft][postgresql-ft-badge]][postgresql-ft-badge-link] |
+| [Redis&trade;][ redis-github-link]| [![dh][dh-rf-badge]][redis-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![redis-image-ft][redis-ft-badge]][redis-ft-badge-link] |
+| [Redis&trade;][ redis-cluster-github-link]| [![dh][dh-rf-badge]][redis-cluster-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![redis-cluster-image-ft][redis-cluster-ft-badge]][redis-cluster-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -67,38 +67,39 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [license]: https://github.com/rapidfort/community-images/blob/main/LICENSE
 [demo]: contrib/demo.gif
 
-[redis]: https://github.com/rapidfort/community-images/tree/main/community_images/redis/bitnami
-[redis-original-image]: https://hub.docker.com/r/bitnami/redis
-[redis-rf-image]: https://hub.docker.com/r/rapidfort/redis
-[redis-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_ft.yml/badge.svg
-[redis-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_ft.yml
 
-[redis-cluster]: https://github.com/rapidfort/community-images/tree/main/community_images/redis-cluster/bitnami
-[redis-cluster-original-image]: https://hub.docker.com/r/bitnami/redis-cluster
-[redis-cluster-rf-image]: https://hub.docker.com/r/rapidfort/redis-cluster
-[redis-cluster-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_ft.yml/badge.svg
-[redis-cluster-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_ft.yml
+[mariadb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/
+[mariadb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mariadb
+[mariadb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml/badge.svg
+[mariadb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml
+[mariadb-source-dh-link]: https://hub.docker.com/r/bitnami/mariadb
 
-[postgresql]: https://github.com/rapidfort/community-images/tree/main/community_images/postgresql/bitnami
-[postgresql-original-image]: https://hub.docker.com/r/bitnami/postgresql
-[postgresql-rf-image]: https://hub.docker.com/r/rapidfort/postgresql
-[postgresql-badge]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ft.yml/badge.svg
-[postgresql-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ft.yml
+[mongodb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/
+[mongodb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mongodb
+[mongodb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_ft.yml/badge.svg
+[mongodb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_ft.yml
+[mongodb-source-dh-link]: https://hub.docker.com/r/bitnami/mongodb
 
-[mysql]: https://github.com/rapidfort/community-images/tree/main/community_images/mysql/bitnami
-[mysql-original-image]: https://hub.docker.com/r/bitnami/mysql
-[mysql-rf-image]: https://hub.docker.com/r/rapidfort/mysql
-[mysql-badge]: https://github.com/rapidfort/community-images/actions/workflows/mysql_ft.yml/badge.svg
-[mysql-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mysql_ft.yml
+[mysql-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/
+[mysql-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mysql
+[mysql-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mysql_ft.yml/badge.svg
+[mysql-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mysql_ft.yml
+[mysql-source-dh-link]: https://hub.docker.com/r/bitnami/mysql
 
-[mongodb]: https://github.com/rapidfort/community-images/tree/main/community_images/mongodb/bitnami
-[mongodb-original-image]: https://hub.docker.com/r/bitnami/mongodb
-[mongodb-rf-image]: https://hub.docker.com/r/rapidfort/mongodb
-[mongodb-badge]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_ft.yml/badge.svg
-[mongodb-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_ft.yml
+[postgresql-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/
+[postgresql-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql
+[postgresql-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ft.yml/badge.svg
+[postgresql-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ft.yml
+[postgresql-source-dh-link]: https://hub.docker.com/r/bitnami/postgresql
 
-[mariadb]: https://github.com/rapidfort/community-images/tree/main/community_images/mariadb/bitnami
-[mariadb-original-image]: https://hub.docker.com/r/bitnami/mariadb
-[mariadb-rf-image]: https://hub.docker.com/r/rapidfort/mariadb
-[mariadb-badge]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml/badge.svg
-[mariadb-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml
+[redis-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/
+[redis-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis
+[redis-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_ft.yml/badge.svg
+[redis-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_ft.yml
+[redis-source-dh-link]: https://hub.docker.com/r/bitnami/redis
+
+[redis-cluster-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/
+[redis-cluster-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis-cluster
+[redis-cluster-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_ft.yml/badge.svg
+[redis-cluster-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_ft.yml
+[redis-cluster-source-dh-link]: https://hub.docker.com/r/bitnami/redis-cluster

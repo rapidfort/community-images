@@ -35,7 +35,7 @@ k8s_test()
     # create sbtest schema
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 \
         -- /bin/bash -c \
-        "mysql -h ${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
+        "mysql -h ${HELM_RELEASE} -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
 
     # prepare benchmark
     kubectl run -n "${NAMESPACE}" sb-prepare \

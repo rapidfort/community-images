@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script generates readme for image using readme.yml present in each directory
+# This script generates readme for image using image.yml present in each directory
 # master jinja2 tempalte exists at common/templates/image_readme.j2
 
 set -x

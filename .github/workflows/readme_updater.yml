@@ -20,8 +20,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Generate new readme files
-        run: ./scripts/readme_generator.sh
+      - name: Generate new readme and image files
+        run: ./scripts/image_generator.sh
 
       # Push all the changes
       - name: Push changes

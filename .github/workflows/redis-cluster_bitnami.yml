@@ -1,9 +1,8 @@
-name: Pull Request Builder
+name: Redis&trade; Cluster Run
 
 on:
-  pull_request:
-    branches:
-    - main
+  schedule:
+  - cron: '0 * * * *'
 
   workflow_dispatch:
 
@@ -11,7 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: actions-cicd
-
     steps:
       - uses: actions/checkout@v2
       - name: Start minikube
@@ -25,8 +23,11 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
-      - name: Run PRB parallel executor tests
+      - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: ./scripts/prb_executor.sh
+        run: ./community_images/redis-cluster/bitnami/run.sh yes
+      - name: Run functional test
+        run: ./community_images/redis-cluster/bitnami/functional_test.sh
+

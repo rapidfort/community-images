@@ -4,22 +4,22 @@
 [![rf-h][rf-h-badge]][rf-link] 
 [![image-ft][ft-badge]][ft-badge-link]
 
-# RapidFort hardened image for Redis&trade;
+# RapidFort hardened image for Redis™
 
-This Redis&trade; container was hardened by RapidFort’s container optimization process. This container is free to use and has no license limitations.
+This Redis™ container was hardened by RapidFort’s container optimization process. This container is free to use and has no license limitations.
 
 It is the same as [bitnami/redis][source-image-dh-link] image, but much more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most popular images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
-## What is Redis&trade;?
+## What is Redis™?
 
-> Redis&trade; is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
+> Redis™ is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
 
 
-[Overview of Redis&trade;](http://redis.io)
+[Overview of Redis™](http://redis.io)
 
-## How do I use this hardened Redis&trade; image?
+## How do I use this hardened Redis™ image?
 
 The runtime instructions for this container are no different than the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -66,5 +66,5 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 [source-image-dh-link]: https://hub.docker.com/r/bitnami/redis
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis
 
-[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_ft.yml/badge.svg
-[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_ft.yml
+[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_bitnami.yml/badge.svg
+[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_bitnami.yml

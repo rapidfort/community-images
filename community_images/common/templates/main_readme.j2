@@ -67,7 +67,7 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 {% for image in image_list %}
 [ {{- image.name -}} -github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/{{- image.github_location }}
 [ {{- image.name -}} -rf-dh-image-link]: https://hub.docker.com/r/{{- image.rf_docker_link }}
-[ {{- image.name -}} -ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.ft_workflow_name -}} .yml/badge.svg
-[ {{- image.name -}} -ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.ft_workflow_name -}} .yml
+[ {{- image.name -}} -ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.image_workflow_name -}} .yml/badge.svg
+[ {{- image.name -}} -ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.image_workflow_name -}} .yml
 [ {{- image.name -}} -source-dh-link]: https://hub.docker.com/r/{{- image.source_image_dh_link }}
 {% endfor %}

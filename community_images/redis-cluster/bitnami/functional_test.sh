@@ -32,7 +32,7 @@ k8s_test()
     kubectl run "${HELM_RELEASE}"-client --rm -i \
         --restart='Never' --namespace "${NAMESPACE}" \
         --image rapidfort/redis-cluster --command \
-        -- redis-benchmark -h "${HELM_RELEASE}" -a "$REDIS_PASSWORD" --cluster
+        -- redis-benchmark -h "${HELM_RELEASE}" -c 20 -n 10000 -a "$REDIS_PASSWORD" --cluster
 
     # delete cluster
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

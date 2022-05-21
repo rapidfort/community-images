@@ -27,6 +27,7 @@ k8s_test()
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods
+    kubectl -n "${NAMESPACE}" get svc
 
     # get password
     MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
@@ -34,7 +35,7 @@ k8s_test()
     # create sbtest schema
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 \
         -- /bin/bash -c \
-        "mysql -h ${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
+        "mysql -h localhost -uroot -p\"$MARIADB_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
 
     # prepare benchmark
     kubectl run -n "${NAMESPACE}" sb-prepare \
@@ -45,7 +46,7 @@ k8s_test()
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
         --threads=1 \
-        --mysql-host="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local \
+        --mysql-host="${HELM_RELEASE}" \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MARIADB_ROOT_PASSWORD}" \
@@ -65,7 +66,7 @@ k8s_test()
         --oltp-tables-count=24 \
         --threads=64 \
         --time=30 \
-        --mysql-host="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local \
+        --mysql-host="${HELM_RELEASE}" \
         --mysql-port=3306 \
         --mysql-user=root \
         --mysql-password="${MARIADB_ROOT_PASSWORD}" \

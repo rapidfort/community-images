@@ -100,6 +100,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 
 [redis-cluster-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis-cluster/bitnami
 [redis-cluster-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis-cluster
-[redis-cluster-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_bitnami.yml/badge.svg
-[redis-cluster-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_bitnami.yml
+[redis-cluster-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml/badge.svg
+[redis-cluster-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml
 [redis-cluster-source-dh-link]: https://hub.docker.com/r/bitnami/redis-cluster

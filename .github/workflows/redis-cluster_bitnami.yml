@@ -1,0 +1,33 @@
+name: Redis&trade; Cluster Run
+
+on:
+  schedule:
+  - cron: '0 * * * *'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - uses: actions/checkout@v2
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_USERNAME: ${{ secrets.RF_USERNAME }}
+          RF_PASSWORD: ${{ secrets.RF_PASSWORD }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./community_images/redis-cluster/bitnami/run.sh yes
+      - name: Run functional test
+        run: ./community_images/redis-cluster/bitnami/functional_test.sh
+

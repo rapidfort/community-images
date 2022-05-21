@@ -10,12 +10,16 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 pip install jinja-cli PyYAML
 
-gen_image_readme()
+gen_image_files()
 {
   while IFS="" read -r p || [ -n "$p" ]
   do
-    jinja -d community_images/"${p}"/readme.yml \
+    jinja -d community_images/"${p}"/image.yml \
       -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
+
+    RUN_FILE_NAME=$(echo $p | sed 's|/|_|g')
+    jinja -d community_images/"${p}"/image.yml \
+      -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/"${RUN_FILE_NAME}".yml
   done < "${SCRIPTPATH}"/../image.lst
 }
 echo "Generating main readme"
@@ -33,7 +37,7 @@ gen_main_readme()
 main()
 {
   gen_main_readme
-  gen_image_readme
+  gen_image_files
 }
 
 main

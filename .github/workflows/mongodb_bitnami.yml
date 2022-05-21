@@ -1,4 +1,4 @@
-name: Images Publisher
+name: MongoDB® Run
 
 on:
   schedule:
@@ -10,7 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: actions-cicd
-
     steps:
       - uses: actions/checkout@v2
       - name: Start minikube
@@ -28,4 +27,7 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: ./scripts/image_publisher.sh
+        run: ./community_images/mongodb/bitnami/run.sh yes
+      - name: Run functional test
+        run: ./community_images/mongodb/bitnami/functional_test.sh
+

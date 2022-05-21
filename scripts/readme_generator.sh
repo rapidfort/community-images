@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script generates readme for image using readme.yml present in each directory
+# This script generates readme for image using image.yml present in each directory
 # master jinja2 tempalte exists at common/templates/image_readme.j2
 
 set -x
@@ -14,7 +14,7 @@ gen_image_readme()
 {
   while IFS="" read -r p || [ -n "$p" ]
   do
-    jinja -d community_images/"${p}"/readme.yml \
+    jinja -d community_images/"${p}"/image.yml \
       -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
   done < "${SCRIPTPATH}"/../image.lst
 }

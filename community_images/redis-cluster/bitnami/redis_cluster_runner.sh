@@ -12,7 +12,7 @@ shift
 TLS_PREFILX=( "$@" )
 
 input="${REDIS_TEST_FILE}"
-while IFS= read -r line
+while IFS="" read -r p || [ -n "$p" ]
 do
-    REDISCLI_AUTH="${REDIS_PASSWORD}" redis-cli -h "${HELM_RELEASE}" "${TLS_PREFILX[@]}" -c "${line}"
+    REDISCLI_AUTH="${REDIS_PASSWORD}" redis-cli -h "${HELM_RELEASE}" "${TLS_PREFILX[@]}" -c "${p}"
 done < "$input"

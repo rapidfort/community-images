@@ -73,7 +73,7 @@ docker_compose_test()
     docker cp "${SCRIPTPATH}"/redis_cluster_runner.sh redis-bench-"${NAMESPACE}":/tmp/redis_cluster_runner.sh
 
     # run script in docker
-    docker exec -i redis-bench-"${NAMESPACE}" /bin/bash -c /tmp/redis_cluster_runner.sh "${REDIS_PASSWORD}" redis-node-0 /tmp/test.redis
+    docker exec -i redis-bench-"${NAMESPACE}" /tmp/redis_cluster_runner.sh "${REDIS_PASSWORD}" redis-node-0 /tmp/test.redis
 
     # kill redis-bench
     docker kill redis-bench-"${NAMESPACE}"

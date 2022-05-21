@@ -46,7 +46,7 @@ test()
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.psql "${HELM_RELEASE}"-0:/tmp/test.psql
 
     # run script
-    kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host ${HELM_RELEASE} -U postgres -d postgres -p 5432 -f /tmp/test.psql"
+    kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${HELM_RELEASE}"-0:/tmp/common_commands.sh

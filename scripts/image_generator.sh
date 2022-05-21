@@ -17,7 +17,8 @@ gen_image_files()
     jinja -d community_images/"${p}"/image.yml \
       -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
 
-    RUN_FILE_NAME=$(echo $p | sed 's|/|_|g')
+    # shellcheck disable=SC2001
+    RUN_FILE_NAME=$(echo "$p" | sed 's|/|_|g')
     jinja -d community_images/"${p}"/image.yml \
       -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/"${RUN_FILE_NAME}".yml
   done < "${SCRIPTPATH}"/../image.lst

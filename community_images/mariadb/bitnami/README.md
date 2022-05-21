@@ -66,5 +66,5 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 [source-image-dh-link]: https://hub.docker.com/r/bitnami/mariadb
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mariadb
 
-[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml/badge.svg
-[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_ft.yml
+[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_bitnami.yml/badge.svg
+[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_bitnami.yml

@@ -14,7 +14,7 @@ def get_latest_tag():
     tags = []
 
     for tag in sys.stdin:
-        if not tag.endswith("rfstub".rstrip()):
+        if "rfstub" not in tag:
             tags.append(tag)
 
     tags.sort(key = lambda tag: int(tag[len(sys.argv[1]):]))

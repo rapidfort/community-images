@@ -66,5 +66,5 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 [source-image-dh-link]: https://hub.docker.com/r/bitnami/redis-cluster
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis-cluster
 
-[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_bitnami.yml/badge.svg
-[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_cluster_bitnami.yml
+[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml/badge.svg
+[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml

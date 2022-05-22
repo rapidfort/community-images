@@ -23,4 +23,9 @@ tags="$(wget -q https://registry.hub.docker.com/v1/repositories/${image}/tags -O
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 tags="$( echo "${tags}" | grep "$2" || true)"
+if [ -z "$tags" ]; then
+    echo "no matching tag"
+    exit 0
+fi
+
 echo "${tags}" | python3 ${SCRIPTPATH}/latest_tag.py "$2"

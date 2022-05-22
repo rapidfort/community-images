@@ -105,7 +105,7 @@ build_images()
 
     if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
         echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
-        exit 0
+        return
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")

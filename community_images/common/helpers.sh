@@ -77,7 +77,7 @@ setup_namespace()
     kubectl create namespace "${NAMESPACE}"
 
     # add rapidfortbot credentials
-    kubectl --namespace "${NAMESPACE}" create secret generic rf-regcred --from-file=.dockerconfigjson=/home/"${USER}"/.docker/config.json --type=kubernetes.io/dockerconfigjson
+    kubectl --namespace "${NAMESPACE}" create secret generic rf-regcred --from-file=.dockerconfigjson="${HOME}"/.docker/config.json --type=kubernetes.io/dockerconfigjson
 
     # add tls certs
     kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}" 

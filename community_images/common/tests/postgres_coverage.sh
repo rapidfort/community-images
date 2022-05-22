@@ -11,7 +11,7 @@ createuser --version
 dropdb --version
 dropuser --version
 ecpg --version
-pg_amcheck --version
+# pg_amcheck --version
 pg_basebackup --version
 pgbench --version
 pg_config --version

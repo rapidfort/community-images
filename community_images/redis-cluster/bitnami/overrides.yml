@@ -1,3 +1,5 @@
+cluster:
+  nodes: 3
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always

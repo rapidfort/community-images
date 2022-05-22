@@ -6,7 +6,7 @@ services:
       - redis-cluster_data-0:/bitnami/redis/data
     environment:
       - 'REDIS_PASSWORD=bitnami'
-      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2'
     cap_add:
       - SYS_PTRACE
 
@@ -16,7 +16,7 @@ services:
       - redis-cluster_data-1:/bitnami/redis/data
     environment:
       - 'REDIS_PASSWORD=bitnami'
-      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2'
     cap_add:
       - SYS_PTRACE
 
@@ -24,47 +24,14 @@ services:
     image: @IMAGE
     volumes:
       - redis-cluster_data-2:/bitnami/redis/data
-    environment:
-      - 'REDIS_PASSWORD=bitnami'
-      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
-    cap_add:
-      - SYS_PTRACE
-
-  redis-node-3:
-    image: @IMAGE
-    volumes:
-      - redis-cluster_data-3:/bitnami/redis/data
-    environment:
-      - 'REDIS_PASSWORD=bitnami'
-      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
-    cap_add:
-      - SYS_PTRACE
-
-  redis-node-4:
-    image: @IMAGE
-    volumes:
-      - redis-cluster_data-4:/bitnami/redis/data
-    environment:
-      - 'REDIS_PASSWORD=bitnami'
-      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
-    cap_add:
-      - SYS_PTRACE
-
-  redis-node-5:
-    image: @IMAGE
-    volumes:
-      - redis-cluster_data-5:/bitnami/redis/data
     depends_on:
       - redis-node-0
       - redis-node-1
-      - redis-node-2
-      - redis-node-3
-      - redis-node-4
     environment:
       - 'REDIS_PASSWORD=bitnami'
       - 'REDISCLI_AUTH=bitnami'
       - 'REDIS_CLUSTER_REPLICAS=1'
-      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2'
       - 'REDIS_CLUSTER_CREATOR=yes'
     cap_add:
       - SYS_PTRACE
@@ -75,10 +42,4 @@ volumes:
   redis-cluster_data-1:
     driver: local
   redis-cluster_data-2:
-    driver: local
-  redis-cluster_data-3:
-    driver: local
-  redis-cluster_data-4:
-    driver: local
-  redis-cluster_data-5:
     driver: local

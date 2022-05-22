@@ -20,3 +20,4 @@ touch --version
 cat --version
 grep --version
 sed --version
+tar --version

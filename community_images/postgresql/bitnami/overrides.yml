@@ -16,7 +16,7 @@ primary:
         memory: 1024Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
-      value: "1"
+      value: "0"
 readReplicas:
   containerSecurityContext:
     enabled: true
@@ -32,4 +32,4 @@ readReplicas:
         memory: 1024Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
-      value: "1"
+      value: "0"

@@ -8,7 +8,7 @@ containerSecurityContext:
     add: ["SYS_PTRACE"]
 extraEnvVars:
   - name: "RF_VERBOSE"
-    value: "1"
+    value: "0"
 resources:
     limits:
       cpu: 1000m
@@ -31,7 +31,7 @@ arbiter:
         memory: 1024Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
-      value: "1"
+      value: "0"
 hidden:
   containerSecurityContext:
     enabled: true
@@ -47,4 +47,4 @@ hidden:
         memory: 1024Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
-      value: "1"
+      value: "0"

@@ -1,3 +1,5 @@
+cluster:
+  nodes: 3
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
@@ -8,11 +10,11 @@ containerSecurityContext:
 redis:
   resources:
       limits:
-        cpu: 1000m
-        memory: 2048Mi
+        cpu: 400m
+        memory: 512Mi
       requests:
-        cpu: 500m
-        memory: 1024Mi
+        cpu: 200m
+        memory: 128Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
-      value: "1"
+      value: "0"

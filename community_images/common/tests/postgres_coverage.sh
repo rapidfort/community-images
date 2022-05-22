@@ -21,7 +21,7 @@ pg_isready --version
 pg_receivewal --version
 pg_recvlogical --version
 pg_restore --version
-pg_verifybackup --version
+# pg_verifybackup --version
 psql --version
 reindexdb --version
 vacuumdb --version

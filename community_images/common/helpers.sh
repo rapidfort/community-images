@@ -6,6 +6,7 @@ set -e
 DOCKERHUB_REGISTRY=docker.io
 RAPIDFORT_ACCOUNT=rapidfort
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+NAMESPACE_TO_CLEANUP=
 
 create_stub()
 {
@@ -109,7 +110,7 @@ build_images()
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")
-
+    NAMESPACE_TO_CLEANUP="${NAMESPACE}"
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
     setup_namespace "${NAMESPACE}"
 
@@ -125,6 +126,13 @@ build_images()
 
     bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${REPOSITORY} ${TAG}-rfstub"
     cleanup_namespace "${NAMESPACE}"
-
+    NAMESPACE_TO_CLEANUP=
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }
+
+function finish {
+  kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods 
+  kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
+  kubectl delete namespace "${NAMESPACE_TO_CLEANUP}" 
+}
+trap finish EXIT

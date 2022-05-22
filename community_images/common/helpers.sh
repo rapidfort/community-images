@@ -128,3 +128,9 @@ build_images()
 
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }
+
+function finish {
+  # Your cleanup code here
+  kubectl get pods --all-namespaces
+}
+trap finish EXIT

@@ -8,8 +8,6 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-
-BASE_TAG=8.0.29-debian-10-r
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
 REPOSITORY=mysql
@@ -86,4 +84,8 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${BASE_TAG}" test "${PUBLISH_IMAGE}"
+declare -a tags=("8.0.29-debian-10-r" "5.7.38-debian-10-r")
+
+for tag in "${tags[@]}"; do
+   build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" test "${PUBLISH_IMAGE}"
+done

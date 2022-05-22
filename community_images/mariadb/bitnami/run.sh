@@ -10,7 +10,6 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
 
-BASE_TAG=10.6.8-debian-10-r
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
 REPOSITORY=mariadb
@@ -86,4 +85,8 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${BASE_TAG}" test "${PUBLISH_IMAGE}"
+declare -a tags=("10.7.4-debian-10-r" "10.6.8-debian-10-r" "10.5.16-debian-10-r" "10.4.25-debian-10-r" "10.3.35-debian-10-r" "10.2.44-debian-10-r")
+
+for tag in "${tags[@]}"; do
+   build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" test "${PUBLISH_IMAGE}"
+done

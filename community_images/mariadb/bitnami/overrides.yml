@@ -10,6 +10,12 @@ primary:
   extraEnvVars:
     - name: "RF_VERBOSE"
       value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
 secondary:
   containerSecurityContext:
     enabled: true
@@ -19,3 +25,9 @@ secondary:
   extraEnvVars:
     - name: "RF_VERBOSE"
       value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30

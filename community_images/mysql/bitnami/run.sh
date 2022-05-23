@@ -84,7 +84,7 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a tags=("8.0.29-debian-10-r" "5.7.38-debian-10-r")
+declare -a tags=("8.0.29-debian-10-r")
 
 for tag in "${tags[@]}"; do
    build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" test "${PUBLISH_IMAGE}"

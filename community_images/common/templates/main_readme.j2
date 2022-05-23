@@ -6,8 +6,6 @@
 [![RF Hardened][rf-h-badge]][rf-link]
 [![Dockerhub][dh-rf-badge]][dh-rf]
 [![License][license-badge]][license]
-[![Watch on GitHub](https://img.shields.io/github/watchers/jonsn0w/hyde.svg?style=social)](https://github.com/jonsn0w/Hyde/watchers)
-[![Star on GitHub](https://img.shields.io/github/stars/jonsn0w/hyde.svg?style=social)](https://github.com/jonsn0w/hyde/stargazers)
 
 [Getting started](#getting-started) ·
 [Contributing](CONTRIBUTING.md) ·

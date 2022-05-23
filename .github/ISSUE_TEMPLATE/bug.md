@@ -1,3 +1,11 @@
+---
+name: "\U0001F41E Bug"
+about: Create a report to help us improve
+title: BUG
+labels: bug
+assignees: codervinod
+
+---
 name: 🐞 Bug
 description: Create a report to help us improve
 body:
@@ -5,41 +13,16 @@ body:
     attributes:
       value: |
         Thank you for reporting an issue. Before you open the bug report please review the following troubleshooting guide:
-          - [Troubleshoot RapidFort Community Images Issues](https://github.com/rapidfort/community-images/blob/main/TROUBLE_SHOOTING.md)
+          - [Troubleshoot Bitnami Helm Chart Issues](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues)
 
         Please fill in as much of the following form as you're able.
   - type: input
     attributes:
-      label: Image name
-      description: Name of the affected image (repository+tag)
-      placeholder: rapidfort/postgresql:latest
+      label: Name and Version
+      description: Name and version of the affected chart
+      placeholder: bitnami/wordpress 1.2.3
     validations:
       required: true
-  - type: checkboxes
-    attributes:
-    label: Which runtime are you using to reproduce this issue?
-    description: You may select more than one.
-    options:
-      - label: Kubernetes
-      - label: Docker Compose
-      - label: Docker
-  - type: dropdown
-    attributes:
-    label: Is this issue reproducible on the original non-hardened image?
-    description: Please select one
-    options:
-      - label: Yes
-      - label: No
-  - type: dropdown
-    attributes:
-    label: Could you please review our troubleshooting (/TROUBLE_SHOOTING.md) guide and identify the category?
-    description: Please select one
-    options:
-      - label: Coverage Script
-      - label: RF Hardening
-      - label: Source image usage
-      - label: Source image behavior
-      - label: Unknown
   - type: textarea
     attributes:
       label: What steps will reproduce the bug?

@@ -48,3 +48,9 @@ hidden:
     requests:
       cpu: 200m
       memory: 512Mi
+livenessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
+readinessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30

@@ -169,11 +169,16 @@ function build_image()
 function build_images()
 {
     local INPUT_REGISTRY=$1
-    local INPUT_ACCOUNT=$2
-    local REPOSITORY=$3
-    local BASE_TAG_ARRAY=$4
-    local TEST_FUNCTION=$5
-    local PUBLISH_IMAGE=$6
+    shift
+    local INPUT_ACCOUNT=$1
+    shift
+    local REPOSITORY=$1
+    shift
+    local TEST_FUNCTION=$1
+    shift
+    local PUBLISH_IMAGE=$1
+    shift
+    local BASE_TAG_ARRAY=( "$@" )
 
     for index in "${!BASE_TAG_ARRAY[@]}"; do
         tag="${BASE_TAG_ARRAY[$index]}"

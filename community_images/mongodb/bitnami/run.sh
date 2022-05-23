@@ -101,4 +101,4 @@ test()
 
 declare -a BASE_TAG_ARRAY=("5.0.8-debian-10-r" "4.4.14-debian-10-r" "4.2.20-debian-10-r")
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${BASE_TAG_ARRAY[@]}" test "${PUBLISH_IMAGE}"
+build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

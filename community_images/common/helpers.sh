@@ -31,6 +31,41 @@ create_stub()
     docker push "${STUB_IMAGE_FULL}"
 }
 
+add_rolling_tags()
+{
+    INPUT_TAG=$1 # example: 10.6.8-debian-10-r2
+    IS_LATEST_TAG=$2
+
+    IFS='-'
+    read -a input_arr <<< "$INPUT_TAG"
+
+    version="${input_arr[0]}"
+    os="${input_arr[1]}"
+    os_ver="${input_arr[2]}"
+    build="${input_arr[2]}"
+
+    IFS="."
+    read -a ver_arr <<< "$version"
+    maj_v="${ver_arr[0]}"
+    min_v="${ver_arr[1]}"
+    build_v="${ver_arr[2]}"
+
+    FULL_VER_TAG="$version" # 10.6.8
+    VER_OS_TAG="$maj_v"."$min_v"-"$os"-"$os_ver" # 10.6-debian-10
+    MAJ_MINOR_TAG="$maj_v"."$min_v" # 10.6
+
+    declare -a rolling_tags=("$FULL_VER_TAG" "$VER_OS_TAG" "$MAJ_MINOR_TAG")
+
+    if [[ "$IS_LATEST_TAG" = "yes"]]; then
+        rolling_tags+=("latest")
+    fi
+
+    for rolling_tag in "${rolling_tags[@]}"; do
+        docker tag "${INPUT_TAG}" "$rolling_tag"
+        docker push "$rolling_tag"
+    done
+}
+
 harden_image()
 {
     local INPUT_REGISTRY=$1
@@ -38,10 +73,10 @@ harden_image()
     local REPOSITORY=$3
     local TAG=$4
     local PUBLISH_IMAGE=$5
+    local IS_LATEST_TAG=$6
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
-    local OUTPUT_IMAGE_LATEST_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:latest
     
     # Create stub for docker image
     rfharden "${INPUT_IMAGE_FULL}"-rfstub
@@ -54,11 +89,7 @@ harden_image()
         # Push stub to our dockerhub account
         docker push "${OUTPUT_IMAGE_FULL}"
 
-        # create latest tag
-        docker tag "${OUTPUT_IMAGE_FULL}" "${OUTPUT_IMAGE_LATEST_FULL}"
-
-        # Push latest tag
-        docker push "${OUTPUT_IMAGE_LATEST_FULL}"
+        add_rolling_tags "${OUTPUT_IMAGE_FULL}" "${IS_LATEST_TAG}"
 
         echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
     else
@@ -91,7 +122,7 @@ cleanup_namespace()
 }
 
 
-build_images()
+build_image()
 {
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2
@@ -99,6 +130,7 @@ build_images()
     local BASE_TAG=$4
     local TEST_FUNCTION=$5
     local PUBLISH_IMAGE=$6
+    local IS_LATEST_TAG=$7
 
     local TAG RAPIDFORT_TAG NAMESPACE
     TAG=$("${SCRIPTPATH}"/../../common/dockertags "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
@@ -120,7 +152,7 @@ build_images()
 
     create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}"
     "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
-    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${PUBLISH_IMAGE}"
+    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
         "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}" "${NAMESPACE}"
@@ -132,6 +164,25 @@ build_images()
     cleanup_namespace "${NAMESPACE}"
     NAMESPACE_TO_CLEANUP=
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
+}
+
+build_images
+{
+    local INPUT_REGISTRY=$1
+    local INPUT_ACCOUNT=$2
+    local REPOSITORY=$3
+    local BASE_TAG_ARRAY=$4
+    local TEST_FUNCTION=$5
+    local PUBLISH_IMAGE=$6
+
+    for index in "${!BASE_TAG_ARRAY[@]}"; do
+        tag="${BASE_TAG_ARRAY[$index]}"
+        IS_LATEST_TAG="no"
+        if [[ "$index" = 0 ]]; then
+            IS_LATEST_TAG="yes"
+        fi
+        build_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" test "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
+    done
 }
 
 function finish {

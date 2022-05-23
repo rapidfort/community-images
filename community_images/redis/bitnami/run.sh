@@ -122,8 +122,6 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a tags=("6.2.7-debian-10-r" "6.0.16-debian-10-r")
+declare -a BASE_TAG_ARRAY=("6.2.7-debian-10-r" "6.0.16-debian-10-r")
 
-for tag in "${tags[@]}"; do
-   build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" test "${PUBLISH_IMAGE}"
-done
+build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${BASE_TAG_ARRAY}" test "${PUBLISH_IMAGE}"

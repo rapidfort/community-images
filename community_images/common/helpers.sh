@@ -102,11 +102,15 @@ build_images()
 
     local TAG RAPIDFORT_TAG NAMESPACE
     TAG=$("${SCRIPTPATH}"/../../common/dockertags "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
-    RAPIDFORT_TAG=$("${SCRIPTPATH}"/../../common/dockertags "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
-    if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
-        echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
-        return
+    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
+        # dont create image for publish mode if tag exists
+        RAPIDFORT_TAG=$("${SCRIPTPATH}"/../../common/dockertags "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+
+        if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
+            echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
+            return
+        fi
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")
@@ -130,9 +134,14 @@ build_images()
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }
 
-# function finish {
-#   kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods 
-#   kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
-#   kubectl delete namespace "${NAMESPACE_TO_CLEANUP}" 
-# }
-# trap finish EXIT
+function finish {
+    if [[ -z "$NAMESPACE_TO_CLEANUP" ]]; then
+        kubectl get pods --all-namespaces
+        kubectl get services --all-namespaces
+    else
+        kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods
+        kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
+        kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
+    fi
+}
+trap finish EXIT

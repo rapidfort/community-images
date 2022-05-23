@@ -17,6 +17,9 @@ def get_latest_tag():
         if "rfstub" not in tag:
             tags.append(tag)
 
+    if not tags:
+        return
+
     tags.sort(key = lambda tag: int(tag[len(sys.argv[1]):]))
     if tags:
         return tags[-1]
@@ -24,10 +27,8 @@ def get_latest_tag():
 
 def main():
     latest_tag = get_latest_tag()
-    if not latest_tag:
-        exit(1)
-
-    print(latest_tag)
+    if latest_tag:
+        print(latest_tag)
 
 
 if __name__ == "__main__":

@@ -12,9 +12,37 @@ body:
     attributes:
       label: Name and Version
       description: Name and version of the affected chart
-      placeholder: bitnami/wordpress 1.2.3
+      placeholder: rapidfort/postgresql 1.2.3
     validations:
       required: true
+  - type: checkboxes
+    id: runtime
+    attributes:
+      label: Which runtime are you using to reproduce this issue?
+      description: You may select more than one.
+      options:
+        - label: Kubernetes
+        - label: Docker Compose
+        - label: Docker
+  - type: dropdown
+    id: non_hardened_reproducible
+    attributes:
+      label: Is this issue reproducible on the original non-hardened image?
+      description: Please select one
+      options:
+        - label: Yes
+        - label: No
+  - type: dropdown
+    id: bug_type
+    attributes:
+      label: Could you please review our troubleshooting (/TROUBLE_SHOOTING.md) guide and identify the category?
+      description: Please select one
+      options:
+        - label: Coverage Script
+        - label: RF Hardening
+        - label: Source image usage
+        - label: Source image behavior
+        - label: Unknown
   - type: textarea
     attributes:
       label: What steps will reproduce the bug?

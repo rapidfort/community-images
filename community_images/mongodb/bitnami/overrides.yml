@@ -24,7 +24,7 @@ arbiter:
       add: ["SYS_PTRACE"]
   resources:
     limits:
-      cpu: 400m
+      cpu: 1000m
       memory: 2048Mi
     requests:
       cpu: 200m
@@ -43,7 +43,7 @@ hidden:
       value: "0"
   resources:
     limits:
-      cpu: 400m
+      cpu: 500m
       memory: 2048Mi
     requests:
       cpu: 200m

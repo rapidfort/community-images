@@ -49,7 +49,6 @@ body:
         - Source image behavior
         - Unknown
   - type: textarea
-    id: steps
     attributes:
       label: What steps will reproduce the bug?
       description: Enter details about your bug.
@@ -61,24 +60,20 @@ body:
     validations:
       required: true
   - type: textarea
-    id: custom_params
     attributes:
       label: Are you using any custom parameters or values?
       description: Add any parameter used via `--set` or as a `values.yaml` customization.
   - type: textarea
-    id: expected_behavior
     attributes:
       label: What is the expected behavior?
       description: If possible please provide textual output instead of screenshots.
   - type: textarea
-    id: observed_behavior
     attributes:
       label: What do you see instead?
       description: If possible please provide textual output instead of screenshots.
     validations:
       required: true
   - type: textarea
-    id: more_details
     attributes:
       label: Additional information
       description: Tell us anything else you think we should know.

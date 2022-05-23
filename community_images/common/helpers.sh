@@ -136,8 +136,8 @@ build_images()
 
 function finish {
     if [[ -z "$NAMESPACE_TO_CLEANUP" ]]; then
-        kubectl --all-namespaces get pods
-        kubectl --all-namespaces get services
+        kubectl get pods --all-namespaces
+        kubectl get services --all-namespaces
     else
         kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods
         kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all

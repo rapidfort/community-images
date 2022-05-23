@@ -1,5 +1,9 @@
 name: 🐞 Bug
 description: Create a report to help us improve
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - codervinod
 body:
   - type: markdown
     attributes:
@@ -39,7 +43,7 @@ body:
   - type: dropdown
     id: bug_type
     attributes:
-      label: Could you please review our [troubleshooting](/TROUBLE_SHOOTING.md) guide and identify the category?
+      label: Could you please identify the category? Details in TROUBLE_SHOOTING.md
       description: Please select one
       options:
         - Coverage Script

@@ -134,9 +134,14 @@ build_images()
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }
 
-# function finish {
-#   kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods 
-#   kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
-#   kubectl delete namespace "${NAMESPACE_TO_CLEANUP}" 
-# }
-# trap finish EXIT
+function finish {
+    if [[ -z "$NAMESPACE_TO_CLEANUP" ]]; then
+        kubectl --all-namespaces get pods
+        kubectl --all-namespaces get services
+    else
+        kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods
+        kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
+        kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
+    fi
+}
+trap finish EXIT

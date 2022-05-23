@@ -25,3 +25,11 @@ body:
         - label: Kubernetes
         - label: Docker Compose
         - label: Docker
+  - type: dropdown
+    id: non_hardened_reproducible
+    attributes:
+      label: Is this issue reproducible on the original non-hardened image?
+      description: Please select one
+      options:
+        - Yes
+        - No

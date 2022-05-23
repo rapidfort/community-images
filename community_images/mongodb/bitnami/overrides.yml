@@ -15,7 +15,7 @@ resources:
     memory: 2048Mi
   requests:
     cpu: 200m
-    memory: 128Mi
+    memory: 512Mi
 arbiter:
   containerSecurityContext:
     enabled: true
@@ -28,7 +28,7 @@ arbiter:
       memory: 2048Mi
     requests:
       cpu: 200m
-      memory: 128Mi
+      memory: 512Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
       value: "0"
@@ -47,4 +47,4 @@ hidden:
       memory: 2048Mi
     requests:
       cpu: 200m
-      memory: 128Mi
+      memory: 512Mi

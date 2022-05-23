@@ -11,10 +11,10 @@ extraEnvVars:
     value: "0"
 resources:
   limits:
-    cpu: 400m
+    cpu: 1000m
     memory: 4096Mi
   requests:
-    cpu: 200m
+    cpu: 500m
     memory: 512Mi
 arbiter:
   containerSecurityContext:

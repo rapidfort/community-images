@@ -41,6 +41,14 @@ RapidFort’s hardened [{{- rf_docker_link -}}][rf-dh-image-link] image has been
 
 We are making available secure copies of the images we use every day, as well as the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
+## Supported tags and respective `Dockerfile` links
+
+{%- for docker_link in docker_links %}
+* {{ docker_link -}}
+{% endfor %}
+
+Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
+
 ## Have questions?
 If you’d like to learn more about how RapidFort works or our container optimization process:
 

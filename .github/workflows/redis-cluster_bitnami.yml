@@ -1,6 +1,9 @@
 name: Redis™ Cluster Run
 
 on:
+  pull_request:
+    branches:
+    - main
   schedule:
   - cron: '0 * * * *'
 
@@ -27,7 +30,14 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        if: github.event_name != 'pull_request'
         run: ./community_images/redis-cluster/bitnami/run.sh yes
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        if: github.event_name == 'pull_request'
+        run: ./community_images/redis-cluster/bitnami/run.sh no
       - name: Run functional test
         run: ./community_images/redis-cluster/bitnami/functional_test.sh
 

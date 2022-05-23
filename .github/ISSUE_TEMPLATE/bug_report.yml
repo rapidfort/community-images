@@ -25,11 +25,21 @@ body:
         - label: Kubernetes
         - label: Docker Compose
         - label: Docker
-
+  - type: dropdown
+    id: non_hardened_reproducible
+    attributes:
+      label: Is this issue reproducible on the original source image?
+      description: Please select one
+      options:
+        - Reproducible
+        - Not reproducible
+        - Unknown
+    validations:
+      required: true
   - type: dropdown
     id: bug_type
     attributes:
-      label: Could you please review our troubleshooting (/TROUBLE_SHOOTING.md) guide and identify the category?
+      label: Could you please review our [troubleshooting](/TROUBLE_SHOOTING.md) guide and identify the category?
       description: Please select one
       options:
         - Coverage Script
@@ -37,6 +47,8 @@ body:
         - Source image usage
         - Source image behavior
         - Unknown
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: What steps will reproduce the bug?

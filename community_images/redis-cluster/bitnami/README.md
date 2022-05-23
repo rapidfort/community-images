@@ -46,6 +46,11 @@ RapidFort’s hardened [rapidfort/redis-cluster][rf-dh-image-link] image has bee
 
 We are making available secure copies of the images we use every day, as well as the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
+## Supported tags and respective `Dockerfile` links
+* [`6.2`, `6.2-debian-10`, `6.2.7`, `6.2.7-debian-10-r24` (6.2/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis-cluster/blob/6.2.7-debian-10-r24/6.2/debian-10/Dockerfile)
+
+Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
+
 ## Have questions?
 If you’d like to learn more about how RapidFort works or our container optimization process:
 

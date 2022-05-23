@@ -9,26 +9,12 @@ containerSecurityContext:
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"
-resources:
-  limits:
-    cpu: 1000m
-    memory: 4096Mi
-  requests:
-    cpu: 500m
-    memory: 512Mi
 arbiter:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
     capabilities:
       add: ["SYS_PTRACE"]
-  resources:
-    limits:
-      cpu: 1000m
-      memory: 2048Mi
-    requests:
-      cpu: 200m
-      memory: 512Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
       value: "0"
@@ -41,13 +27,6 @@ hidden:
   extraEnvVars:
     - name: "RF_VERBOSE"
       value: "0"
-  resources:
-    limits:
-      cpu: 500m
-      memory: 2048Mi
-    requests:
-      cpu: 200m
-      memory: 512Mi
 livenessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 30

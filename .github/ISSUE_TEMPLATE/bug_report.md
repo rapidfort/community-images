@@ -1,38 +1,71 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+name: 🐞 Bug
+description: Create a report to help us improve
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue. Before you open the bug report please review the following troubleshooting guide:
+          - [Troubleshoot RapidFort Community Images Issues](https://github.com/rapidfort/community-images/blob/main/TROUBLE_SHOOTING.md)
 
----
-
-**Describe the bug**
-A clear and concise description of what the bug is.
-
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
-
-**Expected behavior**
-A clear and concise description of what you expected to happen.
-
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+        Please fill in as much of the following form as you're able.
+  - type: input
+    attributes:
+      label: Image name
+      description: Name of the affected image (repository+tag)
+      placeholder: rapidfort/postgresql:latest
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+    label: Which runtime are you using to reproduce this issue?
+    description: You may select more than one.
+    options:
+      - label: Kubernetes
+      - label: Docker Compose
+      - label: Docker
+  - type: dropdown
+    attributes:
+    label: Is this issue reproducible on the original non-hardened image?
+    description: Please select one
+    options:
+      - label: Yes
+      - label: No
+  - type: dropdown
+    attributes:
+    label: Could you please review our troubleshooting (/TROUBLE_SHOOTING.md) guide and identify the category?
+    description: Please select one
+    options:
+      - label: Coverage Script
+      - label: RF Hardening
+      - label: Source image usage
+      - label: Source image behavior
+      - label: Unknown
+  - type: textarea
+    attributes:
+      label: What steps will reproduce the bug?
+      description: Enter details about your bug.
+      placeholder: |
+        1. In this environment...
+        2. With this config...
+        3. Run '...'
+        4. See error...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Are you using any custom parameters or values?
+      description: Add any parameter used via `--set` or as a `values.yaml` customization.
+  - type: textarea
+    attributes:
+      label: What is the expected behavior?
+      description: If possible please provide textual output instead of screenshots.
+  - type: textarea
+    attributes:
+      label: What do you see instead?
+      description: If possible please provide textual output instead of screenshots.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: Tell us anything else you think we should know.

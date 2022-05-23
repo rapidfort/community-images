@@ -8,7 +8,7 @@ RAPIDFORT_ACCOUNT=rapidfort
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
 
-create_stub()
+function create_stub()
 {
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2
@@ -31,24 +31,24 @@ create_stub()
     docker push "${STUB_IMAGE_FULL}"
 }
 
-add_rolling_tags()
+function add_rolling_tags()
 {
     INPUT_TAG=$1 # example: 10.6.8-debian-10-r2
     IS_LATEST_TAG=$2
 
     IFS='-'
+    # shellcheck disable=SC2162
     read -a input_arr <<< "$INPUT_TAG"
 
     version="${input_arr[0]}"
     os="${input_arr[1]}"
     os_ver="${input_arr[2]}"
-    build="${input_arr[2]}"
 
     IFS="."
+    # shellcheck disable=SC2162
     read -a ver_arr <<< "$version"
     maj_v="${ver_arr[0]}"
     min_v="${ver_arr[1]}"
-    build_v="${ver_arr[2]}"
 
     FULL_VER_TAG="$version" # 10.6.8
     VER_OS_TAG="$maj_v"."$min_v"-"$os"-"$os_ver" # 10.6-debian-10
@@ -56,7 +56,7 @@ add_rolling_tags()
 
     declare -a rolling_tags=("$FULL_VER_TAG" "$VER_OS_TAG" "$MAJ_MINOR_TAG")
 
-    if [[ "$IS_LATEST_TAG" = "yes"]]; then
+    if [[ "$IS_LATEST_TAG" = "yes" ]]; then
         rolling_tags+=("latest")
     fi
 
@@ -66,7 +66,7 @@ add_rolling_tags()
     done
 }
 
-harden_image()
+function harden_image()
 {
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2
@@ -97,13 +97,13 @@ harden_image()
     fi
 }
 
-get_namespace_string()
+function get_namespace_string()
 {
     local REPOSITORY=$1
     echo "${REPOSITORY}-$(echo $RANDOM | md5sum | head -c 10; echo;)"
 }
 
-setup_namespace()
+function setup_namespace()
 {
     local NAMESPACE=$1
     kubectl create namespace "${NAMESPACE}"
@@ -115,14 +115,14 @@ setup_namespace()
     kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}" 
 }
 
-cleanup_namespace()
+function cleanup_namespace()
 {
     local NAMESPACE=$1
     kubectl delete namespace "${NAMESPACE}"
 }
 
 
-build_image()
+function build_image()
 {
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2
@@ -166,7 +166,7 @@ build_image()
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }
 
-build_images
+function build_images()
 {
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2

@@ -46,6 +46,13 @@ RapidFort’s hardened [rapidfort/mongodb][rf-dh-image-link] image has been opti
 
 We are making available secure copies of the images we use every day, as well as the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
+## Supported tags and respective `Dockerfile` links
+* [`5.0`, `5.0-debian-10`, `5.0.8`, `5.0.8-debian-10-r25`, `latest` (5.0/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mongodb/blob/5.0.8-debian-10-r25/5.0/debian-10/Dockerfile)
+* [`4.4`, `4.4-debian-10`, `4.4.14`, `4.4.14-debian-10-r16` (4.4/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mongodb/blob/4.4.14-debian-10-r16/4.4/debian-10/Dockerfile)
+* [`4.2`, `4.2-debian-10`, `4.2.20`, `4.2.20-debian-10-r16` (4.2/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mongodb/blob/4.2.20-debian-10-r16/4.2/debian-10/Dockerfile)
+
+Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
+
 ## Have questions?
 If you’d like to learn more about how RapidFort works or our container optimization process:
 

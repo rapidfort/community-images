@@ -20,6 +20,7 @@ body:
     attributes:
       label: Which runtime are you using to reproduce this issue?
       description: You may select more than one.
+      multiple: true
       options:
         - label: Kubernetes
         - label: Docker Compose
@@ -30,19 +31,19 @@ body:
       label: Is this issue reproducible on the original non-hardened image?
       description: Please select one
       options:
-        - label: Yes
-        - label: No
+        - Yes
+        - No
   - type: dropdown
     id: bug_type
     attributes:
       label: Could you please review our troubleshooting (/TROUBLE_SHOOTING.md) guide and identify the category?
       description: Please select one
       options:
-        - label: Coverage Script
-        - label: RF Hardening
-        - label: Source image usage
-        - label: Source image behavior
-        - label: Unknown
+        - Coverage Script
+        - RF Hardening
+        - Source image usage
+        - Source image behavior
+        - Unknown
   - type: textarea
     attributes:
       label: What steps will reproduce the bug?

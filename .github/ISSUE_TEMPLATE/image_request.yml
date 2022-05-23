@@ -1,0 +1,38 @@
+name: "\U0001F680 Image request"
+description: Suggest a new image to be added to community images
+labels: ["feature_request"]
+assignees:
+  - codervinod
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an idea to improve RapidFort community images.
+        Please fill in as much of the following form as you're able.
+  - type: input
+    attributes:
+      label: Name and Version
+      description: Name and version of the image you would like to see in community images.
+      placeholder: rapidfort/nginx 1.2.3
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What is the problem this image will solve?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Is this an open source project? Could you provide us more details about this project?
+      description: Describe the requests. If you already have something in mind... PRs are welcome!
+    validations:
+      required: true
+  - type: checkboxes
+    id: runtime
+    attributes:
+      label: Which runtime are you using to reproduce this issue?
+      description: You may select more than one.
+      options:
+        - label: Kubernetes
+        - label: Docker Compose
+        - label: Docker

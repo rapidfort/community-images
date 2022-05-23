@@ -38,13 +38,6 @@ hidden:
     runAsUser: 1001
     capabilities:
       add: ["SYS_PTRACE"]
-  resources:
-    limits:
-      cpu: 400m
-      memory: 512Mi
-    requests:
-      cpu: 200m
-      memory: 128Mi
   extraEnvVars:
     - name: "RF_VERBOSE"
       value: "0"

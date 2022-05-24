@@ -33,8 +33,9 @@ function create_stub()
 
 function add_rolling_tags()
 {
-    INPUT_TAG=$1 # example: 10.6.8-debian-10-r2
-    IS_LATEST_TAG=$2
+    REPOSITORY=$1
+    INPUT_TAG=$2 # example: 10.6.8-debian-10-r2
+    IS_LATEST_TAG=$3
 
     IFS='-'
     # shellcheck disable=SC2162
@@ -61,8 +62,8 @@ function add_rolling_tags()
     fi
 
     for rolling_tag in "${rolling_tags[@]}"; do
-        docker tag "${INPUT_TAG}" "$rolling_tag"
-        docker push "$rolling_tag"
+        docker tag "${REPOSITORY}:${INPUT_TAG}" "${REPOSITORY}:$rolling_tag"
+        docker push "${REPOSITORY}:$rolling_tag"
     done
 }
 
@@ -89,7 +90,7 @@ function harden_image()
         # Push stub to our dockerhub account
         docker push "${OUTPUT_IMAGE_FULL}"
 
-        add_rolling_tags "${OUTPUT_IMAGE_FULL}" "${IS_LATEST_TAG}"
+        add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
 
         echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
     else

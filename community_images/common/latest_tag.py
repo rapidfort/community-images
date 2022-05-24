@@ -1,11 +1,13 @@
-import fileinput
+"""
+This file is used by dockertags script to sort and find
+latest tag from a given list of tags
+"""
 import sys
 
 
-
-if(len(sys.argv) != 2):
+if len(sys.argv) != 2:
     print("Usage latest_tag <prefix>")
-    exit(1)
+    sys.exit(1)
 
 def get_latest_tag():
     """
@@ -18,14 +20,16 @@ def get_latest_tag():
             tags.append(tag)
 
     if not tags:
-        return
+        return []
 
     tags.sort(key = lambda tag: int(tag[len(sys.argv[1]):]))
     if tags:
         return tags[-1]
+    return []
 
 
 def main():
+    """Main function to sort and find latest tags"""
     latest_tag = get_latest_tag()
     if latest_tag:
         print(latest_tag)

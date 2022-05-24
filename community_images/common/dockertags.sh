@@ -18,7 +18,7 @@ HELP
 fi
 
 image="$1"
-tags="$(wget -q https://registry.hub.docker.com/v1/repositories/${image}/tags -O -  | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' | tr '}' '\n'  | awk -F: '{print $3}')"
+tags="$(wget -q https://registry.hub.docker.com/v1/repositories/"${image}"/tags -O -  | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' | tr '}' '\n'  | awk -F: '{print $3}')"
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
@@ -28,4 +28,4 @@ if [ -z "$tags" ]; then
     exit 0
 fi
 
-echo "${tags}" | python3 ${SCRIPTPATH}/latest_tag.py "$2"
+echo "${tags}" | python3 "${SCRIPTPATH}"/latest_tag.py "$2"

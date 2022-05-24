@@ -11,7 +11,7 @@ Once the hardened image is developed, we run some benchmark tests on these harde
 Community images project rely on upstream source image to work correctly. Broadly, the issues will fall into three categories:
 
 
-1. ### Coverage script was not covering the workflow which is being exercised in production.
+1. ### Coverage script was not covering the feature which is being exercised in production.
     > Remediation: We need to enhance coverage scripts. Please report an issue and provide PR if possible.
 
 1. ### Defect in RapidFort hardening system is introducing a defect in community image

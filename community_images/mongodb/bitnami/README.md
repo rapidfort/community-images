@@ -20,7 +20,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most popular image
 
 ## What is MongoDB®?
 
-> MongoDB® is a relational open source NoSQL database. Easy to use, it stores data in JSON-like documents. Automated scalability and high-performance. Ideal for developing cloud native applications.
+> MongoDB® is an open source NoSQL database. Easy to use, it stores data in JSON-like documents. Automated scalability and high-performance. Ideal for developing cloud native applications.
 
 
 [Overview of MongoDB®](https://www.mongodb.com/)

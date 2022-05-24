@@ -46,10 +46,10 @@ body:
       label: Could you please identify the category? Details in TROUBLE_SHOOTING.md
       description: Please select one
       options:
-        - Coverage Script
-        - RF Hardening
-        - Source image usage
-        - Source image behavior
+        - Coverage missing
+        - RF error
+        - User error
+        - Source image error
         - Unknown
     validations:
       required: true

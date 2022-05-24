@@ -37,15 +37,18 @@ test()
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
-    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
+
+    # get pod name
+    POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
     #... testing logic goes here....
 
     # copy common_commands.sh into container
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh ${HELM_RELEASE}-0:/tmp/common_commands.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh ${POD_NAME}:/tmp/common_commands.sh
 
     # run command on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 -- /bin/bash -c "/tmp/common_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

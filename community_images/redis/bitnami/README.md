@@ -6,11 +6,11 @@
 
 # RapidFort hardened image for Redis™
 
-This Redis™ container was hardened by RapidFort’s container optimization process. This container is free to use and has no license limitations.
+RapidFort’s container optimization process hardened this Redis™ container. This container is free to use and has no license limitations.
 
-It is the same as [bitnami/redis][source-image-dh-link] image, but much more secure.
+It is the same as the [bitnami/redis][source-image-dh-link] image but more secure.
 
-Every day, we optimize and harden a variety of Docker Hub’s most popular images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
+Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
 [![Metrics][metrics-link]][rf-link]
 
@@ -30,7 +30,7 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 ## How do I use this hardened Redis™ image?
 
-The runtime instructions for this container are no different than the official release. Follow the instructions in their readme, but use our hardened image.
+The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -42,19 +42,19 @@ $ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
 
 ## What is a hardened image?
 
-A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container makes use of many open source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
+A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [bitnami/redis][source-image-dh-link] image available here on Docker Hub.
+This image is a hardened version of the official [bitnami/redis][source-image-dh-link] image on Docker Hub.
 
-RapidFort is an industry-leading container optimization solution that minimizes software attack surface by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
+RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
 
 ## What’s the difference between the official [bitnami/redis][source-image-dh-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/redis][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/redis][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
-We are making available secure copies of the images we use every day, as well as the most popular ones on Docker Hub. We want to make the world a safer place to operate.
+We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
 * [`6.2`, `6.2-debian-10`, `6.2.7`, `6.2.7-debian-10-r24` (6.2/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis/blob/6.2.7-debian-10-r24/6.2/debian-10/Dockerfile)

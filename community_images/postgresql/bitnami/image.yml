@@ -12,6 +12,8 @@ usage_instructions: |
   $ helm install my-postgresql bitnami/postgresql --set image.repository=rapidfort/postgresql
 what_is_text: |
   PostgreSQL (Postgres) is an open source object-relational database known for reliability and data integrity. ACID-compliant, it supports foreign keys, joins, views, triggers and stored procedures.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`14`, `14-debian-10`, `14.3.0`, `14.3.0-debian-10-r10`, `latest` (14/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/14.3.0-debian-10-r10/14/debian-10/Dockerfile)"
   - "[`13`, `13-debian-10`, `13.7.0`, `13.7.0-debian-10-r9` (13/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/13.7.0-debian-10-r9/13/debian-10/Dockerfile)"

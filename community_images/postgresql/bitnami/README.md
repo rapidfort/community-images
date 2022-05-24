@@ -25,6 +25,9 @@ Every day, we optimize and harden a variety of Docker Hub’s most popular image
 
 [Overview of PostgreSQL](https://www.postgresql.com/)
 
+Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+
+
 ## How do I use this hardened PostgreSQL image?
 
 The runtime instructions for this container are no different than the official release. Follow the instructions in their readme, but use our hardened image.
@@ -66,9 +69,6 @@ Subscribe to project updates by watching the [rapidfort/community-images GitHub 
 If you’d like to learn more about how RapidFort works or our container optimization process:
 
 * https://rapidfort.com
-
-
-Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 <br>
 <br>

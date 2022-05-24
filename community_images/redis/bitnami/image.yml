@@ -12,5 +12,7 @@ usage_instructions: |
   $ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
 what_is_text: |
   Redis™ is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
+disclaimer: |
+  Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
 docker_links:
   - "[`6.2`, `6.2-debian-10`, `6.2.7`, `6.2.7-debian-10-r24` (6.2/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis/blob/6.2.7-debian-10-r24/6.2/debian-10/Dockerfile)"

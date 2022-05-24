@@ -25,6 +25,9 @@ Every day, we optimize and harden a variety of Docker Hub’s most popular image
 
 [Overview of MongoDB®](https://www.mongodb.com/)
 
+Disclaimer: The respective trademarks mentioned in the offering are owned by the respective companies. We do not provide a commercial license for any of these products. This listing has an open-source license. MongoDB(R) is run and maintained by MongoDB, which is a completely separate project from RapidFort.
+
+
 ## How do I use this hardened MongoDB® image?
 
 The runtime instructions for this container are no different than the official release. Follow the instructions in their readme, but use our hardened image.
@@ -64,9 +67,6 @@ Subscribe to project updates by watching the [rapidfort/community-images GitHub 
 If you’d like to learn more about how RapidFort works or our container optimization process:
 
 * https://rapidfort.com
-
-
-Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 <br>
 <br>

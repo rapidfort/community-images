@@ -30,7 +30,7 @@ body:
   - type: checkboxes
     id: runtime
     attributes:
-      label: Which runtime are you using to reproduce this issue?
+      label: Which runtimes need to be supported for this image?
       description: You may select more than one.
       options:
         - label: Kubernetes

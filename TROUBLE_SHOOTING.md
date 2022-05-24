@@ -8,17 +8,17 @@ Once the hardened image is developed, we run some benchmark tests on these harde
 
 ![Demo](contrib/coverage.jpeg)
 
-Community images project rely on upstream source image to work correctly. Broadly, the issues will fall into three categories:
+Community images project rely on upstream source image to work correctly. Broadly, the issues will fall into following categories:
 
 
-1. ### Coverage script was not covering the feature which is being exercised in production.
+1. ### Coverage script was not covering the feature which is being exercised in production (Coverage missing).
     > Remediation: We need to enhance coverage scripts. Please report an issue and provide PR if possible.
 
-1. ### Defect in RapidFort hardening system is introducing a defect in community image
+1. ### Defect in RapidFort hardening system is introducing a defect in community image (RF error).
     > Remediation: Please report an issue and we would work with our core engineering team to investigate and fix this issue.
 
-1. ### Upstream source image is being incorrectly used.
+1. ### Upstream source image is being incorrectly used (User error).
     > Remediation: Please file a report and update the documentation for the image.
 
-1. ### Upstream source image has introduced a defect
+1. ### Upstream source image has introduced a defect (Source image error).
     > Remediation: Please file a report on the source project. For eg: Bitnami Postgres image.

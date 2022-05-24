@@ -46,7 +46,7 @@ test()
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/nginx_coverage.sh "${POD_NAME}":/tmp/nginx_coverage.sh
 
     # run command on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 -- /bin/bash -c "/tmp/nginx_coverage.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/nginx_coverage.sh"
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh ${POD_NAME}:/tmp/common_commands.sh

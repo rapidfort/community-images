@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  nginx:
+  template:
     image: @IMAGE
     user: root
     cap_add:

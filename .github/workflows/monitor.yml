@@ -9,15 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull mariadb
+      - name: Pull MariaDB
         run: docker pull rapidfort/mariadb
-      - name: Pull mongodb
+      - name: Pull MongoDB®
         run: docker pull rapidfort/mongodb
-      - name: Pull mysql
+      - name: Pull MySQL
         run: docker pull rapidfort/mysql
-      - name: Pull postgresql
+      - name: Pull PostgreSQL
         run: docker pull rapidfort/postgresql
-      - name: Pull redis
+      - name: Pull Redis™
         run: docker pull rapidfort/redis
-      - name: Pull redis-cluster
+      - name: Pull Redis™ Cluster
         run: docker pull rapidfort/redis-cluster

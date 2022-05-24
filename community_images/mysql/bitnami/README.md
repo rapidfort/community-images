@@ -20,7 +20,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most popular image
 
 ## What is MySQL?
 
-> MySQL is a fast, reliable, scalable, and easy to use open source relational database system. Designed to handle mission-critical, heavy-load production applications.
+> MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.
 
 
 [Overview of MySQL](https://www.mysql.com/)

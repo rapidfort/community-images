@@ -20,7 +20,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most popular image
 
 ## What is MongoDB®?
 
-> MongoDB® is an open source NoSQL database. Easy to use, it stores data in JSON-like documents. Automated scalability and high-performance. Ideal for developing cloud native applications.
+> MongoDB® is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata. MongoDB is developed by MongoDB Inc., and is published under a combination of the Server Side Public License and the Apache License.
 
 
 [Overview of MongoDB®](https://www.mongodb.com/)

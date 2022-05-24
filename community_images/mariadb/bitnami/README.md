@@ -20,7 +20,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most popular image
 
 ## What is MariaDB?
 
-> MariaDB is an open source, community-developed SQL database server that is widely in use around the world due to its enterprise features, flexibility, and collaboration with leading tech firms.
+> MariaDB Server is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
 
 
 [Overview of MariaDB](https://www.mariadb.com/)

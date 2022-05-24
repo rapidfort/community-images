@@ -15,7 +15,7 @@
 
 Every day, we scan the most popular Docker Hub container images and remove unused code. Then we publish the results to share with you.
 
-Our container optimization process reduces the software attack surface and chance of a vulnerability exploit.
+Our container optimization process reduces the software attack surface and the chance of a vulnerability exploit.
 
 Stop downloading container images with thousands of vulnerabilities. Start using secure containers with minimized attack surfaces.
 
@@ -24,11 +24,11 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 ![Demo][demo]
 
-RapidFort scans your Docker containers, looks for unused code and vulnerabilities, and lets you delete everything you don’t need. It’s a simple command line tool that’s part of [RapidFort](https://rapidfort.com), our commercial product.
+RapidFort scans your Docker containers, looks for unused code and vulnerabilities and lets you delete everything you don’t need. It’s a simple command-line tool part of [RapidFort](https://rapidfort.com), our commercial product.
 
 ## What containers are supported?
 
-We’ve optimized and hardened some of the most popular container images available on Docker Hub and are making them available to the community.
+We’ve optimized and hardened some of the most popular container images on Docker Hub and are making them available to the community.
 
 | Repository                        | RapidFort Image                                | View Report                     |  Status    |
 |-----------------------------------| ------------------------------------------     | ------------------------------- | --------   |

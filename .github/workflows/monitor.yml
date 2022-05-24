@@ -1,0 +1,23 @@
+name: Image monitor
+
+on:
+  schedule:
+  - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull mariadb
+        run: docker pull rapidfort/mariadb
+      - name: Pull mongodb
+        run: docker pull rapidfort/mongodb
+      - name: Pull mysql
+        run: docker pull rapidfort/mysql
+      - name: Pull postgresql
+        run: docker pull rapidfort/postgresql
+      - name: Pull redis
+        run: docker pull rapidfort/redis
+      - name: Pull redis-cluster
+        run: docker pull rapidfort/redis-cluster

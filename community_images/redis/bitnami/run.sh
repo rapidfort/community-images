@@ -122,6 +122,6 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("6.2.7-debian-10-r" "6.0.16-debian-10-r")
+declare -a BASE_TAG_ARRAY=("6.2.7-debian-10-r") # remove  "6.0.16-debian-10-r", getting stuck at uninstall
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

@@ -64,7 +64,7 @@ k8s_test()
         --mysql-table-engine=innodb \
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
-        --threads=64 \
+        --threads=4 \
         --time=30 \
         --mysql-host="${HELM_RELEASE}" \
         --mysql-port=3306 \

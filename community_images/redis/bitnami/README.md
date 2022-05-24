@@ -12,6 +12,12 @@ It is the same as [bitnami/redis][source-image-dh-link] image, but much more sec
 
 Every day, we optimize and harden a variety of Docker Hub’s most popular images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
+[![Metrics](assets/metrics.png)][rf-link]
+
+## Vulnerabilities: Original vs. Hardened
+
+[![CVE Reduction](assets/cve_reduction.png)][rf-link]
+
 ## What is Redis™?
 
 > Redis™ is an open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
@@ -40,6 +46,7 @@ This image is a hardened version of the official [bitnami/redis][source-image-dh
 RapidFort is an industry-leading container optimization solution that minimizes software attack surface by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
+
 
 ## What’s the difference between the official [bitnami/redis][source-image-dh-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/redis][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open source software, containerized infrastructure, and security.

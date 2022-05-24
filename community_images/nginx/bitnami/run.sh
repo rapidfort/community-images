@@ -42,7 +42,11 @@ test()
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
-    #... testing logic goes here....
+    # copy nginx_coverage.sh into container
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/nginx_coverage.sh "${POD_NAME}":/tmp/nginx_coverage.sh
+
+    # run command on cluster
+    kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-0 -- /bin/bash -c "/tmp/nginx_coverage.sh"
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh ${POD_NAME}:/tmp/common_commands.sh

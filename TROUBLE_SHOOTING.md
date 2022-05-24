@@ -3,7 +3,7 @@
 # Trouble Shooting Guide
 
 ## Background: 
-"RapidFort Community Images" is an open-source project to optimize and harden popular docker images continuously. We pick up a source image ("upstream image"), add coverage scripts, and use RapidFort to optimize and harden the image. A hardened image is created automatically every time a new image is submitted to Docker hub.
+"RapidFort Community Images" is an open-source project to continuously optimize and harden popular docker images. We pick up a source image ("upstream image"), add coverage scripts, and use RapidFort to optimize and harden the image. A hardened image is created automatically every time a new image is submitted to the Docker hub.
 
 Optimized images are significantly smaller and carry fewer vulnerabilities while providing the complete functionality of the original image.
 
@@ -11,10 +11,10 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ![Demo](contrib/coverage.png)
 
-Community images project rely on upstream source image to work correctly. Broadly, the issues will fall into following categories:
+Community images project rely on upstream source image to work correctly. Broadly, the issues will fall into the following categories:
 
 
-1. ### Coverage script is not exercising a feature that is used in production (Coverage missing).
+1. ### The coverage script does not exercise a feature used in production (Coverage missing).
     > Remediation: We need to enhance coverage scripts. Please report an issue and provide PR if possible.
 
 1. ### Incorrect usage of the upstream source image (User error).
@@ -24,4 +24,4 @@ Community images project rely on upstream source image to work correctly. Broadl
     > Remediation: Please file a report on the source project. For eg: Bitnami Postgres image.
 
 1. ### RapidFort hardened image is introducing a defect (RF error).
-    > Remediation: Please report an issue and we would work with our core engineering team to investigate and fix this issue.
+    > Remediation: Please report an issue, and we will work with our core engineering team to investigate and fix this issue.

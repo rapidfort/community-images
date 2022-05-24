@@ -53,7 +53,7 @@ run_sys_bench_test()
         --mysql-table-engine=innodb \
         --oltp-table-size=100000 \
         --oltp-tables-count=24 \
-        --threads=64 \
+        --threads=4 \
         --time=30 \
         --mysql-host="${MYSQL_HOST}" \
         --mysql-port=3306 \

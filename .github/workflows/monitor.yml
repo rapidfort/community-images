@@ -21,3 +21,5 @@ jobs:
         run: docker pull rapidfort/redis
       - name: Pull Redis™ Cluster
         run: docker pull rapidfort/redis-cluster
+      - name: Pull NGINX
+        run: docker pull rapidfort/nginx

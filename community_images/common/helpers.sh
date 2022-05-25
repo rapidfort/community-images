@@ -80,7 +80,7 @@ function harden_image()
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
     
     # Create hardened image, use .rfignore file if present
-    if test -f "${SCRIPTPATH}/.rfignore"; then
+    if [[ -f "${SCRIPTPATH}/.rfignore" ]]; then
         rfharden "${INPUT_IMAGE_FULL}"-rfstub -p "${SCRIPTPATH}/.rfignore"
     else
         rfharden "${INPUT_IMAGE_FULL}"-rfstub

@@ -38,7 +38,6 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [PostgreSQL][ postgresql-github-link]| [![dh][dh-rf-badge]][postgresql-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![postgresql-image-ft][postgresql-ft-badge]][postgresql-ft-badge-link] |
 | [Redis™][ redis-github-link]| [![dh][dh-rf-badge]][redis-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![redis-image-ft][redis-ft-badge]][redis-ft-badge-link] |
 | [Redis™ Cluster][ redis-cluster-github-link]| [![dh][dh-rf-badge]][redis-cluster-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![redis-cluster-image-ft][redis-cluster-ft-badge]][redis-cluster-ft-badge-link] |
-| [NGINX][ nginx-github-link]| [![dh][dh-rf-badge]][nginx-rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![nginx-image-ft][nginx-ft-badge]][nginx-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -104,9 +103,3 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [redis-cluster-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml/badge.svg
 [redis-cluster-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml
 [redis-cluster-source-dh-link]: https://hub.docker.com/r/bitnami/redis-cluster
-
-[nginx-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nginx/bitnami
-[nginx-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nginx
-[nginx-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_bitnami.yml/badge.svg
-[nginx-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nginx_bitnami.yml
-[nginx-source-dh-link]: https://hub.docker.com/r/bitnami/nginx

@@ -39,7 +39,7 @@ function multii_check
   fi
 }
 HELM_RELEASE=multi-nginx
-helm upgrade --install "${HELM_RELEASE}" "${SCRIPTPATH}"/multi-nginx --set replicaCount=3 --set image.repository=rapidfort/nginx --set image.tag=latest
+helm upgrade --install "${HELM_RELEASE}" "${SCRIPTPATH}"/multi-nginx --set replicaCount=3 --set image.repository=bitnami/nginx --set image.tag=latest
 
 export NUM=1
 export FIND_ME="1st"

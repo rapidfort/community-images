@@ -1,3 +1,9 @@
+#!/bin/bash
+
+set -x
+set -e
+
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 export IPADDR=127.0.0.1
 export PORTNUM=443
@@ -33,7 +39,7 @@ function multii_check
   fi
 }
 HELM_RELEASE=multi-nginx
-helm upgrade --install "${HELM_RELEASE}" multi-nginx --set replicaCount=3 --set image.repository=rapidfort/nginx --set image.tag=latest
+helm upgrade --install "${HELM_RELEASE}" "${SCRIPTPATH}"/multi-nginx --set replicaCount=3 --set image.repository=rapidfort/nginx --set image.tag=latest
 
 export NUM=1
 export FIND_ME="1st"

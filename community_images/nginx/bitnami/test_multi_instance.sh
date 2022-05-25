@@ -14,7 +14,7 @@ export NUM=1
 export FIND_ME="1st"
 function multii_check
 {
-  rm foo
+  rm -f foo
   touch foo
   export RETRIES=32
   export SUCCESS=0

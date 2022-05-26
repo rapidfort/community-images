@@ -24,7 +24,7 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 ![Demo][demo]
 
-RapidFort scans your Docker containers, looks for unused code and vulnerabilities and lets you delete everything you don’t need. It’s a simple command-line tool part of [RapidFort](https://rapidfort.com), our commercial product.
+[RapidFort](https://rapidfort.com) scans your Docker containers for vulnerabilities and looks for unused components that can be removed.
 
 ## What containers are supported?
 

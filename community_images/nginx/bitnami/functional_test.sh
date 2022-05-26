@@ -18,7 +18,15 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install helm
-    helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository=rapidfort/"$REPOSITORY" --namespace "${NAMESPACE}"
+    helm install "${HELM_RELEASE}" \
+        bitnami/"$REPOSITORY" \
+        --set image.repository=rapidfort/"$REPOSITORY" \
+        --set cloneStaticSiteFromGit.enabled=true \
+        --set cloneStaticSiteFromGit.repository="https://github.com/mdn/beginner-html-site-styled.git" \
+        --set cloneStaticSiteFromGit.branch=master \
+        --set ingress.enabled=true \
+        --set ingress.selfSigned=true \
+        --namespace "${NAMESPACE}"
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"

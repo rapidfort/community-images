@@ -16,4 +16,4 @@ done
 
 # /opt/bitnami/scripts/nginx/start.sh
 
-/opt/bitnami/scripts/nginx/restart.sh
+# /opt/bitnami/scripts/nginx/restart.sh

@@ -4,7 +4,7 @@
 
 Contributions are welcome via GitHub Pull Requests. This document outlines the process to help get your contribution accepted.
 
-Any contribution is welcome, from new features, bug fixes, [tests](#testing), documentation improvements, or even [adding images to the repository](#adding-a-new-image-to-the-repository) (if it's viable once evaluated the feasibility).
+Any contribution is welcome, from new features, bug fixes, [tests](#testing), documentation improvements, or even [adding images to the repository](#adding-a-new-image-to-the-repository) (if it's viable).
 
 ## How to Contribute
 
@@ -57,13 +57,13 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't, the DCO chec
 
 ### Testing 
 
-1. Determine the types of tests you will need based on the image you are testing.
-1. Ensure tests exercise all the workflows to ensure hardened images don't break in production.
+1. Determine the types of tests you will need based on your image.
+1. Ensure tests exercise all workflows to ensure hardened images don't break in production.
 
 ### Adding a new image to the repository
 
 There are two major technical requirements to add a new image to our catalog:
-- Follow the same structure/patterns that the rest of the community-images images (you can find a basic scaffolding in the [`template` directory](https://github.com/rapidfort/community-images/tree/master/template)).
+- Follow the same structure/patterns as the rest of the community-images images (you can find a basic scaffolding in the [`template` directory](https://github.com/rapidfort/community-images/tree/master/template)).
 - Use an [OSI approved license](https://opensource.org/licenses) for all the software.
 
 Please, note that we will need to check internally and evaluate the feasibility of adding the new solution to the catalog. Due to limited resources, this step could take some time.

@@ -63,7 +63,7 @@ We are making secure copies of the images we use every day and the most popular 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
 ## Have questions?
-If you’d like to learn more about how RapidFort works or our container optimization process:
+If you'd like to learn more about RapidFort or our container optimization process:
 
 * https://rapidfort.com
 

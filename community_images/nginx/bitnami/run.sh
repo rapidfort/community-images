@@ -20,6 +20,24 @@ else
     PUBLISH_IMAGE=$1
 fi
 
+create_certs()
+{
+    rm -rf "${SCRIPTPATH}"/certs/*
+    openssl req -newkey rsa:4096 \
+                -x509 \
+                -sha256 \
+                -days 3650 \
+                -nodes \
+                -out "${SCRIPTPATH}"/certs/server.crt \
+                -keyout "${SCRIPTPATH}"/certs/server.key \
+                -subj "/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"
+}
+
+cleanup_certs()
+{
+    rm -rf "${SCRIPTPATH}"/certs/*
+}
+
 test()
 {
     local IMAGE_REPOSITORY=$1
@@ -71,6 +89,9 @@ test()
     # delete the PVC associated
     kubectl -n "${NAMESPACE}" delete pvc --all
 
+    # create ssl certs
+    create_certs
+
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
@@ -88,6 +109,9 @@ test()
 
     # clean up docker file
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
+
+    # clean up certs
+    cleanup_certs
 }
 
 declare -a BASE_TAG_ARRAY=("1.21.6-debian-10-r" "1.20.2-debian-10-r")

@@ -8,3 +8,30 @@ services:
       - SYS_PTRACE
     ports:
       - '8080'
+    volumes:
+      - ./certs:/certs
+      - ./configs/server_ssl_rev_lb.conf:/opt/bitnami/nginx/conf/server_blocks/server_ssl_rev_lb.conf:ro
+  backend1a:
+    image: nginxdemos/hello:plain-text
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '80'
+  backend1b:
+    image: nginxdemos/hello:plain-text
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '80'
+  backend2a:
+    image: nginxdemos/hello:plain-text
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '80'
+  backend2b:
+    image: nginxdemos/hello:plain-text
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '80'

@@ -18,17 +18,17 @@ function create_stub()
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
     local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfstub
 
-    # Pull docker image
-    docker pull "${INPUT_IMAGE_FULL}"
+    # # Pull docker image
+    # docker pull "${INPUT_IMAGE_FULL}"
     
-    # Create stub for docker image
-    rfstub "${INPUT_IMAGE_FULL}"
+    # # Create stub for docker image
+    # rfstub "${INPUT_IMAGE_FULL}"
 
-    # Change tag to point to rapidfort docker account
-    docker tag "${INPUT_IMAGE_FULL}"-rfstub "${STUB_IMAGE_FULL}"
+    # # Change tag to point to rapidfort docker account
+    # docker tag "${INPUT_IMAGE_FULL}"-rfstub "${STUB_IMAGE_FULL}"
 
-    # Push stub to our dockerhub account
-    docker push "${STUB_IMAGE_FULL}"
+    # # Push stub to our dockerhub account
+    # docker push "${STUB_IMAGE_FULL}"
 }
 
 function add_rolling_tags()

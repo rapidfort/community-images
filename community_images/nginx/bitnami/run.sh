@@ -42,6 +42,10 @@ test()
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
+    # fetch service url and curl to url
+    URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
+    curl -k "${URL}"
+
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
 

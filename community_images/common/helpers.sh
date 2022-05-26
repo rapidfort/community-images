@@ -156,9 +156,9 @@ function build_image()
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
     setup_namespace "${NAMESPACE}"
 
-    create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}"
+    #create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}"
     "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
-    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
+    #harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
         "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}" "${NAMESPACE}"
@@ -166,8 +166,8 @@ function build_image()
         echo "Non publish mode, cant test image as image not published"
     fi
 
-    bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${REPOSITORY} ${TAG}-rfstub"
-    cleanup_namespace "${NAMESPACE}"
+    #bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${REPOSITORY} ${TAG}-rfstub"
+    #cleanup_namespace "${NAMESPACE}"
     NAMESPACE_TO_CLEANUP=
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
 }

@@ -33,7 +33,12 @@ test()
     helm repo update
 
     # Install helm
-    helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
+    helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" \
+        --namespace "${NAMESPACE}" \
+        --set image.tag="${TAG}" \
+        --set image.repository="${IMAGE_REPOSITORY}" \
+        --set ingress.hostname="${NAMESPACE}" \
+        -f "${SCRIPTPATH}"/overrides.yml
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"

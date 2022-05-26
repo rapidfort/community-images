@@ -60,31 +60,31 @@ test()
     # run command on cluster
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
 
-    # # bring down helm install
-    # helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
+    # bring down helm install
+    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 
-    # # delete the PVC associated
-    # kubectl -n "${NAMESPACE}" delete pvc --all
+    # delete the PVC associated
+    kubectl -n "${NAMESPACE}" delete pvc --all
 
-    # # update image in docker-compose yml
-    # sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    # update image in docker-compose yml
+    sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
-    # # install docker container
-    # docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    # install docker container
+    docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
 
-    # # sleep for 30 sec
-    # sleep 30
+    # sleep for 30 sec
+    sleep 30
 
-    # # logs for tracking
-    # docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
+    # logs for tracking
+    docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
-    # # kill docker-compose setup container
-    # docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down
+    # kill docker-compose setup container
+    docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down
 
-    # # clean up docker file
-    # rm -rf "${SCRIPTPATH}"/docker-compose.yml
+    # clean up docker file
+    rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("1.21.6-debian-10-r") # "1.20.2-debian-10-r")
+declare -a BASE_TAG_ARRAY=("1.21.6-debian-10-r" "1.20.2-debian-10-r")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

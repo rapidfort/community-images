@@ -44,7 +44,15 @@ test()
 
     # fetch service url and curl to url
     URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
+
+    # curl to http url
     curl -k "${URL}"
+
+    # fetch minikube ip
+    MINIKUBE_IP=$(minikube ip)
+
+    # curl to https url
+    curl https://"${MINIKUBE_IP}":443 -k
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh

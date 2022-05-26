@@ -113,6 +113,7 @@ test()
     # run curl in loop for different endpoints
     for i in {1..20};
     do 
+        echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
         curl https://localhost:"${TLS_PORT}"/a -k

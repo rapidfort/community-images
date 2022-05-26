@@ -8,9 +8,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-HELM_RELEASE=rf-ngixn
-NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=nginx
+HELM_RELEASE=rf-"${REPOSITORY}"
+NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 
 k8s_test()
 {
@@ -38,7 +38,7 @@ k8s_test()
 
     # curl to https url
     curl https://"${MINIKUBE_IP}":443 -k
-    
+
     # log pods
     kubectl -n "${NAMESPACE}" get pods
     kubectl -n "${NAMESPACE}" get svc

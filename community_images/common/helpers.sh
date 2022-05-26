@@ -206,4 +206,4 @@ function finish {
         kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
     fi
 }
-trap finish EXIT
+# trap finish EXIT

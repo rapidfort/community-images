@@ -23,7 +23,7 @@ fi
 cleanup_certs()
 {
     rm -rf "${SCRIPTPATH}"/certs
-    mkdir - "${SCRIPTPATH}"/certs
+    mkdir -p "${SCRIPTPATH}"/certs
 }
 
 create_certs()
@@ -102,6 +102,19 @@ test()
 
     # sleep for 30 sec
     sleep 30
+
+    # find non-tls and tls port
+    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"_nginx_1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}"_nginx_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    
+    # run curl in loop for different endpoints
+    for i in {1..20};
+    do 
+        curl http://localhost:"${NON_TLS_PORT}"/a
+        curl http://localhost:"${NON_TLS_PORT}"/b
+        curl https://localhost:"${TLS_PORT}"/a -k
+        curl https://localhost:"${TLS_PORT}"/b -k
+    done
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

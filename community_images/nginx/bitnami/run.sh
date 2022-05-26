@@ -52,9 +52,6 @@ test()
     # upgrade helm
     helm repo update
 
-    # add ingress
-    minikube addons enable ingress
-
     # Install helm
     helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" \
         --namespace "${NAMESPACE}" \

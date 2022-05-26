@@ -20,9 +20,25 @@ k8s_test()
     # install helm
     helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository=rapidfort/"$REPOSITORY" --namespace "${NAMESPACE}"
 
-    # wait for pods
-    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    # waiting for pod to be ready
+    echo "waiting for pod to be ready"
+    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
 
+    # get pod name
+    POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
+
+    # fetch service url and curl to url
+    URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
+
+    # curl to http url
+    curl -k "${URL}"
+
+    # fetch minikube ip
+    MINIKUBE_IP=$(minikube ip)
+
+    # curl to https url
+    curl https://"${MINIKUBE_IP}":443 -k
+    
     # log pods
     kubectl -n "${NAMESPACE}" get pods
     kubectl -n "${NAMESPACE}" get svc

@@ -33,7 +33,7 @@ k8s_test()
     kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
 
     # get pod name
-    POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
+    # POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
     # fetch service url and curl to url
     URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
@@ -83,7 +83,7 @@ docker_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/"$REPOSITORY"#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    sed "s#@IMAGE#rapidfort/$REPOSITORY#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
     # install postgresql container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d

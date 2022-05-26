@@ -3,7 +3,8 @@
 # Trouble Shooting Guide
 
 ## Background: 
-"RapidFort Community Images" is an open-source project to continuously optimize and harden popular docker images. We pick up a source image ("upstream image"), add coverage scripts, and use RapidFort to optimize and harden the image. A hardened image is created automatically every time a new image is submitted to the Docker hub.
+"RapidFort Community Images" is an open-source project to continuously optimize and harden popular Docker images. We pick up a source image ("upstream image"), add coverage scripts, and use RapidFort to optimize and harden the image. A hardened image is automatically created every time a new image is pushed to Docker Hub.
+
 
 Optimized images are significantly smaller and carry fewer vulnerabilities while providing the complete functionality of the original image.
 
@@ -11,7 +12,7 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ![Demo](contrib/coverage.png)
 
-Community images project rely on upstream source image to work correctly. Broadly, the issues will fall into the following categories:
+The community images project relies on the upstream source images to work correctly. Broadly, the issues will fall into the following categories:
 
 
 1. ### The coverage script does not exercise a feature used in production (Coverage missing).

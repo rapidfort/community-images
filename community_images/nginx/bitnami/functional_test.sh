@@ -23,7 +23,7 @@ k8s_test()
         --set image.repository=rapidfort/"$REPOSITORY" \
         --set cloneStaticSiteFromGit.enabled=true \
         --set cloneStaticSiteFromGit.repository="https://github.com/mdn/beginner-html-site-styled.git" \
-        --set cloneStaticSiteFromGit.branch=master
+        --set cloneStaticSiteFromGit.branch=master \
         --namespace "${NAMESPACE}"
 
     # waiting for pod to be ready

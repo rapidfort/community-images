@@ -10,6 +10,7 @@
 
 [Getting started](#getting-started) ·
 [Contributing](CONTRIBUTING.md) ·
+[Build Process](#how-community-images-are-built) ·
 [Additional resources](#additional-resources)
 
 **RapidFort is a solution for building secure, optimized Docker containers.**

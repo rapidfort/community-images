@@ -67,26 +67,16 @@ We are making secure copies of the images we use every day and the most popular 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
 ## Have questions?
-If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link]. By signing up, you will be able to scan your containers for FREE.
-
-[![RF SignUp][rf-signup-badge]][rf-signup-link]
-[![RF Bookademo][rf-book-badge]][rf-book-link]
-
+If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
 
 <br>
 <br>
 
 
 [dh-rf-badge]: https://img.shields.io/badge/dockerhub-images-important.svg?logo=Docker
-
 [rf-link]: https://rapidfort.com 
-[rf-signup-link]: https://frontrow.rapidfort.com/app/login 
-[rf-book-link]: https://www.rapidfort.com/request-a-demo
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=[logo]
-[rf-signup-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=Sign%20Up&color=D6F5D6&logo=[logo]
-[rf-book-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=Book%20A%20Demo&color=59B5F1&logo=[logo]
-
 [logo]: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
 
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/mariadb/bitnami/assets/metrics.png

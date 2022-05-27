@@ -36,6 +36,9 @@ gen_main_readme()
   jinja -d "${SCRIPTPATH}"/../image_list.yml \
     -f yaml "${SCRIPTPATH}"/../community_images/common/templates/monitor.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/monitor.yml
 
+  jinja -d "${SCRIPTPATH}"/../image_list.yml \
+    -f yaml "${SCRIPTPATH}"/../community_images/common/templates/readme_updater.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/readme_updater.yml
+
   rm -f "${SCRIPTPATH}"/../image_list.yml
 }
 

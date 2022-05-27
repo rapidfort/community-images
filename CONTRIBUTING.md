@@ -46,6 +46,7 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't, the DCO chec
 ### Documentation Requirements
 
 - An image must include `README.md`. 
+- [image_generator.sh](https://github.com/rapidfort/community-images/blob/main/scripts/image_generator.sh) generates README.md automatically from image.yml. Please run `./scripts/image_generator.sh` after making changes in image-specific [image.yml](https://github.com/rapidfort/community-images/blob/main/community_images/template/provider/image.yml).
 - The title of the PR starts with the image name (e.g. `[image/provider]`)
 
 ### PR Approval and Release Process
@@ -63,7 +64,7 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't, the DCO chec
 ### Adding a new image to the repository
 
 There are two major technical requirements to add a new image to our catalog:
-- Follow the same structure/patterns as the rest of the community-images images (you can find a basic scaffolding in the [`template` directory](https://github.com/rapidfort/community-images/tree/master/template)).
+- Follow the same structure/patterns as the rest of the community-images images (you can find a basic scaffolding in the [`template` directory](https://github.com/rapidfort/community-images/tree/main/community_images/template/)).
 - Use an [OSI approved license](https://opensource.org/licenses) for all the software.
 
 Please, note that we will need to check internally and evaluate the feasibility of adding the new solution to the catalog. Due to limited resources, this step could take some time.

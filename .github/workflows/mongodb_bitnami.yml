@@ -21,8 +21,8 @@ jobs:
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
-          RF_USERNAME: ${{ secrets.RF_USERNAME }}
-          RF_PASSWORD: ${{ secrets.RF_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh

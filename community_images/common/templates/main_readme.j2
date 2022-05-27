@@ -42,6 +42,13 @@ We’ve optimized and hardened some of the most popular container images on Dock
 Here’s what you can do with Community Images.
 
 ```sh
+# Docker
+$ docker run --name redis -e ALLOW_EMPTY_PASSWORD=yes rapidfort/redis:latest
+
+# Docker compose 
+$ docker-compose up -d
+
+# Kubernetes Helm
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # install redis, just replace repository with RapidFort registry
@@ -51,6 +58,12 @@ $ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
 $ helm install my-postgresql bitnami/postgresql --set image.repository=rapidfort/postgresql
 
 ```
+## How Community Images are Built
+
+Source images are run through an optimization process that identifies and removes unused components from the image.
+You can contribute to this project by adding new images, improving coverage scripts, and adding regression and benchmark tests.
+
+![Demo](contrib/coverage.png)
 
 ## Additional Resources
 

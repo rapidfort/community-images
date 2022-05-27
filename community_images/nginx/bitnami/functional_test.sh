@@ -23,17 +23,12 @@ k8s_test()
         --set image.repository=rapidfort/"$REPOSITORY" \
         --set cloneStaticSiteFromGit.enabled=true \
         --set cloneStaticSiteFromGit.repository="https://github.com/mdn/beginner-html-site-styled.git" \
-        --set cloneStaticSiteFromGit.branch=master \
-        --set ingress.enabled=true \
-        --set ingress.selfSigned=true \
+        --set cloneStaticSiteFromGit.branch=master
         --namespace "${NAMESPACE}"
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
     kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
-
-    # get pod name
-    # POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
     # fetch service url and curl to url
     URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
@@ -41,11 +36,6 @@ k8s_test()
     # curl to http url
     curl -k "${URL}"
 
-    # fetch minikube ip
-    MINIKUBE_IP=$(minikube ip)
-
-    # curl to https url
-    curl https://"${MINIKUBE_IP}":443 -k
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

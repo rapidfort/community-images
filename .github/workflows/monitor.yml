@@ -15,6 +15,8 @@ jobs:
         run: docker pull rapidfort/mongodb
       - name: Pull MySQL
         run: docker pull rapidfort/mysql
+      - name: Pull NGINX
+        run: docker pull rapidfort/nginx
       - name: Pull PostgreSQL
         run: docker pull rapidfort/postgresql
       - name: Pull Redis™

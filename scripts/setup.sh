@@ -21,7 +21,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 if [[ "${FUNCTIONAL_TEST_SETUP}" = "no" ]]; then
   # Install rf
   curl  https://frontrow.rapidfort.com/cli/ | bash
-  rflogin "${RF_USERNAME}" "${RF_PASSWORD}"
+  rflogin
 
   # do docker login
   docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
@@ -53,3 +53,6 @@ kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 
 # install some helpers
 sudo apt-get install jq parallel docker-compose -y
+
+# add ingress
+minikube addons enable ingress

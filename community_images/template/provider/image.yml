@@ -1,0 +1,18 @@
+name: community-image
+official_name: RapidFort Community Images
+official_website: https://rapidfort.com
+source_image_dh_link: provider/template
+rf_docker_link: rapidfort/template
+image_workflow_name: template_provider
+github_location: template/provider
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install mariadb, just replace repository with RapidFort registry
+  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+what_is_text: |
+  Please replace this with the details about the source image you are hardening.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1.xx`, `1.xx-debian-10`, `1.xx.0`, `1.xx.0-debian-10-ryyy`, `latest` (1.xx/debian-10/Dockerfile)](https://github.com/provider/Dockerfile)"

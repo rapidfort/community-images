@@ -34,60 +34,62 @@ jobs:
 
       - name: Update readme for dockerhub
         run: ./scripts/update_readme_dh.sh
-
-      - name: Docker Hub Description mariadb
+      - name: Docker Hub Description MariaDB
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/mariadb
           readme-filepath: ./community_images/mariadb/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for mariadb
-
-      - name: Docker Hub Description mongodb
+          short-description: RapidFort optimized, hardened image for MariaDB
+      - name: Docker Hub Description MongoDB®
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/mongodb
           readme-filepath: ./community_images/mongodb/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for mongodb
-
-      - name: Docker Hub Description mysql
+          short-description: RapidFort optimized, hardened image for MongoDB®
+      - name: Docker Hub Description MySQL
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/mysql
           readme-filepath: ./community_images/mysql/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for mysql
-
-      - name: Docker Hub Description postgresql
+          short-description: RapidFort optimized, hardened image for MySQL
+      - name: Docker Hub Description NGINX
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/nginx
+          readme-filepath: ./community_images/nginx/bitnami/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for NGINX
+      - name: Docker Hub Description PostgreSQL
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/postgresql
           readme-filepath: ./community_images/postgresql/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for postgresql
-
-      - name: Docker Hub Description redis
+          short-description: RapidFort optimized, hardened image for PostgreSQL
+      - name: Docker Hub Description Redis™
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/redis
           readme-filepath: ./community_images/redis/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for redis
-
-      - name: Docker Hub Description redis-cluster
+          short-description: RapidFort optimized, hardened image for Redis™
+      - name: Docker Hub Description Redis™ Cluster
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/redis-cluster
           readme-filepath: ./community_images/redis-cluster/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for redis-cluster
+          short-description: RapidFort optimized, hardened image for Redis™ Cluster
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

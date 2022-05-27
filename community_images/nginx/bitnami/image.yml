@@ -1,0 +1,19 @@
+name: nginx
+official_name: NGINX
+official_website: http://nginx.org/
+source_image_dh_link: bitnami/nginx
+rf_docker_link: rapidfort/nginx
+image_workflow_name: nginx_bitnami
+github_location: nginx/bitnami
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install mariadb, just replace repository with RapidFort registry
+  $ helm install my-nginx bitnami/nginx --set image.repository=rapidfort/nginx
+what_is_text: |
+  Nginx (pronounced "engine-x") is an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server). The nginx project started with a strong focus on high concurrency, high performance and low memory usage. It is licensed under the 2-clause BSD-like license and it runs on Linux, BSD variants, Mac OS X, Solaris, AIX, HP-UX, as well as on other *nix flavors. It also has a proof of concept port for Microsoft Windows.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1.22`, `1.22-debian-10`, `1.22.0`, `1.22.0-debian-10-r0`, `latest` (1.22/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.22.0-debian-10-r0/1.22/debian-10/Dockerfile)"
+  - "[`1.21`, `1.21-debian-10`, `1.21.6`, `1.21.6-debian-10-r117`, `latest` (1.21/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.21.6-debian-10-r117/1.21/debian-10/Dockerfile)"

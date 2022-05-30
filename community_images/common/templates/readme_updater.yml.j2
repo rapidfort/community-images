@@ -11,10 +11,15 @@ on:
 
   workflow_dispatch:
 
+permissions: read-all
+
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: actions-cicd
+
+    permissions:
+      contents: write
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it

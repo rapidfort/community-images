@@ -7,6 +7,7 @@
 [![Dockerhub][dh-rf-badge]][dh-rf]
 [![License][license-badge]][license]
 [![FOSSA Status][fossa-badge]][fossa-link]
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6087/badge)](https://bestpractices.coreinfrastructure.org/projects/6087)
 
 [Getting started](#getting-started) ·
 [Contributing](CONTRIBUTING.md) ·

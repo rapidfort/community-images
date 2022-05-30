@@ -5,6 +5,8 @@ on:
   - cron: '*/20 * * * *'
   workflow_dispatch:
 
+permissions: read-all
+
 jobs:
   build:
     runs-on: ubuntu-latest

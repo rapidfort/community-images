@@ -1,6 +1,8 @@
 name: Pylint
 
-on: [push]
+on: [pull_request]
+
+permissions: read-all
 
 jobs:
   build:

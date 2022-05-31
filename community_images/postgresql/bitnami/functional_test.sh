@@ -17,7 +17,7 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install postgres
-    helm install "${HELM_RELEASE}" bitnami/postgresql --set image.repository=rapidfort/postgresql --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/postgresql --set image.repository=rapidfort/postgresql --namespace "${NAMESPACE}"
     
     # wait for cluster
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m

@@ -20,7 +20,7 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install mariadb
-    helm install "${HELM_RELEASE}" bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace "${NAMESPACE}"
 
     # wait for mariadb
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m

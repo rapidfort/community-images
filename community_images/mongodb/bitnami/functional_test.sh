@@ -55,7 +55,7 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install mongodb
-    helm install "${HELM_RELEASE}" bitnami/mongodb --set image.repository=rapidfort/mongodb --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/mongodb --set image.repository=rapidfort/mongodb --namespace "${NAMESPACE}"
 
     # wait for mongodb
     kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m

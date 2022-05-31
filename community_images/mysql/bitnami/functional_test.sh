@@ -20,7 +20,7 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install mysql
-    helm install "${HELM_RELEASE}" bitnami/mysql --set image.repository=rapidfort/mysql --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/mysql --set image.repository=rapidfort/mysql --namespace "${NAMESPACE}"
 
     # wait for mysql
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m

@@ -18,7 +18,7 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install helm
-    helm install "${HELM_RELEASE}" \
+    with_backoff helm install "${HELM_RELEASE}" \
         bitnami/"$REPOSITORY" \
         --set image.repository=rapidfort/"$REPOSITORY" \
         --set cloneStaticSiteFromGit.enabled=true \

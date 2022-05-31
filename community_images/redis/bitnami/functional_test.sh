@@ -17,7 +17,7 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install redis
-    helm install "${HELM_RELEASE}" bitnami/redis --set image.repository=rapidfort/redis --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/redis --set image.repository=rapidfort/redis --namespace "${NAMESPACE}"
     
     # wait for redis
     kubectl wait pods "${HELM_RELEASE}"-master-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m

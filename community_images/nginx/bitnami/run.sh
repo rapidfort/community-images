@@ -53,7 +53,7 @@ test()
     helm repo update
 
     # Install helm
-    helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" \
+    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" \
         --namespace "${NAMESPACE}" \
         --set image.tag="${TAG}" \
         --set image.repository="${IMAGE_REPOSITORY}" \

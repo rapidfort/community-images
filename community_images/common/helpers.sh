@@ -230,7 +230,7 @@ function with_backoff {
 
   if [[ "$exitCode" != 0 ]]
   then
-    echo "You've failed me for the last time! ($@)" 1>&2
+    echo "You've failed me for the last time! ($*)" 1>&2
   fi
 
   return "$exitCode"

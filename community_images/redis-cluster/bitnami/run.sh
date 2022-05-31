@@ -61,7 +61,7 @@ test()
     kubectl apply -f "${SCRIPTPATH}"/tls_certs.yml --namespace "${NAMESPACE}"
 
     # Install redis
-    helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" --set tls.enabled=true --set tls.existingSecret="${HELM_RELEASE}"-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f "${SCRIPTPATH}"/overrides.yml
+    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" --set tls.enabled=true --set tls.existingSecret="${HELM_RELEASE}"-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f "${SCRIPTPATH}"/overrides.yml
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"

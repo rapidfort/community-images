@@ -18,7 +18,7 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install helm
-    helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository=rapidfort/"$REPOSITORY" --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository=rapidfort/"$REPOSITORY" --namespace "${NAMESPACE}"
 
     # wait for pods
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m

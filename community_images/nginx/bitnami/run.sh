@@ -20,25 +20,6 @@ else
     PUBLISH_IMAGE=$1
 fi
 
-cleanup_certs()
-{
-    rm -rf "${SCRIPTPATH}"/certs
-    mkdir -p "${SCRIPTPATH}"/certs
-}
-
-create_certs()
-{
-    cleanup_certs
-
-    openssl req -newkey rsa:4096 \
-                -x509 \
-                -sha256 \
-                -days 3650 \
-                -nodes \
-                -out "${SCRIPTPATH}"/certs/server.crt \
-                -keyout "${SCRIPTPATH}"/certs/server.key \
-                -subj "/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"
-}
 
 test()
 {

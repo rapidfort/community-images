@@ -197,16 +197,16 @@ function build_images()
 
 # Retries a command a with backoff.
 #
-# The retry count is given by ATTEMPTS (default 5), the
+# The retry count is given by ATTEMPTS (default 10), the
 # initial backoff timeout is given by TIMEOUT in seconds
-# (default 1.)
+# (default 5.)
 #
 # Successive backoffs double the timeout.
 #
 # Beware of set -e killing your whole script!
 function with_backoff {
-  local max_attempts="${ATTEMPTS-5}"
-  local timeout="${TIMEOUT-1}"
+  local max_attempts="${ATTEMPTS-10}"
+  local timeout="${TIMEOUT-5}"
   local attempt=0
   local exitCode=0
 

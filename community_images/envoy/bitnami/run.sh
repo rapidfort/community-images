@@ -42,6 +42,9 @@ test()
     sleep 30
 
     # exec into container and run coverage script
+    docker exec -i "${NAMESPACE}"_envoy_1 bash -c /opt/bitnami/scripts/common_commands.sh
+
+    # exec into container and run coverage script
     docker exec -i "${NAMESPACE}"_envoy_1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # find non-tls and tls port

@@ -36,6 +36,7 @@ test()
 
     # install docker container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30
@@ -56,8 +57,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        curl https://localhost:"${TLS_PORT}"/a -k -v
-        curl https://localhost:"${TLS_PORT}"/b -k -v
+        curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+        curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
     done
 
     # logs for tracking
@@ -81,7 +82,9 @@ test()
         --name "${NAMESPACE}" \
         -v "${SCRIPTPATH}"/configs/dynamic/bootstrap.yaml:/opt/bitnami/envoy/conf/envoy.yaml \
         -v "${SCRIPTPATH}"/configs/dynamic:/etc/envoy \
-        rapidfort/"$REPOSITORY":latest
+        --cap-add=SYS_PTRACE \
+        "${IMAGE_REPOSITORY}":"${TAG}"
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for few seconds
     sleep 30

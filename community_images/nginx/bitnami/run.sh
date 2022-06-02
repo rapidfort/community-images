@@ -40,6 +40,7 @@ test()
         --set image.repository="${IMAGE_REPOSITORY}" \
         --set ingress.hostname="${NAMESPACE}" \
         -f "${SCRIPTPATH}"/overrides.yml
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
@@ -80,6 +81,7 @@ test()
 
     # install docker container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30
@@ -97,8 +99,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        curl https://localhost:"${TLS_PORT}"/a -k -v
-        curl https://localhost:"${TLS_PORT}"/b -k -v
+        curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+        curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
     done
 
     # logs for tracking

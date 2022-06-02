@@ -11,6 +11,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 REPOSITORY=nginx
 HELM_RELEASE=rf-"${REPOSITORY}"
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
+IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
 
 k8s_test()
 {
@@ -20,11 +21,12 @@ k8s_test()
     # install helm
     with_backoff helm install "${HELM_RELEASE}" \
         bitnami/"$REPOSITORY" \
-        --set image.repository=rapidfort/"$REPOSITORY" \
+        --set image.repository="${IMAGE_REPOSITORY}" \
         --set cloneStaticSiteFromGit.enabled=true \
         --set cloneStaticSiteFromGit.repository="https://github.com/mdn/beginner-html-site-styled.git" \
         --set cloneStaticSiteFromGit.branch=master \
         --namespace "${NAMESPACE}"
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
@@ -58,7 +60,8 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
-        --name "${NAMESPACE}" rapidfort/"$REPOSITORY":latest
+        --name "${NAMESPACE}" "${IMAGE_REPOSITORY}":latest
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for few seconds
     sleep 30
@@ -73,10 +76,11 @@ docker_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/$REPOSITORY#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    sed "s#@IMAGE#$IMAGE_REPOSITORY#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
     # install postgresql container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30

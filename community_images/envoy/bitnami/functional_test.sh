@@ -22,7 +22,8 @@ docker_test()
     docker run --rm -d --network="${NAMESPACE}" \
         --name "${NAMESPACE}" \
         -v "${SCRIPTPATH}"/configs/envoy_non_tls.yaml:/opt/bitnami/envoy/conf/envoy.yaml \
-        rapidfort/"$REPOSITORY":latest
+        "rapidfort/$REPOSITORY":latest
+    report_pulls "rapidfort/$REPOSITORY"
 
     # sleep for few seconds
     sleep 30
@@ -50,8 +51,9 @@ docker_compose_test()
     # update image in docker-compose yml
     sed "s#@IMAGE#rapidfort/$REPOSITORY#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
-    # install postgresql container
+    # install container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "rapidfort/$REPOSITORY"
 
     # sleep for 30 sec
     sleep 30
@@ -61,8 +63,8 @@ docker_compose_test()
     TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
     curl http://localhost:"${NON_TLS_PORT}"/a
     curl http://localhost:"${NON_TLS_PORT}"/b
-    curl https://localhost:"${TLS_PORT}"/a -k
-    curl https://localhost:"${TLS_PORT}"/b -k
+    curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+    curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

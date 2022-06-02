@@ -7,6 +7,7 @@ DOCKERHUB_REGISTRY=docker.io
 RAPIDFORT_ACCOUNT=rapidfort
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
+declare -a PULL_COUNTER
 
 function create_stub()
 {
@@ -261,6 +262,14 @@ function report_pulls()
     local REPO_NAME=$1
     local PULL_COUNT=${2-1} # default to single pull count
     echo "docker pull counter: $REPO_NAME $PULL_COUNT"
+    if [ -z "${PULL_COUNTER[$REPO_NAME]}" ]; then
+        PULL_COUNTER["$REPO_NAME"]=0
+    fi
+    echo "docker pull count previous value[$REPO_NAME]:" ${PULL_COUNTER[$REPO_NAME]}
+
+    # shellcheck disable=SC2004
+    PULL_COUNTER["$REPO_NAME"]=$((PULL_COUNTER[$REPO_NAME]+"$PULL_COUNT"))
+    echo "docker pull count updated to[$REPO_NAME]:" ${PULL_COUNTER[$REPO_NAME]}
 }
 
 function finish {

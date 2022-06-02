@@ -7,7 +7,7 @@ DOCKERHUB_REGISTRY=docker.io
 RAPIDFORT_ACCOUNT=rapidfort
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
-declare -a PULL_COUNTER
+# declare -a PULL_COUNTER
 
 function create_stub()
 {

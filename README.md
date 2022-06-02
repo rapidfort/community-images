@@ -93,56 +93,56 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 
 
 [mariadb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/mariadb/bitnami
-[mariadb-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mariadb?logo=docker&logoColor=orange
+[mariadb-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mariadb?logo=docker&logoColor=white
 [mariadb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mariadb
 [mariadb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_bitnami.yml/badge.svg
 [mariadb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_bitnami.yml
 [mariadb-source-dh-link]: https://hub.docker.com/r/bitnami/mariadb
 
 [mongodb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/mongodb/bitnami
-[mongodb-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mongodb?logo=docker&logoColor=orange
+[mongodb-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mongodb?logo=docker&logoColor=white
 [mongodb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mongodb
 [mongodb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_bitnami.yml/badge.svg
 [mongodb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_bitnami.yml
 [mongodb-source-dh-link]: https://hub.docker.com/r/bitnami/mongodb
 
 [mysql-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/mysql/bitnami
-[mysql-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mysql?logo=docker&logoColor=orange
+[mysql-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mysql?logo=docker&logoColor=white
 [mysql-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mysql
 [mysql-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mysql_bitnami.yml/badge.svg
 [mysql-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mysql_bitnami.yml
 [mysql-source-dh-link]: https://hub.docker.com/r/bitnami/mysql
 
 [nginx-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nginx/bitnami
-[nginx-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nginx?logo=docker&logoColor=orange
+[nginx-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nginx?logo=docker&logoColor=white
 [nginx-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nginx
 [nginx-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_bitnami.yml/badge.svg
 [nginx-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nginx_bitnami.yml
 [nginx-source-dh-link]: https://hub.docker.com/r/bitnami/nginx
 
 [postgresql-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/postgresql/bitnami
-[postgresql-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql?logo=docker&logoColor=orange
+[postgresql-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql?logo=docker&logoColor=white
 [postgresql-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql
 [postgresql-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_bitnami.yml/badge.svg
 [postgresql-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_bitnami.yml
 [postgresql-source-dh-link]: https://hub.docker.com/r/bitnami/postgresql
 
 [redis-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis/bitnami
-[redis-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis?logo=docker&logoColor=orange
+[redis-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis?logo=docker&logoColor=white
 [redis-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis
 [redis-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_bitnami.yml/badge.svg
 [redis-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_bitnami.yml
 [redis-source-dh-link]: https://hub.docker.com/r/bitnami/redis
 
 [redis-cluster-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis-cluster/bitnami
-[redis-cluster-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis-cluster?logo=docker&logoColor=orange
+[redis-cluster-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis-cluster?logo=docker&logoColor=white
 [redis-cluster-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis-cluster
 [redis-cluster-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml/badge.svg
 [redis-cluster-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml
 [redis-cluster-source-dh-link]: https://hub.docker.com/r/bitnami/redis-cluster
 
 [envoy-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/envoy/bitnami
-[envoy-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/envoy?logo=docker&logoColor=orange
+[envoy-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/envoy?logo=docker&logoColor=white
 [envoy-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/envoy
 [envoy-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/envoy_bitnami.yml/badge.svg
 [envoy-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/envoy_bitnami.yml

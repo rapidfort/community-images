@@ -36,7 +36,7 @@ test()
 
     # install docker container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
-    report_pulls "${IMAGE_REPOSITORY}" 1
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30

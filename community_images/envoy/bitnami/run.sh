@@ -49,7 +49,7 @@ test()
 
     # find non-tls and tls port
     NON_TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
-    # TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
     
     # run curl in loop for different endpoints
     for i in {1..20};
@@ -57,8 +57,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        # curl https://localhost:"${TLS_PORT}"/a -k
-        # curl https://localhost:"${TLS_PORT}"/b -k
+        curl https://localhost:"${TLS_PORT}"/a -k
+        curl https://localhost:"${TLS_PORT}"/b -k
     done
 
     # logs for tracking

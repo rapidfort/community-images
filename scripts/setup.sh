@@ -1,10 +1,10 @@
 #!/bin/bash
 
-FUNCTIONAL_TEST_SETUP=no
+EPH_SETUP=no
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -f|--functional)
-      FUNCTIONAL_TEST_SETUP="$2"
+    -e|--eph)
+      EPH_SETUP="$2"
       shift # past argument
       shift # past value
       ;;
@@ -18,13 +18,16 @@ done
 # this script keeps track of all things which need to be installed on github actions worker VM
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
-if [[ "${FUNCTIONAL_TEST_SETUP}" = "no" ]]; then
+if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
   curl  https://frontrow.rapidfort.com/cli/ | bash
   rflogin
 
   # do docker login
   docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
+else
+  curl -k https://127.0.0.1/cli/ | bash
+  rflogin
 fi
 
 # Install helm

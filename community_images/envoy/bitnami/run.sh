@@ -82,6 +82,7 @@ test()
         --name "${NAMESPACE}" \
         -v "${SCRIPTPATH}"/configs/dynamic/bootstrap.yaml:/opt/bitnami/envoy/conf/envoy.yaml \
         -v "${SCRIPTPATH}"/configs/dynamic:/etc/envoy \
+        --cap-add=SYS_PTRACE \
         "${IMAGE_REPOSITORY}":"${TAG}"
     report_pulls "${IMAGE_REPOSITORY}"
 

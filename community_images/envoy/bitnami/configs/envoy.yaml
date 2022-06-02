@@ -58,6 +58,11 @@ static_resources:
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
               common_tls_context:
+                alpn_protocols: h2
+                tls_params:
+                  tls_maximum_protocol_version: TLSv1_3
+                  tls_minimum_protocol_version: TLSv1_2
+                  cipher_suites: "[ECDHE-RSA-AES256-GCM-SHA384|ECDHE-RSA-AES128-GCM-SHA256]"
                 tls_certificates:
                 - certificate_chain: {filename: "/certs/server.crt"}
                   private_key: {filename: "/certs/server.key"}

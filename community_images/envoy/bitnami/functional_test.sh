@@ -20,7 +20,9 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
-        --name "${NAMESPACE}" rapidfort/"$REPOSITORY":latest
+        --name "${NAMESPACE}" \
+        -v "${SCRIPTPATH}"/configs/envoy_non_tls.yaml:/opt/bitnami/envoy/conf/envoy.yaml \
+        rapidfort/"$REPOSITORY":latest
 
     # sleep for few seconds
     sleep 30
@@ -42,6 +44,14 @@ docker_compose_test()
 
     # sleep for 30 sec
     sleep 30
+
+    # find non-tls and tls port
+    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    curl http://localhost:"${NON_TLS_PORT}"/a
+    curl http://localhost:"${NON_TLS_PORT}"/b
+    curl https://localhost:"${TLS_PORT}"/a -k
+    curl https://localhost:"${TLS_PORT}"/b -k
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

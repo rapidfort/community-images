@@ -71,6 +71,34 @@ test()
 
     # clean up certs
     cleanup_certs
+
+    # do dynamic config test
+    # create network
+    docker network create -d bridge "${NAMESPACE}"
+
+    # create docker container
+    docker run --rm -d --network="${NAMESPACE}" \
+        --name "${NAMESPACE}" \
+        -v "${SCRIPTPATH}"/configs/dynamic/bootstrap.yaml:/opt/bitnami/envoy/conf/envoy.yaml \
+        -v "${SCRIPTPATH}"/configs/dynamic:/etc/envoy \
+        rapidfort/"$REPOSITORY":latest
+
+    # sleep for few seconds
+    sleep 30
+
+    # get docker host ip
+    ENVOY_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
+
+    # run test on docker container
+    docker run --rm --network="${NAMESPACE}" \
+        -i alpine \
+        apk add curl;curl http://${ENVOY_HOST}:8081/ip;curl http://${ENVOY_HOST}:9001/ready
+
+    # clean up docker container
+    docker kill "${NAMESPACE}"
+
+    # delete network
+    docker network rm "${NAMESPACE}"
 }
 
 declare -a BASE_TAG_ARRAY=("1.22.0-debian-10-r" "1.21.2-debian-10-r" "1.20.3-debian-10-r" "1.19.4-debian-10-r")

@@ -57,8 +57,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        curl https://localhost:"${TLS_PORT}"/a -k -v
-        curl https://localhost:"${TLS_PORT}"/b -k -v
+        curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+        curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
     done
 
     # logs for tracking

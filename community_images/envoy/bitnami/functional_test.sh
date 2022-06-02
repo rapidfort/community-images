@@ -27,6 +27,14 @@ docker_test()
     # sleep for few seconds
     sleep 30
 
+    # get docker host ip
+    ENVOY_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
+
+    # run test on docker container
+    docker run --rm --network="${NAMESPACE}" \
+        -i alpine \
+        -- apk add curl;curl http://${ENVOY_HOST}:8080/ip
+
     # clean up docker container
     docker kill "${NAMESPACE}"
 

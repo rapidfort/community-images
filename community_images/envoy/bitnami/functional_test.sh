@@ -33,7 +33,7 @@ docker_test()
     # run test on docker container
     docker run --rm --network="${NAMESPACE}" \
         -i alpine \
-        apk add curl;curl http://${ENVOY_HOST}:8080/ip
+        apk add curl;curl http://"${ENVOY_HOST}":8080/ip
 
     # clean up docker container
     docker kill "${NAMESPACE}"

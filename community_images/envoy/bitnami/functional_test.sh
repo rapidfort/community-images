@@ -44,6 +44,9 @@ docker_test()
 
 docker_compose_test()
 {
+    # create ssl certs
+    create_certs
+
     # update image in docker-compose yml
     sed "s#@IMAGE#rapidfort/$REPOSITORY#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
@@ -69,6 +72,9 @@ docker_compose_test()
 
     # clean up docker file
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
+
+    # clean up certs
+    cleanup_certs
 }
 
 main()

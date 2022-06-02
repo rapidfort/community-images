@@ -36,6 +36,7 @@ test()
 
     # install docker container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}" 1
 
     # sleep for 30 sec
     sleep 30
@@ -81,7 +82,8 @@ test()
         --name "${NAMESPACE}" \
         -v "${SCRIPTPATH}"/configs/dynamic/bootstrap.yaml:/opt/bitnami/envoy/conf/envoy.yaml \
         -v "${SCRIPTPATH}"/configs/dynamic:/etc/envoy \
-        rapidfort/"$REPOSITORY":latest
+        "${IMAGE_REPOSITORY}":"${TAG}"
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for few seconds
     sleep 30

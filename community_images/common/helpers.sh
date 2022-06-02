@@ -236,13 +236,13 @@ function with_backoff {
   return "$exitCode"
 }
 
-cleanup_certs()
+function cleanup_certs()
 {
     rm -rf "${SCRIPTPATH}"/certs
     mkdir -p "${SCRIPTPATH}"/certs
 }
 
-create_certs()
+function create_certs()
 {
     cleanup_certs
 
@@ -254,6 +254,13 @@ create_certs()
                 -out "${SCRIPTPATH}"/certs/server.crt \
                 -keyout "${SCRIPTPATH}"/certs/server.key \
                 -subj "/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"
+}
+
+function report_pulls()
+{
+    local REPO_NAME=$1
+    local PULL_COUNT=${2-1} # default to single pull count
+    echo "docker pull counter: $REPO_NAME $PULL_COUNT"
 }
 
 function finish {

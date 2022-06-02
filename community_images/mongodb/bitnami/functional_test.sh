@@ -10,6 +10,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 HELM_RELEASE=rf-mongodb
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
+IMAGE_REPOSITORY=rapidfort/mongodb
 
 k8s_perf_runner()
 {
@@ -55,7 +56,8 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install mongodb
-    with_backoff helm install "${HELM_RELEASE}" bitnami/mongodb --set image.repository=rapidfort/mongodb --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/mongodb --set image.repository="${IMAGE_REPOSITORY}" --namespace "${NAMESPACE}"
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # wait for mongodb
     kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
@@ -92,7 +94,8 @@ docker_test()
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
         -e "MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}" \
-        --name "${NAMESPACE}" rapidfort/mongodb:latest
+        --name "${NAMESPACE}" "${IMAGE_REPOSITORY}":latest
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for few seconds
     sleep 30
@@ -113,10 +116,11 @@ docker_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/mongodb#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    sed "s#@IMAGE#${IMAGE_REPOSITORY}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
     # install postgresql container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}" 3
 
     # sleep for 60 sec
     sleep 60

@@ -13,6 +13,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 HELM_RELEASE=rf-mysql
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
+IMAGE_REPOSITORY=rapidfort/mysql
 
 k8s_test()
 {
@@ -20,7 +21,8 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install mysql
-    with_backoff helm install "${HELM_RELEASE}" bitnami/mysql --set image.repository=rapidfort/mysql --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/mysql --set image.repository="${IMAGE_REPOSITORY}" --namespace "${NAMESPACE}"
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # wait for mysql
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
@@ -92,7 +94,8 @@ docker_test()
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
         -e "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}" \
-        --name "${NAMESPACE}" rapidfort/mysql:latest
+        --name "${NAMESPACE}" "${IMAGE_REPOSITORY}":latest
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 60 seconds
     sleep 60
@@ -112,10 +115,11 @@ docker_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/mysql#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    sed "s#@IMAGE#${IMAGE_REPOSITORY}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
     # install postgresql container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}" 2
 
     # sleep for 60 sec
     sleep 60

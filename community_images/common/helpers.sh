@@ -282,7 +282,7 @@ function finish {
         kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
     fi
 
-    JSON_STR={
+    JSON_STR="{"
     FIRST=1
     for key in "${!PULL_COUNTER[@]}"; do
         if [ "$FIRST" = "0" ] ; then JSON_STR+=", " ; fi

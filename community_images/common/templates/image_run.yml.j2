@@ -32,14 +32,18 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         if: github.event_name != 'pull_request'
         run: ./community_images/{{- github_location -}}/run.sh yes
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         if: github.event_name == 'pull_request'
         run: ./community_images/{{- github_location -}}/run.sh no
       - name: Run functional test
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         run: ./community_images/{{- github_location -}}/functional_test.sh
 

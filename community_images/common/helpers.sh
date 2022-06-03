@@ -282,13 +282,15 @@ function finish {
         kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
     fi
 
+    JSON_STR={
     FIRST=1
-    echo -n "{"
     for key in "${!PULL_COUNTER[@]}"; do
-    if [ "$FIRST" = "0" ] ; then echo -n ", " ; fi
-    echo -n "\"$key\"=${PULL_COUNTER[$key]}"
-    FIRST=0
+        if [ "$FIRST" = "0" ] ; then JSON_STR+=", " ; fi
+        JSON_STR+="\"$key\":${PULL_COUNTER[$key]}"
+        FIRST=0
     done
-    echo "}"
+    JSON_STR+="}"
+
+    echo "curl https://counter.rapidfort.io/couners ${JSON_STR}"
 }
 trap finish EXIT

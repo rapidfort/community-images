@@ -10,6 +10,7 @@ permissions: read-all
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: actions-cicd
     steps:
 {%- for image in image_list %}
       - name: Pull {{ image.official_name }}

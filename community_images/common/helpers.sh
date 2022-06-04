@@ -291,6 +291,9 @@ function finish {
     done
     JSON_STR+="}"
 
-    echo "curl https://counter.rapidfort.io/couners ${JSON_STR}"
+    curl -X POST \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+        -d ${JSON_STR} https://data-receiver.rapidfort.io/counts/internal_image_pulls
 }
 trap finish EXIT

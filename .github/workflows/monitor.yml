@@ -27,3 +27,12 @@ jobs:
         run: docker pull rapidfort/redis-cluster
       - name: Pull Envoy
         run: docker pull rapidfort/envoy
+      - name: Update pull counts
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+            -d '{ "rapidfort/mariadb": 1 ,  "rapidfort/mongodb": 1 ,  "rapidfort/mysql": 1 ,  "rapidfort/nginx": 1 ,  "rapidfort/postgresql": 1 ,  "rapidfort/redis": 1 ,  "rapidfort/redis-cluster": 1 ,  "rapidfort/envoy": 1  }' \
+            https://data-receiver.rapidfort.io/counts/internal_image_pulls

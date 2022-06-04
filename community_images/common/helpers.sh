@@ -294,6 +294,6 @@ function finish {
     curl -X POST \
         -H "Accept: application/json" \
         -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-        -d \'${JSON_STR}\' https://data-receiver.rapidfort.io/counts/internal_image_pulls
+        -d ${JSON_STR} https://data-receiver.rapidfort.io/counts/internal_image_pulls
 }
 trap finish EXIT

@@ -1,6 +1,6 @@
 [![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
 
-[![rf-h][rf-h-badge]][rf-link] 
+[![rf-h][rf-h-badge]][rf-image-link]
 [![image-ft][ft-badge]][ft-badge-link]
 [![DH Image Pulls][dh-img-pulls-badge]][rf-dh-image-link]
 [![Dh Image Size][dh-img-size-badge]][rf-dh-image-link]
@@ -79,6 +79,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
 [rf-link]: https://rapidfort.com 
+[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmongodb
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/mongodb?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mongodb?logo=docker&logoColor=white
 

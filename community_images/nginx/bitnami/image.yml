@@ -5,6 +5,7 @@ source_image_dh_link: bitnami/nginx
 rf_docker_link: rapidfort/nginx
 image_workflow_name: nginx_bitnami
 github_location: nginx/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnginx
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 

@@ -82,9 +82,9 @@ function harden_image()
     
     # Create stub for docker image
     if [[ -f "${SCRIPTPATH}"/.rfignore ]]; then
-        rfharden "${INPUT_IMAGE_FULL}"-rfstub -p "${SCRIPTPATH}"/.rfignore
+        rfharden "${INPUT_IMAGE_FULL}"-rfstub -p "${SCRIPTPATH}"/.rfignore -m
     else
-        rfharden "${INPUT_IMAGE_FULL}"-rfstub
+        rfharden "${INPUT_IMAGE_FULL}"-rfstub -m
     fi
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then

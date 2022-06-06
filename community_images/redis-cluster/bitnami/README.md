@@ -15,11 +15,11 @@ It is the same as the [bitnami/redis-cluster][source-image-dh-link] image but mo
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
-[![Metrics][metrics-link]][rf-link]
+[![Metrics][metrics-link]][rf-image-link]
 
 ## Vulnerabilities: Original vs. Hardened
 
-[![CVE Reduction][cve-reduction-link]][rf-link]
+[![CVE Reduction][cve-reduction-link]][rf-image-link]
 
 ## What is Redis™ Cluster?
 

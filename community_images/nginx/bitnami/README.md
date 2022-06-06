@@ -1,4 +1,4 @@
-[![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
+[![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-image-link]
 
 [![rf-h][rf-h-badge]][rf-image-link]
 [![image-ft][ft-badge]][ft-badge-link]

@@ -37,7 +37,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | Repository                        | RapidFort Image                                | View Report                     |  Status    |
 |-----------------------------------| ------------------------------------------     | ------------------------------- | --------   | 
 {%- for image in image_list %}
-| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][ {{- image.name -}} -dh-img-pulls-badge]][ {{- image.name -}} -rf-dh-image-link] | [![rf-h][rf-h-badge]][{{- image.name -}} -rf-link] | [![ {{- image.name -}} -image-ft][ {{- image.name -}} -ft-badge]][ {{- image.name -}} -ft-badge-link] |
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] | [![rf-h][rf-h-badge]][{{- image.name -}} -rf-link] | [![ {{- image.name -}} -image-ft][ {{- image.name -}} -ft-badge]][ {{- image.name -}} -ft-badge-link] |
 {%- endfor %}
 
 ### How to use Community Images

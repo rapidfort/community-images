@@ -10,6 +10,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 HELM_RELEASE=rf-redis-cluster
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
+IMAGE_REPOSITORY=rapidfort/redis-cluster
 
 k8s_test()
 {
@@ -17,7 +18,8 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install redis
-    helm install "${HELM_RELEASE}" bitnami/redis-cluster --set image.repository=rapidfort/redis-cluster --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/redis-cluster --set image.repository="${IMAGE_REPOSITORY}" --namespace "${NAMESPACE}"
+    report_pulls "${IMAGE_REPOSITORY}" 6
 
     # wait for redis
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
@@ -31,8 +33,9 @@ k8s_test()
     # run redis-client
     kubectl run "${HELM_RELEASE}"-client --rm -i \
         --restart='Never' --namespace "${NAMESPACE}" \
-        --image rapidfort/redis-cluster --command \
+        --image "${IMAGE_REPOSITORY}" --command \
         -- redis-benchmark -h "${HELM_RELEASE}" -c 20 -n 10000 -a "$REDIS_PASSWORD" --cluster
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # delete cluster
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
@@ -47,10 +50,11 @@ k8s_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/redis-cluster#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    sed "s#@IMAGE#${IMAGE_REPOSITORY}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
     # install redis container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}" 6
 
     # sleep for 30 sec
     sleep 30
@@ -63,8 +67,9 @@ docker_compose_test()
 
     # run redis-client tests
     docker run --rm -d --network="${NAMESPACE}_default" \
-        --name redis-bench-"${NAMESPACE}" rapidfort/redis-cluster:latest \
+        --name redis-bench-"${NAMESPACE}" "${IMAGE_REPOSITORY}":latest \
         sleep infinity
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # copy test.redis into container
     docker cp "${SCRIPTPATH}"/../../common/tests/test.redis redis-bench-"${NAMESPACE}":/tmp/test.redis

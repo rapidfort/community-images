@@ -5,9 +5,11 @@ on:
     branches:
     - main
   schedule:
-  - cron: '0 * * * *'
+  - cron: '0 0 1 * *'
 
   workflow_dispatch:
+
+permissions: read-all
 
 jobs:
   build:
@@ -30,14 +32,18 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name != 'pull_request'
         run: ./community_images/redis/bitnami/run.sh yes
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name == 'pull_request'
         run: ./community_images/redis/bitnami/run.sh no
       - name: Run functional test
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         run: ./community_images/redis/bitnami/functional_test.sh
 

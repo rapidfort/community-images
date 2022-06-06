@@ -13,6 +13,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 HELM_RELEASE=rf-mariadb
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
+IMAGE_REPOSITORY=rapidfort/mariadb
 
 k8s_test()
 {
@@ -20,7 +21,8 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install mariadb
-    helm install "${HELM_RELEASE}" bitnami/mariadb --set image.repository=rapidfort/mariadb --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/mariadb --set image.repository="${IMAGE_REPOSITORY}" --namespace "${NAMESPACE}"
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # wait for mariadb
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
@@ -93,7 +95,8 @@ docker_test()
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
         -e "MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}" \
-        --name "${NAMESPACE}" rapidfort/mariadb:latest
+        --name "${NAMESPACE}" "${IMAGE_REPOSITORY}":latest
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for few seconds
     sleep 30
@@ -113,10 +116,11 @@ docker_test()
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#rapidfort/mariadb#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    sed "s#@IMAGE#${IMAGE_REPOSITORY}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
-    # install postgresql container
+    # install mariadb container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}" 2
 
     # sleep for 30 sec
     sleep 30

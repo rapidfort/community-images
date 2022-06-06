@@ -11,6 +11,8 @@ on:
 
   workflow_dispatch:
 
+permissions: read-all
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,13 +25,11 @@ jobs:
       - name: Generate new readme and image files
         run: ./scripts/image_generator.sh
 
-      # Push all the changes
-      - name: Push changes
+      - name: Check if new changes detected
         run: |
           if [[ $(git status --porcelain) ]]; then
-            git config user.name "Rapidfort Readme Bot"
-            git config user.email "info@rapidfort.com"
-            git add . && git commit -am "Update README.md via script" --signoff && git push
+            echo "Fail as the image_generator script was not run"
+            exit 1
           fi
 
       - name: Update readme for dockerhub

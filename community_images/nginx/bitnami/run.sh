@@ -20,25 +20,6 @@ else
     PUBLISH_IMAGE=$1
 fi
 
-cleanup_certs()
-{
-    rm -rf "${SCRIPTPATH}"/certs
-    mkdir -p "${SCRIPTPATH}"/certs
-}
-
-create_certs()
-{
-    cleanup_certs
-
-    openssl req -newkey rsa:4096 \
-                -x509 \
-                -sha256 \
-                -days 3650 \
-                -nodes \
-                -out "${SCRIPTPATH}"/certs/server.crt \
-                -keyout "${SCRIPTPATH}"/certs/server.key \
-                -subj "/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"
-}
 
 test()
 {
@@ -53,12 +34,13 @@ test()
     helm repo update
 
     # Install helm
-    helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" \
+    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" \
         --namespace "${NAMESPACE}" \
         --set image.tag="${TAG}" \
         --set image.repository="${IMAGE_REPOSITORY}" \
         --set ingress.hostname="${NAMESPACE}" \
         -f "${SCRIPTPATH}"/overrides.yml
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
@@ -99,6 +81,7 @@ test()
 
     # install docker container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30
@@ -116,8 +99,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        curl https://localhost:"${TLS_PORT}"/a -k
-        curl https://localhost:"${TLS_PORT}"/b -k
+        curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+        curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
     done
 
     # logs for tracking

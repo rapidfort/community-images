@@ -7,6 +7,8 @@
 [![Dockerhub][dh-rf-badge]][dh-rf]
 [![License][license-badge]][license]
 [![FOSSA Status][fossa-badge]][fossa-link]
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6087/badge)](https://bestpractices.coreinfrastructure.org/projects/6087)
+[![CodeQL](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml)
 
 [Getting started](#getting-started) ·
 [Contributing](CONTRIBUTING.md) ·
@@ -35,7 +37,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | Repository                        | RapidFort Image                                | View Report                     |  Status    |
 |-----------------------------------| ------------------------------------------     | ------------------------------- | --------   | 
 {%- for image in image_list %}
-| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] | [![rf-h][rf-h-badge]][rf-link] | [![ {{- image.name -}} -image-ft][ {{- image.name -}} -ft-badge]][ {{- image.name -}} -ft-badge-link] |
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][ {{- image.name -}} -dh-img-pulls-badge]][ {{- image.name -}} -rf-dh-image-link] | [![rf-h][rf-h-badge]][{{- image.name -}} -rf-link] | [![ {{- image.name -}} -image-ft][ {{- image.name -}} -ft-badge]][ {{- image.name -}} -ft-badge-link] |
 {%- endfor %}
 
 ### How to use Community Images
@@ -73,9 +75,7 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 
 [rf-link]: https://rapidfort.com 
 
-[rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=[logo]
-
-[logo]: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
+[rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
 
 [fossa-badge]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images.svg?type=shield
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
@@ -88,8 +88,10 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 
 {% for image in image_list %}
 [ {{- image.name -}} -github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/{{- image.github_location }}
+[ {{- image.name -}} -dh-img-pulls-badge]: https://img.shields.io/docker/pulls/ {{- image.rf_docker_link -}} ?logo=docker&logoColor=white
 [ {{- image.name -}} -rf-dh-image-link]: https://hub.docker.com/r/{{- image.rf_docker_link }}
 [ {{- image.name -}} -ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.image_workflow_name -}} .yml/badge.svg
 [ {{- image.name -}} -ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.image_workflow_name -}} .yml
 [ {{- image.name -}} -source-dh-link]: https://hub.docker.com/r/{{- image.source_image_dh_link }}
+[ {{- image.name -}} -rf-link]: {{- image.report_url }}
 {% endfor %}

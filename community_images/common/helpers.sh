@@ -7,6 +7,7 @@ DOCKERHUB_REGISTRY=docker.io
 RAPIDFORT_ACCOUNT=rapidfort
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
+declare -A PULL_COUNTER
 
 function create_stub()
 {
@@ -195,6 +196,82 @@ function build_images()
     done
 }
 
+# Retries a command a with backoff.
+#
+# The retry count is given by ATTEMPTS (default 10), the
+# initial backoff timeout is given by TIMEOUT in seconds
+# (default 5.)
+#
+# Successive backoffs double the timeout.
+#
+# Beware of set -e killing your whole script!
+function with_backoff {
+  local max_attempts="${ATTEMPTS-9}"
+  local timeout="${TIMEOUT-5}"
+  local attempt=0
+  local exitCode=0
+
+  while [[ "$attempt" < "$max_attempts" ]]
+  do
+    set +e
+    "$@"
+    exitCode="$?"
+    set -e
+
+    if [[ "$exitCode" == 0 ]]
+    then
+      break
+    fi
+
+    echo "Failure! Retrying in $timeout.." 1>&2
+    sleep "$timeout"
+    attempt=$(( attempt + 1 ))
+    timeout=$(( timeout * 2 ))
+  done
+
+  if [[ "$exitCode" != 0 ]]
+  then
+    echo "You've failed me for the last time! ($*)" 1>&2
+  fi
+
+  return "$exitCode"
+}
+
+function cleanup_certs()
+{
+    rm -rf "${SCRIPTPATH}"/certs
+    mkdir -p "${SCRIPTPATH}"/certs
+}
+
+function create_certs()
+{
+    cleanup_certs
+
+    openssl req -newkey rsa:4096 \
+                -x509 \
+                -sha256 \
+                -days 3650 \
+                -nodes \
+                -out "${SCRIPTPATH}"/certs/server.crt \
+                -keyout "${SCRIPTPATH}"/certs/server.key \
+                -subj "/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"
+}
+
+function report_pulls()
+{
+    local REPO_NAME="${1}"
+    local PULL_COUNT=${2-1} # default to single pull count
+    echo "docker pull counter: $REPO_NAME $PULL_COUNT"
+    if [ -z "${PULL_COUNTER[$REPO_NAME]}" ]; then
+        PULL_COUNTER["$REPO_NAME"]=0
+    fi
+    echo "docker pull count previous value:" ${PULL_COUNTER[$REPO_NAME]}
+
+    # shellcheck disable=SC2004
+    PULL_COUNTER["$REPO_NAME"]=$((PULL_COUNTER[$REPO_NAME]+"$PULL_COUNT"))
+    echo "docker pull count updated to:" ${PULL_COUNTER[$REPO_NAME]}
+}
+
 function finish {
     if [[ -z "$NAMESPACE_TO_CLEANUP" ]]; then
         kubectl get pods --all-namespaces
@@ -204,5 +281,19 @@ function finish {
         kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
         kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
     fi
+
+    JSON_STR="{"
+    FIRST=1
+    for key in "${!PULL_COUNTER[@]}"; do
+        if [ "$FIRST" = "0" ] ; then JSON_STR+=", " ; fi
+        JSON_STR+="\"$key\":${PULL_COUNTER[$key]}"
+        FIRST=0
+    done
+    JSON_STR+="}"
+
+    curl -X POST \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+        -d ${JSON_STR} https://data-receiver.rapidfort.io/counts/internal_image_pulls
 }
 trap finish EXIT

@@ -31,7 +31,8 @@ test()
     helm repo update
 
     # Install redis
-    helm install "${HELM_RELEASE}"  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
+    with_backoff helm install "${HELM_RELEASE}"  ${INPUT_ACCOUNT}/${REPOSITORY} --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
+    report_pulls "${IMAGE_REPOSITORY}" 2
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
@@ -58,7 +59,8 @@ test()
     kubectl apply -f "${SCRIPTPATH}"/tls_certs.yml --namespace "${NAMESPACE}"
 
     # Install redis with tls
-    helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f "${SCRIPTPATH}"/overrides.yml
+    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" --set tls.enabled=true --set tls.existingSecret=localhost-server-tls --set tls.certCAFilename=ca.crt --set tls.certFilename=tls.crt --set tls.certKeyFilename=tls.key -f "${SCRIPTPATH}"/overrides.yml
+    report_pulls "${IMAGE_REPOSITORY}" 2
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
@@ -108,6 +110,7 @@ test()
 
     # install redis container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}" 2
 
     # sleep for 30 sec
     sleep 30

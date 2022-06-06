@@ -1,0 +1,16 @@
+name: envoy
+official_name: Envoy
+official_website: https://www.envoyproxy.io/
+source_image_dh_link: bitnami/envoy
+rf_docker_link: rapidfort/envoy
+image_workflow_name: envoy_bitnami
+github_location: envoy/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy
+usage_instructions: |
+  $ docker run --name envoy rapidfort/envoy:latest
+what_is_text: |
+  Envoy is a distributed, high-performance proxy for cloud-native applications. It features a small memory footprint, universal application language compatibility, and supports http/2 and gRPC.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1.22`, `1.22-debian-10`, `1.22.0`, `1.22.0-debian-10-r39`, `latest` (1.22/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-envoy/blob/1.22.0-debian-10-r39/1.22/debian-10/Dockerfile)"

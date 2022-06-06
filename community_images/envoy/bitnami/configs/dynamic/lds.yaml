@@ -1,0 +1,47 @@
+# /etc/envoy/lds.yaml
+resources:
+  - "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+    name: listener_0
+    address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 8081
+    filter_chains:
+      - filters:
+          - name: envoy.filters.network.tcp_proxy
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+              stat_prefix: destination
+              cluster: cluster_0
+              access_log:
+                - name: envoy.access_loggers.stdout
+                  typed_config:
+                    "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+
+  # expose the admin endpoint for readiness probe
+  - "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+    name: ready_listener
+    address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 9001
+    filter_chains:
+      - filters:
+          - name: envoy.filters.network.http_connection_manager
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+              stat_prefix: ready_listener
+              http_filters:
+                - name: envoy.filters.http.router
+                  typed_config:
+                    "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+              route_config:
+                name: local_route
+                virtual_hosts:
+                  - name: local_service
+                    domains: ["*"]
+                    routes:
+                      - match:
+                          path: "/ready"
+                        route:
+                          cluster: admin_cluster

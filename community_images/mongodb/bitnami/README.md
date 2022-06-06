@@ -2,8 +2,7 @@
 
 [![rf-h][rf-h-badge]][rf-image-link]
 [![image-ft][ft-badge]][ft-badge-link]
-[![DH Image Pulls][dh-img-pulls-badge]][rf-dh-image-link]
-[![Dh Image Size][dh-img-size-badge]][rf-dh-image-link]
+[![DH Image][dh-rf-badge]][rf-dh-image-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
 

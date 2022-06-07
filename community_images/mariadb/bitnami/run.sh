@@ -87,6 +87,6 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("10.7.4-debian-10-r" "10.6.8-debian-10-r" "10.5.16-debian-10-r" "10.4.25-debian-10-r" "10.3.35-debian-10-r" "10.2.44-debian-10-r")
+declare -a BASE_TAG_ARRAY=("10.7.4-debian-11-r" "10.6.8-debian-11-r" "10.5.16-debian-11-r" "10.4.25-debian-11-r" "10.3.35-debian-11-r" "10.2.44-debian-11-r")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

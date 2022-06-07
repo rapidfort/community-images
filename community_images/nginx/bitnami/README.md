@@ -59,8 +59,8 @@ RapidFort’s hardened [rapidfort/nginx][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.22`, `1.22-debian-10`, `1.22.0`, `1.22.0-debian-10-r0`, `latest` (1.22/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.22.0-debian-10-r0/1.22/debian-10/Dockerfile)
-* [`1.21`, `1.21-debian-10`, `1.21.6`, `1.21.6-debian-10-r117`, `latest` (1.21/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.21.6-debian-10-r117/1.21/debian-10/Dockerfile)
+* [`1.22`, `1.22-debian-11`, `1.22.0`, `1.22.0-debian-11-r0`, `latest` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.22.0-debian-11-r0/1.22/debian-11/Dockerfile)
+* [`1.21`, `1.21-debian-11`, `1.21.6`, `1.21.6-debian-11-r0` (1.21/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.21.6-debian-11-r0/1.21/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

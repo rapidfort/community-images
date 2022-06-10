@@ -57,8 +57,8 @@ kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 # install some helpers
 sudo apt-get install jq parallel docker-compose -y
 
-# upgrade bash
-sudo apt-get install --only-upgrade bash -y
+# upgrade bash, curl, openssl
+sudo apt-get install --only-upgrade bash openssl curl -y
 bash --version
 
 # add ingress

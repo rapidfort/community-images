@@ -62,10 +62,10 @@ test()
     curl http://"${MINIKUBE_IP}" -k
 
     # copy common_commands.sh into container
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh -c nginx
 
     # run command on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -c nginx -- /bin/bash -c "/tmp/common_commands.sh"
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

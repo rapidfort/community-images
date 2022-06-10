@@ -22,3 +22,4 @@ grep --version
 sed --version
 tar --version
 sort --version
+sleep 5 # sleep for few seconds to let profiles sync

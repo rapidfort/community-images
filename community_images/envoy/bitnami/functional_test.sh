@@ -63,8 +63,8 @@ docker_compose_test()
     TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
     curl http://localhost:"${NON_TLS_PORT}"/a
     curl http://localhost:"${NON_TLS_PORT}"/b
-    curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
-    curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
+    with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+    with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

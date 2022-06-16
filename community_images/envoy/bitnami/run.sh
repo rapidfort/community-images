@@ -57,8 +57,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
-        curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
+        with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+        with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
     done
 
     # logs for tracking
@@ -104,6 +104,6 @@ test()
     docker network rm "${NAMESPACE}"
 }
 
-declare -a BASE_TAG_ARRAY=("1.22.0-debian-10-r") # "1.21.2-debian-10-r" "1.20.3-debian-10-r" "1.19.4-debian-10-r")
+declare -a BASE_TAG_ARRAY=("1.22.0-debian-11-r") # "1.21.2-debian-10-r" "1.20.3-debian-10-r" "1.19.4-debian-10-r")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

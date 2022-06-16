@@ -1,9 +1,8 @@
-[![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
+[![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-image-link]
 
 [![rf-h][rf-h-badge]][rf-image-link]
 [![image-ft][ft-badge]][ft-badge-link]
-[![DH Image Pulls][dh-img-pulls-badge]][rf-dh-image-link]
-[![Dh Image Size][dh-img-size-badge]][rf-dh-image-link]
+[![DH Image][dh-rf-badge]][rf-dh-image-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
 
@@ -15,11 +14,11 @@ It is the same as the [bitnami/nginx][source-image-dh-link] image but more secur
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
-[![Metrics][metrics-link]][rf-link]
+[![Metrics][metrics-link]][rf-image-link]
 
 ## Vulnerabilities: Original vs. Hardened
 
-[![CVE Reduction][cve-reduction-link]][rf-link]
+[![CVE Reduction][cve-reduction-link]][rf-image-link]
 
 ## What is NGINX?
 
@@ -60,8 +59,8 @@ RapidFort’s hardened [rapidfort/nginx][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.22`, `1.22-debian-10`, `1.22.0`, `1.22.0-debian-10-r0`, `latest` (1.22/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.22.0-debian-10-r0/1.22/debian-10/Dockerfile)
-* [`1.21`, `1.21-debian-10`, `1.21.6`, `1.21.6-debian-10-r117`, `latest` (1.21/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.21.6-debian-10-r117/1.21/debian-10/Dockerfile)
+* [`1.22`, `1.22-debian-11`, `1.22.0`, `1.22.0-debian-11-r0`, `latest` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.22.0-debian-11-r0/1.22/debian-11/Dockerfile)
+* [`1.21`, `1.21-debian-11`, `1.21.6`, `1.21.6-debian-11-r0` (1.21/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nginx/blob/1.21.6-debian-11-r0/1.21/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
@@ -78,7 +77,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
 [rf-link]: https://rapidfort.com 
-[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnginx
+[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnginx?utm_source=gh-ci-image&utm_medium=view-report&utm_id=rsa-ci-2022
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/nginx?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nginx?logo=docker&logoColor=white
 

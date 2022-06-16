@@ -1,9 +1,8 @@
-[![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
+[![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-image-link]
 
 [![rf-h][rf-h-badge]][rf-image-link]
 [![image-ft][ft-badge]][ft-badge-link]
-[![DH Image Pulls][dh-img-pulls-badge]][rf-dh-image-link]
-[![Dh Image Size][dh-img-size-badge]][rf-dh-image-link]
+[![DH Image][dh-rf-badge]][rf-dh-image-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
 
@@ -15,11 +14,11 @@ It is the same as the [bitnami/postgresql][source-image-dh-link] image but more 
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
-[![Metrics][metrics-link]][rf-link]
+[![Metrics][metrics-link]][rf-image-link]
 
 ## Vulnerabilities: Original vs. Hardened
 
-[![CVE Reduction][cve-reduction-link]][rf-link]
+[![CVE Reduction][cve-reduction-link]][rf-image-link]
 
 ## What is PostgreSQL?
 
@@ -60,11 +59,11 @@ RapidFort’s hardened [rapidfort/postgresql][rf-dh-image-link] image has been o
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`14`, `14-debian-10`, `14.3.0`, `14.3.0-debian-10-r10`, `latest` (14/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/14.3.0-debian-10-r10/14/debian-10/Dockerfile)
-* [`13`, `13-debian-10`, `13.7.0`, `13.7.0-debian-10-r9` (13/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/13.7.0-debian-10-r9/13/debian-10/Dockerfile)
-* [`12`, `12-debian-10`, `12.11.0`, `12.11.0-debian-10-r9` (12/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/12.11.0-debian-10-r9/12/debian-10/Dockerfile)
-* [`11`, `11-debian-10`, `11.16.0`, `11.16.0-debian-10-r10` (11/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/11.16.0-debian-10-r10/11/debian-10/Dockerfile)
-* [`10`, `10-debian-10`, `10.21.0`, `10.21.0-debian-10-r9` (10/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/10.21.0-debian-10-r9/10/debian-10/Dockerfile)
+* [`14`, `14-debian-11`, `14.3.0`, `14.3.0-debian-11-r0`, `latest` (14/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/14.3.0-debian-11-r0/14/debian-11/Dockerfile)
+* [`13`, `13-debian-11`, `13.7.0`, `13.7.0-debian-11-r1` (13/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/13.7.0-debian-11-r1/13/debian-11/Dockerfile)
+* [`12`, `12-debian-11`, `12.11.0`, `12.11.0-debian-11-r1` (12/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/12.11.0-debian-11-r1/12/debian-11/Dockerfile)
+* [`11`, `11-debian-11`, `11.16.0`, `11.16.0-debian-11-r0` (11/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/11.16.0-debian-11-r0/11/debian-11/Dockerfile)
+* [`10`, `10-debian-11`, `10.21.0`, `10.21.0-debian-11-r0` (10/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/10.21.0-debian-11-r0/10/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
@@ -81,7 +80,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
 [rf-link]: https://rapidfort.com 
-[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fpostgresql
+[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fpostgresql?utm_source=gh-ci-image&utm_medium=view-report&utm_id=rsa-ci-2022
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/postgresql?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql?logo=docker&logoColor=white
 

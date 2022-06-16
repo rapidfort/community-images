@@ -1,0 +1,19 @@
+name: fluentd
+official_name: Fluentd
+official_website: https://www.fluentd.org/
+source_image_dh_link: bitnami/fluentd
+rf_docker_link: rapidfort/fluentd
+image_workflow_name: fluentd_bitnami
+github_location: fluentd/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Ffluentd
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install fluentd, just replace repository with RapidFort registry
+  $ helm install my-fluentd bitnami/fluentd --set image.repository=rapidfort/fluentd
+what_is_text: |
+  Fluentd is a streaming data collector for unified logging layer hosted by CNCF. Fluentd lets you unify the data collection and consumption for a better use and understanding of data.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1`, `1-debian-11`, `1.14.6`, `1.14.6-debian-11-r6`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-fluentd/blob/1.14.6-debian-11-r6/1/debian-11/Dockerfile)"

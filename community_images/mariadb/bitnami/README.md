@@ -1,9 +1,8 @@
-[![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
+[![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-image-link]
 
 [![rf-h][rf-h-badge]][rf-image-link]
 [![image-ft][ft-badge]][ft-badge-link]
-[![DH Image Pulls][dh-img-pulls-badge]][rf-dh-image-link]
-[![Dh Image Size][dh-img-size-badge]][rf-dh-image-link]
+[![DH Image][dh-rf-badge]][rf-dh-image-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
 
@@ -15,11 +14,11 @@ It is the same as the [bitnami/mariadb][source-image-dh-link] image but more sec
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
-[![Metrics][metrics-link]][rf-link]
+[![Metrics][metrics-link]][rf-image-link]
 
 ## Vulnerabilities: Original vs. Hardened
 
-[![CVE Reduction][cve-reduction-link]][rf-link]
+[![CVE Reduction][cve-reduction-link]][rf-image-link]
 
 ## What is MariaDB?
 
@@ -60,12 +59,12 @@ RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`10.7`, `10.7-debian-10`, `10.7.4`, `10.7.4-debian-10-r2`, `latest` (10.7/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.7.4-debian-10-r2/10.7/debian-10/Dockerfile)
-* [`10.6`, `10.6-debian-10`, `10.6.8`, `10.6.8-debian-10-r2` (10.6/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.6.8-debian-10-r2/10.6/debian-10/Dockerfile)
-* [`10.5`, `10.5-debian-10`, `10.5.16`, `10.5.16-debian-10-r2` (10.5/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.5.16-debian-10-r2/10.5/debian-10/Dockerfile)
-* [`10.4`, `10.4-debian-10`, `10.4.25`, `10.4.25-debian-10-r2` (10.4/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.4.25-debian-10-r2/10.4/debian-10/Dockerfile)
-* [`10.3`, `10.3-debian-10`, `10.3.35`, `10.3.35-debian-10-r2` (10.3/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.3.35-debian-10-r2/10.3/debian-10/Dockerfile)
-* [`10.2`, `10.2-debian-10`, `10.2.44`, `10.2.44-debian-10-r2` (10.2/debian-10/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.2.44-debian-10-r2/10.2/debian-10/Dockerfile)
+* [`10.7`, `10.7-debian-11`, `10.7.4`, `10.7.4-debian-11-r0`, `latest` (10.7/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.7.4-debian-11-r0/10.7/debian-11/Dockerfile)
+* [`10.6`, `10.6-debian-11`, `10.6.8`, `10.6.8-debian-11-r0` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.6.8-debian-11-r0/10.6/debian-11/Dockerfile)
+* [`10.5`, `10.5-debian-11`, `10.5.16`, `10.5.16-debian-11-r0` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.5.16-debian-11-r0/10.5/debian-11/Dockerfile)
+* [`10.4`, `10.4-debian-11`, `10.4.25`, `10.4.25-debian-11-r0` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.4.25-debian-11-r0/10.4/debian-11/Dockerfile)
+* [`10.3`, `10.3-debian-11`, `10.3.35`, `10.3.35-debian-11-r0` (10.3/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.3.35-debian-11-r0/10.3/debian-11/Dockerfile)
+* [`10.2`, `10.2-debian-11`, `10.2.44`, `10.2.44-debian-11-r0` (10.2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.2.44-debian-11-r0/10.2/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
@@ -82,7 +81,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
 [rf-link]: https://rapidfort.com 
-[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmariadb
+[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmariadb?utm_source=gh-ci-image&utm_medium=view-report&utm_id=rsa-ci-2022
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/mariadb?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mariadb?logo=docker&logoColor=white
 

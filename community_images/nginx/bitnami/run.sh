@@ -62,10 +62,10 @@ test()
     curl http://"${MINIKUBE_IP}" -k
 
     # copy common_commands.sh into container
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh -c nginx
 
     # run command on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -c nginx -- /bin/bash -c "/tmp/common_commands.sh"
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
@@ -99,8 +99,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
-        curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
+        with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
+        with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
     done
 
     # logs for tracking
@@ -116,6 +116,6 @@ test()
     cleanup_certs
 }
 
-declare -a BASE_TAG_ARRAY=("1.22.0-debian-10-r" "1.21.6-debian-10-r")
+declare -a BASE_TAG_ARRAY=("1.22.0-debian-11-r" "1.21.6-debian-11-r")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

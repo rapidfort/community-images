@@ -8,10 +8,34 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-REPOSITORY=envoy
-HELM_RELEASE=rf-"${REPOSITORY}"
+HELM_RELEASE=rf-fluentd
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
+REPOSITORY=fluentd
 
+k8s_test()
+{
+    # setup namespace
+    setup_namespace "${NAMESPACE}"
+
+    # install helm
+    with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository=rapidfort/"$REPOSITORY" --namespace "${NAMESPACE}"
+
+    # wait for pods
+    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+
+    # log pods
+    kubectl -n "${NAMESPACE}" get pods
+    kubectl -n "${NAMESPACE}" get svc
+
+    # delte cluster
+    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
+
+    # delete pvc
+    kubectl -n "${NAMESPACE}" delete pvc --all
+
+    # clean up namespace
+    cleanup_namespace "${NAMESPACE}"
+}
 
 docker_test()
 {
@@ -20,21 +44,10 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
-        --name "${NAMESPACE}" \
-        -v "${SCRIPTPATH}"/configs/envoy_non_tls.yaml:/opt/bitnami/envoy/conf/envoy.yaml \
-        "rapidfort/$REPOSITORY":latest
-    report_pulls "rapidfort/$REPOSITORY"
+        --name "${NAMESPACE}" rapidfort/"$REPOSITORY":latest
 
     # sleep for few seconds
     sleep 30
-
-    # get docker host ip
-    ENVOY_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
-
-    # run test on docker container
-    docker run --rm --network="${NAMESPACE}" \
-        -i alpine \
-        apk add curl;curl http://"${ENVOY_HOST}":8080/ip
 
     # clean up docker container
     docker kill "${NAMESPACE}"
@@ -45,26 +58,14 @@ docker_test()
 
 docker_compose_test()
 {
-    # create ssl certs
-    create_certs
-
     # update image in docker-compose yml
     sed "s#@IMAGE#rapidfort/$REPOSITORY#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
-    # install container
+    # install postgresql container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
-    report_pulls "rapidfort/$REPOSITORY"
 
     # sleep for 30 sec
     sleep 30
-
-    # find non-tls and tls port
-    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
-    TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
-    curl http://localhost:"${NON_TLS_PORT}"/a
-    curl http://localhost:"${NON_TLS_PORT}"/b
-    with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3
-    with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v --tlsv1.3
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
@@ -74,13 +75,11 @@ docker_compose_test()
 
     # clean up docker file
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
-
-    # clean up certs
-    cleanup_certs
 }
 
 main()
 {
+    k8s_test
     docker_test
     docker_compose_test
 }

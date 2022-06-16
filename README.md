@@ -44,6 +44,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Redis™][ redis-github-link]| [![dh][dh-rf-badge]][redis-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-rf-link] | [![redis-image-ft][redis-ft-badge]][redis-ft-badge-link] |
 | [Redis™ Cluster][ redis-cluster-github-link]| [![dh][dh-rf-badge]][redis-cluster-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-cluster-rf-link] | [![redis-cluster-image-ft][redis-cluster-ft-badge]][redis-cluster-ft-badge-link] |
 | [Envoy][ envoy-github-link]| [![dh][dh-rf-badge]][envoy-rf-dh-image-link] | [![rf-h][rf-h-badge]][envoy-rf-link] | [![envoy-image-ft][envoy-ft-badge]][envoy-ft-badge-link] |
+| [Fluentd][ fluentd-github-link]| [![dh][dh-rf-badge]][fluentd-rf-dh-image-link] | [![rf-h][rf-h-badge]][fluentd-rf-link] | [![fluentd-image-ft][fluentd-ft-badge]][fluentd-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -155,3 +156,11 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [envoy-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/envoy_bitnami.yml
 [envoy-source-dh-link]: https://hub.docker.com/r/bitnami/envoy
 [envoy-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy
+
+[fluentd-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/fluentd/bitnami
+[fluentd-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/fluentd?logo=docker&logoColor=white
+[fluentd-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/fluentd
+[fluentd-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/fluentd_bitnami.yml/badge.svg
+[fluentd-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/fluentd_bitnami.yml
+[fluentd-source-dh-link]: https://hub.docker.com/r/bitnami/fluentd
+[fluentd-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Ffluentd

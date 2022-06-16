@@ -37,10 +37,10 @@ test()
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
-    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
+    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
     # get pod name
-    POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
+    POD_NAME="${HELM_RELEASE}"-0
 
     #... testing logic goes here....
 

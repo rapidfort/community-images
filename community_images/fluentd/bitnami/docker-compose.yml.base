@@ -11,6 +11,42 @@ services:
       - '5140:5140'
     volumes:
       - fluentd_data:/bitnami/fluentd
+  backend1a:
+    image: nginxdemos/hello:plain-text
+    ports:
+      - '80'
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: backend1a
+  backend1b:
+    image: nginxdemos/hello:plain-text
+    ports:
+      - '80'
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: backend1b
+  backend2a:
+    image: nginxdemos/hello:plain-text
+    ports:
+      - '80'
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: backend2a
+  backend2b:
+    image: nginxdemos/hello:plain-text
+    ports:
+      - '80'
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: backend2b
 volumes:
   fluentd_data:
     driver: local

@@ -15,6 +15,8 @@ services:
     image: nginxdemos/hello:plain-text
     ports:
       - '80'
+    depends_on:
+      - fluentd
     logging:
       driver: "fluentd"
       options:
@@ -24,6 +26,8 @@ services:
     image: nginxdemos/hello:plain-text
     ports:
       - '80'
+    depends_on:
+      - fluentd
     logging:
       driver: "fluentd"
       options:
@@ -33,6 +37,8 @@ services:
     image: nginxdemos/hello:plain-text
     ports:
       - '80'
+    depends_on:
+      - fluentd
     logging:
       driver: "fluentd"
       options:
@@ -42,6 +48,8 @@ services:
     image: nginxdemos/hello:plain-text
     ports:
       - '80'
+    depends_on:
+      - fluentd
     logging:
       driver: "fluentd"
       options:

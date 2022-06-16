@@ -98,6 +98,14 @@ jobs:
           repository: rapidfort/envoy
           readme-filepath: ./community_images/envoy/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Envoy
+      - name: Docker Hub Description Fluentd
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluentd
+          readme-filepath: ./community_images/fluentd/bitnami/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluentd
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

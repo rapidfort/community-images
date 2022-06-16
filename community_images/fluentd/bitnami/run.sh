@@ -39,6 +39,9 @@ test()
     echo "waiting for pod to be ready"
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
+    # wait for daemonsets
+    kubectl rollout status daemonsets "${HELM_RELEASE}" -n "${NAMESPACE}" --timeout=10m
+
     # get pod name
     POD_NAME="${HELM_RELEASE}"-0
 

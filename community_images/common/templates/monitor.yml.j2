@@ -20,8 +20,9 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         run: |
-          curl -X POST \
-            -H "Accept: application/json" \
-            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-            -d '{ {%- for image in image_list %} " {{- image.rf_docker_link -}} ": 1 {% if not loop.last %}, {% endif %} {%- endfor %} }' \
-            https://data-receiver.rapidfort.io/counts/internal_image_pulls
+          echo "attributions not running"
+          # curl -X POST \
+          #  -H "Accept: application/json" \
+          #  -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+          #  -d '{ {%- for image in image_list %} " {{- image.rf_docker_link -}} ": 1 {% if not loop.last %}, {% endif %} {%- endfor %} }' \
+          #  https://data-receiver.rapidfort.io/counts/internal_image_pulls

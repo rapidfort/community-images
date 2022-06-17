@@ -14,3 +14,4 @@ mongoexport --version
 mongostat --version
 mongotop --version
 mongofiles --version
+mongo --version

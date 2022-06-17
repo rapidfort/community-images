@@ -1,0 +1,30 @@
+name: Screenshot Updater
+
+on:
+  schedule:
+  - cron: '0 0 * * *'
+
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Generate new screenshots
+        run: ./scripts/generate_screenshots.sh
+
+      - name: Push changes
+        run: |
+          if [[ $(git status --porcelain) ]]; then
+            git config user.name "Rapidfort Readme Bot"
+            git config user.email "info@rapidfort.com"
+            git add . && git commit -am "Update screenshots for images via script" --signoff && git push
+          fi

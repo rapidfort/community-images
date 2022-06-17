@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const process = require('process');
+const util = require('util');
 
 async function takeShots(imageSavePath, imageUrl) {
   const browser = await puppeteer.launch({headless: true,

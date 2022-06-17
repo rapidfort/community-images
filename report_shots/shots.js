@@ -25,7 +25,7 @@ async function takeShots(imageSavePath, imageUrl) {
   await page.waitForSelector('#card-statistics-histogram');
   const cve_details = await page.$('#card-statistics-histogram');
   await cve_details.screenshot({
-    path: util.format('%s/cve.png', imageSavePath)
+    path: util.format('%s/cve_reduction.png', imageSavePath)
     });
 
   await page.close();
@@ -34,15 +34,19 @@ async function takeShots(imageSavePath, imageUrl) {
 }
 
 async function main() {
-  imageSavePath = "img";
   imageUrl = "https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy/vulns/original";
   const imgListPath = process.argv[2]
 
   const imgList = await fs.readFile(imgListPath, { encoding: 'utf8' });
-  const imgListArray = imgList.split("\r\n");
+  const imgListArray = imgList.split("\n");
   console.log(imgListArray);
 
-  await takeShots(imageSavePath, imageUrl);
+  imgListArray.forEach(async(imagePath) => {
+    console.log(imagePath);
+    const imageSavePath = util.format('../community_images/%s/assets', imagePath);
+    console.log(imageSavePath);
+    await takeShots(imageSavePath, imageUrl);
+  });
 }
 
 main();

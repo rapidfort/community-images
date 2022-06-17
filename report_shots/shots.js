@@ -15,6 +15,10 @@ async function takeShots(imageSavePath, imageUrl) {
   await page.emulateMediaFeatures([{
     name: 'prefers-color-scheme', value: 'light' }]);
 
+  // Code for selecting theme
+  // await page.waitForSelector("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div > i.button-icon.active.icon-theme-light");
+  // await page.click("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div > i.button-icon.active.icon-theme-light");
+
   await page.waitForSelector('#carousel__container');
   const metrics = await page.$('#carousel__container');
   await metrics.screenshot({
@@ -35,7 +39,6 @@ async function takeShots(imageSavePath, imageUrl) {
 }
 
 async function main() {
-  // imageUrl = "https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy/vulns/original";
   const imgListPath = process.argv[2]
 
   const imgList = await fs.readFile(imgListPath, { encoding: 'utf8' });

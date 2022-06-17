@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const process = require('process');
 const util = require('util');
 const fs = require('fs/promises');
+const yaml = require('js-yaml')
 
 async function takeShots(imageSavePath, imageUrl) {
   const browser = await puppeteer.launch({headless: true,
@@ -34,7 +35,7 @@ async function takeShots(imageSavePath, imageUrl) {
 }
 
 async function main() {
-  imageUrl = "https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy/vulns/original";
+  // imageUrl = "https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy/vulns/original";
   const imgListPath = process.argv[2]
 
   const imgList = await fs.readFile(imgListPath, { encoding: 'utf8' });
@@ -45,7 +46,13 @@ async function main() {
     console.log(imagePath);
     const imageSavePath = util.format('../community_images/%s/assets', imagePath);
     console.log(imageSavePath);
-    await takeShots(imageSavePath, imageUrl);
+
+    let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
+
+    let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
+    let imageYml = yaml.load(imageYmlContents);
+
+    await takeShots(imageSavePath, imageYml.report_url);
   });
 }
 

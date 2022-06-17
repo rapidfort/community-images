@@ -1,10 +1,14 @@
 const puppeteer = require('puppeteer');
 
 async function main() {
-  const browser = await puppeteer.launch({headless: false});
+  const browser = await puppeteer.launch({headless: true});
   const page = await browser.newPage();
+
   await page.setViewport({width: 3600, height: 2160});
+
   await page.goto('https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy/vulns/original', { waitUntil: 'networkidle0' }); // wait until page load
+  await page.emulateMediaFeatures([{
+    name: 'prefers-color-scheme', value: 'light' }]);
 
   await page.waitForSelector('#carousel__container');  
   const metrics = await page.$('#carousel__container');

@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const process = require('process');
 const util = require('util');
+const fs = require('fs/promises');
 
 async function takeShots(imageSavePath, imageUrl) {
   const browser = await puppeteer.launch({headless: true,
@@ -35,8 +36,13 @@ async function takeShots(imageSavePath, imageUrl) {
 async function main() {
   imageSavePath = "img";
   imageUrl = "https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy/vulns/original";
+  const imgListPath = process.argv[2]
+
+  const imgList = await fs.readFile(imgListPath, { encoding: 'utf8' });
+  const imgListArray = imgList.split("\r\n");
+  console.log(imgListArray);
+
   await takeShots(imageSavePath, imageUrl);
-  console.log(process.argv[1]);
 }
 
 main();

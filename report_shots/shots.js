@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer');
 
 async function main() {
-  const browser = await puppeteer.launch({headless: true});
+  const browser = await puppeteer.launch({headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
 
   await page.setViewport({width: 3600, height: 2160});
@@ -10,22 +11,22 @@ async function main() {
   await page.emulateMediaFeatures([{
     name: 'prefers-color-scheme', value: 'light' }]);
 
-  await page.waitForSelector('#carousel__container');  
+  await page.waitForSelector('#carousel__container');
   const metrics = await page.$('#carousel__container');
   await metrics.screenshot({
     path: 'img/metrics.png'
     });
 
     // #card-statistics-histogram
-  
-  await page.waitForSelector('#card-statistics-histogram');  
-  const cve_details = await page.$('#card-statistics-histogram'); 
+
+  await page.waitForSelector('#card-statistics-histogram');
+  const cve_details = await page.$('#card-statistics-histogram');
   await cve_details.screenshot({
     path: 'img/cve.png'
     });
 
   await page.close();
-  await browser.close();    
+  await browser.close();
   console.log("screen shots taken");
 }
 

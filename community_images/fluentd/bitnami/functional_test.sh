@@ -23,11 +23,14 @@ k8s_test()
     # wait for pods
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
+    # wait for daemonsets
+    kubectl rollout status daemonsets "${HELM_RELEASE}" -n "${NAMESPACE}" --timeout=10m
+
     # log pods
     kubectl -n "${NAMESPACE}" get pods
     kubectl -n "${NAMESPACE}" get svc
 
-    # delte cluster
+    # delete cluster
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 
     # delete pvc

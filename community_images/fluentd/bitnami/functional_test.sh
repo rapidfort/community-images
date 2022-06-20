@@ -24,7 +24,7 @@ k8s_test()
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
     # wait for daemonsets
-    kubectl rollout status daemonsets "${HELM_RELEASE}" -n "${NAMESPACE}" --timeout=10m
+    kubectl rollout status daemonsets "${HELM_RELEASE}" -n "${NAMESPACE}" --timeout=20m
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

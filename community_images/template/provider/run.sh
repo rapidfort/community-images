@@ -34,6 +34,7 @@ test()
 
     # Install helm
     with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
@@ -67,6 +68,7 @@ test()
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down

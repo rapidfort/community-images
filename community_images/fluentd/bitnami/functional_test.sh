@@ -11,6 +11,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 HELM_RELEASE=rf-fluentd
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=fluentd
+IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
 
 k8s_test()
 {
@@ -18,7 +19,8 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install helm
-    with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository=rapidfort/"$REPOSITORY" --namespace "${NAMESPACE}"
+    with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository="$IMAGE_REPOSITORY" --namespace "${NAMESPACE}"
+    report_pulls "${IMAGE_REPOSITORY}" 2
 
     # wait for pods
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
@@ -49,7 +51,8 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
-        --name "${NAMESPACE}" rapidfort/"$REPOSITORY":latest
+        --name "${NAMESPACE}" "$IMAGE_REPOSITORY":latest
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for few seconds
     sleep 30
@@ -68,6 +71,7 @@ docker_compose_test()
 
     # install postgresql container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30

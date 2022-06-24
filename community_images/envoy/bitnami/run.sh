@@ -48,8 +48,8 @@ test()
     docker exec -i "${NAMESPACE}"_envoy_1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # find non-tls and tls port
-    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
-    TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-envoy-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}"-envoy-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
     
     # run curl in loop for different endpoints
     for i in {1..20};

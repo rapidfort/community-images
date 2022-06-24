@@ -59,8 +59,8 @@ docker_compose_test()
     sleep 30
 
     # find non-tls and tls port
-    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
-    TLS_PORT=$(docker inspect "${NAMESPACE}"_envoy_1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-envoy-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}"-envoy-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
     curl http://localhost:"${NON_TLS_PORT}"/a
     curl http://localhost:"${NON_TLS_PORT}"/b
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v --tlsv1.3

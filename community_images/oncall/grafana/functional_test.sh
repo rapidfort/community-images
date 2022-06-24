@@ -8,7 +8,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-HELM_RELEASE=rf-ngixn
+HELM_RELEASE=rf-grafana-oncall
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=oncall
 IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
@@ -17,7 +17,7 @@ IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
 docker_compose_test()
 {
     # update image in docker-compose yml
-    sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
+    sed "s#@IMAGE#${IMAGE_REPOSITORY}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
     # install docker container
     docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up --build -d

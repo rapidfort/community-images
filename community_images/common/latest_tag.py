@@ -14,15 +14,17 @@ def get_latest_tag():
     Find latest tags passed to stdin"
     """
     tags = []
+    search_str = sys.argv[1]
+    search_str_len = len(search_str)
 
     for tag in sys.stdin:
-        if "rfstub" not in tag and tag[len(sys.argv[1]):].isdigit():
+        if "rfstub" not in tag and tag[search_str_len:].isdigit():
             tags.append(tag)
 
     if not tags:
         return []
 
-    tags.sort(key = lambda tag: int(tag[len(sys.argv[1]):]))
+    tags.sort(key = lambda tag: int(tag[search_str_len:]))
     if tags:
         return tags[-1]
     return []

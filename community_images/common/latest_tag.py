@@ -18,8 +18,8 @@ def get_latest_tag():
     search_str_len = len(search_str)
 
     for tag in sys.stdin:
-        if "rfstub" not in tag and tag[search_str_len:].isdigit():
-            tags.append(tag)
+        if "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit():
+            tags.append(tag.rstrip())
 
     if not tags:
         return []

@@ -45,6 +45,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Redis™ Cluster][ redis-cluster-github-link]| [![dh][dh-rf-badge]][redis-cluster-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-cluster-rf-link] | [![redis-cluster-image-ft][redis-cluster-ft-badge]][redis-cluster-ft-badge-link] |
 | [Envoy][ envoy-github-link]| [![dh][dh-rf-badge]][envoy-rf-dh-image-link] | [![rf-h][rf-h-badge]][envoy-rf-link] | [![envoy-image-ft][envoy-ft-badge]][envoy-ft-badge-link] |
 | [Fluentd][ fluentd-github-link]| [![dh][dh-rf-badge]][fluentd-rf-dh-image-link] | [![rf-h][rf-h-badge]][fluentd-rf-link] | [![fluentd-image-ft][fluentd-ft-badge]][fluentd-ft-badge-link] |
+| [Grafana Oncall][ oncall-github-link]| [![dh][dh-rf-badge]][oncall-rf-dh-image-link] | [![rf-h][rf-h-badge]][oncall-rf-link] | [![oncall-image-ft][oncall-ft-badge]][oncall-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -164,3 +165,11 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [fluentd-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/fluentd_bitnami.yml
 [fluentd-source-dh-link]: https://hub.docker.com/r/bitnami/fluentd
 [fluentd-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Ffluentd?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[oncall-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/oncall/grafana
+[oncall-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/oncall?logo=docker&logoColor=white
+[oncall-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/oncall
+[oncall-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml/badge.svg
+[oncall-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml
+[oncall-source-dh-link]: https://hub.docker.com/r/grafana/oncall
+[oncall-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fgrafana%2Foncall?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

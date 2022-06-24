@@ -20,8 +20,8 @@ services:
       RABBITMQ_DEFAULT_VHOST: "/"
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DB_NAME: oncall_hobby
-      MYSQL_USER: ${MYSQL_USER:-root}
-      MYSQL_HOST: ${MYSQL_HOST:-mysql}
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_HOST: $MYSQL_HOST
       MYSQL_PORT: 3306
       REDIS_URI: redis://redis:6379/0
       DJANGO_SETTINGS_MODULE: settings.hobby
@@ -53,8 +53,8 @@ services:
       RABBITMQ_DEFAULT_VHOST: "/"
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DB_NAME: oncall_hobby
-      MYSQL_USER: ${MYSQL_USER:-root}
-      MYSQL_HOST: ${MYSQL_HOST:-mysql}
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_HOST: $MYSQL_HOST
       MYSQL_PORT: 3306
       REDIS_URI: redis://redis:6379/0
       DJANGO_SETTINGS_MODULE: settings.hobby
@@ -89,8 +89,8 @@ services:
       RABBITMQ_DEFAULT_VHOST: "/"
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DB_NAME: oncall_hobby
-      MYSQL_USER: ${MYSQL_USER:-root}
-      MYSQL_HOST: ${MYSQL_HOST:-mysql}
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_HOST: $MYSQL_HOST
       MYSQL_PORT: 3306
       REDIS_URI: redis://redis:6379/0
       DJANGO_SETTINGS_MODULE: settings.hobby
@@ -145,7 +145,7 @@ services:
   mysql_to_create_grafana_db:
     image: mysql:5.7
     platform: linux/x86_64
-    command: bash -c "mysql -h ${MYSQL_HOST:-mysql} -uroot -p${MYSQL_PASSWORD:?err} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
+    command: bash -c "mysql -h $MYSQL_HOST -uroot -p${MYSQL_PASSWORD:?err} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
     depends_on:
       mysql:
         condition: service_healthy
@@ -161,10 +161,10 @@ services:
     cpus: 0.5
     environment:
       GF_DATABASE_TYPE: mysql
-      GF_DATABASE_HOST: ${MYSQL_HOST:-mysql}
-      GF_DATABASE_USER: ${MYSQL_USER:-root}
+      GF_DATABASE_HOST: $MYSQL_HOST
+      GF_DATABASE_USER: $MYSQL_USER
       GF_DATABASE_PASSWORD: ${MYSQL_PASSWORD:?err}
-      GF_SECURITY_ADMIN_USER: ${GRAFANA_USER:-admin}
+      GF_SECURITY_ADMIN_USER: $GRAFANA_USER
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:?err}
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: grafana-oncall-app
       GF_INSTALL_PLUGINS: grafana-oncall-app

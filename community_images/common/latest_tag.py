@@ -16,7 +16,7 @@ def get_latest_tag():
     tags = []
 
     for tag in sys.stdin:
-        if "rfstub" not in tag:
+        if "rfstub" not in tag and tag[len(sys.argv[1]):].isdigit():
             tags.append(tag)
 
     if not tags:

@@ -35,6 +35,9 @@ test()
     # install docker container
     docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up --build -d
 
+    # issue token
+    docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override
+
     # sleep for 30 sec
     sleep 30
 

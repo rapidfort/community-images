@@ -62,13 +62,13 @@ test()
 
     # install docker container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
+    report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
-    report_pulls "${IMAGE_REPOSITORY}"
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down

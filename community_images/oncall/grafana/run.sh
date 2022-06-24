@@ -34,17 +34,18 @@ test()
 
     # install docker container
     docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up --build -d
-
+    report_pulls "${IMAGE_REPOSITORY}" 3
+    
     # issue token
     docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override
-
+    report_pulls "${IMAGE_REPOSITORY}" 2
+    
     # sleep for 30 sec
     sleep 30
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
-    report_pulls "${IMAGE_REPOSITORY}"
-
+    
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down
 

@@ -46,17 +46,21 @@ function add_rolling_tags()
     os="${input_arr[1]}"
     os_ver="${input_arr[2]}"
 
-    IFS="."
-    # shellcheck disable=SC2162
-    read -a ver_arr <<< "$version"
-    maj_v="${ver_arr[0]}"
-    min_v="${ver_arr[1]}"
-
     FULL_VER_TAG="$version" # 10.6.8
-    VER_OS_TAG="$maj_v"."$min_v"-"$os"-"$os_ver" # 10.6-debian-10
-    MAJ_MINOR_TAG="$maj_v"."$min_v" # 10.6
+    declare -a rolling_tags=("$FULL_VER_TAG")
 
-    declare -a rolling_tags=("$FULL_VER_TAG" "$VER_OS_TAG" "$MAJ_MINOR_TAG")
+    if [[ "$os" != "" ]]; then
+        IFS="."
+        # shellcheck disable=SC2162
+        read -a ver_arr <<< "$version"
+        maj_v="${ver_arr[0]}"
+        min_v="${ver_arr[1]}"
+
+        VER_OS_TAG="$maj_v"."$min_v"-"$os"-"$os_ver" # 10.6-debian-10
+        MAJ_MINOR_TAG="$maj_v"."$min_v" # 10.6
+
+        rolling_tags+=("$VER_OS_TAG" "$MAJ_MINOR_TAG")
+    fi
 
     if [[ "$IS_LATEST_TAG" = "yes" ]]; then
         rolling_tags+=("latest")

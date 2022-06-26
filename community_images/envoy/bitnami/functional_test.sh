@@ -64,6 +64,9 @@ docker_compose_test()
     # log for debugging
     docker inspect "${NAMESPACE}"-envoy-1
 
+    # logs for tracking
+    docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
+
     # find non-tls and tls port
     NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-envoy-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
     TLS_PORT=$(docker inspect "${NAMESPACE}"-envoy-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")

@@ -102,8 +102,8 @@ test()
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
-        with_backoff curl localhost:"${TLS_PORT}"/a -k -v
-        with_backoff curl localhost:"${TLS_PORT}"/b -k -v
+        with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
+        with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
     done
 
     # logs for tracking

@@ -23,7 +23,6 @@ jobs:
           minikube version: 'v1.25.1'
           kubernetes version: 'v1.24.0'
           github token: ${{ secrets.GITHUB_TOKEN }}
-          driver: 'docker'
       - name: Check k8s cluster !
         run: kubectl get pods -A
       - name: Setup ubuntu

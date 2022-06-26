@@ -29,41 +29,6 @@ test()
     
     echo "Testing $REPOSITORY"
 
-    # upgrade helm
-    helm repo update
-
-    # Install helm
-    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
-    report_pulls "${IMAGE_REPOSITORY}" 2
-
-    # waiting for pod to be ready
-    echo "waiting for pod to be ready"
-    set +e
-    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
-
-    # wait for daemonsets
-    #kubectl rollout status daemonsets "${HELM_RELEASE}" -n "${NAMESPACE}" --timeout=20m
-    kubectl -n "${NAMESPACE}" logs -l "app.kubernetes.io/component=aggregator"
-    kubectl -n "${NAMESPACE}" logs -l "app.kubernetes.io/component=forwarder"
-    set -e
-
-    # get pod name
-    POD_NAME="${HELM_RELEASE}"-0
-
-    #... testing logic goes here....
-
-    # copy common_commands.sh into container
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
-
-    # run command on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
-
-    # bring down helm install
-    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
-
-    # delete the PVC associated
-    kubectl -n "${NAMESPACE}" delete pvc --all
-
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
@@ -73,6 +38,9 @@ test()
 
     # sleep for 30 sec
     sleep 30
+
+    # exec into container and run coverage script
+    docker exec -i "${NAMESPACE}"-fluentd-1 bash -c /opt/bitnami/scripts/common_commands.sh
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

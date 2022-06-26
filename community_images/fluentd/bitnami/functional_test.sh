@@ -13,36 +13,6 @@ NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=fluentd
 IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
 
-k8s_test()
-{
-    # setup namespace
-    setup_namespace "${NAMESPACE}"
-
-    # install helm
-    with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository="$IMAGE_REPOSITORY" --namespace "${NAMESPACE}"
-    report_pulls "${IMAGE_REPOSITORY}" 2
-
-    # wait for pods
-    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
-
-    # wait for daemonsets
-    #kubectl rollout status daemonsets "${HELM_RELEASE}" -n "${NAMESPACE}" --timeout=20m
-    kubectl -n "${NAMESPACE}" logs -l "app.kubernetes.io/component=aggregator"
-    kubectl -n "${NAMESPACE}" logs -l "app.kubernetes.io/component=forwarder"
-
-    # log pods
-    kubectl -n "${NAMESPACE}" get pods
-    kubectl -n "${NAMESPACE}" get svc
-
-    # delete cluster
-    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
-
-    # delete pvc
-    kubectl -n "${NAMESPACE}" delete pvc --all
-
-    # clean up namespace
-    cleanup_namespace "${NAMESPACE}"
-}
 
 docker_test()
 {
@@ -88,7 +58,6 @@ docker_compose_test()
 
 main()
 {
-    k8s_test
     docker_test
     docker_compose_test
 }

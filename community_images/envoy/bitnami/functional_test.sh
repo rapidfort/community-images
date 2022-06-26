@@ -28,6 +28,9 @@ docker_test()
     # sleep for few seconds
     sleep 30
 
+    # log for debugging
+    docker inspect "${NAMESPACE}"
+
     # get docker host ip
     ENVOY_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
 
@@ -57,6 +60,9 @@ docker_compose_test()
 
     # sleep for 30 sec
     sleep 30
+
+    # log for debugging
+    docker inspect "${NAMESPACE}"-envoy-1
 
     # find non-tls and tls port
     NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-envoy-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")

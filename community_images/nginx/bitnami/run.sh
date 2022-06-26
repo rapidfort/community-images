@@ -89,6 +89,9 @@ test()
     # exec into container and run coverage script
     docker exec -i "${NAMESPACE}"-nginx-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
+    # log for debugging
+    docker inspect "${NAMESPACE}"-nginx-1
+
     # find non-tls and tls port
     NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-nginx-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
     TLS_PORT=$(docker inspect "${NAMESPACE}"-nginx-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")

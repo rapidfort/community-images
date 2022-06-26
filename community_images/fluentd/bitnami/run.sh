@@ -29,6 +29,9 @@ test()
     
     echo "Testing $REPOSITORY"
 
+    # install td-agent
+    sudo apt-get install -y --force-yes td-agent
+
     # upgrade helm
     helm repo update
 

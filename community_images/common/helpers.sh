@@ -264,7 +264,7 @@ function create_certs()
 function report_pulls()
 {
     local REPO_NAME="${1}"
-    local PULL_COUNT=${2-1} # default to single pull count
+    local PULL_COUNT=1 # use 1 as docker caching might be kicking in. ${2-1} # default to single pull count
     echo "docker pull counter: $REPO_NAME $PULL_COUNT"
     if [ -z "${PULL_COUNTER[$REPO_NAME]}" ]; then
         PULL_COUNTER["$REPO_NAME"]=0
@@ -295,9 +295,9 @@ function finish {
     done
     JSON_STR+="}"
 
-    # curl -X POST \
-    #     -H "Accept: application/json" \
-    #     -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-    #     -d ${JSON_STR} https://data-receiver.rapidfort.io/counts/internal_image_pulls
+    curl -X POST \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+        -d ${JSON_STR} https://data-receiver.rapidfort.com/counts/internal_image_pulls
 }
 trap finish EXIT

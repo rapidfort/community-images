@@ -3,8 +3,8 @@
 set -x
 set -e
 
-DOCKERHUB_REGISTRY=docker.io
-RAPIDFORT_ACCOUNT=rapidfort
+DOCKERHUB_REGISTRY="${DOCKERHUB_REGISTRY:-docker.io}"
+RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
 declare -A PULL_COUNTER
@@ -143,11 +143,11 @@ function build_image()
     local IS_LATEST_TAG=$7
 
     local TAG RAPIDFORT_TAG NAMESPACE
-    TAG=$("${SCRIPTPATH}"/../../common/dockertags.sh "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
-    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
+    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; th en
         # dont create image for publish mode if tag exists
-        RAPIDFORT_TAG=$("${SCRIPTPATH}"/../../common/dockertags.sh "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+        RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
         if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
             echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"

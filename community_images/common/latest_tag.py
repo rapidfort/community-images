@@ -23,6 +23,7 @@ def get_latest_tag(tags, search_str):
     """
     search_str_len = len(search_str)
 
+    tags = filter(lambda tag: search_str in tag, tags)
     tags = list(filter(lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit(), tags))
 
     if len(tags)==0:

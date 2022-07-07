@@ -3,8 +3,8 @@
 set -x
 set -e
 
-DOCKERHUB_REGISTRY=docker.io
-RAPIDFORT_ACCOUNT=rapidfort
+DOCKERHUB_REGISTRY="${DOCKERHUB_REGISTRY:-docker.io}"
+RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
 declare -A PULL_COUNTER
@@ -17,6 +17,10 @@ function create_stub()
     local TAG=$4
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+    if [[ "$INPUT_ACCOUNT" == "_" ]]; then
+        INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
+    fi
+
     local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfstub
 
     # Pull docker image
@@ -81,7 +85,11 @@ function harden_image()
     local PUBLISH_IMAGE=$5
     local IS_LATEST_TAG=$6
 
-    local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+    local INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
+    if [[ "$INPUT_ACCOUNT" == "_" ]]; then
+        INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
+    fi
+
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
     
     # Create stub for docker image
@@ -143,11 +151,11 @@ function build_image()
     local IS_LATEST_TAG=$7
 
     local TAG RAPIDFORT_TAG NAMESPACE
-    TAG=$("${SCRIPTPATH}"/../../common/dockertags.sh "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
         # dont create image for publish mode if tag exists
-        RAPIDFORT_TAG=$("${SCRIPTPATH}"/../../common/dockertags.sh "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+        RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
         if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
             echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"

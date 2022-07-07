@@ -145,7 +145,7 @@ function build_image()
     local TAG RAPIDFORT_TAG NAMESPACE
     TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
-    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; th en
+    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
         # dont create image for publish mode if tag exists
         RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 

@@ -17,7 +17,7 @@ function create_stub()
     local TAG=$4
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
-    if [[ "$INPUT_ACCOUNT" != "_" ]]; then
+    if [[ "$INPUT_ACCOUNT" == "_" ]]; then
         INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
     fi
 
@@ -86,7 +86,7 @@ function harden_image()
     local IS_LATEST_TAG=$6
 
     local INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
-    if [[ "$INPUT_ACCOUNT" != "_" ]]; then
+    if [[ "$INPUT_ACCOUNT" == "_" ]]; then
         INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
     fi
 

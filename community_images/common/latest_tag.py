@@ -2,8 +2,8 @@
 This file is used by helpers script to fetch, sort and find
 latest tag from a given image repo and search string
 """
-import requests
 import sys
+import requests
 
 
 def fetch_tags(image_repo):
@@ -16,10 +16,10 @@ def fetch_tags(image_repo):
     if image_repo.startswith("_/"):
         image_repo=image_repo[2:]
 
-    r = requests.get(f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags")
-    if 200 <= r.status_code < 300:
-        tag_objs = r.json()
-        tags = map(lambda x: x.get("name", ""), r.json())
+    resp = requests.get(f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags")
+    if 200 <= resp.status_code < 300:
+        tag_objs = resp.json()
+        tags = map(lambda x: x.get("name", ""), tag_objs)
     return tags
 
 
@@ -30,7 +30,9 @@ def get_latest_tag(tags, search_str):
     search_str_len = len(search_str)
 
     tags = filter(lambda tag: search_str in tag, tags)
-    tags = list(filter(lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit(), tags))
+    tags = list(filter(
+        lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit(),
+        tags))
 
     if len(tags)==0:
         return []

@@ -17,6 +17,10 @@ function create_stub()
     local TAG=$4
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+    if [[ "$INPUT_ACCOUNT" != "_" ]]; then
+        INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
+    fi
+
     local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfstub
 
     # Pull docker image
@@ -81,7 +85,11 @@ function harden_image()
     local PUBLISH_IMAGE=$5
     local IS_LATEST_TAG=$6
 
-    local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+    local INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
+    if [[ "$INPUT_ACCOUNT" != "_" ]]; then
+        INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
+    fi
+
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
     
     # Create stub for docker image

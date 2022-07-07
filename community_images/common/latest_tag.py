@@ -6,11 +6,11 @@ import requests
 import sys
 
 
-def fetch_tags():
+def fetch_tags(image_repo):
     """
     Get tags from the dockerhub registry API
     """
-    r = requests.get(f"https://registry.hub.docker.com/v1/repositories/{image}/tags")
+    r = requests.get(f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags")
     if 200 <= r.status_code < 300:
         tag_objs = r.json()
         tags = []

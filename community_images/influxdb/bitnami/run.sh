@@ -44,6 +44,9 @@ test()
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
     #... testing logic goes here....
+    kubectl run influxdb-release-client --rm --tty -i --restart='Never' --namespace influxdb-8247c2fe68  \
+        --image docker.io/codervinod/influxdb:2.3.0-debian-11-r5-rfstub \
+        --command -- influx -host influxdb-release -port 8086
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh

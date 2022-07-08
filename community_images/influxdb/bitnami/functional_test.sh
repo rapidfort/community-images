@@ -8,9 +8,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-HELM_RELEASE=rf-ngixn
+HELM_RELEASE=rf-influxdb
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
-REPOSITORY=nginx
+REPOSITORY=influxdb
 IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
 
 k8s_test()

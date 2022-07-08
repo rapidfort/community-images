@@ -43,6 +43,9 @@ test()
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
+    # get influxdb token
+    INFLUXDB_TOKEN=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.admin-user-token}" | base64 --decode)
+
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
 
@@ -57,7 +60,14 @@ test()
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx write -t $INFLUXDB_ADMIN_USER_TOKEN -b primary --org-id primary -f /tmp/example.csv
 
     # run query on db
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t $INFLUXDB_ADMIN_USER_TOKEN -f /tmp/query.flux
+    #kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t $INFLUXDB_ADMIN_USER_TOKEN -f /tmp/query.flux
+
+    # run inch test
+    kubectl run -n "${NAMESPACE}" influxdb-inch \
+        --rm -i --restart='Never' \
+        --env="INFLUXDB_HOST=${HELM_RELEASE}" \
+        --env="INFLUXDB_TOKEN=${INFLUXDB_TOKEN}" \
+        --image "$RAPIDFORT_ACCOUNT"/influxdb-inch-test:latest
 
     # # create MongoDB client
     # MONGODB_ROOT_PASSWORD="${MONGODB_ROOT_PASSWORD}" \

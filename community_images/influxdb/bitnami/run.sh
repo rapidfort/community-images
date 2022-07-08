@@ -44,7 +44,7 @@ test()
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
     #... testing logic goes here....
-    kubectl run influxdb-release-client --rm --tty -i --restart='Never' --namespace influxdb-8247c2fe68  \
+    kubectl run influxdb-release-client --rm -i --restart='Never' --namespace influxdb-8247c2fe68  \
         --image docker.io/codervinod/influxdb:2.3.0-debian-11-r5-rfstub \
         --command -- influx -host influxdb-release -port 8086
 
@@ -53,6 +53,31 @@ test()
 
     # run command on cluster
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
+
+    # copy tests into container
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/* "${POD_NAME}":/tmp/*
+
+    # run tests on cluster
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx write -b example-bucket -f /tmp/example.csv
+
+    # # create MongoDB client
+    # MONGODB_ROOT_PASSWORD="${MONGODB_ROOT_PASSWORD}" \
+    #     IMAGE_REPOSITORY="${IMAGE_REPOSITORY}" \
+    #     TAG="${TAG}" envsubst < "${SCRIPTPATH}"/client.yml.base | kubectl -n "${NAMESPACE}" apply -f -
+
+    # # wait for mongodb client to be ready
+    # kubectl wait pods "${HELM_RELEASE}"-client -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+
+    # # copy test.mongo into container
+    # kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.mongo "${HELM_RELEASE}"-client:/tmp/test.mongo
+
+    # # run script
+    # kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-client \
+    #     -- /bin/bash -c "mongosh admin --host \"mongodb-release\" \
+    #     --authenticationDatabase admin -u root -p ${MONGODB_ROOT_PASSWORD} --file /tmp/test.mongo"
+
+    # # delete client container
+    # kubectl -n "${NAMESPACE}" delete pod "${HELM_RELEASE}"-client
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

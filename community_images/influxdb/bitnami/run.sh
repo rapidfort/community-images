@@ -53,8 +53,11 @@ test()
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/example.csv "${POD_NAME}":/tmp/example.csv
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/query.flux "${POD_NAME}":/tmp/query.flux
 
-    # run tests on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx write -b example-bucket -f /tmp/example.csv
+    # write data to db
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx write -t $INFLUXDB_ADMIN_USER_TOKEN -b primary --org-id primary -f /tmp/example.csv
+
+    # run query on db
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t $INFLUXDB_ADMIN_USER_TOKEN -f /tmp/query.flux
 
     # # create MongoDB client
     # MONGODB_ROOT_PASSWORD="${MONGODB_ROOT_PASSWORD}" \

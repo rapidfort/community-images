@@ -50,7 +50,8 @@ test()
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
 
     # copy tests into container
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/* "${POD_NAME}":/tmp/*
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/example.csv "${POD_NAME}":/tmp/example.csv
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/query.flux "${POD_NAME}":/tmp/query.flux
 
     # run tests on cluster
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx write -b example-bucket -f /tmp/example.csv

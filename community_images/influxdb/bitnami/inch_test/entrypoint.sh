@@ -19,4 +19,4 @@ TAG_CARDINALITY="${TAG_CARDINALITY:-2,5000,1}"
 POINTS_PER_SERIES="${POINTS_PER_SERIES:-100000}"
 CONSISTENCY="${CONSISTENCY:-any}"
 
-inch -host "$INFLUXDB_HOST" -token "$INFLUXDB_TOKEN" -v -c 8 -b 10000 -t 2,5000,1 -p 100000 -consistency any
+inch -host "$INFLUXDB_HOST" -token "$INFLUXDB_TOKEN" -v -v2 -c 8 -b 10000 -t 2,5000,1 -p 100000 -consistency any

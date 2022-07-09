@@ -65,7 +65,7 @@ test()
     # run inch test
     kubectl run -n "${NAMESPACE}" influxdb-inch \
         --rm -i --restart='Never' \
-        --env="INFLUXDB_HOST=${HELM_RELEASE}" \
+        --env="INFLUXDB_HOST=http://${HELM_RELEASE}:8086" \
         --env="INFLUXDB_TOKEN=${INFLUXDB_TOKEN}" \
         --image "$RAPIDFORT_ACCOUNT"/influxdb-inch-test:latest
 

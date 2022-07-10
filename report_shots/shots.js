@@ -52,7 +52,7 @@ async function main() {
   const browser = await puppeteer.launch({headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
-  imgListArray.forEach(async(imagePath) => {
+  for await (const imagePath of imgListArray) {
     console.log(imagePath);
     const imageSavePath = util.format('../community_images/%s/assets', imagePath);
     console.log(imageSavePath);
@@ -63,7 +63,20 @@ async function main() {
     let imageYml = await yaml.load(imageYmlContents);
 
     await takeShots(browser, imageSavePath, imageYml.report_url);
-  });
+  }
+
+  // imgListArray.forEach(async(imagePath) => {
+  //   console.log(imagePath);
+  //   const imageSavePath = util.format('../community_images/%s/assets', imagePath);
+  //   console.log(imageSavePath);
+
+  //   let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
+
+  //   let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
+  //   let imageYml = await yaml.load(imageYmlContents);
+
+  //   await takeShots(browser, imageSavePath, imageYml.report_url);
+  // });
 
   await browser.close();
 }

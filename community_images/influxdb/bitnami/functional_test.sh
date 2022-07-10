@@ -62,6 +62,11 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
+        -e INFLUXDB_ADMIN_USER_PASSWORD="bitnami123" \
+        -e INFLUXDB_ADMIN_USER_TOKEN="admintoken123" \
+        -e INFLUXDB_USER="my_user" \
+        -e INFLUXDB_USER_PASSWORD="my_password" \
+        -e INFLUXDB_DB="my_database" \
         --name "${NAMESPACE}" "$IMAGE_REPOSITORY":latest
     report_pulls "${IMAGE_REPOSITORY}"
 

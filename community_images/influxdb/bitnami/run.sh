@@ -60,33 +60,7 @@ test()
     kubectl -n "${NAMESPACE}" exec -it "${POD_NAME}" -- /bin/bash -c "influx write -t $INFLUXDB_TOKEN -b primary --org-id primary -f /tmp/example.csv"
 
     # run query on db
-    #kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t $INFLUXDB_TOKEN -f /tmp/query.flux
-
-    # run inch test
-    kubectl run -n "${NAMESPACE}" influxdb-inch \
-        --rm -i --restart='Never' \
-        --env="INFLUXDB_HOST=http://${HELM_RELEASE}:8086" \
-        --env="INFLUXDB_TOKEN=${INFLUXDB_TOKEN}" \
-        --image "$RAPIDFORT_ACCOUNT"/influxdb-inch-test:latest
-
-    # # create MongoDB client
-    # MONGODB_ROOT_PASSWORD="${MONGODB_ROOT_PASSWORD}" \
-    #     IMAGE_REPOSITORY="${IMAGE_REPOSITORY}" \
-    #     TAG="${TAG}" envsubst < "${SCRIPTPATH}"/client.yml.base | kubectl -n "${NAMESPACE}" apply -f -
-
-    # # wait for mongodb client to be ready
-    # kubectl wait pods "${HELM_RELEASE}"-client -n "${NAMESPACE}" --for=condition=ready --timeout=10m
-
-    # # copy test.mongo into container
-    # kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.mongo "${HELM_RELEASE}"-client:/tmp/test.mongo
-
-    # # run script
-    # kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}"-client \
-    #     -- /bin/bash -c "mongosh admin --host \"mongodb-release\" \
-    #     --authenticationDatabase admin -u root -p ${MONGODB_ROOT_PASSWORD} --file /tmp/test.mongo"
-
-    # # delete client container
-    # kubectl -n "${NAMESPACE}" delete pod "${HELM_RELEASE}"-client
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t $INFLUXDB_TOKEN --org primary -f /tmp/query.flux
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

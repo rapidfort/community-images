@@ -23,7 +23,23 @@ k8s_test()
     report_pulls "${IMAGE_REPOSITORY}"
 
     # wait for pods
-    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
+
+    # get pod name
+    POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
+
+    # get influxdb token
+    INFLUXDB_TOKEN=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.admin-user-token}" | base64 --decode)
+
+    # copy tests into container
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/example.csv "${POD_NAME}":/tmp/example.csv
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/tests/query.flux "${POD_NAME}":/tmp/query.flux
+
+    # write data to db
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx write -t $INFLUXDB_TOKEN -b primary --org-id primary -f /tmp/example.csv
+
+    # run query on db
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t $INFLUXDB_TOKEN --org primary -f /tmp/query.flux
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

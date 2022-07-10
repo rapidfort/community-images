@@ -59,7 +59,7 @@ async function main() {
     let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
 
     let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
-    let imageYml = yaml.load(imageYmlContents);
+    let imageYml = await yaml.load(imageYmlContents);
 
     await takeShots(imageSavePath, imageYml.report_url);
   });

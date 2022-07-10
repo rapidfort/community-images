@@ -46,6 +46,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Envoy][ envoy-github-link]| [![dh][dh-rf-badge]][envoy-rf-dh-image-link] | [![rf-h][rf-h-badge]][envoy-rf-link] | [![envoy-image-ft][envoy-ft-badge]][envoy-ft-badge-link] |
 | [Fluentd][ fluentd-github-link]| [![dh][dh-rf-badge]][fluentd-rf-dh-image-link] | [![rf-h][rf-h-badge]][fluentd-rf-link] | [![fluentd-image-ft][fluentd-ft-badge]][fluentd-ft-badge-link] |
 | [Grafana Oncall][ oncall-github-link]| [![dh][dh-rf-badge]][oncall-rf-dh-image-link] | [![rf-h][rf-h-badge]][oncall-rf-link] | [![oncall-image-ft][oncall-ft-badge]][oncall-ft-badge-link] |
+| [InfluxDB™][ influxdb-github-link]| [![dh][dh-rf-badge]][influxdb-rf-dh-image-link] | [![rf-h][rf-h-badge]][influxdb-rf-link] | [![influxdb-image-ft][influxdb-ft-badge]][influxdb-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -173,3 +174,11 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [oncall-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml
 [oncall-source-dh-link]: https://hub.docker.com/r/grafana/oncall
 [oncall-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fgrafana%2Foncall?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[influxdb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/influxdb/bitnami
+[influxdb-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/influxdb?logo=docker&logoColor=white
+[influxdb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/influxdb
+[influxdb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/influxdb_bitnami.yml/badge.svg
+[influxdb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/influxdb_bitnami.yml
+[influxdb-source-dh-link]: https://hub.docker.com/r/bitnami/influxdb
+[influxdb-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Finfluxdb?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

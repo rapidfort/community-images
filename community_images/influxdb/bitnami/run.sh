@@ -60,7 +60,7 @@ test()
     kubectl -n "${NAMESPACE}" exec -it "${POD_NAME}" -- /bin/bash -c "influx write -t $INFLUXDB_TOKEN -b primary --org-id primary -f /tmp/example.csv"
 
     # run query on db
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t $INFLUXDB_TOKEN --org primary -f /tmp/query.flux
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- influx query -t "$INFLUXDB_TOKEN" --org primary -f /tmp/query.flux
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

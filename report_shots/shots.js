@@ -4,9 +4,7 @@ const util = require('util');
 const fs = require('fs/promises');
 const yaml = require('js-yaml')
 
-async function takeShots(imageSavePath, imageUrl) {
-  const browser = await puppeteer.launch({headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']});
+async function takeShots(browser, imageSavePath, imageUrl) {
   const page = await browser.newPage();
 
   await page.setViewport({
@@ -40,7 +38,7 @@ async function takeShots(imageSavePath, imageUrl) {
     });
 
   await page.close();
-  await browser.close();
+  
   console.log("screen shots taken");
 }
 
@@ -50,6 +48,9 @@ async function main() {
   const imgList = await fs.readFile(imgListPath, { encoding: 'utf8' });
   const imgListArray = imgList.split("\n");
   console.log(imgListArray);
+
+  const browser = await puppeteer.launch({headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   imgListArray.forEach(async(imagePath) => {
     console.log(imagePath);
@@ -61,8 +62,10 @@ async function main() {
     let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
     let imageYml = await yaml.load(imageYmlContents);
 
-    await takeShots(imageSavePath, imageYml.report_url);
+    await takeShots(browser, imageSavePath, imageYml.report_url);
   });
+
+  await browser.close();
 }
 
 main();

@@ -29,8 +29,6 @@ async function takeShots(browser, imageSavePath, imageUrl) {
     path: util.format('%s/metrics.png', imageSavePath)
     });
 
-    // #card-statistics-histogram
-
   await page.waitForSelector('#card-statistics-histogram');
   const cve_details = await page.$('#card-statistics-histogram');
   await cve_details.screenshot({
@@ -64,19 +62,6 @@ async function main() {
 
     await takeShots(browser, imageSavePath, imageYml.report_url);
   }
-
-  // imgListArray.forEach(async(imagePath) => {
-  //   console.log(imagePath);
-  //   const imageSavePath = util.format('../community_images/%s/assets', imagePath);
-  //   console.log(imageSavePath);
-
-  //   let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
-
-  //   let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
-  //   let imageYml = await yaml.load(imageYmlContents);
-
-  //   await takeShots(browser, imageSavePath, imageYml.report_url);
-  // });
 
   await browser.close();
 }

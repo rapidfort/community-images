@@ -35,7 +35,7 @@ k8s_test()
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/etcd_test.sh "${POD_NAME}":/tmp/etcd_test.sh
 
     # run etcd_test on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/etcd_test.sh" "$ROOT_PASSWORD"
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/etcd_test.sh $ROOT_PASSWORD"
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

@@ -25,6 +25,18 @@ k8s_test()
     # wait for pods
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
+    # get pod name
+    POD_NAME="${HELM_RELEASE}"-0
+
+    # etcd password
+    ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" etcd-release -o jsonpath="{.data.etcd-root-password}" | base64 -d)
+
+    # copy etcd_test.sh into container
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/etcd_test.sh "${POD_NAME}":/tmp/etcd_test.sh
+
+    # run etcd_test on cluster
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/etcd_test.sh" "$ROOT_PASSWORD"
+
     # log pods
     kubectl -n "${NAMESPACE}" get pods
     kubectl -n "${NAMESPACE}" get svc

@@ -3,7 +3,7 @@
 set -x
 set -e
 
-if [[ $# -ne 2 ]]; then
+if [[ $# -ne 1 ]]; then
     echo "Usage:$0 <ROOT_PASSWORD>"
     exit 1
 fi

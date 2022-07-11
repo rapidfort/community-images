@@ -2,7 +2,7 @@
 
 # This script deletes a image tag from dockerhub repo
 
-if [[ $# -ne 3 ]]; then
+if [[ $# -ne 2 ]]; then
     echo "Usage:$0 <image> <tag>"
     exit 1
 fi

@@ -1,0 +1,21 @@
+name: etcd
+official_name: Etcd
+official_website: https://etcd.io/
+source_image_dh_link: bitnami/etcd
+rf_docker_link: rapidfort/etcd
+image_workflow_name: etcd_bitnami
+github_location: etcd/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fetcd
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install etcd, just replace repository with RapidFort registry
+  $ helm install my-etcd bitnami/etcd --set image.repository=rapidfort/etcd
+what_is_text: |
+  etcd is a distributed key-value store designed to securely store data across a cluster. etcd is widely used in production on account of its reliability, fault-tolerance and ease of use.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`3.5`, `3.5-debian-11`, `3.5.4`, `3.5.4-debian-11-r13`, `latest` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-etcd/blob/3.5.4-debian-11-r13/3.5/debian-11/Dockerfile)"
+  - "[`3.4`, `3.4-debian-11`, `3.4.18`, `3.4.18-debian-11-r14` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-etcd/blob/3.4.18-debian-11-r14/3.4/debian-11/Dockerfile)"
+  - "[`3.3`, `3.3-debian-11`, `3.3.27`, `3.3.27-debian-11-r13` (3.3/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-etcd/blob/3.3.27-debian-11-r13/3.3/debian-11/Dockerfile)"

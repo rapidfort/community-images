@@ -3,29 +3,37 @@
 
 ROOT_PASSWORD=$1
 
-function etc_cmd()
+function etcd_cmd()
 {
     etcdctl --user root:"$ROOT_PASSWORD" "$@"
 } 
 
-etc_cmd version
+etcd_cmd version
 
-etc_cmd put foo bar
+etcd_cmd put foo bar
 
-etc_cmd put foo1 bar1 --lease=1234abcd
+etcd_cmd lease grant 10
 
-etc_cmd get foo
+etcd_cmd get foo
 
-etc_cmd get foo --hex
+etcd_cmd get foo --hex
 
-etc_cmd get foo --print-value-only
+etcd_cmd get foo --print-value-only
 
-etc_cmd get --prefix foo
+etcd_cmd get --prefix foo
 
-etc_cmd del foo
+etcd_cmd del foo
 
-etc_cmd watch foo &
+etcd_cmd watch foo &
 
-etc_cmd set foo test1
+etcd_cmd alarm list
 
-etc_cmd alarm list
+etcd_cmd check perf
+
+etcd_cmd check datascale
+
+etcd_cmd endpoint health
+
+etcd_cmd endpoint status
+
+etcd_cmd member list

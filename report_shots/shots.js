@@ -4,7 +4,7 @@ const util = require('util');
 const fs = require('fs/promises');
 const yaml = require('js-yaml')
 
-async function takeShots(browser, imageSavePath, imageUrl) {
+async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   const page = await browser.newPage();
 
   await page.setViewport({
@@ -20,8 +20,10 @@ async function takeShots(browser, imageSavePath, imageUrl) {
     name: 'prefers-color-scheme', value: 'light' }]);
 
   // Select light theme
-  await page.waitForSelector("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
-  await page.click("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
+  if(firstShot) {
+    await page.waitForSelector("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
+    await page.click("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
+  }
 
   await page.waitForSelector('#carousel__container');
   const metrics = await page.$('#carousel__container');
@@ -50,6 +52,8 @@ async function main() {
   const browser = await puppeteer.launch({headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
+  let firstShot=true;
+
   for await (const imagePath of imgListArray) {
     console.log(imagePath);
     const imageSavePath = util.format('../community_images/%s/assets', imagePath);
@@ -60,7 +64,8 @@ async function main() {
     let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
     let imageYml = await yaml.load(imageYmlContents);
 
-    await takeShots(browser, imageSavePath, imageYml.report_url);
+    await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);
+    firstShot=false;
   }
 
   await browser.close();

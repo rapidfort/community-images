@@ -58,6 +58,7 @@ docker_test()
 
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
+        --env ALLOW_NONE_AUTHENTICATION=yes \
         --name "${NAMESPACE}" "$IMAGE_REPOSITORY":latest
     report_pulls "${IMAGE_REPOSITORY}"
 

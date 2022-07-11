@@ -1,12 +1,19 @@
 #!/bin/bash
 
+set -x
+set -e
 
-ROOT_PASSWORD=$1
+if [[ $# -ne 1 ]]; then
+    echo "Usage:$0 <ROOT_PASSWORD>"
+    exit 1
+fi
+
+ROOT_PASSWORD="$1"
 
 function etcd_cmd()
 {
     etcdctl --user root:"$ROOT_PASSWORD" "$@"
-} 
+}
 
 etcd_cmd version
 

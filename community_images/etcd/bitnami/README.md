@@ -61,8 +61,6 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`3.5`, `3.5-debian-11`, `3.5.4`, `3.5.4-debian-11-r13`, `latest` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-etcd/blob/3.5.4-debian-11-r13/3.5/debian-11/Dockerfile)
-* [`3.4`, `3.4-debian-11`, `3.4.18`, `3.4.18-debian-11-r14` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-etcd/blob/3.4.18-debian-11-r14/3.4/debian-11/Dockerfile)
-* [`3.3`, `3.3-debian-11`, `3.3.27`, `3.3.27-debian-11-r13` (3.3/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-etcd/blob/3.3.27-debian-11-r13/3.3/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

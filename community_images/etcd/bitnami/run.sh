@@ -36,12 +36,11 @@ test()
     with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
     report_pulls "${IMAGE_REPOSITORY}"
 
-    # waiting for pod to be ready
-    echo "waiting for pod to be ready"
-    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
+    # wait for pods
+    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
     # get pod name
-    POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
+    POD_NAME="${HELM_RELEASE}"-0
 
     #... testing logic goes here....
 

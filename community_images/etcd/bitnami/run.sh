@@ -43,7 +43,7 @@ test()
     POD_NAME="${HELM_RELEASE}"-0
 
     # etcd password
-    ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" etcd-release -o jsonpath="{.data.etcd-root-password}" | base64 -d)
+    ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.etcd-root-password}" | base64 -d)
 
     # copy etcd_test.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/etcd_test.sh "${POD_NAME}":/tmp/etcd_test.sh

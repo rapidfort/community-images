@@ -9,7 +9,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
 INPUT_REGISTRY="${IB_DOCKER_REGISTRY}"
-INPUT_ACCOUNT="${IB_DOCKER_REGISTRY}"/ironbank/opensource/redis
+INPUT_ACCOUNT=ironbank/opensource/redis
 REPOSITORY=redis6
 
 if [ "$#" -ne 1 ]; then

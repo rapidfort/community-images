@@ -27,7 +27,7 @@ function create_stub()
     docker pull "${INPUT_IMAGE_FULL}"
 
     # login to output docker register as input and output docker registry could be different
-    docker login "${DOCKERHUB_REGISTRY}" -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_USERNAME}"
+    docker login "${DOCKERHUB_REGISTRY}" -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
     
     # Create stub for docker image
     rfstub "${INPUT_IMAGE_FULL}"

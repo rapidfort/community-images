@@ -49,6 +49,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Grafana Oncall][ oncall-github-link]| [![dh][dh-rf-badge]][oncall-rf-dh-image-link] | [![rf-h][rf-h-badge]][oncall-rf-link] | [![oncall-image-ft][oncall-ft-badge]][oncall-ft-badge-link] |
 | [InfluxDB™][ influxdb-github-link]| [![dh][dh-rf-badge]][influxdb-rf-dh-image-link] | [![rf-h][rf-h-badge]][influxdb-rf-link] | [![influxdb-image-ft][influxdb-ft-badge]][influxdb-ft-badge-link] |
 | [Etcd][ etcd-github-link]| [![dh][dh-rf-badge]][etcd-rf-dh-image-link] | [![rf-h][rf-h-badge]][etcd-rf-link] | [![etcd-image-ft][etcd-ft-badge]][etcd-ft-badge-link] |
+| [NATS][ nats-github-link]| [![dh][dh-rf-badge]][nats-rf-dh-image-link] | [![rf-h][rf-h-badge]][nats-rf-link] | [![nats-image-ft][nats-ft-badge]][nats-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -195,3 +196,11 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [etcd-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/etcd_bitnami.yml
 [etcd-source-dh-link]: https://hub.docker.com/r/bitnami/etcd
 [etcd-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fetcd?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[nats-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nats/bitnami
+[nats-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nats?logo=docker&logoColor=white
+[nats-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nats
+[nats-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml/badge.svg
+[nats-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml
+[nats-source-dh-link]: https://hub.docker.com/r/bitnami/nats
+[nats-rf-link]:?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

@@ -44,11 +44,14 @@ k8s_test()
 
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- bash -c "/tmp/common_commands.sh"
 
+    # delete the generated commands.sh
+    rm "$SCRIPTPATH"/commands.sh
+
     # log pods
     kubectl -n "${NAMESPACE}" get pods
     kubectl -n "${NAMESPACE}" get svc
 
-    # delte cluster
+    # delete cluster
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 
     # delete pvc

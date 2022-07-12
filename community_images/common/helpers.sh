@@ -166,6 +166,8 @@ function build_image()
                 return
             fi
         fi
+    else
+        TAG="${BASE_TAG}"
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")

@@ -2,6 +2,7 @@ name: nats
 official_name: NATS
 official_website: https://nats.io
 source_image_dh_link: bitnami/nats
+source_image_provider: Bitnami
 rf_docker_link: rapidfort/nats
 image_workflow_name: nats_bitnami
 github_location: nats/bitnami
@@ -15,4 +16,4 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`1.xx`, `1.xx-debian-10`, `1.xx.0`, `1.xx.0-debian-10-ryyy`, `latest` (1.xx/debian-10/Dockerfile)](https://github.com/provider/Dockerfile)"
+  - "[`2`, `2-debian-11`, `2.8.4`, `2.8.4-debian-11-r13`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nats/blob/2.8.4-debian-11-r13/2/debian-11/Dockerfile)"

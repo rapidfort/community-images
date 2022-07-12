@@ -11,6 +11,9 @@ services:
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     volumes:
       - 'redis_data:/bitnami/redis/data'
+      - ../../common/tests/test.redis:/tmp/test.redis
+      - ../../common/tests/common_commands.sh:/tmp/common_commands.sh
+      - ../../common/tests/redis_coverage.sh:/tmp/redis_coverage.sh
     cap_add:
       - SYS_PTRACE
 

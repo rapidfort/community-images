@@ -150,16 +150,21 @@ function build_image()
     local PUBLISH_IMAGE=$6
     local IS_LATEST_TAG=$7
 
-    local TAG RAPIDFORT_TAG NAMESPACE
-    TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    local TAG NAMESPACE
 
-    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
-        # dont create image for publish mode if tag exists
-        RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    if [[ "${INPUT_REGISTRY}" = "docker.io" ]]; then
+        local RAPIDFORT_TAG
+        
+        TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
-        if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
-            echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
-            return
+        if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
+            # dont create image for publish mode if tag exists
+            RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+
+            if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
+                echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
+                return
+            fi
         fi
     fi
 

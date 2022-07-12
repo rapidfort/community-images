@@ -26,7 +26,6 @@ test()
     local TAG=$2
     local NAMESPACE=$3
     local HELM_RELEASE="$REPOSITORY"-release
-
     echo "Testing $REPOSITORY"
 
     # upgrade helm
@@ -42,8 +41,6 @@ test()
 
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
-
-    #... testing logic goes here....
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh

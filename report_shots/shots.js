@@ -38,7 +38,7 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
     });
 
   await page.close();
-  
+
   console.log("screen shots taken");
 }
 
@@ -63,7 +63,7 @@ async function main() {
 
     let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
     let imageYml = await yaml.load(imageYmlContents);
-
+    console.log(imageYml.report_url)
     await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);
     firstShot=false;
   }

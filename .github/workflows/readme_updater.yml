@@ -138,6 +138,14 @@ jobs:
           repository: rapidfort/redis6-ib
           readme-filepath: ./community_images/redis/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ IronBank
+      - name: Docker Hub Description PostgreSQL IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/postgresql12-ib
+          readme-filepath: ./community_images/postgresql/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for PostgreSQL IronBank
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

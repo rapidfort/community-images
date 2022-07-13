@@ -48,9 +48,6 @@ docker_compose_test()
     # sleep for 30 sec
     sleep 30
 
-    # password
-    POSTGRES_PASSWORD=my_password
-
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 

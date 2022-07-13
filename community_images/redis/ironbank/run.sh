@@ -32,7 +32,7 @@ test()
 
     # install redis container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
-    report_pulls "${IMAGE_REPOSITORY}" 2
+    report_pulls "${RAPIDFORT_ACCOUNT}/${REPOSITORY}-ib" 2
 
     # sleep for 30 sec
     sleep 30

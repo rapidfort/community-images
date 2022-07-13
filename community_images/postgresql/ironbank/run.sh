@@ -40,13 +40,13 @@ test()
     sleep 30
 
     # common commands
-    docker exec -i "${NAMESPACE}"-postgresql-master-1 bash -c "/tmp/common_commands.sh"
+    docker exec -i "${NAMESPACE}"-postgresql-1 bash -c "/tmp/common_commands.sh"
 
     # run redis tests
-    docker exec -i "${NAMESPACE}"-postgresql-master-1 bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
+    docker exec -i "${NAMESPACE}"-postgresql-1 bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
 
     # run redis coverage
-    docker exec -i "${NAMESPACE}"-postgresql-master-1 bash -c "/tmp/postgres_coverage.sh"
+    docker exec -i "${NAMESPACE}"-postgresql-1 bash -c "/tmp/postgres_coverage.sh"
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

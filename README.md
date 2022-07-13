@@ -49,7 +49,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Grafana Oncall][ oncall-github-link]| [![dh][dh-rf-badge]][oncall-rf-dh-image-link] | [![rf-h][rf-h-badge]][oncall-rf-link] | [![oncall-image-ft][oncall-ft-badge]][oncall-ft-badge-link] |
 | [InfluxDB™][ influxdb-github-link]| [![dh][dh-rf-badge]][influxdb-rf-dh-image-link] | [![rf-h][rf-h-badge]][influxdb-rf-link] | [![influxdb-image-ft][influxdb-ft-badge]][influxdb-ft-badge-link] |
 | [Etcd][ etcd-github-link]| [![dh][dh-rf-badge]][etcd-rf-dh-image-link] | [![rf-h][rf-h-badge]][etcd-rf-link] | [![etcd-image-ft][etcd-ft-badge]][etcd-ft-badge-link] |
-| [Redis™ ironbank][ redis-ib-github-link]| [![dh][dh-rf-badge]][redis-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-ib-rf-link] | [![redis-ib-image-ft][redis-ib-ft-badge]][redis-ib-ft-badge-link] |
+| [Redis™ IronBank][ redis-ib-github-link]| [![dh][dh-rf-badge]][redis-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-ib-rf-link] | [![redis-ib-image-ft][redis-ib-ft-badge]][redis-ib-ft-badge-link] |
 
 ### How to use Community Images
 

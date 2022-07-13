@@ -7,11 +7,11 @@
 [![FOSSA Status][fossa-badge]][fossa-link]
 
 
-# RapidFort hardened image for Redis™ ironbank
+# RapidFort hardened image for Redis™ IronBank
 
-RapidFort’s container optimization process hardened this Redis™ ironbank container. This container is free to use and has no license limitations.
+RapidFort’s container optimization process hardened this Redis™ IronBank container. This container is free to use and has no license limitations.
 
-It is the same as the [_/redis][source-image-dh-link] image but more secure.
+It is the same as the [None Redis™ IronBank][source-image-dh-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
@@ -21,17 +21,17 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 [![CVE Reduction][cve-reduction-link]][rf-image-link]
 
-## What is Redis™ ironbank?
+## What is Redis™ IronBank?
 
 > Redis™ is an open-source, networked, in-memory, key-value data store with optional durability. It is written in ANSI C. The development of Redis is sponsored by Redis Labs today; before that, it was sponsored by Pivotal and VMware. According to the monthly ranking by DB-Engines.com, Redis is the most popular key-value store. The name Redis means REmote DIctionary Server.
 
 
-[Overview of Redis™ ironbank](http://redis.io)
+[Overview of Redis™ IronBank](http://redis.io)
 
 Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
 
 
-## How do I use this hardened Redis™ ironbank image?
+## How do I use this hardened Redis™ IronBank image?
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -44,14 +44,14 @@ $ docker run -it --rm -p6379:6379 rapidfort/redis6-ib:latest
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [_/redis][source-image-dh-link] image on Docker Hub.
+This image is a hardened version of the official [None Redis™ IronBank][source-image-dh-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
 
-## What’s the difference between the official [_/redis][source-image-dh-link] image and this hardened image?
+## What’s the difference between the official [None Redis™ IronBank][source-image-dh-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/redis6-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.

@@ -36,6 +36,8 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          DOCKERHUB_USERNAME: ${{ '{{' }} secrets.IB_DOCKER_USERNAME {{ '}}' }}
+          DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         if: github.event_name != 'pull_request'
         run: ./community_images/{{- github_location -}}/run.sh yes
@@ -43,6 +45,8 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          DOCKERHUB_USERNAME: ${{ '{{' }} secrets.IB_DOCKER_USERNAME {{ '}}' }}
+          DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         if: github.event_name == 'pull_request'
         run: ./community_images/{{- github_location -}}/run.sh no

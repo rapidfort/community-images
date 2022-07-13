@@ -16,7 +16,8 @@ def fetch_tags(image_repo):
     if image_repo.startswith("_/"):
         image_repo=image_repo[2:]
 
-    resp = requests.get(f"https://registry.hub.docker.com/v1/repositories/apache/tags")
+    resp = requests.get(f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags")
+    tags = resp;
     if 200 <= resp.status_code < 300:
         tag_objs = resp.json()
         tags = map(lambda x: x.get("name", ""), tag_objs)
@@ -33,7 +34,6 @@ def get_latest_tag(tags, search_str):
     tags = list(filter(
         lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit(),
         tags))
-
     if len(tags)==0:
         return []
 

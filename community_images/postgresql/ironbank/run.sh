@@ -3,16 +3,14 @@
 set -x
 set -e
 
-# shellcheck disable=SC1091
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-
-INPUT_REGISTRY=docker.io
-INPUT_ACCOUNT=bitnami
-REPOSITORY=fluentd
+INPUT_REGISTRY=registry1.dso.mil
+INPUT_ACCOUNT=ironbank/opensource/postgres
+REPOSITORY=postgresql12
 
 if [ "$#" -ne 1 ]; then
     PUBLISH_IMAGE="no"
@@ -26,20 +24,28 @@ test()
     local TAG=$2
     local NAMESPACE=$3
     
-    echo "Testing $REPOSITORY"
+    echo "Testing postgresql"
 
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
-    # install docker container
+    POSTGRES_PASSWORD=my_password
+
+    # install container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
     report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for 30 sec
     sleep 30
 
-    # exec into container and run coverage script
-    docker exec -i "${NAMESPACE}"-fluentd-1 bash -c /opt/bitnami/scripts/common_commands.sh
+    # common commands
+    docker exec -i "${NAMESPACE}"-postgresql-1 bash -c "/tmp/common_commands.sh"
+
+    # run redis tests
+    docker exec -i "${NAMESPACE}"-postgresql-1 bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
+
+    # run redis coverage
+    docker exec -i "${NAMESPACE}"-postgresql-1 bash -c "/tmp/postgres_coverage.sh"
 
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
@@ -51,6 +57,10 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("1.14.6-debian-11-r")
+# login to input registry
+docker login "${INPUT_REGISTRY}" -u "${IB_DOCKER_USERNAME}" -p "${IB_DOCKER_PASSWORD}"
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+declare -a BASE_TAG_ARRAY=("latest")
+
+build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}-ib" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+

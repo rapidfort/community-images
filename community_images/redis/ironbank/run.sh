@@ -38,13 +38,13 @@ test()
     sleep 30
 
     # common commands
-    docker exec -it "${NAMESPACE}"-redis-primary-1 bash -c "/tmp/common_commands.sh"
+    docker exec -i "${NAMESPACE}"-redis-primary-1 bash -c "/tmp/common_commands.sh"
 
     # run redis tests
-    docker exec -it "${NAMESPACE}"-redis-primary-1 bash -c "cat /tmp/test.redis | redis-cli" 
+    docker exec -i "${NAMESPACE}"-redis-primary-1 bash -c "cat /tmp/test.redis | redis-cli"
 
     # run redis coverage
-    docker exec -it "${NAMESPACE}"-redis-primary-1 bash -c "/tmp/redis_coverage.sh"
+    docker exec -i "${NAMESPACE}"-redis-primary-1 bash -c "/tmp/redis_coverage.sh"
 
     # # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

@@ -57,7 +57,7 @@ docker_compose_test()
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # run redis benchmark
-    docker exec -it "${NAMESPACE}"-redis-primary-1 bash -c redis-benchmark
+    docker exec -i "${NAMESPACE}"-redis-primary-1 bash -c redis-benchmark
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down

@@ -8,50 +8,10 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-REPOSITORY=nginx
+REPOSITORY=nginx-ib
 HELM_RELEASE=rf-"${REPOSITORY}"
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
-IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
-
-k8s_test()
-{
-    # setup namespace
-    setup_namespace "${NAMESPACE}"
-
-    # install helm
-    with_backoff helm install "${HELM_RELEASE}" \
-        bitnami/"$REPOSITORY" \
-        --set image.repository="${IMAGE_REPOSITORY}" \
-        --set cloneStaticSiteFromGit.enabled=true \
-        --set cloneStaticSiteFromGit.repository="https://github.com/mdn/beginner-html-site-styled.git" \
-        --set cloneStaticSiteFromGit.branch=master \
-        --namespace "${NAMESPACE}"
-    report_pulls "${IMAGE_REPOSITORY}"
-
-    # waiting for pod to be ready
-    echo "waiting for pod to be ready"
-    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
-
-    # fetch service url and curl to url
-    URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
-
-    # curl to http url
-    curl -k "${URL}"
-
-
-    # log pods
-    kubectl -n "${NAMESPACE}" get pods
-    kubectl -n "${NAMESPACE}" get svc
-
-    # delte cluster
-    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
-
-    # delete pvc
-    kubectl -n "${NAMESPACE}" delete pvc --all
-
-    # clean up namespace
-    cleanup_namespace "${NAMESPACE}"
-}
+IMAGE_REPOSITORY="$RAPIDFORT_ACCOUNT"/"$REPOSITORY"
 
 docker_test()
 {
@@ -97,7 +57,6 @@ docker_compose_test()
 
 main()
 {
-    k8s_test
     docker_test
     docker_compose_test
 }

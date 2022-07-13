@@ -8,7 +8,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-INPUT_REGISTRY="${IB_DOCKER_REGISTRY}"
+INPUT_REGISTRY=registry1.dso.mil
 INPUT_ACCOUNT=ironbank/opensource/redis
 REPOSITORY=redis6
 
@@ -56,7 +56,8 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-docker login "${IB_DOCKER_REGISTRY}" -u "${IB_DOCKER_USERNAME}" -p "${IB_DOCKER_PASSWORD}"
+# login to input registry
+docker login "${INPUT_REGISTRY}" -u "${IB_DOCKER_USERNAME}" -p "${IB_DOCKER_PASSWORD}"
 
 declare -a BASE_TAG_ARRAY=("latest")
 

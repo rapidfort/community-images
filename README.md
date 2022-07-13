@@ -212,4 +212,4 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [postgresql-ib-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ironbank.yml/badge.svg
 [postgresql-ib-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ironbank.yml
 [postgresql-ib-source-dh-link]: https://hub.docker.com/r/_/postgres
-[postgresql-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgresql%2Fpostgresql12?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+[postgresql-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

@@ -14,7 +14,6 @@ if command -v ecpg --version &> /dev/null
 then
     ecpg --version
 fi
-ecpg --version
 if command -v pg_amcheck --version &> /dev/null
 then
     pg_amcheck --version

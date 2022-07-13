@@ -60,4 +60,5 @@ docker login "${IB_DOCKER_REGISTRY}" -u "${IB_DOCKER_USERNAME}" -p "${IB_DOCKER_
 
 declare -a BASE_TAG_ARRAY=("latest")
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}-ib" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+

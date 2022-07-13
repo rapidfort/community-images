@@ -85,15 +85,16 @@ function harden_image()
     local INPUT_ACCOUNT=$2
     local REPOSITORY=$3
     local TAG=$4
-    local PUBLISH_IMAGE=$5
-    local IS_LATEST_TAG=$6
+    local OUTPUT_REPOSITORY=$5
+    local PUBLISH_IMAGE=$6
+    local IS_LATEST_TAG=$7
 
     local INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
     if [[ "$INPUT_ACCOUNT" == "_" ]]; then
         INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
     fi
 
-    local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
+    local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}
     
     # Create stub for docker image
     if [[ -f "${SCRIPTPATH}"/.rfignore ]]; then
@@ -149,9 +150,10 @@ function build_image()
     local INPUT_ACCOUNT=$2
     local REPOSITORY=$3
     local BASE_TAG=$4
-    local TEST_FUNCTION=$5
-    local PUBLISH_IMAGE=$6
-    local IS_LATEST_TAG=$7
+    local OUTPUT_REPOSITORY=$5
+    local TEST_FUNCTION=$6
+    local PUBLISH_IMAGE=$7
+    local IS_LATEST_TAG=$8
 
     local TAG NAMESPACE
 
@@ -180,10 +182,10 @@ function build_image()
 
     create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}"
     "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
-    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
+    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${OUTPUT_REPOSITORY}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
-        "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}" "${NAMESPACE}"
+        "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${OUTPUT_REPOSITORY}" "${TAG}" "${NAMESPACE}"
     else
         echo "Non publish mode, cant test image as image not published"
     fi
@@ -202,6 +204,8 @@ function build_images()
     shift
     local REPOSITORY=$1
     shift
+    local OUTPUT_REPOSITORY=$1
+    shift
     local TEST_FUNCTION=$1
     shift
     local PUBLISH_IMAGE=$1
@@ -214,7 +218,7 @@ function build_images()
         if [[ "$index" = 0 ]]; then
             IS_LATEST_TAG="yes"
         fi
-        build_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" test "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
+        build_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" "${OUTPUT_REPOSITORY}" test "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
     done
 }
 

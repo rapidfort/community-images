@@ -8,10 +8,10 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-HELM_RELEASE=rf-ngixn
+HELM_RELEASE=apache-release
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
-REPOSITORY=nginx
-IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
+REPOSITORY=apache
+IMAGE_REPOSITORY=anmolvirdi/"$REPOSITORY"
 
 k8s_test()
 {

@@ -56,11 +56,8 @@ docker_compose_test()
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
-    # copy test.redis into container
-    docker run --rm -i --network="${NAMESPACE}_default" \
-        "${IMAGE_REPOSITORY}":latest \
-        redis-benchmark -h redis-primary -p 6379
-    report_pulls "${IMAGE_REPOSITORY}"
+    # run redis benchmark
+    docker exec -it "${NAMESPACE}"-redis-primary-1 bash -c redis-benchmark
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down
@@ -71,7 +68,6 @@ docker_compose_test()
 
 main()
 {
-    k8s_test
     docker_test
     docker_compose_test
 }

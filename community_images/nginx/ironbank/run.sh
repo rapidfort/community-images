@@ -45,9 +45,6 @@ test()
     # common commands
     docker exec -i "${NAMESPACE}"-nginx-1 bash -c "/tmp/common_commands.sh"
 
-    # exec into container and run coverage script
-    docker exec -i "${NAMESPACE}"-nginx-1 bash -c /opt/bitnami/scripts/coverage_script.sh
-
     # log for debugging
     docker inspect "${NAMESPACE}"-nginx-1
 

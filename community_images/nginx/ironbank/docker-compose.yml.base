@@ -11,8 +11,7 @@ services:
       - '0.0.0.0::8443'
     volumes:
       - ./certs:/certs
-      - ./configs/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ../../common/tests/common_commands.sh:/tmp/common_commands.sh
   backend1a:
     image: nginxdemos/hello:plain-text

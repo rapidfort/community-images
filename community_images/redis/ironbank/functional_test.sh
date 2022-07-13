@@ -10,51 +10,15 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 HELM_RELEASE=rf-redis
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
-IMAGE_REPOSITORY=rapidfort/redis
-
-k8s_test()
-{
-    # setup namespace
-    setup_namespace "${NAMESPACE}"
-
-    # install redis
-    with_backoff helm install "${HELM_RELEASE}" bitnami/redis --set image.repository="${IMAGE_REPOSITORY}" --namespace "${NAMESPACE}"
-    report_pulls "${IMAGE_REPOSITORY}" 2
-    
-    # wait for redis
-    kubectl wait pods "${HELM_RELEASE}"-master-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
-    
-    # for logs dump pods
-    kubectl -n "${NAMESPACE}" get pods
-
-    # get password
-    REDIS_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.redis-password}" | base64 --decode)
-    
-    # run redis-client
-    kubectl run "${HELM_RELEASE}"-client --rm -i --restart='Never' --namespace "${NAMESPACE}" --image "${IMAGE_REPOSITORY}" --command -- redis-benchmark -h "${HELM_RELEASE}"-master -p 6379 -a "$REDIS_PASSWORD"
-    report_pulls "${IMAGE_REPOSITORY}"
-
-    # delete cluster
-    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
-    
-    # delete pvc
-    kubectl -n "${NAMESPACE}" delete pvc --all
-
-    # clean up namespace
-    cleanup_namespace "${NAMESPACE}"
-}
+IMAGE_REPOSITORY="$RAPIDFORT_ACCOUNT"/redis6-ib
 
 docker_test()
 {
-    # password
-    REDIS_PASSWORD=my_password
-
     # create network
     docker network create -d bridge "${NAMESPACE}"
 
     # add redis container tests
     docker run --rm -d --network="${NAMESPACE}" \
-        -e "REDIS_PASSWORD=${REDIS_PASSWORD}" \
         --name "${NAMESPACE}" "${IMAGE_REPOSITORY}":latest
     report_pulls "${IMAGE_REPOSITORY}"
 
@@ -67,7 +31,7 @@ docker_test()
     # run redis-client tests
     docker run --rm -i --network="${NAMESPACE}" \
         "${IMAGE_REPOSITORY}":latest \
-        redis-benchmark -h "${REDIS_HOST}" -p 6379 -a "${REDIS_PASSWORD}"
+        redis-benchmark -h "${REDIS_HOST}" -p 6379
     report_pulls "${IMAGE_REPOSITORY}"
 
     # clean up docker container
@@ -89,16 +53,13 @@ docker_compose_test()
     # sleep for 30 sec
     sleep 30
 
-    # password
-    REDIS_PASSWORD=my_password
-
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # copy test.redis into container
     docker run --rm -i --network="${NAMESPACE}_default" \
         "${IMAGE_REPOSITORY}":latest \
-        redis-benchmark -h redis-primary -p 6379 -a "${REDIS_PASSWORD}"
+        redis-benchmark -h redis-primary -p 6379
     report_pulls "${IMAGE_REPOSITORY}"
 
     # kill docker-compose setup container

@@ -10,8 +10,8 @@ declare -a MODULE_ARRAY=( $( ls . ) )
 
 for module in "${MODULE_ARRAY[@]}"
 do
-    echo "load_module modules/${module}.so;" | cat - /etc/nginx/conf/nginx.conf > /tmp/nginx.conf && \
-        cp /tmp/nginx.conf /etc/nginx/conf/nginx.conf
+    echo "load_module modules/${module};" | cat - /etc/nginx/nginx.conf > /tmp/nginx.conf && \
+        cp /tmp/nginx.conf /etc/nginx/nginx.conf
 done
 
 nginx -s reload

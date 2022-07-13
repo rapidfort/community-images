@@ -111,7 +111,7 @@ function harden_image()
         # Push stub to our dockerhub account
         docker push "${OUTPUT_IMAGE_FULL}"
 
-        add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
+        add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
 
         echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
     else

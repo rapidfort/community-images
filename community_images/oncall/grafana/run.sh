@@ -25,7 +25,6 @@ test()
     local IMAGE_REPOSITORY=$1
     local TAG=$2
     local NAMESPACE=$3
-    local HELM_RELEASE="$REPOSITORY"-release
     
     echo "Testing $REPOSITORY"
 

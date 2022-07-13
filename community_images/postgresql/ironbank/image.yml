@@ -1,0 +1,17 @@
+name: postgresql-ib
+official_name: PostgreSQL IronBank
+official_website: https://www.postgresql.com/
+source_image_provider: Official
+source_image_dh_link: _/postgres
+rf_docker_link: rapidfort/postgresql12-ib
+image_workflow_name: postgresql_ironbank
+github_location: postgresql/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgresql%2Fpostgresql12
+usage_instructions: |
+  $ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql12-ib:latest
+what_is_text: |
+  PostgreSQL, often simply "Postgres", is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`12.11`, `12`, `12.11-bullseye`, `12-bullseye`, `latest` (12/Dockerfile)](https://github.com/docker-library/postgres/blob/74e51d102aede317665f2b4a9b89362135402fe7/12/bullseye/Dockerfile)"

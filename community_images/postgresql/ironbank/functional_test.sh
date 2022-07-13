@@ -26,14 +26,8 @@ docker_test()
     # sleep for few seconds
     sleep 30
 
-    # get docker host ip
-    PG_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
-
-    # run test on docker container
-    docker run --rm --network="${NAMESPACE}" \
-        -i --env="PGPASSWORD=PgPwd" "${IMAGE_REPOSITORY}" \
-        -- pgbench --host "${PG_HOST}" -U postgres -d postgres -p 5432 -i -s 50
-    report_pulls "${IMAGE_REPOSITORY}"
+    # run pgbench
+    docker exec -i "${NAMESPACE}" pgbench -i -s 50
 
     # clean up docker container
     docker kill "${NAMESPACE}"
@@ -60,11 +54,8 @@ docker_compose_test()
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
-    # run pg benchmark container
-    docker run --rm -i --network="${NAMESPACE}_default" \
-        --env="PGPASSWORD=${POSTGRES_PASSWORD}" "${IMAGE_REPOSITORY}" \
-        -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
-    report_pulls "${IMAGE_REPOSITORY}"
+    # run pgbench
+    docker exec -i "${NAMESPACE}"-postgresql-1 pgbench -i -s 50
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down

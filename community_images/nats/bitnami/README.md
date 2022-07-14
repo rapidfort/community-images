@@ -47,14 +47,14 @@ $ helm install my-nats bitnami/nats --set image.repository=rapidfort/nats
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [Bitnami NATS][source-image-dh-link] image on Docker Hub.
+This image is a hardened version of the official [Bitnami NATS][source-image-repo-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
 
-## What’s the difference between the official [Bitnami NATS][source-image-dh-link] image and this hardened image?
+## What’s the difference between the official [Bitnami NATS][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/nats][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.

@@ -1,10 +1,9 @@
 const puppeteer = require('puppeteer');
 const process = require('process');
 const util = require('util');
-const fs = require('fs/promises');
+const fsPromise = require('fs/promises');
 const yaml = require('js-yaml')
-
-import { existsSync } from 'node:fs';
+const fs = require('fs');
 
 async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   const page = await browser.newPage();
@@ -47,7 +46,7 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
 async function main() {
   const imgListPath = process.argv[2]
 
-  const imgList = await fs.readFile(imgListPath, { encoding: 'utf8' });
+  const imgList = await fsPromise.readFile(imgListPath, { encoding: 'utf8' });
   const imgListArray = imgList.split("\n");
   console.log(imgListArray);
 
@@ -61,14 +60,14 @@ async function main() {
 
     let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
     
-    if (existsSync(imageYmlPath)) {
+    if (fs.existsSync(imageYmlPath)) {
       continue;
     }
 
     const imageSavePath = util.format('../community_images/%s/assets', imagePath);
     console.log(imageSavePath);
 
-    let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
+    let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
     let imageYml = await yaml.load(imageYmlContents);
     console.log(imageYml.report_url)
     await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);

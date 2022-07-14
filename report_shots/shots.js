@@ -58,7 +58,7 @@ async function main() {
   for await (const imagePath of imgListArray) {
     console.log(imagePath);
 
-    let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
+    let imageYmlPath = fs.realpathSync(util.format('../community_images/%s/image.yml', imagePath));
     
     if (fs.existsSync(imageYmlPath)) {
       continue;

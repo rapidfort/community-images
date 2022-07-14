@@ -28,7 +28,7 @@ echo "Generating main readme"
 gen_main_readme()
 {
   rm -f "${SCRIPTPATH}"/../image_list.yml
-  python "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/
+  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/
 
   jinja -d "${SCRIPTPATH}"/../image_list.yml \
     -f yaml "${SCRIPTPATH}"/../community_images/common/templates/main_readme.j2 > "${SCRIPTPATH}"/../README.md

@@ -4,6 +4,8 @@ const util = require('util');
 const fs = require('fs/promises');
 const yaml = require('js-yaml')
 
+import { existsSync } from 'node:fs';
+
 async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   const page = await browser.newPage();
 
@@ -59,7 +61,7 @@ async function main() {
 
     let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
     
-    if (fs.existsSync(imageYmlPath)) {
+    if (existsSync(imageYmlPath)) {
       continue;
     }
 

@@ -11,7 +11,7 @@
 
 RapidFort’s container optimization process hardened this MySQL container. This container is free to use and has no license limitations.
 
-It is the same as the [Bitnami MySQL][source-image-dh-link] image but more secure.
+It is the same as the [Bitnami MySQL][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
@@ -88,7 +88,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/mysql/bitnami/assets/metrics.png
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/mysql/bitnami/assets/cve_reduction.png
 
-[source-image-dh-link]: https://hub.docker.com/r/bitnami/mysql
+[source-image-repo-link]: https://hub.docker.com/r/bitnami/mysql
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mysql
 
 [ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mysql_bitnami.yml/badge.svg

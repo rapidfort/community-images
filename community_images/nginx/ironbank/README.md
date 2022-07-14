@@ -11,7 +11,7 @@
 
 RapidFort’s container optimization process hardened this NGINX IronBank container. This container is free to use and has no license limitations.
 
-It is the same as the [Official NGINX IronBank][source-image-dh-link] image but more secure.
+It is the same as the [Platform One NGINX IronBank][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
@@ -44,20 +44,20 @@ $ docker run -v /some/content:/usr/share/nginx/html:ro -d rapidfort/nginx-ib:lat
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [Official NGINX IronBank][source-image-dh-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One NGINX IronBank][source-image-dh-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
 
-## What’s the difference between the official [Official NGINX IronBank][source-image-dh-link] image and this hardened image?
+## What’s the difference between the official [Platform One NGINX IronBank][source-image-dh-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/nginx-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.23.0`, `mainline`, `1`, `1.23`, `latest`  (mainline/Dockerfile)](https://github.com/nginxinc/docker-nginx/blob/04226fe92cc11bed68dae464eb60fd5399daf3b1/mainline/debian/Dockerfile)
+* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/nginx/nginx/-/blob/development/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
@@ -85,7 +85,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/nginx/ironbank/assets/metrics.png
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/nginx/ironbank/assets/cve_reduction.png
 
-[source-image-dh-link]: https://hub.docker.com/r/_/nginx
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fnginx%2Fnginx
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nginx-ib
 
 [ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_ironbank.yml/badge.svg

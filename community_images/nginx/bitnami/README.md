@@ -11,7 +11,7 @@
 
 RapidFort’s container optimization process hardened this NGINX container. This container is free to use and has no license limitations.
 
-It is the same as the [Bitnami NGINX][source-image-dh-link] image but more secure.
+It is the same as the [Bitnami NGINX][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
@@ -90,7 +90,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/nginx/bitnami/assets/metrics.png
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/nginx/bitnami/assets/cve_reduction.png
 
-[source-image-dh-link]: https://hub.docker.com/r/bitnami/nginx
+[source-image-repo-link]: https://hub.docker.com/r/bitnami/nginx
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nginx
 
 [ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_bitnami.yml/badge.svg

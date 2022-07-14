@@ -20,13 +20,14 @@ else
     PUBLISH_IMAGE=$1
 fi
 
+# the test function for launching container and basic testing
 test()
 {
     local IMAGE_REPOSITORY=$1
     local TAG=$2
     local NAMESPACE=$3
     local HELM_RELEASE="$REPOSITORY"-release
-    
+
     echo "Testing $REPOSITORY"
 
     # upgrade helm

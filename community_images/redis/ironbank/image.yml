@@ -1,8 +1,8 @@
 name: redis-ib
 official_name: Redis™ IronBank
 official_website: http://redis.io
-source_image_provider: Official
-source_image_dh_link: _/redis
+source_image_provider: Platform One
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fredis%2Fredis6
 rf_docker_link: rapidfort/redis6-ib
 image_workflow_name: redis_ironbank
 github_location: redis/ironbank
@@ -14,4 +14,4 @@ what_is_text: |
 disclaimer: |
   Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
 docker_links:
-  - "[`6.2.7`, `6.2`, `6`, `6.2.7-bullseye`, `6.2-bullseye`, `6-bullseye`, `latest` (6.2/Dockerfile)](https://github.com/docker-library/redis/blob/0f2bb676ab5153905089537230a732a77d26e438/6.2/Dockerfile)"
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/redis/redis6/-/blob/development/Dockerfile)"

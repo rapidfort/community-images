@@ -12,7 +12,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
-REPOSITORY=nginx
+REPOSITORY=nats
 
 if [ "$#" -ne 1 ]; then
     PUBLISH_IMAGE="no"
@@ -20,14 +20,12 @@ else
     PUBLISH_IMAGE=$1
 fi
 
-# the test function for launching container and basic testing
 test()
 {
     local IMAGE_REPOSITORY=$1
     local TAG=$2
     local NAMESPACE=$3
     local HELM_RELEASE="$REPOSITORY"-release
-
     echo "Testing $REPOSITORY"
 
     # upgrade helm
@@ -43,8 +41,6 @@ test()
 
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
-
-    #... testing logic goes here....
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
@@ -78,7 +74,6 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("1.21.6-debian-10-r" "1.20.2-debian-10-r")
+declare -a BASE_TAG_ARRAY=("2.8.4-debian-11-r")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
-

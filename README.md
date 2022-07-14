@@ -49,6 +49,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Grafana Oncall][ oncall-github-link]| [![dh][dh-rf-badge]][oncall-rf-dh-image-link] | [![rf-h][rf-h-badge]][oncall-rf-link] | [![oncall-image-ft][oncall-ft-badge]][oncall-ft-badge-link] |
 | [InfluxDB™][ influxdb-github-link]| [![dh][dh-rf-badge]][influxdb-rf-dh-image-link] | [![rf-h][rf-h-badge]][influxdb-rf-link] | [![influxdb-image-ft][influxdb-ft-badge]][influxdb-ft-badge-link] |
 | [Etcd][ etcd-github-link]| [![dh][dh-rf-badge]][etcd-rf-dh-image-link] | [![rf-h][rf-h-badge]][etcd-rf-link] | [![etcd-image-ft][etcd-ft-badge]][etcd-ft-badge-link] |
+| [NATS][ nats-github-link]| [![dh][dh-rf-badge]][nats-rf-dh-image-link] | [![rf-h][rf-h-badge]][nats-rf-link] | [![nats-image-ft][nats-ft-badge]][nats-ft-badge-link] |
 | [Redis™ IronBank][ redis-ib-github-link]| [![dh][dh-rf-badge]][redis-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-ib-rf-link] | [![redis-ib-image-ft][redis-ib-ft-badge]][redis-ib-ft-badge-link] |
 | [PostgreSQL IronBank][ postgresql-ib-github-link]| [![dh][dh-rf-badge]][postgresql-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][postgresql-ib-rf-link] | [![postgresql-ib-image-ft][postgresql-ib-ft-badge]][postgresql-ib-ft-badge-link] |
 | [NGINX IronBank][ nginx-ib-github-link]| [![dh][dh-rf-badge]][nginx-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][nginx-ib-rf-link] | [![nginx-ib-image-ft][nginx-ib-ft-badge]][nginx-ib-ft-badge-link] |
@@ -198,6 +199,14 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [etcd-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/etcd_bitnami.yml
 [etcd-source-dh-link]: https://hub.docker.com/r/bitnami/etcd
 [etcd-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fetcd?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[nats-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nats/bitnami
+[nats-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nats?logo=docker&logoColor=white
+[nats-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nats
+[nats-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml/badge.svg
+[nats-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml
+[nats-source-dh-link]: https://hub.docker.com/r/bitnami/nats
+[nats-rf-link]:?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [redis-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis/ironbank
 [redis-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis6-ib?logo=docker&logoColor=white

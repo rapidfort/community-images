@@ -30,6 +30,7 @@ k8s_test()
     echo -e "Client credentials:\n\tUser: $NATS_USER\n\tPassword: $NATS_PASS"
 
     kubectl run nats-release-client --restart='Never' --env="NATS_USER=$NATS_USER" --env="NATS_PASS=$NATS_PASS" --image docker.io/bitnami/golang --namespace "${NAMESPACE}" --command -- sleep infinity
+    # wait for nats client to come up
     kubectl wait pods nats-release-client -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash
     GO111MODULE=off go get github.com/nats-io/nats.go

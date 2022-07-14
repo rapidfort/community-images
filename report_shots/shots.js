@@ -56,10 +56,15 @@ async function main() {
 
   for await (const imagePath of imgListArray) {
     console.log(imagePath);
-    const imageSavePath = util.format('../community_images/%s/assets', imagePath);
-    console.log(imageSavePath);
 
     let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
+    
+    if (fs.existsSync(imageYmlPath)) {
+      continue;
+    }
+
+    const imageSavePath = util.format('../community_images/%s/assets', imagePath);
+    console.log(imageSavePath);
 
     let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
     let imageYml = await yaml.load(imageYmlContents);

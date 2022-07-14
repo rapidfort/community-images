@@ -58,20 +58,21 @@ async function main() {
   for await (const imagePath of imgListArray) {
     console.log(imagePath);
 
-    let imageYmlPath = fs.realpathSync(util.format('../community_images/%s/image.yml', imagePath));
-    
-    if (fs.existsSync(imageYmlPath)) {
-      continue;
+    try {
+      let imageYmlPath = fs.realpathSync(util.format('../community_images/%s/image.yml', imagePath));
+
+      const imageSavePath = fs.realpathSync(util.format('../community_images/%s/assets', imagePath));
+      console.log(imageSavePath);
+  
+      let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
+      let imageYml = await yaml.load(imageYmlContents);
+      console.log(imageYml.report_url)
+      await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);
+      firstShot=false;
+  
+    } catch (err) {
+        continue;
     }
-
-    const imageSavePath = util.format('../community_images/%s/assets', imagePath);
-    console.log(imageSavePath);
-
-    let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
-    let imageYml = await yaml.load(imageYmlContents);
-    console.log(imageYml.report_url)
-    await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);
-    firstShot=false;
   }
 
   await browser.close();

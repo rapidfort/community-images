@@ -14,14 +14,15 @@ function create_stub()
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2
     local REPOSITORY=$3
-    local TAG=$4
+    local OUTPUT_REPOSITORY=$4
+    local TAG=$5
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
     if [[ "$INPUT_ACCOUNT" == "_" ]]; then
         INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
     fi
 
-    local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfstub
+    local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}-rfstub
 
     # Pull docker image
     docker pull "${INPUT_IMAGE_FULL}"
@@ -180,8 +181,8 @@ function build_image()
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
     setup_namespace "${NAMESPACE}"
 
-    create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}"
-    "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
+    create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${OUTPUT_REPOSITORY}" "${TAG}"
+    "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${OUTPUT_REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
     harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${OUTPUT_REPOSITORY}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
@@ -190,7 +191,7 @@ function build_image()
         echo "Non publish mode, cant test image as image not published"
     fi
 
-    bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${REPOSITORY} ${TAG}-rfstub"
+    bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${OUTPUT_REPOSITORY} ${TAG}-rfstub"
     cleanup_namespace "${NAMESPACE}"
     NAMESPACE_TO_CLEANUP=
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"

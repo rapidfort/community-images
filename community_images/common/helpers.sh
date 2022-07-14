@@ -40,19 +40,44 @@ function create_stub()
     docker push "${STUB_IMAGE_FULL}"
 }
 
+function add_sha256_tag()
+{
+    local REPOSITORY=$1
+    local INPUT_TAG=$2
+
+    local FULL_IMAGE_TAG="$REPOSITORY:$INPUT_TAG"
+
+    docker pull "${FULL_IMAGE_TAG}"
+
+    local SHA_TAG
+    
+    SHA_TAG=$(docker inspect --format='{{index .RepoDigests 0}}' "${FULL_IMAGE_TAG}")
+
+    IFS=":"
+    # shellcheck disable=SC2162
+    read -a input_arr <<< "$SHA_TAG"
+
+    local SHA256_TAG="${input_arr[1]}"
+
+    local FULL_SHA256_TAG="$REPOSITORY:$SHA256_TAG"
+
+    docker tag "${FULL_IMAGE_TAG}" "${FULL_SHA256_TAG}"
+    docker push "${FULL_SHA256_TAG}"
+}
+
 function add_rolling_tags()
 {
-    REPOSITORY=$1
-    INPUT_TAG=$2 # example: 10.6.8-debian-10-r2
-    IS_LATEST_TAG=$3
+    local REPOSITORY=$1
+    local INPUT_TAG=$2 # example: 10.6.8-debian-10-r2
+    local IS_LATEST_TAG=$3
 
     IFS='-'
     # shellcheck disable=SC2162
     read -a input_arr <<< "$INPUT_TAG"
 
-    version="${input_arr[0]}"
-    os="${input_arr[1]}"
-    os_ver="${input_arr[2]}"
+    local version="${input_arr[0]}"
+    local os="${input_arr[1]}"
+    local os_ver="${input_arr[2]}"
 
     FULL_VER_TAG="$version" # 10.6.8
     declare -a rolling_tags=("$FULL_VER_TAG")
@@ -78,6 +103,8 @@ function add_rolling_tags()
         docker tag "${REPOSITORY}:${INPUT_TAG}" "${REPOSITORY}:$rolling_tag"
         docker push "${REPOSITORY}:$rolling_tag"
     done
+
+    add_sha256_tag "${REPOSITORY}" "${INPUT_TAG}"
 }
 
 function harden_image()

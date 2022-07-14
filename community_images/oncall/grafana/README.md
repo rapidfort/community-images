@@ -11,7 +11,7 @@
 
 RapidFort’s container optimization process hardened this Grafana Oncall container. This container is free to use and has no license limitations.
 
-It is the same as the [Grafana Grafana Oncall][source-image-dh-link] image but more secure.
+It is the same as the [Grafana Grafana Oncall][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
@@ -109,7 +109,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/oncall/grafana/assets/metrics.png
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/oncall/grafana/assets/cve_reduction.png
 
-[source-image-dh-link]: https://hub.docker.com/r/grafana/oncall
+[source-image-repo-link]: grafana/oncall
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/oncall
 
 [ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml/badge.svg

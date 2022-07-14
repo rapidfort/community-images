@@ -103,8 +103,6 @@ function add_rolling_tags()
         docker tag "${REPOSITORY}:${INPUT_TAG}" "${REPOSITORY}:$rolling_tag"
         docker push "${REPOSITORY}:$rolling_tag"
     done
-
-    add_sha256_tag "${REPOSITORY}" "${INPUT_TAG}"
 }
 
 function harden_image()
@@ -139,7 +137,11 @@ function harden_image()
         # Push stub to our dockerhub account
         docker push "${OUTPUT_IMAGE_FULL}"
 
+        # add rolling tags like move latest tag
         add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
+
+        # add sha256 tag for images which just have latest tag
+        add_sha256_tag "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}"
 
         echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
     else

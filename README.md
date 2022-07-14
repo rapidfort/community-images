@@ -206,7 +206,7 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [nats-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml/badge.svg
 [nats-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml
 [nats-source-dh-link]: https://hub.docker.com/r/bitnami/nats
-[nats-rf-link]:?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+[nats-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnats?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [redis-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis/ironbank
 [redis-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis6-ib?logo=docker&logoColor=white

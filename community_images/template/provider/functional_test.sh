@@ -11,7 +11,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 HELM_RELEASE=rf-ngixn
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=nginx
-IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
+IMAGE_REPOSITORY="$RAPIDFORT_ACCOUNT"/"$REPOSITORY"
 
 k8s_test()
 {

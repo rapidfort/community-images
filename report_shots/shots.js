@@ -40,7 +40,7 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
 
   await page.close();
 
-  console.log("screen shots taken");
+  console.log("screen shots taken and saved at: ", imageSavePath);
 }
 
 async function main() {
@@ -56,17 +56,18 @@ async function main() {
   let firstShot=true;
 
   for await (const imagePath of imgListArray) {
-    console.log(imagePath);
+    console.log("image name=", imagePath);
 
     try {
       let imageYmlPath = fs.realpathSync(util.format('../community_images/%s/image.yml', imagePath));
 
       const imageSavePath = fs.realpathSync(util.format('../community_images/%s/assets', imagePath));
-      console.log(imageSavePath);
+      console.log("image save path=", imageSavePath);
   
       let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
       let imageYml = await yaml.load(imageYmlContents);
-      console.log(imageYml.report_url)
+      console.log("image url=", imageYml.report_url);
+
       await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);
       firstShot=false;
   

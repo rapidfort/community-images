@@ -1,11 +1,12 @@
 name: nats
 official_name: NATS
 official_website: https://nats.io
-source_image_dh_link: bitnami/nats
 source_image_provider: Bitnami
+source_image_dh_link: bitnami/nats
 rf_docker_link: rapidfort/nats
 image_workflow_name: nats_bitnami
 github_location: nats/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnats
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 

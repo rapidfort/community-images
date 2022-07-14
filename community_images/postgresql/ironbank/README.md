@@ -11,7 +11,7 @@
 
 RapidFort’s container optimization process hardened this PostgreSQL IronBank container. This container is free to use and has no license limitations.
 
-It is the same as the [Official PostgreSQL IronBank][source-image-dh-link] image but more secure.
+It is the same as the [Platform One PostgreSQL IronBank][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
@@ -44,20 +44,20 @@ $ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql12-ib:
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [Official PostgreSQL IronBank][source-image-dh-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One PostgreSQL IronBank][source-image-dh-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
 
-## What’s the difference between the official [Official PostgreSQL IronBank][source-image-dh-link] image and this hardened image?
+## What’s the difference between the official [Platform One PostgreSQL IronBank][source-image-dh-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/postgresql12-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`12.11`, `12`, `12.11-bullseye`, `12-bullseye`, `latest` (12/Dockerfile)](https://github.com/docker-library/postgres/blob/74e51d102aede317665f2b4a9b89362135402fe7/12/bullseye/Dockerfile)
+* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
@@ -85,7 +85,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/postgresql/ironbank/assets/metrics.png
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/postgresql/ironbank/assets/cve_reduction.png
 
-[source-image-dh-link]: https://hub.docker.com/r/_/postgres
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fpostgres%2Fpostgresql12
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql12-ib
 
 [ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ironbank.yml/badge.svg

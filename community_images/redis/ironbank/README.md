@@ -11,7 +11,7 @@
 
 RapidFort’s container optimization process hardened this Redis™ IronBank container. This container is free to use and has no license limitations.
 
-It is the same as the [Official Redis™ IronBank][source-image-dh-link] image but more secure.
+It is the same as the [Platform One Redis™ IronBank][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 
@@ -44,20 +44,20 @@ $ docker run -it --rm -p6379:6379 rapidfort/redis6-ib:latest
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [Official Redis™ IronBank][source-image-dh-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Redis™ IronBank][source-image-dh-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
 
-## What’s the difference between the official [Official Redis™ IronBank][source-image-dh-link] image and this hardened image?
+## What’s the difference between the official [Platform One Redis™ IronBank][source-image-dh-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/redis6-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`6.2.7`, `6.2`, `6`, `6.2.7-bullseye`, `6.2-bullseye`, `6-bullseye`, `latest` (6.2/Dockerfile)](https://github.com/docker-library/redis/blob/0f2bb676ab5153905089537230a732a77d26e438/6.2/Dockerfile)
+* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/redis/redis6/-/blob/development/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
@@ -85,7 +85,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis/ironbank/assets/metrics.png
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis/ironbank/assets/cve_reduction.png
 
-[source-image-dh-link]: https://hub.docker.com/r/_/redis
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fredis%2Fredis6
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis6-ib
 
 [ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_ironbank.yml/badge.svg

@@ -43,7 +43,17 @@ test()
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
-    #... testing logic goes here....
+    # fetch service url and curl to url
+    URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
+
+    # curl to http url
+    curl "${URL}"
+
+    # fetch minikube ip
+    MINIKUBE_IP=$(minikube ip)
+
+    # curl to https url
+    curl http://"${MINIKUBE_IP}" -k
 
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
@@ -57,6 +67,9 @@ test()
     # delete the PVC associated
     kubectl -n "${NAMESPACE}" delete pvc --all
 
+    # create ssl certs
+    create_certs
+
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
@@ -67,6 +80,26 @@ test()
     # sleep for 30 sec
     sleep 30
 
+    # exec into container and run coverage script
+    docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
+
+    # log for debugging
+    docker inspect "${NAMESPACE}"-apache-1
+
+    # find non-tls and tls port
+    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    
+    # run curl in loop for different endpoints
+    for i in {1..20};
+    do 
+        echo "$i"
+        curl http://localhost:"${NON_TLS_PORT}"/a
+        curl http://localhost:"${NON_TLS_PORT}"/b
+        with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
+        with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
+    done
+
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
@@ -75,6 +108,9 @@ test()
 
     # clean up docker file
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
+
+    # clean up certs
+    cleanup_certs
 }
 
 declare -a BASE_TAG_ARRAY=("2.4.54-debian-11-r" "2.4.54-debian-12-r")

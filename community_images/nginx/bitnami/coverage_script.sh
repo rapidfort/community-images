@@ -14,8 +14,3 @@ done
 
 /opt/bitnami/scripts/nginx/status.sh
 
-# /opt/bitnami/scripts/nginx/stop.sh
-
-# /opt/bitnami/scripts/nginx/start.sh
-
-# /opt/bitnami/scripts/nginx/restart.sh

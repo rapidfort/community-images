@@ -14,6 +14,9 @@ RapidFort’s container optimization process hardened this Redis™ IronBank con
 It is the same as the [Platform One Redis™ IronBank][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
+<br>
+
+[Get the full report here or click on the image below][rf-image-link]
 
 [![Metrics][metrics-link]][rf-image-link]
 

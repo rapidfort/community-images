@@ -14,6 +14,9 @@ RapidFort’s container optimization process hardened this Grafana Oncall contai
 It is the same as the [Grafana Grafana Oncall][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
+<br>
+
+[Get the full report here or click on the image below][rf-image-link]
 
 [![Metrics][metrics-link]][rf-image-link]
 

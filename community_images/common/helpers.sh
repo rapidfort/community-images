@@ -192,15 +192,15 @@ function build_image()
         
         TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
-        if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
-            # dont create image for publish mode if tag exists
-            RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+        # if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
+        #     # dont create image for publish mode if tag exists
+        #     RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
-            if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
-                echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
-                return
-            fi
-        fi
+        #     if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
+        #         echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
+        #         return
+        #     fi
+        # fi
     else
         TAG="${BASE_TAG}"
     fi

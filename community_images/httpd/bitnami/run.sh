@@ -81,14 +81,14 @@ test()
     sleep 30
 
     # exec into container and run coverage script
-    docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
+    docker exec -i "${NAMESPACE}" bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging
-    docker inspect "${NAMESPACE}"-apache-1
+    docker inspect "${NAMESPACE}"
 
     # find non-tls and tls port
-    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
-    TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    NON_TLS_PORT=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
     
     # run curl in loop for different endpoints
     for i in {1..20};
@@ -99,12 +99,6 @@ test()
         with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
         with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
     done
-
-    # get docker host ip
-    HTTPD_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
-
-    # testing using apache benchmark tool
-    ab -t 100 -n 10000 -c 10 HTTPD_HOST
     
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs

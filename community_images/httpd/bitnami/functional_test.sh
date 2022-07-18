@@ -52,6 +52,12 @@ docker_test()
     # sleep for few seconds
     sleep 30
 
+    # get docker host ip
+    HTTPD_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
+
+    # testing using apache benchmark tool
+    ab -t 100 -n 10000 -c 10 HTTPD_HOST
+
     # clean up docker container
     docker kill "${NAMESPACE}"
 

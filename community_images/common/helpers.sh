@@ -24,9 +24,6 @@ function create_stub()
 
     local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}-rfstub
 
-    # Pull docker image
-    docker pull "${INPUT_IMAGE_FULL}"
-
     # login to output docker register as input and output docker registry could be different
     docker login "${DOCKERHUB_REGISTRY}" -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
     
@@ -215,6 +212,14 @@ function build_image()
         cd "${SCRIPTPATH}"/temp_docker
         docker build . -t ${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
         cd "$CWD"
+    else
+        local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+        if [[ "$INPUT_ACCOUNT" == "_" ]]; then
+            INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
+        fi
+
+        # pull image only when we dont build it locally
+        docker pull ${INPUT_IMAGE_FULL}
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")

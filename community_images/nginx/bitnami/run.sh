@@ -52,6 +52,9 @@ test()
     # fetch service url and curl to url
     URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
 
+    # sleep 5 after minikube service
+    sleep 5
+
     # curl to http url
     curl "${URL}"
 

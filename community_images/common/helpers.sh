@@ -210,8 +210,10 @@ function build_image()
         cp "${SCRIPTPATH}"/../../common/libbitnami.sh "${SCRIPTPATH}"/temp_docker/libbitnami.sh
         local CWD="${PWD}"
         cd "${SCRIPTPATH}"/temp_docker
-        docker build . -t ${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+        docker build . -t "${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
         cd "$CWD"
+
+        rm -rf "${SCRIPTPATH}"/temp_docker
     else
         local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
         if [[ "$INPUT_ACCOUNT" == "_" ]]; then
@@ -219,7 +221,7 @@ function build_image()
         fi
 
         # pull image only when we dont build it locally
-        docker pull ${INPUT_IMAGE_FULL}
+        docker pull "${INPUT_IMAGE_FULL}"
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")

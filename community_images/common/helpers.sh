@@ -205,6 +205,18 @@ function build_image()
         TAG="${BASE_TAG}"
     fi
 
+    if [[ "${INPUT_ACCOUNT}" = "bitnami" ]]; then
+        echo "Embedding RF welcome message in bitnami images"
+        mkdir -p "${SCRIPTPATH}"/temp_docker
+
+        sed "s#@REPO#${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/../../common/Dockerfile.base > "${SCRIPTPATH}"/temp_docker/Dockerfile
+        cp "${SCRIPTPATH}"/../../common/libbitnami.sh "${SCRIPTPATH}"/temp_docker/libbitnami.sh
+        local CWD="${PWD}"
+        cd "${SCRIPTPATH}"/temp_docker
+        docker build . -t ${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+        cd "$CWD"
+    fi
+
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")
     NAMESPACE_TO_CLEANUP="${NAMESPACE}"
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"

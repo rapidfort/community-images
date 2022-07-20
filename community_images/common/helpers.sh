@@ -29,7 +29,7 @@ function create_stub()
 
     # login to output docker register as input and output docker registry could be different
     docker login "${DOCKERHUB_REGISTRY}" -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
-    
+
     # Create stub for docker image
     rfstub "${INPUT_IMAGE_FULL}"
 
@@ -50,7 +50,7 @@ function add_sha256_tag()
     docker pull "${FULL_IMAGE_TAG}"
 
     local SHA_TAG
-    
+
     SHA_TAG=$(docker inspect --format='{{index .RepoDigests 0}}' "${FULL_IMAGE_TAG}")
 
     IFS=":"
@@ -121,7 +121,7 @@ function harden_image()
     fi
 
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}
-    
+
     # Create stub for docker image
     if [[ -f "${SCRIPTPATH}"/.rfignore ]]; then
         rfharden "${INPUT_IMAGE_FULL}"-rfstub --put-meta --profile "${SCRIPTPATH}"/.rfignore
@@ -143,7 +143,7 @@ function harden_image()
         # add sha256 tag for images which just have latest tag
         add_sha256_tag "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}"
 
-        echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
+        echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}"
     else
         echo "Non publish mode"
     fi
@@ -164,7 +164,7 @@ function setup_namespace()
     kubectl --namespace "${NAMESPACE}" create secret generic rf-regcred --from-file=.dockerconfigjson="${HOME}"/.docker/config.json --type=kubernetes.io/dockerconfigjson
 
     # add tls certs
-    kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}" 
+    kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}"
 }
 
 function cleanup_namespace()
@@ -189,7 +189,7 @@ function build_image()
 
     if [[ "${INPUT_REGISTRY}" = "docker.io" ]]; then
         local RAPIDFORT_TAG
-        
+
         TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
         if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then

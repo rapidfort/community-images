@@ -28,7 +28,7 @@ k8s_test()
     # get the ip address of wordpress service
     WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")
     ports=$(kubectl get svc --namespace "${NAMESPACE}" -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}')
-    WORDPRESS_PORT=$(echo "$ports" | cut -d' ' -f 1)
+    WORDPRESS_PORT=$(echo "$ports" | head -n 1)
 
     echo "wordpress IP is $WORDPRESS_IP"
     echo "wordpress port is $WORDPRESS_PORT"
@@ -47,9 +47,9 @@ k8s_test()
     cd /usr/workspace
     pip install pytest
     pip install selenium
-    pytest -s /tmp/wordpress_test.py --ip_address $WORDPRESS_IP --port $WORDPRESS_PORT" > "$SCRIPTPATH"/commands.sh
+    pytest -s /tmp/wordpress_selenium_test.py --ip_address $WORDPRESS_IP --port $WORDPRESS_PORT" > "$SCRIPTPATH"/commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/conftest.py "${CHROME_POD}":/tmp/conftest.py
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/wordpress_test.py "${CHROME_POD}":/tmp/wordpress_test.py
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/wordpress_selenium_test.py "${CHROME_POD}":/tmp/wordpress_selenium_test.py
     chmod +x "$SCRIPTPATH"/commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/commands.sh "${CHROME_POD}":/tmp/common_commands.sh
 

@@ -34,6 +34,8 @@ k8s_test()
     echo "wordpress port is $WORDPRESS_PORT"
 
     CHROME_POD="python-chromedriver"
+    # delete the directory if present already
+    rm -rf "${SCRIPTPATH}"/docker-python-chromedriver
     git clone https://github.com/joyzoursky/docker-python-chromedriver.git
     cd docker-python-chromedriver
     kubectl run "${CHROME_POD}" --restart='Never' --image joyzoursky/"${CHROME_POD}":latest --namespace "${NAMESPACE}" --command -- sleep infinity
@@ -56,6 +58,9 @@ k8s_test()
     kubectl -n "${NAMESPACE}" exec -i "${CHROME_POD}" -- bash -c "/tmp/common_commands.sh"
     # delete the generated commands.sh
     rm "$SCRIPTPATH"/commands.sh
+
+    # delete the cloned directory
+    rm -rf "${SCRIPTPATH}"/docker-python-chromedriver
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

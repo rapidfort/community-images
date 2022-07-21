@@ -22,8 +22,8 @@ k8s_test()
     with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository="$IMAGE_REPOSITORY" --set image.tag=latest --namespace "${NAMESPACE}"
     report_pulls "${IMAGE_REPOSITORY}"
 
-    # wait for pods
-    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    # wait for deployments
+    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
     # get the ip address of wordpress service
     WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")

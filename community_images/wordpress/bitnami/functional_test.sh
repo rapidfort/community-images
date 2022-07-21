@@ -121,8 +121,8 @@ docker_compose_test()
 main()
 {
     k8s_test
-    docker_test
-    docker_compose_test
+    #docker_test
+    #docker_compose_test
 }
 
 main

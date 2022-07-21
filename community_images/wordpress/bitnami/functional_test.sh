@@ -23,7 +23,7 @@ k8s_test()
     report_pulls "${IMAGE_REPOSITORY}"
 
     # wait for deployments
-    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=true --timeout=10m
 
     # get the ip address of wordpress service
     WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")
@@ -36,11 +36,15 @@ k8s_test()
     CHROME_POD="python-chromedriver"
     git clone https://github.com/joyzoursky/docker-python-chromedriver.git
     cd docker-python-chromedriver
-    docker run -w /usr/workspace -v "$(pwd)":/usr/workspace joyzoursky/"${CHROME_POD}":latest --namespace "${NAMESPACE}" --command -- sleep infinity
+    kubectl run "${CHROME_POD}" --restart='Never' --image joyzoursky/"${CHROME_POD}":latest --namespace "${NAMESPACE}" --command -- sleep infinity
+
+    #docker run -w /usr/workspace -v "$(pwd)":/usr/workspace joyzoursky/"${CHROME_POD}":latest --namespace "${NAMESPACE}" --command -- sleep infinity
 
     kubectl wait pods "${CHROME_POD}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/docker-python-chromedriver "${CHROME_POD}":/usr/workspace
 
     echo "#!/bin/bash
+    cd /usr/workspace
     pip install pytest
     pip install selenium
     pytest -s /tmp/wordpress_test.py --ip_address $WORDPRESS_IP --port $WORDPRESS_PORT" > "$SCRIPTPATH"/commands.sh

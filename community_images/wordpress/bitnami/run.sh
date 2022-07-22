@@ -48,6 +48,8 @@ test()
     # run command on cluster
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
 
+    test_selenium "${NAMESPACE}"
+
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 

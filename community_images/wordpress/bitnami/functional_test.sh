@@ -8,6 +8,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/selenium_helper.sh
+
 HELM_RELEASE=rf-wordpress
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=wordpress
@@ -25,42 +28,7 @@ k8s_test()
     # wait for deployments
     kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=true --timeout=10m
 
-    # get the ip address of wordpress service
-    WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")
-    ports=$(kubectl get svc --namespace "${NAMESPACE}" -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}')
-    WORDPRESS_PORT=$(echo "$ports" | head -n 1)
-
-    echo "wordpress IP is $WORDPRESS_IP"
-    echo "wordpress port is $WORDPRESS_PORT"
-
-    CHROME_POD="python-chromedriver"
-    # delete the directory if present already
-    rm -rf "${SCRIPTPATH}"/docker-python-chromedriver
-    git clone https://github.com/joyzoursky/docker-python-chromedriver.git
-    cd docker-python-chromedriver
-    kubectl run "${CHROME_POD}" --restart='Never' --image joyzoursky/"${CHROME_POD}":latest --namespace "${NAMESPACE}" --command -- sleep infinity
-
-    #docker run -w /usr/workspace -v "$(pwd)":/usr/workspace joyzoursky/"${CHROME_POD}":latest --namespace "${NAMESPACE}" --command -- sleep infinity
-
-    kubectl wait pods "${CHROME_POD}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/docker-python-chromedriver "${CHROME_POD}":/usr/workspace
-
-    echo "#!/bin/bash
-    cd /usr/workspace
-    pip install pytest
-    pip install selenium
-    pytest -s /tmp/wordpress_selenium_test.py --ip_address $WORDPRESS_IP --port $WORDPRESS_PORT" > "$SCRIPTPATH"/commands.sh
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/conftest.py "${CHROME_POD}":/tmp/conftest.py
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/wordpress_selenium_test.py "${CHROME_POD}":/tmp/wordpress_selenium_test.py
-    chmod +x "$SCRIPTPATH"/commands.sh
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/commands.sh "${CHROME_POD}":/tmp/common_commands.sh
-
-    kubectl -n "${NAMESPACE}" exec -i "${CHROME_POD}" -- bash -c "/tmp/common_commands.sh"
-    # delete the generated commands.sh
-    rm "$SCRIPTPATH"/commands.sh
-
-    # delete the cloned directory
-    rm -rf "${SCRIPTPATH}"/docker-python-chromedriver
+    test_selenium "${NAMESPACE}"
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

@@ -47,7 +47,7 @@ test()
     minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url >> URLS
 
     # Changing "http" to "https" in the urls
-    sed 's/http/https/g' URLS
+    sed -i 's/http/https/' URLS
 
     # curl to urls
     while read p;
@@ -90,14 +90,14 @@ test()
     sleep 30
 
     # exec into container and run coverage script
-    docker exec -i "${NAMESPACE}" bash -c /opt/bitnami/scripts/coverage_script.sh
+    docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging
-    docker inspect "${NAMESPACE}"
+    docker inspect "${NAMESPACE}"-apache-1
 
     # find non-tls and tls port
-    NON_TLS_PORT=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
-    TLS_PORT=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+    NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
+    TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
 
     # run curl in loop for different endpoints
     for i in {1..20};

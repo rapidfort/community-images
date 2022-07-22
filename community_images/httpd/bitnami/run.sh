@@ -47,7 +47,13 @@ test()
     minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url >> URLS
 
     # Changing "http" to "https" in the urls
-    sed -i 's/http/https/' URLS
+    sed -i '2,2s/http/https/' URLS
+
+    # create ssl certs
+    # clean up certs
+    cleanup_certs
+    create_certs
+
 
     # curl to urls
     while read p;
@@ -75,9 +81,6 @@ test()
 
     # delete the PVC associated
     kubectl -n "${NAMESPACE}" delete pvc --all
-
-    # create ssl certs
-    create_certs
 
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml

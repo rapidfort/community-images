@@ -81,9 +81,17 @@ docker_test()
     # create network
     docker network create -d bridge "${NAMESPACE}"
 
+    docker run -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes \
+     -e MARIADB_PASSWORD=password -e MARIADB_USER=bn_wordpress \
+      -e MARIADB_DATABASE=bitnami_wordpress --network="${NAMESPACE}" \
+       --name wordpressdb -d mariadb:latest
+
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
-        --name "${NAMESPACE}" "$IMAGE_REPOSITORY":latest
+        --name "${NAMESPACE}" -e WORDPRESS_DATABASE_HOST=wordpressdb \
+         -e WORDPRESS_DATABASE_USER=bn_wordpress -e WORDPRESS_DATABASE_PASSWORD=password \
+          -e WORDPRESS_DATABASE_NAME=bitnami_wordpress -e WORDPRESS_DATABASE_PORT_NUMBER=3306 \
+           -e ALLOW_EMPTY_PASSWORD=yes "$IMAGE_REPOSITORY":latest
     report_pulls "${IMAGE_REPOSITORY}"
 
     # sleep for few seconds
@@ -91,6 +99,9 @@ docker_test()
 
     # clean up docker container
     docker kill "${NAMESPACE}"
+
+    # clean up the mariadb container
+    docker kill wordpressdb
 
     # delete network
     docker network rm "${NAMESPACE}"

@@ -93,6 +93,7 @@ test()
     sleep 30
 
     # exec into container and run coverage script
+    docker cp coverage_script.sh "${NAMESPACE}"-apache-1:/opt/bitnami/scripts
     docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   apache:
-    image: @IMAGE
+    image: anmolvirdi/apache:2.4.54-debian-11-r15-rfstub
     cap_add:
       - SYS_PTRACE    
     ports:

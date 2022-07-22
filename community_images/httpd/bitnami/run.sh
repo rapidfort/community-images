@@ -50,7 +50,7 @@ test()
     # create ssl certs
     cleanup_certs
     create_certs
-    
+
     # Changing "http" to "https" in the urls
     sed -i '2,2s/http/https/' URLS
     cat URLS
@@ -58,7 +58,7 @@ test()
     # curl to urls
     while read p;
     do
-        curl "${p}"
+        curl -k "${p}"
     done <URLS
 
     #Removing urls file
@@ -74,7 +74,7 @@ test()
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
 
     # run command on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -c apache -- /bin/bash -c "/tmp/common_commands.sh"
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

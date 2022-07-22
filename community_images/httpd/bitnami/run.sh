@@ -26,7 +26,7 @@ test()
     local TAG=$2
     local NAMESPACE=$3
     local HELM_RELEASE="$REPOSITORY"-release
-    
+
     echo "Testing $REPOSITORY"
 
     # upgrade helm
@@ -50,7 +50,13 @@ test()
     sed 's/http/https/g' URLS
 
     # curl to urls
-    curl "${URL}"
+    while read p;
+    do
+        curl "${p}"
+    done <URLS
+
+    #Removing urls file
+    rm URLS
 
     # fetch minikube ip
     MINIKUBE_IP=$(minikube ip)
@@ -92,17 +98,17 @@ test()
     # find non-tls and tls port
     NON_TLS_PORT=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
     TLS_PORT=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
-    
+
     # run curl in loop for different endpoints
     for i in {1..20};
-    do 
+    do
         echo "$i"
         curl http://localhost:"${NON_TLS_PORT}"/a
         curl http://localhost:"${NON_TLS_PORT}"/b
         with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
         with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
     done
-    
+
     # logs for tracking
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 

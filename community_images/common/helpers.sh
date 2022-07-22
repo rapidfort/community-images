@@ -25,7 +25,7 @@ function create_stub()
 
     # Pull docker image
     docker pull "${INPUT_IMAGE_FULL}"
-    
+
     # Create stub for docker image
     rfstub "${INPUT_IMAGE_FULL}"
 
@@ -91,7 +91,7 @@ function harden_image()
     fi
 
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
-    
+
     # Create stub for docker image
     if [[ -f "${SCRIPTPATH}"/.rfignore ]]; then
         rfharden "${INPUT_IMAGE_FULL}"-rfstub -p "${SCRIPTPATH}"/.rfignore
@@ -109,7 +109,7 @@ function harden_image()
 
         add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
 
-        echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
+        echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}"
     else
         echo "Non publish mode"
     fi
@@ -130,7 +130,7 @@ function setup_namespace()
     kubectl --namespace "${NAMESPACE}" create secret generic rf-regcred --from-file=.dockerconfigjson="${HOME}"/.docker/config.json --type=kubernetes.io/dockerconfigjson
 
     # add tls certs
-    kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}" 
+    kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}"
 }
 
 function cleanup_namespace()
@@ -285,16 +285,6 @@ function report_pulls()
 }
 
 function finish {
-    if [[ -z "$NAMESPACE_TO_CLEANUP" ]]; then
-        kubectl get pods --all-namespaces
-        kubectl get services --all-namespaces
-    else
-        kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods
-        kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
-        kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
-    fi
-
-    JSON_STR="{"
     FIRST=1
     for key in "${!PULL_COUNTER[@]}"; do
         if [ "$FIRST" = "0" ] ; then JSON_STR+=", " ; fi

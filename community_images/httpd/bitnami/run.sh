@@ -47,13 +47,13 @@ test()
     rm -f URLS
     minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url >> URLS
 
-    # Changing "http" to "https" in the urls
-    sed -i '2,2s/http/https/' URLS
-    cat URLS
-
     # create ssl certs
     cleanup_certs
     create_certs
+    
+    # Changing "http" to "https" in the urls
+    sed -i '2,2s/http/https/' URLS
+    cat URLS
 
     # curl to urls
     while read p;

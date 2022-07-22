@@ -2,14 +2,14 @@ name: httpd
 official_name: Httpd
 official_website: https://httpd.apache.org/
 source_image_dh_link: bitnami/apache
-rf_docker_link: rapidfort/apache
+rf_docker_link: anmolvirdi/apache
 image_workflow_name: apache_bitnami
 github_location: httpd/bitnami
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install httpd, just replace repository with RapidFort registry
-  $ helm install my-httpd bitnami/httpd --set image.repository=rapidfort/httpd
+  $ helm install my-httpd bitnami/httpd --set image.repository=anmolvirdi/httpd
 what_is_text: |
   Apache HTTP Server is an open-source HTTP server. The goal of this project is to provide a secure, efficient and extensible server that provides HTTP services in sync with the current HTTP standards.
 disclaimer: |

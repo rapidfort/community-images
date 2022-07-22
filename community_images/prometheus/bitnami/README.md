@@ -7,11 +7,11 @@
 [![FOSSA Status][fossa-badge]][fossa-link]
 
 
-# RapidFort hardened image for NATS
+# RapidFort hardened image for Prometheus
 
-RapidFort’s container optimization process hardened this NATS container. This container is free to use and has no license limitations.
+RapidFort’s container optimization process hardened this Prometheus container. This container is free to use and has no license limitations.
 
-It is the same as the [Bitnami NATS][source-image-repo-link] image but more secure.
+It is the same as the [Bitnami Prometheus][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
@@ -24,25 +24,25 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 [![CVE Reduction][cve-reduction-link]][rf-image-link]
 
-## What is NATS?
+## What is Prometheus?
 
-> NATS is a connective technology built for the ever increasingly hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, IoT and can be used to augment or replace traditional messaging
+> Prometheus is a free software application used for event monitoring and alerting.
 
 
-[Overview of NATS](https://nats.io)
+[Overview of Prometheus](https://prometheus.io/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened NATS image?
+## How do I use this hardened Prometheus image?
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-# install nats, just replace repository with RapidFort registry
-$ helm install my-nats bitnami/nats --set image.repository=rapidfort/nats
+# install prometheus, just replace repository with RapidFort registry
+$ helm install my-prometheus bitnami/prometheus --set image.repository=rapidfort/prometheus
 
 ```
 
@@ -50,20 +50,20 @@ $ helm install my-nats bitnami/nats --set image.repository=rapidfort/nats
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [Bitnami NATS][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Bitnami Prometheus][source-image-repo-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
 
-## What’s the difference between the official [Bitnami NATS][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/nats][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+## What’s the difference between the official [Bitnami Prometheus][source-image-repo-link] image and this hardened image?
+RapidFort’s hardened [rapidfort/prometheus][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-11`, `2.8.4`, `2.8.4-debian-11-r13`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nats/blob/2.8.4-debian-11-r13/2/debian-11/Dockerfile)
+* [`0`, `0-debian-11`, `0.58.0`, `0.58.0-debian-11-r0`, `latest` (0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-prometheus-operator/blob/0.58.0-debian-11-r0/0/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 
@@ -80,19 +80,19 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
 [rf-link]: https://rapidfort.com
-[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnats?utm_source=gh-ci-image&utm_medium=view-report&utm_id=rsa-ci-2022
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/nats?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nats?logo=docker&logoColor=white
+[rf-image-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fprometheus?utm_source=gh-ci-image&utm_medium=view-report&utm_id=rsa-ci-2022
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/prometheus?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/prometheus?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/slack-ch72160/shared_invite/zt-1cafpzlyb-9I5He8olcp~FxmpZKxR~CA
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/nats/bitnami/assets/metrics.png
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/nats/bitnami/assets/cve_reduction.png
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/prometheus/bitnami/assets/metrics.png
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/prometheus/bitnami/assets/cve_reduction.png
 
-[source-image-repo-link]: https://hub.docker.com/r/bitnami/nats
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nats
+[source-image-repo-link]: https://hub.docker.com/r/bitnami/prometheus
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/prometheus
 
-[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml/badge.svg
-[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml
+[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/prometheus_bitnami.yml/badge.svg
+[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/prometheus_bitnami.yml

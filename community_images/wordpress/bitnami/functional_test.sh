@@ -81,10 +81,14 @@ docker_test()
     # create network
     docker network create -d bridge "${NAMESPACE}"
 
+    DB_NAME="${NAMESPACE}-db"
     docker run -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes \
      -e MARIADB_PASSWORD=password -e MARIADB_USER=bn_wordpress \
       -e MARIADB_DATABASE=bitnami_wordpress --network="${NAMESPACE}" \
-       --name wordpressdb -d mariadb:latest
+       --name "${DB_NAME}" -d mariadb:latest
+
+    # sleep for few seconds
+    sleep 10
 
     # create docker container
     docker run --rm -d --network="${NAMESPACE}" \
@@ -101,7 +105,7 @@ docker_test()
     docker kill "${NAMESPACE}"
 
     # clean up the mariadb container
-    docker kill wordpressdb
+    docker kill "${DB_NAME}"
 
     # delete network
     docker network rm "${NAMESPACE}"
@@ -132,8 +136,8 @@ docker_compose_test()
 main()
 {
     k8s_test
-    #docker_test
-    #docker_compose_test
+    docker_test
+    docker_compose_test
 }
 
 main

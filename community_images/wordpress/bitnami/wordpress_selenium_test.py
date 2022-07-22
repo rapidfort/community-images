@@ -31,7 +31,6 @@ class TestWordpresstest1():
     # Step # | name | target | value
     # 1 | open | / |
     self.driver.get("http://{}:{}/".format(params["ip_address"], params["port"]))
-    #self.driver.get("http://192.168.64.5:30353/")
     # 2 | setWindowSize | 1095x688 |
     self.driver.set_window_size(1095, 688)
     # 3 | click | linkText=Hello world! |

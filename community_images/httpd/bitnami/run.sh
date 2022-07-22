@@ -44,10 +44,12 @@ test()
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
     # fetch service url and store the urls in URLS file
+    rm -f URLS
     minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url >> URLS
 
     # Changing "http" to "https" in the urls
-    sed -i 's/http/https/' URLS
+    sed -i '2,2s/http/https/' URLS
+    cat URLS
 
     # curl to urls
     while read p;

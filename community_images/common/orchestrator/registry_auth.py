@@ -3,47 +3,46 @@
 import os
 import subprocess
 
-class RegistryAuth:
+class RegistryAuth(object):
     def __init__(self, registry, username, password):
         self.registry = registry
         self.username = username
         self.password = password
 
-    def auth():
+    def auth(self):
         exit_code = subprocess.call([f"docker login {self.registry} -u {self.username} -p {self.password}"])
         return exit_code
 
 
-class DockerhubAuth:
+class DockerhubAuth(RegistryAuth):
     def __init__(self, registry):
         username = os.environ.get("DOCKERHUB_USERNAME")
         password = os.environ.get("DOCKERHUB_PASSWORD")
         super(DockerhubAuth, self).__init__(registry, username, password)
     
-    @staticmethod(f)
-    def type():
-        return "docker_hub"
+    @staticmethod
+    def registry_url():
+        return "docker.io"
 
 
-class IronBankAuth:
+class IronBankAuth(RegistryAuth):
     def __init__(self):
         username = os.environ.get("IB_DOCKER_USERNAME")
         password = os.environ.get("IB_DOCKER_PASSWORD")
-        super(DockerhubAuth, self).__init__(registry, username, password)
-
-    @staticmethod(f)
-    def type():
-        return "iron_bank"
-
-class AuthFactory:
-    def __init__(self):
-        self.auth_cls_list = [
-            DockerhubAuth,
-            IronBankAuth
-        ]
+        super(IronBankAuth, self).__init__(registry, username, password)
 
     @staticmethod
-    def auth_obj(registry_type, registry_url):
-        for auth_cls in self.auth_cls_list:
-            if auth_cls.type() == registry_type:
+    def registry_url():
+        return "registry1.dso.mil"
+
+class AuthFactory:
+    AUTH_CLS_LIST = [
+        DockerhubAuth,
+        IronBankAuth
+    ]
+
+    @classmethod
+    def auth_obj(cls, registry_url):
+        for auth_cls in cls.AUTH_CLS_LIST:
+            if auth_cls.registry_url() == registry_url:
                 return auth_cls(registry_url)

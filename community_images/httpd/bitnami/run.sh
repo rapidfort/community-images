@@ -93,7 +93,10 @@ test()
     sleep 30
 
     # exec into container and run coverage script
-    docker cp coverage_script.sh "${NAMESPACE}"-apache-1:/opt/bitnami/scripts
+    pwd
+    chmod 777 "${SCRIPTPATH}"/coverage_script.sh
+    docker cp "${SCRIPTPATH}"/coverage_script.sh "${NAMESPACE}"-apache-1:opt/bitnami/scripts
+    # docker exec -i "${NAMESPACE}"-apache-1 chmod 777 /opt/bitnami/scripts/coverage_script.sh
     docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging
@@ -107,10 +110,8 @@ test()
     for i in {1..20};
     do
         echo "$i"
-        curl http://localhost:"${NON_TLS_PORT}"/a
-        curl http://localhost:"${NON_TLS_PORT}"/b
-        with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
-        with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
+        curl http://localhost:"${NON_TLS_PORT}"
+        with_backoff curl https://localhost:"${TLS_PORT}" -k -v
     done
 
     # logs for tracking

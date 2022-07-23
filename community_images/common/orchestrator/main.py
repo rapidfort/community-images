@@ -6,7 +6,6 @@ from enum import Enum
 import logging
 import os
 
-from registry_auth import AuthFactory
 from stub import StubGenerator
 
 class Commands(Enum):

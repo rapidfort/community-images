@@ -1,5 +1,8 @@
 """ Generates stub """
-from registry_auth import AuthFactory
+
+import logging
+
+from registry_helper import RegistryFactory
  
 class StubGenerator:
     def __init__(self, config_dict):
@@ -9,9 +12,9 @@ class StubGenerator:
         repos = self.config_dict.get("repos", [])
         input_registry = self.config_dict.get("input_registry")
         input_registry_url = input_registry.get("registry")
-        input_repo_auth = AuthFactory.auth_obj(input_registry_url)
+        input_repo_obj = RegistryFactory.reg_helper_obj(input_registry_url)
 
-        input_repo_auth.auth()
+        input_repo_obj.auth()
 
         for repo in repos:
             input_repo = repo.get("input_repo")
@@ -20,4 +23,4 @@ class StubGenerator:
 
 
             for tag in input_base_tags:
-                pass
+                logging.info(tag)

@@ -46,4 +46,5 @@ class StubGenerator:
                     repository=f"{input_account}/{input_repo}",
                     tag=latest_tag
                     )
+                image=f"{input_account}/{input_repo}:{latest_tag}"
                 subprocess.run(["rfstub", image])

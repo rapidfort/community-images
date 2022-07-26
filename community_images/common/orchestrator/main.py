@@ -37,7 +37,9 @@ def main():
     parser.add_argument("command", type=Commands, choices=list(Commands),
                     help="[stub, stub_coverage, harden, harden_coverage]")
     parser.add_argument("config", type=str, help="point to image config in yaml formt")
-    parser.add_argument("--publish", action='store_true', default=False, help="publish image")
+    parser.add_argument("--publish", action='store_true', help="publish image")
+    parser.add_argument('--no-publish', dest='publish', action='store_false', help="dont publish image")
+    parser.set_defaults(publish=False)
     parser.add_argument("--loglevel", type=str, default="info", help="debug, info, warning, error")
     args = parser.parse_args()
 

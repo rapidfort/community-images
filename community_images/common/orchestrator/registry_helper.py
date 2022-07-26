@@ -27,7 +27,8 @@ class RegistryHelper(object):
         exit_code = subprocess.call(
             [
                 "docker",
-                f"login {self.registry}",
+                "login",
+                f"{self.registry}",
                 f"-u {self.username}" ,
                 f"-p {self.password}"
             ])

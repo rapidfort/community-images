@@ -12,6 +12,7 @@ class StubGenerator:
         repos = self.config_dict.get("repos", [])
         input_registry = self.config_dict.get("input_registry")
         input_registry_url = input_registry.get("registry")
+        input_account = input_registry.get("account")
         input_repo_obj = RegistryFactory.reg_helper_obj(input_registry_url)
 
         input_repo_obj.auth()
@@ -19,8 +20,22 @@ class StubGenerator:
         for repo in repos:
             input_repo = repo.get("input_repo")
             input_base_tags = repo.get("input_base_tags", [])
-            output_repo = repo.get("output_repo")
 
+            """
+            input_registry:
+                registry: docker.io
+                account: bitnami
+            output_registry:
+                registry: docker.io
+                account: rapidfort
+            repos:
+            - input_repo: nats
+                input_base_tags:
+                - "2.8.4-debian-11-r"
+                output_repo: nats
+            """
 
             for tag in input_base_tags:
-                logging.info(tag)
+                latest_tag = input_repo_obj.get_latest_tag(
+                    self, input_account, input_repo, tag)
+                logging.info(latest_tag)

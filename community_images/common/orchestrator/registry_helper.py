@@ -1,9 +1,8 @@
 """ Docker Registry Helper library """
 
+import docker
 import logging
 import os
-import subprocess
-import sys
 import requests
 
 class RegistryHelper(object):
@@ -11,6 +10,7 @@ class RegistryHelper(object):
         self.registry = registry
         self.username = username
         self.password = password
+        self.client = docker.from_env()
 
     @staticmethod
     def registry_url():
@@ -25,20 +25,10 @@ class RegistryHelper(object):
         return "latest"
 
     def auth(self):
-        logging.info("docker",
-                "login",
-                f"{self.registry}",
-                f"-u {self.username}" ,
-                f"-p {self.password}")
-        exit_code = subprocess.call(
-            [
-                "docker",
-                "login",
-                f"{self.registry}",
-                f"-u {self.username}" ,
-                f"-p {self.password}"
-            ])
-        return exit_code
+        self.client.login(
+            registry=self.registry,
+            username=self.username,
+            password=self.password)
 
     def get_latest_tag(self, account, repo, search_str):
         """

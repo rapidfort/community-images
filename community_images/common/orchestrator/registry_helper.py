@@ -24,7 +24,13 @@ class RegistryHelper(object):
         return "latest"
 
     def auth(self):
-        exit_code = subprocess.call([f"docker login {self.registry} -u {self.username} -p {self.password}"])
+        exit_code = subprocess.call(
+            [
+                "docker",
+                f"login {self.registry}",
+                f"-u {self.username}" ,
+                f"-p {self.password}"
+            ])
         return exit_code
 
     def get_latest_tag(self, account, repo, search_str):

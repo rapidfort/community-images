@@ -37,5 +37,5 @@ class StubGenerator:
 
             for tag in input_base_tags:
                 latest_tag = input_repo_obj.get_latest_tag(
-                    self, input_account, input_repo, tag)
+                    input_account, input_repo, tag)
                 logging.info(latest_tag)

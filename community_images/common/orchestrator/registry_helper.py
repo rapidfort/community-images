@@ -24,7 +24,7 @@ class RegistryHelper(object):
         return "latest"
 
     def auth(self):
-        self.client.login(
+        self.docker_client.login(
             registry=self.registry,
             username=self.username,
             password=self.password)

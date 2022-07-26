@@ -56,9 +56,11 @@ class StubGenerator:
                 stub_image_tag=f"{input_account}/{input_repo}:{latest_tag}-rfstub"
 
                 stub_image = self.docker_client.images.get(stub_image_tag)
-                stub_image.tag(
-                    f"{output_registry_url}/{output_account}/{output_repo}:{latest_tag}-rfstub")
 
-                self.docker_client.api.push(
+                output_stub_tag = f"{output_registry_url}/{output_account}/{output_repo}:{latest_tag}-rfstub"
+                result = stub_image.tag(output_stub_tag)
+                logging.info(f"image tag:[{output_stub_tag}] success=f{result}")
+                result = self.docker_client.api.push(
                     f"{output_registry_url}/{output_account}/{output_repo}",
                     f"{latest_tag}-rfstub")
+                logging.info(f"docker client push result: {result}")

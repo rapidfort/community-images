@@ -42,6 +42,8 @@ class StubGenerator:
                 latest_tag = input_repo_obj.get_latest_tag(
                     input_account, input_repo, tag)
                 logging.info(latest_tag)
-                image = f"{input_account}/{input_repo}:{latest_tag}"
-                self.docker_client.pull(image)
+                self.docker_client.images.pull(
+                    repository=f"{input_account}/{input_repo}",
+                    tag=latest_tag
+                    )
                 subprocess.run(["rfstub", image])

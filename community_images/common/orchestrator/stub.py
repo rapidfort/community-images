@@ -6,15 +6,18 @@ import subprocess
 from registry_helper import RegistryFactory
 
 class StubGenerator:
-    def __init__(self, config_dict):
+    def __init__(self, config_dict, docker_client):
         self.config_dict = config_dict
+        self.docker_client = docker_client
 
     def generate(self):
         repos = self.config_dict.get("repos", [])
         input_registry = self.config_dict.get("input_registry")
         input_registry_url = input_registry.get("registry")
         input_account = input_registry.get("account")
-        input_repo_obj = RegistryFactory.reg_helper_obj(input_registry_url)
+        input_repo_obj = RegistryFactory.reg_helper_obj(
+            input_registry_url,
+            self.docker_client)
 
         input_repo_obj.auth()
 
@@ -40,7 +43,6 @@ class StubGenerator:
                 latest_tag = input_repo_obj.get_latest_tag(
                     input_account, input_repo, tag)
                 logging.info(latest_tag)
-                subprocess.run([
-                    "rfstub",
-                    f"{input_account}/{input_repo}:{tag}"
-                    ])
+                image = f"{input_account}/{input_repo}:{latest_tag}"
+                self.docker_client.pull(image)
+                subprocess.run(["rfstub", image])

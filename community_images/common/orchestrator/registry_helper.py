@@ -1,16 +1,15 @@
 """ Docker Registry Helper library """
 
-import docker
 import logging
 import os
 import requests
 
 class RegistryHelper(object):
-    def __init__(self, registry, username, password):
+    def __init__(self, docker_client, registry, username, password):
         self.registry = registry
         self.username = username
         self.password = password
-        self.client = docker.from_env()
+        self.docker_client = docker_client
 
     @staticmethod
     def registry_url():
@@ -55,10 +54,11 @@ class RegistryHelper(object):
 
 class DockerHubHelper(RegistryHelper):
     BASE_URL = "https://registry.hub.docker.com"
-    def __init__(self, registry):
+    def __init__(self, docker_client, registry):
         username = os.environ.get("DOCKERHUB_USERNAME")
         password = os.environ.get("DOCKERHUB_PASSWORD")
-        super(DockerHubHelper, self).__init__(registry, username, password)
+        super(DockerHubHelper, self).__init__(
+            docker_client, registry, username, password)
     
     @staticmethod
     def registry_url():
@@ -104,10 +104,11 @@ class DockerHubHelper(RegistryHelper):
         return True if resp.status_code == 200 else False
 
 class IronBankHelper(RegistryHelper):
-    def __init__(self):
+    def __init__(self, docker_client, registry):
         username = os.environ.get("IB_DOCKER_USERNAME")
         password = os.environ.get("IB_DOCKER_PASSWORD")
-        super(IronBankHelper, self).__init__(registry, username, password)
+        super(IronBankHelper, self).__init__(
+            docker_client, registry, username, password)
 
     @staticmethod
     def registry_url():
@@ -120,7 +121,7 @@ class RegistryFactory:
     ]
 
     @classmethod
-    def reg_helper_obj(cls, registry_url):
+    def reg_helper_obj(cls, docker_client, registry_url):
         for reg_cls in cls.REGISTRY_HELPER_CLS_LIST:
             if reg_cls.registry_url() == registry_url:
-                return reg_cls(registry_url)
+                return reg_cls(docker_client, registry_url)

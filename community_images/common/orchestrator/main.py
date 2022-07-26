@@ -1,6 +1,7 @@
 """ Orchestrator for Community Images """
 
 import argparse
+import docker
 import yaml
 from enum import Enum
 import logging
@@ -25,9 +26,9 @@ def load_config(config_name: str) -> dict:
         logging.info(f"config_dict={config_dict}")
         return config_dict
 
-def run(command: Commands, config_dict: dict) -> None:
+def run(command: Commands, config_dict: dict, docker_client) -> None:
     if command == Commands.stub:
-        stub = StubGenerator(config_dict)
+        stub = StubGenerator(config_dict, docker_client)
         stub.generate()
 
 
@@ -49,7 +50,8 @@ def main():
 
     logging.info(f"{args.command}, {args.config}")
     config_dict = load_config(args.config)
-    run(args.command, config_dict)
+    docker_client = docker.from_env()
+    run(args.command, config_dict, docker_client)
 
 if __name__ == "__main__":
     main()

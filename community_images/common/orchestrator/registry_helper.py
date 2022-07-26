@@ -24,6 +24,11 @@ class RegistryHelper(object):
         return "latest"
 
     def auth(self):
+        logging.info("docker",
+                "login",
+                f"{self.registry}",
+                f"-u {self.username}" ,
+                f"-p {self.password}")
         exit_code = subprocess.call(
             [
                 "docker",

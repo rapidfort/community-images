@@ -26,9 +26,9 @@ def load_config(config_name: str) -> dict:
         logging.info(f"config_dict={config_dict}")
         return config_dict
 
-def run(command: Commands, config_dict: dict, docker_client) -> None:
+def run(command: Commands, config_dict: dict, docker_client, publish) -> None:
     if command == Commands.stub:
-        stub = StubGenerator(config_dict, docker_client)
+        stub = StubGenerator(config_dict, docker_client, publish)
         stub.generate()
 
 
@@ -37,6 +37,7 @@ def main():
     parser.add_argument("command", type=Commands, choices=list(Commands),
                     help="[stub, stub_coverage, harden, harden_coverage]")
     parser.add_argument("config", type=str, help="point to image config in yaml formt")
+    parser.add_argument("--publish", action=argparse.BooleanOptionalAction, help="publish image")
     parser.add_argument("--loglevel", type=str, default="info", help="debug, info, warning, error")
     args = parser.parse_args()
 
@@ -51,7 +52,7 @@ def main():
     logging.info(f"{args.command}, {args.config}")
     config_dict = load_config(args.config)
     docker_client = docker.from_env()
-    run(args.command, config_dict, docker_client)
+    run(args.command, config_dict, docker_client, args.publish)
 
 if __name__ == "__main__":
     main()

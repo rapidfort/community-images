@@ -16,8 +16,7 @@ class StubGenerator:
         input_registry_url = input_registry.get("registry")
         input_account = input_registry.get("account")
         input_repo_obj = RegistryFactory.reg_helper_obj(
-            input_registry_url,
-            self.docker_client)
+            self.docker_client, input_registry_url)
 
         input_repo_obj.auth()
 

@@ -1,5 +1,6 @@
 """ Docker Registry Helper library """
 
+import logging
 import os
 import subprocess
 import sys

@@ -1,9 +1,10 @@
 """ Generates stub """
 
 import logging
+import subprocess
 
 from registry_helper import RegistryFactory
- 
+
 class StubGenerator:
     def __init__(self, config_dict):
         self.config_dict = config_dict
@@ -39,3 +40,7 @@ class StubGenerator:
                 latest_tag = input_repo_obj.get_latest_tag(
                     input_account, input_repo, tag)
                 logging.info(latest_tag)
+                subprocess.run([
+                    "rfstub",
+                    f"{input_account}/{input_repo}:{tag}"
+                    ])

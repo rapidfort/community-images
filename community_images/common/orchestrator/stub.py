@@ -51,19 +51,23 @@ q
             input_base_tags = repo.get("input_base_tags", [])
 
             for base_tag in input_base_tags:
-                latest_tag = input_repo_obj.get_latest_tag(
-                    input_account, input_repo, base_tag)
                 
-                logging.info(f"got latest tag = {latest_tag}")
-
-                if self.publish:
-                    output_repo_latest_tag = output_repo_obj.get_latest_tag(
-                        output_account, output_repo, base_tag)
+                if base_tag != "latest":
+                    latest_tag = input_repo_obj.get_latest_tag(
+                        input_account, input_repo, base_tag)
                     
-                    logging.info(f"got latest out tag = {output_repo_latest_tag}")
-                    if latest_tag == output_repo_latest_tag:
-                        logging.info("Input and output tag matches for publish mode: CONTINUE")
-                        continue
+                    logging.info(f"got latest tag = {latest_tag}")
+
+                    if self.publish:
+                        output_repo_latest_tag = output_repo_obj.get_latest_tag(
+                            output_account, output_repo, base_tag)
+                        
+                        logging.info(f"got latest out tag = {output_repo_latest_tag}")
+                        if latest_tag == output_repo_latest_tag:
+                            logging.info("Input and output tag matches for publish mode: CONTINUE")
+                            continue
+                else:
+                    latest_tag = base_tag
 
                 docker_image = self.docker_client.images.pull(
                     repository=f"{input_account}/{input_repo}",

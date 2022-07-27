@@ -14,7 +14,7 @@ class StubGenerator:
     def generate(self):
         """
         Parses image.yml for below structure and generates stub
-q
+
         input_registry:
             registry: docker.io
             account: bitnami

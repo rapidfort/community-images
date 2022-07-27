@@ -103,8 +103,8 @@ class StubGenerator:
         stub_image = self.docker_client.images.get(stub_image_tag)
 
         # tag stubbed image with output repo
-        output_stub_tag = (f"{output_registry_url}/"
-                            "{output_account}/{output_repo}:{latest_tag}-rfstub")
+        # pylint:disable=line-too-long
+        output_stub_tag = f"{output_registry_url}/{output_account}/{output_repo}:{latest_tag}-rfstub"
         result = stub_image.tag(output_stub_tag)
         logging.info(f"image tag:[{output_stub_tag}] success={result}")
 

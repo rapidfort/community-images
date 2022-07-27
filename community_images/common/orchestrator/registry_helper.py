@@ -16,7 +16,8 @@ class RegistryHelper:
     def registry_url():
         """ Interface method to specify registry url"""
 
-    def fetch_tags(self, account, repo): # pylint: disable=unused-argument
+    # pylint: disable=unused-argument, no-self-use
+    def fetch_tags(self, account, repo):
         """
         Interface method to fetch all tags for an image_repo
         Default returns latest
@@ -48,6 +49,7 @@ class RegistryHelper:
         tags.sort(key = lambda tag: int(tag[search_str_len:]))
         if tags:
             return tags[-1]
+        return None
 
     def delete_tag(self, account, repo, tag): # pylint: disable=unused-argument
         """ delete tag from repo """
@@ -101,6 +103,7 @@ class DockerHubHelper(RegistryHelper):
             logging.debug(resp_json)
             token = resp_json["token"]
             return {"Authorization": f"JWT {token}"}
+        return {}
 
     def delete_tag(self, account, repo, tag):
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
@@ -120,6 +123,7 @@ class IronBankHelper(RegistryHelper):
     def registry_url():
         return "registry1.dso.mil"
 
+# pylint:disable=too-few-public-methods
 class RegistryFactory:
     """ Registry factory to get Registry helper objects """
     REGISTRY_HELPER_CLS_LIST = [
@@ -129,6 +133,8 @@ class RegistryFactory:
 
     @classmethod
     def reg_helper_obj(cls, docker_client, registry_url):
+        """ Registry helper object creator """
         for reg_cls in cls.REGISTRY_HELPER_CLS_LIST:
             if reg_cls.registry_url() == registry_url:
                 return reg_cls(docker_client, registry_url)
+        return None

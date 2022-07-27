@@ -51,17 +51,15 @@ class StubGenerator:
             input_base_tags = repo.get("input_base_tags", [])
 
             for base_tag in input_base_tags:
-                
+
                 if base_tag != "latest":
                     latest_tag = input_repo_obj.get_latest_tag(
                         input_account, input_repo, base_tag)
-                    
                     logging.info(f"got latest tag = {latest_tag}")
 
                     if self.publish:
                         output_repo_latest_tag = output_repo_obj.get_latest_tag(
                             output_account, output_repo, base_tag)
-                        
                         logging.info(f"got latest out tag = {output_repo_latest_tag}")
                         if latest_tag == output_repo_latest_tag:
                             logging.info("Input and output tag matches for publish mode: CONTINUE")
@@ -69,12 +67,12 @@ class StubGenerator:
                 else:
                     latest_tag = base_tag
 
-                docker_image = self.docker_client.images.pull(
+                self.docker_client.images.pull(
                     repository=f"{input_account}/{input_repo}",
                     tag=latest_tag
                     )
                 full_image_tag=f"{input_account}/{input_repo}:{latest_tag}"
-                subprocess.run(["rfstub", full_image_tag])
+                subprocess.check_output(["rfstub", full_image_tag])
 
                 self.stub_and_push(input_account, input_repo, latest_tag, output_repo)
 
@@ -88,7 +86,8 @@ class StubGenerator:
         stub_image = self.docker_client.images.get(stub_image_tag)
 
         # tag stubbed image with output repo
-        output_stub_tag = f"{output_registry_url}/{output_account}/{output_repo}:{latest_tag}-rfstub"
+        output_stub_tag = (f"{output_registry_url}/"
+                            "{output_account}/{output_repo}:{latest_tag}-rfstub")
         result = stub_image.tag(output_stub_tag)
         logging.info(f"image tag:[{output_stub_tag}] success={result}")
 

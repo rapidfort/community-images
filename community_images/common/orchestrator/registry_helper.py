@@ -4,7 +4,8 @@ import logging
 import os
 import requests
 
-class RegistryHelper(object):
+class RegistryHelper:
+    """ Docker registry helper base class"""
     def __init__(self, docker_client, registry, username, password):
         self.registry = registry
         self.username = username
@@ -14,9 +15,8 @@ class RegistryHelper(object):
     @staticmethod
     def registry_url():
         """ Interface method to specify registry url"""
-        pass
 
-    def fetch_tags(self, image_repo):
+    def fetch_tags(self, account, repo): # pylint: disable=unused-argument
         """
         Interface method to fetch all tags for an image_repo
         Default returns latest
@@ -24,6 +24,7 @@ class RegistryHelper(object):
         return "latest"
 
     def auth(self):
+        """ auth docker client """
         self.docker_client.login(
             registry=self.registry,
             username=self.username,
@@ -42,24 +43,26 @@ class RegistryHelper(object):
             tags))
 
         if len(tags)==0:
-            return
+            return None
 
         tags.sort(key = lambda tag: int(tag[search_str_len:]))
         if tags:
             return tags[-1]
 
-    def delete_tag(self, account, repo, tag):
+    def delete_tag(self, account, repo, tag): # pylint: disable=unused-argument
+        """ delete tag from repo """
         return True
 
 
 class DockerHubHelper(RegistryHelper):
+    """ Implement dockerhub helper """
     BASE_URL = "https://registry.hub.docker.com"
     def __init__(self, docker_client, registry):
         username = os.environ.get("DOCKERHUB_USERNAME")
         password = os.environ.get("DOCKERHUB_PASSWORD")
-        super(DockerHubHelper, self).__init__(
+        super(__class__, self).__init__(
             docker_client, registry, username, password)
-    
+
     @staticmethod
     def registry_url():
         return "docker.io"
@@ -84,6 +87,7 @@ class DockerHubHelper(RegistryHelper):
         return tags
 
     def get_auth_header(self):
+        """ get auth header for JWT """
         login_url = f"{self.BASE_URL}/v2/users/login"
         resp = requests.post(
             login_url,
@@ -102,13 +106,14 @@ class DockerHubHelper(RegistryHelper):
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
         auth_header = self.get_auth_header()
         resp = requests.delete(del_url, headers=auth_header)
-        return True if resp.status_code == 200 else False
+        return resp.status_code == 200
 
 class IronBankHelper(RegistryHelper):
+    """ Iron bank helper class """
     def __init__(self, docker_client, registry):
         username = os.environ.get("IB_DOCKER_USERNAME")
         password = os.environ.get("IB_DOCKER_PASSWORD")
-        super(IronBankHelper, self).__init__(
+        super(__class__, self).__init__(
             docker_client, registry, username, password)
 
     @staticmethod
@@ -116,6 +121,7 @@ class IronBankHelper(RegistryHelper):
         return "registry1.dso.mil"
 
 class RegistryFactory:
+    """ Registry factory to get Registry helper objects """
     REGISTRY_HELPER_CLS_LIST = [
         DockerHubHelper,
         IronBankHelper

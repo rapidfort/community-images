@@ -77,7 +77,7 @@ class DockerHubHelper(RegistryHelper):
             url = f"{self.BASE_URL}/v1/repositories/{repo}/tags"
 
         resp = requests.get(url)
-        logging.info(f"url : {url}, {resp.status_code}, {resp.text}")
+        logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
         if 200 <= resp.status_code < 300:
             tag_objs = resp.json()
             tags = map(lambda x: x.get("name", ""), tag_objs)

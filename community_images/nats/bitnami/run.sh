@@ -50,6 +50,7 @@ test()
     # run command on cluster
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
 
+    # run coverage script
     test_nats "${NAMESPACE}" "${HELM_RELEASE}"
 
     # bring down helm install

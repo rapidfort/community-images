@@ -11,6 +11,11 @@ class TagDetail:
         self.tag = tag
 
     @property
+    def repo_path(self):
+        """ Full repo path """
+        return "/".join([self.account,self.repo])
+
+    @property
     def full_repo_path(self):
         """ Full repo path """
         return "/".join([self.registry,self.account,self.repo])
@@ -40,7 +45,6 @@ class TagDetail:
         """ Full Hardened tag """
         return f"{self.full_repo_path}:{self.hardened_tag}"
 
-# pylint:disable=too-few-public-methods
 class TagMapping:
     """ Tag mapping class """
     def __init__(self, input_tag_details, output_tag_details, needs_generation):
@@ -49,7 +53,6 @@ class TagMapping:
         self.needs_generation = needs_generation
 
 
-# pylint:disable=too-few-public-methods
 class TagManager:
     """ Tag Manager main class """
     def __init__(self, orchestrator):

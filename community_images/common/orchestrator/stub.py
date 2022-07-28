@@ -4,7 +4,6 @@ import logging
 import subprocess
 
 
-# pylint:disable=too-few-public-methods
 class StubGenerator:
     """ Stub generation command handler """
     def __init__(self, config_name, config_dict, docker_client, tag_mappings):

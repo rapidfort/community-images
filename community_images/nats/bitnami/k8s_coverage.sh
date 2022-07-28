@@ -6,16 +6,27 @@ set -e
 # shellcheck disable=SC1091
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/bash_helper.sh
+
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/coverage.sh
+
+INPUT_ACCOUNT=bitnami
+REPOSITORY=nats
+HELM_RELEASE="$REPOSITORY"-release
+
 run_coverage()
 {
     local NAMESPACE=$1
     shift
+    shift # we dont need number of images, hence shift
+
     local IMAGE_TAG_ARRAY=( "$@" )
 
     local IMAGE_REPOSITORY="${IMAGE_TAG_ARRAY[0]}"
     local TAG="${IMAGE_TAG_ARRAY[1]}"
     
-    local HELM_RELEASE="$REPOSITORY"-release
     echo "Testing $REPOSITORY"
 
     # upgrade helm
@@ -23,8 +34,7 @@ run_coverage()
 
     # Install helm
     with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
-    report_pulls "${IMAGE_REPOSITORY}"
-
+    
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
     kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
@@ -54,6 +64,7 @@ run_coverage()
 
 NAMESPACE="$1"
 shift
-IMAGE_TAG_ARRAY="$@"
+NUMBER_OF_IMAGES="$2"
+shift
 
-run_coverage "${NAMESPACE}" "${IMAGE_TAG_ARRAY[@]}"
+run_coverage "${NAMESPACE}" "${NUMBER_OF_IMAGES}" "$@"

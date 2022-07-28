@@ -123,7 +123,6 @@ class IronBankHelper(RegistryHelper):
     def registry_url():
         return "registry1.dso.mil"
 
-# pylint:disable=too-few-public-methods
 class RegistryHelperFactory:
     """ Registry factory to get Registry helper objects """
     REGISTRY_HELPER_CLS_LIST = [

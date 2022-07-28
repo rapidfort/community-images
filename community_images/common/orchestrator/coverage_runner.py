@@ -2,6 +2,9 @@
 
 import logging
 import os
+import subprocess
+from commands import Commands
+
 
 # pylint:disable=too-few-public-methods
 class CoverageRunner:
@@ -11,11 +14,12 @@ class CoverageRunner:
     RUNTIME_TYPE_DOCKER_COMPOSE = "docker_compose"
     RUNTIME_TYPE_DOCKER = "docker"
 
-    def __init__(self, config_name, config_dict):
+    def __init__(self, config_name, config_dict, tag_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
+        self.tag_mappings = tag_mappings
 
-    def run(self):
+    def run(self, command):
         """ Runs coverage tests
         runtimes:
         - k8s:
@@ -44,19 +48,35 @@ class CoverageRunner:
                 logging.info(f"Script abs path to execute: {script_path}")
 
                 # call runner
-                runtime_runner_map[runtime_type](script_path, runtime_props)
+                runtime_runner_map[runtime_type](script_path, runtime_props, command)
 
     # pylint:disable=no-self-use
-    def _k8s_runner(self, script_path, runtime_props):
+    def _k8s_runner(self, script_path, runtime_props, command):
         """ Runtime for k8s runner """
-        logging.info(f"k8s runner called for {script_path} {runtime_props}")
+        logging.info(f"k8s runner called for {script_path} {runtime_props} {command}")
+
+        namespace = "test"
+        number_of_images = str(len(self.tag_mappings))
+        cmd_array = [script_path, namespace, number_of_images]
+
+        for tag_mapping in self.tag_mappings:
+            tag_details = tag_mapping.output_tag_details
+            cmd_array.append(tag_details.repo_path)
+            if command == Commands.STUB_COVERAGE:
+                cmd_array.append(tag_details.stub_tag)
+            elif command == Commands.HARDEN_COVERAGE:
+                cmd_array.append(tag_details.hardened_tag)
+            elif command == Commands.LATEST_COVERAGE:
+                cmd_array.append("latest")
+
+        subprocess.check_output(cmd_array)
 
     # pylint:disable=no-self-use
-    def _docker_compose_runner(self, script_path, runtime_props):
+    def _docker_compose_runner(self, script_path, runtime_props, command):
         """ Runtime for docker compose runner """
-        logging.info(f"k8s runner called for {script_path} {runtime_props}")
+        logging.info(f"k8s runner called for {script_path} {runtime_props} {command}")
 
     # pylint:disable=no-self-use
-    def _docker_runner(self, script_path, runtime_props):
+    def _docker_runner(self, script_path, runtime_props, command):
         """ Runtime for docker runner """
-        logging.info(f"k8s runner called for {script_path} {runtime_props}")
+        logging.info(f"k8s runner called for {script_path} {runtime_props} {command}")

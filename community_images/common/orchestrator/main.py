@@ -1,7 +1,6 @@
 """ Orchestrator for Community Images """
 
 import argparse
-from enum import Enum
 import logging
 import os
 
@@ -10,21 +9,9 @@ from stub import StubGenerator
 from coverage_runner import CoverageRunner
 from registry_helper import RegistryHelperFactory
 from tag_manager import TagManager
+from commands import Commands
 import yaml
 
-class Commands(Enum):
-    """Enum for commands"""
-    STUB = "stub"
-    STUB_COVERAGE = "stub_coverage"
-    HARDEN = "harden"
-    HARDEN_COVERAGE = "harden_coverage"
-    LATEST_COVERAGE = "latest_coverage"
-
-    def __str__(self):
-        return self.value.lower()
-
-
-# pylint:disable=too-few-public-methods
 class Orchestrator:
     """ Orchestrator class """
     def __init__(self, args):
@@ -62,8 +49,11 @@ class Orchestrator:
         elif command in [ Commands.STUB_COVERAGE,
                 Commands.HARDEN_COVERAGE,
                 Commands.LATEST_COVERAGE]:
-            coverage_runner = CoverageRunner(self.config_name, self.config_dict)
-            coverage_runner.run()
+            coverage_runner = CoverageRunner(
+                self.config_name,
+                self.config_dict,
+                tag_manager.tag_mappings)
+            coverage_runner.run(command)
 
     def _auth_registries(self):
         """ Authenticate to registries

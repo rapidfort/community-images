@@ -124,7 +124,7 @@ class IronBankHelper(RegistryHelper):
         return "registry1.dso.mil"
 
 # pylint:disable=too-few-public-methods
-class RegistryFactory:
+class RegistryHelperFactory:
     """ Registry factory to get Registry helper objects """
     REGISTRY_HELPER_CLS_LIST = [
         DockerHubHelper,
@@ -132,7 +132,7 @@ class RegistryFactory:
     ]
 
     @classmethod
-    def reg_helper_obj(cls, docker_client, registry_url):
+    def get_registry_helper(cls, docker_client, registry_url):
         """ Registry helper object creator """
         for reg_cls in cls.REGISTRY_HELPER_CLS_LIST:
             if reg_cls.registry_url() == registry_url:

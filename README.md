@@ -53,6 +53,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Redis™ IronBank][ redis-ib-github-link]| [![dh][dh-rf-badge]][redis-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-ib-rf-link] | [![redis-ib-image-ft][redis-ib-ft-badge]][redis-ib-ft-badge-link] |
 | [PostgreSQL IronBank][ postgresql-ib-github-link]| [![dh][dh-rf-badge]][postgresql-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][postgresql-ib-rf-link] | [![postgresql-ib-image-ft][postgresql-ib-ft-badge]][postgresql-ib-ft-badge-link] |
 | [NGINX IronBank][ nginx-ib-github-link]| [![dh][dh-rf-badge]][nginx-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][nginx-ib-rf-link] | [![nginx-ib-image-ft][nginx-ib-ft-badge]][nginx-ib-ft-badge-link] |
+| [RabbitMQ][ rabbitmq-github-link]| [![dh][dh-rf-badge]][rabbitmq-rf-dh-image-link] | [![rf-h][rf-h-badge]][rabbitmq-rf-link] | [![rabbitmq-image-ft][rabbitmq-ft-badge]][rabbitmq-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -215,3 +216,10 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [nginx-ib-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_ironbank.yml/badge.svg
 [nginx-ib-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nginx_ironbank.yml
 [nginx-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fnginx%2Fnginx?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[rabbitmq-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/rabbitmq/bitnami
+[rabbitmq-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/rabbitmq?logo=docker&logoColor=white
+[rabbitmq-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/rabbitmq
+[rabbitmq-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/rabbitmq_bitnami.yml/badge.svg
+[rabbitmq-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/rabbitmq_bitnami.yml
+[rabbitmq-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Frabbitmq?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

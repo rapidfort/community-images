@@ -1,11 +1,14 @@
 version: '2'
 
 services:
-  nats1:
-    image: @IMAGE
-    cap_add:
-      - SYS_PTRACE
-    ports:
-      - '4222:4222'
-      - '6222:6222'
-      - '8222:8222'
+    rabbitmq:
+        container_name: "rabbitmq"
+        image: bitnami/rabbitmq
+        environment:
+            - RABBITMQ_DEFAULT_USER=user
+            - RABBITMQ_DEFAULT_PASS=bitnami
+        ports:
+            # AMQP protocol port
+            - '5672:5672'
+            # HTTP management UI
+            - '15672:15672'

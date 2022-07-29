@@ -54,8 +54,8 @@ test()
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
 
     RABBITMQ_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
-    
-    RABBITMQ_PASS=$(kubectl get secret --namespace rabbitmq-testing-1 rabbitmq-release -o jsonpath="{.data.rabbitmq-password}" | base64 -d)
+
+    RABBITMQ_PASS=$(kubectl get secret --namespace "${NAMESPACE}" rabbitmq-release -o jsonpath="{.data.rabbitmq-password}" | base64 -d)
     # run coverage script
     test_rabbitmq "${NAMESPACE}" "${RABBITMQ_SERVER}" "${RABBITMQ_PASS}"
 

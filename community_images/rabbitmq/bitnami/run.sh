@@ -39,7 +39,10 @@ test()
 
     # waiting for pod to be ready
     echo "waiting for pod to be ready"
-    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
+    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+
+    kubectl port-forward --namespace "${NAMESPACE}" svc/"${HELM_RELEASE}" 5672:5672 # port forward backend
+    kubectl port-forward --namespace "${NAMESPACE}" svc/"${HELM_RELEASE}" 15672:15672 # port forward management ui
 
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
@@ -80,6 +83,6 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("2.8.4-debian-11-r")
+declare -a BASE_TAG_ARRAY=("3.10.6-debian-11-r")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

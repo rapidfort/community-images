@@ -21,7 +21,7 @@ function test_rabbitmq() {
     chmod +x "$SCRIPTPATH"/publish_commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
 
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- bash -c "/tmp/publish_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${PUBLISHER_POD_NAME}" -- bash -c "/tmp/publish_commands.sh"
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
@@ -36,7 +36,7 @@ function test_rabbitmq() {
     chmod +x "$SCRIPTPATH"/consume_commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/consume_commands.sh "${CONSUMER_POD_NAME}":/tmp/consume_commands.sh
 
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- bash -c "/tmp/consume_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${CONSUMER_POD_NAME}" -- bash -c "/tmp/consume_commands.sh"
 
     # delete the generated command files
     rm "$SCRIPTPATH"/publish_commands.sh

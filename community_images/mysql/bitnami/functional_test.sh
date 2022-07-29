@@ -131,7 +131,7 @@ docker_compose_test()
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # run pg benchmark container
-    run_sys_bench_test mysql-master "$MYSQL_ROOT_PASSWORD" "${NAMESPACE}"_default yes
+    run_sys_bench_test mysql-master "$MYSQL_ROOT_PASSWORD" "${NAMESPACE}"-default yes
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down

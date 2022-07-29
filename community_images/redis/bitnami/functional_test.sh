@@ -96,7 +96,7 @@ docker_compose_test()
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # copy test.redis into container
-    docker run --rm -i --network="${NAMESPACE}_default" \
+    docker run --rm -i --network="${NAMESPACE}-default" \
         "${IMAGE_REPOSITORY}":latest \
         redis-benchmark -h redis-primary -p 6379 -a "${REDIS_PASSWORD}"
     report_pulls "${IMAGE_REPOSITORY}"

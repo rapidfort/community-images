@@ -66,7 +66,7 @@ docker_compose_test()
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # run redis-client tests
-    docker run --rm -d --network="${NAMESPACE}_default" \
+    docker run --rm -d --network="${NAMESPACE}-default" \
         --name redis-bench-"${NAMESPACE}" "${IMAGE_REPOSITORY}":latest \
         sleep infinity
     report_pulls "${IMAGE_REPOSITORY}"

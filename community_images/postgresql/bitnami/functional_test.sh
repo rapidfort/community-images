@@ -93,7 +93,7 @@ docker_compose_test()
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # run pg benchmark container
-    docker run --rm -i --network="${NAMESPACE}_default" \
+    docker run --rm -i --network="${NAMESPACE}-default" \
         --env="PGPASSWORD=${POSTGRES_PASSWORD}" "${IMAGE_REPOSITORY}" \
         -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
     report_pulls "${IMAGE_REPOSITORY}"

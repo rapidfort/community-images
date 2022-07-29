@@ -132,7 +132,7 @@ docker_compose_test()
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # run pg benchmark container
-    run_sys_bench_test mariadb-master "$MARIADB_ROOT_PASSWORD" "${NAMESPACE}"_default no
+    run_sys_bench_test mariadb-master "$MARIADB_ROOT_PASSWORD" "${NAMESPACE}"-default no
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down

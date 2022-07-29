@@ -132,7 +132,7 @@ docker_compose_test()
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" logs
 
     # run pg benchmark container
-    run_mongodb_test mongodb-primary "$MONGODB_ROOT_PASSWORD" "${NAMESPACE}"_default
+    run_mongodb_test mongodb-primary "$MONGODB_ROOT_PASSWORD" "${NAMESPACE}"-default
 
     # kill docker-compose setup container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" down

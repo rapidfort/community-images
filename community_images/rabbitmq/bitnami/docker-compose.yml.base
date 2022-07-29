@@ -1,14 +1,14 @@
 version: '2'
 
 services:
-    rabbitmq:
-        container_name: "rabbitmq"
-        image: bitnami/rabbitmq
-        environment:
-            - RABBITMQ_DEFAULT_USER=user
-            - RABBITMQ_DEFAULT_PASS=bitnami
-        ports:
-            # AMQP protocol port
-            - '5672:5672'
-            # HTTP management UI
-            - '15672:15672'
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: bitnami/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=bitnami
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'

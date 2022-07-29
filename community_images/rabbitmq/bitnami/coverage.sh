@@ -5,30 +5,40 @@ set -x
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-function test_nats() {
-   local NAMESPACE=$1
-   local HELM_RELEASE=$2
+function test_rabbitmq() {
+    local NAMESPACE=$1
+    local RABBITMQ_SERVER=$2
 
-   NATS_USER=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 user | awk '{print $2}' | tr -d '"')
-    NATS_PASS=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 password | awk '{print $2}' | tr -d '"')
-    echo -e "Client credentials:\n\tUser: $NATS_USER\n\tPassword: $NATS_PASS"
-
-    kubectl run nats-release-client --restart='Never' --env="NATS_USER=$NATS_USER" --env="NATS_PASS=$NATS_PASS" --image docker.io/bitnami/golang --namespace "${NAMESPACE}" --command -- sleep infinity
+    PUBLISHER_POD_NAME="publisher"
+    kubectl run "${PUBLISHER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
     # wait for nats client to come up
-    kubectl wait pods nats-release-client -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    kubectl wait pods "${PUBLISHER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash
-    GO111MODULE=off go get github.com/nats-io/nats.go
-    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go install && cd || exit
-    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-echo && go install && cd || exit
-    nats-echo -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 SomeSubject &
-    nats-pub -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 -reply Hi SomeSubject 'Hi everyone'" > "$SCRIPTPATH"/commands.sh
+    pip install pika
+    python3 /tmp/publish.py --rabbitmq-server=$RABBITMQ_SERVER" > "$SCRIPTPATH"/publish_commands.sh
 
-    chmod +x "$SCRIPTPATH"/commands.sh
-    POD_NAME="nats-release-client"
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/commands.sh "${POD_NAME}":/tmp/common_commands.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish.py "${CHROME_POD}":/tmp/publish.py
+    chmod +x "$SCRIPTPATH"/publish_commands.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
 
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- bash -c "/tmp/common_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- bash -c "/tmp/publish_commands.sh"
 
-    # delete the generated commands.sh
-    rm "$SCRIPTPATH"/commands.sh
+    # consumer specific
+    PUBLISHER_POD_NAME="publisher"
+    kubectl run "${PUBLISHER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
+    # wait for nats client to come up
+    kubectl wait pods "${PUBLISHER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+    echo "#!/bin/bash
+    pip install pika
+    python3 /tmp/consume.py --rabbitmq-server=$RABBITMQ_SERVER" > "$SCRIPTPATH"/consume_commands.sh
+
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/consume.py "${CHROME_POD}":/tmp/consume.py
+    chmod +x "$SCRIPTPATH"/consume_commands.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/consume_commands.sh "${PUBLISHER_POD_NAME}":/tmp/consume_commands.sh
+
+    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- bash -c "/tmp/consume_commands.sh"
+
+    # delete the generated command files
+    rm "$SCRIPTPATH"/publish_commands.sh
+    rm "$SCRIPTPATH"/consume_commands.sh
 }

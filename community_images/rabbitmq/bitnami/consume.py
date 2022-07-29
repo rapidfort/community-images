@@ -8,20 +8,23 @@ DEFAULT_TOPIC_NAME='test'
 
 server='localhost'
 password=DEFAULT_RABBITMQ_PASSWORD
+user=DEFAULT_RABBITMQ_USER
 print(sys.argv)
 try:
-    opts, args = getopt.getopt(sys.argv[1:],"s:",["rabbitmq-server="])
+    opts, args = getopt.getopt(sys.argv[1:],"s:p:u:",["rabbitmq-server=", "password=", "user="])
 except getopt.GetoptError:
-    print('python3 consume.py --rabbitmq-server <server>')
+    print('python3 consume.py --rabbitmq-server <server> --password <password> --user <user>')
     sys.exit(2)
 for opt, arg in opts:
     if opt in ("--rabbitmq-server", "--s"):
         server = arg
     elif opt in ("--password", "--p"):
         password = arg
+    elif opt in ("--user", "--u"):
+        user = arg
 
 def main():
-    params = pika.URLParameters(f'amqp://{DEFAULT_RABBITMQ_USER}:{DEFAULT_RABBITMQ_PASSWORD}@{server}')
+    params = pika.URLParameters(f'amqp://{user}:{password}@{server}')
     connection = pika.BlockingConnection(params)
     channel = connection.channel()
     channel.queue_declare(queue=DEFAULT_TOPIC_NAME)

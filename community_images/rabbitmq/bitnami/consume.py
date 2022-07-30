@@ -1,6 +1,10 @@
+"""The rabbitmq consumer."""
 #!/usr/bin/env python
-import pika, os
-import sys, getopt
+import getopt
+import os
+import sys
+
+import pika # pylint: disable=import-error
 
 DEFAULT_RABBITMQ_USER='user'
 DEFAULT_RABBITMQ_PASSWORD='bitnami'
@@ -24,6 +28,7 @@ for opt, arg in opts:
         user = arg
 
 def main():
+    """main function."""
     params = pika.URLParameters(f'amqp://{user}:{password}@{server}')
     connection = pika.BlockingConnection(params)
     channel = connection.channel()
@@ -35,7 +40,7 @@ def main():
         connection.close()
     else:
         channel.basic_ack(delivery_tag=method_frame.delivery_tag)
-        print(" [x] Received %r" % body)
+        print(f" [x] Received {body}")
         connection.close()
 
 if __name__ == '__main__':

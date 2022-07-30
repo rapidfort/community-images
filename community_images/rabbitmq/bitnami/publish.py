@@ -1,6 +1,9 @@
+"""The rabbitmq publisher."""
 #!/usr/bin/env python3
-import pika
-import sys, getopt
+import getopt
+import sys
+
+import pika # pylint: disable=import-error
 
 DEFAULT_RABBITMQ_USER='user'
 DEFAULT_RABBITMQ_PASSWORD='bitnami'

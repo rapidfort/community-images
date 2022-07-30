@@ -11,7 +11,7 @@ function test_rabbitmq() {
     local RABBITMQ_PASS=$3
 
     PUBLISHER_POD_NAME="publisher"
-    kubectl run "${PUBLISHER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
+    kubectl run "${PUBLISHER_POD_NAME}" --rm --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
     # wait for nats client to come up
     kubectl wait pods "${PUBLISHER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash
@@ -26,7 +26,7 @@ function test_rabbitmq() {
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
-    kubectl run "${CONSUMER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
+    kubectl run "${CONSUMER_POD_NAME}" --rm --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
     # wait for nats client to come up
     kubectl wait pods "${CONSUMER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash

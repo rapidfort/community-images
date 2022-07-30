@@ -30,18 +30,18 @@ test()
 
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
-
+    
     # install docker container
-    docker-compose --project-directory "${SCRIPTPATH}" -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up --build -d
+    docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up --build -d
     report_pulls "${IMAGE_REPOSITORY}"
 
     # run pytest
     set +e #ignore test failures
-    docker-compose --project-directory "${SCRIPTPATH}" -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python -m pytest
+    docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python -m pytest
     set -e
 
     # issue token
-    docker-compose --project-directory "${SCRIPTPATH}" -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override
+    docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override
     
     # sleep for 30 sec
     sleep 30

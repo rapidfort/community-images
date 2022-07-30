@@ -41,9 +41,6 @@ test()
     echo "waiting for pod to be ready"
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
-    #kubectl port-forward --namespace "${NAMESPACE}" svc/"${HELM_RELEASE}" 5672:5672 # port forward backend
-    #kubectl port-forward --namespace "${NAMESPACE}" svc/"${HELM_RELEASE}" 15672:15672 # port forward management ui
-
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 

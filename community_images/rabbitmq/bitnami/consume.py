@@ -10,10 +10,9 @@ DEFAULT_RABBITMQ_USER='user'
 DEFAULT_RABBITMQ_PASSWORD='bitnami'
 DEFAULT_TOPIC_NAME='test'
 
-server='localhost'
-password=DEFAULT_RABBITMQ_PASSWORD
-user=DEFAULT_RABBITMQ_USER
-print(sys.argv)
+server='localhost' # pylint: disable=invalid-name
+password=DEFAULT_RABBITMQ_PASSWORD # pylint: disable=invalid-name
+user=DEFAULT_RABBITMQ_USER # pylint: disable=invalid-name
 try:
     opts, args = getopt.getopt(sys.argv[1:],"s:p:u:",["rabbitmq-server=", "password=", "user="])
 except getopt.GetoptError:
@@ -34,7 +33,7 @@ def main():
     channel = connection.channel()
     channel.queue_declare(queue=DEFAULT_TOPIC_NAME)
 
-    method_frame, header_frame, body = channel.basic_get(queue=DEFAULT_TOPIC_NAME)
+    method_frame, header_frame, body = channel.basic_get(queue=DEFAULT_TOPIC_NAME) # pylint: disable=unused-variable
     if method_frame is None or method_frame.NAME == 'Basic.GetEmpty':
         print(" [x] Error, empty response ")
         connection.close()
@@ -51,4 +50,4 @@ if __name__ == '__main__':
         try:
             sys.exit(0)
         except SystemExit:
-            os._exit(0)
+            os._exit(0) # pylint: disable=protected-access

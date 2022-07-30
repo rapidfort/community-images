@@ -28,8 +28,11 @@ k8s_test()
     # wait for pods
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
+    RABBITMQ_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
+
+    RABBITMQ_PASS=$(kubectl get secret --namespace "${NAMESPACE}" rabbitmq-release -o jsonpath="{.data.rabbitmq-password}" | base64 -d)
     # run coverage script
-    test_nats "${NAMESPACE}" "${HELM_RELEASE}"
+    test_rabbitmq "${NAMESPACE}" "${RABBITMQ_SERVER}" "${RABBITMQ_PASS}"
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

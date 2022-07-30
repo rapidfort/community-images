@@ -2,7 +2,6 @@ version: '2'
 
 services:
   rabbitmq:
-    container_name: "rabbitmq"
     image: @IMAGE
     environment:
       - RABBITMQ_DEFAULT_USER=user

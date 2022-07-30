@@ -19,6 +19,8 @@ docker_compose_test()
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
+    export RABBITMQ_PASSWORD=rabbit_passwd
+    export MYSQL_PASSWORD=mysql_passwd
     # install docker container
     docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up --build -d
     report_pulls "${IMAGE_REPOSITORY}"

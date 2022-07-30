@@ -52,7 +52,7 @@ test()
 
     RABBITMQ_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
 
-    RABBITMQ_PASS=$(kubectl get secret --namespace "${NAMESPACE}" rabbitmq-release -o jsonpath="{.data.rabbitmq-password}" | base64 -d)
+    RABBITMQ_PASS=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath="{.data.rabbitmq-password}" | base64 -d)
     # run coverage script
     test_rabbitmq "${NAMESPACE}" "${RABBITMQ_SERVER}" "${RABBITMQ_PASS}"
 

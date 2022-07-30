@@ -11,7 +11,7 @@ function test_rabbitmq() {
     local RABBITMQ_PASS=$3
 
     PUBLISHER_POD_NAME="publisher"
-    kubectl run "${PUBLISHER_POD_NAME}" --rm --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
+    kubectl run "${PUBLISHER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
     # wait for nats client to come up
     kubectl wait pods "${PUBLISHER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash
@@ -26,7 +26,7 @@ function test_rabbitmq() {
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
-    kubectl run "${CONSUMER_POD_NAME}" --rm --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
+    kubectl run "${CONSUMER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
     # wait for nats client to come up
     kubectl wait pods "${CONSUMER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash
@@ -38,6 +38,10 @@ function test_rabbitmq() {
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/consume_commands.sh "${CONSUMER_POD_NAME}":/tmp/consume_commands.sh
 
     kubectl -n "${NAMESPACE}" exec -i "${CONSUMER_POD_NAME}" -- bash -c "/tmp/consume_commands.sh"
+
+    # delete the client containers
+    kubectl -n "${NAMESPACE}" delete pod "${PUBLISHER_POD_NAME}"
+    kubectl -n "${NAMESPACE}" delete pod "${CONSUMER_POD_NAME}"
 
     # delete the generated command files
     rm "$SCRIPTPATH"/publish_commands.sh

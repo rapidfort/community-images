@@ -106,7 +106,8 @@ class CoverageRunner:
         logging.info(f"k8s runner called for {script_path} {runtime_props} {command}")
 
         with K8sSetup(namespace_name, release_name, image_tag_kv_list, runtime_props, image_script_dir):
-            subprocess.check_output([script_path] + cmd_params)
+            if os.path.exists(script_path):
+                subprocess.check_output([script_path] + cmd_params)
 
     @staticmethod
     def _docker_compose_runner(
@@ -115,7 +116,8 @@ class CoverageRunner:
         logging.info(f"docker compose runner called for {script_path} {runtime_props} {command}")
 
         with DockerComposeSetup(namespace_name, release_name, image_tag_kv_list, runtime_props, image_script_dir):
-            subprocess.check_output([script_path] + cmd_params)
+            if os.path.exists(script_path):
+                subprocess.check_output([script_path] + cmd_params)
 
     @staticmethod
     def _docker_runner(
@@ -124,4 +126,5 @@ class CoverageRunner:
         logging.info(f"docker runner called for {script_path} {runtime_props} {command}")
 
         with DockerSetup(namespace_name, release_name, image_tag_kv_list, runtime_props, image_script_dir):
-            subprocess.check_output([script_path] + cmd_params)
+            if os.path.exists(script_path):
+                subprocess.check_output([script_path] + cmd_params)

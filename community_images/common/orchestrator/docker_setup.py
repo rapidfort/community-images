@@ -2,7 +2,7 @@
 
 import logging
 import os
-
+import time
 
 class DockerSetup:
     """ Docker setup context manager """
@@ -16,6 +16,25 @@ class DockerSetup:
 
     def __enter__(self):
         """ create a docker namespace and set it up for runner """
+        # create network
+        cmd=f"docker network create -d bridge {self.namespace_name}"
+        subprocess.check_output(cmd.split())
+
+        # create docker container
+        cmd=f"docker run --rm -d --network={self.namespace_name}"
+        cmd+=f" --name {self.namespace_name}"
+        cmd+=f" $IMAGE_REPOSITORY:latest" #fixme
+        subprocess.check_output(cmd.split())
+
+        # sleep for few seconds
+        time.sleep(30)
 
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """
+        # clean up docker container
+        cmd=f"docker kill {self.namespace_name}"
+        subprocess.check_output(cmd.split())
+
+        # delete network
+        cmd=f"docker network rm {self.namespace_name}"
+        subprocess.check_output(cmd.split())

@@ -22,3 +22,4 @@ grep --version
 sed --version
 tar --version
 sort --version
+head --version

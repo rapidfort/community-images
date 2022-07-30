@@ -148,7 +148,7 @@ services:
   mysql_to_create_grafana_db:
     image: mysql:5.7
     platform: linux/x86_64
-    command: bash -c "mysql -h ${MYSQL_HOST:-mysql} -uroot -p${MYSQL_PASSWORD:?err} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
+    command: bash -c "mysql -h ${MYSQL_HOST:-mysql} -uroot -p${MYSQL_PASSWORD} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
     environment:
       MYSQL_HOST: ${MYSQL_HOST:-mysql}
       MYSQL_PASSWORD: $MYSQL_PASSWORD

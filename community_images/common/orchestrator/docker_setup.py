@@ -24,7 +24,7 @@ class DockerSetup:
         # create docker container
         for repo, tag in self.image_tag_kv_list:
             cmd=f"docker run --rm -d --network={self.namespace_name}"
-            cmd+=f" --name {repo}"
+            cmd+=f" --name {repo}.replace("/","-")"
             cmd+=f" {repo}:{tag}"
             subprocess.check_output(cmd.split())
             logging.info(f"cmd={cmd}")

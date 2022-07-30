@@ -2,14 +2,15 @@
 
 import logging
 import os
+import subprocess
 import time
 
 class DockerSetup:
     """ Docker setup context manager """
-    def __init__(self, namespace_name, release_name, image_tag_list, runtime_props, image_script_dir):
+    def __init__(self, namespace_name, release_name, image_tag_kv_list, runtime_props, image_script_dir):
         self.namespace_name = namespace_name
         self.release_name = release_name
-        self.image_tag_list = image_tag_list
+        self.image_tag_kv_list = image_tag_kv_list
         self.runtime_props = runtime_props
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
@@ -21,13 +22,15 @@ class DockerSetup:
         subprocess.check_output(cmd.split())
 
         # create docker container
-        cmd=f"docker run --rm -d --network={self.namespace_name}"
-        cmd+=f" --name {self.namespace_name}"
-        cmd+=f" $IMAGE_REPOSITORY:latest" #fixme
-        subprocess.check_output(cmd.split())
+        for repo, tag in self.image_tag_kv_list:
+            cmd=f"docker run --rm -d --network={self.namespace_name}"
+            cmd+=f" --name {repo}"
+            cmd+=f" {repo}:{tag}"
+            subprocess.check_output(cmd.split())
+            logging.info(f"cmd={cmd}")
 
         # sleep for few seconds
-        time.sleep(30)
+        time.sleep(self.runtime_props.get("wait_time_sec", 30))
 
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """

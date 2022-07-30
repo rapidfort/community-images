@@ -38,5 +38,8 @@ runtimes:
       override_file: "overrides.yml"
   - docker_compose:
       script: dc_coverage.sh
+      base_file: docker-compose.yml.base
+      #env_file: .env
+      #wait_time_sec: 30
   - docker:
       script: docker_coverage.sh

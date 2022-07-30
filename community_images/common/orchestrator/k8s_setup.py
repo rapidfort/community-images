@@ -7,10 +7,10 @@ import subprocess
 
 class K8sSetup:
     """ k8s setup context manager """
-    def __init__(self, namespace_name, release_name, image_tag_list, runtime_props, image_script_dir):
+    def __init__(self, namespace_name, release_name, image_tag_kv_list, runtime_props, image_script_dir):
         self.namespace_name = namespace_name
         self.release_name = release_name
-        self.image_tag_list = image_tag_list
+        self.image_tag_kv_list = image_tag_kv_list
         self.runtime_props = runtime_props
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
@@ -50,8 +50,8 @@ class K8sSetup:
         for i, image_key in enumerate(self.runtime_props.get("image_keys", [])):
             tag_key = image_key.get("tag")
             repository_key = image_key.get("repository")
-            cmd+=f" --set {tag_key}={self.image_tag_list[(i*2)+1]}"
-            cmd+=f" --set {repository_key}={self.image_tag_list[i*2]}"
+            cmd+=f" --set {repository_key}={self.image_tag_kv_list[i][0]}"
+            cmd+=f" --set {tag_key}={self.image_tag_kv_list[i][1]}"
 
         cmd+=f" -f {override_file}"
         subprocess.check_output(cmd.split())

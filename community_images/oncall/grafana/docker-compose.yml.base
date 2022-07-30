@@ -31,7 +31,7 @@ services:
       oncall_db_migration:
         condition: service_completed_successfully
       rabbitmq:
-        condition: service_started
+        condition: service_healthy
       redis:
         condition: service_started
 
@@ -68,7 +68,7 @@ services:
       oncall_db_migration:
         condition: service_completed_successfully
       rabbitmq:
-        condition: service_started
+        condition: service_healthy
       redis:
         condition: service_started
 
@@ -98,7 +98,7 @@ services:
       mysql:
         condition: service_healthy
       rabbitmq:
-        condition: service_started
+        condition: service_healthy
 
   mysql:
     image: mysql:5.7
@@ -139,11 +139,19 @@ services:
       RABBITMQ_DEFAULT_USER: "rabbitmq"
       RABBITMQ_DEFAULT_PASS: $RABBITMQ_PASSWORD
       RABBITMQ_DEFAULT_VHOST: "/"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
 
   mysql_to_create_grafana_db:
     image: mysql:5.7
     platform: linux/x86_64
-    command: bash -c "mysql -h ${MYSQL_HOST:-mysql} -uroot -p${MYSQL_PASSWORD:?err} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
+    command: bash -c "mysql -h ${MYSQL_HOST:-mysql} -uroot -p${MYSQL_PASSWORD} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST:-mysql}
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
     depends_on:
       mysql:
         condition: service_healthy
@@ -177,5 +185,3 @@ services:
 volumes:
   dbdata:
   rabbitmqdata:
-  caddy_data:
-  caddy_config:

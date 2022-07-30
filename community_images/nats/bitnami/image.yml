@@ -31,6 +31,11 @@ repo_sets:
 runtimes:
   - k8s:
       script: k8s_coverage.sh
+      helm_repo: bitnami/nats
+      image_keys:
+      - repository: "image.repository"
+        tag: "image.tag"
+      override_file: "overrides.yml"
   - docker_compose:
       script: dc_coverage.sh
   - docker:

@@ -11,9 +11,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/coverage.sh
 
-HELM_RELEASE=rf-nats
+HELM_RELEASE=rf-rabbitmq
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
-REPOSITORY=nats
+REPOSITORY=rabbitmq
 IMAGE_REPOSITORY="$RAPIDFORT_ACCOUNT"/"$REPOSITORY"
 
 k8s_test()

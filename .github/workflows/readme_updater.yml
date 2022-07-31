@@ -162,6 +162,14 @@ jobs:
           repository: rapidfort/nginx-ib
           readme-filepath: ./community_images/nginx/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for NGINX IronBank
+      - name: Docker Hub Description RabbitMQ
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/rabbitmq
+          readme-filepath: ./community_images/rabbitmq/bitnami/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for RabbitMQ
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

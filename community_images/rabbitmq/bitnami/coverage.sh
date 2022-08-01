@@ -12,7 +12,7 @@ function test_rabbitmq() {
 
     PUBLISHER_POD_NAME="publisher"
     kubectl run "${PUBLISHER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
-    # wait for nats client to come up
+    # wait for publisher pod to come up
     kubectl wait pods "${PUBLISHER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash
     pip install pika
@@ -27,7 +27,7 @@ function test_rabbitmq() {
     # consumer specific
     CONSUMER_POD_NAME="consumer"
     kubectl run "${CONSUMER_POD_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
-    # wait for nats client to come up
+    # wait for consumer pod to come up
     kubectl wait pods "${CONSUMER_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     echo "#!/bin/bash
     pip install pika
@@ -46,4 +46,27 @@ function test_rabbitmq() {
     # delete the generated command files
     rm "$SCRIPTPATH"/publish_commands.sh
     rm "$SCRIPTPATH"/consume_commands.sh
+
+    PERF_POD="perf-test"
+    DEFAULT_RABBITMQ_USER='user'
+    PERF_TEST_IMAGE_VERSION='2.18.0'
+
+    # run the perf benchmark test
+    kubectl run -it "${PERF_POD}" \
+        --env RABBITMQ_PERF_TEST_LOGGERS=com.rabbitmq.perf=debug,com.rabbitmq.perf.Producer=debug \
+        --image=pivotalrabbitmq/perf-test:"${PERF_TEST_IMAGE_VERSION}" \
+        --namespace "${NAMESPACE}" -- \
+        --uri amqp://"${DEFAULT_RABBITMQ_USER}":"${RABBITMQ_PASS}"@"${RABBITMQ_SERVER}" \
+        --time 10
+
+    # check for message from perf test
+    out=$(kubectl logs "${PERF_POD}" -n "${NAMESPACE}" | grep -ic 'consumer latency')
+
+   if (( out >= 1 )); then
+    echo "The perf benchmark didn't run properly"
+    return 1
+   fi
+
+    # delete the perf container
+    kubectl -n "${NAMESPACE}" delete pod "${PERF_POD}"
 }

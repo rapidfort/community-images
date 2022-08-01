@@ -62,10 +62,10 @@ function test_rabbitmq() {
     # check for message from perf test
     out=$(kubectl logs "${PERF_POD}" -n "${NAMESPACE}" | grep -ic 'consumer latency')
 
-   if (( out >= 1 )); then
-    echo "The perf benchmark didn't run properly"
-    return 1
-   fi
+    if (( out < 1 )); then
+        echo "The perf benchmark didn't run properly"
+        return 1
+    fi
 
     # delete the perf container
     kubectl -n "${NAMESPACE}" delete pod "${PERF_POD}"

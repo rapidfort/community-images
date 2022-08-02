@@ -33,10 +33,18 @@ runtimes:
       script: k8s_coverage.sh
       helm_repo: bitnami/nats
       image_keys:
-      - repository: "image.repository"
-        tag: "image.tag"
+        nats:
+          repository: "image.repository"
+          tag: "image.tag"
       override_file: "overrides.yml"
   - docker_compose:
       script: dc_coverage.sh
+      compose_file: docker-compose.yml
+      #env_file: .env
+      #wait_time_sec: 30
+      image_keys:
+        nats:
+          repository: "NATS_IMAGE_REPOSITORY"
+          tag: "NATS_IMAGE_TAG"
   - docker:
       script: docker_coverage.sh

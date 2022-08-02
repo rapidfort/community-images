@@ -45,7 +45,7 @@ class CoverageRunner:
         image_name = self.config_dict.get("name")
         namespace_name = self._get_namespace(image_name)
         release_name = f"rf-{image_name}"
-        cmd_params, image_tag_list = self._prepare_cmd_params(namespace_name, release_name, command)
+        cmd_params, image_tag_details = self._prepare_cmd_params(namespace_name, release_name, command)
 
         for runtime in runtimes:
             for runtime_type, runtime_props in runtime.items():
@@ -64,7 +64,7 @@ class CoverageRunner:
                     runtime_props,
                     command,
                     cmd_params,
-                    image_tag_list,
+                    image_tag_details,
                     namespace_name,
                     release_name
                 )
@@ -82,39 +82,54 @@ class CoverageRunner:
         cmd_params = [namespace_name, release_name, number_of_images]
 
         image_tag_list= []
+        image_tag_details = {}
         for tag_mapping in self.tag_mappings:
             tag_details = tag_mapping.output_tag_details
             image_tag_list.append(tag_details.repo_path)
+
+            image_tag_details[tag_details.repo] = {}
+
+            image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
             if command == Commands.STUB_COVERAGE:
-                image_tag_list.append(tag_details.stub_tag)
+                image_tag_value = tag_details.stub_tag
             elif command == Commands.HARDEN_COVERAGE:
-                image_tag_list.append(tag_details.hardened_tag)
+                image_tag_value = tag_details.hardened_tag
             elif command == Commands.LATEST_COVERAGE:
-                image_tag_list.append("latest")
+                image_tag_value = "latest"
+
+            image_tag_details[tag_details.repo]["tag"] = image_tag_value
+            image_tag_list.append(image_tag_value)
+
         cmd_params += image_tag_list
         logging.info(f"command params = {cmd_params}")
-        return cmd_params, image_tag_list
+        return cmd_params, image_tag_details
 
+    @staticmethod
     def _k8s_runner(
-        self, image_script_dir, script_path, runtime_props, command, cmd_params, image_tag_list, namespace_name, release_name):
+        image_script_dir, script_path, runtime_props, command, cmd_params, image_tag_details, namespace_name, release_name):
         """ Runtime for k8s runner """
         logging.info(f"k8s runner called for {script_path} {runtime_props} {command}")
 
-        with K8sSetup(namespace_name, release_name, image_tag_list, runtime_props, image_script_dir):
-            subprocess.check_output([script_path] + cmd_params)
+        with K8sSetup(namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
+            if os.path.exists(script_path):
+                subprocess.check_output([script_path] + cmd_params)
 
+    @staticmethod
     def _docker_compose_runner(
-        self, image_script_dir, script_path, runtime_props, command, cmd_params, image_tag_list, namespace_name, release_name):
+        image_script_dir, script_path, runtime_props, command, cmd_params, image_tag_details, namespace_name, release_name):
         """ Runtime for docker compose runner """
         logging.info(f"docker compose runner called for {script_path} {runtime_props} {command}")
 
-        with DockerComposeSetup(namespace_name, release_name, image_tag_list, runtime_props, image_script_dir):
-            subprocess.check_output([script_path] + cmd_params)
+        with DockerComposeSetup(namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
+            if os.path.exists(script_path):
+                subprocess.check_output([script_path] + cmd_params)
 
+    @staticmethod
     def _docker_runner(
-        self, image_script_dir, script_path, runtime_props, command, cmd_params, image_tag_list, namespace_name, release_name):
+        image_script_dir, script_path, runtime_props, command, cmd_params, image_tag_details, namespace_name, release_name):
         """ Runtime for docker runner """
         logging.info(f"docker runner called for {script_path} {runtime_props} {command}")
 
-        with DockerSetup(namespace_name, release_name, image_tag_list, runtime_props, image_script_dir):
-            subprocess.check_output([script_path] + cmd_params)
+        with DockerSetup(namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
+            if os.path.exists(script_path):
+                subprocess.check_output([script_path] + cmd_params)

@@ -8,10 +8,10 @@ from utils import Utils
 
 class DockerComposeSetup:
     """ Docker compose setup context manager """
-    def __init__(self, namespace_name, release_name, image_tag_kv_list, runtime_props, image_script_dir):
+    def __init__(self, namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
         self.namespace_name = namespace_name
         self.release_name = release_name
-        self.image_tag_kv_list = image_tag_kv_list
+        self.image_tag_details = image_tag_details
         self.runtime_props = runtime_props
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
@@ -26,7 +26,7 @@ class DockerComposeSetup:
 
         search_replace_dict = {}
         search_str = "@IMAGE"
-        replace_str = f"{self.image_tag_kv_list[0][0]}:{self.image_tag_kv_list[0][1]}" # FIXME: support multiple image
+        replace_str = f"{self.image_tag_details[0][0]}:{self.image_tag_details[0][1]}" # FIXME: support multiple image
         search_replace_dict[search_str] = replace_str
         Utils.replace_in_file(
             base_docker_file,
@@ -39,7 +39,7 @@ class DockerComposeSetup:
 
         cmd="docker-compose"
         if env_file:
-            cmd+=" --env-file self.image_script_dir/env_file"
+            cmd+=f" --env-file {self.image_script_dir}/{env_file}"
 
         cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
         cmd+=" up --build -d"

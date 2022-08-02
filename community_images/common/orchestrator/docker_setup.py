@@ -7,10 +7,10 @@ import time
 
 class DockerSetup:
     """ Docker setup context manager """
-    def __init__(self, namespace_name, release_name, image_tag_kv_list, runtime_props, image_script_dir):
+    def __init__(self, namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
         self.namespace_name = namespace_name
         self.release_name = release_name
-        self.image_tag_kv_list = image_tag_kv_list
+        self.image_tag_details = image_tag_details
         self.runtime_props = runtime_props
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
@@ -22,7 +22,9 @@ class DockerSetup:
         subprocess.check_output(cmd.split())
 
         # create docker container
-        for repo, tag in self.image_tag_kv_list:
+        for _, tag_details in self.image_tag_details.items():
+            repo = tag_details["repo_path"]
+            tag = tag_details["tag"]
             cmd=f"docker run --rm -d --network={self.namespace_name}"
             cmd+=f" --name {repo}.replace("/","-")"
             cmd+=f" {repo}:{tag}"

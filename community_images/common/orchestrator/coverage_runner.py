@@ -46,6 +46,8 @@ class CoverageRunner:
         namespace_name = self._get_namespace(image_name)
         release_name = f"rf-{image_name}"
         cmd_params, image_tag_details = self._prepare_cmd_params(namespace_name, release_name, command)
+        image_script_dir = os.path.abspath(
+                f"{self.script_dir}/../../{self.config_name}")
 
         for runtime_props in runtimes:
             runtime_type = runtime_props.get("type")
@@ -54,8 +56,6 @@ class CoverageRunner:
             script = runtime_props.get("script")
             logging.info(f"Running runtime script for {runtime_type}: {script}")
 
-            image_script_dir = os.path.abspath(
-                f"{self.script_dir}/../../{self.config_name}")
             script_path = os.path.join(image_script_dir, script)
             logging.info(f"Script abs path to execute: {script_path}")
 
@@ -63,6 +63,21 @@ class CoverageRunner:
             runtime_runner(
                 image_script_dir,
                 script_path,
+                runtime_props,
+                command,
+                cmd_params,
+                image_tag_details,
+                namespace_name,
+                release_name
+            )
+        
+        # add common commands
+        common_commands_script = os.path.abspath(
+            os.path.join(self.script_dir,"../scripts/common_commands_coverage.sh")
+        )
+        self._docker_runner(
+                image_script_dir,
+                common_commands_script,
                 runtime_props,
                 command,
                 cmd_params,

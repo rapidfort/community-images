@@ -60,6 +60,3 @@ class DockerComposeSetup:
         cmd=f"docker-compose -f {self.docker_file}"
         cmd+=f" -p {self.namespace_name} down"
         subprocess.check_output(cmd.split())
-
-        # clean up docker file
-        os.remove(self.docker_file)

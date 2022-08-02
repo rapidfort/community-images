@@ -7,10 +7,10 @@ import subprocess
 
 class K8sSetup:
     """ k8s setup context manager """
-    def __init__(self, namespace_name, release_name, image_tag_list, runtime_props, image_script_dir):
+    def __init__(self, namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
         self.namespace_name = namespace_name
         self.release_name = release_name
-        self.image_tag_list = image_tag_list
+        self.image_tag_details = image_tag_details
         self.runtime_props = runtime_props
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
@@ -44,16 +44,23 @@ class K8sSetup:
         override_file=f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
 
         cmd=f"helm install {self.release_name}"
-        cmd+=" bitnami/nats"
+        cmd+=f" {self.runtime_props.get('helm_repo')}"
         cmd+=f" --namespace {self.namespace_name}"
 
-        for i, image_key in enumerate(self.runtime_props.get("image_keys", [])):
-            tag_key = image_key.get("tag")
-            repository_key = image_key.get("repository")
-            cmd+=f" --set {tag_key}={self.image_tag_list[(i*2)+1]}"
-            cmd+=f" --set {repository_key}={self.image_tag_list[i*2]}"
+        image_keys = self.runtime_props.get("image_keys", {})
+        for repo_key, tag_details in self.image_tag_details.items():
+            if repo_key in image_keys:
+                repository_key = image_keys[repo_key]["repository"]
+                tag_key = image_keys[repo_key]["tag"]
+
+                repository_value = tag_details["repo_path"]
+                tag_value = tag_details["tag"]
+
+                cmd+=f" --set {repository_key}={repository_value}"
+                cmd+=f" --set {tag_key}={tag_value}"
 
         cmd+=f" -f {override_file}"
+        logging.info(f"cmd: {cmd}")
         subprocess.check_output(cmd.split())
 
         # waiting for pod to be ready

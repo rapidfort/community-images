@@ -65,7 +65,6 @@ We are making secure copies of the images we use every day and the most popular 
 ## Supported tags and respective `Dockerfile` links
 * [`3.10`, `3.10-debian-11`, `3.10.6`, `3.10.6-debian-11-r6`, `latest` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.10.6-debian-11-r6/3.10/debian-11/Dockerfile)
 * [`3.9`, `3.9-debian-11`, `3.9.21`, `3.9.21-debian-11-r5` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.9.21-debian-11-r5/3.9/debian-11/Dockerfile)
-* [`3.8`, `3.8-debian-11`, `3.8.35`, `3.8.35-debian-11-r4` (3.8/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.8.35-debian-11-r4/3.8/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

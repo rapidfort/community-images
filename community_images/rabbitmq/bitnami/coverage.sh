@@ -52,7 +52,7 @@ function test_rabbitmq() {
     PERF_TEST_IMAGE_VERSION='2.18.0'
 
     # run the perf benchmark test
-    kubectl run -it "${PERF_POD}" \
+    kubectl run -i "${PERF_POD}" \
         --env RABBITMQ_PERF_TEST_LOGGERS=com.rabbitmq.perf=debug,com.rabbitmq.perf.Producer=debug \
         --image=pivotalrabbitmq/perf-test:"${PERF_TEST_IMAGE_VERSION}" \
         --namespace "${NAMESPACE}" -- \

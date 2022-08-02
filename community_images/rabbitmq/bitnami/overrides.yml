@@ -1,0 +1,19 @@
+image:
+  pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
+containerSecurityContext:
+  enabled: true
+  runAsUser: 1001
+  capabilities:
+    add: ["SYS_PTRACE"]
+resourceType: deployment
+replicaCount: 1
+extraEnvVars:
+  - name: "RF_VERBOSE"
+    value: "0"
+livenessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
+readinessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30

@@ -26,7 +26,7 @@ class DockerSetup:
             repo_path = tag_details["repo_path"]
             tag = tag_details["tag"]
             cmd=f"docker run --rm -d --network={self.namespace_name}"
-            cmd+=f" --name {repo}"
+            cmd+=f" --name {repo}-{self.namespace_name}"
             cmd+=f" {repo_path}:{tag}"
             logging.info(f"cmd: {cmd}")
             subprocess.check_output(cmd.split())

@@ -24,9 +24,6 @@ function create_stub()
 
     local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}-rfstub
 
-    # Pull docker image
-    docker pull "${INPUT_IMAGE_FULL}"
-
     # login to output docker register as input and output docker registry could be different
     docker login "${DOCKERHUB_REGISTRY}" -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
 
@@ -203,6 +200,28 @@ function build_image()
         fi
     else
         TAG="${BASE_TAG}"
+    fi
+
+    if [[ "${INPUT_ACCOUNT}" = "bitnami" ]]; then
+        echo "Embedding RF welcome message in bitnami images"
+        mkdir -p "${SCRIPTPATH}"/temp_docker
+
+        sed "s#@REPO#${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/../../common/Dockerfile.base > "${SCRIPTPATH}"/temp_docker/Dockerfile
+        cp "${SCRIPTPATH}"/../../common/libbitnami.sh "${SCRIPTPATH}"/temp_docker/libbitnami.sh
+        local CWD="${PWD}"
+        cd "${SCRIPTPATH}"/temp_docker
+        docker build . -t "${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
+        cd "$CWD"
+
+        rm -rf "${SCRIPTPATH}"/temp_docker
+    else
+        local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+        if [[ "$INPUT_ACCOUNT" == "_" ]]; then
+            INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
+        fi
+
+        # pull image only when we dont build it locally
+        docker pull "${INPUT_IMAGE_FULL}"
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")

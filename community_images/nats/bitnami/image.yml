@@ -18,3 +18,25 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`2`, `2-debian-11`, `2.8.4`, `2.8.4-debian-11-r13`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nats/blob/2.8.4-debian-11-r13/2/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets: 
+  - nats:
+      input_base_tag: "2.8.4-debian-11-r"
+      output_repo: nats
+runtimes:
+  - k8s:
+      script: k8s_coverage.sh
+      helm_repo: bitnami/nats
+      image_keys:
+      - repository: "image.repository"
+        tag: "image.tag"
+      override_file: "overrides.yml"
+  - docker_compose:
+      script: dc_coverage.sh
+  - docker:
+      script: docker_coverage.sh

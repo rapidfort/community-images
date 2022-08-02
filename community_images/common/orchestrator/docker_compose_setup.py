@@ -14,14 +14,12 @@ class DockerComposeSetup:
         self.runtime_props = runtime_props
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
-        self.docker_file = f"{self.script_dir}/docker-compose.yml"
+        self.docker_file = os.path.join(
+            self.image_script_dir, self.runtime_props.get(
+            "compose_file", "docker-compose.yml"))
 
     def __enter__(self):
         """ create a docker compose namespace and set it up for runner """
-
-        docker_file = os.path.join(
-            self.image_script_dir, self.runtime_props.get(
-            "compose_file", "docker-compose.yml"))
 
         env_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(

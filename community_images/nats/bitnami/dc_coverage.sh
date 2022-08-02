@@ -22,7 +22,7 @@ run_coverage()
     local IMAGE_REPOSITORY="${IMAGE_TAG_ARRAY[0]}"
     local TAG="${IMAGE_TAG_ARRAY[1]}"
     
-    echo "Testing docker compose coverage for $REPOSITORY"
+    echo "Testing docker compose coverage for $IMAGE_REPOSITORY:$TAG"
 }
 
 NAMESPACE="$1"

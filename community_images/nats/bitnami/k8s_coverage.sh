@@ -22,7 +22,7 @@ run_coverage()
     local IMAGE_REPOSITORY="${IMAGE_TAG_ARRAY[0]}"
     local TAG="${IMAGE_TAG_ARRAY[1]}"
     
-    echo "Testing $REPOSITORY"
+    echo "Testing $IMAGE_REPOSITORY:$TAG"
 
     # run coverage script
     test_nats "${NAMESPACE}" "${HELM_RELEASE}"

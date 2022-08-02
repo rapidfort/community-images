@@ -4,7 +4,6 @@ import logging
 import os
 import subprocess
 import time
-from utils import Utils
 
 class DockerComposeSetup:
     """ Docker compose setup context manager """
@@ -19,28 +18,29 @@ class DockerComposeSetup:
 
     def __enter__(self):
         """ create a docker compose namespace and set it up for runner """
-        # update image in docker-compose yml
-        base_docker_file = os.path.join(
+
+        docker_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
-            "base_file", "docker-compose.yml.base"))
+            "compose_file", "docker-compose.yml"))
 
-        search_replace_dict = {}
-        search_str = "@IMAGE"
-        replace_str = f"{self.image_tag_details[0][0]}:{self.image_tag_details[0][1]}" # FIXME: support multiple image
-        search_replace_dict[search_str] = replace_str
-        Utils.replace_in_file(
-            base_docker_file,
-            self.docker_file,
-            search_replace_dict
-        )
+        env_file = os.path.join(
+            self.image_script_dir, self.runtime_props.get(
+            "env_file", ".env"))
 
-        # install docker container
-        env_file = self.runtime_props.get("env_file")
+        # generate or append to env file all image repo and tags
+        with open(env_file, "a+", encoding="UTF-8") as env_fp:
+            image_keys = self.runtime_props.get("image_keys", {})
+            for repo_key, tag_details in self.image_tag_details.items():
+                if repo_key in image_keys:
+                    repository_key = image_keys[repo_key]["repository"]
+                    repository_value = tag_details["repo_path"]
+
+                    tag_key = image_keys[repo_key]["tag"]
+                    tag_value = tag_details["tag"]
+                    env_fp.write(f"{tag_key}={tag_value}\n")
 
         cmd="docker-compose"
-        if env_file:
-            cmd+=f" --env-file {self.image_script_dir}/{env_file}"
-
+        cmd+=f" --env-file {env_file}"
         cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
         cmd+=" up --build -d"
         subprocess.check_output(cmd.split())

@@ -32,10 +32,13 @@ class DockerComposeSetup:
                 if repo_key in image_keys:
                     repository_key = image_keys[repo_key]["repository"]
                     repository_value = tag_details["repo_path"]
+                    env_fp.write(f"{repository_key}={repository_value}\n")
+                    logging.info(f"adding {repository_key}={repository_value}")
 
                     tag_key = image_keys[repo_key]["tag"]
                     tag_value = tag_details["tag"]
                     env_fp.write(f"{tag_key}={tag_value}\n")
+                    logging.info(f"adding {tag_key}={tag_value}")
 
         cmd="docker-compose"
         cmd+=f" --env-file {env_file}"

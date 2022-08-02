@@ -13,7 +13,7 @@ run_coverage()
 {
     local NAMESPACE=$1
     shift
-    local HELM_RELEASE=$1
+    local RELEASE_NAME=$1
     shift
     shift # we dont need number of images, hence shift
 
@@ -22,10 +22,7 @@ run_coverage()
     local IMAGE_REPOSITORY="${IMAGE_TAG_ARRAY[0]}"
     local TAG="${IMAGE_TAG_ARRAY[1]}"
     
-    echo "Testing $REPOSITORY"
-
-    # run coverage script
-    test_nats "${NAMESPACE}" "${HELM_RELEASE}"
+    echo "Testing docker coverage for $REPOSITORY"
 }
 
 NAMESPACE="$1"

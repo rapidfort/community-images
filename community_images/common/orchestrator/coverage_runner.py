@@ -78,7 +78,7 @@ class CoverageRunner:
         self._docker_runner(
                 image_script_dir,
                 common_commands_script,
-                None,
+                {},
                 command,
                 cmd_params,
                 image_tag_details,

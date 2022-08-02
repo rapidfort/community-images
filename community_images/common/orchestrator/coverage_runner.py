@@ -47,27 +47,29 @@ class CoverageRunner:
         release_name = f"rf-{image_name}"
         cmd_params, image_tag_details = self._prepare_cmd_params(namespace_name, release_name, command)
 
-        for runtime in runtimes:
-            for runtime_type, runtime_props in runtime.items():
-                script = runtime_props.get("script")
-                logging.info(f"Running runtime script for {runtime_type}: {script}")
+        for runtime_props in runtimes:
+            runtime_type = runtime_props.get("type")
+            runtime_runner = runtime_runner_map[runtime_type]
 
-                image_script_dir = os.path.abspath(
-                    f"{self.script_dir}/../../{self.config_name}")
-                script_path = os.path.join(image_script_dir, script)
-                logging.info(f"Script abs path to execute: {script_path}")
+            script = runtime_props.get("script")
+            logging.info(f"Running runtime script for {runtime_type}: {script}")
 
-                # call runner
-                runtime_runner_map[runtime_type](
-                    image_script_dir,
-                    script_path,
-                    runtime_props,
-                    command,
-                    cmd_params,
-                    image_tag_details,
-                    namespace_name,
-                    release_name
-                )
+            image_script_dir = os.path.abspath(
+                f"{self.script_dir}/../../{self.config_name}")
+            script_path = os.path.join(image_script_dir, script)
+            logging.info(f"Script abs path to execute: {script_path}")
+
+            # call runner
+            runtime_runner(
+                image_script_dir,
+                script_path,
+                runtime_props,
+                command,
+                cmd_params,
+                image_tag_details,
+                namespace_name,
+                release_name
+            )
 
     @staticmethod
     def _get_namespace(image_name, random_part_len=10):

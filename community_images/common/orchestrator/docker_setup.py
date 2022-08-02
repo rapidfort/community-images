@@ -28,8 +28,8 @@ class DockerSetup:
             cmd=f"docker run --rm -d --network={self.namespace_name}"
             cmd+=f" --name {repo}"
             cmd+=f" {repo_path}:{tag}"
+            logging.info(f"cmd: {cmd}")
             subprocess.check_output(cmd.split())
-            logging.info(f"cmd={cmd}")
 
         # sleep for few seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))

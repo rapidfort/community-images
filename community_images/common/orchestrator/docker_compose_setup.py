@@ -26,7 +26,7 @@ class DockerComposeSetup:
         env_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
             "env_file", ".env"))
-
+        logging.info(f"creating env file at: {env_file}")
         # generate or append to env file all image repo and tags
         with open(env_file, "a+", encoding="UTF-8") as env_fp:
             image_keys = self.runtime_props.get("image_keys", {})
@@ -43,8 +43,8 @@ class DockerComposeSetup:
         cmd+=f" --env-file {env_file}"
         cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
         cmd+=" up --build -d"
-        subprocess.check_output(cmd.split())
         logging.info(f"cmd: {cmd}")
+        subprocess.check_output(cmd.split())
         # sleep for wait time seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
 

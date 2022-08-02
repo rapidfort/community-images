@@ -60,7 +60,7 @@ class K8sSetup:
                 cmd+=f" --set {tag_key}={tag_value}"
 
         cmd+=f" -f {override_file}"
-        logging.info(f"helm command = {cmd}")
+        logging.info(f"cmd: {cmd}")
         subprocess.check_output(cmd.split())
 
         # waiting for pod to be ready

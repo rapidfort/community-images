@@ -1,0 +1,21 @@
+name: rabbitmq
+official_name: RabbitMQ
+official_website: https://www.rabbitmq.com/
+source_image_provider: Bitnami
+source_image_repo_link: https://hub.docker.com/r/bitnami/rabbitmq
+rf_docker_link: rapidfort/rabbitmq
+image_workflow_name: rabbitmq_bitnami
+github_location: rabbitmq/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Frabbitmq
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install rabbitmq, just replace repository with RapidFort registry
+  $ helm install my-rabbitmq bitnami/rabbitmq --set image.repository=rapidfort/rabbitmq
+what_is_text: |
+  RabbitMQ is an open source general-purpose message broker that is designed for consistent, highly-available messaging scenarios (both synchronous and asynchronous).
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`3.10`, `3.10-debian-11`, `3.10.6`, `3.10.6-debian-11-r6`, `latest` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.10.6-debian-11-r6/3.10/debian-11/Dockerfile)"
+  - "[`3.9`, `3.9-debian-11`, `3.9.21`, `3.9.21-debian-11-r5` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.9.21-debian-11-r5/3.9/debian-11/Dockerfile)"

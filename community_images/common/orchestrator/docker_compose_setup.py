@@ -2,6 +2,7 @@
 
 import logging
 import os
+import shutil
 import subprocess
 import time
 
@@ -17,16 +18,19 @@ class DockerComposeSetup:
         self.docker_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
             "compose_file", "docker-compose.yml"))
-
-    def __enter__(self):
-        """ create a docker compose namespace and set it up for runner """
-
-        env_file = os.path.join(
+        self.source_env_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
             "env_file", ".env"))
-        logging.info(f"creating env file at: {env_file}")
+        self.temp_env_file = f"{self.source_env_file}.temp"
+
+    def _generate_env_file(self):
+
+        if os.path.exists(self.source_env_file):
+            shutil.copyfile(self.source_env_file, self.temp_env_file)
+
+        logging.info(f"creating env file at: {self.temp_env_file}")
         # generate or append to env file all image repo and tags
-        with open(env_file, "a+", encoding="UTF-8") as env_fp:
+        with open(self.temp_env_file, "a+", encoding="UTF-8") as env_fp:
             image_keys = self.runtime_props.get("image_keys", {})
             for repo_key, tag_details in self.image_tag_details.items():
                 if repo_key in image_keys:
@@ -40,8 +44,12 @@ class DockerComposeSetup:
                     env_fp.write(f"{tag_key}={tag_value}\n")
                     logging.info(f"adding {tag_key}={tag_value}")
 
+    def __enter__(self):
+        """ create a docker compose namespace and set it up for runner """
+
+        self._generate_env_file()
         cmd="docker-compose"
-        cmd+=f" --env-file {env_file}"
+        cmd+=f" --env-file {self.temp_env_file}"
         cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
         cmd+=" up --build -d"
         logging.info(f"cmd: {cmd}")
@@ -60,3 +68,6 @@ class DockerComposeSetup:
         cmd=f"docker-compose -f {self.docker_file}"
         cmd+=f" -p {self.namespace_name} down"
         subprocess.check_output(cmd.split())
+
+        # remove temp env file
+        os.remove(self.temp_env_file)

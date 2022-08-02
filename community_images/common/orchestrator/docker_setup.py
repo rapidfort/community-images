@@ -42,7 +42,7 @@ class DockerSetup:
         """ delete docker namespace """
         # clean up docker container
         for container in self.container_list:
-            cmd=f"docker kill {self.namespace_name}"
+            cmd=f"docker kill {container}"
             logging.info(f"cmd: {cmd}")
             subprocess.check_output(cmd.split())
 

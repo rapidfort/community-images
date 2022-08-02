@@ -22,12 +22,12 @@ class DockerSetup:
         subprocess.check_output(cmd.split())
 
         # create docker container
-        for _, tag_details in self.image_tag_details.items():
-            repo = tag_details["repo_path"]
+        for repo, tag_details in self.image_tag_details.items():
+            repo_path = tag_details["repo_path"]
             tag = tag_details["tag"]
             cmd=f"docker run --rm -d --network={self.namespace_name}"
-            cmd+=f" --name {repo}.replace("/","-")"
-            cmd+=f" {repo}:{tag}"
+            cmd+=f" --name {repo}"
+            cmd+=f" {repo_path}:{tag}"
             subprocess.check_output(cmd.split())
             logging.info(f"cmd={cmd}")
 

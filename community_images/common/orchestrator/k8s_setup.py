@@ -81,8 +81,7 @@ class K8sSetup:
         return cmd
 
     @backoff.on_exception(backoff.expo, BaseException)
-    @staticmethod
-    def create_helm_chart(cmd):
+    def create_helm_chart(self, cmd):
         """ Create helm chart """
         logging.info(f"cmd: {cmd}")
         subprocess.check_output(cmd.split())

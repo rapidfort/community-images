@@ -192,7 +192,7 @@ class CoverageRunner:
         with DockerSetup(namespace_name, release_name, image_tag_details, {}, image_script_dir) as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")
 
-            for image_name, container_props in run_dict.get("image_tag_details"):
+            for image_name, container_props in run_dict.get("image_tag_details", {}).items():
                 container_name = container_props.get("container_name")
                 if container_name:
                     common_command_path = os.path.abspath(f"{self.script_dir}/../tests/common_commands.sh")

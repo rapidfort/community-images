@@ -53,6 +53,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Redis™ IronBank][ redis-ib-github-link]| [![dh][dh-rf-badge]][redis-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-ib-rf-link] | [![redis-ib-image-ft][redis-ib-ft-badge]][redis-ib-ft-badge-link] |
 | [PostgreSQL IronBank][ postgresql-ib-github-link]| [![dh][dh-rf-badge]][postgresql-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][postgresql-ib-rf-link] | [![postgresql-ib-image-ft][postgresql-ib-ft-badge]][postgresql-ib-ft-badge-link] |
 | [NGINX IronBank][ nginx-ib-github-link]| [![dh][dh-rf-badge]][nginx-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][nginx-ib-rf-link] | [![nginx-ib-image-ft][nginx-ib-ft-badge]][nginx-ib-ft-badge-link] |
+| [Wordpress][ wordpress-github-link]| [![dh][dh-rf-badge]][wordpress-rf-dh-image-link] | [![rf-h][rf-h-badge]][wordpress-rf-link] | [![wordpress-image-ft][wordpress-ft-badge]][wordpress-ft-badge-link] |
 | [RabbitMQ][ rabbitmq-github-link]| [![dh][dh-rf-badge]][rabbitmq-rf-dh-image-link] | [![rf-h][rf-h-badge]][rabbitmq-rf-link] | [![rabbitmq-image-ft][rabbitmq-ft-badge]][rabbitmq-ft-badge-link] |
 
 ### How to use Community Images
@@ -216,6 +217,13 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [nginx-ib-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_ironbank.yml/badge.svg
 [nginx-ib-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nginx_ironbank.yml
 [nginx-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fnginx%2Fnginx?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[wordpress-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/wordpress/bitnami
+[wordpress-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/wordpress?logo=docker&logoColor=white
+[wordpress-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/wordpress
+[wordpress-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/wordpress_bitnami.yml/badge.svg
+[wordpress-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/wordpress_bitnami.yml
+[wordpress-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fwordpress?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [rabbitmq-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/rabbitmq/bitnami
 [rabbitmq-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/rabbitmq?logo=docker&logoColor=white

@@ -3,7 +3,7 @@
 import os
 import logging
 import subprocess
-
+from consts import Consts
 
 class HardenGenerator:
     """ Harden generation command handler """
@@ -21,7 +21,7 @@ class HardenGenerator:
         image_script_dir = os.path.abspath(
                 f"{self.script_dir}/../../{self.config_name}")
 
-        rfignore_path = os.path.join(image_script_dir, ".rfignore")
+        rfignore_path = os.path.join(image_script_dir, Consts.RF_IGNORE)
         rfignore_exists = os.path.exists(rfignore_path)
         for tag_mapping in self.tag_mappings:
             if not tag_mapping.needs_generation:
@@ -49,9 +49,9 @@ class HardenGenerator:
                 if tag_mapping.is_latest:
                     self._tag_util(
                         output_tag_details.full_repo_path,
-                        output_tag_details.tag, "latest")
+                        output_tag_details.tag, Consts.LATEST)
 
-                if tag_mapping.input_tag_details.account == "bitnami":
+                if tag_mapping.input_tag_details.account == Consts.BITNAMI:
                     self._roll_over_bitnami_tags(output_tag_details)
 
     def _tag_util(self, full_repo_path, current_tag, new_tag):

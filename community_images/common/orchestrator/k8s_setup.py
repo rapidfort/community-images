@@ -88,7 +88,6 @@ class K8sSetup:
         cmd+=f" -f {override_file}"
         return cmd
 
-    # pylint:disable=no-self-use
     @backoff.on_exception(backoff.expo, BaseException, max_time=300)
     def create_helm_chart(self, cmd):
         """ Create helm chart """

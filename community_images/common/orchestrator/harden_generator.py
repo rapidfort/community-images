@@ -91,7 +91,7 @@ class HardenGenerator:
         min_v = version_array[1]
 
         version_os_tag=f"{maj_v}.{min_v}-{os_name}-{os_ver}" # 10.6-debian-10
-        major_minor_tag=f"{maj_v}-{min_v}" # 10.6
+        major_minor_tag=f"{maj_v}.{min_v}" # 10.6
 
         # add version os tag
         self._tag_util(

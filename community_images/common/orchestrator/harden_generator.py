@@ -45,3 +45,21 @@ class HardenGenerator:
                     output_tag_details.full_repo_path,
                     output_tag_details.tag)
                 logging.info(f"docker client push result: {result}")
+
+                if tag_mapping.is_latest:
+                    self._roll_over_latest_tag(output_tag_details)
+
+    def _roll_over_latest_tag(self, tag_details):
+        """ Roll over latest tag """
+        # tag input stubbed image to output stubbed image
+        src_image = self.docker_client.images.get(tag_details.full_tag)
+
+        latest_tag = f"{output_tag_details.full_repo_path}:latest"
+        result = src_image.tag(latest_tag)
+        logging.info(f"image tag:[{latest_tag}] success={result}")
+
+        # push stubbed image to output repo
+        result = self.docker_client.api.push(
+            output_tag_details.full_repo_path,
+            "latest")
+        logging.info(f"docker client push result: {result}")

@@ -1,0 +1,20 @@
+name: wordpress
+official_name: Wordpress
+official_website: https://wordpress.com/
+source_image_provider: Bitnami
+source_image_repo_link: https://hub.docker.com/r/bitnami/wordpress
+rf_docker_link: rapidfort/wordpress
+image_workflow_name: wordpress_bitnami
+github_location: wordpress/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fwordpress
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install wordpress, just replace repository with RapidFort registry
+  $ helm install my-wordpress bitnami/wordpress --set image.repository=rapidfort/wordpress
+what_is_text: |
+  WordPress gives you everything you need to start your website today. Free hosting, your own domain, a world-class support team, and so much more
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`6`, `6-debian-11`, `6.0.1`, `6.0.1-debian-11-r2`, `latest` (6/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-wordpress/blob/6.0.1-debian-11-r2/6/debian-11/Dockerfile)"

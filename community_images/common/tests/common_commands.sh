@@ -25,4 +25,8 @@ do
     run_command_version "$cmd"
 done
 
-clear -V
+# add clear command
+if command -v clear -V &> /dev/null
+then
+    clear -V
+fi

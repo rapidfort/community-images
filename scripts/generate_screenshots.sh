@@ -14,6 +14,6 @@ sudo apt-get install -y libatk1.0-0 \
     libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
     libgbm1 libpango-1.0-0 libcairo2
 
-cd "$SCRIPTPATH"/../report_shots
+cd "$SCRIPTPATH"/../report_shots || exit
 npm install
 node shots.js "${SCRIPTPATH}"/../image.lst

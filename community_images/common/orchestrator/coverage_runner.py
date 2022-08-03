@@ -200,6 +200,6 @@ class CoverageRunner:
                     logging.info(f"cmd: {cmd}")
                     subprocess.check_output(cmd.split())
 
-                    cmd=f"docker exec -i {container_name} -- /bin/bash -c /tmp/common_commands.sh"
+                    cmd=f"docker exec -i {container_name} /bin/bash -c /tmp/common_commands.sh"
                     logging.info(f"cmd: {cmd}")
                     subprocess.check_output(cmd.split())

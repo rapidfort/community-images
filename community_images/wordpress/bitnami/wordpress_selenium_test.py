@@ -66,47 +66,47 @@ class TestWordpresstest1():
         # 2 | setWindowSize | 1200x828 |
         self.driver.set_window_size(1200, 828)
 
-    def test_addusers(self, params):
-        """Test name: simplelogin."""
-        # Step # | name | target | value
-        # 1 | open | /wp-login.php |
-        self.driver.get("http://{}:{}/wp-admin/user-new.php".format(params["ip_address"], params["port"]))  # pylint: disable=consider-using-f-string
-        # 2 | setWindowSize | 1200x828 |
-        self.driver.set_window_size(1200, 828)
-        self.driver.find_element(By.ID, "user_login").send_keys("user3")
-        # 10 | type | id=email | user3
-        self.driver.find_element(By.ID, "email").send_keys("user3")
-        # 11 | type | id=email | user3@abc.com
-        self.driver.find_element(By.ID, "email").send_keys("user3@abc.com")
-        # 12 | type | id=first_name | user3
-        self.driver.find_element(By.ID, "first_name").send_keys("user3")
-        # 13 | type | id=last_name | user3
-        self.driver.find_element(By.ID, "last_name").send_keys("user3")
-        # 14 | type | id=url | user3
-        self.driver.find_element(By.ID, "url").send_keys("user3")
-        # 15 | click | id=pass1 |
-        self.driver.find_element(By.ID, "pass1").click()
-        # 16 | type | id=pass1 | simplepassword
-        self.driver.find_element(By.ID, "pass1").send_keys("simplepassword")
-        # 17 | click | name=pw_weak |
-        self.driver.find_element(By.NAME, "pw_weak").click()
-        # 18 | click | id=createusersub |
-        self.driver.find_element(By.ID, "createusersub").click()
+    # def test_addusers(self, params):
+    #     """Test name: simplelogin."""
+    #     # Step # | name | target | value
+    #     # 1 | open | /wp-login.php |
+    #     self.driver.get("http://{}:{}/wp-admin/user-new.php".format(params["ip_address"], params["port"]))  # pylint: disable=consider-using-f-string
+    #     # 2 | setWindowSize | 1200x828 |
+    #     self.driver.set_window_size(1200, 828)
+    #     self.driver.find_element(By.ID, "user_login").send_keys("user3")
+    #     # 10 | type | id=email | user3
+    #     self.driver.find_element(By.ID, "email").send_keys("user3")
+    #     # 11 | type | id=email | user3@abc.com
+    #     self.driver.find_element(By.ID, "email").send_keys("user3@abc.com")
+    #     # 12 | type | id=first_name | user3
+    #     self.driver.find_element(By.ID, "first_name").send_keys("user3")
+    #     # 13 | type | id=last_name | user3
+    #     self.driver.find_element(By.ID, "last_name").send_keys("user3")
+    #     # 14 | type | id=url | user3
+    #     self.driver.find_element(By.ID, "url").send_keys("user3")
+    #     # 15 | click | id=pass1 |
+    #     self.driver.find_element(By.ID, "pass1").click()
+    #     # 16 | type | id=pass1 | simplepassword
+    #     self.driver.find_element(By.ID, "pass1").send_keys("simplepassword")
+    #     # 17 | click | name=pw_weak |
+    #     self.driver.find_element(By.NAME, "pw_weak").click()
+    #     # 18 | click | id=createusersub |
+    #     self.driver.find_element(By.ID, "createusersub").click()
 
-    def test_options_general(self, params):
-        """Test name: simplelogin."""
-        # Step # | name | target | value
-        # 1 | open | /wp-login.php |
-        self.driver.get("http://{}:{}/wp-admin/options-general.php".format(params["ip_address"], params["port"]))  # pylint: disable=consider-using-f-string
-        # 2 | setWindowSize | 1200x828 |
-        self.driver.set_window_size(1200, 828)
-        # 21 | click | id=start_of_week |
-        self.driver.find_element(By.ID, "start_of_week").click()
-        # 22 | select | id=start_of_week | label=Tuesday
-        dropdown = self.driver.find_element(By.ID, "start_of_week")
-        dropdown.find_element(By.XPATH, "//option[. = 'Tuesday']").click()
-        # 23 | click | id=submit |
-        self.driver.find_element(By.ID, "submit").click()
+    # def test_options_general(self, params):
+    #     """Test name: simplelogin."""
+    #     # Step # | name | target | value
+    #     # 1 | open | /wp-login.php |
+    #     self.driver.get("http://{}:{}/wp-admin/options-general.php".format(params["ip_address"], params["port"]))  # pylint: disable=consider-using-f-string
+    #     # 2 | setWindowSize | 1200x828 |
+    #     self.driver.set_window_size(1200, 828)
+    #     # 21 | click | id=start_of_week |
+    #     self.driver.find_element(By.ID, "start_of_week").click()
+    #     # 22 | select | id=start_of_week | label=Tuesday
+    #     dropdown = self.driver.find_element(By.ID, "start_of_week")
+    #     dropdown.find_element(By.XPATH, "//option[. = 'Tuesday']").click()
+    #     # 23 | click | id=submit |
+    #     self.driver.find_element(By.ID, "submit").click()
 
     def test_simplelogin(self, params):
         """Test name: simplelogin."""

@@ -184,11 +184,22 @@ class CoverageRunner:
                 os.remove(json_file_path)
 
 
-    @staticmethod
     def _common_command_runner(
-        image_script_dir, image_tag_details, namespace_name, release_name):
+        self, image_script_dir, image_tag_details, namespace_name, release_name):
         """ Common commands runner """
         logging.info("common command runner called")
 
         with DockerSetup(namespace_name, release_name, image_tag_details, {}, image_script_dir) as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")
+
+            for image_name, container_props in run_dict.image_tag_details:
+                container_name = container_props.get("container_name")
+                if container_name:
+                    common_command_path = os.path.abspath(f"{self.script_dir}/../tests/common_commands.sh")
+                    cmd=f"docker cp {common_command_path}  {container_name}:/tmp/common_commands.sh"
+                    logging.info(f"cmd: {cmd}")
+                    subprocess.check_output(cmd.split())
+
+                    cmd=f"docker exec -i {container_name} -- /bin/bash -c /tmp/common_commands.sh"
+                    logging.info(f"cmd: {cmd}")
+                    subprocess.check_output(cmd.split())

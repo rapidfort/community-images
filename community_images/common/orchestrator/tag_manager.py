@@ -109,6 +109,7 @@ class TagManager:
                         output_repo, base_tag)
 
                 needs_generation = (not self.orchestrator.publish or
+                    self.orchestrator.force_publish or
                     (input_tag_detail.tag != output_tag_detail.tag))
 
                 if not output_tag_detail.tag:

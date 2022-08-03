@@ -14,7 +14,7 @@ class HardenGenerator:
         self.tag_mappings = tag_mappings
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
 
-    def generate(self):
+    def generate(self, publish):
         """
         Create hardened images for all images which needs generation
         """
@@ -34,13 +34,14 @@ class HardenGenerator:
                 cmd+=f" --profile {rfignore_path}"
             subprocess.check_output(cmd.split())
 
-            # tag input stubbed image to output stubbed image
-            hardened_image = self.docker_client.images.get(output_tag_details.full_hardened_tag)
-            result = hardened_image.tag(output_tag_details.full_tag)
-            logging.info(f"image tag:[{output_tag_details.full_tag}] success={result}")
+            if publish:
+                # tag input stubbed image to output stubbed image
+                hardened_image = self.docker_client.images.get(output_tag_details.full_hardened_tag)
+                result = hardened_image.tag(output_tag_details.full_tag)
+                logging.info(f"image tag:[{output_tag_details.full_tag}] success={result}")
 
-            # push stubbed image to output repo
-            result = self.docker_client.api.push(
-                output_tag_details.full_repo_path,
-                output_tag_details.tag)
-            logging.info(f"docker client push result: {result}")
+                # push stubbed image to output repo
+                result = self.docker_client.api.push(
+                    output_tag_details.full_repo_path,
+                    output_tag_details.tag)
+                logging.info(f"docker client push result: {result}")

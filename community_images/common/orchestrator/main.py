@@ -36,6 +36,7 @@ class Orchestrator:
     def run(self) -> None:
         """run commands for orchestrator"""
         command = self.args.command
+        publish = self.args.publish
 
         tag_manager = TagManager(self)
 
@@ -62,7 +63,7 @@ class Orchestrator:
                 self.docker_client,
                 tag_manager.tag_mappings
             )
-            harden.generate()
+            harden.generate(publish)
 
     def _auth_registries(self):
         """ Authenticate to registries

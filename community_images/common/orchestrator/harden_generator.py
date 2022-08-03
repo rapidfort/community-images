@@ -74,7 +74,7 @@ class HardenGenerator:
         # example tag=10.6.8-debian-10-r2
         input_tag=tag_details.tag
         input_tag_array = input_tag.split("-")
-        if len(input_tag_array) != 3:
+        if len(input_tag_array) < 3:
             logging.warning(f"unable to decode bitnami tag: {input_tag}")
             return
 
@@ -83,7 +83,7 @@ class HardenGenerator:
         os_ver = input_tag_array[2]
 
         version_array = version.split(".")
-        if len(version_array) != 2:
+        if len(version_array) < 2:
             logging.warning(f"unable to decode bitnami tag: {input_tag}")
             return
 

@@ -104,6 +104,10 @@ class TagManager:
 
                 needs_generation = (not self.orchestrator.publish or
                     (input_tag_detail.tag != output_tag_detail.tag))
+
+                if not output_tag_detail.tag:
+                    output_tag_detail.tag = input_tag_detail.tag
+
                 tag_mapping = TagMapping(input_tag_detail, output_tag_detail, needs_generation)
                 tag_mappings.append(tag_mapping)
 

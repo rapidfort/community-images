@@ -5,7 +5,8 @@ import logging
 import os
 
 import docker
-from stub import StubGenerator
+from harden_generator import HardenGenerator
+from stub_generator import StubGenerator
 from coverage_runner import CoverageRunner
 from registry_helper import RegistryHelperFactory
 from tag_manager import TagManager
@@ -54,6 +55,14 @@ class Orchestrator:
                 self.config_dict,
                 tag_manager.tag_mappings)
             coverage_runner.run(command)
+        elif command == Commands.HARDEN:
+            harden = HardenGenerator(
+                self.config_name,
+                self.config_dict,
+                self.docker_client,
+                tag_manager.tag_mappings
+            )
+            harden.generate()
 
     def _auth_registries(self):
         """ Authenticate to registries

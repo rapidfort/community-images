@@ -11,7 +11,7 @@ class K8sSetup:
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
-        self.runtime_props = runtime_props
+        self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
 
@@ -69,6 +69,12 @@ class K8sSetup:
         cmd+=f" -n {self.namespace_name}"
         cmd+=" --for=condition=Available=True --timeout=10m"
         subprocess.check_output(cmd.split())
+
+        return {
+            "namespace_name": self.namespace_name,
+            "release_name": self.release_name,
+            "image_tag_details": self.image_tag_details
+        }
 
 
     def __exit__(self, type, value, traceback):

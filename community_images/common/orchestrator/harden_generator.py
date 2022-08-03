@@ -82,6 +82,9 @@ class HardenGenerator:
         os_name = input_tag_array[1]
         os_ver = input_tag_array[2]
 
+        # add version tag - 10.6.8
+        self._tag_util(tag_details.full_repo_path, input_tag, version)
+
         version_array = version.split(".")
         if len(version_array) < 2:
             logging.warning(f"unable to decode bitnami tag: {input_tag}")

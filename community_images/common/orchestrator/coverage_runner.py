@@ -40,8 +40,6 @@ class CoverageRunner:
             self.RUNTIME_TYPE_DOCKER_COMPOSE: self._docker_compose_runner,
             self.RUNTIME_TYPE_DOCKER: self._docker_runner,
         }
-        # FIXME: add common_commands using container run separately
-
 
         image_name = self.config_dict.get("name")
         namespace_name = self._get_namespace(image_name)
@@ -70,13 +68,14 @@ class CoverageRunner:
                 release_name
             )
 
-        # add common commands
-        self._common_command_runner(
-                image_script_dir,
-                image_tag_details,
-                namespace_name,
-                release_name
-            )
+        if command == Commands.STUB_COVERAGE:
+            # add common commands
+            self._common_command_runner(
+                    image_script_dir,
+                    image_tag_details,
+                    namespace_name,
+                    release_name
+                )
 
     @staticmethod
     def _get_namespace(image_name, random_part_len=10):
@@ -106,34 +105,6 @@ class CoverageRunner:
 
         logging.info("Image tag details = {image_tag_details}")
         return image_tag_details
-
-    # def _prepare_cmd_params(self, namespace_name, release_name, command):
-    #     """ prepare command params and return cmd params, image_tag_list"""
-    #     number_of_images = str(len(self.tag_mappings))
-    #     cmd_params = [namespace_name, release_name, number_of_images]
-
-    #     image_tag_list= []
-    #     image_tag_details = {}
-    #     for tag_mapping in self.tag_mappings:
-    #         tag_details = tag_mapping.output_tag_details
-    #         image_tag_list.append(tag_details.repo_path)
-
-    #         image_tag_details[tag_details.repo] = {}
-
-    #         image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
-    #         if command == Commands.STUB_COVERAGE:
-    #             image_tag_value = tag_details.stub_tag
-    #         elif command == Commands.HARDEN_COVERAGE:
-    #             image_tag_value = tag_details.hardened_tag
-    #         elif command == Commands.LATEST_COVERAGE:
-    #             image_tag_value = "latest"
-
-    #         image_tag_details[tag_details.repo]["tag"] = image_tag_value
-    #         image_tag_list.append(image_tag_value)
-
-    #     cmd_params += image_tag_list
-    #     logging.info(f"command params = {cmd_params}")
-    #     return cmd_params, image_tag_details
 
     @staticmethod
     def _dump_runner_to_json(image_script_dir, run_dict, file_name="run_param.json"):
@@ -192,7 +163,7 @@ class CoverageRunner:
         with DockerSetup(namespace_name, release_name, image_tag_details, {}, image_script_dir) as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")
 
-            for image_name, container_props in run_dict.get("image_tag_details", {}).items():
+            for _, container_props in run_dict.get("image_tag_details", {}).items():
                 container_name = container_props.get("container_name")
                 if container_name:
                     common_command_path = os.path.abspath(f"{self.script_dir}/../tests/common_commands.sh")

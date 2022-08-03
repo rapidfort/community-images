@@ -80,7 +80,7 @@ class K8sSetup:
         cmd+=f" -f {override_file}"
         return cmd
 
-    @backoff.on_exception(backoff.expo, BaseException)
+    @backoff.on_exception(backoff.expo, BaseException, max_time=300, max_retries=10)
     def create_helm_chart(self, cmd):
         """ Create helm chart """
         logging.info(f"cmd: {cmd}")

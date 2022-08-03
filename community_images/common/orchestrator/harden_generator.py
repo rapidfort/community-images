@@ -1,5 +1,6 @@
 """ Generates hardened images """
 
+import os
 import logging
 import subprocess
 

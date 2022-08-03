@@ -64,7 +64,6 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`7.0`, `7.0-debian-11`, `7.0.3`, `7.0.3-debian-11-r1`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis-cluster/blob/7.0.3-debian-11-r1/7.0/debian-11/Dockerfile)
-* [`6.2`, `6.2-debian-11`, `6.2.7`, `6.2.7-debian-11-r0` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis-cluster/blob/6.2.7-debian-11-r0/6.2/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

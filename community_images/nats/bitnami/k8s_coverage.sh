@@ -9,30 +9,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/coverage.sh
 
-run_coverage()
-{
-    local NAMESPACE=$1
-    shift
-    local HELM_RELEASE=$1
-    shift
-    shift # we dont need number of images, hence shift
+JSON_PARAMS="$1"
 
-    local IMAGE_TAG_ARRAY=( "$@" )
+NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
+RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
-    local IMAGE_REPOSITORY="${IMAGE_TAG_ARRAY[0]}"
-    local TAG="${IMAGE_TAG_ARRAY[1]}"
-    
-    echo "Testing $IMAGE_REPOSITORY:$TAG"
-
-    # run coverage script
-    test_nats "${NAMESPACE}" "${HELM_RELEASE}"
-}
-
-NAMESPACE="$1"
-shift
-RELEASE_NAME="$1"
-shift
-NUMBER_OF_IMAGES="$1"
-shift
-
-run_coverage "${NAMESPACE}" "${RELEASE_NAME}" "${NUMBER_OF_IMAGES}" "$@"
+test_nats "${NAMESPACE}" "${RELEASE_NAME}"

@@ -3,6 +3,7 @@
 import logging
 import os
 import subprocess
+import backoff
 
 
 class K8sSetup:
@@ -11,7 +12,7 @@ class K8sSetup:
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
-        self.runtime_props = runtime_props
+        self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
 
@@ -39,7 +40,24 @@ class K8sSetup:
         cmd="helm repo update"
         subprocess.check_output(cmd.split())
 
-        # FIXME: add exponential backoff
+        # Install helm
+        self.create_helm_chart(self.prepare_helm_cmd())
+
+        # waiting for pod to be ready
+        logging.info("waiting for pod to be ready")
+        cmd=f"kubectl wait deployments {self.release_name}"
+        cmd+=f" -n {self.namespace_name}"
+        cmd+=" --for=condition=Available=True --timeout=10m"
+        subprocess.check_output(cmd.split())
+
+        return {
+            "namespace_name": self.namespace_name,
+            "release_name": self.release_name,
+            "image_tag_details": self.image_tag_details
+        }
+
+    def prepare_helm_cmd(self):
+        """ Prepare helm chart command """
         # Install helm
         override_file=f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
 
@@ -60,16 +78,13 @@ class K8sSetup:
                 cmd+=f" --set {tag_key}={tag_value}"
 
         cmd+=f" -f {override_file}"
+        return cmd
+
+    @backoff.on_exception(backoff.expo, BaseException, max_time=300)
+    def create_helm_chart(self, cmd):
+        """ Create helm chart """
         logging.info(f"cmd: {cmd}")
         subprocess.check_output(cmd.split())
-
-        # waiting for pod to be ready
-        logging.info("waiting for pod to be ready")
-        cmd=f"kubectl wait deployments {self.release_name}"
-        cmd+=f" -n {self.namespace_name}"
-        cmd+=" --for=condition=Available=True --timeout=10m"
-        subprocess.check_output(cmd.split())
-
 
     def __exit__(self, type, value, traceback):
         """ clean up k8s namespace """

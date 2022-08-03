@@ -29,22 +29,22 @@ repo_sets:
       input_base_tag: "2.8.4-debian-11-r"
       output_repo: nats
 runtimes:
-  - k8s:
-      script: k8s_coverage.sh
-      helm_repo: bitnami/nats
-      image_keys:
-        nats:
-          repository: "image.repository"
-          tag: "image.tag"
-      override_file: "overrides.yml"
-  - docker_compose:
-      script: dc_coverage.sh
-      compose_file: docker-compose.yml
-      #env_file: .env
-      #wait_time_sec: 30
-      image_keys:
-        nats:
-          repository: "NATS_IMAGE_REPOSITORY"
-          tag: "NATS_IMAGE_TAG"
-  - docker:
-      script: docker_coverage.sh
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/nats
+    image_keys:
+      nats:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    #env_file: .env
+    #wait_time_sec: 30
+    image_keys:
+      nats:
+        repository: "NATS_IMAGE_REPOSITORY"
+        tag: "NATS_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh

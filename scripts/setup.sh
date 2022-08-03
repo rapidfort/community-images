@@ -70,3 +70,7 @@ bash --version
 
 # add ingress
 minikube addons enable ingress
+
+# add common python modules
+pip install --upgrade pip
+pip install backoff

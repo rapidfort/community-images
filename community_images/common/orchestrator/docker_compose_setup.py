@@ -12,7 +12,7 @@ class DockerComposeSetup:
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
-        self.runtime_props = runtime_props
+        self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.docker_file = os.path.join(
@@ -56,6 +56,13 @@ class DockerComposeSetup:
         subprocess.check_output(cmd.split())
         # sleep for wait time seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
+
+        return {
+            "namespace_name": self.namespace_name,
+            "release_name": self.release_name,
+            "image_tag_details": self.image_tag_details,
+            "project_name": self.namespace_name
+        }
 
     def __exit__(self, type, value, traceback):
         """ delete docker compose namespace """

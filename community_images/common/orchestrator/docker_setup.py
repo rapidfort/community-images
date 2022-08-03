@@ -11,7 +11,7 @@ class DockerSetup:
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
-        self.runtime_props = runtime_props
+        self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.container_list = []
@@ -27,6 +27,9 @@ class DockerSetup:
             repo_path = tag_details["repo_path"]
             tag = tag_details["tag"]
             container_name = f"{repo}-{self.namespace_name}"
+            # add container_name to image_tag_details
+            self.image_tag_details[repo]["container_name"] = container_name
+
             cmd=f"docker run --rm -d --network={self.namespace_name}"
             cmd+=f" --name {container_name}"
             cmd+=f" {repo_path}:{tag}"
@@ -37,6 +40,13 @@ class DockerSetup:
 
         # sleep for few seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
+
+        return {
+            "namespace_name": self.namespace_name,
+            "release_name": self.release_name,
+            "image_tag_details": self.image_tag_details,
+            "network_name": self.namespace_name
+        }
 
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """

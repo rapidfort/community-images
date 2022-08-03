@@ -43,7 +43,7 @@ get_repos()
         paginated_repo_list+=$(echo "$prepo_list" | jq -r '.results|.[]|.name')
     done
 
-    echo "$paginated_repo_list" | while read object; do
+    echo "$paginated_repo_list" | while read -r object; do
         echo "${ORGANIZATION}/$object"
     done
 }

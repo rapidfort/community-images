@@ -47,19 +47,58 @@ class HardenGenerator:
                 logging.info(f"docker client push result: {result}")
 
                 if tag_mapping.is_latest:
-                    self._roll_over_latest_tag(output_tag_details)
+                    self._tag_util(
+                        output_tag_details.full_repo_path,
+                        output_tag_details.tag, "latest")
 
-    def _roll_over_latest_tag(self, tag_details):
-        """ Roll over latest tag """
+                if tag_mapping.input_tag_details.account == "bitnami":
+                    self._roll_over_bitnami_tags(output_tag_details)
+
+    def _tag_util(self, full_repo_path, current_tag, new_tag):
+        """ add new tag to existing image """
         # tag input stubbed image to output stubbed image
-        src_image = self.docker_client.images.get(tag_details.full_tag)
+        src_image = self.docker_client.images.get(f"{full_repo_path}:{current_tag}")
 
-        latest_tag = f"{tag_details.full_repo_path}:latest"
-        result = src_image.tag(latest_tag)
-        logging.info(f"image tag:[{latest_tag}] success={result}")
+        new_full_tag = f"{full_repo_path}:{new_tag}"
+        result = src_image.tag(new_full_tag)
+        logging.info(f"image tag:[{new_full_tag}] success={result}")
 
         # push stubbed image to output repo
         result = self.docker_client.api.push(
+            full_repo_path,
+            new_tag)
+        logging.info(f"docker client push {new_full_tag} result: {result}")
+
+    def _roll_over_bitnami_tags(self, tag_details):
+        """ add bitnami rolling tags """
+        # example tag=10.6.8-debian-10-r2
+        input_tag=tag_details.tag
+        input_tag_array = input_tag.split("-")
+        if len(input_tag_array) != 3:
+            logging.warning(f"unable to decode bitnami tag: {input_tag}")
+            return
+
+        version = input_tag_array[0]
+        os_name = input_tag_array[1]
+        os_ver = input_tag_array[2]
+
+        version_array = version.split(".")
+        if len(version_array) != 2:
+            logging.warning(f"unable to decode bitnami tag: {input_tag}")
+            return
+
+        maj_v = version_array[0]
+        min_v = version_array[1]
+
+        version_os_tag=f"{maj_v}.{min_v}-{os_name}-{os_ver}" # 10.6-debian-10
+        major_minor_tag=f"{maj_v}-{min_v}" # 10.6
+
+        # add version os tag
+        self._tag_util(
             tag_details.full_repo_path,
-            "latest")
-        logging.info(f"docker client push result: {result}")
+            input_tag, version_os_tag)
+
+        # add major minor tag
+        self._tag_util(
+            tag_details.full_repo_path,
+            input_tag, major_minor_tag)

@@ -19,6 +19,9 @@ function test_selenium() {
     CHROME_POD="python-chromedriver"
     # delete the directory if present already
     rm -rf "${SCRIPTPATH}"/docker-python-chromedriver
+    # delete the pod if present already, this sometimes happens if the cleanup didn't happen properly and is transient
+    kubectl delete pod "${CHROME_POD}" --namespace "${NAMESPACE}" --ignore-not-found=true
+    # clone the docker python chromedriver repo
     git clone https://github.com/joyzoursky/docker-python-chromedriver.git "${SCRIPTPATH}"/docker-python-chromedriver
     # cd docker-python-chromedriver
     kubectl run "${CHROME_POD}" --restart='Never' --image joyzoursky/"${CHROME_POD}":latest --namespace "${NAMESPACE}" --command -- sleep infinity

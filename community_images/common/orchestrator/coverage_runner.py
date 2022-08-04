@@ -99,7 +99,8 @@ class CoverageRunner:
             if command == Commands.STUB_COVERAGE:
                 image_tag_value = tag_details.stub_tag
             elif command == Commands.HARDEN_COVERAGE:
-                image_tag_value = tag_details.hardened_tag
+                # we only push original tag to registry
+                image_tag_value = tag_details.tag
             elif command == Commands.LATEST_COVERAGE:
                 image_tag_value = "latest"
 

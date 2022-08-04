@@ -8,12 +8,20 @@ import time
 
 class DockerComposeSetup:
     """ Docker compose setup context manager """
-    def __init__(self, namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
+    def __init__(
+            self,
+            namespace_name,
+            release_name,
+            image_tag_details,
+            runtime_props,
+            image_script_dir,
+            command):
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
         self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
+        self.command = command
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.docker_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(

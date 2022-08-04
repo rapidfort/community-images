@@ -5,7 +5,8 @@ import logging
 import os
 
 import docker
-from stub import StubGenerator
+from harden_generator import HardenGenerator
+from stub_generator import StubGenerator
 from coverage_runner import CoverageRunner
 from registry_helper import RegistryHelperFactory
 from tag_manager import TagManager
@@ -20,6 +21,7 @@ class Orchestrator:
         self.config_dict = self._load_config()
         self.docker_client = docker.from_env()
         self.publish = args.publish
+        self.force_publish = args.force_publish
         self.config_name = self.args.config
         self.input_registry_helper, self.output_registry_helper = self._auth_registries()
 
@@ -35,6 +37,7 @@ class Orchestrator:
     def run(self) -> None:
         """run commands for orchestrator"""
         command = self.args.command
+        publish = self.args.publish
 
         tag_manager = TagManager(self)
 
@@ -54,6 +57,14 @@ class Orchestrator:
                 self.config_dict,
                 tag_manager.tag_mappings)
             coverage_runner.run(command)
+        elif command == Commands.HARDEN:
+            harden = HardenGenerator(
+                self.config_name,
+                self.config_dict,
+                self.docker_client,
+                tag_manager.tag_mappings
+            )
+            harden.generate(publish)
 
     def _auth_registries(self):
         """ Authenticate to registries
@@ -91,8 +102,13 @@ def main():
         "--no-publish", dest="publish",
         action="store_false", help="dont publish image")
     parser.set_defaults(publish=False)
+    parser.add_argument("--force-publish", dest="force_publish", action="store_true", help="force publish image")
+    parser.set_defaults(force_publish=False)
     parser.add_argument("--loglevel", type=str, default="info", help="debug, info, warning, error")
     args = parser.parse_args()
+
+    if args.force_publish:
+        args.publish = True
 
     numeric_level = getattr(logging, args.loglevel.upper(), None)
     if not isinstance(numeric_level, int):

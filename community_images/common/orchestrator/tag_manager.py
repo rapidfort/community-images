@@ -47,10 +47,16 @@ class TagDetail:
 
 class TagMapping:
     """ Tag mapping class """
-    def __init__(self, input_tag_details, output_tag_details, needs_generation):
+    def __init__(
+            self,
+            input_tag_details,
+            output_tag_details,
+            needs_generation,
+            is_latest=False):
         self.input_tag_details = input_tag_details
         self.output_tag_details = output_tag_details
         self.needs_generation = needs_generation
+        self.is_latest = is_latest
 
 
 class TagManager:
@@ -86,7 +92,7 @@ class TagManager:
         """
         tag_mappings = []
         repo_sets = self.config_dict.get("repo_sets", [])
-        for repo_set in repo_sets:
+        for index, repo_set in enumerate(repo_sets):
             for input_repo, repo_values in repo_set.items():
 
                 output_repo = repo_values.get("output_repo", input_repo)
@@ -103,8 +109,18 @@ class TagManager:
                         output_repo, base_tag)
 
                 needs_generation = (not self.orchestrator.publish or
+                    self.orchestrator.force_publish or
                     (input_tag_detail.tag != output_tag_detail.tag))
-                tag_mapping = TagMapping(input_tag_detail, output_tag_detail, needs_generation)
+
+                if not output_tag_detail.tag:
+                    output_tag_detail.tag = input_tag_detail.tag
+
+                is_latest = (index==0)
+                tag_mapping = TagMapping(
+                    input_tag_detail,
+                    output_tag_detail,
+                    needs_generation,
+                    is_latest)
                 tag_mappings.append(tag_mapping)
 
         return tag_mappings

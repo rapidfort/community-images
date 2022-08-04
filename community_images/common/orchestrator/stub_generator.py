@@ -68,6 +68,6 @@ class StubGenerator:
                 dckr_fp.write("ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n")
 
             # run docker build
-            image = self.docker_client.build(path=tmpdirname)
+            image = self.docker_client.images.build(path=tmpdirname)
             result = image.tag(tag_details.full_tag)
             logging.info(f"rf banner image tag:[{tag_details.full_stub_tag}] success={result}")

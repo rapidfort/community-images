@@ -64,8 +64,8 @@ class StubGenerator:
             # create docker file
             file_path = os.path.join(tmpdirname, "Dockerfile")
             with open(file_path, 'w', encoding="UTF-8") as dckr_fp:
-                dckr_fp.write(f"FROM {tag_details.repo_path}:{tag_details.tag}\n")
-                dckr_fp.write("ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n")
+                dckr_fp.write(f"FROM {tag_details.repo_path}:{tag_details.tag}")
+                dckr_fp.write("ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh")
 
             # run docker build
             image, log_generator = self.docker_client.images.build(path=tmpdirname)

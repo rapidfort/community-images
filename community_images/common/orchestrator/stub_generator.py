@@ -53,7 +53,7 @@ class StubGenerator:
         """ Add RapidFort banner in bitnami images """
         logging.info(f"Adding rapidfort banner for image: {tag_details}")
 
-        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmpdirname:
+        with tempfile.TemporaryDirectory() as tmpdirname:
             script_dir = os.path.abspath(os.path.dirname( __file__ ))
 
             # copy over libbitnami.sh file

@@ -91,6 +91,10 @@ class CoverageRunner:
 
         image_tag_details = {}
         for tag_mapping in self.tag_mappings:
+            if (not tag_mapping.needs_generation and
+                not command == Commands.LATEST_COVERAGE):
+                continue
+
             tag_details = tag_mapping.output_tag_details
 
             image_tag_details[tag_details.repo] = {}

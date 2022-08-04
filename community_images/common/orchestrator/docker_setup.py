@@ -4,15 +4,24 @@ import logging
 import os
 import subprocess
 import time
+from commands import Commands
 
 class DockerSetup:
     """ Docker setup context manager """
-    def __init__(self, namespace_name, release_name, image_tag_details, runtime_props, image_script_dir):
+    def __init__(
+            self,
+            namespace_name,
+            release_name,
+            image_tag_details,
+            runtime_props,
+            image_script_dir,
+            command):
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
         self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
+        self.command = command
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.container_list = []
 
@@ -31,6 +40,10 @@ class DockerSetup:
             self.image_tag_details[repo]["container_name"] = container_name
 
             cmd=f"docker run --rm -d --network={self.namespace_name}"
+
+            if self.command == Commands.STUB_COVERAGE:
+                cmd+=" --cap-add=SYS_PTRACE"
+
             cmd+=f" --name {container_name}"
             cmd+=f" {repo_path}:{tag}"
             logging.info(f"cmd: {cmd}")

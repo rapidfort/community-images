@@ -3,6 +3,7 @@
 import logging
 import os
 import requests
+from consts import Consts
 
 class RegistryHelper:
     """ Docker registry helper base class"""
@@ -16,13 +17,13 @@ class RegistryHelper:
     def registry_url():
         """ Interface method to specify registry url"""
 
-    # pylint: disable=unused-argument, no-self-use
+    # pylint: disable=unused-argument
     def fetch_tags(self, account, repo):
         """
         Interface method to fetch all tags for an image_repo
         Default returns latest
         """
-        return "latest"
+        return Consts.LATEST
 
     def auth(self):
         """ auth docker client """

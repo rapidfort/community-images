@@ -112,9 +112,15 @@ class TagManager:
                 # 1. We are not publishing and just doing a ci/cd test
                 # 2. We are force publishing
                 # 3. Input and output tag dont match
+                logging.info(f"input tag details={input_tag_detail.tag}")
+                logging.info(f"input tag details={output_tag_detail.tag}")
+                logging.info(f"publish flag={self.orchestrator.publish}")
+                logging.info(f"force publish flag={self.orchestrator.force_publish}")
+
                 needs_generation = (not self.orchestrator.publish or
                     self.orchestrator.force_publish or
                     (input_tag_detail.tag != output_tag_detail.tag))
+                logging.info(f"decision for needs generation={needs_generation}")
 
                 if not output_tag_detail.tag:
                     output_tag_detail.tag = input_tag_detail.tag

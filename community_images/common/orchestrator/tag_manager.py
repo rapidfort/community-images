@@ -108,6 +108,10 @@ class TagManager:
                     self.orchestrator.output_registry_helper,
                         output_repo, base_tag)
 
+                # we need to generate new image, if
+                # 1. We are not publishing and just doing a ci/cd test
+                # 2. We are force publishing
+                # 3. Input and output tag dont match
                 needs_generation = (not self.orchestrator.publish or
                     self.orchestrator.force_publish or
                     (input_tag_detail.tag != output_tag_detail.tag))

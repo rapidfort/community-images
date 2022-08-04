@@ -137,7 +137,7 @@ def main():
     parser.add_argument("--loglevel", type=str, default="info", help="debug, info, warning, error")
     args = parser.parse_args()
 
-    if args.force_publish or command == Commands.HOURLY_RUN:
+    if args.force_publish or args.command == Commands.HOURLY_RUN:
         args.publish = True
 
     numeric_level = getattr(logging, args.loglevel.upper(), None)

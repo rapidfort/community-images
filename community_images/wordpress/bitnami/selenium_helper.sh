@@ -42,7 +42,7 @@ function test_selenium() {
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/wordpress_selenium_test.py "${CHROME_POD}":/tmp/wordpress_selenium_test.py
     chmod +x "$SCRIPTPATH"/commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/commands.sh "${CHROME_POD}":/tmp/common_commands.sh
-    kubectl -name "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/helpers.sh "${CHROME_POD}":/tmp/helpers.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/retry_helper.sh "${CHROME_POD}":/tmp/helpers.sh
 
     kubectl -n "${NAMESPACE}" exec -i "${CHROME_POD}" -- bash -c "/tmp/common_commands.sh"
     # delete the generated commands.sh

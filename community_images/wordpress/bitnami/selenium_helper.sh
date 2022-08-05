@@ -37,6 +37,9 @@ function test_selenium() {
     cd /usr/workspace
     pip install pytest
     pip install selenium
+    apt update
+    apt -y install dnsutils
+    nslookup $WORDPRESS_IP
     pytest -s /tmp/wordpress_selenium_test.py --ip_address $WORDPRESS_IP --port $WORDPRESS_PORT" > "$SCRIPTPATH"/commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/conftest.py "${CHROME_POD}":/tmp/conftest.py
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/wordpress_selenium_test.py "${CHROME_POD}":/tmp/wordpress_selenium_test.py

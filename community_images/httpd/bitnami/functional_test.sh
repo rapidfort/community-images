@@ -11,7 +11,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 HELM_RELEASE=apache-release
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=apache
-IMAGE_REPOSITORY=anmolvirdi/"$REPOSITORY"
+IMAGE_REPOSITORY=rapidfort/"$REPOSITORY"
 
 k8s_test()
 {

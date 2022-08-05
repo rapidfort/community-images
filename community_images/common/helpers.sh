@@ -4,7 +4,7 @@ set -x
 set -e
 
 DOCKERHUB_REGISTRY="${DOCKERHUB_REGISTRY:-docker.io}"
-RAPIDFORT_ACCOUNT=anmolvirdi
+RAPIDFORT_ACCOUNT=rapidfort
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
 declare -A PULL_COUNTER

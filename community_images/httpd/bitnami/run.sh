@@ -51,7 +51,7 @@ test()
     cleanup_certs
     create_certs
 
-    # Changing "http" to "https" in the urls
+    # Changing "http" to "https" in the urls file
     sed -i '2,2s/http/https/' URLS
     cat URLS
 
@@ -95,8 +95,6 @@ test()
     # exec into container and run coverage script
     pwd
     chmod 777 "${SCRIPTPATH}"/coverage_script.sh
-    docker cp "${SCRIPTPATH}"/coverage_script.sh "${NAMESPACE}"-apache-1:opt/bitnami/scripts
-    # docker exec -i "${NAMESPACE}"-apache-1 chmod 777 /opt/bitnami/scripts/coverage_script.sh
     docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging
@@ -105,6 +103,9 @@ test()
     # find non-tls and tls port
     NON_TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
     TLS_PORT=$(docker inspect "${NAMESPACE}"-apache-1 | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
+
+    echo "${NON_TLS_PORT}"
+    echo "${TLS_PORT}"
 
     # run curl in loop for different endpoints
     for i in {1..20};
@@ -127,6 +128,6 @@ test()
     cleanup_certs
 }
 
-declare -a BASE_TAG_ARRAY=("2.4.54-debian-11-r" "2.4.54-debian-12-r")
+declare -a BASE_TAG_ARRAY=("2.4.54-debian-11-r" "2.4.53-debian-10-r")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

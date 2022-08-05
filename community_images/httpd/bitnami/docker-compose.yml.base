@@ -3,6 +3,10 @@ version: '2'
 services:
   apache:
     image: @IMAGE
+    user: root
+    volumes:
+      - ./modules_list:/opt/bitnami/scripts/modules_list:ro
+      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh:ro
     cap_add:
       - SYS_PTRACE    
     ports:

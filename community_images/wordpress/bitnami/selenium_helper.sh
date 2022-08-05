@@ -10,15 +10,14 @@ function test_selenium() {
     local WORDPRESS_SERVER=$2
 
     # get the ip address of wordpress service
-    WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")
-    ports=$(kubectl get svc --namespace "${NAMESPACE}" -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}')
-    WORDPRESS_PORT=$(echo "$ports" | head -n 1)
+    # WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")
+    # ports=$(kubectl get svc --namespace "${NAMESPACE}" -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}')
+    # WORDPRESS_PORT=$(echo "$ports" | head -n 1)
 
-    echo "wordpress IP is $WORDPRESS_IP"
-    echo "wordpress port is $WORDPRESS_PORT"
-
-    WORDPRESS_IP=$WORDPRESS_SERVER
     WORDPRESS_PORT='80'
+
+    echo "wordpress server is $WORDPRESS_SERVER"
+    echo "wordpress port is $WORDPRESS_PORT"
 
     CHROME_POD="python-chromedriver"
     # delete the directory if present already
@@ -35,16 +34,15 @@ function test_selenium() {
 
     echo "#!/bin/bash
     cd /usr/workspace
+    . /tmp/helpers.sh
     pip install pytest
     pip install selenium
-    apt update
-    apt -y install dnsutils
-    nslookup $WORDPRESS_IP
-    pytest -s /tmp/wordpress_selenium_test.py --ip_address $WORDPRESS_IP --port $WORDPRESS_PORT" > "$SCRIPTPATH"/commands.sh
+    with_backoff pytest -s /tmp/wordpress_selenium_test.py --wordpress_server $WORDPRESS_SERVER --port $WORDPRESS_PORT" > "$SCRIPTPATH"/commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/conftest.py "${CHROME_POD}":/tmp/conftest.py
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/wordpress_selenium_test.py "${CHROME_POD}":/tmp/wordpress_selenium_test.py
     chmod +x "$SCRIPTPATH"/commands.sh
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/commands.sh "${CHROME_POD}":/tmp/common_commands.sh
+    kubectl -name "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/helpers.sh "${CHROME_POD}":/tmp/helpers.sh
 
     kubectl -n "${NAMESPACE}" exec -i "${CHROME_POD}" -- bash -c "/tmp/common_commands.sh"
     # delete the generated commands.sh

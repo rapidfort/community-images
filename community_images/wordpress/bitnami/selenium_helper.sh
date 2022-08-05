@@ -7,6 +7,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 function test_selenium() {
     local NAMESPACE=$1
+    local WORDPRESS_SERVER=$2
 
     # get the ip address of wordpress service
     WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")
@@ -15,6 +16,9 @@ function test_selenium() {
 
     echo "wordpress IP is $WORDPRESS_IP"
     echo "wordpress port is $WORDPRESS_PORT"
+
+    WORDPRESS_IP=$WORDPRESS_SERVER
+    WORDPRESS_PORT='80'
 
     CHROME_POD="python-chromedriver"
     # delete the directory if present already

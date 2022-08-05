@@ -5,7 +5,7 @@ set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
-. "${SCRIPTPATH}"/retry_helper.sh
+. "${SCRIPTPATH}"/../../common/retry_helper.sh
 
 DOCKERHUB_REGISTRY="${DOCKERHUB_REGISTRY:-docker.io}"
 RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"

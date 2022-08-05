@@ -113,7 +113,7 @@ class TagManager:
                 # 2. We are force publishing
                 # 3. Input and output tag dont match
                 logging.info(f"input tag details={input_tag_detail.tag}")
-                logging.info(f"input tag details={output_tag_detail.tag}")
+                logging.info(f"output tag details={output_tag_detail.tag}")
                 logging.info(f"publish flag={self.orchestrator.publish}")
                 logging.info(f"force publish flag={self.orchestrator.force_publish}")
 

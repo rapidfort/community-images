@@ -110,7 +110,7 @@ class CoverageRunner:
 
             image_tag_details[tag_details.repo]["tag"] = image_tag_value
 
-        logging.info("Image tag details = {image_tag_details}")
+        logging.info(f"Image tag details = {image_tag_details}")
         return image_tag_details
 
     @staticmethod

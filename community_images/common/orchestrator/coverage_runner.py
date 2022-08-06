@@ -45,6 +45,11 @@ class CoverageRunner:
         namespace_name = self._get_namespace(image_name)
         release_name = f"rf-{image_name}"
         image_tag_details = self._prepare_image_tag_details(command)
+
+        if not image_tag_details:
+            logging.info("Nothing to generate as image_tag_details is empty")
+            return
+
         image_script_dir = os.path.abspath(
                 f"{self.script_dir}/../../{self.config_name}")
 

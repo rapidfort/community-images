@@ -122,8 +122,8 @@ class TagManager:
                     (input_tag_detail.tag != output_tag_detail.tag))
                 logging.info(f"decision for needs generation={needs_generation}")
 
-                if not output_tag_detail.tag:
-                    output_tag_detail.tag = input_tag_detail.tag
+                # output tag needs to be same as input tag
+                output_tag_detail.tag = input_tag_detail.tag
 
                 is_latest = (index==0)
                 tag_mapping = TagMapping(

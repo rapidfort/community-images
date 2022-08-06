@@ -28,7 +28,9 @@ k8s_test()
     # wait for deployments
     kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=true --timeout=10m
 
-    test_selenium "${NAMESPACE}"
+    WORDPRESS_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
+
+    test_selenium "${NAMESPACE}" "${WORDPRESS_SERVER}"
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods

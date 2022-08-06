@@ -6,12 +6,32 @@ set -e
 # add common commands here which should be present in all hardened images
 # ref: https://www.mongodb.com/docs/database-tools/
 
-mongodump --version
-mongorestore --version
-bsondump --version
-mongoimport --version
-mongoexport --version
-mongostat --version
-mongotop --version
-mongofiles --version
-mongo --version
+function run_command_version()
+{
+    local cmd="$1"
+    if command -v "$cmd" --version &> /dev/null
+    then
+        "$cmd" --version
+    fi
+}
+
+declare -a command_array=(
+    bsondump
+    mongod
+    mongoexport
+    mongoimport
+    mongos
+    mongo
+    mongostat
+    install_compass
+    mongodump
+    mongofiles
+    mongorestore
+    mongosh
+    mongotop
+)
+
+for cmd in "${command_array[@]}"
+do
+    run_command_version "$cmd"
+done

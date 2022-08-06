@@ -9,6 +9,8 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/coverage.sh
 
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
@@ -47,6 +49,9 @@ test()
 
     # run command on cluster
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
+
+    # run coverage script
+    test_nats "${NAMESPACE}" "${HELM_RELEASE}"
 
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"

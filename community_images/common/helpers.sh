@@ -3,6 +3,10 @@
 set -x
 set -e
 
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/retry_helper.sh
+
 DOCKERHUB_REGISTRY="${DOCKERHUB_REGISTRY:-docker.io}"
 RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -26,7 +30,7 @@ function create_stub()
 
     # login to output docker register as input and output docker registry could be different
     docker login "${DOCKERHUB_REGISTRY}" -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
-    
+
     # Create stub for docker image
     rfstub "${INPUT_IMAGE_FULL}"
 
@@ -47,7 +51,7 @@ function add_sha256_tag()
     docker pull "${FULL_IMAGE_TAG}"
 
     local SHA_TAG
-    
+
     SHA_TAG=$(docker inspect --format='{{index .RepoDigests 0}}' "${FULL_IMAGE_TAG}")
 
     IFS=":"
@@ -118,7 +122,7 @@ function harden_image()
     fi
 
     local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}
-    
+
     # Create stub for docker image
     if [[ -f "${SCRIPTPATH}"/.rfignore ]]; then
         rfharden "${INPUT_IMAGE_FULL}"-rfstub --put-meta --profile "${SCRIPTPATH}"/.rfignore
@@ -140,7 +144,7 @@ function harden_image()
         # add sha256 tag for images which just have latest tag
         add_sha256_tag "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}"
 
-        echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}" 
+        echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}"
     else
         echo "Non publish mode"
     fi
@@ -161,7 +165,7 @@ function setup_namespace()
     kubectl --namespace "${NAMESPACE}" create secret generic rf-regcred --from-file=.dockerconfigjson="${HOME}"/.docker/config.json --type=kubernetes.io/dockerconfigjson
 
     # add tls certs
-    kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}" 
+    kubectl apply -f "${SCRIPTPATH}"/../../common/cert_managet_ns.yml --namespace "${NAMESPACE}"
 }
 
 function cleanup_namespace()
@@ -186,7 +190,7 @@ function build_image()
 
     if [[ "${INPUT_REGISTRY}" = "docker.io" ]]; then
         local RAPIDFORT_TAG
-        
+
         TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
 
         if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
@@ -269,47 +273,6 @@ function build_images()
         fi
         build_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" "${OUTPUT_REPOSITORY}" test "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
     done
-}
-
-# Retries a command a with backoff.
-#
-# The retry count is given by ATTEMPTS (default 10), the
-# initial backoff timeout is given by TIMEOUT in seconds
-# (default 5.)
-#
-# Successive backoffs double the timeout.
-#
-# Beware of set -e killing your whole script!
-function with_backoff {
-  local max_attempts="${ATTEMPTS-9}"
-  local timeout="${TIMEOUT-5}"
-  local attempt=0
-  local exitCode=0
-
-  while [[ "$attempt" < "$max_attempts" ]]
-  do
-    set +e
-    "$@"
-    exitCode="$?"
-    set -e
-
-    if [[ "$exitCode" == 0 ]]
-    then
-      break
-    fi
-
-    echo "Failure! Retrying in $timeout.." 1>&2
-    sleep "$timeout"
-    attempt=$(( attempt + 1 ))
-    timeout=$(( timeout * 2 ))
-  done
-
-  if [[ "$exitCode" != 0 ]]
-  then
-    echo "You've failed me for the last time! ($*)" 1>&2
-  fi
-
-  return "$exitCode"
 }
 
 function cleanup_certs()

@@ -122,7 +122,7 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("7.0.4-debian-11-r" "6.2.7-debian-11-r")
+declare -a BASE_TAG_ARRAY=("7.0.4-debian-11-r") # 6.2 version doesnt work "6.2.7-debian-11-r", issue: https://github.com/bitnami/charts/issues/11552
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
 

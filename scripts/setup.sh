@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 EPH_SETUP=no
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -60,7 +63,8 @@ sudo apt-get install jq parallel -y
 # install docker-compose latest
 DC_VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
 DC_DESTINATION=/usr/local/bin/docker-compose
-sudo curl -L https://github.com/docker/compose/releases/download/${DC_VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DC_DESTINATION
+echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
+sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"
 sudo chmod 755 $DC_DESTINATION
 
 
@@ -70,3 +74,7 @@ bash --version
 
 # add ingress
 minikube addons enable ingress
+
+# add common python modules
+pip install --upgrade pip
+pip install backoff

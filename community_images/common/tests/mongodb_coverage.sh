@@ -23,7 +23,6 @@ declare -a command_array=(
     mongos
     mongo
     mongostat
-    install_compass
     mongodump
     mongofiles
     mongorestore

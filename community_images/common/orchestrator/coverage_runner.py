@@ -91,24 +91,24 @@ class CoverageRunner:
 
         image_tag_details = {}
         for tag_mapping in self.tag_mappings:
-            if (not tag_mapping.needs_generation and
-                not command == Commands.LATEST_COVERAGE):
-                continue
+            if (tag_mapping.needs_generation 
+                or (not tag_mapping.needs_generation and
+                command == Commands.latest_coverage)):
 
-            tag_details = tag_mapping.output_tag_details
+                tag_details = tag_mapping.output_tag_details
 
-            image_tag_details[tag_details.repo] = {}
+                image_tag_details[tag_details.repo] = {}
 
-            image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
-            if command == Commands.STUB_COVERAGE:
-                image_tag_value = tag_details.stub_tag
-            elif command == Commands.HARDEN_COVERAGE:
-                # we only push original tag to registry
-                image_tag_value = tag_details.tag
-            elif command == Commands.LATEST_COVERAGE:
-                image_tag_value = "latest"
+                image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
+                if command == Commands.STUB_COVERAGE:
+                    image_tag_value = tag_details.stub_tag
+                elif command == Commands.HARDEN_COVERAGE:
+                    # we only push original tag to registry
+                    image_tag_value = tag_details.tag
+                elif command == Commands.LATEST_COVERAGE:
+                    image_tag_value = "latest"
 
-            image_tag_details[tag_details.repo]["tag"] = image_tag_value
+                image_tag_details[tag_details.repo]["tag"] = image_tag_value
 
         logging.info(f"Image tag details = {image_tag_details}")
         return image_tag_details

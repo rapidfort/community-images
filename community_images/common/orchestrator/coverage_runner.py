@@ -91,9 +91,9 @@ class CoverageRunner:
 
         image_tag_details = {}
         for tag_mapping in self.tag_mappings:
-            if (tag_mapping.needs_generation 
+            if (tag_mapping.needs_generation
                 or (not tag_mapping.needs_generation and
-                command == Commands.latest_coverage)):
+                command == Commands.LATEST_COVERAGE)):
 
                 tag_details = tag_mapping.output_tag_details
 

@@ -4,7 +4,7 @@ set -x
 set -e
 
 DOCKERHUB_REGISTRY="${DOCKERHUB_REGISTRY:-docker.io}"
-RAPIDFORT_ACCOUNT=rapidfort
+RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE_TO_CLEANUP=
 declare -A PULL_COUNTER
@@ -285,6 +285,16 @@ function report_pulls()
 }
 
 function finish {
+    if [[ -z "$NAMESPACE_TO_CLEANUP" ]]; then
+        kubectl get pods --all-namespaces
+        kubectl get services --all-namespaces
+    else
+        kubectl -n "${NAMESPACE_TO_CLEANUP}" get pods
+        kubectl -n "${NAMESPACE_TO_CLEANUP}" delete all --all
+        kubectl delete namespace "${NAMESPACE_TO_CLEANUP}"
+    fi
+
+    JSON_STR="{"
     FIRST=1
     for key in "${!PULL_COUNTER[@]}"; do
         if [ "$FIRST" = "0" ] ; then JSON_STR+=", " ; fi
@@ -297,7 +307,7 @@ function finish {
         curl -X POST \
             -H "Accept: application/json" \
             -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-            -d ${JSON_STR} https://data-receiver.rapidfort.com/counts/internal_image_pulls
+            -d "${JSON_STR}" https://data-receiver.rapidfort.com/counts/internal_image_pulls
     fi
 }
 trap finish EXIT

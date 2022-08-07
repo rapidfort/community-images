@@ -94,7 +94,6 @@ test()
 
     # exec into container and run coverage script
     pwd
-    chmod 777 "${SCRIPTPATH}"/coverage_script.sh
     docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging
@@ -110,7 +109,7 @@ test()
     # run curl in loop for different endpoints
     for i in {1..20};
     do
-        echo "$i"
+        echo "Attempt $i"
         curl http://localhost:"${NON_TLS_PORT}"
         with_backoff curl https://localhost:"${TLS_PORT}" -k -v
     done

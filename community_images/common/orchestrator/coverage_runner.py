@@ -45,6 +45,11 @@ class CoverageRunner:
         namespace_name = self._get_namespace(image_name)
         release_name = f"rf-{image_name}"
         image_tag_details = self._prepare_image_tag_details(command)
+
+        if not image_tag_details:
+            logging.info("Nothing to generate as image_tag_details is empty")
+            return
+
         image_script_dir = os.path.abspath(
                 f"{self.script_dir}/../../{self.config_name}")
 
@@ -91,21 +96,26 @@ class CoverageRunner:
 
         image_tag_details = {}
         for tag_mapping in self.tag_mappings:
-            tag_details = tag_mapping.output_tag_details
+            if (tag_mapping.needs_generation
+                or (not tag_mapping.needs_generation and
+                command == Commands.LATEST_COVERAGE)):
 
-            image_tag_details[tag_details.repo] = {}
+                tag_details = tag_mapping.output_tag_details
 
-            image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
-            if command == Commands.STUB_COVERAGE:
-                image_tag_value = tag_details.stub_tag
-            elif command == Commands.HARDEN_COVERAGE:
-                image_tag_value = tag_details.hardened_tag
-            elif command == Commands.LATEST_COVERAGE:
-                image_tag_value = "latest"
+                image_tag_details[tag_details.repo] = {}
 
-            image_tag_details[tag_details.repo]["tag"] = image_tag_value
+                image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
+                if command == Commands.STUB_COVERAGE:
+                    image_tag_value = tag_details.stub_tag
+                elif command == Commands.HARDEN_COVERAGE:
+                    # we only push original tag to registry
+                    image_tag_value = tag_details.tag
+                elif command == Commands.LATEST_COVERAGE:
+                    image_tag_value = "latest"
 
-        logging.info("Image tag details = {image_tag_details}")
+                image_tag_details[tag_details.repo]["tag"] = image_tag_value
+
+        logging.info(f"Image tag details = {image_tag_details}")
         return image_tag_details
 
     @staticmethod

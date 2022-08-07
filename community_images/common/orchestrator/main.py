@@ -64,37 +64,44 @@ class Orchestrator:
                 tag_manager.tag_mappings
             ).generate(publish)
         elif command == Commands.HOURLY_RUN:
-            StubGenerator(
-                self.config_name,
-                self.config_dict,
-                self.docker_client,
-                tag_manager.tag_mappings
-            ).generate()
+            self._hourly_run(tag_manager)
 
-            CoverageRunner(
-                self.config_name,
-                self.config_dict,
-                tag_manager.tag_mappings
-            ).run(Commands.STUB_COVERAGE)
+    def _hourly_run(self, tag_manager):
 
-            HardenGenerator(
-                self.config_name,
-                self.config_dict,
-                self.docker_client,
-                tag_manager.tag_mappings
-            ).generate(publish)
+        publish = self.args.publish
 
+        StubGenerator(
+            self.config_name,
+            self.config_dict,
+            self.docker_client,
+            tag_manager.tag_mappings
+        ).generate()
+
+        CoverageRunner(
+            self.config_name,
+            self.config_dict,
+            tag_manager.tag_mappings
+        ).run(Commands.STUB_COVERAGE)
+
+        HardenGenerator(
+            self.config_name,
+            self.config_dict,
+            self.docker_client,
+            tag_manager.tag_mappings
+        ).generate(publish)
+
+        if publish:
             CoverageRunner(
                 self.config_name,
                 self.config_dict,
                 tag_manager.tag_mappings
             ).run(Commands.HARDEN_COVERAGE)
 
-            CoverageRunner(
-                self.config_name,
-                self.config_dict,
-                tag_manager.tag_mappings
-            ).run(Commands.LATEST_COVERAGE)
+        CoverageRunner(
+            self.config_name,
+            self.config_dict,
+            tag_manager.tag_mappings
+        ).run(Commands.LATEST_COVERAGE)
 
     def _auth_registries(self):
         """ Authenticate to registries

@@ -59,3 +59,4 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/nats": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+

@@ -3,6 +3,8 @@
 set -x
 set -e
 
+# shellcheck disable=SC1091
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/tests/sysbench_tests.sh

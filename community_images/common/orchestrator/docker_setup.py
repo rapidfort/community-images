@@ -1,5 +1,6 @@
 """ Docker setup module """
 
+import json
 import logging
 import os
 import subprocess
@@ -34,13 +35,13 @@ class DockerSetup:
         cmd=f"docker network create -d bridge {self.namespace_name}"
         subprocess.check_output(cmd.split())
 
-        container_details = dict()
+        container_details = {}
 
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
             repo_path = tag_details["repo_path"]
             tag = tag_details["tag"]
-            container_detail = dict()
+            container_detail = {}
             container_name = f"{repo}-{self.namespace_name}"
             # add container_name to image_tag_details
             self.image_tag_details[repo]["container_name"] = container_name
@@ -65,8 +66,19 @@ class DockerSetup:
         # sleep for few seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
 
+        container_details = self._get_docker_ips(container_details)
+
+        return {
+            "namespace_name": self.namespace_name,
+            "release_name": self.release_name,
+            "image_tag_details": self.image_tag_details,
+            "network_name": self.namespace_name,
+            "container_details": container_details
+        }
+
+    def _get_docker_ips(self, container_details):
         # add docker ips for all containers
-        for repo, container_detail in container_details.items():
+        for container_detail in container_details.values():
             container_name = container_detail["name"]
             cmd=f"docker inspect {container_name}"
             docker_inspect_json = subprocess.check_output(cmd.split())
@@ -78,15 +90,8 @@ class DockerSetup:
                 net_details = networks.get(self.namespace_name, {})
                 ip_address = net_details.get("IPAddress")
                 if ip_address:
-                    container_details[repo]["ip_address"] = ip_address
-
-        return {
-            "namespace_name": self.namespace_name,
-            "release_name": self.release_name,
-            "image_tag_details": self.image_tag_details,
-            "network_name": self.namespace_name,
-            "container_details": container_details
-        }
+                    container_detail["ip_address"] = ip_address
+        return container_details
 
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """

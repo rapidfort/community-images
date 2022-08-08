@@ -20,4 +20,7 @@ NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 # get docker host ip
 MARIADB_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
 
+# get mariadb password
+MARIADB_ROOT_PASSWORD=my_root_password
+
 run_sys_bench_test "$MARIADB_HOST" "$MARIADB_ROOT_PASSWORD" "${NETWORK_NAME}" no

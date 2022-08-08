@@ -15,7 +15,6 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 
 # get docker host ip

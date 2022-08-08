@@ -24,7 +24,7 @@ kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${R
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "mysql -h localhost -uroot -p\"$MARIADB_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
 # copy mysql_coverage.sh into container
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh ${RELEASE_NAME}-0:/tmp/mysql_coverage.sh
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${RELEASE_NAME}"-0:/tmp/mysql_coverage.sh
 
 # run mysql_coverage on cluster
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "/tmp/mysql_coverage.sh"

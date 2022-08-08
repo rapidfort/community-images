@@ -4,7 +4,7 @@ import logging
 import os
 import subprocess
 import backoff
-
+from commands import Commands
 
 class K8sSetup:
     """ k8s setup context manager """
@@ -53,10 +53,26 @@ class K8sSetup:
 
         # waiting for pod to be ready
         logging.info("waiting for pod to be ready")
-        cmd=f"kubectl wait deployments {self.release_name}"
-        cmd+=f" -n {self.namespace_name}"
-        cmd+=" --for=condition=Available=True --timeout=10m"
-        subprocess.check_output(cmd.split())
+        wait_complete = False
+        try:
+            cmd=f"kubectl wait deployments {self.release_name}"
+            cmd+=f" -n {self.namespace_name}"
+            cmd+=" --for=condition=Available=True --timeout=10m"
+            subprocess.check_output(cmd.split())
+            wait_complete = True
+        except subprocess.CalledProcessError:
+            logging.info("Wait deployment command failed, try waiting for pod-0")
+
+        if not wait_complete:
+            try:
+                cmd=f"kubectl wait pods {self.release_name}-0"
+                cmd+=f" -n {self.namespace_name}"
+                cmd+=" --for=condition=ready --timeout=10m"
+                subprocess.check_output(cmd.split())
+                wait_complete = True
+            except subprocess.CalledProcessError:
+                logging.info("Wait for pod-0 also failed, reraising error")
+                raise
 
         return {
             "namespace_name": self.namespace_name,
@@ -85,7 +101,9 @@ class K8sSetup:
                 cmd+=f" --set {repository_key}={repository_value}"
                 cmd+=f" --set {tag_key}={tag_value}"
 
-        cmd+=f" -f {override_file}"
+        if self.command != Commands.LATEST_COVERAGE:
+            cmd+=f" -f {override_file}"
+
         return cmd
 
     @backoff.on_exception(backoff.expo, BaseException, max_time=300)

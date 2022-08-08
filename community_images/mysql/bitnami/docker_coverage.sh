@@ -19,9 +19,9 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 
 # get docker host ip
-MARIADB_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
+MYSQL_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
 
-# get mariadb password
-MARIADB_ROOT_PASSWORD=my_root_password
+MYSQL_ROOT_PASSWORD=my_root_password
 
-run_sys_bench_test "$MARIADB_HOST" "$MARIADB_ROOT_PASSWORD" "${NETWORK_NAME}" no
+# run sys bench test
+run_sys_bench_test "$MYSQL_HOST" "$MYSQL_ROOT_PASSWORD" "${NETWORK_NAME}" yes

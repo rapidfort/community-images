@@ -40,7 +40,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py latest_coverage {{ github_location }} --publish
+        run: python3 community_images/common/orchestrator/main.py hourly_run {{ github_location }} --publish
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
@@ -49,7 +49,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
         if: github.event_name == 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py latest_coverage {{ github_location }}
+        run: python3 community_images/common/orchestrator/main.py hourly_run {{ github_location }}
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}

@@ -4,7 +4,7 @@ import logging
 import os
 import subprocess
 import backoff
-
+from commands import Commands
 
 class K8sSetup:
     """ k8s setup context manager """
@@ -85,7 +85,9 @@ class K8sSetup:
                 cmd+=f" --set {repository_key}={repository_value}"
                 cmd+=f" --set {tag_key}={tag_value}"
 
-        cmd+=f" -f {override_file}"
+        if self.command != Commands.LATEST_COVERAGE:
+            cmd+=f" -f {override_file}"
+
         return cmd
 
     @backoff.on_exception(backoff.expo, BaseException, max_time=300)

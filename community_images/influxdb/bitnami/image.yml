@@ -48,3 +48,4 @@ runtimes:
         tag: "INFLUXDB_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
+    env_file: .env

@@ -23,6 +23,9 @@ class DockerSetup:
         self.image_script_dir = image_script_dir
         self.command = command
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
+        self.env_file = os.path.join(
+            self.image_script_dir, self.runtime_props.get(
+            "env_file", ".env"))
         self.container_list = []
 
     def __enter__(self):
@@ -43,6 +46,9 @@ class DockerSetup:
 
             if self.command == Commands.STUB_COVERAGE:
                 cmd+=" --cap-add=SYS_PTRACE"
+
+            if os.path.exists(self.env_file):
+                cmd+=f" --env-file {self.env_file}"
 
             cmd+=f" --name {container_name}"
             cmd+=f" {repo_path}:{tag}"

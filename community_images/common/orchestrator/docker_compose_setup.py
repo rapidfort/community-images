@@ -28,7 +28,7 @@ class DockerComposeSetup:
             "compose_file", "docker-compose.yml"))
         self.source_env_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
-            "env_file", ".env"))
+            "env_file", "docker.env"))
         self.temp_env_file = f"{self.source_env_file}.temp"
 
     def _generate_env_file(self):

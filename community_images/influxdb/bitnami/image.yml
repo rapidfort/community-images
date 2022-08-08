@@ -40,7 +40,7 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    #env_file: .env
+    #env_file: docker.env
     #wait_time_sec: 30
     image_keys:
       influxdb:
@@ -48,4 +48,4 @@ runtimes:
         tag: "INFLUXDB_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
-    env_file: .env
+    env_file: docker.env

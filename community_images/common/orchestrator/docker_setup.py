@@ -25,7 +25,7 @@ class DockerSetup:
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.env_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
-            "env_file", ".env"))
+            "env_file", "docker.env"))
         self.container_list = []
 
     def __enter__(self):

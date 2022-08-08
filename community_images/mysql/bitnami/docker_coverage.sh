@@ -19,7 +19,7 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 
 # get docker host ip
-MYSQL_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
+MYSQL_HOST=$(jq -r '.container_details.mysql.ip_address' < "$JSON_PARAMS")
 
 MYSQL_ROOT_PASSWORD=my_root_password
 

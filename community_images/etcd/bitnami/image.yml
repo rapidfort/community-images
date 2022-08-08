@@ -18,3 +18,32 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`3.5`, `3.5-debian-11`, `3.5.4`, `3.5.4-debian-11-r13`, `latest` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-etcd/blob/3.5.4-debian-11-r13/3.5/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets: 
+  - etcd:
+      input_base_tag: "3.5.4-debian-11-r"
+      output_repo: etcd
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/etcd
+    image_keys:
+      etcd:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      etcd:
+        repository: "ETCD_IMAGE_REPOSITORY"
+        tag: "ETCD_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    env_file: docker.env

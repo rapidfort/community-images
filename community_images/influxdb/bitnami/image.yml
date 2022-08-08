@@ -27,7 +27,6 @@ output_registry:
 repo_sets: 
   - influxdb:
       input_base_tag: "2.3.0-debian-11-r"
-      output_repo: influxdb
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

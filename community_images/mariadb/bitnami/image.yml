@@ -32,22 +32,16 @@ output_registry:
 repo_sets:
   - mariadb:
       input_base_tag: "10.8.3-debian-11-r"
-      output_repo: mariadb
   - mariadb:
       input_base_tag: "10.7.4-debian-11-r"
-      output_repo: mariadb
   - mariadb:
       input_base_tag: "10.6.8-debian-11-r"
-      output_repo: mariadb
   - mariadb:
       input_base_tag: "10.5.16-debian-11-r"
-      output_repo: mariadb
   - mariadb:
       input_base_tag: "10.4.25-debian-11-r"
-      output_repo: mariadb
   - mariadb:
       input_base_tag: "10.3.35-debian-11-r"
-      output_repo: mariadb
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

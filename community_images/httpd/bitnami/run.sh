@@ -92,8 +92,6 @@ test()
     # sleep for 30 sec
     sleep 30
 
-    # exec into container and run coverage script
-    pwd
     docker exec -i "${NAMESPACE}"-apache-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging

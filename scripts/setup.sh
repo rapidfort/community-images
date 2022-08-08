@@ -63,6 +63,10 @@ DC_DESTINATION=/usr/local/bin/docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/${DC_VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DC_DESTINATION
 sudo chmod 755 $DC_DESTINATION
 
+# Install Apache benchmark testing tool
+sudo apt-get update
+apt-get install apache2-utils
+
 
 # upgrade bash, curl, openssl
 sudo apt-get install --only-upgrade bash openssl curl -y

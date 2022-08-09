@@ -1,37 +1,5 @@
 #!/bin/bash
 
-function with_backoff {
-  local max_attempts="${ATTEMPTS-9}"
-  local timeout="${TIMEOUT-5}"
-  local attempt=0
-  local exitCode=0
-
-  while [[ "$attempt" < "$max_attempts" ]]
-  do
-    set +e
-    "$@"
-    exitCode="$?"
-    set -e
-
-    if [[ "$exitCode" == 0 ]]
-    then
-      break
-    fi
-
-    echo "Failure! Retrying in $timeout.." 1>&2
-    sleep "$timeout"
-    attempt=$(( attempt + 1 ))
-    timeout=$(( timeout * 2 ))
-  done
-
-  if [[ "$exitCode" != 0 ]]
-  then
-    echo "You've failed me for the last time! ($*)" 1>&2
-  fi
-
-  return "$exitCode"
-}
-
 run_sys_bench_test()
 {
     MYSQL_HOST=$1
@@ -40,7 +8,7 @@ run_sys_bench_test()
     USE_MYSQL_NATIVE_PASSWORD_PLUGIN=$4
 
     # create schema
-    with_backoff docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
+    docker run --rm -i --network="${DOCKER_NETWORK}" bitnami/mysql:latest \
         mysql -h "${MYSQL_HOST}" -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "CREATE SCHEMA sbtest;"
 
     # create user
@@ -51,11 +19,11 @@ run_sys_bench_test()
         CREATE_USER_STR="CREATE USER sbtest@'%' IDENTIFIED BY 'password';"
     fi
 
-    docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
+    docker run --rm -i --network="${DOCKER_NETWORK}" bitnami/mysql:latest \
         mysql -h "${MYSQL_HOST}" -uroot -p"$MYSQL_ROOT_PASSWORD" -e "${CREATE_USER_STR}"
 
     # grant privelege
-    docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
+    docker run --rm -i --network="${DOCKER_NETWORK}" bitnami/mysql:latest \
         mysql -h "${MYSQL_HOST}" -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
 
     # run sys bench prepare

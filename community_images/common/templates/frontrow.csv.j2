@@ -1,0 +1,6 @@
+source_image_repo_link, github_location, rf_docker_link
+{%- for image in image_list %}
+
+{{ image.source_image_repo_link }}, https://github.com/rapidfort/community-images/tree/main/community_images/{{- image.github_location }}, https://hub.docker.com/r/{{- image.rf_docker_link }}
+
+{%- endfor %}

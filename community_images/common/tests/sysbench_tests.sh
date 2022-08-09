@@ -8,8 +8,8 @@ run_sys_bench_test()
     USE_MYSQL_NATIVE_PASSWORD_PLUGIN=$4
 
     # create schema
-    docker run --rm -i --network="${DOCKER_NETWORK}" bitnami/mysql:latest \
-        bash -c "mysql -h ${MYSQL_HOST} -uroot -p${MYSQL_ROOT_PASSWORD} -e 'CREATE SCHEMA sbtest;'"
+    docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
+        mysql -h "${MYSQL_HOST}" -u root --password="${MYSQL_ROOT_PASSWORD}" -e "CREATE SCHEMA sbtest;"
 
     # create user
     CREATE_USER_STR=
@@ -19,12 +19,12 @@ run_sys_bench_test()
         CREATE_USER_STR="CREATE USER sbtest@'%' IDENTIFIED BY 'password';"
     fi
 
-    docker run --rm -i --network="${DOCKER_NETWORK}" bitnami/mysql:latest \
-        mysql -h "${MYSQL_HOST}" -uroot -p"$MYSQL_ROOT_PASSWORD" -e "${CREATE_USER_STR}"
+    docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
+        mysql -h "${MYSQL_HOST}" -u root --password="$MYSQL_ROOT_PASSWORD" -e "${CREATE_USER_STR}"
 
     # grant privelege
-    docker run --rm -i --network="${DOCKER_NETWORK}" bitnami/mysql:latest \
-        mysql -h "${MYSQL_HOST}" -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
+    docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
+        mysql -h "${MYSQL_HOST}" -u root --password="${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
 
     # run sys bench prepare
     docker run --rm \

@@ -12,7 +12,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
-REPOSITORY=nats
+REPOSITORY=prometheus
 
 if [ "$#" -ne 1 ]; then
     PUBLISH_IMAGE="no"

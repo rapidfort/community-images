@@ -9,7 +9,7 @@ run_sys_bench_test()
 
     # create schema
     docker run --rm -i --network="${DOCKER_NETWORK}" bitnami/mysql:latest \
-        "mysql -h ${MYSQL_HOST} -uroot -p${MYSQL_ROOT_PASSWORD} -e 'CREATE SCHEMA sbtest;'"
+        bash -c "mysql -h ${MYSQL_HOST} -uroot -p${MYSQL_ROOT_PASSWORD} -e 'CREATE SCHEMA sbtest;'"
 
     # create user
     CREATE_USER_STR=

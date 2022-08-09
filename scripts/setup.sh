@@ -64,9 +64,8 @@ sudo curl -L https://github.com/docker/compose/releases/download/${DC_VERSION}/d
 sudo chmod 755 $DC_DESTINATION
 
 # Install Apache benchmark testing tool
-sudo apt-get update
-apt-get install apache2-utils
-
+sudo apt-get install apache2-utils
+sudo apt-get install apache2
 
 # upgrade bash, curl, openssl
 sudo apt-get install --only-upgrade bash openssl curl -y

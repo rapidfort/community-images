@@ -55,6 +55,10 @@ docker_test()
     # get docker host ip
     HTTPD_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
 
+    # Install Apache benchmark testing tool
+    sudo apt-get install apache2-utils
+    sudo apt-get install apache2
+    
     # testing using apache benchmark tool
     ab -t 100 -n 10000 -c 10 HTTPD_HOST
 

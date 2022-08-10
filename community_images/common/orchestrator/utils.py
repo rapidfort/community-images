@@ -26,7 +26,7 @@ class Utils:
         os.makedirs(cert_path, exist_ok=True)
 
         cmd=["openssl", "req", "-newkey", "rsa:4096"]
-        cmd+=["-x509", "-sha256", "-days 1", "-nodes"]
+        cmd+=["-x509", "-sha256", "-days", "3650", "-nodes"]
         cmd+=["-out", f"{cert_path}/server.crt"]
         cmd+=["-keyout", f"{cert_path}/server.key"]
         cmd+=["-subj /C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"]

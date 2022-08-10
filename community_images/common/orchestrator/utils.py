@@ -25,12 +25,12 @@ class Utils:
         # create new dir
         os.makedirs(cert_path, exist_ok=True)
 
-        cmd="openssl req -newkey rsa:4096"
-        cmd+=" -x509 -sha256 -days 1 -nodes"
-        cmd+=f" -out {cert_path}/server.crt"
-        cmd+=f" -keyout {cert_path}/server.key"
-        cmd+=" -subj \"/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com\""
+        cmd=["openssl", "req", "-newkey", "rsa:4096"]
+        cmd+=["-x509", "-sha256", "-days 1", "-nodes"]
+        cmd+=[f" -out {cert_path}/server.crt"]
+        cmd+=[f" -keyout {cert_path}/server.key"]
+        cmd+=["-subj \"/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com\""]
         logging.info(f"cmd: {cmd}")
-        subprocess.check_output(cmd.split())
+        subprocess.check_output(cmd)
 
         return cert_path

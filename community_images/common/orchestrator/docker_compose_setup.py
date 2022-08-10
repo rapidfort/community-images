@@ -5,6 +5,7 @@ import os
 import shutil
 import subprocess
 import time
+from utils import Utils
 
 class DockerComposeSetup:
     """ Docker compose setup context manager """
@@ -30,6 +31,7 @@ class DockerComposeSetup:
             self.image_script_dir, self.runtime_props.get(
             "env_file", "docker.env"))
         self.temp_env_file = f"{self.source_env_file}.temp"
+        self.cert_path = None
 
     def _generate_env_file(self):
 
@@ -56,6 +58,9 @@ class DockerComposeSetup:
         """ create a docker compose namespace and set it up for runner """
 
         self._generate_env_file()
+
+        self.cert_path = Utils.generte_ssl_certs(self.image_script_dir, self.runtime_props.get("tls_certs"))
+
         cmd="docker-compose"
         cmd+=f" --env-file {self.temp_env_file}"
         cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
@@ -94,3 +99,7 @@ class DockerComposeSetup:
 
         # remove temp env file
         os.remove(self.temp_env_file)
+
+        # remove cert dir
+        if self.cert_path:
+            shutil.rmtree(self.cert_path)

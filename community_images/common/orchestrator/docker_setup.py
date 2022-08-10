@@ -3,9 +3,11 @@
 import json
 import logging
 import os
+import shutil
 import subprocess
 import time
 from commands import Commands
+from utils import Utils
 
 class DockerSetup:
     """ Docker setup context manager """
@@ -25,6 +27,7 @@ class DockerSetup:
         self.command = command
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.container_list = []
+        self.cert_path = None
 
     def __enter__(self):
         """ create a docker namespace and set it up for runner """
@@ -33,6 +36,8 @@ class DockerSetup:
         subprocess.check_output(cmd.split())
 
         container_details = {}
+
+        self.cert_path = Utils.generte_ssl_certs(self.image_script_dir, self.runtime_props.get("tls_certs"))
 
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
@@ -118,3 +123,7 @@ class DockerSetup:
         # delete network
         cmd=f"docker network rm {self.namespace_name}"
         subprocess.check_output(cmd.split())
+
+        # remove cert dir
+        if self.cert_path:
+            shutil.rmtree(self.cert_path)

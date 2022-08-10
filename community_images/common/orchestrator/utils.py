@@ -27,8 +27,8 @@ class Utils:
 
         cmd="openssl req -newkey rsa:4096"
         cmd+=" -x509 -sha256 -days 1 -nodes"
-        cmd+=f" -out {cert_dir}/server.crt"
-        cmd+=f" -keyout {cert_dir}/server.key"
+        cmd+=f" -out {cert_path}/server.crt"
+        cmd+=f" -keyout {cert_path}/server.key"
         cmd+=" -subj \"/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com\""
         logging.info(f"cmd: {cmd}")
         subprocess.check_output(cmd.split())

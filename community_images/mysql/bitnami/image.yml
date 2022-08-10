@@ -18,4 +18,36 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`8.0`, `8.0-debian-11`, `8.0.30`, `8.0.30-debian-11-r0`, `latest` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mysql/blob/8.0.30-debian-11-r0/8.0/debian-11/Dockerfile)"
+  - "[`8.0`, `8.0-debian-11`, `8.0.30`, `8.0.30-debian-11-r5`, `latest` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mysql/8.0/debian-11/Dockerfile)"
+  - "[`5.7`, `5.7-debian-11`, `5.7.39`, `5.7.39-debian-11-r5` (5.7/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mysql/5.7/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - mysql:
+      input_base_tag: "8.0.30-debian-11-r"
+  - mysql:
+      input_base_tag: "5.7.39-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/mysql
+    image_keys:
+      mysql:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 60
+    image_keys:
+      mysql:
+        repository: "MYSQL_IMAGE_REPOSITORY"
+        tag: "MYSQL_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    env_file: docker.env

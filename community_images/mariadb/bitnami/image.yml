@@ -18,9 +18,47 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`10.7`, `10.7-debian-11`, `10.7.4`, `10.7.4-debian-11-r0`, `latest` (10.7/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.7.4-debian-11-r0/10.7/debian-11/Dockerfile)"
-  - "[`10.6`, `10.6-debian-11`, `10.6.8`, `10.6.8-debian-11-r0` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.6.8-debian-11-r0/10.6/debian-11/Dockerfile)"
-  - "[`10.5`, `10.5-debian-11`, `10.5.16`, `10.5.16-debian-11-r0` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.5.16-debian-11-r0/10.5/debian-11/Dockerfile)"
-  - "[`10.4`, `10.4-debian-11`, `10.4.25`, `10.4.25-debian-11-r0` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.4.25-debian-11-r0/10.4/debian-11/Dockerfile)"
-  - "[`10.3`, `10.3-debian-11`, `10.3.35`, `10.3.35-debian-11-r0` (10.3/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.3.35-debian-11-r0/10.3/debian-11/Dockerfile)"
-  - "[`10.2`, `10.2-debian-11`, `10.2.44`, `10.2.44-debian-11-r0` (10.2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mariadb/blob/10.2.44-debian-11-r0/10.2/debian-11/Dockerfile)"
+  - "[`10.8`, `10.8-debian-11`, `10.8.3`, `10.8.3-debian-11-r16`, `latest` (10.8/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.8/debian-11/Dockerfile)"
+  - "[`10.7`, `10.7-debian-11`, `10.7.4`, `10.7.4-debian-11-r25` (10.7/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.7/debian-11/Dockerfile)"
+  - "[`10.6`, `10.6-debian-11`, `10.6.8`, `10.6.8-debian-11-r24` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.6/debian-11/Dockerfile)"
+  - "[`10.5`, `10.5-debian-11`, `10.5.16`, `10.5.16-debian-11-r26` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.5/debian-11/Dockerfile)"
+  - "[`10.4`, `10.4-debian-11`, `10.4.25`, `10.4.25-debian-11-r25` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.4/debian-11/Dockerfile)"
+  - "[`10.3`, `10.3-debian-11`, `10.3.35`, `10.3.35-debian-11-r25` (10.3/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.3/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - mariadb:
+      input_base_tag: "10.8.3-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.7.4-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.6.8-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.5.16-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.4.25-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.3.35-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/mariadb
+    image_keys:
+      mariadb:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      mariadb:
+        repository: "MARIADB_IMAGE_REPOSITORY"
+        tag: "MARIADB_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    env_file: docker.env

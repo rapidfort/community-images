@@ -112,7 +112,7 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/oncall/grafana/assets/metrics.png
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/oncall/grafana/assets/cve_reduction.png
 
-[source-image-repo-link]: grafana/oncall
+[source-image-repo-link]: https://hub.docker.com/r/grafana/oncall
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/oncall
 
 [ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml/badge.svg

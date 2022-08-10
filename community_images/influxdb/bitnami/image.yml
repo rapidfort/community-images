@@ -18,7 +18,7 @@ what_is_text: |
 disclaimer: |
   InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
 docker_links:
-  - "* [`2`, `2-debian-11`, `2.3.0`, `2.3.0-debian-11-r5`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-influxdb/blob/2.3.0-debian-11-r5/2/debian-11/Dockerfile)"
+  - "[`2`, `2-debian-11`, `2.3.0`, `2.3.0-debian-11-r16`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/influxdb/2/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
@@ -28,7 +28,6 @@ output_registry:
 repo_sets: 
   - influxdb:
       input_base_tag: "2.3.0-debian-11-r"
-      output_repo: influxdb
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
@@ -41,8 +40,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    #env_file: docker.env
-    #wait_time_sec: 30
     image_keys:
       influxdb:
         repository: "INFLUXDB_IMAGE_REPOSITORY"

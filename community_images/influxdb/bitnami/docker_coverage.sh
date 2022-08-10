@@ -7,4 +7,4 @@ JSON_PARAMS="$1"
 
 JSON=$(cat "$JSON_PARAMS")
 
-echo "Json params for docker compose coverage = $JSON"
+echo "Json params for docker coverage = $JSON"

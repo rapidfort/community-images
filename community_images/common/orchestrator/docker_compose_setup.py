@@ -65,11 +65,19 @@ class DockerComposeSetup:
         # sleep for wait time seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
 
+        # dump logs
+        cmd="docker-compose"
+        cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
+        cmd+=" logs"
+        logging.info(f"cmd: {cmd}")
+        subprocess.check_output(cmd.split())
+
         return {
             "namespace_name": self.namespace_name,
             "release_name": self.release_name,
             "image_tag_details": self.image_tag_details,
-            "project_name": self.namespace_name
+            "project_name": self.namespace_name,
+            "network_name": f"{self.namespace_name}_default"
         }
 
     def __exit__(self, type, value, traceback):

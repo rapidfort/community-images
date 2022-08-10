@@ -67,7 +67,6 @@ echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSI
 sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"
 sudo chmod 755 $DC_DESTINATION
 
-
 # upgrade bash, curl, openssl
 sudo apt-get install --only-upgrade bash openssl curl -y
 bash --version

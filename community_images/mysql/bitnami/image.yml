@@ -1,7 +1,9 @@
 name: mysql
 official_name: MySQL
 official_website: https://www.mysql.com/
-source_image_dh_link: bitnami/mysql
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/mysql
+source_image_repo_link: https://hub.docker.com/r/bitnami/mysql
 rf_docker_link: rapidfort/mysql
 image_workflow_name: mysql_bitnami
 github_location: mysql/bitnami
@@ -16,4 +18,4 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`8.0`, `8.0-debian-11`, `8.0.29`, `8.0.29-debian-11-r0`, `latest` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mysql/blob/8.0.29-debian-11-r0/8.0/debian-11/Dockerfile)"
+  - "[`8.0`, `8.0-debian-11`, `8.0.30`, `8.0.30-debian-11-r0`, `latest` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-mysql/blob/8.0.30-debian-11-r0/8.0/debian-11/Dockerfile)"

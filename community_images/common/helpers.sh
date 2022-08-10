@@ -3,6 +3,10 @@
 set -x
 set -e
 
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/retry_helper.sh
+
 DOCKERHUB_REGISTRY="${DOCKERHUB_REGISTRY:-docker.io}"
 RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -14,17 +18,18 @@ function create_stub()
     local INPUT_REGISTRY=$1
     local INPUT_ACCOUNT=$2
     local REPOSITORY=$3
-    local TAG=$4
+    local OUTPUT_REPOSITORY=$4
+    local TAG=$5
 
     local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
     if [[ "$INPUT_ACCOUNT" == "_" ]]; then
         INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
     fi
 
-    local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}-rfstub
+    local STUB_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}-rfstub
 
-    # Pull docker image
-    docker pull "${INPUT_IMAGE_FULL}"
+    # login to output docker register as input and output docker registry could be different
+    docker login "${DOCKERHUB_REGISTRY}" -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
 
     # Create stub for docker image
     rfstub "${INPUT_IMAGE_FULL}"
@@ -36,19 +41,44 @@ function create_stub()
     docker push "${STUB_IMAGE_FULL}"
 }
 
+function add_sha256_tag()
+{
+    local REPOSITORY=$1
+    local INPUT_TAG=$2
+
+    local FULL_IMAGE_TAG="$REPOSITORY:$INPUT_TAG"
+
+    docker pull "${FULL_IMAGE_TAG}"
+
+    local SHA_TAG
+
+    SHA_TAG=$(docker inspect --format='{{index .RepoDigests 0}}' "${FULL_IMAGE_TAG}")
+
+    IFS=":"
+    # shellcheck disable=SC2162
+    read -a input_arr <<< "$SHA_TAG"
+
+    local SHA256_TAG="${input_arr[1]}"
+
+    local FULL_SHA256_TAG="$REPOSITORY:$SHA256_TAG"
+
+    docker tag "${FULL_IMAGE_TAG}" "${FULL_SHA256_TAG}"
+    docker push "${FULL_SHA256_TAG}"
+}
+
 function add_rolling_tags()
 {
-    REPOSITORY=$1
-    INPUT_TAG=$2 # example: 10.6.8-debian-10-r2
-    IS_LATEST_TAG=$3
+    local REPOSITORY=$1
+    local INPUT_TAG=$2 # example: 10.6.8-debian-10-r2
+    local IS_LATEST_TAG=$3
 
     IFS='-'
     # shellcheck disable=SC2162
     read -a input_arr <<< "$INPUT_TAG"
 
-    version="${input_arr[0]}"
-    os="${input_arr[1]}"
-    os_ver="${input_arr[2]}"
+    local version="${input_arr[0]}"
+    local os="${input_arr[1]}"
+    local os_ver="${input_arr[2]}"
 
     FULL_VER_TAG="$version" # 10.6.8
     declare -a rolling_tags=("$FULL_VER_TAG")
@@ -82,21 +112,22 @@ function harden_image()
     local INPUT_ACCOUNT=$2
     local REPOSITORY=$3
     local TAG=$4
-    local PUBLISH_IMAGE=$5
-    local IS_LATEST_TAG=$6
+    local OUTPUT_REPOSITORY=$5
+    local PUBLISH_IMAGE=$6
+    local IS_LATEST_TAG=$7
 
     local INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
     if [[ "$INPUT_ACCOUNT" == "_" ]]; then
         INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
     fi
 
-    local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}:${TAG}
+    local OUTPUT_IMAGE_FULL=${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}:${TAG}
 
     # Create stub for docker image
     if [[ -f "${SCRIPTPATH}"/.rfignore ]]; then
-        rfharden "${INPUT_IMAGE_FULL}"-rfstub -p "${SCRIPTPATH}"/.rfignore
+        rfharden "${INPUT_IMAGE_FULL}"-rfstub --put-meta --profile "${SCRIPTPATH}"/.rfignore
     else
-        rfharden "${INPUT_IMAGE_FULL}"-rfstub
+        rfharden "${INPUT_IMAGE_FULL}"-rfstub --put-meta
     fi
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
@@ -107,7 +138,8 @@ function harden_image()
         # Push stub to our dockerhub account
         docker push "${OUTPUT_IMAGE_FULL}"
 
-        add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
+        # add rolling tags like move latest tag
+        add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
 
         echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}"
     else
@@ -146,21 +178,51 @@ function build_image()
     local INPUT_ACCOUNT=$2
     local REPOSITORY=$3
     local BASE_TAG=$4
-    local TEST_FUNCTION=$5
-    local PUBLISH_IMAGE=$6
-    local IS_LATEST_TAG=$7
+    local OUTPUT_REPOSITORY=$5
+    local TEST_FUNCTION=$6
+    local PUBLISH_IMAGE=$7
+    local IS_LATEST_TAG=$8
 
-    local TAG RAPIDFORT_TAG NAMESPACE
-    TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    local TAG NAMESPACE
 
-    if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
-        # dont create image for publish mode if tag exists
-        RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+    if [[ "${INPUT_REGISTRY}" = "docker.io" ]]; then
+        local RAPIDFORT_TAG
 
-        if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
-            echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
-            return
+        TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${INPUT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+
+        if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
+            # dont create image for publish mode if tag exists
+            RAPIDFORT_TAG=$(python3 "${SCRIPTPATH}"/../../common/latest_tag.py "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${BASE_TAG}")
+
+            if [[ "${TAG}" = "${RAPIDFORT_TAG}" ]]; then
+                echo "Rapidfort image exists:${RAPIDFORT_TAG}, aborting run"
+                return
+            fi
         fi
+    else
+        TAG="${BASE_TAG}"
+    fi
+
+    if [[ "${INPUT_ACCOUNT}" = "bitnami" ]]; then
+        echo "Embedding RF welcome message in bitnami images"
+        mkdir -p "${SCRIPTPATH}"/temp_docker
+
+        sed "s#@REPO#${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/../../common/Dockerfile.base > "${SCRIPTPATH}"/temp_docker/Dockerfile
+        cp "${SCRIPTPATH}"/../../common/libbitnami.sh "${SCRIPTPATH}"/temp_docker/libbitnami.sh
+        local CWD="${PWD}"
+        cd "${SCRIPTPATH}"/temp_docker
+        docker build . -t "${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}"
+        cd "$CWD"
+
+        rm -rf "${SCRIPTPATH}"/temp_docker
+    else
+        local INPUT_IMAGE_FULL=${INPUT_REGISTRY}/${INPUT_ACCOUNT}/${REPOSITORY}:${TAG}
+        if [[ "$INPUT_ACCOUNT" == "_" ]]; then
+            INPUT_IMAGE_FULL="${INPUT_REGISTRY}/${REPOSITORY}:${TAG}"
+        fi
+
+        # pull image only when we dont build it locally
+        docker pull "${INPUT_IMAGE_FULL}"
     fi
 
     NAMESPACE=$(get_namespace_string "${REPOSITORY}")
@@ -168,17 +230,17 @@ function build_image()
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
     setup_namespace "${NAMESPACE}"
 
-    create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}"
-    "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
-    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
+    create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${OUTPUT_REPOSITORY}" "${TAG}"
+    "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${OUTPUT_REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
+    harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${OUTPUT_REPOSITORY}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
 
     if [[ "${PUBLISH_IMAGE}" = "yes" ]]; then
-        "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${REPOSITORY}" "${TAG}" "${NAMESPACE}"
+        "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${OUTPUT_REPOSITORY}" "${TAG}" "${NAMESPACE}"
     else
         echo "Non publish mode, cant test image as image not published"
     fi
 
-    bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${REPOSITORY} ${TAG}-rfstub"
+    bash -c "${SCRIPTPATH}/../../common/delete_tag.sh ${OUTPUT_REPOSITORY} ${TAG}-rfstub"
     cleanup_namespace "${NAMESPACE}"
     NAMESPACE_TO_CLEANUP=
     echo "Completed image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
@@ -192,6 +254,8 @@ function build_images()
     shift
     local REPOSITORY=$1
     shift
+    local OUTPUT_REPOSITORY=$1
+    shift
     local TEST_FUNCTION=$1
     shift
     local PUBLISH_IMAGE=$1
@@ -204,49 +268,8 @@ function build_images()
         if [[ "$index" = 0 ]]; then
             IS_LATEST_TAG="yes"
         fi
-        build_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" test "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
+        build_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${tag}" "${OUTPUT_REPOSITORY}" test "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
     done
-}
-
-# Retries a command a with backoff.
-#
-# The retry count is given by ATTEMPTS (default 10), the
-# initial backoff timeout is given by TIMEOUT in seconds
-# (default 5.)
-#
-# Successive backoffs double the timeout.
-#
-# Beware of set -e killing your whole script!
-function with_backoff {
-  local max_attempts="${ATTEMPTS-9}"
-  local timeout="${TIMEOUT-5}"
-  local attempt=0
-  local exitCode=0
-
-  while [[ "$attempt" < "$max_attempts" ]]
-  do
-    set +e
-    "$@"
-    exitCode="$?"
-    set -e
-
-    if [[ "$exitCode" == 0 ]]
-    then
-      break
-    fi
-
-    echo "Failure! Retrying in $timeout.." 1>&2
-    sleep "$timeout"
-    attempt=$(( attempt + 1 ))
-    timeout=$(( timeout * 2 ))
-  done
-
-  if [[ "$exitCode" != 0 ]]
-  then
-    echo "You've failed me for the last time! ($*)" 1>&2
-  fi
-
-  return "$exitCode"
 }
 
 function cleanup_certs()

@@ -1,10 +1,11 @@
 const puppeteer = require('puppeteer');
 const process = require('process');
 const util = require('util');
-const fs = require('fs/promises');
+const fsPromise = require('fs/promises');
 const yaml = require('js-yaml')
+const fs = require('fs');
 
-async function takeShots(browser, imageSavePath, imageUrl) {
+async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   const page = await browser.newPage();
 
   await page.setViewport({
@@ -20,8 +21,10 @@ async function takeShots(browser, imageSavePath, imageUrl) {
     name: 'prefers-color-scheme', value: 'light' }]);
 
   // Select light theme
-  await page.waitForSelector("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
-  await page.click("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
+  if(firstShot) {
+    await page.waitForSelector("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
+    await page.click("#App > div:nth-child(1) > div.page.docker-image-page > div > header > div > div > div > div.header__right-view > div");
+  }
 
   await page.waitForSelector('#carousel__container');
   const metrics = await page.$('#carousel__container');
@@ -36,31 +39,41 @@ async function takeShots(browser, imageSavePath, imageUrl) {
     });
 
   await page.close();
-  
-  console.log("screen shots taken");
+
+  console.log("screen shots taken and saved at: ", imageSavePath);
 }
 
 async function main() {
   const imgListPath = process.argv[2]
 
-  const imgList = await fs.readFile(imgListPath, { encoding: 'utf8' });
+  const imgList = await fsPromise.readFile(imgListPath, { encoding: 'utf8' });
   const imgListArray = imgList.split("\n");
   console.log(imgListArray);
 
   const browser = await puppeteer.launch({headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
+  let firstShot=false;
+
   for await (const imagePath of imgListArray) {
-    console.log(imagePath);
-    const imageSavePath = util.format('../community_images/%s/assets', imagePath);
-    console.log(imageSavePath);
+    console.log("image name=", imagePath);
 
-    let imageYmlPath = util.format('../community_images/%s/image.yml', imagePath);
+    try {
+      let imageYmlPath = fs.realpathSync(util.format('../community_images/%s/image.yml', imagePath));
 
-    let imageYmlContents = await fs.readFile(imageYmlPath, { encoding: 'utf8' });
-    let imageYml = await yaml.load(imageYmlContents);
+      const imageSavePath = fs.realpathSync(util.format('../community_images/%s/assets', imagePath));
+      console.log("image save path=", imageSavePath);
 
-    await takeShots(browser, imageSavePath, imageYml.report_url);
+      let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
+      let imageYml = await yaml.load(imageYmlContents);
+      console.log("image url=", imageYml.report_url);
+
+      await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);
+      firstShot=false;
+
+    } catch (err) {
+        continue;
+    }
   }
 
   await browser.close();

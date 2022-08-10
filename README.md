@@ -49,6 +49,12 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Grafana Oncall][ oncall-github-link]| [![dh][dh-rf-badge]][oncall-rf-dh-image-link] | [![rf-h][rf-h-badge]][oncall-rf-link] | [![oncall-image-ft][oncall-ft-badge]][oncall-ft-badge-link] |
 | [InfluxDB™][ influxdb-github-link]| [![dh][dh-rf-badge]][influxdb-rf-dh-image-link] | [![rf-h][rf-h-badge]][influxdb-rf-link] | [![influxdb-image-ft][influxdb-ft-badge]][influxdb-ft-badge-link] |
 | [Etcd][ etcd-github-link]| [![dh][dh-rf-badge]][etcd-rf-dh-image-link] | [![rf-h][rf-h-badge]][etcd-rf-link] | [![etcd-image-ft][etcd-ft-badge]][etcd-ft-badge-link] |
+| [NATS][ nats-github-link]| [![dh][dh-rf-badge]][nats-rf-dh-image-link] | [![rf-h][rf-h-badge]][nats-rf-link] | [![nats-image-ft][nats-ft-badge]][nats-ft-badge-link] |
+| [Redis™ IronBank][ redis-ib-github-link]| [![dh][dh-rf-badge]][redis-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][redis-ib-rf-link] | [![redis-ib-image-ft][redis-ib-ft-badge]][redis-ib-ft-badge-link] |
+| [PostgreSQL IronBank][ postgresql-ib-github-link]| [![dh][dh-rf-badge]][postgresql-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][postgresql-ib-rf-link] | [![postgresql-ib-image-ft][postgresql-ib-ft-badge]][postgresql-ib-ft-badge-link] |
+| [NGINX IronBank][ nginx-ib-github-link]| [![dh][dh-rf-badge]][nginx-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][nginx-ib-rf-link] | [![nginx-ib-image-ft][nginx-ib-ft-badge]][nginx-ib-ft-badge-link] |
+| [Wordpress][ wordpress-github-link]| [![dh][dh-rf-badge]][wordpress-rf-dh-image-link] | [![rf-h][rf-h-badge]][wordpress-rf-link] | [![wordpress-image-ft][wordpress-ft-badge]][wordpress-ft-badge-link] |
+| [RabbitMQ][ rabbitmq-github-link]| [![dh][dh-rf-badge]][rabbitmq-rf-dh-image-link] | [![rf-h][rf-h-badge]][rabbitmq-rf-link] | [![rabbitmq-image-ft][rabbitmq-ft-badge]][rabbitmq-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -96,7 +102,7 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [license]: https://github.com/rapidfort/community-images/blob/main/LICENSE
 [demo]: contrib/demo.gif
 
-[slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=white&color=purple
+[slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/slack-ch72160/shared_invite/zt-1cafpzlyb-9I5He8olcp~FxmpZKxR~CA
 
 
@@ -105,7 +111,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [mariadb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mariadb
 [mariadb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_bitnami.yml/badge.svg
 [mariadb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mariadb_bitnami.yml
-[mariadb-source-dh-link]: https://hub.docker.com/r/bitnami/mariadb
 [mariadb-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmariadb?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [mongodb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/mongodb/bitnami
@@ -113,7 +118,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [mongodb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mongodb
 [mongodb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_bitnami.yml/badge.svg
 [mongodb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mongodb_bitnami.yml
-[mongodb-source-dh-link]: https://hub.docker.com/r/bitnami/mongodb
 [mongodb-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmongodb?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [mysql-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/mysql/bitnami
@@ -121,7 +125,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [mysql-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mysql
 [mysql-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/mysql_bitnami.yml/badge.svg
 [mysql-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/mysql_bitnami.yml
-[mysql-source-dh-link]: https://hub.docker.com/r/bitnami/mysql
 [mysql-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmysql?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [nginx-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nginx/bitnami
@@ -129,7 +132,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [nginx-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nginx
 [nginx-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_bitnami.yml/badge.svg
 [nginx-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nginx_bitnami.yml
-[nginx-source-dh-link]: https://hub.docker.com/r/bitnami/nginx
 [nginx-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnginx?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [postgresql-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/postgresql/bitnami
@@ -137,7 +139,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [postgresql-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql
 [postgresql-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_bitnami.yml/badge.svg
 [postgresql-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_bitnami.yml
-[postgresql-source-dh-link]: https://hub.docker.com/r/bitnami/postgresql
 [postgresql-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fpostgresql?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [redis-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis/bitnami
@@ -145,7 +146,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [redis-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis
 [redis-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_bitnami.yml/badge.svg
 [redis-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_bitnami.yml
-[redis-source-dh-link]: https://hub.docker.com/r/bitnami/redis
 [redis-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fredis?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [redis-cluster-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis-cluster/bitnami
@@ -153,7 +153,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [redis-cluster-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis-cluster
 [redis-cluster-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml/badge.svg
 [redis-cluster-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis-cluster_bitnami.yml
-[redis-cluster-source-dh-link]: https://hub.docker.com/r/bitnami/redis-cluster
 [redis-cluster-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fredis-cluster?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [envoy-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/envoy/bitnami
@@ -161,7 +160,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [envoy-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/envoy
 [envoy-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/envoy_bitnami.yml/badge.svg
 [envoy-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/envoy_bitnami.yml
-[envoy-source-dh-link]: https://hub.docker.com/r/bitnami/envoy
 [envoy-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [fluentd-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/fluentd/bitnami
@@ -169,7 +167,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [fluentd-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/fluentd
 [fluentd-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/fluentd_bitnami.yml/badge.svg
 [fluentd-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/fluentd_bitnami.yml
-[fluentd-source-dh-link]: https://hub.docker.com/r/bitnami/fluentd
 [fluentd-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Ffluentd?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [oncall-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/oncall/grafana
@@ -177,7 +174,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [oncall-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/oncall
 [oncall-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml/badge.svg
 [oncall-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml
-[oncall-source-dh-link]: https://hub.docker.com/r/grafana/oncall
 [oncall-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fgrafana%2Foncall?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [influxdb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/influxdb/bitnami
@@ -185,7 +181,6 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [influxdb-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/influxdb
 [influxdb-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/influxdb_bitnami.yml/badge.svg
 [influxdb-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/influxdb_bitnami.yml
-[influxdb-source-dh-link]: https://hub.docker.com/r/bitnami/influxdb
 [influxdb-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Finfluxdb?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 
 [etcd-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/etcd/bitnami
@@ -193,5 +188,46 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [etcd-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/etcd
 [etcd-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/etcd_bitnami.yml/badge.svg
 [etcd-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/etcd_bitnami.yml
-[etcd-source-dh-link]: https://hub.docker.com/r/bitnami/etcd
 [etcd-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fetcd?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[nats-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nats/bitnami
+[nats-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nats?logo=docker&logoColor=white
+[nats-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nats
+[nats-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml/badge.svg
+[nats-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nats_bitnami.yml
+[nats-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnats?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[redis-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/redis/ironbank
+[redis-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis6-ib?logo=docker&logoColor=white
+[redis-ib-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis6-ib
+[redis-ib-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/redis_ironbank.yml/badge.svg
+[redis-ib-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/redis_ironbank.yml
+[redis-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fredis%2Fredis6?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[postgresql-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/postgresql/ironbank
+[postgresql-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql12-ib?logo=docker&logoColor=white
+[postgresql-ib-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql12-ib
+[postgresql-ib-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ironbank.yml/badge.svg
+[postgresql-ib-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/postgresql_ironbank.yml
+[postgresql-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[nginx-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nginx/ironbank
+[nginx-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nginx-ib?logo=docker&logoColor=white
+[nginx-ib-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/nginx-ib
+[nginx-ib-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/nginx_ironbank.yml/badge.svg
+[nginx-ib-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/nginx_ironbank.yml
+[nginx-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fnginx%2Fnginx?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[wordpress-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/wordpress/bitnami
+[wordpress-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/wordpress?logo=docker&logoColor=white
+[wordpress-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/wordpress
+[wordpress-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/wordpress_bitnami.yml/badge.svg
+[wordpress-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/wordpress_bitnami.yml
+[wordpress-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fwordpress?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[rabbitmq-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/rabbitmq/bitnami
+[rabbitmq-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/rabbitmq?logo=docker&logoColor=white
+[rabbitmq-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/rabbitmq
+[rabbitmq-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/rabbitmq_bitnami.yml/badge.svg
+[rabbitmq-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/rabbitmq_bitnami.yml
+[rabbitmq-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Frabbitmq?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

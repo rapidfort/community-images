@@ -25,13 +25,12 @@ test()
     local IMAGE_REPOSITORY=$1
     local TAG=$2
     local NAMESPACE=$3
-    local HELM_RELEASE="$REPOSITORY"-release
     
     echo "Testing $REPOSITORY"
 
     # update image in docker-compose yml
     sed "s#@IMAGE#${IMAGE_REPOSITORY}:${TAG}#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
-
+    
     # install docker container
     docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up --build -d
     report_pulls "${IMAGE_REPOSITORY}"
@@ -59,4 +58,5 @@ test()
 
 declare -a BASE_TAG_ARRAY=("v1.0.")
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+

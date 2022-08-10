@@ -25,7 +25,6 @@ test()
     local IMAGE_REPOSITORY=$1
     local TAG=$2
     local NAMESPACE=$3
-    local HELM_RELEASE="$REPOSITORY"-release
     
     echo "Testing $REPOSITORY"
 
@@ -54,4 +53,4 @@ test()
 
 declare -a BASE_TAG_ARRAY=("1.14.6-debian-11-r")
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

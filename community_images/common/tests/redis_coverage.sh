@@ -7,3 +7,4 @@ set -e
 
 redis-benchmark --help
 redis-cli --version
+redis-sentinel --version

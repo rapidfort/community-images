@@ -12,6 +12,8 @@ SELECT COUNT(*) FROM users;
 
 SELECT COUNT(*) FROM users WHERE gender = 'male';
 
+SELECT * FROM users WHERE gender = 'male';
+
 SELECT * FROM users LIMIT 15;
 
 DROP TABLE users;

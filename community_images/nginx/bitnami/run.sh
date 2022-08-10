@@ -52,6 +52,9 @@ test()
     # fetch service url and curl to url
     URL=$(minikube service "${HELM_RELEASE}" -n "${NAMESPACE}" --url)
 
+    # sleep 5 after minikube service
+    sleep 5
+
     # curl to http url
     curl "${URL}"
 
@@ -119,6 +122,7 @@ test()
     cleanup_certs
 }
 
-declare -a BASE_TAG_ARRAY=("1.23.0-debian-11-r" "1.22.0-debian-11-r" "1.21.6-debian-11-r")
+declare -a BASE_TAG_ARRAY=("1.23.1-debian-11-r" "1.22.0-debian-11-r" "1.21.6-debian-11-r")
 
-build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"
+

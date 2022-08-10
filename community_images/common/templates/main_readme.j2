@@ -87,7 +87,7 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [license]: https://github.com/rapidfort/community-images/blob/main/LICENSE
 [demo]: contrib/demo.gif
 
-[slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=white&color=purple
+[slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/slack-ch72160/shared_invite/zt-1cafpzlyb-9I5He8olcp~FxmpZKxR~CA
 
 {% for image in image_list %}
@@ -96,6 +96,5 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [ {{- image.name -}} -rf-dh-image-link]: https://hub.docker.com/r/{{- image.rf_docker_link }}
 [ {{- image.name -}} -ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.image_workflow_name -}} .yml/badge.svg
 [ {{- image.name -}} -ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/ {{- image.image_workflow_name -}} .yml
-[ {{- image.name -}} -source-dh-link]: https://hub.docker.com/r/{{- image.source_image_dh_link }}
 [ {{- image.name -}} -rf-link]: {{- image.report_url -}}?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
 {% endfor %}

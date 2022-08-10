@@ -9,7 +9,7 @@ run_sys_bench_test()
 
     # create schema
     docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
-        mysql -h "${MYSQL_HOST}" -u root --password="${MYSQL_ROOT_PASSWORD}" -e "CREATE SCHEMA sbtest;"
+        -- mysql -h "${MYSQL_HOST}" -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "CREATE SCHEMA sbtest;"
 
     # create user
     CREATE_USER_STR=
@@ -20,11 +20,11 @@ run_sys_bench_test()
     fi
 
     docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
-        mysql -h "${MYSQL_HOST}" -u root --password="$MYSQL_ROOT_PASSWORD" -e "${CREATE_USER_STR}"
+        -- mysql -h "${MYSQL_HOST}" -uroot -p"$MYSQL_ROOT_PASSWORD" -e "${CREATE_USER_STR}"
 
     # grant privelege
     docker run --rm -i --network="${DOCKER_NETWORK}" rapidfort/mysql:latest \
-        mysql -h "${MYSQL_HOST}" -u root --password="${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
+        -- mysql -h "${MYSQL_HOST}" -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "GRANT ALL PRIVILEGES ON sbtest.* to sbtest@'%';"
 
     # run sys bench prepare
     docker run --rm \

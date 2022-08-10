@@ -63,7 +63,7 @@ RapidFort’s hardened [rapidfort/nats][rf-dh-image-link] image has been optimiz
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-11`, `2.8.4`, `2.8.4-debian-11-r13`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-nats/blob/2.8.4-debian-11-r13/2/debian-11/Dockerfile)
+* [`2`, `2-debian-11`, `2.8.4`, `2.8.4-debian-11-r26`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/nats/2/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

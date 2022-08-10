@@ -24,7 +24,7 @@ gen_image_files()
   done < "${SCRIPTPATH}"/../image.lst
 }
 
-gen_image_files()
+gen_image_files2()
 {
   while IFS="" read -r p || [ -n "$p" ]
   do
@@ -60,6 +60,7 @@ main()
 {
   gen_main_readme
   gen_image_files
+  gen_image_files2
 }
 
 main

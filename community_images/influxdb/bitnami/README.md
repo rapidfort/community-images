@@ -63,7 +63,7 @@ RapidFort’s hardened [rapidfort/influxdb][rf-dh-image-link] image has been opt
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* * [`2`, `2-debian-11`, `2.3.0`, `2.3.0-debian-11-r5`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-influxdb/blob/2.3.0-debian-11-r5/2/debian-11/Dockerfile)
+* [`2`, `2-debian-11`, `2.3.0`, `2.3.0-debian-11-r16`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/influxdb/2/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

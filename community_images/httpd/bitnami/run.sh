@@ -56,7 +56,7 @@ test()
     cat URLS
 
     # curl to urls
-    while read p;
+    while read -r p;
     do
         curl -k "${p}"
     done <URLS

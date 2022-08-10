@@ -24,9 +24,6 @@ class DockerSetup:
         self.image_script_dir = image_script_dir
         self.command = command
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
-        self.env_file = os.path.join(
-            self.image_script_dir, self.runtime_props.get(
-            "env_file", "docker.env"))
         self.container_list = []
 
     def __enter__(self):
@@ -46,13 +43,30 @@ class DockerSetup:
             # add container_name to image_tag_details
             self.image_tag_details[repo]["container_name"] = container_name
 
+            image_runtime_props = self.runtime_props.get(repo, {})
+
             cmd=f"docker run --rm -d --network={self.namespace_name}"
 
             if self.command == Commands.STUB_COVERAGE:
                 cmd+=" --cap-add=SYS_PTRACE"
 
-            if os.path.exists(self.env_file):
-                cmd+=f" --env-file {self.env_file}"
+            env_file = os.path.join(
+                self.image_script_dir, image_runtime_props.get(
+                    "env_file", "docker.env"))
+
+            if os.path.exists(env_file):
+                cmd+=f" --env-file {env_file}"
+
+            volumes = image_runtime_props.get("volumes", {})
+
+            for src_mnt_rel_path, dst_mnt_path in volumes.items():
+                src_mnt_abs_path = os.path.join(
+                    self.image_script_dir, src_mnt_rel_path)
+
+                if os.path.exists(src_mnt_abs_path):
+                    cmd+=f" -v {src_mnt_abs_path}:{dst_mnt_path}"
+                else:
+                    logging.warning(f"mount path specified but dont exist {src_mnt_abs_path}")
 
             cmd+=f" --name {container_name}"
             cmd+=f" {repo_path}:{tag}"

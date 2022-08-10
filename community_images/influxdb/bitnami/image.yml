@@ -46,4 +46,5 @@ runtimes:
         tag: "INFLUXDB_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
-    env_file: docker.env
+    influxdb:
+      env_file: docker.env

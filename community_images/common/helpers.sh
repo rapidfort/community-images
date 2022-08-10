@@ -141,9 +141,6 @@ function harden_image()
         # add rolling tags like move latest tag
         add_rolling_tags "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}" "${IS_LATEST_TAG}"
 
-        # add sha256 tag for images which just have latest tag
-        add_sha256_tag "${DOCKERHUB_REGISTRY}/${RAPIDFORT_ACCOUNT}/${OUTPUT_REPOSITORY}" "${TAG}"
-
         echo "Hardened images pushed to ${OUTPUT_IMAGE_FULL}"
     else
         echo "Non publish mode"

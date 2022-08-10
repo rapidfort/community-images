@@ -15,10 +15,10 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
+# NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 
-# get mariadb password
-MARIADB_ROOT_PASSWORD=my_root_password
+# # get mariadb password
+# MARIADB_ROOT_PASSWORD=my_root_password
 
 # run pg benchmark container
 # run_sys_bench_test mariadb-master "$MARIADB_ROOT_PASSWORD" "${NETWORK_NAME}" no

@@ -30,4 +30,4 @@ class Utils:
         cmd+=f" -keyout {cert_dir}/server.key"
         cmd+=" -subj \"/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com\""
 
-        return cert_dir
+        return cert_path

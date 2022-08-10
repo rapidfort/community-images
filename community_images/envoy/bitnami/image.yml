@@ -53,5 +53,5 @@ runtimes:
     envoy:
       env_file: docker.env
       volumes:
-        configs/dynamic/bootstrap.yaml:/opt/bitnami/envoy/conf/envoy.yaml
-        configs/dynamic:/etc/envoy
+        configs/dynamic/bootstrap.yaml: /opt/bitnami/envoy/conf/envoy.yaml
+        configs/dynamic: /etc/envoy

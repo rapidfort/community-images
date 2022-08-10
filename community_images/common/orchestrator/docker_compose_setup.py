@@ -59,7 +59,8 @@ class DockerComposeSetup:
 
         self._generate_env_file()
 
-        self.cert_path = Utils.generte_ssl_certs(self.image_script_dir, self.runtime_props.get("tls_certs"))
+        self.cert_path = Utils.generte_ssl_certs(
+            self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         cmd="docker-compose"
         cmd+=f" --env-file {self.temp_env_file}"

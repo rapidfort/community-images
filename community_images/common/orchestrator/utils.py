@@ -11,6 +11,9 @@ class Utils:
     def generte_ssl_certs(image_script_dir, tls_certs):
         """ generate ssl certs based on tls_certs object """
 
+        if not image_script_dir or not tls_certs:
+            return None
+
         generate_certs = tls_certs.get("generate", False)
         if not generate_certs:
             return None

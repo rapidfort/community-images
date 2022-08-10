@@ -29,7 +29,7 @@ class Utils:
         cmd+=["-x509", "-sha256", "-days", "3650", "-nodes"]
         cmd+=["-out", f"{cert_path}/server.crt"]
         cmd+=["-keyout", f"{cert_path}/server.key"]
-        cmd+=["-subj /C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"]
+        cmd+=["\"-subj /C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com\""]
         logging.info(f"cmd: {cmd}")
         subprocess.check_output(cmd)
 

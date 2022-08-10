@@ -41,6 +41,9 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
     image_keys:
       envoy:
         repository: "ENVOY_IMAGE_REPOSITORY"

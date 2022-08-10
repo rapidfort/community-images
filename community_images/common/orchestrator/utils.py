@@ -2,7 +2,7 @@
 
 import os
 import shutil
-
+import subprocess
 
 class Utils:
     """ util class """
@@ -29,5 +29,7 @@ class Utils:
         cmd+=f" -out {cert_dir}/server.crt"
         cmd+=f" -keyout {cert_dir}/server.key"
         cmd+=" -subj \"/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com\""
+        logging.info(f"cmd: {cmd}")
+        subprocess.check_output(cmd.split())
 
         return cert_path

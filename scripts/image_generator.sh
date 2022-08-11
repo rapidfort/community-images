@@ -31,7 +31,7 @@ gen_image_files2()
     # shellcheck disable=SC2001
     RUN_FILE_NAME=$(echo "$p" | sed 's|/|_|g')
     jinja -d community_images/"${p}"/image.yml \
-      -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run_v2.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/"${RUN_FILE_NAME}"_v2.yml
+      -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run_v2.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/"${RUN_FILE_NAME}".yml
   done < "${SCRIPTPATH}"/../image_v2.lst
 }
 echo "Generating main readme"

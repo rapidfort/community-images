@@ -44,7 +44,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: ./community_images/influxdb/bitnami/run.sh yes
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -53,9 +53,14 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name == 'pull_request'
-        run: ./community_images/influxdb/bitnami/run.sh no
-      - name: Run functional test
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
+      - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        run: ./community_images/influxdb/bitnami/functional_test.sh
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/influxdb": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
 

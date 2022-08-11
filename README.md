@@ -55,7 +55,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [NGINX IronBank][ nginx-ib-github-link]| [![dh][dh-rf-badge]][nginx-ib-rf-dh-image-link] | [![rf-h][rf-h-badge]][nginx-ib-rf-link] | [![nginx-ib-image-ft][nginx-ib-ft-badge]][nginx-ib-ft-badge-link] |
 | [Wordpress][ wordpress-github-link]| [![dh][dh-rf-badge]][wordpress-rf-dh-image-link] | [![rf-h][rf-h-badge]][wordpress-rf-link] | [![wordpress-image-ft][wordpress-ft-badge]][wordpress-ft-badge-link] |
 | [RabbitMQ][ rabbitmq-github-link]| [![dh][dh-rf-badge]][rabbitmq-rf-dh-image-link] | [![rf-h][rf-h-badge]][rabbitmq-rf-link] | [![rabbitmq-image-ft][rabbitmq-ft-badge]][rabbitmq-ft-badge-link] |
-| [APACHE][ apache-github-link]| [![dh][dh-rf-badge]][apache-rf-dh-image-link] | [![rf-h][rf-h-badge]][apache-rf-link] | [![apache-image-ft][apache-ft-badge]][apache-ft-badge-link] |
+| [Apache][ apache-github-link]| [![dh][dh-rf-badge]][apache-rf-dh-image-link] | [![rf-h][rf-h-badge]][apache-rf-link] | [![apache-image-ft][apache-ft-badge]][apache-ft-badge-link] |
 
 ### How to use Community Images
 

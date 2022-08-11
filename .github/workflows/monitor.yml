@@ -48,7 +48,7 @@ jobs:
         run: docker pull rapidfort/wordpress
       - name: Pull RabbitMQ
         run: docker pull rapidfort/rabbitmq
-      - name: Pull APACHE
+      - name: Pull Apache
         run: docker pull rapidfort/apache
       - name: Update pull counts
         env:

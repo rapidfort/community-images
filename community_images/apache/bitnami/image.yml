@@ -1,18 +1,18 @@
-name: httpd
-official_name: HTTPD
+name: apache
+official_name: APACHE
 official_website: https://httpd.apache.org/
 source_image_provider: Bitnami
 source_image_repo: docker.io/bitnami/apache
 source_image_repo_link: https://hub.docker.com/r/bitnami/apache
-rf_docker_link: rapidfort/httpd
-image_workflow_name: httpd_bitnami
-github_location: httpd/bitnami
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fhttpd
+rf_docker_link: rapidfort/apache
+image_workflow_name: apache_bitnami
+github_location: apache/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/apache
 
   # install httpd, just replace repository with RapidFort registry
-  $ helm install my-httpd bitnami/apache --set image.repository=rapidfort/httpd
+  $ helm install my-apache bitnami/apache --set image.repository=rapidfort/apache
 what_is_text: |
   The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
 disclaimer: |

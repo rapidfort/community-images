@@ -49,4 +49,5 @@ runtimes:
         tag: "ETCD_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
-    env_file: docker.env
+    etcd:
+      env_file: docker.env

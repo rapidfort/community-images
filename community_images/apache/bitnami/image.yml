@@ -1,0 +1,21 @@
+name: apache
+official_name: Apache
+official_website: https://httpd.apache.org/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/apache
+source_image_repo_link: https://hub.docker.com/r/bitnami/apache
+rf_docker_link: rapidfort/apache
+image_workflow_name: apache_bitnami
+github_location: apache/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/apache
+
+  # install apache, just replace repository with RapidFort registry
+  $ helm install my-apache bitnami/apache --set image.repository=rapidfort/apache
+what_is_text: |
+  The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2.4`, `2.4-debian-11`, `2.4.54`, `2.4.54-debian-11-r17`, `latest` (2.4/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-apache/blob/2.4.54-debian-11-r17/2.4/debian-11/Dockerfile)"

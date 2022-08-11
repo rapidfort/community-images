@@ -51,11 +51,19 @@
 ### docker compose runtime parameters
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
-   | `None` | None | `""` | yes |
-   | `None` | None | `""` | yes |
+   | `compose_file` | docker compose file path | `""` | yes |
+   | `env_file` | environment file for default env variables | `docker.env` | False |
+   | `wait_time_sec` | wait time in seconds after docker-compose up | `30` | False |
+   | `tls_certs.generate` | if tls certs generation is needed true/false | `false` | False |
+   | `tls_certs.out_dir` | output directory relative to image.yml dir to store tls certs, defaults to certs | `certs` | False |
+   | `image_keys.<repo>.repository` | environment variable to specify repository for the repo, as describe in docker-compose.yml | `""` | yes |
+   | `image_keys.<repo>.tag` | environment variable to specify tag for the repo, as describe in docker-compose.yml | `""` | yes |
 
 ### docker runtime parameters
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
-   | `None` | None | `""` | yes |
-   | `None` | None | `""` | yes |
+   | `wait_time_sec` | wait time in seconds after all docker run completes | `30` | False |
+   | `tls_certs.generate` | if tls certs generation is needed true/false | `false` | False |
+   | `tls_certs.out_dir` | output directory relative to image.yml dir to store tls certs, defaults to certs | `certs` | False |
+   | `<repo>.env_file` | repo specific environment file for default env variables | `docker.env` | False |
+   | `<repo>.volumes` | map of input volumet, relative to script dir and mounted volume in container | `""` | yes |

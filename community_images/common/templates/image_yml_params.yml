@@ -105,16 +105,48 @@ k8s_runtime_params:
     value : 'image.tag'
     required: no
 docker_compose_runtime_params:
-  - name: 
-    description:
+  - name: compose_file
+    description: docker compose file path
     value : '""'
-  - name: 
-    description:
+  - name: env_file
+    description: environment file for default env variables
+    value : 'docker.env'
+    required: no
+  - name: wait_time_sec
+    description: wait time in seconds after docker-compose up
+    value : '30'
+    required: no
+  - name: tls_certs.generate
+    description: if tls certs generation is needed true/false
+    value : 'false'
+    required: no
+  - name: tls_certs.out_dir
+    description: output directory relative to image.yml dir to store tls certs, defaults to certs
+    value : 'certs'
+    required: no
+  - name: image_keys.<repo>.repository
+    description: environment variable to specify repository for the repo, as describe in docker-compose.yml
+    value : '""'
+  - name: image_keys.<repo>.tag
+    description: environment variable to specify tag for the repo, as describe in docker-compose.yml
     value : '""'
 docker_runtime_params:
-  - name: 
-    description:
-    value : '""'
-  - name: 
-    description:
+  - name: wait_time_sec
+    description: wait time in seconds after all docker run completes
+    value : '30'
+    required: no
+  - name: tls_certs.generate
+    description: if tls certs generation is needed true/false
+    value : 'false'
+    required: no
+  - name: tls_certs.out_dir
+    description: output directory relative to image.yml dir to store tls certs, defaults to certs
+    value : 'certs'
+    required: no
+  - name: <repo>.env_file
+    description: repo specific environment file for default env variables
+    value : 'docker.env'
+    required: no
+  - name: <repo>.volumes
+    description: map of input volumet, relative to script dir and mounted volume in container
     value : '""'

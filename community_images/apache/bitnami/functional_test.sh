@@ -54,12 +54,12 @@ docker_test()
     sleep 30
 
     # get docker host ip
-    APACHE_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
+    #APACHE_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
 
     # Install Apache benchmark testing tool
     sudo apt-get install apache2-utils
     sudo apt-get install apache2
-    
+
     # testing using apache benchmark tool
     # comment until fixed by @anmol
     # ab -t 100 -n 10000 -c 10 "${APACHE_HOST}"

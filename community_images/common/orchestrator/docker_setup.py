@@ -57,7 +57,7 @@ class DockerSetup:
 
             cmd=f"docker run --rm -d --network={self.namespace_name}"
 
-            if self.entrypoint:
+            if self.entrypoint is not None:
                 cmd+=f" --entrypoint {self.entrypoint}"
 
             if self.command == Commands.STUB_COVERAGE:
@@ -84,7 +84,7 @@ class DockerSetup:
             cmd+=f" --name {container_name}"
             cmd+=f" {repo_path}:{tag}"
 
-            if self.exec_command:
+            if self.exec_command is not None:
                 cmd+=f" {self.exec_command}"
 
             logging.info(f"cmd: {cmd}")

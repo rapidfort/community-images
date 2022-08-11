@@ -34,29 +34,27 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/nats
-    readiness_wait:
-      type: pod
-      pod_name_suffix: -master-0 
+    helm_repo: bitnami/redis
+    readiness_wait_pod_name_suffix: -master-0 
     image_keys:
-      nats:
-        repository: "image.repository"
-        tag: "image.tag"
+      redis: {}
     override_file: "overrides.yml"
   - type: k8s
     script: k8s_tls_coverage.sh
-    helm_repo: bitnami/nats
-    readiness_wait:
-      type: pod
-      pod_name_suffix: -master-0     
+    helm_repo: bitnami/redis
+    readiness_wait_pod_name_suffix: -master-0 
     tls_certs:
       generate: true
       secret_name: localhost-server-tls
       common_name: localhost
+    helm_additional_params:
+       tls.enabled: true 
+       tls.existingSecret: localhost-server-tls
+       tls.certCAFilename: ca.crt
+       tls.certFilename: tls.crt
+       tls.certKeyFilename: tls.key 
     image_keys:
-      nats:
-        repository: "image.repository"
-        tag: "image.tag"
+      redis: {}
     override_file: "overrides.yml"
   - type: docker_compose
     script: dc_coverage.sh

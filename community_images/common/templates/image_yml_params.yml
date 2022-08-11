@@ -79,10 +79,7 @@ k8s_runtime_params:
   - name: helm_repo
     description: "helm repo to use for k8s runtime, ex: 'bitnami/nats'"
     value : '""'
-  - name: readiness_wait.type
-    description: 'pickOne: [deployment, pod]'
-    value : '""'
-  - name: readiness_wait.pod_name_suffix
+  - name: readiness_wait_pod_name_suffix
     description: "only valid for wait_type: pod, defaults to -0"
     value : '-0'
     required: no
@@ -96,6 +93,10 @@ k8s_runtime_params:
   - name: tls_certs.common_name
     description: common name to use in generated tls certs, defaults to localhost
     value : 'localhost'
+  - name: helm_additional_params
+    description: additional key value parameters rendered as --set key=value for helm install command
+    value: '""'
+    required: no
   - name: image_keys.<repo>.repository
     description: key to use for helm install command to specify image repository, needed for multi container system
     value : 'image.repository'

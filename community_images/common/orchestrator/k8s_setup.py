@@ -72,13 +72,14 @@ class K8sSetup:
 
         if not wait_complete:
             try:
-                cmd=f"kubectl wait pods {self.release_name}-0"
+                pod_name_suffix = self.runtime_props.get("readiness_wait_pod_name_suffix", "-0")
+                cmd=f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
                 cmd+=f" -n {self.namespace_name}"
                 cmd+=" --for=condition=ready --timeout=10m"
                 subprocess.check_output(cmd.split())
                 wait_complete = True
             except subprocess.CalledProcessError:
-                logging.info("Wait for pod-0 also failed, reraising error")
+                logging.info(f"Wait for {pod_name_suffix} also failed, reraising error")
                 raise
 
         return {
@@ -107,6 +108,9 @@ class K8sSetup:
 
                 cmd+=f" --set {repository_key}={repository_value}"
                 cmd+=f" --set {tag_key}={tag_value}"
+
+        for key,val in self.runtime_props.get("helm_additional_params", {}).items():
+            cmd+=f" --set {key}={val}"
 
         if self.command != Commands.LATEST_COVERAGE:
             cmd+=f" -f {override_file}"

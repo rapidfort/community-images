@@ -44,6 +44,8 @@ class DockerSetup:
         self.cert_path = Utils.generte_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
+        common_volumes =  self.runtime_props.get("volumes", {})
+
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
             repo_path = tag_details["repo_path"]
@@ -71,6 +73,7 @@ class DockerSetup:
                 cmd+=f" --env-file {env_file}"
 
             volumes = image_runtime_props.get("volumes", {})
+            volumes.update(common_volumes)
 
             for src_mnt_rel_path, dst_mnt_path in volumes.items():
                 src_mnt_abs_path = os.path.join(

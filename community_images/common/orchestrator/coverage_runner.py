@@ -214,25 +214,14 @@ class CoverageRunner:
         """ Common commands runner """
         logging.info("common command runner called")
 
+        runtime_props = {"volumes":{"../../common.tests/common_commands.sh": "/tmp/common_commands.sh"}}
+
         with DockerSetup(
                 namespace_name,
                 release_name,
                 image_tag_details,
-                {},
+                runtime_props,
                 image_script_dir,
                 command,
-                '" "',
-                "sleep infinity") as run_dict:
+                "/tmp/common_commands.sh") as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")
-
-            for _, container_props in run_dict.get("image_tag_details", {}).items():
-                container_name = container_props.get("container_name")
-                if container_name:
-                    common_command_path = os.path.abspath(f"{self.script_dir}/../tests/common_commands.sh")
-                    cmd=f"docker cp {common_command_path}  {container_name}:/tmp/common_commands.sh"
-                    logging.info(f"cmd: {cmd}")
-                    subprocess.check_output(cmd.split())
-
-                    cmd=f"docker exec -i {container_name} /bin/bash -c /tmp/common_commands.sh"
-                    logging.info(f"cmd: {cmd}")
-                    subprocess.check_output(cmd.split())

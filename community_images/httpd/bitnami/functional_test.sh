@@ -61,7 +61,8 @@ docker_test()
     sudo apt-get install apache2
     
     # testing using apache benchmark tool
-    ab -t 100 -n 10000 -c 10 "${HTTPD_HOST}"
+    # comment until fixed by @anmol
+    # ab -t 100 -n 10000 -c 10 "${HTTPD_HOST}"
 
     # clean up docker container
     docker kill "${NAMESPACE}"

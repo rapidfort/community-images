@@ -18,7 +18,9 @@ class DockerSetup:
             image_tag_details,
             runtime_props,
             image_script_dir,
-            command):
+            command,
+            entrypoint=None,
+            exec_command=None):
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
@@ -28,6 +30,8 @@ class DockerSetup:
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.container_list = []
         self.cert_path = None
+        self.entrypoint = entrypoint
+        self.exec_command = exec_command
 
     def __enter__(self):
         """ create a docker namespace and set it up for runner """
@@ -53,6 +57,9 @@ class DockerSetup:
 
             cmd=f"docker run --rm -d --network={self.namespace_name}"
 
+            if self.entrypoint:
+                cmd+=f" --entrypoint {self.entrypoint}"
+
             if self.command == Commands.STUB_COVERAGE:
                 cmd+=" --cap-add=SYS_PTRACE"
 
@@ -76,6 +83,10 @@ class DockerSetup:
 
             cmd+=f" --name {container_name}"
             cmd+=f" {repo_path}:{tag}"
+
+            if self.exec_command:
+                cmd+=f" {self.exec_command}"
+
             logging.info(f"cmd: {cmd}")
             subprocess.check_output(cmd.split())
 

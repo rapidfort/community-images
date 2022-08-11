@@ -220,7 +220,9 @@ class CoverageRunner:
                 image_tag_details,
                 {},
                 image_script_dir,
-                command) as run_dict:
+                command,
+                "",
+                "sleep infinity") as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")
 
             for _, container_props in run_dict.get("image_tag_details", {}).items():

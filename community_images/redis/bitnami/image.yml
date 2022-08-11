@@ -41,7 +41,7 @@ runtimes:
         tag: "image.tag"
     override_file: "overrides.yml"
   - type: k8s
-    script: k8s_coverage.sh
+    script: k8s_tls_coverage.sh
     helm_repo: bitnami/nats
     tls_certs:
       generate: true

@@ -5,6 +5,7 @@ import os
 import subprocess
 import backoff
 from commands import Commands
+from utils import Utils
 
 class K8sSetup:
     """ k8s setup context manager """
@@ -43,6 +44,12 @@ class K8sSetup:
         cert_mgr_path = os.path.abspath(f"{self.script_dir}/../cert_managet_ns.yml")
         cmd=f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
         subprocess.check_output(cmd.split())
+
+        # create tls certs for app
+        Utils.generate_k8s_ssl_certs(
+            self.image_script_dir,
+            self.runtime_props.get("tls_certs", {}),
+            self.namespace_name)
 
         # upgrade helm
         cmd="helm repo update"

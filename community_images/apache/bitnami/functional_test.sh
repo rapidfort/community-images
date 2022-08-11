@@ -62,7 +62,7 @@ docker_test()
     
     # testing using apache benchmark tool
     # comment until fixed by @anmol
-    ab -t 100 -n 10000 -c 10 "${APACHE_HOST}"
+    # ab -t 100 -n 10000 -c 10 "${APACHE_HOST}"
 
     # clean up docker container
     docker kill "${NAMESPACE}"

@@ -1,11 +1,11 @@
-name: HTTPD Run
+name: Apache Run
 
 on:
   pull_request:
     paths:
       - ".github/workflows/**"
       - "community_images/common/**"
-      - "community_images/httpd/bitnami/**"
+      - "community_images/apache/bitnami/**"
     branches:
     - main
   schedule:
@@ -44,7 +44,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: ./community_images/httpd/bitnami/run.sh yes
+        run: ./community_images/apache/bitnami/run.sh yes
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -53,9 +53,9 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name == 'pull_request'
-        run: ./community_images/httpd/bitnami/run.sh no
+        run: ./community_images/apache/bitnami/run.sh no
       - name: Run functional test
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        run: ./community_images/httpd/bitnami/functional_test.sh
+        run: ./community_images/apache/bitnami/functional_test.sh
 

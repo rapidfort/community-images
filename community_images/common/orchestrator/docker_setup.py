@@ -44,7 +44,7 @@ class DockerSetup:
 
         container_details = {}
 
-        self.cert_path = Utils.generte_ssl_certs(
+        self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         common_volumes =  self.runtime_props.get("volumes", {})

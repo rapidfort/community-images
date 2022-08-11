@@ -50,4 +50,5 @@ runtimes:
         tag: "MYSQL_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
-    env_file: docker.env
+    mysql:
+      env_file: docker.env

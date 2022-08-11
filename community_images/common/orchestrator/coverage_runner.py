@@ -223,5 +223,6 @@ class CoverageRunner:
                 runtime_props,
                 image_script_dir,
                 command,
+                False,
                 "/tmp/common_commands.sh") as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")

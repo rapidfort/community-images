@@ -19,6 +19,7 @@ class DockerSetup:
             runtime_props,
             image_script_dir,
             command,
+            daemon=True,
             entrypoint=None,
             exec_command=None):
         self.namespace_name = namespace_name
@@ -30,9 +31,11 @@ class DockerSetup:
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
         self.container_list = []
         self.cert_path = None
+        self.daemon = daemon
         self.entrypoint = entrypoint
         self.exec_command = exec_command
 
+    # pylint: disable=too-many-locals
     def __enter__(self):
         """ create a docker namespace and set it up for runner """
         # create network
@@ -57,7 +60,9 @@ class DockerSetup:
 
             image_runtime_props = self.runtime_props.get(repo, {})
 
-            cmd=f"docker run --rm -d --network={self.namespace_name}"
+            cmd="docker run --rm"
+            cmd+=" -d" if self.daemon else " -i"
+            cmd+=f" --network={self.namespace_name}"
 
             if self.entrypoint is not None:
                 cmd+=f" --entrypoint {self.entrypoint}"
@@ -100,7 +105,8 @@ class DockerSetup:
         # sleep for few seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
 
-        container_details = self._get_docker_ips(container_details)
+        if self.daemon:
+            container_details = self._get_docker_ips(container_details)
 
         return {
             "namespace_name": self.namespace_name,

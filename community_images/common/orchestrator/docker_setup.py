@@ -58,6 +58,7 @@ class DockerSetup:
             cmd=f"docker run --rm -d --network={self.namespace_name}"
 
             if self.entrypoint is not None:
+                entrypoint_str = self.entrypoint or '""'
                 cmd+=f" --entrypoint {self.entrypoint}"
 
             if self.command == Commands.STUB_COVERAGE:

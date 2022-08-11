@@ -99,8 +99,8 @@ class K8sSetup:
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():
             if repo_key in image_keys:
-                repository_key = image_keys[repo_key]["repository"]
-                tag_key = image_keys[repo_key]["tag"]
+                repository_key = image_keys[repo_key].get("repository", "image.repository")
+                tag_key = image_keys[repo_key].get("tag", "image.tag")
 
                 repository_value = tag_details["repo_path"]
                 tag_value = tag_details["tag"]

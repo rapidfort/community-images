@@ -102,10 +102,9 @@ class DockerSetup:
             self.container_list.append(container_name)
             container_details[repo] = container_detail
 
-        # sleep for few seconds
-        time.sleep(self.runtime_props.get("wait_time_sec", 30))
-
         if self.daemon:
+            # sleep for few seconds
+            time.sleep(self.runtime_props.get("wait_time_sec", 30))
             container_details = self._get_docker_ips(container_details)
 
         return {
@@ -136,10 +135,11 @@ class DockerSetup:
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """
         # clean up docker container
-        for container in self.container_list:
-            cmd=f"docker kill {container}"
-            logging.info(f"cmd: {cmd}")
-            subprocess.check_output(cmd.split())
+        if self.daemon:
+            for container in self.container_list:
+                cmd=f"docker kill {container}"
+                logging.info(f"cmd: {cmd}")
+                subprocess.check_output(cmd.split())
 
         # delete network
         cmd=f"docker network rm {self.namespace_name}"

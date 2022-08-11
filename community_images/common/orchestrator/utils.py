@@ -33,7 +33,6 @@ class Utils:
         cmd+=["-out", f"{cert_path}/server.crt"]
         cmd+=["-keyout", f"{cert_path}/server.key"]
         cmd+=["-subj", "/C=SI/ST=Ljubljana/L=Ljubljana/O=Security/OU=IT Department/CN=www.example.com"]
-        logging.info(f"cmd: {cmd}")
         subprocess.check_output(cmd)
 
         return cert_path

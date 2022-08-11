@@ -221,7 +221,7 @@ class CoverageRunner:
                 {},
                 image_script_dir,
                 command,
-                "",
+                " ",
                 "sleep infinity") as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")
 

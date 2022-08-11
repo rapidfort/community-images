@@ -214,7 +214,7 @@ class CoverageRunner:
         """ Common commands runner """
         logging.info("common command runner called")
 
-        runtime_props = {"volumes":{"../../common.tests/common_commands.sh": "/tmp/common_commands.sh"}}
+        runtime_props = {"volumes":{"../../common/tests/common_commands.sh": "/tmp/common_commands.sh"}}
 
         with DockerSetup(
                 namespace_name,

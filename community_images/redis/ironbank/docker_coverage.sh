@@ -14,7 +14,7 @@ IMAGE_REPOSITORY="$RAPIDFORT_ACCOUNT"/redis6-ib
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 # get docker host ip
-REDIS_HOST=$(jq -r '.container_details.redis6-ib.name' < "$JSON_PARAMS")
+REDIS_HOST=$(jq -r '.container_details."redis6-ib".name' < "$JSON_PARAMS")
 
 # run redis-client tests
 docker run --rm -i --network="${NAMESPACE}" \

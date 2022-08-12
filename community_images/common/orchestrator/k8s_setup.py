@@ -73,7 +73,7 @@ class K8sSetup:
         if not wait_complete:
             try:
                 pod_name_suffix = self.runtime_props.get("readiness_wait_pod_name_suffix", "-0")
-                cmd=f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
+                cmd=f"kubectl wait pods {self.release_name}{pod_name_suffix}"
                 cmd+=f" -n {self.namespace_name}"
                 cmd+=" --for=condition=ready --timeout=10m"
                 subprocess.check_output(cmd.split())

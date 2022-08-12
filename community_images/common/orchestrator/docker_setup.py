@@ -4,7 +4,6 @@ import json
 import logging
 import os
 import shutil
-import subprocess
 import time
 from commands import Commands
 from utils import Utils
@@ -40,7 +39,7 @@ class DockerSetup:
         """ create a docker namespace and set it up for runner """
         # create network
         cmd=f"docker network create -d bridge {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         container_details = {}
 
@@ -96,7 +95,7 @@ class DockerSetup:
                 cmd+=f" {self.exec_command}"
 
             logging.info(f"cmd: {cmd}")
-            subprocess.check_output(cmd.split())
+            Utils.run_cmd(cmd.split())
 
             container_detail["name"] = container_name
             self.container_list.append(container_name)
@@ -122,7 +121,7 @@ class DockerSetup:
         for container_detail in container_details.values():
             container_name = container_detail["name"]
             cmd=f"docker inspect {container_name}"
-            docker_inspect_json = subprocess.check_output(cmd.split())
+            docker_inspect_json = Utils.run_cmd(cmd.split())
             docker_inspect_dict = json.loads(docker_inspect_json)
             if len(docker_inspect_dict):
                 docker_inspect0 = docker_inspect_dict[0]
@@ -141,11 +140,11 @@ class DockerSetup:
             for container in self.container_list:
                 cmd=f"docker kill {container}"
                 logging.info(f"cmd: {cmd}")
-                subprocess.check_output(cmd.split())
+                Utils.run_cmd(cmd.split())
 
         # delete network
         cmd=f"docker network rm {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # remove cert dir
         if self.cert_path:

@@ -53,6 +53,9 @@ gen_main_readme()
   jinja -d "${SCRIPTPATH}"/../image_list.yml \
     -f yaml "${SCRIPTPATH}"/../community_images/common/templates/frontrow.csv.j2 > "${SCRIPTPATH}"/../frontrow.csv
 
+  jinja -d "${SCRIPTPATH}"/../community_images/common/templates/image_yml_params.yml \
+    -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_yml_readme.j2 > "${SCRIPTPATH}"/../image_yml.md
+
   rm -f "${SCRIPTPATH}"/../image_list.yml
 }
 

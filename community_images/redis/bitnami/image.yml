@@ -18,8 +18,8 @@ what_is_text: |
 disclaimer: |
   Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
 docker_links:
-  - "[`7.0`, `7.0-debian-11`, `7.0.3`, `7.0.3-debian-11-r0`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis/blob/7.0.3-debian-11-r0/7.0/debian-11/Dockerfile)"
-  - "[`6.2`, `6.2-debian-11`, `6.2.7`, `6.2.7-debian-11-r0` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis/blob/6.2.7-debian-11-r0/6.2/debian-11/Dockerfile)"
+  - "[`7.0`, `7.0-debian-11`, `7.0.4`, `7.0.4-debian-11-r12`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/redis/7.0/debian-11/Dockerfile)"
+  - "[`6.2`, `6.2-debian-11`, `6.2.7`, `6.2.7-debian-11-r26` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/redis/6.2/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
@@ -57,7 +57,6 @@ runtimes:
       redis: {}
     override_file: "overrides.yml"
   - type: docker_compose
-    script: dc_coverage.sh
     compose_file: docker-compose.yml
     tls_certs:
       generate: true
@@ -67,6 +66,5 @@ runtimes:
         repository: "REDIS_IMAGE_REPOSITORY"
         tag: "REDIS_IMAGE_TAG"
   - type: docker
-    script: docker_coverage.sh
     redis:
       env_file: docker.env

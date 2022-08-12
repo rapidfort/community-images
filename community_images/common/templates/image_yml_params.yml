@@ -75,6 +75,7 @@ runtime_params:
   - name: script
     description: script to be called for the runtime
     value : '""'
+    required: no
 k8s_runtime_params:
   - name: helm_repo
     description: "helm repo to use for k8s runtime, ex: 'bitnami/nats'"

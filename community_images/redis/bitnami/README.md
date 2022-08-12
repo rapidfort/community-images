@@ -63,8 +63,8 @@ RapidFort’s hardened [rapidfort/redis][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.0`, `7.0-debian-11`, `7.0.3`, `7.0.3-debian-11-r0`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis/blob/7.0.3-debian-11-r0/7.0/debian-11/Dockerfile)
-* [`6.2`, `6.2-debian-11`, `6.2.7`, `6.2.7-debian-11-r0` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis/blob/6.2.7-debian-11-r0/6.2/debian-11/Dockerfile)
+* [`7.0`, `7.0-debian-11`, `7.0.4`, `7.0.4-debian-11-r12`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/redis/7.0/debian-11/Dockerfile)
+* [`6.2`, `6.2-debian-11`, `6.2.7`, `6.2.7-debian-11-r26` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/redis/6.2/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

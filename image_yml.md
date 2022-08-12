@@ -34,7 +34,7 @@
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
    | `type` | pick from k8s, docker_compose, docker | `pickOne: [k8s, docker_compose, docker]` | yes |
-   | `script` | script to be called for the runtime | `""` | yes |
+   | `script` | script to be called for the runtime | `""` | False |
 
 ### k8s runtime parameters
 | Name                      | Description                                            | Value | Required |

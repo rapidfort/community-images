@@ -63,11 +63,11 @@ RapidFort’s hardened [rapidfort/postgresql][rf-dh-image-link] image has been o
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`14`, `14-debian-11`, `14.4.0`, `14.4.0-debian-11-r0`, `latest` (14/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/14.4.0-debian-11-r0/14/debian-11/Dockerfile)
-* [`13`, `13-debian-11`, `13.7.0`, `13.7.0-debian-11-r1` (13/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/13.7.0-debian-11-r1/13/debian-11/Dockerfile)
-* [`12`, `12-debian-11`, `12.11.0`, `12.11.0-debian-11-r1` (12/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/12.11.0-debian-11-r1/12/debian-11/Dockerfile)
-* [`11`, `11-debian-11`, `11.16.0`, `11.16.0-debian-11-r0` (11/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/11.16.0-debian-11-r0/11/debian-11/Dockerfile)
-* [`10`, `10-debian-11`, `10.21.0`, `10.21.0-debian-11-r0` (10/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-postgresql/blob/10.21.0-debian-11-r0/10/debian-11/Dockerfile)
+* [`14`, `14-debian-11`, `14.5.0`, `14.5.0-debian-11-r0`, `latest` (14/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-11/Dockerfile)
+* [`13`, `13-debian-11`, `13.8.0`, `13.8.0-debian-11-r0` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)
+* [`12`, `12-debian-11`, `12.12.0`, `12.12.0-debian-11-r0` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)
+* [`11`, `11-debian-11`, `11.17.0`, `11.17.0-debian-11-r0` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)
+* [`10`, `10-debian-11`, `10.22.0`, `10.22.0-debian-11-r0` (10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/10/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

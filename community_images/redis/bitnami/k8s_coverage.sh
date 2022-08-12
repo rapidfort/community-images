@@ -25,4 +25,4 @@ kubectl -n "${NAMESPACE}" \
 kubectl run "${RELEASE_NAME}"-client --rm -i \
     --restart='Never' --namespace "${NAMESPACE}" \
     --image rapidfort/redis --command \
-    -- redis-benchmark -h "${RELEASE_NAME}"-master -p 6379 -a "$REDIS_PASSWORD"
+    -- redis-benchmark -h "${RELEASE_NAME}"-master -p 6379 -a "$REDIS_PASSWORD" -n 1000

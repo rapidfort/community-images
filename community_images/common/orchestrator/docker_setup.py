@@ -44,7 +44,7 @@ class DockerSetup:
 
         container_details = {}
 
-        self.cert_path = Utils.generte_ssl_certs(
+        self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         common_volumes =  self.runtime_props.get("volumes", {})
@@ -112,7 +112,9 @@ class DockerSetup:
             "release_name": self.release_name,
             "image_tag_details": self.image_tag_details,
             "network_name": self.namespace_name,
-            "container_details": container_details
+            "container_details": container_details,
+            "image_script_dir": self.image_script_dir,
+            "runtime_props": self.runtime_props
         }
 
     def _get_docker_ips(self, container_details):

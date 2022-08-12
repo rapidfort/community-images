@@ -19,3 +19,44 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`1.xx`, `1.xx-debian-10`, `1.xx.0`, `1.xx.0-debian-10-ryyy`, `latest` (1.xx/debian-10/Dockerfile)](https://github.com/provider/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - redis:
+      input_base_tag: "7.0.3-debian-11-r"
+  - redis:
+      input_base_tag: "6.2.7-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/nats
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      nats:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      redis:
+        repository: "REDIS_IMAGE_REPOSITORY"
+        tag: "REDIS_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    redis:
+      env_file: docker.env
+      volumes:
+        configs/dynamic/bootstrap.yaml: /opt/bitnami/redis/conf/redis.yaml
+        configs/dynamic: /etc/redis

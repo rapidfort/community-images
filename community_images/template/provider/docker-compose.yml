@@ -2,7 +2,7 @@ version: '2'
 
 services:
   template:
-    image: @IMAGE
+    image: ${IMAGE}:${TAG}
     user: root
     cap_add:
       - SYS_PTRACE

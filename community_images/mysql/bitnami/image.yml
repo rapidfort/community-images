@@ -43,12 +43,13 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    wait_time_sec: 60
+    wait_time_sec: 120
     image_keys:
       mysql:
         repository: "MYSQL_IMAGE_REPOSITORY"
         tag: "MYSQL_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
+    wait_time_sec: 120    
     mysql:
       env_file: docker.env

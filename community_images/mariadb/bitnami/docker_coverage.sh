@@ -15,12 +15,12 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-# NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
+NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 
-# # get docker host ip
-# MARIADB_HOST=$(jq -r '.container_details.mariadb.ip_address' < "$JSON_PARAMS")
+# get docker host ip
+MARIADB_HOST=$(jq -r '.container_details.mariadb.ip_address' < "$JSON_PARAMS")
 
-# # get mariadb password
-# MARIADB_ROOT_PASSWORD=my_root_password
+# get mariadb password
+MARIADB_ROOT_PASSWORD=my_root_password
 
-# run_sys_bench_test "$MARIADB_HOST" "$MARIADB_ROOT_PASSWORD" "${NETWORK_NAME}" no
+run_sys_bench_test "$MARIADB_HOST" "$MARIADB_ROOT_PASSWORD" "${NETWORK_NAME}" no

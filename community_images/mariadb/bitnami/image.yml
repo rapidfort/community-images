@@ -55,11 +55,13 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
+    wait_time_sec: 120
     image_keys:
       mariadb:
         repository: "MARIADB_IMAGE_REPOSITORY"
         tag: "MARIADB_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
+    wait_time_sec: 120    
     mariadb:
       env_file: docker.env

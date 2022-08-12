@@ -91,5 +91,5 @@ spec:
             yaml.dump(cert_dict, yaml_stream, Dumper)
 
         cmd=f"kubectl apply -f {cert_yaml_path} --namespace {namespace}"
-        subprocess.check_output(cmd)
+        subprocess.check_output(cmd.split())
         return True

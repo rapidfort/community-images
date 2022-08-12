@@ -18,5 +18,5 @@ kubectl -n "${NAMESPACE}" cp \
 
 # run tls script
 kubectl -n "${NAMESPACE}" \
-    exec -i "${HELM_RELEASE}"-master-0 \
+    exec -i "${RELEASE_NAME}"-master-0 \
     -- /bin/bash -c "cat /tmp/test.redis | REDISCLI_AUTH=\"${REDIS_PASSWORD}\" redis-cli -h localhost --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt --pipe"

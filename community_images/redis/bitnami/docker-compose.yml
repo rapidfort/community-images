@@ -2,7 +2,7 @@ version: '2'
 
 services:
   redis-primary:
-    image: @IMAGE
+    image: ${REDIS_IMAGE_REPOSITORY}:${REDIS_IMAGE_TAG}
     ports:
       - '6379'
     environment:
@@ -15,7 +15,7 @@ services:
       - SYS_PTRACE
 
   redis-secondary:
-    image: @IMAGE
+    image: ${REDIS_IMAGE_REPOSITORY}:${REDIS_IMAGE_TAG}
     ports:
       - '6379'
     depends_on:

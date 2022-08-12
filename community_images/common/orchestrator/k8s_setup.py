@@ -5,6 +5,7 @@ import os
 import subprocess
 import backoff
 from commands import Commands
+from utils import Utils
 
 class K8sSetup:
     """ k8s setup context manager """
@@ -44,6 +45,12 @@ class K8sSetup:
         cmd=f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
         subprocess.check_output(cmd.split())
 
+        # create tls certs for app
+        Utils.generate_k8s_ssl_certs(
+            self.image_script_dir,
+            self.runtime_props.get("tls_certs", {}),
+            self.namespace_name)
+
         # upgrade helm
         cmd="helm repo update"
         subprocess.check_output(cmd.split())
@@ -65,19 +72,22 @@ class K8sSetup:
 
         if not wait_complete:
             try:
-                cmd=f"kubectl wait pods {self.release_name}-0"
+                pod_name_suffix = self.runtime_props.get("readiness_wait_pod_name_suffix", "-0")
+                cmd=f"kubectl wait pods {self.release_name}{pod_name_suffix}"
                 cmd+=f" -n {self.namespace_name}"
                 cmd+=" --for=condition=ready --timeout=10m"
                 subprocess.check_output(cmd.split())
                 wait_complete = True
             except subprocess.CalledProcessError:
-                logging.info("Wait for pod-0 also failed, reraising error")
+                logging.info(f"Wait for {pod_name_suffix} also failed, reraising error")
                 raise
 
         return {
             "namespace_name": self.namespace_name,
             "release_name": self.release_name,
-            "image_tag_details": self.image_tag_details
+            "image_tag_details": self.image_tag_details,
+            "image_script_dir": self.image_script_dir,
+            "runtime_props": self.runtime_props
         }
 
     def prepare_helm_cmd(self):
@@ -92,14 +102,17 @@ class K8sSetup:
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():
             if repo_key in image_keys:
-                repository_key = image_keys[repo_key]["repository"]
-                tag_key = image_keys[repo_key]["tag"]
+                repository_key = image_keys[repo_key].get("repository", "image.repository")
+                tag_key = image_keys[repo_key].get("tag", "image.tag")
 
                 repository_value = tag_details["repo_path"]
                 tag_value = tag_details["tag"]
 
                 cmd+=f" --set {repository_key}={repository_value}"
                 cmd+=f" --set {tag_key}={tag_value}"
+
+        for key,val in self.runtime_props.get("helm_additional_params", {}).items():
+            cmd+=f" --set {key}={val}"
 
         if self.command != Commands.LATEST_COVERAGE:
             cmd+=f" -f {override_file}"

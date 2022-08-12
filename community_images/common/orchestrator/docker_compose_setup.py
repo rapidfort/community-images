@@ -59,7 +59,7 @@ class DockerComposeSetup:
 
         self._generate_env_file()
 
-        self.cert_path = Utils.generte_ssl_certs(
+        self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         cmd="docker-compose"
@@ -83,7 +83,9 @@ class DockerComposeSetup:
             "release_name": self.release_name,
             "image_tag_details": self.image_tag_details,
             "project_name": self.namespace_name,
-            "network_name": f"{self.namespace_name}_default"
+            "network_name": f"{self.namespace_name}_default",
+            "image_script_dir": self.image_script_dir,
+            "runtime_props": self.runtime_props
         }
 
     def __exit__(self, type, value, traceback):

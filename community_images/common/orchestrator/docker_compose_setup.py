@@ -83,7 +83,8 @@ class DockerComposeSetup:
             "release_name": self.release_name,
             "image_tag_details": self.image_tag_details,
             "project_name": self.namespace_name,
-            "network_name": f"{self.namespace_name}_default"
+            "network_name": f"{self.namespace_name}_default",
+            "image_script_dir": self.image_script_dir
         }
 
     def __exit__(self, type, value, traceback):

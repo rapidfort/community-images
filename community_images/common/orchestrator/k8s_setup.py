@@ -85,7 +85,8 @@ class K8sSetup:
         return {
             "namespace_name": self.namespace_name,
             "release_name": self.release_name,
-            "image_tag_details": self.image_tag_details
+            "image_tag_details": self.image_tag_details,
+            "image_script_dir": self.image_script_dir
         }
 
     def prepare_helm_cmd(self):

@@ -113,7 +113,8 @@ class DockerSetup:
             "image_tag_details": self.image_tag_details,
             "network_name": self.namespace_name,
             "container_details": container_details,
-            "image_script_dir": self.image_script_dir
+            "image_script_dir": self.image_script_dir,
+            "runtime_props": self.runtime_props
         }
 
     def _get_docker_ips(self, container_details):

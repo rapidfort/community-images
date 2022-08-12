@@ -100,5 +100,4 @@ spec:
         cmd = " ".join(cmd_array)
         logging.info(f"cmd: {cmd}")
         output_pipe = subprocess.check_output(cmd_array)
-        for line in iter(output_pipe.readline, b''): # b'\n'-separated lines
-            logging.info('%r', line)
+        logging.info("%s", output_pipe.decode("utf-8"))

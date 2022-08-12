@@ -40,11 +40,11 @@
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
    | `helm_repo` | helm repo to use for k8s runtime, ex: 'bitnami/nats' | `""` | yes |
-   | `readiness_wait.type` | pickOne: [deployment, pod] | `""` | yes |
-   | `readiness_wait.pod_name_suffix` | only valid for wait_type: pod, defaults to -0 | `-0` | False |
+   | `readiness_wait_pod_name_suffix` | only valid for wait_type: pod, defaults to -0 | `-0` | False |
    | `tls_certs.generate` | if tls certs generation is needed true/false | `false` | False |
    | `tls_certs.secret_name` | secret name to store tls certs | `""` | yes |
    | `tls_certs.common_name` | common name to use in generated tls certs, defaults to localhost | `localhost` | yes |
+   | `helm_additional_params` | additional key value parameters rendered as --set key=value for helm install command | `""` | False |
    | `image_keys.<repo>.repository` | key to use for helm install command to specify image repository, needed for multi container system | `image.repository` | False |
    | `image_keys.<repo>.tag` | key to use for helm install command to specify image tag, needed for multi container system | `image.tag` | False |
 

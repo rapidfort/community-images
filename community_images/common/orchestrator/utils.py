@@ -100,4 +100,4 @@ spec:
         cmd = " ".join(cmd_array)
         logging.info(f"cmd: {cmd}")
         output = subprocess.check_output(cmd_array)
-        logging.info(output)
+        logging.info(f"{output}")

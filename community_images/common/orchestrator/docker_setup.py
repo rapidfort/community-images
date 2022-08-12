@@ -3,6 +3,7 @@
 import json
 import logging
 import os
+import subprocess
 import shutil
 import time
 from commands import Commands
@@ -121,7 +122,7 @@ class DockerSetup:
         for container_detail in container_details.values():
             container_name = container_detail["name"]
             cmd=f"docker inspect {container_name}"
-            docker_inspect_json = Utils.run_cmd(cmd.split())
+            docker_inspect_json = subprocess.check_output(cmd.split())
             docker_inspect_dict = json.loads(docker_inspect_json)
             if len(docker_inspect_dict):
                 docker_inspect0 = docker_inspect_dict[0]

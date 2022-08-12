@@ -59,10 +59,11 @@ class CoverageRunner:
                 runtime_runner = runtime_runner_map[runtime_type]
 
                 script = runtime_props.get("script")
-                logging.info(f"Running runtime script for {runtime_type}: {script}")
-
-                script_path = os.path.join(image_script_dir, script)
-                logging.info(f"Script abs path to execute: {script_path}")
+                script_path = None
+                if script:
+                    logging.info(f"Running runtime script for {runtime_type}: {script}")
+                    script_path = os.path.join(image_script_dir, script)
+                    logging.info(f"Script abs path to execute: {script_path}")
 
                 # call runner
                 runtime_runner(
@@ -150,7 +151,7 @@ class CoverageRunner:
                     image_script_dir,
                     command
                 ) as run_dict:
-            if os.path.exists(script_path):
+            if script_path and os.path.exists(script_path):
                 json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
                 subprocess.check_output([script_path, json_file_path])
                 os.remove(json_file_path)
@@ -174,7 +175,7 @@ class CoverageRunner:
                 runtime_props,
                 image_script_dir,
                 command) as run_dict:
-            if os.path.exists(script_path):
+            if script_path and os.path.exists(script_path):
                 json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
                 subprocess.check_output([script_path, json_file_path])
                 os.remove(json_file_path)
@@ -198,7 +199,7 @@ class CoverageRunner:
                 runtime_props,
                 image_script_dir,
                 command) as run_dict:
-            if os.path.exists(script_path):
+            if script_path and os.path.exists(script_path):
                 json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
                 subprocess.check_output([script_path, json_file_path])
                 os.remove(json_file_path)

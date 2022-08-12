@@ -20,5 +20,5 @@ NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 # get mysql password
 MYSQL_ROOT_PASSWORD=my_root_password
 
-run sys benchmark container
+# run sys benchmark container
 run_sys_bench_test mysql-master "$MYSQL_ROOT_PASSWORD" "${NETWORK_NAME}" yes

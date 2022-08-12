@@ -22,5 +22,5 @@ MYSQL_HOST=$(jq -r '.container_details.mysql.ip_address' < "$JSON_PARAMS")
 
 MYSQL_ROOT_PASSWORD=my_root_password
 
-run sys bench test
+# run sys bench test
 run_sys_bench_test "$MYSQL_HOST" "$MYSQL_ROOT_PASSWORD" "${NETWORK_NAME}" yes

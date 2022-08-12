@@ -31,9 +31,9 @@ runtimes:
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      redis6:
+      redis6-ib:
         repository: "REDIS_IMAGE_REPOSITORY"
         tag: "REDIS_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
-    redis6: {}
+    redis6-ib: {}

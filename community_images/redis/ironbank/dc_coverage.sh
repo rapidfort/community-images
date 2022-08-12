@@ -20,4 +20,4 @@ docker exec -i "${CONTAINER_NAME}" bash -c "cat /tmp/test.redis | redis-cli"
 docker exec -i "${CONTAINER_NAME}" bash -c "/tmp/redis_coverage.sh"
 
 # run redis benchmark
-docker exec -i "${CONTAINER_NAME}" bash -c redis-benchmark -a "$REDIS_PASSWORD" -n 1000 -c 10
+docker exec -i "${CONTAINER_NAME}" bash -c redis-benchmark -h localhost -p 6379 -a "$REDIS_PASSWORD" -n 1000 -c 10

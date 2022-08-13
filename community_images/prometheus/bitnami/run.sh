@@ -12,7 +12,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami
-REPOSITORY=prometheus
+REPOSITORY=kube-prometheus
 
 if [ "$#" -ne 1 ]; then
     PUBLISH_IMAGE="no"
@@ -32,7 +32,7 @@ test()
     helm repo update
 
     # Install helm
-    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set image.tag="${TAG}" --set image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
+    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${REPOSITORY}" --namespace "${NAMESPACE}" --set prometheus.image.tag="${TAG}" --set prometheus.image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
     report_pulls "${IMAGE_REPOSITORY}"
 
     # waiting for pod to be ready

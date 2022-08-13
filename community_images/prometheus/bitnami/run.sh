@@ -48,6 +48,11 @@ test()
     # run command on cluster
     kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
 
+    PROMETHEUS_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
+    PROMETHEUS_PORT=9090
+
+    test_prometheus "${NAMESPACE}" "${PROMETHEUS_SERVER}" "${PROMETHEUS_PORT}"
+
     # bring down helm install
     helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 

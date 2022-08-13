@@ -1,5 +1,6 @@
-FROM python:3.6.1-alpine
-ADD ./flask_app /application
+#FROM python:3.6.1-alpine
+FROM python:3.10.6-alpine3.15
+ADD . /application
 WORKDIR /application
 RUN set -e; \
 	apk add --no-cache --virtual .build-deps \
@@ -7,6 +8,7 @@ RUN set -e; \
 		libc-dev \
 		linux-headers \
 	; \
+   pip install --upgrade pip; \
 	pip install -r requirements.txt; \
 	apk del .build-deps;
 EXPOSE 5000

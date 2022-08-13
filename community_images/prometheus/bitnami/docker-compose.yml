@@ -1,0 +1,31 @@
+version: '2'
+
+volumes:
+    prometheus_data: {}
+      #    grafana_data: {}
+
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./config/prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    expose:
+      - 9090
+    depends_on:
+      - webapp
+    ports:
+      - 9090:9090
+
+  webapp:
+    image: myflaskapp
+    container_name: webapp 
+    expose:
+      - 5000
+    ports:
+      - 8888:5000
+    volumes:
+      - .:/application

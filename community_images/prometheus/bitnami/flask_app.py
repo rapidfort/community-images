@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, Response
-from utils.middleware import setup_metrics
+from helpers.middleware import setup_metrics
 import prometheus_client
 
 CONTENT_TYPE_LATEST = str('text/plain; version=0.0.4; charset=utf-8')

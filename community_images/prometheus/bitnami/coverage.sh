@@ -6,6 +6,9 @@ set -x
 # shellcheck disable=SC1091
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/retry_helper.sh
+
 function test_prometheus() {
     local NAMESPACE=$1
     local PROMETHEUS_SERVER=$2
@@ -18,13 +21,13 @@ function test_prometheus() {
     # wait for flask app pod to come up
     kubectl wait pods "${FLASK_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     # port forward the pod to the host machine
-    kubectl port-forward "${FLASK_POD_NAME}" "${FLASK_LOCAL_PORT}":5000
+    kubectl port-forward "${FLASK_POD_NAME}" "${FLASK_LOCAL_PORT}":5000 --namespace "${NAMESPACE}" &
 
     # hit the flaskapp endpoints so that prometheus metrics are published
     for i in {1..10}; do
         echo "attempt $i"
-        curl -L http://localhost:"${FLASK_LOCAL_PORT}"/test
-        curl -L http://localhost:"${FLASK_LOCAL_PORT}"/test1
+        with_backoff curl -L http://localhost:"${FLASK_LOCAL_PORT}"/test
+        with_backoff curl -L http://localhost:"${FLASK_LOCAL_PORT}"/test1
         sleep 1
     done
 

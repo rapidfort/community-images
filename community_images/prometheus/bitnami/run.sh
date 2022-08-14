@@ -9,6 +9,8 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/coverage.sh
 
 INPUT_REGISTRY=docker.io
 INPUT_ACCOUNT=bitnami

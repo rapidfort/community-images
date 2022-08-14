@@ -8,9 +8,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
-HELM_RELEASE=rf-nats
+HELM_RELEASE=rf-prometheus
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
-REPOSITORY=nats
+REPOSITORY=prometheus
 IMAGE_REPOSITORY="$RAPIDFORT_ACCOUNT"/"$REPOSITORY"
 
 k8s_test()
@@ -19,41 +19,26 @@ k8s_test()
     setup_namespace "${NAMESPACE}"
 
     # install helm
-    with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository="$IMAGE_REPOSITORY" --set image.tag=latest --namespace "${NAMESPACE}"
+    #with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository="$IMAGE_REPOSITORY" --set image.tag=latest --namespace "${NAMESPACE}"
+    kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":"${TAG}" --namespace "${NAMESPACE}" --privileged
+    # wait for prometheus pod to come up
+    kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     report_pulls "${IMAGE_REPOSITORY}"
 
     # wait for pods
     kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
-    NATS_USER=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 user | awk '{print $2}' | tr -d '"')
-    NATS_PASS=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 password | awk '{print $2}' | tr -d '"')
-    echo -e "Client credentials:\n\tUser: $NATS_USER\n\tPassword: $NATS_PASS"
+    PROMETHEUS_SERVER=$(kubectl get pod "${HELM_RELEASE}" -n "${NAMESPACE}" --template '{{.status.podIP}}')
+    PROMETHEUS_PORT=9090
 
-    kubectl run nats-release-client --restart='Never' --env="NATS_USER=$NATS_USER" --env="NATS_PASS=$NATS_PASS" --image docker.io/bitnami/golang --namespace "${NAMESPACE}" --command -- sleep infinity
-    # wait for nats client to come up
-    kubectl wait pods nats-release-client -n "${NAMESPACE}" --for=condition=ready --timeout=10m
-    echo "#!/bin/bash
-    GO111MODULE=off go get github.com/nats-io/nats.go
-    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go install && cd || exit
-    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-echo && go install && cd || exit
-    nats-echo -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 SomeSubject &
-    nats-pub -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 -reply Hi SomeSubject 'Hi everyone'" > "$SCRIPTPATH"/commands.sh
+    test_prometheus "${NAMESPACE}" "${PROMETHEUS_SERVER}" "${PROMETHEUS_PORT}"
 
-    chmod +x "$SCRIPTPATH"/commands.sh
-    POD_NAME="nats-release-client"
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/commands.sh "${POD_NAME}":/tmp/common_commands.sh
-
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- bash -c "/tmp/common_commands.sh"
-
-    # delete the generated commands.sh
-    rm "$SCRIPTPATH"/commands.sh
+    # bring down the pod
+    kubectl delete pod "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 
     # log pods
     kubectl -n "${NAMESPACE}" get pods
     kubectl -n "${NAMESPACE}" get svc
-
-    # delete cluster
-    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 
     # delete pvc
     kubectl -n "${NAMESPACE}" delete pvc --all

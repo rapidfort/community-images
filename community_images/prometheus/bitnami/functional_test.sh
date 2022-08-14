@@ -8,6 +8,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/helpers.sh
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/coverage.sh
+
 HELM_RELEASE=rf-prometheus
 NAMESPACE=$(get_namespace_string "${HELM_RELEASE}")
 REPOSITORY=prometheus
@@ -24,9 +27,6 @@ k8s_test()
     # wait for prometheus pod to come up
     kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     report_pulls "${IMAGE_REPOSITORY}"
-
-    # wait for pods
-    kubectl wait pods "${HELM_RELEASE}"-0 -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
     PROMETHEUS_SERVER=$(kubectl get pod "${HELM_RELEASE}" -n "${NAMESPACE}" --template '{{.status.podIP}}')
     PROMETHEUS_PORT=9090

@@ -11,9 +11,8 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 
 INPUT_REGISTRY=docker.io
-INPUT_ACCOUNT=bitnami
+INPUT_ACCOUNT=prom
 REPOSITORY=prometheus
-SP_REPO=kube-prometheus
 
 if [ "$#" -ne 1 ]; then
     PUBLISH_IMAGE="no"
@@ -33,7 +32,11 @@ test()
     helm repo update
 
     # Install helm
-    with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${SP_REPO}" --namespace "${NAMESPACE}" --set prometheus.image.tag="${TAG}" --set prometheus.image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
+    #with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${SP_REPO}" --namespace "${NAMESPACE}" --set prometheus.image.tag="${TAG}" --set prometheus.image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
+    kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":"${TAG}" --namespace "${NAMESPACE}"
+    # wait for publisher pod to come up
+    kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+
     report_pulls "${IMAGE_REPOSITORY}"
 
     # waiting for pod to be ready
@@ -80,6 +83,7 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-declare -a BASE_TAG_ARRAY=("2.37.0-debian-11-r")
+#declare -a BASE_TAG_ARRAY=("2.37.0-debian-11-r")
+declare -a BASE_TAG_ARRAY=("v2.37.")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

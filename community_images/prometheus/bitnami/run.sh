@@ -44,13 +44,13 @@ test()
     # kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
 
     # get pod name
-    POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
+    #POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
 
     # copy common_commands.sh into container
-    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${POD_NAME}":/tmp/common_commands.sh
+    kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${HELM_RELEASE}":/tmp/common_commands.sh
 
     # run command on cluster
-    kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/common_commands.sh"
+    kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}" -- /bin/bash -c "/tmp/common_commands.sh"
 
     PROMETHEUS_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
     PROMETHEUS_PORT=9090
@@ -58,7 +58,7 @@ test()
     test_prometheus "${NAMESPACE}" "${PROMETHEUS_SERVER}" "${PROMETHEUS_PORT}"
 
     # bring down helm install
-    helm delete "${HELM_RELEASE}" --namespace "${NAMESPACE}"
+    kubectl delete pod "${HELM_RELEASE}" --namespace "${NAMESPACE}"
 
     # delete the PVC associated
     kubectl -n "${NAMESPACE}" delete pvc --all

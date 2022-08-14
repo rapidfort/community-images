@@ -15,7 +15,7 @@ function test_prometheus() {
     FLASK_LOCAL_PORT=9999
 
     kubectl run "${FLASK_POD_NAME}" --restart='Never' --image myflaskapp --namespace "${NAMESPACE}"
-    # wait for publisher pod to come up
+    # wait for flask app pod to come up
     kubectl wait pods "${FLASK_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     # port forward the pod to the host machine
     kubectl port-forward "${FLASK_POD_NAME}" "${FLASK_LOCAL_PORT}":5000

@@ -34,14 +34,14 @@ test()
     # Install helm
     #with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${SP_REPO}" --namespace "${NAMESPACE}" --set prometheus.image.tag="${TAG}" --set prometheus.image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
     kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":"${TAG}" --namespace "${NAMESPACE}"
-    # wait for publisher pod to come up
+    # wait for prometheus pod to come up
     kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
     report_pulls "${IMAGE_REPOSITORY}"
 
-    # waiting for pod to be ready
-    echo "waiting for pod to be ready"
-    kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
+    # # waiting for pod to be ready
+    # echo "waiting for pod to be ready"
+    # kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
 
     # get pod name
     POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")

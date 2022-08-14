@@ -10,13 +10,24 @@ RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/retry_helper.sh
 
+function get_unused_port() {
+    while
+     port=$(shuf -n 1 -i 49152-65535)
+     netstat -atun | grep -q "$port"
+    do
+     continue
+    done
+
+    echo "$port"
+}
+
 function test_prometheus() {
     local NAMESPACE=$1
     local PROMETHEUS_SERVER=$2
     local PROMETHEUS_PORT=$3
 
     FLASK_POD_NAME="flaskapp"
-    FLASK_LOCAL_PORT=9999
+    FLASK_LOCAL_PORT=get_unused_port
 
     kubectl run "${FLASK_POD_NAME}" --restart='Never' --image "${RAPIDFORT_ACCOUNT}"/flaskapp --namespace "${NAMESPACE}"
     # wait for flask app pod to come up

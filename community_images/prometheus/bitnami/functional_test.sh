@@ -20,7 +20,7 @@ k8s_test()
 
     # install helm
     #with_backoff helm install "${HELM_RELEASE}" bitnami/"$REPOSITORY" --set image.repository="$IMAGE_REPOSITORY" --set image.tag=latest --namespace "${NAMESPACE}"
-    kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":"${TAG}" --namespace "${NAMESPACE}" --privileged
+    kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":latest --namespace "${NAMESPACE}" --privileged
     # wait for prometheus pod to come up
     kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     report_pulls "${IMAGE_REPOSITORY}"

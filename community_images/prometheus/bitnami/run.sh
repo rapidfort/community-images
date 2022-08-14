@@ -30,11 +30,6 @@ test()
     local HELM_RELEASE="$REPOSITORY"-release
     echo "Testing $REPOSITORY"
 
-    # upgrade helm
-    helm repo update
-
-    # Install helm
-    #with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${SP_REPO}" --namespace "${NAMESPACE}" --set prometheus.image.tag="${TAG}" --set prometheus.image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
     kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":"${TAG}" --namespace "${NAMESPACE}" --privileged
     # wait for prometheus pod to come up
     kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m

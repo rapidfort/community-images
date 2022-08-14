@@ -11,7 +11,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 
 INPUT_REGISTRY=docker.io
-INPUT_ACCOUNT=prom
+INPUT_ACCOUNT=bitnami
 REPOSITORY=prometheus
 
 if [ "$#" -ne 1 ]; then
@@ -84,7 +84,7 @@ test()
     rm -rf "${SCRIPTPATH}"/docker-compose.yml
 }
 
-#declare -a BASE_TAG_ARRAY=("2.37.0-debian-11-r")
-declare -a BASE_TAG_ARRAY=("v2.37.")
+declare -a BASE_TAG_ARRAY=("2.37.0-debian-11-r")
+#declare -a BASE_TAG_ARRAY=("v2.37.")
 
 build_images "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${REPOSITORY}" test "${PUBLISH_IMAGE}" "${BASE_TAG_ARRAY[@]}"

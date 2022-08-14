@@ -67,9 +67,7 @@ function test_prometheus() {
     # delete the cloned directory
     rm -rf "${SCRIPTPATH}"/docker-python-chromedriver
 
-    # kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish.py "${PUBLISHER_POD_NAME}":/tmp/publish.py
-    # chmod +x "$SCRIPTPATH"/publish_commands.sh
-    # kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
-
-    # kubectl -n "${NAMESPACE}" exec -i "${PUBLISHER_POD_NAME}" -- bash -c "/tmp/publish_commands.sh"
+    # delete the pods
+    kubectl delete pod "${FLASK_POD_NAME}" --namespace "${NAMESPACE}"
+    kubectl delete pod "${CHROME_POD}" --namespace "${NAMESPACE}"
 }

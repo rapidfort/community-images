@@ -33,10 +33,9 @@ test()
 
     # Install helm
     #with_backoff helm install "${HELM_RELEASE}" "${INPUT_ACCOUNT}"/"${SP_REPO}" --namespace "${NAMESPACE}" --set prometheus.image.tag="${TAG}" --set prometheus.image.repository="${IMAGE_REPOSITORY}" -f "${SCRIPTPATH}"/overrides.yml
-    kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":"${TAG}" --namespace "${NAMESPACE}"
+    kubectl run "${HELM_RELEASE}" --restart='Never' --image "${IMAGE_REPOSITORY}":"${TAG}" --namespace "${NAMESPACE}" --privileged
     # wait for prometheus pod to come up
     kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
-
     report_pulls "${IMAGE_REPOSITORY}"
 
     # # waiting for pod to be ready
@@ -52,7 +51,9 @@ test()
     # run command on cluster
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}" -- /bin/bash -c "/tmp/common_commands.sh"
 
-    PROMETHEUS_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
+    PROMETHEUS_SERVER=$(kubectl get pod "${HELM_RELEASE}" -n "${NAMESPACE}" --template '{{.status.podIP}}')
+    #PROMETHEUS_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
+
     PROMETHEUS_PORT=9090
 
     test_prometheus "${NAMESPACE}" "${PROMETHEUS_SERVER}" "${PROMETHEUS_PORT}"

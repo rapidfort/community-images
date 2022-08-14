@@ -11,14 +11,20 @@ RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 . "${SCRIPTPATH}"/../../common/retry_helper.sh
 
 function get_unused_port() {
-    while
-     port=$(shuf -n 1 -i 49152-65535)
-     netstat -atun | grep -q "$port"
-    do
-     continue
-    done
-
-    echo "$port"
+    netstat -aln | awk '
+      $6 == "LISTEN" {
+        if ($4 ~ "[.:][0-9]+$") {
+          split($4, a, /[:.]/);
+          port = a[length(a)];
+          p[port] = 1
+        }
+      }
+      END {
+        for (i = 3000; i < 65000 && p[i]; i++){};
+        if (i == 65000) {exit 1};
+        print i
+      }
+    '
 }
 
 function test_prometheus() {
@@ -27,7 +33,7 @@ function test_prometheus() {
     local PROMETHEUS_PORT=$3
 
     FLASK_POD_NAME="flaskapp"
-    FLASK_LOCAL_PORT=get_unused_port
+    FLASK_LOCAL_PORT=$(get_unused_port)
 
     kubectl run "${FLASK_POD_NAME}" --restart='Never' --image "${RAPIDFORT_ACCOUNT}"/flaskapp --namespace "${NAMESPACE}"
     # wait for flask app pod to come up

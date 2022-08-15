@@ -51,12 +51,6 @@ class K8sSetup:
             self.runtime_props.get("tls_certs", {}),
             self.namespace_name)
 
-        # create tls certs for app
-        Utils.generate_k8s_ssl_certs(
-            self.image_script_dir,
-            self.runtime_props.get("tls_certs", {}),
-            self.namespace_name)
-
         # upgrade helm
         cmd="helm repo update"
         Utils.run_cmd(cmd.split())

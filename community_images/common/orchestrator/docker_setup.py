@@ -3,7 +3,6 @@
 import json
 import logging
 import os
-import shutil
 import subprocess
 import shutil
 import time
@@ -42,13 +41,6 @@ class DockerSetup:
         # create network
         cmd=f"docker network create -d bridge {self.namespace_name}"
         Utils.run_cmd(cmd.split())
-
-        container_details = {}
-
-        self.cert_path = Utils.generate_ssl_certs(
-            self.image_script_dir, self.runtime_props.get("tls_certs", {}))
-
-        common_volumes =  self.runtime_props.get("volumes", {})
 
         container_details = {}
 

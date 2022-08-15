@@ -8,8 +8,6 @@ JSON_PARAMS="$1"
 SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-PG_IMAGE_REPO=$(jq -r '.image_tag_details.postgresql.repo_path' < "$JSON_PARAMS")
-PG_IMAGE_TAG=$(jq -r '.image_tag_details.postgresql.tag' < "$JSON_PARAMS")
 
 # get postgresql passwordk
 POSTGRES_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}" -o jsonpath="{.data.postgres-password}" | base64 --decode)
@@ -33,6 +31,6 @@ kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \
 # run postgres benchmark
 kubectl run "${RELEASE_NAME}"-client --rm -i \
     --restart='Never' --namespace "${NAMESPACE}" \
-    --image "${PG_IMAGE_REPO}:${PG_IMAGE_TAG}" \
+    --image rapidfort/postgresql:latest \
     --env="PGPASSWORD=$POSTGRES_PASSWORD" --command \
     -- pgbench --host "${RELEASE_NAME}" -U postgres -d postgres -p 5432 -i -s 50

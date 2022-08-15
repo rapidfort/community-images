@@ -149,19 +149,11 @@ class DockerSetup:
             for container in self.container_list:
                 cmd=f"docker kill {container}"
                 logging.info(f"cmd: {cmd}")
-<<<<<<< HEAD
-                subprocess.check_output(cmd.split())
-
-        # delete network
-        cmd=f"docker network rm {self.namespace_name}"
-        subprocess.check_output(cmd.split())
-=======
                 Utils.run_cmd(cmd.split())
 
         # delete network
         cmd=f"docker network rm {self.namespace_name}"
         Utils.run_cmd(cmd.split())
->>>>>>> main
 
         # remove cert dir
         if self.cert_path:

@@ -71,11 +71,7 @@ class K8sSetup:
             cmd=f"kubectl wait deployments {self.release_name}"
             cmd+=f" -n {self.namespace_name}"
             cmd+=" --for=condition=Available=True --timeout=10m"
-<<<<<<< HEAD
-            subprocess.check_output(cmd.split())
-=======
             Utils.run_cmd(cmd.split())
->>>>>>> main
             wait_complete = True
         except subprocess.CalledProcessError:
             logging.info("Wait deployment command failed, try waiting for pod-0")
@@ -86,11 +82,7 @@ class K8sSetup:
                 cmd=f"kubectl wait pods {self.release_name}{pod_name_suffix}"
                 cmd+=f" -n {self.namespace_name}"
                 cmd+=" --for=condition=ready --timeout=10m"
-<<<<<<< HEAD
-                subprocess.check_output(cmd.split())
-=======
                 Utils.run_cmd(cmd.split())
->>>>>>> main
                 wait_complete = True
             except subprocess.CalledProcessError:
                 logging.info(f"Wait for {pod_name_suffix} also failed, reraising error")

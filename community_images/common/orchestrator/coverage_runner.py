@@ -5,11 +5,12 @@ import logging
 import os
 import random
 import string
-import subprocess
 from commands import Commands
 from k8s_setup import K8sSetup
 from docker_compose_setup import DockerComposeSetup
 from docker_setup import DockerSetup
+from utils import Utils
+
 class CoverageRunner:
     """ Coverage Runner class """
 
@@ -153,7 +154,7 @@ class CoverageRunner:
                 ) as run_dict:
             if script_path and os.path.exists(script_path):
                 json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
-                subprocess.check_output([script_path, json_file_path])
+                Utils.run_cmd([script_path, json_file_path])
                 os.remove(json_file_path)
 
     def _docker_compose_runner(
@@ -177,7 +178,7 @@ class CoverageRunner:
                 command) as run_dict:
             if script_path and os.path.exists(script_path):
                 json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
-                subprocess.check_output([script_path, json_file_path])
+                Utils.run_cmd([script_path, json_file_path])
                 os.remove(json_file_path)
 
     def _docker_runner(
@@ -201,7 +202,7 @@ class CoverageRunner:
                 command) as run_dict:
             if script_path and os.path.exists(script_path):
                 json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
-                subprocess.check_output([script_path, json_file_path])
+                Utils.run_cmd([script_path, json_file_path])
                 os.remove(json_file_path)
 
 

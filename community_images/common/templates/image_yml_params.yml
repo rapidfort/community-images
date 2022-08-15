@@ -145,10 +145,19 @@ docker_runtime_params:
     description: output directory relative to image.yml dir to store tls certs, defaults to certs
     value : 'certs'
     required: no
+  - name: volumes
+    description: map of input volumes, relative to script dir and mounted volume in ALL container
+    value : '""'
+  - name: environment
+    description: map of environment variables to be mounted in ALL container
+    value : '""'
   - name: <repo>.env_file
     description: repo specific environment file for default env variables
     value : 'docker.env'
     required: no
   - name: <repo>.volumes
-    description: map of input volumet, relative to script dir and mounted volume in container
+    description: map of input volumes, relative to script dir and mounted volume in container
+    value : '""'
+  - name: <repo>.environment
+    description: map of environment variables to be mounted in container
     value : '""'

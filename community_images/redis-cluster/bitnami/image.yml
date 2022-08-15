@@ -26,18 +26,18 @@ output_registry:
   registry: docker.io
   account: rapidfort
 repo_sets:
-  - redis:
+  - redis-cluster:
       input_base_tag: "7.0.4-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: bitnami/redis
     image_keys:
-      redis: {}
+      redis-cluster: {}
     override_file: "overrides.yml"
   - type: k8s
     script: k8s_tls_coverage.sh
-    helm_repo: bitnami/redis
+    helm_repo: bitnami/redis-cluster
     tls_certs:
       generate: true
       secret_name: rf-redis-cluster-tls
@@ -49,11 +49,11 @@ runtimes:
        tls.certFilename: tls.crt
        tls.certKeyFilename: tls.key 
     image_keys:
-      redis: {}
+      redis-cluster: {}
     override_file: "overrides.yml"
   - type: docker_compose
     compose_file: docker-compose.yml
     image_keys:
-      redis:
+      redis-cluster:
         repository: "REDIS_CLUSTER_IMAGE_REPOSITORY"
         tag: "REDIS_CLUSTER_IMAGE_TAG"

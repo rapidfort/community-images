@@ -65,5 +65,8 @@
    | `wait_time_sec` | wait time in seconds after all docker run completes | `30` | False |
    | `tls_certs.generate` | if tls certs generation is needed true/false | `false` | False |
    | `tls_certs.out_dir` | output directory relative to image.yml dir to store tls certs, defaults to certs | `certs` | False |
+   | `volumes` | map of input volumes, relative to script dir and mounted volume in ALL container | `""` | yes |
+   | `environment` | map of environment variables to be mounted in ALL container | `""` | yes |
    | `<repo>.env_file` | repo specific environment file for default env variables | `docker.env` | False |
-   | `<repo>.volumes` | map of input volumet, relative to script dir and mounted volume in container | `""` | yes |
+   | `<repo>.volumes` | map of input volumes, relative to script dir and mounted volume in container | `""` | yes |
+   | `<repo>.environment` | map of environment variables to be mounted in container | `""` | yes |

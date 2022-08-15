@@ -3,9 +3,9 @@
 import logging
 import os
 import shutil
-import subprocess
 import tempfile
 from consts import Consts
+from utils import Utils
 
 class StubGenerator:
     """ Stub generation command handler """
@@ -36,7 +36,7 @@ class StubGenerator:
                     tag=input_tag_details.tag
                 )
 
-            subprocess.check_output(["rfstub", input_tag_details.full_tag])
+            Utils.run_cmd(["rfstub", input_tag_details.full_tag])
 
             # tag input stubbed image to output stubbed image
             stub_image = self.docker_client.images.get(input_tag_details.full_stub_tag)

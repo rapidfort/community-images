@@ -1,6 +1,6 @@
 """ Utility methods """
 
-#import logging
+import logging
 import os
 import shutil
 import subprocess
@@ -38,8 +38,8 @@ spec:
 """
 
 
-    @staticmethod
-    def generate_ssl_certs(image_script_dir, tls_certs):
+    @classmethod
+    def generate_ssl_certs(cls, image_script_dir, tls_certs):
         """ generate ssl certs based on tls_certs object """
 
         if not image_script_dir or not tls_certs:
@@ -65,7 +65,7 @@ spec:
         cmd+=["-out", f"{cert_path}/server.crt"]
         cmd+=["-keyout", f"{cert_path}/server.key"]
         cmd+=["-subj", f"/C=US/ST=CA/L=Sunnyvale/O=RapidFort/OU=Community Images/CN={common_name}"]
-        subprocess.check_output(cmd)
+        cls.run_cmd(cmd)
 
         return cert_path
 
@@ -91,5 +91,13 @@ spec:
             yaml.dump(cert_dict, yaml_stream, Dumper)
 
         cmd=f"kubectl apply -f {cert_yaml_path} --namespace {namespace}"
-        subprocess.check_output(cmd.split())
+        cls.run_cmd(cmd.split())
         return True
+
+    @staticmethod
+    def run_cmd(cmd_array):
+        """ runs commands and dumps logs to logging.info """
+        cmd = " ".join(cmd_array)
+        logging.info(f"cmd: {cmd}")
+        output_pipe = subprocess.check_output(cmd_array)
+        logging.info("%s", output_pipe.decode("utf-8"))

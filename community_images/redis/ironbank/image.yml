@@ -16,3 +16,24 @@ disclaimer: |
   Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
 docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/redis/redis6/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank/opensource/redis
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - redis6:
+      input_base_tag: latest
+      output_repo: redis6-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      redis6-ib:
+        repository: "REDIS_IMAGE_REPOSITORY"
+        tag: "REDIS_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    redis6-ib: {}

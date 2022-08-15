@@ -57,6 +57,8 @@ runtimes:
     script: docker_coverage.sh
     redis:
       env_file: docker.env
+      environment:
+        KEY_FOO: VAL_BAR
       volumes:
         configs/dynamic/bootstrap.yaml: /opt/bitnami/redis/conf/redis.yaml
         configs/dynamic: /etc/redis

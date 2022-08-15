@@ -48,6 +48,7 @@ class DockerSetup:
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         common_volumes =  self.runtime_props.get("volumes", {})
+        common_environment = self.runtime_props.get("environment", {})
 
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
@@ -76,6 +77,12 @@ class DockerSetup:
 
             if os.path.exists(env_file):
                 cmd+=f" --env-file {env_file}"
+
+            environment = image_runtime_props.get("environment", {})
+            environment.update(common_environment)
+
+            for key, val in environment.items():
+                cmd+=f" -e {key}:{val}"
 
             volumes = image_runtime_props.get("volumes", {})
             volumes.update(common_volumes)

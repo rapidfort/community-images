@@ -62,4 +62,5 @@ runtimes:
   - type: docker
     script: docker_coverage.sh
     mariadb:
-      env_file: docker.env
+      environment:
+        MARIADB_ROOT_PASSWORD: my_root_password

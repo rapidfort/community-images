@@ -5,6 +5,7 @@ import logging
 import os
 import shutil
 import subprocess
+import shutil
 import time
 from commands import Commands
 from utils import Utils
@@ -40,7 +41,14 @@ class DockerSetup:
         """ create a docker namespace and set it up for runner """
         # create network
         cmd=f"docker network create -d bridge {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
+
+        container_details = {}
+
+        self.cert_path = Utils.generate_ssl_certs(
+            self.image_script_dir, self.runtime_props.get("tls_certs", {}))
+
+        common_volumes =  self.runtime_props.get("volumes", {})
 
         container_details = {}
 
@@ -96,7 +104,7 @@ class DockerSetup:
                 cmd+=f" {self.exec_command}"
 
             logging.info(f"cmd: {cmd}")
-            subprocess.check_output(cmd.split())
+            Utils.run_cmd(cmd.split())
 
             container_detail["name"] = container_name
             self.container_list.append(container_name)
@@ -141,11 +149,19 @@ class DockerSetup:
             for container in self.container_list:
                 cmd=f"docker kill {container}"
                 logging.info(f"cmd: {cmd}")
+<<<<<<< HEAD
                 subprocess.check_output(cmd.split())
 
         # delete network
         cmd=f"docker network rm {self.namespace_name}"
         subprocess.check_output(cmd.split())
+=======
+                Utils.run_cmd(cmd.split())
+
+        # delete network
+        cmd=f"docker network rm {self.namespace_name}"
+        Utils.run_cmd(cmd.split())
+>>>>>>> main
 
         # remove cert dir
         if self.cert_path:

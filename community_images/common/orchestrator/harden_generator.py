@@ -2,8 +2,8 @@
 
 import os
 import logging
-import subprocess
 from consts import Consts
+from utils import Utils
 
 class HardenGenerator:
     """ Harden generation command handler """
@@ -32,7 +32,7 @@ class HardenGenerator:
             cmd=f"rfharden {output_tag_details.full_stub_tag} --put-meta"
             if rfignore_exists:
                 cmd+=f" --profile {rfignore_path}"
-            subprocess.check_output(cmd.split())
+            Utils.run_cmd(cmd.split())
 
             if publish:
                 # tag input stubbed image to output stubbed image

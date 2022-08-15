@@ -42,7 +42,6 @@ runtimes:
   - type: docker
     script: docker_coverage.sh
     envoy:
-      env_file: docker.env
       volumes:
         configs/dynamic/bootstrap.yaml: /opt/bitnami/envoy/conf/envoy.yaml
         configs/dynamic: /etc/envoy

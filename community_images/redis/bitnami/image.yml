@@ -67,4 +67,5 @@ runtimes:
         tag: "REDIS_IMAGE_TAG"
   - type: docker
     redis:
-      env_file: docker.env
+      environment:
+        REDIS_PASSWORD: my_password

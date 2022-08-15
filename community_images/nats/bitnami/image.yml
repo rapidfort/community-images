@@ -40,8 +40,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    #env_file: .env
-    #wait_time_sec: 30
     image_keys:
       nats:
         repository: "NATS_IMAGE_REPOSITORY"

@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  prometheus1:
+    image: @IMAGE
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '9090:9090'

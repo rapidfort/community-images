@@ -35,13 +35,6 @@ test()
     kubectl wait pods "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
     report_pulls "${IMAGE_REPOSITORY}"
 
-    # # waiting for pod to be ready
-    # echo "waiting for pod to be ready"
-    # kubectl wait deployments "${HELM_RELEASE}" -n "${NAMESPACE}" --for=condition=Available=True --timeout=10m
-
-    # get pod name
-    #POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSITORY" -o jsonpath="{.items[0].metadata.name}")
-
     # copy common_commands.sh into container
     kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/common_commands.sh "${HELM_RELEASE}":/tmp/common_commands.sh
 
@@ -49,7 +42,6 @@ test()
     kubectl -n "${NAMESPACE}" exec -i "${HELM_RELEASE}" -- /bin/bash -c "/tmp/common_commands.sh"
 
     PROMETHEUS_SERVER=$(kubectl get pod "${HELM_RELEASE}" -n "${NAMESPACE}" --template '{{.status.podIP}}')
-    #PROMETHEUS_SERVER="${HELM_RELEASE}"."${NAMESPACE}".svc.cluster.local
 
     PROMETHEUS_PORT=9090
 

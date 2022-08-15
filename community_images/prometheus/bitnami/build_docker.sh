@@ -12,5 +12,3 @@ IMAGE_TAG="$RAPIDFORT_ACCOUNT"/flaskapp:"${TAG}"
 
 docker build -t "${IMAGE_TAG}" "${SCRIPTPATH}"
 docker push "${IMAGE_TAG}"
-#docker tag "${IMAGE_TAG}" "$RAPIDFORT_ACCOUNT"/mongodb-perfomance-test:latest
-#docker push "$RAPIDFORT_ACCOUNT"/mongodb-perfomance-test:latest

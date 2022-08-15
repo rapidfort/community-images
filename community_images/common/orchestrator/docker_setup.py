@@ -82,7 +82,7 @@ class DockerSetup:
             environment.update(common_environment)
 
             for key, val in environment.items():
-                cmd+=f" -e {key}:{val}"
+                cmd+=f" -e {key}={val}"
 
             volumes = image_runtime_props.get("volumes", {})
             volumes.update(common_volumes)

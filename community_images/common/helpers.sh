@@ -230,8 +230,7 @@ function build_image()
     echo "Running image generation for ${INPUT_ACCOUNT}/${REPOSITORY} ${TAG}"
     setup_namespace "${NAMESPACE}"
 
-    TAG="2.37.0-debian-11-r11"
-    #create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${OUTPUT_REPOSITORY}" "${TAG}"
+    create_stub "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${OUTPUT_REPOSITORY}" "${TAG}"
     "${TEST_FUNCTION}" "${RAPIDFORT_ACCOUNT}"/"${OUTPUT_REPOSITORY}" "${TAG}"-rfstub "${NAMESPACE}"
     harden_image "${INPUT_REGISTRY}" "${INPUT_ACCOUNT}" "${REPOSITORY}" "${TAG}" "${OUTPUT_REPOSITORY}" "${PUBLISH_IMAGE}" "${IS_LATEST_TAG}"
 

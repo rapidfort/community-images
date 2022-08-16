@@ -17,10 +17,10 @@ POSTGRESQL_PASSWORD=my_password
 # pg container
 PG_CONTAINER="${PROJECT_NAME}"-postgresql-1
 
-# run redis tests
-docker exec -i "${PG_CONTAINER}" bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
+# run pg tests
+docker exec -i "${PG_CONTAINER}" bash -c "PGPASSWORD=${POSTGRESQL_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
 
-# run redis coverage
+# run pg coverage
 docker exec -i "${PG_CONTAINER}" bash -c "/tmp/postgres_coverage.sh"
 
 # run pgbench

@@ -23,3 +23,37 @@ docker_links:
   - "[`12`, `12-debian-11`, `12.12.0`, `12.12.0-debian-11-r0` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)"
   - "[`11`, `11-debian-11`, `11.17.0`, `11.17.0-debian-11-r0` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)"
   - "[`10`, `10-debian-11`, `10.22.0`, `10.22.0-debian-11-r0` (10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/10/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - postgresql:
+      input_base_tag: "14.5.0-debian-11-r"
+  - postgresql:
+      input_base_tag: "13.8.0-debian-11-r"
+  - postgresql:
+      input_base_tag: "12.12.0-debian-11-r"
+  - postgresql:
+      input_base_tag: "11.17.0-debian-11-r"
+  - postgresql:
+      input_base_tag: "10.22.0-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/postgresql
+    image_keys:
+      postgresql: {}
+    override_file: "overrides.yml"
+  - type: docker_compose
+    compose_file: docker-compose.yml
+    image_keys:
+      postgresql:
+        repository: "PG_IMAGE_REPOSITORY"
+        tag: "PG_IMAGE_TAG"
+  - type: docker
+    postgresql:
+      environment:
+        POSTGRES_PASSWORD: PgPwd

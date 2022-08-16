@@ -4,6 +4,7 @@ import logging
 import os
 import shutil
 import subprocess
+import sys
 import yaml
 from yaml import CLoader as Loader, CDumper as Dumper
 

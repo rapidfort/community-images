@@ -36,7 +36,7 @@ class StubGenerator:
                     tag=input_tag_details.tag
                 )
 
-            Utils.run_cmd(["rfstub", "--verbose", input_tag_details.full_tag])
+            Utils.run_cmd(["rfstub", input_tag_details.full_tag])
 
             # tag input stubbed image to output stubbed image
             stub_image = self.docker_client.images.get(input_tag_details.full_stub_tag)

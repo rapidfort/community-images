@@ -99,5 +99,5 @@ spec:
         """ runs commands and dumps logs to logging.info """
         cmd = " ".join(cmd_array)
         logging.info(f"cmd: {cmd}")
-        output_pipe = subprocess.check_output(cmd_array)
+        output_pipe = subprocess.check_output(cmd_array, stderr=sys.stdout)
         logging.info("%s", output_pipe.decode("utf-8"))

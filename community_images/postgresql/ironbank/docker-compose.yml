@@ -2,7 +2,7 @@ version: '2'
 
 services:
   postgresql:
-    image: @IMAGE
+    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     ports:

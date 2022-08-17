@@ -16,3 +16,25 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank/opensource/postgres
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - postgresql12:
+      input_base_tag: latest
+      output_repo: postgresql12-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      postgresql12-ib:
+        repository: "PG_IMAGE_REPOSITORY"
+        tag: "PG_IMAGE_TAG"
+  - type: docker
+    postgresql12-ib:
+      environment:
+        POSTGRES_PASSWORD: PgPwd

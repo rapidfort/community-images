@@ -18,4 +18,42 @@ what_is_text: |
 disclaimer: |
   Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
 docker_links:
-  - "[`7.0`, `7.0-debian-11`, `7.0.3`, `7.0.3-debian-11-r1`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-redis-cluster/blob/7.0.3-debian-11-r1/7.0/debian-11/Dockerfile)"
+  - "[`7.0`, `7.0-debian-11`, `7.0.4`, `7.0.4-debian-11-r5`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/redis-cluster/7.0/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - redis-cluster:
+      input_base_tag: "7.0.4-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/redis-cluster
+    image_keys:
+      redis-cluster: {}
+    override_file: "overrides.yml"
+  - type: k8s
+    script: k8s_tls_coverage.sh
+    helm_repo: bitnami/redis-cluster
+    tls_certs:
+      generate: true
+      secret_name: rf-redis-cluster-tls
+      common_name: rf-redis-cluster
+    helm_additional_params:
+       tls.enabled: true 
+       tls.existingSecret: rf-redis-cluster-tls
+       tls.certCAFilename: ca.crt
+       tls.certFilename: tls.crt
+       tls.certKeyFilename: tls.key 
+    image_keys:
+      redis-cluster: {}
+    override_file: "overrides.yml"
+  - type: docker_compose
+    compose_file: docker-compose.yml
+    image_keys:
+      redis-cluster:
+        repository: "REDIS_CLUSTER_IMAGE_REPOSITORY"
+        tag: "REDIS_CLUSTER_IMAGE_TAG"

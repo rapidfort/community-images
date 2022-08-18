@@ -3,8 +3,8 @@
 import json
 import logging
 import os
-import shutil
 import subprocess
+import shutil
 import time
 from commands import Commands
 from utils import Utils
@@ -40,7 +40,7 @@ class DockerSetup:
         """ create a docker namespace and set it up for runner """
         # create network
         cmd=f"docker network create -d bridge {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         container_details = {}
 
@@ -48,6 +48,7 @@ class DockerSetup:
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         common_volumes =  self.runtime_props.get("volumes", {})
+        common_environment = self.runtime_props.get("environment", {})
 
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
@@ -77,6 +78,12 @@ class DockerSetup:
             if os.path.exists(env_file):
                 cmd+=f" --env-file {env_file}"
 
+            environment = image_runtime_props.get("environment", {})
+            environment.update(common_environment)
+
+            for key, val in environment.items():
+                cmd+=f" -e {key}={val}"
+
             volumes = image_runtime_props.get("volumes", {})
             volumes.update(common_volumes)
 
@@ -96,7 +103,7 @@ class DockerSetup:
                 cmd+=f" {self.exec_command}"
 
             logging.info(f"cmd: {cmd}")
-            subprocess.check_output(cmd.split())
+            Utils.run_cmd(cmd.split())
 
             container_detail["name"] = container_name
             self.container_list.append(container_name)
@@ -141,11 +148,11 @@ class DockerSetup:
             for container in self.container_list:
                 cmd=f"docker kill {container}"
                 logging.info(f"cmd: {cmd}")
-                subprocess.check_output(cmd.split())
+                Utils.run_cmd(cmd.split())
 
         # delete network
         cmd=f"docker network rm {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # remove cert dir
         if self.cert_path:

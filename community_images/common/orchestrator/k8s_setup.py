@@ -30,7 +30,7 @@ class K8sSetup:
 
         # create namespace
         cmd=f"kubectl create namespace {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # add rapidfortbot credentials
         docker_config_json_path = f"{os.environ.get('HOME')}/.docker/config.json"
@@ -38,12 +38,12 @@ class K8sSetup:
         cmd +=" create secret generic rf-regcred"
         cmd +=f" --from-file=.dockerconfigjson={docker_config_json_path}"
         cmd +=" --type=kubernetes.io/dockerconfigjson"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # add tls certs
         cert_mgr_path = os.path.abspath(f"{self.script_dir}/../cert_managet_ns.yml")
         cmd=f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # create tls certs for app
         Utils.generate_k8s_ssl_certs(
@@ -53,7 +53,7 @@ class K8sSetup:
 
         # upgrade helm
         cmd="helm repo update"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # Install helm
         self.create_helm_chart(self.prepare_helm_cmd())
@@ -65,7 +65,7 @@ class K8sSetup:
             cmd=f"kubectl wait deployments {self.release_name}"
             cmd+=f" -n {self.namespace_name}"
             cmd+=" --for=condition=Available=True --timeout=10m"
-            subprocess.check_output(cmd.split())
+            Utils.run_cmd(cmd.split())
             wait_complete = True
         except subprocess.CalledProcessError:
             logging.info("Wait deployment command failed, try waiting for pod-0")
@@ -76,7 +76,7 @@ class K8sSetup:
                 cmd=f"kubectl wait pods {self.release_name}{pod_name_suffix}"
                 cmd+=f" -n {self.namespace_name}"
                 cmd+=" --for=condition=ready --timeout=10m"
-                subprocess.check_output(cmd.split())
+                Utils.run_cmd(cmd.split())
                 wait_complete = True
             except subprocess.CalledProcessError:
                 logging.info(f"Wait for {pod_name_suffix} also failed, reraising error")
@@ -123,25 +123,25 @@ class K8sSetup:
     def create_helm_chart(self, cmd):
         """ Create helm chart """
         logging.info(f"cmd: {cmd}")
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
     def __exit__(self, type, value, traceback):
         """ clean up k8s namespace """
         # log pods
         cmd=f"kubectl -n {self.namespace_name} get pods"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         cmd=f"kubectl -n {self.namespace_name} get svc"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # bring down helm install
         cmd=f"helm delete {self.release_name} --namespace {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # delete the PVC associated
         cmd="kubectl -n {self.namespace_name} delete pvc --all"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # delete namespace
         cmd=f"kubectl delete namespace {self.namespace_name}"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())

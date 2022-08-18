@@ -3,7 +3,6 @@
 import logging
 import os
 import shutil
-import subprocess
 import time
 from utils import Utils
 
@@ -67,7 +66,7 @@ class DockerComposeSetup:
         cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
         cmd+=" up --build -d"
         logging.info(f"cmd: {cmd}")
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
         # sleep for wait time seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
 
@@ -76,7 +75,7 @@ class DockerComposeSetup:
         cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
         cmd+=" logs"
         logging.info(f"cmd: {cmd}")
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         return {
             "namespace_name": self.namespace_name,
@@ -93,12 +92,12 @@ class DockerComposeSetup:
         # logs for tracking
         cmd=f"docker-compose -f {self.docker_file}"
         cmd+=f" -p {self.namespace_name} logs"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # kill docker-compose setup container
         cmd=f"docker-compose -f {self.docker_file}"
         cmd+=f" -p {self.namespace_name} down"
-        subprocess.check_output(cmd.split())
+        Utils.run_cmd(cmd.split())
 
         # remove temp env file
         os.remove(self.temp_env_file)

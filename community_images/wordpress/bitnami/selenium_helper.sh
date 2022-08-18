@@ -9,11 +9,6 @@ function test_selenium() {
     local NAMESPACE=$1
     local WORDPRESS_SERVER=$2
 
-    # get the ip address of wordpress service
-    # WORDPRESS_IP=$(kubectl get nodes --namespace "${NAMESPACE}" -o jsonpath="{.items[0].status.addresses[0].address}")
-    # ports=$(kubectl get svc --namespace "${NAMESPACE}" -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}')
-    # WORDPRESS_PORT=$(echo "$ports" | head -n 1)
-
     WORDPRESS_PORT='80'
 
     echo "wordpress server is $WORDPRESS_SERVER"

@@ -50,4 +50,5 @@ runtimes:
   - type: docker
     script: docker_coverage.sh
     etcd:
-      env_file: docker.env
+      environment:
+        ALLOW_NONE_AUTHENTICATION: yes

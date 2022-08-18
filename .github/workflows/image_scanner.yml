@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup ubuntu
         env:
           RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}

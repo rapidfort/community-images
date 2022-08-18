@@ -21,7 +21,7 @@ class CoverageRunner:
     def __init__(self, config_name, config_dict, tag_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
-        self.tag_mappings = tag_mappings
+        self.repo_set_mappings = repo_set_mappings
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
 
     def run(self, command):

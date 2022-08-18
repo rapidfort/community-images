@@ -66,7 +66,7 @@ class TagManager:
         self.orchestrator = orchestrator
         self.config_name = self.orchestrator.config_name
         self.config_dict = self.orchestrator.config_dict
-        self.tag_mappings = self._prepare_tag_mappings()
+        self.repo_set_mappings = self._prepare_repo_set_mappings()
 
     def _get_tag_detail(self, registry_str, registry_helper, repo, base_tag):
         """Generate tag details object"""
@@ -82,7 +82,7 @@ class TagManager:
         logging.info(f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")
         return TagDetail(registry, account, repo, latest_tag)
 
-    def _prepare_tag_mappings(self):
+    def _prepare_repo_set_mappings(self):
         """
         Uses schema to prepare tag list
         repo_sets:
@@ -90,9 +90,10 @@ class TagManager:
             input_base_tag: "2.8.4-debian-11-r"
             output_repo: nats
         """
-        tag_mappings = []
+        repo_set_mappings = []
         repo_sets = self.config_dict.get("repo_sets", [])
         for index, repo_set in enumerate(repo_sets):
+            tag_mappings = []
             for input_repo, repo_values in repo_set.items():
 
                 output_repo = repo_values.get("output_repo", input_repo)
@@ -132,5 +133,6 @@ class TagManager:
                     needs_generation,
                     is_latest)
                 tag_mappings.append(tag_mapping)
+            repo_set_mappings.append(tag_mappings)
 
-        return tag_mappings
+        return repo_set_mappings

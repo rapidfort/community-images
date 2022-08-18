@@ -13,13 +13,20 @@ class StubGenerator:
         self.config_name = config_name
         self.config_dict = config_dict
         self.docker_client = docker_client
-        self.tag_mappings = tag_mappings
+        self.repo_set_mappings = repo_set_mappings
 
     def generate(self):
         """
         Create stub images for all images which needs generation
         """
-        for tag_mapping in self.tag_mappings:
+        for repo_set_mapping in self.repo_set_mappings:
+            self.generate_stub_for_repo_set(repo_set_mapping)
+
+    def generate_stub_for_repo_set(self, repo_set_mapping):
+        """
+        Generate stubs for repo set
+        """
+        for tag_mapping in repo_set_mapping:
             if not tag_mapping.needs_generation:
                 continue
 

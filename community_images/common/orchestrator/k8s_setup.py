@@ -62,21 +62,31 @@ class K8sSetup:
         logging.info("waiting for pod to be ready")
         wait_complete = False
         try:
-            cmd=f"kubectl wait deployments {self.release_name}"
-            cmd+=f" -n {self.namespace_name}"
-            cmd+=" --for=condition=Available=True --timeout=10m"
-            Utils.run_cmd(cmd.split())
+            readiness_wait_deployments_suffix = self.runtime_props.get("readiness_wait_deployments_suffix")
+            if not readiness_wait_deployments_suffix:
+                cmd=f"kubectl wait deployments {self.release_name}"
+                cmd+=f" -n {self.namespace_name}"
+                cmd+=" --for=condition=Available=True --timeout=10m"
+                Utils.run_cmd(cmd.split())
+            else:
+                for deployment_suffix in readiness_wait_deployments_suffix:
+                    cmd=f"kubectl wait deployments {self.release_name}-{deployment_suffix}"
+                    cmd+=f" -n {self.namespace_name}"
+                    cmd+=" --for=condition=Available=True --timeout=10m"
+                    Utils.run_cmd(cmd.split())
+
             wait_complete = True
         except subprocess.CalledProcessError:
             logging.info("Wait deployment command failed, try waiting for pod-0")
 
         if not wait_complete:
             try:
-                pod_name_suffix = self.runtime_props.get("readiness_wait_pod_name_suffix", "-0")
-                cmd=f"kubectl wait pods {self.release_name}{pod_name_suffix}"
-                cmd+=f" -n {self.namespace_name}"
-                cmd+=" --for=condition=ready --timeout=10m"
-                Utils.run_cmd(cmd.split())
+                readiness_wait_pod_name_suffix = self.runtime_props.get("readiness_wait_pod_name_suffix", ["0"])
+                for pod_name_suffix in readiness_wait_pod_name_suffix:
+                    cmd=f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
+                    cmd+=f" -n {self.namespace_name}"
+                    cmd+=" --for=condition=ready --timeout=10m"
+                    Utils.run_cmd(cmd.split())
                 wait_complete = True
             except subprocess.CalledProcessError:
                 logging.info(f"Wait for {pod_name_suffix} also failed, reraising error")

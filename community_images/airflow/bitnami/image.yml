@@ -40,6 +40,9 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: bitnami/airflow
+    readiness_wait_deployments_suffix:
+      - web
+      - scheduler
     image_keys:
       airflow:
         repository: "image.repository"

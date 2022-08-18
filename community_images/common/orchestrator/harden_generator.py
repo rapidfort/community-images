@@ -19,7 +19,10 @@ class HardenGenerator:
         Create hardened images for all images which needs generation
         """
         for tag_mappings in self.repo_set_mappings:
-            self.run_tag_mappings(tag_mappings)
+            try:
+                self.generate_harden_for_tag_mappings(tag_mappings)
+            except Exception as exec:
+                logging.warning(f"Harden generation failed for {tag_mappings} due to {exec}")
 
     def generate_harden_for_tag_mappings(self, tag_mappings):
         """

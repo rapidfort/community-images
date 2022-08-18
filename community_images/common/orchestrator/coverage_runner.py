@@ -35,7 +35,10 @@ class CoverageRunner:
             script: docker_coverage.sh
         """
         for tag_mappings in self.repo_set_mappings:
-            self.run_tag_mappings(tag_mappings)
+            try:
+                self.run_tag_mappings(tag_mappings)
+            except Exception as exec:
+                logging.warning(f"Coverage run {command} failed for {tag_mappings} due to {exec}")
 
     def run_tag_mappings(self, command, tag_mappings):
         """ Run tag mappings for command and tag mappings"""

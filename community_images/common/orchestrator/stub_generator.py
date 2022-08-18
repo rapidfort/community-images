@@ -20,7 +20,10 @@ class StubGenerator:
         Create stub images for all images which needs generation
         """
         for tag_mappings in self.repo_set_mappings:
-            self.generate_stub_for_tag_mappings(tag_mappings)
+            try:
+                self.generate_stub_for_tag_mappings(tag_mappings)
+            except Exception as exec:
+                logging.warning(f"Stub generation failed for {tag_mappings} due to {exec}")
 
     def generate_stub_for_tag_mappings(self, tag_mappings):
         """

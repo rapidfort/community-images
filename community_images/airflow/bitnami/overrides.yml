@@ -51,3 +51,10 @@ worker:
   readinessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
+git:
+  dags:
+    enabled: true
+    repositories:
+      - repository: https://github.com/rapidfort/airflow-example-dags
+        name: airflow-example-dags
+        branch: main

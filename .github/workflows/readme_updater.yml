@@ -194,6 +194,14 @@ jobs:
           repository: rapidfort/apache
           readme-filepath: ./community_images/apache/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache
+      - name: Docker Hub Description Apache Airflow
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/airflow
+          readme-filepath: ./community_images/airflow/bitnami/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apache Airflow
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

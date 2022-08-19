@@ -18,10 +18,10 @@ class CoverageRunner:
     RUNTIME_TYPE_DOCKER_COMPOSE = "docker_compose"
     RUNTIME_TYPE_DOCKER = "docker"
 
-    def __init__(self, config_name, config_dict, tag_mappings):
+    def __init__(self, config_name, config_dict, repo_set_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
-        self.tag_mappings = tag_mappings
+        self.repo_set_mappings = repo_set_mappings
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
 
     def run(self, command):
@@ -34,6 +34,16 @@ class CoverageRunner:
         - docker:
             script: docker_coverage.sh
         """
+        for tag_mappings in self.repo_set_mappings:
+            try:
+                self.run_tag_mappings(command, tag_mappings)
+            except Exception as exec: # pylint:disable=broad-except
+                logging.warning(f"Coverage run {command} failed for {tag_mappings} due to {exec}")
+
+    # pylint: disable = too-many-locals
+    def run_tag_mappings(self, command, tag_mappings):
+        """ Run tag mappings for command and tag mappings"""
+
         runtimes = self.config_dict.get("runtimes", [])
 
         runtime_runner_map = {
@@ -45,7 +55,8 @@ class CoverageRunner:
         image_name = self.config_dict.get("name")
         namespace_name = self._get_namespace(image_name)
         release_name = f"rf-{image_name}"
-        image_tag_list = self._prepare_image_tag_list(command)
+
+        image_tag_list = self._prepare_image_tag_list(command, tag_mappings)
 
         if not image_tag_list:
             logging.info("Nothing to generate as image_tag_list is empty")
@@ -94,11 +105,11 @@ class CoverageRunner:
         random_letters = ''.join(random.choice(letters) for i in range(random_part_len))
         return f"{image_name}-{random_letters}"
 
-    def _prepare_image_tag_list(self, command):
+    def _prepare_image_tag_list(self, command, tag_mappings):
         """ Prepare image tag list for runner objects """
 
         image_tag_list = []
-        for tag_mapping in self.tag_mappings:
+        for tag_mapping in tag_mappings:
             if (tag_mapping.needs_generation
                 or (not tag_mapping.needs_generation and
                 command == Commands.LATEST_COVERAGE)):

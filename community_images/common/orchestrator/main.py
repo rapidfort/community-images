@@ -46,7 +46,7 @@ class Orchestrator:
                 self.config_name,
                 self.config_dict,
                 self.docker_client,
-                tag_manager.tag_mappings
+                tag_manager.repo_set_mappings
             ).generate()
         elif command in [ Commands.STUB_COVERAGE,
                 Commands.HARDEN_COVERAGE,
@@ -54,14 +54,14 @@ class Orchestrator:
             CoverageRunner(
                 self.config_name,
                 self.config_dict,
-                tag_manager.tag_mappings
+                tag_manager.repo_set_mappings
             ).run(command)
         elif command == Commands.HARDEN:
             HardenGenerator(
                 self.config_name,
                 self.config_dict,
                 self.docker_client,
-                tag_manager.tag_mappings
+                tag_manager.repo_set_mappings
             ).generate(publish)
         elif command == Commands.HOURLY_RUN:
             self._hourly_run(tag_manager)
@@ -74,33 +74,33 @@ class Orchestrator:
             self.config_name,
             self.config_dict,
             self.docker_client,
-            tag_manager.tag_mappings
+            tag_manager.repo_set_mappings
         ).generate()
 
         CoverageRunner(
             self.config_name,
             self.config_dict,
-            tag_manager.tag_mappings
+            tag_manager.repo_set_mappings
         ).run(Commands.STUB_COVERAGE)
 
         HardenGenerator(
             self.config_name,
             self.config_dict,
             self.docker_client,
-            tag_manager.tag_mappings
+            tag_manager.repo_set_mappings
         ).generate(publish)
 
         if publish:
             CoverageRunner(
                 self.config_name,
                 self.config_dict,
-                tag_manager.tag_mappings
+                tag_manager.repo_set_mappings
             ).run(Commands.HARDEN_COVERAGE)
 
         CoverageRunner(
             self.config_name,
             self.config_dict,
-            tag_manager.tag_mappings
+            tag_manager.repo_set_mappings
         ).run(Commands.LATEST_COVERAGE)
 
     def _auth_registries(self):

@@ -9,17 +9,27 @@ from utils import Utils
 
 class StubGenerator:
     """ Stub generation command handler """
-    def __init__(self, config_name, config_dict, docker_client, tag_mappings):
+    def __init__(self, config_name, config_dict, docker_client, repo_set_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
         self.docker_client = docker_client
-        self.tag_mappings = tag_mappings
+        self.repo_set_mappings = repo_set_mappings
 
     def generate(self):
         """
         Create stub images for all images which needs generation
         """
-        for tag_mapping in self.tag_mappings:
+        for tag_mappings in self.repo_set_mappings:
+            try:
+                self.generate_stub_for_tag_mappings(tag_mappings)
+            except Exception as exec: # pylint:disable=broad-except
+                logging.warning(f"Stub generation failed for {tag_mappings} due to {exec}")
+
+    def generate_stub_for_tag_mappings(self, tag_mappings):
+        """
+        Generate stubs for tag mappings
+        """
+        for tag_mapping in tag_mappings:
             if not tag_mapping.needs_generation:
                 continue
 

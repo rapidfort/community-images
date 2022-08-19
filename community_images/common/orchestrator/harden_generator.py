@@ -7,23 +7,34 @@ from utils import Utils
 
 class HardenGenerator:
     """ Harden generation command handler """
-    def __init__(self, config_name, config_dict, docker_client, tag_mappings):
+    def __init__(self, config_name, config_dict, docker_client, repo_set_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
         self.docker_client = docker_client
-        self.tag_mappings = tag_mappings
+        self.repo_set_mappings = repo_set_mappings
         self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
 
     def generate(self, publish):
         """
         Create hardened images for all images which needs generation
         """
+        for tag_mappings in self.repo_set_mappings:
+            try:
+                self.generate_harden_for_tag_mappings(tag_mappings, publish)
+            except Exception as exec: # pylint:disable=broad-except
+                logging.warning(f"Harden generation failed for {tag_mappings} due to {exec}")
+
+    def generate_harden_for_tag_mappings(self, tag_mappings, publish):
+        """
+        Generate hardened image for tag mappings
+        """
+
         image_script_dir = os.path.abspath(
                 f"{self.script_dir}/../../{self.config_name}")
 
         rfignore_path = os.path.join(image_script_dir, Consts.RF_IGNORE)
         rfignore_exists = os.path.exists(rfignore_path)
-        for tag_mapping in self.tag_mappings:
+        for tag_mapping in tag_mappings:
             if not tag_mapping.needs_generation:
                 continue
 

@@ -1,6 +1,7 @@
+global:
+  imagePullSecrets: ["rf-regcred"]
 web:
   image:
-    pullSecrets: ["rf-regcred"]
     pullPolicy: Always
   containerSecurityContext:
     enabled: true
@@ -18,7 +19,6 @@ web:
     timeoutSeconds: 30
 scheduler:
   image:
-    pullSecrets: ["rf-regcred"]
     pullPolicy: Always
   containerSecurityContext:
     enabled: true
@@ -36,7 +36,6 @@ scheduler:
     timeoutSeconds: 30
 worker:
   image:
-    pullSecrets: ["rf-regcred"]
     pullPolicy: Always
   containerSecurityContext:
     enabled: true

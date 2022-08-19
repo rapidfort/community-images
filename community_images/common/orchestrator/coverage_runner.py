@@ -56,47 +56,46 @@ class CoverageRunner:
         namespace_name = self._get_namespace(image_name)
         release_name = f"rf-{image_name}"
 
-        image_tag_list = self._prepare_image_tag_list(command, tag_mappings)
+        image_tag_details = self._prepare_image_tag_details(command, tag_mappings)
 
-        if not image_tag_list:
-            logging.info("Nothing to generate as image_tag_list is empty")
+        if not image_tag_details:
+            logging.info("Nothing to generate as image_tag_details is empty")
             return
 
         image_script_dir = os.path.abspath(
                 f"{self.script_dir}/../../{self.config_name}")
 
-        for image_tag_details in image_tag_list:
-            for runtime_props in runtimes:
-                runtime_type = runtime_props.get("type")
-                runtime_runner = runtime_runner_map[runtime_type]
+        for runtime_props in runtimes:
+            runtime_type = runtime_props.get("type")
+            runtime_runner = runtime_runner_map[runtime_type]
 
-                script = runtime_props.get("script")
-                script_path = None
-                if script:
-                    logging.info(f"Running runtime script for {runtime_type}: {script}")
-                    script_path = os.path.join(image_script_dir, script)
-                    logging.info(f"Script abs path to execute: {script_path}")
+            script = runtime_props.get("script")
+            script_path = None
+            if script:
+                logging.info(f"Running runtime script for {runtime_type}: {script}")
+                script_path = os.path.join(image_script_dir, script)
+                logging.info(f"Script abs path to execute: {script_path}")
 
-                # call runner
-                runtime_runner(
+            # call runner
+            runtime_runner(
+                image_script_dir,
+                script_path,
+                runtime_props,
+                image_tag_details,
+                namespace_name,
+                release_name,
+                command
+            )
+
+        if command == Commands.STUB_COVERAGE:
+            # add common commands
+            self._common_command_runner(
                     image_script_dir,
-                    script_path,
-                    runtime_props,
                     image_tag_details,
                     namespace_name,
                     release_name,
                     command
                 )
-
-            if command == Commands.STUB_COVERAGE:
-                # add common commands
-                self._common_command_runner(
-                        image_script_dir,
-                        image_tag_details,
-                        namespace_name,
-                        release_name,
-                        command
-                    )
 
     @staticmethod
     def _get_namespace(image_name, random_part_len=10):
@@ -105,16 +104,15 @@ class CoverageRunner:
         random_letters = ''.join(random.choice(letters) for i in range(random_part_len))
         return f"{image_name}-{random_letters}"
 
-    def _prepare_image_tag_list(self, command, tag_mappings):
-        """ Prepare image tag list for runner objects """
+    def _prepare_image_tag_details(self, command, tag_mappings):
+        """ Prepare image tag details for runner objects """
 
-        image_tag_list = []
+        image_tag_details = {}
         for tag_mapping in tag_mappings:
             if (tag_mapping.needs_generation
                 or (not tag_mapping.needs_generation and
                 command == Commands.LATEST_COVERAGE)):
 
-                image_tag_details = {}
                 tag_details = tag_mapping.output_tag_details
 
                 image_tag_details[tag_details.repo] = {}
@@ -129,10 +127,9 @@ class CoverageRunner:
                     image_tag_value = "latest"
 
                 image_tag_details[tag_details.repo]["tag"] = image_tag_value
-                image_tag_list.append(image_tag_details)
 
-        logging.info(f"Image tag list = {image_tag_list}")
-        return image_tag_list
+        logging.info(f"Image tag list = {image_tag_details}")
+        return image_tag_details
 
     @staticmethod
     def _dump_runner_to_json(image_script_dir, run_dict, file_name="run_param.json"):

@@ -40,3 +40,23 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`v1.0.0`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: oncall
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - grafana:
+      input_base_tag: "v1.0."
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    env_file: .env_hobby
+    compose_file: docker-compose.yml
+    image_keys:
+      grafana:
+        repository: "GRAFANA_IMAGE_REPOSITORY"
+        tag: "GRAFANA_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh

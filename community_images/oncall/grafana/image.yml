@@ -42,12 +42,12 @@ docker_links:
   - "[`v1.0.0`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)"
 input_registry:
   registry: docker.io
-  account: oncall
+  account: grafana
 output_registry:
   registry: docker.io
   account: ankitrapidfort
 repo_sets:
-  - grafana:
+  - oncall:
       input_base_tag: "v1.0."
 runtimes:
   - type: docker_compose
@@ -55,8 +55,8 @@ runtimes:
     env_file: .env_hobby
     compose_file: docker-compose.yml
     image_keys:
-      grafana:
-        repository: "GRAFANA_IMAGE_REPOSITORY"
-        tag: "GRAFANA_IMAGE_TAG"
+      oncall:
+        repository: "ONCALL_IMAGE_REPOSITORY"
+        tag: "ONCALL_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh

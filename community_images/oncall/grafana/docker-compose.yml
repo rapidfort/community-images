@@ -1,6 +1,6 @@
 services:
   engine:
-    image: ${GRAFANA_IMAGE_REPOSITORY}:${GRAFANA_IMAGE_TAG}
+    image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     restart: always
@@ -36,7 +36,7 @@ services:
         condition: service_started
 
   celery:
-    image: ${GRAFANA_IMAGE_REPOSITORY}:${GRAFANA_IMAGE_TAG}
+    image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     restart: always
@@ -73,7 +73,7 @@ services:
         condition: service_started
 
   oncall_db_migration:
-    image: ${GRAFANA_IMAGE_REPOSITORY}:${GRAFANA_IMAGE_TAG}
+    image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     command: python manage.py migrate --noinput

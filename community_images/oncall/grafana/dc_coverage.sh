@@ -16,8 +16,8 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 # run pytest
 set +e #ignore test failures
-docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python -m pytest
+docker-compose --env-file "${SCRIPTPATH}"/.env_hobby.temp -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python -m pytest
 set -e
 
 # issue token
-docker-compose --env-file "${SCRIPTPATH}"/.env_hobby -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override
+docker-compose --env-file "${SCRIPTPATH}"/.env_hobby.temp -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override

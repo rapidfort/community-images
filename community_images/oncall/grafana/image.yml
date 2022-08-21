@@ -58,5 +58,3 @@ runtimes:
       oncall:
         repository: "ONCALL_IMAGE_REPOSITORY"
         tag: "ONCALL_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh

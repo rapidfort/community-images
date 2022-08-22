@@ -21,3 +21,5 @@ spec:
         hostPath:
           path: $SELENIUM_TEST_DIRECTORY
           type: DirectoryOrCreate
+      restartPolicy: Never
+  backoffLimit: 1

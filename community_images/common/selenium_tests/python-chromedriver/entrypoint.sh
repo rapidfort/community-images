@@ -14,7 +14,8 @@ if [[ -z "$PORT" ]]; then
 fi
 
 
-. /usr/workspace/bash_helper.sh
+# shellcheck source=community_images/common/scripts/bash_helper.sh
+source /usr/workspace/bash_helper.sh
 
 # run pytest
 with_backoff pytest -s /usr/workspace/selenium_tests --server "$SERVER" --port "$PORT"

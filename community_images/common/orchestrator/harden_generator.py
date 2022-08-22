@@ -23,9 +23,9 @@ class HardenGenerator:
         for tag_mappings in self.repo_set_mappings:
             try:
                 self.generate_harden_for_tag_mappings(tag_mappings, publish)
-            except Exception as exec:  # pylint:disable=broad-except
-                logging.warning(
-                    f"Harden generation failed for {tag_mappings} due to {exec}")
+            except Exception as exec: # pylint:disable=broad-except
+                logging.warning(f"Harden generation failed for {tag_mappings} due to {exec}")
+                raise
 
     def generate_harden_for_tag_mappings(self, tag_mappings, publish):
         """

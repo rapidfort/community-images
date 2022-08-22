@@ -17,4 +17,4 @@ PORT="$2"
 SELENIUM_TEST_DIRECTORY="$3"
 K8S_NAMESPACE="$4"
 
-cat "${SCRIPTPATH}"/selenium_job.yaml | envsubst - | kubectl apply -n "$K8S_NAMESPACE" -f -
+cat "${SCRIPTPATH}"/selenium_job.yml | envsubst - | kubectl apply -n "$K8S_NAMESPACE" -f -

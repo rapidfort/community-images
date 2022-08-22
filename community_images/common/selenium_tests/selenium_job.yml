@@ -12,7 +12,7 @@ spec:
         - name: SERVER
           value: $SERVER
         - name: PORT
-          value: $PORT
+          value: "$PORT"
         volumeMounts:
         - mountPath: /usr/workspace/selenium_tests
           name: selenium-test-dir

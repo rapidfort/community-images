@@ -19,6 +19,8 @@ export K8S_NAMESPACE="$4"
 
 envsubst < "${SCRIPTPATH}"/selenium_job.yml > "${SCRIPTPATH}"/selenium_job_env.yml
 
+kubectl -n "$K8S_NAMESPACE" delete job python-chromedriver --ignore-not-found=true
+
 kubectl apply -n "$K8S_NAMESPACE" -f "${SCRIPTPATH}"/selenium_job_env.yml
 
 kubectl -n "$K8S_NAMESPACE" wait --for=condition=complete job/python-chromedriver --timeout=10m

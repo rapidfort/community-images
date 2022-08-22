@@ -37,7 +37,7 @@ class TestWordpresstest1():
         # Test name: wordpress-test-1
         # Step # | name | target | value
         # 1 | open | / |
-        self.driver.get("http://{}:{}/".format(params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get(f"http://{params['server']}:{params['port']}/")
         # 2 | setWindowSize | 1095x688 |
         self.driver.set_window_size(1095, 688)
         # 3 | click | linkText=Hello world! |

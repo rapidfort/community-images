@@ -2,8 +2,10 @@
 
 import logging
 
+
 class TagDetail:
     """ Tag Details class """
+
     def __init__(self, registry, account, repo, tag):
         self.registry = registry
         self.account = account
@@ -13,12 +15,12 @@ class TagDetail:
     @property
     def repo_path(self):
         """ Full repo path """
-        return "/".join([self.account,self.repo])
+        return "/".join([self.account, self.repo])
 
     @property
     def full_repo_path(self):
         """ Full repo path """
-        return "/".join([self.registry,self.account,self.repo])
+        return "/".join([self.registry, self.account, self.repo])
 
     @property
     def stub_tag(self):
@@ -45,8 +47,10 @@ class TagDetail:
         """ Full Hardened tag """
         return f"{self.full_repo_path}:{self.hardened_tag}"
 
+
 class TagMapping:
     """ Tag mapping class """
+
     def __init__(
             self,
             input_tag_details,
@@ -61,6 +65,7 @@ class TagMapping:
 
 class TagManager:
     """ Tag Manager main class """
+
     def __init__(self, orchestrator):
         """ Tag Manager init """
         self.orchestrator = orchestrator
@@ -75,11 +80,13 @@ class TagManager:
         account = registry_dict.get("account")
 
         if base_tag != "latest":
-            latest_tag = registry_helper.get_latest_tag(account, repo, base_tag)
+            latest_tag = registry_helper.get_latest_tag(
+                account, repo, base_tag)
         else:
             latest_tag = base_tag
 
-        logging.info(f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")
+        logging.info(
+            f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")
         return TagDetail(registry, account, repo, latest_tag)
 
     def _prepare_repo_set_mappings(self):
@@ -102,12 +109,12 @@ class TagManager:
                 input_tag_detail = self._get_tag_detail(
                     "input_registry",
                     self.orchestrator.input_registry_helper,
-                        input_repo, base_tag)
+                    input_repo, base_tag)
 
                 output_tag_detail = self._get_tag_detail(
                     "output_registry",
                     self.orchestrator.output_registry_helper,
-                        output_repo, base_tag)
+                    output_repo, base_tag)
 
                 # we need to generate new image, if
                 # 1. We are not publishing and just doing a ci/cd test
@@ -116,17 +123,19 @@ class TagManager:
                 logging.info(f"input tag details={input_tag_detail.tag}")
                 logging.info(f"output tag details={output_tag_detail.tag}")
                 logging.info(f"publish flag={self.orchestrator.publish}")
-                logging.info(f"force publish flag={self.orchestrator.force_publish}")
+                logging.info(
+                    f"force publish flag={self.orchestrator.force_publish}")
 
                 needs_generation = (not self.orchestrator.publish or
-                    self.orchestrator.force_publish or
-                    (input_tag_detail.tag != output_tag_detail.tag))
-                logging.info(f"decision for needs generation={needs_generation}")
+                                    self.orchestrator.force_publish or
+                                    (input_tag_detail.tag != output_tag_detail.tag))
+                logging.info(
+                    f"decision for needs generation={needs_generation}")
 
                 # output tag needs to be same as input tag
                 output_tag_detail.tag = input_tag_detail.tag
 
-                is_latest = (index==0)
+                is_latest = (index == 0)
                 tag_mapping = TagMapping(
                     input_tag_detail,
                     output_tag_detail,

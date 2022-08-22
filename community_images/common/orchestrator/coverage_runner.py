@@ -11,6 +11,7 @@ from docker_compose_setup import DockerComposeSetup
 from docker_setup import DockerSetup
 from utils import Utils
 
+
 class CoverageRunner:
     """ Coverage Runner class """
 
@@ -22,7 +23,7 @@ class CoverageRunner:
         self.config_name = config_name
         self.config_dict = config_dict
         self.repo_set_mappings = repo_set_mappings
-        self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
+        self.script_dir = os.path.abspath(os.path.dirname(__file__))
 
     def run(self, command):
         """ Runs coverage tests
@@ -37,8 +38,9 @@ class CoverageRunner:
         for tag_mappings in self.repo_set_mappings:
             try:
                 self.run_tag_mappings(command, tag_mappings)
-            except Exception as exec: # pylint:disable=broad-except
-                logging.warning(f"Coverage run {command} failed for {tag_mappings} due to {exec}")
+            except Exception as exec:  # pylint:disable=broad-except
+                logging.warning(
+                    f"Coverage run {command} failed for {tag_mappings} due to {exec}")
 
     # pylint: disable = too-many-locals
     def run_tag_mappings(self, command, tag_mappings):
@@ -56,14 +58,15 @@ class CoverageRunner:
         namespace_name = self._get_namespace(image_name)
         release_name = f"rf-{image_name}"
 
-        image_tag_details = self._prepare_image_tag_details(command, tag_mappings)
+        image_tag_details = self._prepare_image_tag_details(
+            command, tag_mappings)
 
         if not image_tag_details:
             logging.info("Nothing to generate as image_tag_details is empty")
             return
 
         image_script_dir = os.path.abspath(
-                f"{self.script_dir}/../../{self.config_name}")
+            f"{self.script_dir}/../../{self.config_name}")
 
         for runtime_props in runtimes:
             runtime_type = runtime_props.get("type")
@@ -72,7 +75,8 @@ class CoverageRunner:
             script = runtime_props.get("script")
             script_path = None
             if script:
-                logging.info(f"Running runtime script for {runtime_type}: {script}")
+                logging.info(
+                    f"Running runtime script for {runtime_type}: {script}")
                 script_path = os.path.join(image_script_dir, script)
                 logging.info(f"Script abs path to execute: {script_path}")
 
@@ -90,18 +94,19 @@ class CoverageRunner:
         if command == Commands.STUB_COVERAGE:
             # add common commands
             self._common_command_runner(
-                    image_script_dir,
-                    image_tag_details,
-                    namespace_name,
-                    release_name,
-                    command
-                )
+                image_script_dir,
+                image_tag_details,
+                namespace_name,
+                release_name,
+                command
+            )
 
     @staticmethod
     def _get_namespace(image_name, random_part_len=10):
         """ Creates a namespace with combination of image_name and randome string """
         letters = string.ascii_lowercase + string.digits
-        random_letters = ''.join(random.choice(letters) for i in range(random_part_len))
+        random_letters = ''.join(random.choice(letters)
+                                 for i in range(random_part_len))
         return f"{image_name}-{random_letters}"
 
     def _prepare_image_tag_details(self, command, tag_mappings):
@@ -111,7 +116,7 @@ class CoverageRunner:
         for tag_mapping in tag_mappings:
             if (tag_mapping.needs_generation
                 or (not tag_mapping.needs_generation and
-                command == Commands.LATEST_COVERAGE)):
+                    command == Commands.LATEST_COVERAGE)):
 
                 tag_details = tag_mapping.output_tag_details
 
@@ -153,15 +158,16 @@ class CoverageRunner:
         logging.info(f"k8s runner called for {script_path} {runtime_props}")
 
         with K8sSetup(
-                    namespace_name,
-                    release_name,
-                    image_tag_details,
-                    runtime_props,
-                    image_script_dir,
-                    command
-                ) as run_dict:
+            namespace_name,
+            release_name,
+            image_tag_details,
+            runtime_props,
+            image_script_dir,
+            command
+        ) as run_dict:
             if script_path and os.path.exists(script_path):
-                json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
+                json_file_path = self._dump_runner_to_json(
+                    image_script_dir, run_dict)
                 Utils.run_cmd([script_path, json_file_path])
                 os.remove(json_file_path)
 
@@ -175,7 +181,8 @@ class CoverageRunner:
             release_name,
             command):
         """ Runtime for docker compose runner """
-        logging.info(f"docker compose runner called for {script_path} {runtime_props}")
+        logging.info(
+            f"docker compose runner called for {script_path} {runtime_props}")
 
         with DockerComposeSetup(
                 namespace_name,
@@ -185,7 +192,8 @@ class CoverageRunner:
                 image_script_dir,
                 command) as run_dict:
             if script_path and os.path.exists(script_path):
-                json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
+                json_file_path = self._dump_runner_to_json(
+                    image_script_dir, run_dict)
                 Utils.run_cmd([script_path, json_file_path])
                 os.remove(json_file_path)
 
@@ -209,10 +217,10 @@ class CoverageRunner:
                 image_script_dir,
                 command) as run_dict:
             if script_path and os.path.exists(script_path):
-                json_file_path = self._dump_runner_to_json(image_script_dir, run_dict)
+                json_file_path = self._dump_runner_to_json(
+                    image_script_dir, run_dict)
                 Utils.run_cmd([script_path, json_file_path])
                 os.remove(json_file_path)
-
 
     def _common_command_runner(
             self,
@@ -224,7 +232,8 @@ class CoverageRunner:
         """ Common commands runner """
         logging.info("common command runner called")
 
-        runtime_props = {"volumes":{"../../common/tests/common_commands.sh": "/tmp/common_commands.sh"}}
+        runtime_props = {"volumes": {
+            "../../common/tests/common_commands.sh": "/tmp/common_commands.sh"}}
 
         with DockerSetup(
                 namespace_name,

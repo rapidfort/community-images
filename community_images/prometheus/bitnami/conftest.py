@@ -1,11 +1,14 @@
 """The conftest file for running selenium test."""
 # conftest.py
-import pytest #pylint: disable=import-error
+import pytest  # pylint: disable=import-error
+
 
 def pytest_addoption(parser):
     """The function to add options"""
     parser.addoption("--prom_server", action="store", help="prometheus server")
-    parser.addoption("--port", action="store", help="port for prometheus container")
+    parser.addoption("--port", action="store",
+                     help="port for prometheus container")
+
 
 @pytest.fixture
 def params(request):

@@ -10,13 +10,14 @@ def fetch_tags(image_repo):
     """
     Get tags from the dockerhub registry API
     """
-    tags=[]
+    tags = []
 
     # Handle official repository here
     if image_repo.startswith("_/"):
-        image_repo=image_repo[2:]
+        image_repo = image_repo[2:]
 
-    resp = requests.get(f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags")
+    resp = requests.get(
+        f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags")
 
     if 200 <= resp.status_code < 300:
         tag_objs = resp.json()
@@ -32,12 +33,13 @@ def get_latest_tag(tags, search_str):
 
     tags = filter(lambda tag: search_str in tag, tags)
     tags = list(filter(
-        lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit(),
+        lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip(
+        ).isdigit(),
         tags))
-    if len(tags)==0:
+    if len(tags) == 0:
         return []
 
-    tags.sort(key = lambda tag: int(tag[search_str_len:]))
+    tags.sort(key=lambda tag: int(tag[search_str_len:]))
     if tags:
         return tags[-1]
     return []

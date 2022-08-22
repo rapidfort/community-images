@@ -5,8 +5,10 @@ import os
 import requests
 from consts import Consts
 
+
 class RegistryHelper:
     """ Docker registry helper base class"""
+
     def __init__(self, docker_client, registry, username, password):
         self.registry = registry
         self.username = username
@@ -41,18 +43,19 @@ class RegistryHelper:
 
         tags = filter(lambda tag: search_str in tag, tags)
         tags = list(filter(
-            lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit(),
+            lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip(
+            ).isdigit(),
             tags))
 
-        if len(tags)==0:
+        if len(tags) == 0:
             return None
 
-        tags.sort(key = lambda tag: int(tag[search_str_len:]))
+        tags.sort(key=lambda tag: int(tag[search_str_len:]))
         if tags:
             return tags[-1]
         return None
 
-    def delete_tag(self, account, repo, tag): # pylint: disable=unused-argument
+    def delete_tag(self, account, repo, tag):  # pylint: disable=unused-argument
         """ delete tag from repo """
         return True
 
@@ -60,6 +63,7 @@ class RegistryHelper:
 class DockerHubHelper(RegistryHelper):
     """ Implement dockerhub helper """
     BASE_URL = "https://registry.hub.docker.com"
+
     def __init__(self, docker_client, registry):
         username = os.environ.get("DOCKERHUB_USERNAME")
         password = os.environ.get("DOCKERHUB_PASSWORD")
@@ -74,7 +78,7 @@ class DockerHubHelper(RegistryHelper):
         """
         Get tags from the dockerhub registry API
         """
-        tags=[]
+        tags = []
 
         url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags"
 
@@ -98,8 +102,8 @@ class DockerHubHelper(RegistryHelper):
             json={
                 "username": self.username,
                 "password": self.password
-                }
-            )
+            }
+        )
         if resp.status_code == 200:
             resp_json = resp.json()
             logging.debug(resp_json)
@@ -113,8 +117,10 @@ class DockerHubHelper(RegistryHelper):
         resp = requests.delete(del_url, headers=auth_header)
         return resp.status_code == 200
 
+
 class IronBankHelper(RegistryHelper):
     """ Iron bank helper class """
+
     def __init__(self, docker_client, registry):
         username = os.environ.get("IB_DOCKER_USERNAME")
         password = os.environ.get("IB_DOCKER_PASSWORD")
@@ -124,6 +130,7 @@ class IronBankHelper(RegistryHelper):
     @staticmethod
     def registry_url():
         return "registry1.dso.mil"
+
 
 class RegistryHelperFactory:
     """ Registry factory to get Registry helper objects """

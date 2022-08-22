@@ -25,7 +25,8 @@ class TestWordpresstest1():
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
-        self.driver = webdriver.Chrome(options=chrome_options)  # pylint: disable=attribute-defined-outside-init
+        self.driver = webdriver.Chrome(
+            options=chrome_options)  # pylint: disable=attribute-defined-outside-init
         self.driver.implicitly_wait(10)
 
     def teardown_method(self, method):  # pylint: disable=unused-argument
@@ -37,7 +38,8 @@ class TestWordpresstest1():
         # Test name: wordpress-test-1
         # Step # | name | target | value
         # 1 | open | / |
-        self.driver.get("http://{}:{}/".format(params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get("http://{}:{}/".format(
+            params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1095x688 |
         self.driver.set_window_size(1095, 688)
         # 3 | click | linkText=Hello world! |
@@ -63,7 +65,8 @@ class TestWordpresstest1():
         """Test name: simplelogin."""
         # Step # | name | target | value
         # 1 | open | /wp-login.php |
-        self.driver.get("http://{}:{}/users.php".format(params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get("http://{}:{}/users.php".format(
+            params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1200x828 |
         self.driver.set_window_size(1200, 828)
 
@@ -113,7 +116,8 @@ class TestWordpresstest1():
         """Test name: simplelogin."""
         # Step # | name | target | value
         # 1 | open | /wp-login.php |
-        self.driver.get("http://{}:{}/wp-login.php".format(params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get("http://{}:{}/wp-login.php".format(
+            params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1200x828 |
         self.driver.set_window_size(1200, 828)
         # 3 | type | id=user_login | user

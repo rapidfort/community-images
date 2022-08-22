@@ -6,8 +6,10 @@ import shutil
 import time
 from utils import Utils
 
+
 class DockerComposeSetup:
     """ Docker compose setup context manager """
+
     def __init__(
             self,
             namespace_name,
@@ -22,13 +24,13 @@ class DockerComposeSetup:
         self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.command = command
-        self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
+        self.script_dir = os.path.abspath(os.path.dirname(__file__))
         self.docker_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
-            "compose_file", "docker-compose.yml"))
+                "compose_file", "docker-compose.yml"))
         self.source_env_file = os.path.join(
             self.image_script_dir, self.runtime_props.get(
-            "env_file", "docker.env"))
+                "env_file", "docker.env"))
         self.temp_env_file = f"{self.source_env_file}.temp"
         self.cert_path = None
 
@@ -61,19 +63,19 @@ class DockerComposeSetup:
         self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
-        cmd="docker-compose"
-        cmd+=f" --env-file {self.temp_env_file}"
-        cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
-        cmd+=" up --build -d"
+        cmd = "docker-compose"
+        cmd += f" --env-file {self.temp_env_file}"
+        cmd += f" -f {self.docker_file} -p {self.namespace_name}"
+        cmd += " up --build -d"
         logging.info(f"cmd: {cmd}")
         Utils.run_cmd(cmd.split())
         # sleep for wait time seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
 
         # dump logs
-        cmd="docker-compose"
-        cmd+=f" -f {self.docker_file} -p {self.namespace_name}"
-        cmd+=" logs"
+        cmd = "docker-compose"
+        cmd += f" -f {self.docker_file} -p {self.namespace_name}"
+        cmd += " logs"
         logging.info(f"cmd: {cmd}")
         Utils.run_cmd(cmd.split())
 
@@ -90,13 +92,13 @@ class DockerComposeSetup:
     def __exit__(self, type, value, traceback):
         """ delete docker compose namespace """
         # logs for tracking
-        cmd=f"docker-compose -f {self.docker_file}"
-        cmd+=f" -p {self.namespace_name} logs"
+        cmd = f"docker-compose -f {self.docker_file}"
+        cmd += f" -p {self.namespace_name} logs"
         Utils.run_cmd(cmd.split())
 
         # kill docker-compose setup container
-        cmd=f"docker-compose -f {self.docker_file}"
-        cmd+=f" -p {self.namespace_name} down"
+        cmd = f"docker-compose -f {self.docker_file}"
+        cmd += f" -p {self.namespace_name} down"
         Utils.run_cmd(cmd.split())
 
         # remove temp env file

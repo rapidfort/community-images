@@ -1,11 +1,11 @@
 services:
   engine:
-    image: @IMAGE
+    image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     restart: always
     ports:
-      - 8080:8080
+      - "8080"
     command: >
       sh -c "uwsgi --ini uwsgi.ini"
     environment:
@@ -36,7 +36,7 @@ services:
         condition: service_started
 
   celery:
-    image: @IMAGE
+    image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     restart: always
@@ -73,7 +73,7 @@ services:
         condition: service_started
 
   oncall_db_migration:
-    image: @IMAGE
+    image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     command: python manage.py migrate --noinput
@@ -163,7 +163,7 @@ services:
     restart: always
     mem_limit: 500m
     ports:
-      - 3000:3000
+      - "3000"
     cpus: 0.5
     environment:
       GF_DATABASE_TYPE: mysql

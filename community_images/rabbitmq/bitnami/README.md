@@ -63,8 +63,8 @@ RapidFort’s hardened [rapidfort/rabbitmq][rf-dh-image-link] image has been opt
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.10`, `3.10-debian-11`, `3.10.6`, `3.10.6-debian-11-r6`, `latest` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.10.6-debian-11-r6/3.10/debian-11/Dockerfile)
-* [`3.9`, `3.9-debian-11`, `3.9.21`, `3.9.21-debian-11-r5` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.9.21-debian-11-r5/3.9/debian-11/Dockerfile)
+* [`3.10`, `3.10-debian-11`, `3.10.7`, `3.10.7-debian-11-r7`, `latest` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/rabbitmq/3.10/debian-11/Dockerfile)
+* [`3.9`, `3.9-debian-11`, `3.9.22`, `3.9.22-debian-11-r7` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/rabbitmq/3.9/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

@@ -63,7 +63,7 @@ RapidFort’s hardened [rapidfort/fluentd][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1`, `1-debian-11`, `1.14.6`, `1.14.6-debian-11-r6`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-fluentd/blob/1.14.6-debian-11-r6/1/debian-11/Dockerfile)
+* [`1`, `1-debian-11`, `1.15.1`, `1.15.1-debian-11-r11`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/fluentd/1/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

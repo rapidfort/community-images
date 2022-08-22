@@ -10,16 +10,27 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestEnablealldags():
-  def setup_method(self, method):
-    self.driver = webdriver.Chrome()
-    self.vars = {}
 
-  def teardown_method(self, method):
+class TestEnablealldags():
+  def setup_method(self, method):  # pylint: disable=unused-argument
+    """setup method."""
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument("disable-infobars")
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    self.driver = webdriver.Chrome(
+        options=chrome_options)  # pylint: disable=attribute-defined-outside-init
+    self.driver.implicitly_wait(10)
+
+  def teardown_method(self, method):  # pylint: disable=unused-argument
+    """teardown method."""
     self.driver.quit()
 
   def test_enablealldags(self):
-    self.driver.get("http://172.31.36.230:3004")
+    self.driver.get("http://{}:{}/".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string
     self.driver.set_window_size(1440, 790)
     self.driver.find_element(By.ID, "username").send_keys("rf-test")
     self.driver.find_element(By.ID, "password").send_keys("rf_password123!")

@@ -12,9 +12,9 @@ echo "inputs=$1 $2 $3 $4"
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-SERVER="$1"
-PORT="$2"
-SELENIUM_TEST_DIRECTORY="$3"
-K8S_NAMESPACE="$4"
+export SERVER="$1"
+export PORT="$2"
+export SELENIUM_TEST_DIRECTORY="$3"
+export K8S_NAMESPACE="$4"
 
 cat "${SCRIPTPATH}"/selenium_job.yml | envsubst - | kubectl apply -n "$K8S_NAMESPACE" -f -

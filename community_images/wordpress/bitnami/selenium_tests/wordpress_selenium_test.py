@@ -38,8 +38,7 @@ class TestWordpresstest1():
         # Test name: wordpress-test-1
         # Step # | name | target | value
         # 1 | open | / |
-        self.driver.get("http://{}:{}/".format(
-            params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get("http://{}:{}/".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1095x688 |
         self.driver.set_window_size(1095, 688)
         # 3 | click | linkText=Hello world! |
@@ -65,8 +64,7 @@ class TestWordpresstest1():
         """Test name: simplelogin."""
         # Step # | name | target | value
         # 1 | open | /wp-login.php |
-        self.driver.get("http://{}:{}/users.php".format(
-            params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get("http://{}:{}/users.php".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1200x828 |
         self.driver.set_window_size(1200, 828)
 
@@ -74,7 +72,7 @@ class TestWordpresstest1():
     #     """Test name: simplelogin."""
     #     # Step # | name | target | value
     #     # 1 | open | /wp-login.php |
-    #     self.driver.get("http://{}:{}/wp-admin/user-new.php".format(params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string disable=line-too-long
+    #     self.driver.get("http://{}:{}/wp-admin/user-new.php".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string disable=line-too-long
     #     # 2 | setWindowSize | 1200x828 |
     #     self.driver.set_window_size(1200, 828)
     #     self.driver.find_element(By.ID, "user_login").send_keys("user3")
@@ -101,7 +99,7 @@ class TestWordpresstest1():
     #     """Test name: simplelogin."""
     #     # Step # | name | target | value
     #     # 1 | open | /wp-login.php |
-    #     self.driver.get("http://{}:{}/wp-admin/options-general.php".format(params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string disable=line-too-long
+    #     self.driver.get("http://{}:{}/wp-admin/options-general.php".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string disable=line-too-long
     #     # 2 | setWindowSize | 1200x828 |
     #     self.driver.set_window_size(1200, 828)
     #     # 21 | click | id=start_of_week |
@@ -116,8 +114,7 @@ class TestWordpresstest1():
         """Test name: simplelogin."""
         # Step # | name | target | value
         # 1 | open | /wp-login.php |
-        self.driver.get("http://{}:{}/wp-login.php".format(
-            params["wordpress_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get("http://{}:{}/wp-login.php".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1200x828 |
         self.driver.set_window_size(1200, 828)
         # 3 | type | id=user_login | user

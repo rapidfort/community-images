@@ -38,8 +38,7 @@ class TestPrometheus():
         # Test name: s1
         # Step # | name | target | value
         # 1 | open | /graph?g0.expr=&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h |
-        self.driver.get("http://{}:{}/".format(
-            params["prom_server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get("http://{}:{}/".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1200x859 |
         self.driver.set_window_size(1200, 859)
         # 3 | click | css=.cm-line |

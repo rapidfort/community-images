@@ -17,4 +17,10 @@ export PORT="$2"
 export SELENIUM_TEST_DIRECTORY="$3"
 export K8S_NAMESPACE="$4"
 
-envsubst < "${SCRIPTPATH}"/selenium_job.yml | kubectl apply -n "$K8S_NAMESPACE" -f -
+envsubst < "${SCRIPTPATH}"/selenium_job.yml > "${SCRIPTPATH}"/selenium_job_env.yml
+
+kubectl apply -n "$K8S_NAMESPACE" -f "${SCRIPTPATH}"/selenium_job_env.yml
+
+cat "${SCRIPTPATH}"/selenium_job_env.yml
+
+# kubectl -n "$K8S_NAMESPACE" delete job python-chromedriver

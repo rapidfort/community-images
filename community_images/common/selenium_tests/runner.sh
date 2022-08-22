@@ -23,6 +23,8 @@ kubectl apply -n "$K8S_NAMESPACE" -f "${SCRIPTPATH}"/selenium_job_env.yml
 
 kubectl -n "$K8S_NAMESPACE" wait --for=condition=complete job/python-chromedriver --timeout=10m
 
+kubectl -n "$K8S_NAMESPACE" logs -l job-name=python-chromedriver
+
 kubectl -n "$K8S_NAMESPACE" delete job python-chromedriver
 
 rm -f "${SCRIPTPATH}"/selenium_job_env.yml

@@ -18,5 +18,34 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`3.10`, `3.10-debian-11`, `3.10.6`, `3.10.6-debian-11-r6`, `latest` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.10.6-debian-11-r6/3.10/debian-11/Dockerfile)"
-  - "[`3.9`, `3.9-debian-11`, `3.9.21`, `3.9.21-debian-11-r5` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-rabbitmq/blob/3.9.21-debian-11-r5/3.9/debian-11/Dockerfile)"
+  - "[`3.10`, `3.10-debian-11`, `3.10.7`, `3.10.7-debian-11-r7`, `latest` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/rabbitmq/3.10/debian-11/Dockerfile)"
+  - "[`3.9`, `3.9-debian-11`, `3.9.22`, `3.9.22-debian-11-r7` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/rabbitmq/3.9/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - rabbitmq:
+      input_base_tag: "3.10.7-debian-11-r"
+  - rabbitmq:
+      input_base_tag: "3.9.22-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/rabbitmq
+    image_keys:
+      rabbitmq:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      rabbitmq:
+        repository: "RABBITMQ_IMAGE_REPOSITORY"
+        tag: "RABBITMQ_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh

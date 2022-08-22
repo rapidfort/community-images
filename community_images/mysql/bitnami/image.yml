@@ -35,21 +35,19 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: bitnami/mysql
+    wait_time_sec: 120
     image_keys:
       mysql:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
   - type: docker_compose
-    script: dc_coverage.sh
     compose_file: docker-compose.yml
-    wait_time_sec: 60
     image_keys:
       mysql:
         repository: "MYSQL_IMAGE_REPOSITORY"
         tag: "MYSQL_IMAGE_TAG"
   - type: docker
-    script: docker_coverage.sh
     mysql:
       environment:
         MYSQL_ROOT_PASSWORD: my_root_password

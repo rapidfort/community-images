@@ -87,7 +87,7 @@ class DockerHubHelper(RegistryHelper):
         if 200 <= resp.status_code < 300:
             tag_objs = resp.json()
             results = tag_objs.get("results", [])
-            tags = map(lambda x: x.get("name", ""), tag_objs)
+            tags = map(lambda x: x.get("name", ""), results)
         return tags
 
     def get_auth_header(self):

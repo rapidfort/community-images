@@ -19,3 +19,40 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`6`, `6-debian-11`, `6.0.1`, `6.0.1-debian-11-r2`, `latest` (6/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-wordpress/blob/6.0.1-debian-11-r2/6/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: ankitrapidfort
+repo_sets:
+  - wordpress:
+      input_base_tag: "6.0.1-debian-11-r"
+  # - mariadb:
+  #     input_base_tag: "10.6.8"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/wordpress
+    image_keys:
+      wordpress:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      wordpress:
+        repository: "WORDPRESS_IMAGE_REPOSITORY"
+        tag: "WORDPRESS_IMAGE_TAG"
+  # - type: docker
+  #   script: docker_coverage.sh
+  #   wordpress:
+  #     environment:
+  #       WORDPRESS_DATABASE_HOST=wordpressdb
+  #       WORDPRESS_DATABASE_USER=bn_wordpress
+  #       WORDPRESS_DATABASE_PASSWORD=password
+  #       WORDPRESS_DATABASE_NAME=bitnami_wordpress
+  #       WORDPRESS_DATABASE_PORT_NUMBER=3306
+  #       ALLOW_EMPTY_PASSWORD=yes 

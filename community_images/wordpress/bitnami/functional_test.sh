@@ -86,7 +86,7 @@ docker_compose_test()
     # update image in docker-compose yml
     sed "s#@IMAGE#$IMAGE_REPOSITORY#g" "${SCRIPTPATH}"/docker-compose.yml.base > "${SCRIPTPATH}"/docker-compose.yml
 
-    # install postgresql container
+    # install wordpress container
     docker-compose -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" up -d
     report_pulls "${IMAGE_REPOSITORY}"
 

@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: python-chromedriver
+spec:
+  template:
+    spec:
+      containers:
+      - name: python-chromedriver
+        image: rapidfort/python-chromedriver:latest
+        env:
+        - name: SERVER
+          value: $SERVER
+        - name: PORT
+          value: $PORT
+        volumeMounts:
+        - mountPath: /usr/workspace/selenium_tests
+          name: selenium-test-dir
+      volumes:
+      - name: selenium-test-dir
+        hostPath:
+          path: $SELENIUM_TEST_DIRECTORY
+          type: DirectoryOrCreate

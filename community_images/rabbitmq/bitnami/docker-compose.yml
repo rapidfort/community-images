@@ -2,7 +2,9 @@ version: '2'
 
 services:
   rabbitmq:
-    image: @IMAGE
+    image: ${RABBITMQ_IMAGE_REPOSITORY}:${RABBITMQ_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=bitnami

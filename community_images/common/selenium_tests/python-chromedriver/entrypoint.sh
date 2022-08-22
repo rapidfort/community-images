@@ -17,4 +17,4 @@ fi
 . /usr/workspace/bash_helper.sh
 
 # run pytest
-with_backoff pytest -s /tmp/prometheus_selenium_test.py --server "$SERVER" --port "$PORT"
+with_backoff pytest -s /usr/workspace/selenium_tests --server "$SERVER" --port "$PORT"

@@ -7,7 +7,7 @@ set -e
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 # shellcheck disable=SC1091
-. "${SCRIPTPATH}"/selenium_helper.sh
+# . "${SCRIPTPATH}"/selenium_helper.sh
 
 JSON_PARAMS="$1"
 
@@ -16,4 +16,7 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 WORDPRESS_SERVER="${RELEASE_NAME}"."${NAMESPACE}".svc.cluster.local
 
-test_selenium "${NAMESPACE}" "${WORDPRESS_SERVER}"
+# test_selenium "${NAMESPACE}" "${WORDPRESS_SERVER}"
+
+WORDPRESS_PORT='80'
+"${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${WORDPRESS_SERVER}" "${WORDPRESS_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}"

@@ -18,16 +18,16 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`1`, `1-debian-11`, `1.14.6`, `1.14.6-debian-11-r6`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-fluentd/blob/1.14.6-debian-11-r6/1/debian-11/Dockerfile)"
+  - "[`1`, `1-debian-11`, `1.15.1`, `1.15.1-debian-11-r11`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/fluentd/1/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 output_registry:
   registry: docker.io
-  account: ankitrapidfort
-repo_sets: 
+  account: rapidfort
+repo_sets:
   - fluentd:
-      input_base_tag: "1.14.6-debian-11-r"
+      input_base_tag: "1.15.1-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

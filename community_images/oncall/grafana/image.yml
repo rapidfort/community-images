@@ -11,7 +11,7 @@ report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fg
 usage_instructions: |
   #1. Download docker-compose.yaml:
   curl -fsSL https://raw.githubusercontent.com/grafana/oncall/dev/docker-compose.yml -o docker-compose.yml
-  
+
   #2. Set variables:
   echo "DOMAIN=http://localhost:8080
   SECRET_KEY=my_random_secret_must_be_more_than_32_characters_long
@@ -20,23 +20,41 @@ usage_instructions: |
   COMPOSE_PROFILES=with_grafana  # Remove this line if you want to use existing grafana
   GRAFANA_USER=admin
   GRAFANA_PASSWORD=admin" > .env_hobby
-  
+
   #3. Launch services:
   docker-compose --env-file .env_hobby -f docker-compose.yml up --build -d
-  
+
   #4. Issue one-time invite token:
   docker-compose --env-file .env_hobby -f docker-compose.yml run engine python manage.py issue_invite_for_the_frontend --override
-  
+
   #5. Go to [OnCall Plugin Configuration](http://localhost:3000/plugins/grafana-oncall-app), using log in credentials as defined above: `admin`/`admin` (or find OnCall plugin in configuration->plugins) and connect OnCall _plugin_ with OnCall _backend_:
-  
+
   Invite token: ^^^ from the previous step.
   OnCall backend URL: http://engine:8080
   Grafana Url: http://grafana:3000
-  
-  #6. Enjoy! Check our [OSS docs](https://grafana.com/docs/grafana-cloud/oncall/open-source/) if you want to set up Slack, Telegram, Twilio or SMS/calls through Grafana Cloud. 
+
+  #6. Enjoy! Check our [OSS docs](https://grafana.com/docs/grafana-cloud/oncall/open-source/) if you want to set up Slack, Telegram, Twilio or SMS/calls through Grafana Cloud.
 what_is_text: |
   Developer-friendly incident response with brilliant Slack integration.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`v1.0.0`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: grafana
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - oncall:
+      input_base_tag: "v1.0."
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    env_file: .env_hobby
+    compose_file: docker-compose.yml
+    image_keys:
+      oncall:
+        repository: "ONCALL_IMAGE_REPOSITORY"
+        tag: "ONCALL_IMAGE_TAG"

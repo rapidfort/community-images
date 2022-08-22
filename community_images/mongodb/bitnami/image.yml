@@ -20,3 +20,35 @@ disclaimer: |
 docker_links:
   - "[`6.0`, `6.0-debian-11`, `6.0.1`, `6.0.1-debian-11-r0`, `latest` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mongodb/6.0/debian-11/Dockerfile)"
   - "[`5.0`, `5.0-debian-11`, `5.0.10`, `5.0.10-debian-11-r4` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mongodb/5.0/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: ankitrapidfort
+repo_sets: 
+  - mongodb:
+      input_base_tag: "6.0.1-debian-11-r"
+  - mongodb:
+      input_base_tag: "5.0.10-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/mongodb
+    image_keys:
+      mongodb:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      mongodb:
+        repository: "MONGODB_IMAGE_REPOSITORY"
+        tag: "MONGODB_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    mongodb:
+      environment:
+        MONGODB_ROOT_PASSWORD="password123"

@@ -74,10 +74,10 @@ class TagManager:
         registry = registry_dict.get("registry")
         account = registry_dict.get("account")
 
+        latest_tag = "latest"
+
         if base_tag != "latest":
             latest_tag = registry_helper.get_latest_tag(account, repo, base_tag)
-        else:
-            latest_tag = base_tag
 
         logging.info(f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")
         return TagDetail(registry, account, repo, latest_tag)

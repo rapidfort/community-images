@@ -32,7 +32,7 @@ kubectl -n "$K8S_NAMESPACE" exec -i python-chromedriver -- bash -c "/usr/workspa
 
 kubectl -n "$K8S_NAMESPACE" get pods
 
-kubectl -n "$K8S_NAMESPACE" logs -l name=python-chromedriver
+kubectl -n "$K8S_NAMESPACE" logs python-chromedriver
 
 kubectl -n "$K8S_NAMESPACE" delete pod python-chromedriver
 

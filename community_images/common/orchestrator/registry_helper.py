@@ -76,11 +76,11 @@ class DockerHubHelper(RegistryHelper):
         """
         tags=[]
 
-        url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags"
+        url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags?page_size=25"
 
         if account == "_":
             # Handle official repository here
-            url = f"{self.BASE_URL}/v2/repositories/{repo}/tags"
+            url = f"{self.BASE_URL}/v2/repositories/{repo}/tags?page_size=25"
 
         while url:
             resp = requests.get(url)

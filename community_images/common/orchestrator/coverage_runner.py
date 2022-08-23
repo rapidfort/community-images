@@ -39,6 +39,7 @@ class CoverageRunner:
                 self.run_tag_mappings(command, tag_mappings)
             except Exception as exec: # pylint:disable=broad-except
                 logging.warning(f"Coverage run {command} failed for {tag_mappings} due to {exec}")
+                raise
 
     # pylint: disable = too-many-locals
     def run_tag_mappings(self, command, tag_mappings):

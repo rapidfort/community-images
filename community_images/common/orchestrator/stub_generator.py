@@ -24,6 +24,7 @@ class StubGenerator:
                 self.generate_stub_for_tag_mappings(tag_mappings)
             except Exception as exec: # pylint:disable=broad-except
                 logging.warning(f"Stub generation failed for {tag_mappings} due to {exec}")
+                raise
 
     def generate_stub_for_tag_mappings(self, tag_mappings):
         """

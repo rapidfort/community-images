@@ -28,31 +28,31 @@ output_registry:
   account: rapidfort
 repo_sets:
   - redis:
-      input_base_tag: "7.0.3-debian-11-r"
+      input_base_tag: "7.0.4-debian-11-r"
   - redis:
       input_base_tag: "6.2.7-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: bitnami/redis
-    readiness_wait_pod_name_suffix: -master-0 
+    readiness_wait_pod_name_suffix: -master-0
     image_keys:
       redis: {}
     override_file: "overrides.yml"
   - type: k8s
     script: k8s_tls_coverage.sh
     helm_repo: bitnami/redis
-    readiness_wait_pod_name_suffix: -master-0 
+    readiness_wait_pod_name_suffix: -master-0
     tls_certs:
       generate: true
       secret_name: localhost-server-tls
       common_name: localhost
     helm_additional_params:
-       tls.enabled: true 
+       tls.enabled: true
        tls.existingSecret: localhost-server-tls
        tls.certCAFilename: ca.crt
        tls.certFilename: tls.crt
-       tls.certKeyFilename: tls.key 
+       tls.certKeyFilename: tls.key
     image_keys:
       redis: {}
     override_file: "overrides.yml"

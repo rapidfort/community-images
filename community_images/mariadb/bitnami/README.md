@@ -63,12 +63,12 @@ RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`10.8`, `10.8-debian-11`, `10.8.3`, `10.8.3-debian-11-r16`, `latest` (10.8/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.8/debian-11/Dockerfile)
-* [`10.7`, `10.7-debian-11`, `10.7.4`, `10.7.4-debian-11-r25` (10.7/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.7/debian-11/Dockerfile)
-* [`10.6`, `10.6-debian-11`, `10.6.8`, `10.6.8-debian-11-r24` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.6/debian-11/Dockerfile)
-* [`10.5`, `10.5-debian-11`, `10.5.16`, `10.5.16-debian-11-r26` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.5/debian-11/Dockerfile)
-* [`10.4`, `10.4-debian-11`, `10.4.25`, `10.4.25-debian-11-r25` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.4/debian-11/Dockerfile)
-* [`10.3`, `10.3-debian-11`, `10.3.35`, `10.3.35-debian-11-r25` (10.3/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.3/debian-11/Dockerfile)
+* [`10.8`, `10.8-debian-11`, `10.8.4`, `10.8.4-debian-11-r2`, `latest` (10.8/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.8/debian-11/Dockerfile)
+* [`10.7`, `10.7-debian-11`, `10.7.5`, `10.7.5-debian-11-r2` (10.7/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.7/debian-11/Dockerfile)
+* [`10.6`, `10.6-debian-11`, `10.6.9`, `10.6.9-debian-11-r1` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.6/debian-11/Dockerfile)
+* [`10.5`, `10.5-debian-11`, `10.5.17`, `10.5.17-debian-11-r2` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.5/debian-11/Dockerfile)
+* [`10.4`, `10.4-debian-11`, `10.4.26`, `10.4.26-debian-11-r2` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.4/debian-11/Dockerfile)
+* [`10.3`, `10.3-debian-11`, `10.3.36`, `10.3.36-debian-11-r2` (10.3/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/mariadb/10.3/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

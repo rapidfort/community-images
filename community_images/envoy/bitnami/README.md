@@ -61,7 +61,7 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`1.23`, `1.23-debian-11`, `1.23.0`, `1.23.0-debian-11-r8`, `latest` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.23/debian-11/Dockerfile)
-* [`1.22`, `1.22-debian-11`, `1.22.4`, `1.22.4-debian-11-r3` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.22/debian-11/Dockerfile)
+* [`1.22`, `1.22-debian-11`, `1.22.5`, `1.22.5-debian-11-r3` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.22/debian-11/Dockerfile)
 
 Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
 

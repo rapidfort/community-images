@@ -90,6 +90,10 @@ class DockerHubHelper(RegistryHelper):
                 results = tag_objs.get("results", [])
                 tags += map(lambda x: x.get("name", ""), results)
                 url = tag_objs.get("next")
+
+            # break after tags array is 100 size
+            if len(tags) > 100:
+                break
         return tags
 
     def get_auth_header(self):

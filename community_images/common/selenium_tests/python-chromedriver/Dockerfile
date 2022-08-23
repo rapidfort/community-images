@@ -7,4 +7,4 @@ ADD https://raw.githubusercontent.com/rapidfort/community-images/main/community_
 
 ADD ./entrypoint.sh /usr/workspace/entrypoint.sh
 
-CMD ["/usr/workspace/entrypoint.sh"]
+RUN mkdir -p /usr/workspace/selenium_tests

@@ -76,18 +76,24 @@ class DockerHubHelper(RegistryHelper):
         """
         tags=[]
 
-        url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags"
+        url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags?page_size=25"
 
         if account == "_":
             # Handle official repository here
-            url = f"{self.BASE_URL}/v2/repositories/{repo}/tags"
+            url = f"{self.BASE_URL}/v2/repositories/{repo}/tags?page_size=25"
 
-        resp = requests.get(url)
-        logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
-        if 200 <= resp.status_code < 300:
-            tag_objs = resp.json()
-            results = tag_objs.get("results", [])
-            tags = map(lambda x: x.get("name", ""), results)
+        while url:
+            resp = requests.get(url)
+            logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
+            if 200 <= resp.status_code < 300:
+                tag_objs = resp.json()
+                results = tag_objs.get("results", [])
+                tags += map(lambda x: x.get("name", ""), results)
+                url = tag_objs.get("next")
+
+            # break after tags array is 100 size
+            if len(tags) > 100:
+                break
         return tags
 
     def get_auth_header(self):

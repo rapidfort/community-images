@@ -20,5 +20,8 @@ source /usr/workspace/bash_helper.sh
 # show folders
 ls -lR /usr/workspace/
 
+# cd into tests folder
+cd /usr/workspace/selenium_tests/
+
 # run pytest
 with_backoff pytest -s /usr/workspace/selenium_tests/ --server "$SERVER" --port "$PORT"

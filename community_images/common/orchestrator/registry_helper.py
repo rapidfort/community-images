@@ -82,12 +82,14 @@ class DockerHubHelper(RegistryHelper):
             # Handle official repository here
             url = f"{self.BASE_URL}/v2/repositories/{repo}/tags"
 
-        resp = requests.get(url)
-        logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
-        if 200 <= resp.status_code < 300:
-            tag_objs = resp.json()
-            results = tag_objs.get("results", [])
-            tags = map(lambda x: x.get("name", ""), results)
+        while url:
+            resp = requests.get(url)
+            logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
+            if 200 <= resp.status_code < 300:
+                tag_objs = resp.json()
+                results = tag_objs.get("results", [])
+                tags += map(lambda x: x.get("name", ""), results)
+                url = tag_objs.get("next")
         return tags
 
     def get_auth_header(self):

@@ -23,9 +23,9 @@ kubectl -n "$K8S_NAMESPACE" delete job python-chromedriver --ignore-not-found=tr
 
 kubectl apply -n "$K8S_NAMESPACE" -f "${SCRIPTPATH}"/selenium_job_env.yml
 
-set +x
+set +e
 kubectl -n "$K8S_NAMESPACE" wait --for=condition=complete job/python-chromedriver --timeout=3m
-set -x
+set -e
 
 kubectl -n "$K8S_NAMESPACE" get pods
 

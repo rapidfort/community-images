@@ -14,7 +14,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 export SERVER="$1"
 export PORT="$2"
-export SELENIUM_TEST_DIRECTORY="$3"
+SELENIUM_TEST_DIRECTORY="$3"
 export K8S_NAMESPACE="$4"
 
 envsubst < "${SCRIPTPATH}"/selenium_job.yml > "${SCRIPTPATH}"/selenium_job_env.yml
@@ -23,14 +23,17 @@ kubectl -n "$K8S_NAMESPACE" delete job python-chromedriver --ignore-not-found=tr
 
 kubectl apply -n "$K8S_NAMESPACE" -f "${SCRIPTPATH}"/selenium_job_env.yml
 
-set +e
-kubectl -n "$K8S_NAMESPACE" wait --for=condition=complete job/python-chromedriver --timeout=3m
-set -e
+kubectl wait pods python-chromedriver -n "$K8S_NAMESPACE" --for=condition=ready --timeout=10m
+
+# copy over the files from $SELENIUM_TEST_DIRECTORY to pod
+kubectl -n "$K8S_NAMESPACE" cp "$SELENIUM_TEST_DIRECTORY"/ /usr/workspace/selenium_tests/
+
+kubectl -n "$K8S_NAMESPACE" exec -i python-chromedriver -- bash -c "/usr/workspace/entrypoint.sh"
 
 kubectl -n "$K8S_NAMESPACE" get pods
 
-kubectl -n "$K8S_NAMESPACE" logs -l job-name=python-chromedriver
+kubectl -n "$K8S_NAMESPACE" logs -l name=python-chromedriver
 
-kubectl -n "$K8S_NAMESPACE" delete job python-chromedriver
+kubectl -n "$K8S_NAMESPACE" delete pod python-chromedriver
 
 rm -f "${SCRIPTPATH}"/selenium_job_env.yml

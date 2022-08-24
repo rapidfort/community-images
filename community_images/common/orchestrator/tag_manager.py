@@ -82,7 +82,8 @@ class TagManager:
         latest_tag = None
 
         if base_tag != "latest":
-            latest_tag = registry_helper.get_latest_tag(account, repo, base_tag)
+            latest_tag = registry_helper.get_latest_tag(
+                account, repo, base_tag)
 
         latest_tag = latest_tag or "latest"
 

@@ -1,4 +1,6 @@
 """The conftest file for running selenium test."""
+# pylint: skip-file
+
 # conftest.py
 import pytest  # pylint: disable=import-error
 

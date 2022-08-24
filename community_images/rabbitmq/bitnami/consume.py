@@ -35,7 +35,7 @@ def main():
     channel = connection.channel()
     channel.queue_declare(queue=DEFAULT_TOPIC_NAME)
 
-    method_frame, header_frame, body = channel.basic_get(
+    method_frame, _, body = channel.basic_get(
         queue=DEFAULT_TOPIC_NAME)  # pylint: disable=unused-variable
     if method_frame is None or method_frame.NAME == 'Basic.GetEmpty':
         print(" [x] Error, empty response ")

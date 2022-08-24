@@ -5,12 +5,12 @@ set -e
 
 # Add common commands here which should be present in all hardened images
 
-function run_command_version()
+function run_commands()
 {
     local cmd="$1"
-    if command -v "$cmd" --version &> /dev/null
+    if command -v "$cmd" --help &> /dev/null
     then
-        "$cmd" --version
+        "$cmd" --help
     fi
 }
 
@@ -22,7 +22,7 @@ declare -a command_array=(
 
 for cmd in "${command_array[@]}"
 do
-    run_command_version "$cmd"
+    run_commands "$cmd"
 done
 
 # add clear command

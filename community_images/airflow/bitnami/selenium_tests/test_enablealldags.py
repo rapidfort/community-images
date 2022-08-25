@@ -109,10 +109,6 @@ class TestEnablealldags():
             By.CSS_SELECTOR, "tr:nth-child(26) .switch").click()
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(27) .switch").click()
-        element = self.driver.find_element(By.LINK_TEXT, "Active 0")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "Active 0").click()
         self.driver.find_element(By.LINK_TEXT, "exit_to_appLog Out").click()
         self.driver.find_element(By.CSS_SELECTOR, "body").click()
         self.driver.close()

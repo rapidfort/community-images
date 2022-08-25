@@ -46,7 +46,7 @@ class TestEnablealldags():
         actions.move_to_element(element).perform()
         element = self.driver.find_element(By.CSS_SELECTOR, "body")
         actions = ActionChains(self.driver)
-        actions.move_to_element(element, 0, 0).perform()
+        actions.move_to_element(element).perform()
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(1) .switch").click()
         self.driver.find_element(

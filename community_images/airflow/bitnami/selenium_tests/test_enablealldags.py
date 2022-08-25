@@ -5,6 +5,7 @@ import pytest
 import time
 import json
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions
@@ -31,7 +32,7 @@ class TestEnablealldags():
         """teardown method."""
         self.driver.quit()
 
-    def test_enablealldags(self):
+    def test_enablealldags(self, params):
         self.driver.get("http://{}:{}/".format(
             params["server"], params["port"]))  # pylint: disable=consider-using-f-string
         self.driver.set_window_size(1440, 790)

@@ -21,7 +21,7 @@ function with_backoff {
   while [[ "$attempt" < "$max_attempts" ]]
   do
     set +e
-    "$@" 2>&1
+    "$@"
     exitCode="$?"
     set -e
 
@@ -30,7 +30,7 @@ function with_backoff {
       break
     fi
 
-    echo "Failure! Retrying in $timeout.." 2>&1
+    echo "Failure! Retrying in $timeout.." 1>&2
     sleep "$timeout"
     attempt=$(( attempt + 1 ))
     timeout=$(( timeout * 2 ))
@@ -38,7 +38,7 @@ function with_backoff {
 
   if [[ "$exitCode" != 0 ]]
   then
-    echo "You've failed me for the last time! ($*)" 2>&1
+    echo "You've failed me for the last time! ($*)" 1>&2
   fi
 
   return "$exitCode"

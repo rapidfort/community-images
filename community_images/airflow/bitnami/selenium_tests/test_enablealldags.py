@@ -113,7 +113,6 @@ class TestEnablealldags():
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "Active 0").click()
-        self.driver.find_element(By.LINK_TEXT, "Paused 0").click()
         self.driver.find_element(By.LINK_TEXT, "exit_to_appLog Out").click()
         self.driver.find_element(By.CSS_SELECTOR, "body").click()
         self.driver.close()

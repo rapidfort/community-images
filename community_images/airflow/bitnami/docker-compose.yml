@@ -20,6 +20,8 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
   airflow-scheduler:
     image: ${AIRFLOW_SCHEDULER_IMAGE_REPOSITORY}:${AIRFLOW_SCHEDULER_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
     environment:
       - AIRFLOW_DATABASE_NAME=bitnami_airflow
       - AIRFLOW_DATABASE_USERNAME=bn_airflow
@@ -28,6 +30,8 @@ services:
       - AIRFLOW_WEBSERVER_HOST=airflow
   airflow-worker:
     image: ${AIRFLOW_WORKER_IMAGE_REPOSITORY}:${AIRFLOW_WORKER_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
     environment:
       - AIRFLOW_DATABASE_NAME=bitnami_airflow
       - AIRFLOW_DATABASE_USERNAME=bn_airflow
@@ -36,6 +40,8 @@ services:
       - AIRFLOW_WEBSERVER_HOST=airflow
   airflow:
     image: ${AIRFLOW_IMAGE_REPOSITORY}:${AIRFLOW_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
     environment:
       - AIRFLOW_DATABASE_NAME=bitnami_airflow
       - AIRFLOW_DATABASE_USERNAME=bn_airflow

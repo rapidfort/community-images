@@ -152,14 +152,14 @@ class K8sSetup:
         cmd = f"kubectl -n {self.namespace_name} get svc"
         Utils.run_cmd(cmd.split())
 
-        # bring down helm install
-        cmd = f"helm delete {self.release_name} --namespace {self.namespace_name}"
-        Utils.run_cmd(cmd.split())
+        # # bring down helm install
+        # cmd = f"helm delete {self.release_name} --namespace {self.namespace_name}"
+        # Utils.run_cmd(cmd.split())
 
-        # delete the PVC associated
-        cmd = "kubectl -n {self.namespace_name} delete pvc --all"
-        Utils.run_cmd(cmd.split())
+        # # delete the PVC associated
+        # cmd = "kubectl -n {self.namespace_name} delete pvc --all"
+        # Utils.run_cmd(cmd.split())
 
-        # delete namespace
-        cmd = f"kubectl delete namespace {self.namespace_name}"
-        Utils.run_cmd(cmd.split())
+        # # delete namespace
+        # cmd = f"kubectl delete namespace {self.namespace_name}"
+        # Utils.run_cmd(cmd.split())

@@ -24,5 +24,4 @@ ls -lR /usr/workspace/
 cd /usr/workspace/selenium_tests/
 
 # run pytest
-echo pytest -s /usr/workspace/selenium_tests/ --server "$SERVER" --port "$PORT"
-sleep infinity
+pytest -s /usr/workspace/selenium_tests/ --server "$SERVER" --port "$PORT"

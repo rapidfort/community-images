@@ -17,7 +17,8 @@ def fetch_tags(image_repo):
         image_repo = image_repo[2:]
 
     resp = requests.get(
-        f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags")
+        f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags",
+        timeout=30)
 
     if 200 <= resp.status_code < 300:
         tag_objs = resp.json()

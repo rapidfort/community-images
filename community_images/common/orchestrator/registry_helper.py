@@ -87,7 +87,7 @@ class DockerHubHelper(RegistryHelper):
             url = f"{self.BASE_URL}/v2/repositories/{repo}/tags?page_size=25"
 
         while url:
-            resp = requests.get(url)
+            resp = requests.get(url, timeout=30)
             logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
             if 200 <= resp.status_code < 300:
                 tag_objs = resp.json()
@@ -108,7 +108,8 @@ class DockerHubHelper(RegistryHelper):
             json={
                 "username": self.username,
                 "password": self.password
-            }
+            },
+            timeout=30
         )
         if resp.status_code == 200:
             resp_json = resp.json()
@@ -120,7 +121,7 @@ class DockerHubHelper(RegistryHelper):
     def delete_tag(self, account, repo, tag):
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
         auth_header = self.get_auth_header()
-        resp = requests.delete(del_url, headers=auth_header)
+        resp = requests.delete(del_url, headers=auth_header, timeout=30)
         return resp.status_code == 200
 
 

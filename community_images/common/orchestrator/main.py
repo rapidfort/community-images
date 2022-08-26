@@ -13,8 +13,10 @@ from tag_manager import TagManager
 from commands import Commands
 import yaml
 
+
 class Orchestrator:
     """ Orchestrator class """
+
     def __init__(self, args):
         """ Orchestrator initialization """
         self.args = args
@@ -27,8 +29,9 @@ class Orchestrator:
 
     def _load_config(self) -> dict:
         """load config file"""
-        script_dir = os.path.abspath(os.path.dirname( __file__ ))
-        config_path = os.path.join(f"{script_dir}/../../{self.args.config}/image.yml")
+        script_dir = os.path.abspath(os.path.dirname(__file__))
+        config_path = os.path.join(
+            f"{script_dir}/../../{self.args.config}/image.yml")
         with open(config_path, encoding="UTF-8") as config_fp:
             config_dict = yaml.load(config_fp, Loader=yaml.FullLoader)
             logging.info(f"config_dict={config_dict}")
@@ -48,9 +51,9 @@ class Orchestrator:
                 self.docker_client,
                 tag_manager.repo_set_mappings
             ).generate()
-        elif command in [ Commands.STUB_COVERAGE,
-                Commands.HARDEN_COVERAGE,
-                Commands.LATEST_COVERAGE]:
+        elif command in [Commands.STUB_COVERAGE,
+                         Commands.HARDEN_COVERAGE,
+                         Commands.LATEST_COVERAGE]:
             CoverageRunner(
                 self.config_name,
                 self.config_dict,
@@ -114,8 +117,10 @@ class Orchestrator:
             registry: docker.io
             account: rapidfort
         """
-        input_registry_url = self.config_dict.get("input_registry", {}).get("registry")
-        output_registry_url = self.config_dict.get("output_registry", {}).get("registry")
+        input_registry_url = self.config_dict.get(
+            "input_registry", {}).get("registry")
+        output_registry_url = self.config_dict.get(
+            "output_registry", {}).get("registry")
 
         input_registry_helper = RegistryHelperFactory.get_registry_helper(
             self.docker_client, input_registry_url)
@@ -129,19 +134,23 @@ class Orchestrator:
 
         return input_registry_helper, input_registry_helper
 
+
 def main():
     """main function"""
     parser = argparse.ArgumentParser()
     parser.add_argument("command", type=Commands, choices=list(Commands))
-    parser.add_argument("config", type=str, help="point to image config in yaml formt")
+    parser.add_argument("config", type=str,
+                        help="point to image config in yaml formt")
     parser.add_argument("--publish", action="store_true", help="publish image")
     parser.add_argument(
         "--no-publish", dest="publish",
         action="store_false", help="dont publish image")
     parser.set_defaults(publish=False)
-    parser.add_argument("--force-publish", dest="force_publish", action="store_true", help="force publish image")
+    parser.add_argument("--force-publish", dest="force_publish",
+                        action="store_true", help="force publish image")
     parser.set_defaults(force_publish=False)
-    parser.add_argument("--loglevel", type=str, default="info", help="debug, info, warning, error")
+    parser.add_argument("--loglevel", type=str, default="info",
+                        help="debug, info, warning, error")
     args = parser.parse_args()
 
     if args.force_publish:
@@ -152,8 +161,8 @@ def main():
         raise ValueError(f"Invalid log level: {args.loglevel}")
 
     logging.basicConfig(level=numeric_level,
-        format= "[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s",
-        datefmt="%H:%M:%S")
+                        format="[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s",
+                        datefmt="%H:%M:%S")
 
     logging.info(f"{args.command}, {args.config}")
     orchestrator = Orchestrator(args)

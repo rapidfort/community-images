@@ -7,8 +7,10 @@ import tempfile
 from consts import Consts
 from utils import Utils
 
+
 class StubGenerator:
     """ Stub generation command handler """
+
     def __init__(self, config_name, config_dict, docker_client, repo_set_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
@@ -22,8 +24,9 @@ class StubGenerator:
         for tag_mappings in self.repo_set_mappings:
             try:
                 self.generate_stub_for_tag_mappings(tag_mappings)
-            except Exception as exec: # pylint:disable=broad-except
-                logging.warning(f"Stub generation failed for {tag_mappings} due to {exec}")
+            except Exception as exec:  # pylint:disable=broad-except
+                logging.warning(
+                    f"Stub generation failed for {tag_mappings} due to {exec}")
                 raise
 
     def generate_stub_for_tag_mappings(self, tag_mappings):
@@ -50,9 +53,11 @@ class StubGenerator:
             Utils.run_cmd(["rfstub", input_tag_details.full_tag])
 
             # tag input stubbed image to output stubbed image
-            stub_image = self.docker_client.images.get(input_tag_details.full_stub_tag)
+            stub_image = self.docker_client.images.get(
+                input_tag_details.full_stub_tag)
             result = stub_image.tag(output_tag_details.full_stub_tag)
-            logging.info(f"image tag:[{output_tag_details.full_stub_tag}] success={result}")
+            logging.info(
+                f"image tag:[{output_tag_details.full_stub_tag}] success={result}")
 
             # push stubbed image to output repo
             result = self.docker_client.api.push(
@@ -65,7 +70,7 @@ class StubGenerator:
         logging.info(f"Adding rapidfort banner for image: {tag_details}")
 
         with tempfile.TemporaryDirectory() as tmpdirname:
-            script_dir = os.path.abspath(os.path.dirname( __file__ ))
+            script_dir = os.path.abspath(os.path.dirname(__file__))
 
             # copy over libbitnami.sh file
             src = os.path.join(script_dir, "../libbitnami.sh")
@@ -75,12 +80,16 @@ class StubGenerator:
             # create docker file
             file_path = os.path.join(tmpdirname, "Dockerfile")
             with open(file_path, 'w', encoding="UTF-8") as dckr_fp:
-                dckr_fp.write(f"FROM {tag_details.repo_path}:{tag_details.tag}\n")
-                dckr_fp.write("ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n")
+                dckr_fp.write(
+                    f"FROM {tag_details.repo_path}:{tag_details.tag}\n")
+                dckr_fp.write(
+                    "ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n")
 
             # run docker build
-            image, log_generator = self.docker_client.images.build(path=tmpdirname)
+            image, log_generator = self.docker_client.images.build(
+                path=tmpdirname)
             for log_lines in log_generator:
                 logging.info(log_lines)
             result = image.tag(tag_details.full_tag)
-            logging.info(f"rf banner image tag:[{tag_details.full_stub_tag}] success={result}")
+            logging.info(
+                f"rf banner image tag:[{tag_details.full_stub_tag}] success={result}")

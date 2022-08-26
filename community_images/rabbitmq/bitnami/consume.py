@@ -4,17 +4,18 @@ import getopt
 import os
 import sys
 
-import pika # pylint: disable=import-error
+import pika  # pylint: disable=import-error
 
-DEFAULT_RABBITMQ_USER='user'
-DEFAULT_RABBITMQ_PASSWORD='bitnami'
-DEFAULT_TOPIC_NAME='test'
+DEFAULT_RABBITMQ_USER = 'user'
+DEFAULT_RABBITMQ_PASSWORD = 'bitnami'
+DEFAULT_TOPIC_NAME = 'test'
 
-server='localhost' # pylint: disable=invalid-name
-password=DEFAULT_RABBITMQ_PASSWORD # pylint: disable=invalid-name
-user=DEFAULT_RABBITMQ_USER # pylint: disable=invalid-name
+server = 'localhost'  # pylint: disable=invalid-name
+password = DEFAULT_RABBITMQ_PASSWORD  # pylint: disable=invalid-name
+user = DEFAULT_RABBITMQ_USER  # pylint: disable=invalid-name
 try:
-    opts, args = getopt.getopt(sys.argv[1:],"s:p:u:",["rabbitmq-server=", "password=", "user="])
+    opts, args = getopt.getopt(sys.argv[1:], "s:p:u:", [
+                               "rabbitmq-server=", "password=", "user="])
 except getopt.GetoptError:
     print('python3 consume.py --rabbitmq-server <server> --password <password> --user <user>')
     sys.exit(2)
@@ -26,6 +27,7 @@ for opt, arg in opts:
     elif opt in ("--user", "--u"):
         user = arg
 
+
 def main():
     """main function."""
     params = pika.URLParameters(f'amqp://{user}:{password}@{server}')
@@ -33,7 +35,8 @@ def main():
     channel = connection.channel()
     channel.queue_declare(queue=DEFAULT_TOPIC_NAME)
 
-    method_frame, header_frame, body = channel.basic_get(queue=DEFAULT_TOPIC_NAME) # pylint: disable=unused-variable
+    method_frame, _, body = channel.basic_get(
+        queue=DEFAULT_TOPIC_NAME)  # pylint: disable=unused-variable
     if method_frame is None or method_frame.NAME == 'Basic.GetEmpty':
         print(" [x] Error, empty response ")
         connection.close()
@@ -41,6 +44,7 @@ def main():
         channel.basic_ack(delivery_tag=method_frame.delivery_tag)
         print(f" [x] Received {body}")
         connection.close()
+
 
 if __name__ == '__main__':
     try:
@@ -50,4 +54,4 @@ if __name__ == '__main__':
         try:
             sys.exit(0)
         except SystemExit:
-            os._exit(0) # pylint: disable=protected-access
+            os._exit(0)  # pylint: disable=protected-access

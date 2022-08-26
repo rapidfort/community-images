@@ -56,6 +56,7 @@ runtimes:
     override_file: "overrides.yml"
   - type: docker_compose
     compose_file: docker-compose.yml
+    wait_time_sec: 300
     image_keys:
       airflow:
         repository: "AIRFLOW_IMAGE_REPOSITORY"

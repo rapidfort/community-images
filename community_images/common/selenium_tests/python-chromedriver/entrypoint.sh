@@ -26,4 +26,4 @@ cd /usr/workspace/selenium_tests/
 # run pytest
 sleep 30
 
-pytest -s /usr/workspace/selenium_tests/ --server "$SERVER" --port "$PORT"
+pytest -s /usr/workspace/selenium_tests/ --server "$SERVER" --port "$PORT" 2>&1

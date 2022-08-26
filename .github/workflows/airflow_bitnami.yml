@@ -1,11 +1,11 @@
-name: InfluxDB™ Run
+name: Apache Airflow Run
 
 on:
   pull_request:
     paths:
       - ".github/workflows/**"
       - "community_images/common/**"
-      - "community_images/influxdb/bitnami/**"
+      - "community_images/airflow/bitnami/**"
     branches:
     - main
   schedule:
@@ -46,7 +46,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/bitnami --publish
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -55,7 +55,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name == 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/bitnami
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
@@ -63,5 +63,5 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/influxdb": 1 }' \
+           -d '{ "rapidfort/airflow": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls

@@ -40,7 +40,8 @@
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
    | `helm_repo` | helm repo to use for k8s runtime, ex: 'bitnami/nats' | `""` | yes |
-   | `readiness_wait_pod_name_suffix` | only valid for wait_type: pod, defaults to -0 | `-0` | False |
+   | `readiness_wait_pod_name_suffix` | only valid for wait_type: pod, defaults to 0 | `["0"]` | False |
+   | `readiness_wait_deployments_suffix` | wait for list of deployment suffix, {release_name}-suffix | `[""]` | False |
    | `tls_certs.generate` | if tls certs generation is needed true/false | `false` | False |
    | `tls_certs.secret_name` | secret name to store tls certs | `""` | yes |
    | `tls_certs.common_name` | common name to use in generated tls certs, defaults to localhost | `localhost` | yes |

@@ -8,7 +8,7 @@ params:
     value: '""'
   - name: official_website
     description: official website of the image
-    value: '""' 
+    value: '""'
   - name: source_image_provider
     description: "source image provider, ex: Bitnami"
     value: '""'
@@ -81,8 +81,12 @@ k8s_runtime_params:
     description: "helm repo to use for k8s runtime, ex: 'bitnami/nats'"
     value : '""'
   - name: readiness_wait_pod_name_suffix
-    description: "only valid for wait_type: pod, defaults to -0"
-    value : '-0'
+    description: "only valid for wait_type: pod, defaults to 0"
+    value : '["0"]'
+    required: no
+  - name: readiness_wait_deployments_suffix
+    description: "wait for list of deployment suffix, {release_name}-suffix"
+    value : '[""]'
     required: no
   - name: tls_certs.generate
     description: if tls certs generation is needed true/false

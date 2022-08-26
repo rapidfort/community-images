@@ -1,6 +1,7 @@
 """ Command enum class """
 from enum import Enum
 
+
 class Commands(Enum):
     """Enum for commands"""
     HOURLY_RUN = "hourly_run"

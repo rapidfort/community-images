@@ -57,7 +57,6 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Wordpress][ wordpress-github-link]| [![dh][dh-rf-badge]][wordpress-rf-dh-image-link] | [![rf-h][rf-h-badge]][wordpress-rf-link] | [![wordpress-image-ft][wordpress-ft-badge]][wordpress-ft-badge-link] |
 | [RabbitMQ][ rabbitmq-github-link]| [![dh][dh-rf-badge]][rabbitmq-rf-dh-image-link] | [![rf-h][rf-h-badge]][rabbitmq-rf-link] | [![rabbitmq-image-ft][rabbitmq-ft-badge]][rabbitmq-ft-badge-link] |
 | [Apache][ apache-github-link]| [![dh][dh-rf-badge]][apache-rf-dh-image-link] | [![rf-h][rf-h-badge]][apache-rf-link] | [![apache-image-ft][apache-ft-badge]][apache-ft-badge-link] |
-| [Apache Airflow][ airflow-github-link]| [![dh][dh-rf-badge]][airflow-rf-dh-image-link] | [![rf-h][rf-h-badge]][airflow-rf-link] | [![airflow-image-ft][airflow-ft-badge]][airflow-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -248,10 +247,3 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [apache-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/apache_bitnami.yml/badge.svg
 [apache-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/apache_bitnami.yml
 [apache-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
-
-[airflow-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/bitnami
-[airflow-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow?logo=docker&logoColor=white
-[airflow-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/airflow
-[airflow-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml/badge.svg
-[airflow-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml
-[airflow-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

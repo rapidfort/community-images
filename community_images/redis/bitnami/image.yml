@@ -35,14 +35,16 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: bitnami/redis
-    readiness_wait_pod_name_suffix: -master-0
+    readiness_wait_pod_name_suffix:
+      - "master-0"
     image_keys:
       redis: {}
     override_file: "overrides.yml"
   - type: k8s
     script: k8s_tls_coverage.sh
     helm_repo: bitnami/redis
-    readiness_wait_pod_name_suffix: -master-0
+    readiness_wait_pod_name_suffix:
+      - "master-0"
     tls_certs:
       generate: true
       secret_name: localhost-server-tls

@@ -26,7 +26,7 @@ kubectl apply -n "$K8S_NAMESPACE" -f "${SCRIPTPATH}"/selenium_job_env.yml
 kubectl wait pods python-chromedriver -n "$K8S_NAMESPACE" --for=condition=ready --timeout=10m
 
 # copy over the files from $SELENIUM_TEST_DIRECTORY to pod
-kubectl -n "$K8S_NAMESPACE" cp "$SELENIUM_TEST_DIRECTORY"/ python-chromedriver:/usr/workspace/selenium_tests/
+kubectl -n "$K8S_NAMESPACE" cp "$SELENIUM_TEST_DIRECTORY"/ python-chromedriver:/usr/workspace/
 
 kubectl -n "$K8S_NAMESPACE" exec -i python-chromedriver -- bash -c "/usr/workspace/entrypoint.sh"
 

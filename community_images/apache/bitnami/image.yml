@@ -12,10 +12,28 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/apache
 
   # install apache, just replace repository with RapidFort registry
-  $ helm install my-apache bitnami/apache --set image.repository=rapidfort/apache
+  $ helm install my-apache bitnami/apache --set image.repository=anmolvirdi/apache
 what_is_text: |
   The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`2.4`, `2.4-debian-11`, `2.4.54`, `2.4.54-debian-11-r17`, `latest` (2.4/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-apache/blob/2.4.54-debian-11-r17/2.4/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: anmolvirdi
+repo_sets: 
+  - apache:
+      input_base_tag: "2.4.54-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/apache
+    image_keys:
+      apache:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

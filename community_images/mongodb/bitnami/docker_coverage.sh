@@ -11,6 +11,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 JSON_PARAMS="$1"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
+CONTAINER_NAME=$(jq -r '.image_tag_details.mongodb.container_name' < "$JSON_PARAMS")
 MONGODB_ROOT_PASSWORD=password123
 
 JSON=$(cat "$JSON_PARAMS")
@@ -18,7 +19,7 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for docker compose coverage = $JSON"
 
 # get docker host ip
-MONGODB_HOST=$(docker inspect "${NAMESPACE}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
+MONGODB_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks[\"${NAMESPACE}\"].IPAddress")
 
 # run tests
 run_mongodb_test "$MONGODB_HOST" "$MONGODB_ROOT_PASSWORD" "${NAMESPACE}"

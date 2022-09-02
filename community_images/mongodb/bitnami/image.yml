@@ -51,4 +51,4 @@ runtimes:
     script: docker_coverage.sh
     mongodb:
       environment:
-        MONGODB_ROOT_PASSWORD="password123"
+        MONGODB_ROOT_PASSWORD: password123

@@ -7,8 +7,10 @@ import backoff
 from commands import Commands
 from utils import Utils
 
+
 class K8sSetup:
     """ k8s setup context manager """
+
     def __init__(
             self,
             namespace_name,
@@ -23,26 +25,27 @@ class K8sSetup:
         self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.command = command
-        self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
+        self.script_dir = os.path.abspath(os.path.dirname(__file__))
 
     def __enter__(self):
         """ create a k8s namespace and set it up for runner """
 
         # create namespace
-        cmd=f"kubectl create namespace {self.namespace_name}"
+        cmd = f"kubectl create namespace {self.namespace_name}"
         Utils.run_cmd(cmd.split())
 
         # add rapidfortbot credentials
         docker_config_json_path = f"{os.environ.get('HOME')}/.docker/config.json"
-        cmd=f"kubectl --namespace {self.namespace_name}"
-        cmd +=" create secret generic rf-regcred"
-        cmd +=f" --from-file=.dockerconfigjson={docker_config_json_path}"
-        cmd +=" --type=kubernetes.io/dockerconfigjson"
+        cmd = f"kubectl --namespace {self.namespace_name}"
+        cmd += " create secret generic rf-regcred"
+        cmd += f" --from-file=.dockerconfigjson={docker_config_json_path}"
+        cmd += " --type=kubernetes.io/dockerconfigjson"
         Utils.run_cmd(cmd.split())
 
         # add tls certs
-        cert_mgr_path = os.path.abspath(f"{self.script_dir}/../cert_managet_ns.yml")
-        cmd=f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
+        cert_mgr_path = os.path.abspath(
+            f"{self.script_dir}/../cert_managet_ns.yml")
+        cmd = f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
         Utils.run_cmd(cmd.split())
 
         # create tls certs for app
@@ -52,7 +55,7 @@ class K8sSetup:
             self.namespace_name)
 
         # upgrade helm
-        cmd="helm repo update"
+        cmd = "helm repo update"
         Utils.run_cmd(cmd.split())
 
         # Install helm
@@ -62,24 +65,38 @@ class K8sSetup:
         logging.info("waiting for pod to be ready")
         wait_complete = False
         try:
-            cmd=f"kubectl wait deployments {self.release_name}"
-            cmd+=f" -n {self.namespace_name}"
-            cmd+=" --for=condition=Available=True --timeout=10m"
-            Utils.run_cmd(cmd.split())
+            readiness_wait_deployments_suffix = self.runtime_props.get(
+                "readiness_wait_deployments_suffix")
+            if not readiness_wait_deployments_suffix:
+                cmd = f"kubectl wait deployments {self.release_name}"
+                cmd += f" -n {self.namespace_name}"
+                cmd += " --for=condition=Available=True --timeout=10m"
+                Utils.run_cmd(cmd.split())
+            else:
+                for deployment_suffix in readiness_wait_deployments_suffix:
+                    cmd = f"kubectl wait deployments {self.release_name}-{deployment_suffix}"
+                    cmd += f" -n {self.namespace_name}"
+                    cmd += " --for=condition=Available=True --timeout=10m"
+                    Utils.run_cmd(cmd.split())
+
             wait_complete = True
         except subprocess.CalledProcessError:
-            logging.info("Wait deployment command failed, try waiting for pod-0")
+            logging.info(
+                "Wait deployment command failed, try waiting for pod-0")
 
         if not wait_complete:
             try:
-                pod_name_suffix = self.runtime_props.get("readiness_wait_pod_name_suffix", "-0")
-                cmd=f"kubectl wait pods {self.release_name}{pod_name_suffix}"
-                cmd+=f" -n {self.namespace_name}"
-                cmd+=" --for=condition=ready --timeout=10m"
-                Utils.run_cmd(cmd.split())
+                readiness_wait_pod_name_suffix = self.runtime_props.get(
+                    "readiness_wait_pod_name_suffix", ["0"])
+                for pod_name_suffix in readiness_wait_pod_name_suffix:
+                    cmd = f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
+                    cmd += f" -n {self.namespace_name}"
+                    cmd += " --for=condition=ready --timeout=10m"
+                    Utils.run_cmd(cmd.split())
                 wait_complete = True
             except subprocess.CalledProcessError:
-                logging.info(f"Wait for {pod_name_suffix} also failed, reraising error")
+                logging.info(
+                    f"Wait for {pod_name_suffix} also failed, reraising error")
                 raise
 
         return {
@@ -93,29 +110,30 @@ class K8sSetup:
     def prepare_helm_cmd(self):
         """ Prepare helm chart command """
         # Install helm
-        override_file=f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
+        override_file = f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
 
-        cmd=f"helm install {self.release_name}"
-        cmd+=f" {self.runtime_props.get('helm_repo')}"
-        cmd+=f" --namespace {self.namespace_name}"
+        cmd = f"helm install {self.release_name}"
+        cmd += f" {self.runtime_props.get('helm_repo')}"
+        cmd += f" --namespace {self.namespace_name}"
 
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():
             if repo_key in image_keys:
-                repository_key = image_keys[repo_key].get("repository", "image.repository")
+                repository_key = image_keys[repo_key].get(
+                    "repository", "image.repository")
                 tag_key = image_keys[repo_key].get("tag", "image.tag")
 
                 repository_value = tag_details["repo_path"]
                 tag_value = tag_details["tag"]
 
-                cmd+=f" --set {repository_key}={repository_value}"
-                cmd+=f" --set {tag_key}={tag_value}"
+                cmd += f" --set {repository_key}={repository_value}"
+                cmd += f" --set {tag_key}={tag_value}"
 
-        for key,val in self.runtime_props.get("helm_additional_params", {}).items():
-            cmd+=f" --set {key}={val}"
+        for key, val in self.runtime_props.get("helm_additional_params", {}).items():
+            cmd += f" --set {key}={val}"
 
         if self.command != Commands.LATEST_COVERAGE:
-            cmd+=f" -f {override_file}"
+            cmd += f" -f {override_file}"
 
         return cmd
 
@@ -128,20 +146,20 @@ class K8sSetup:
     def __exit__(self, type, value, traceback):
         """ clean up k8s namespace """
         # log pods
-        cmd=f"kubectl -n {self.namespace_name} get pods"
+        cmd = f"kubectl -n {self.namespace_name} get pods"
         Utils.run_cmd(cmd.split())
 
-        cmd=f"kubectl -n {self.namespace_name} get svc"
+        cmd = f"kubectl -n {self.namespace_name} get svc"
         Utils.run_cmd(cmd.split())
 
         # bring down helm install
-        cmd=f"helm delete {self.release_name} --namespace {self.namespace_name}"
+        cmd = f"helm delete {self.release_name} --namespace {self.namespace_name}"
         Utils.run_cmd(cmd.split())
 
         # delete the PVC associated
-        cmd="kubectl -n {self.namespace_name} delete pvc --all"
+        cmd = "kubectl -n {self.namespace_name} delete pvc --all"
         Utils.run_cmd(cmd.split())
 
         # delete namespace
-        cmd=f"kubectl delete namespace {self.namespace_name}"
+        cmd = f"kubectl delete namespace {self.namespace_name}"
         Utils.run_cmd(cmd.split())

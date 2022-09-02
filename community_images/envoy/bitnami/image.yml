@@ -16,18 +16,18 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`1.23`, `1.23-debian-11`, `1.23.0`, `1.23.0-debian-11-r8`, `latest` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.23/debian-11/Dockerfile)"
-  - "[`1.22`, `1.22-debian-11`, `1.22.4`, `1.22.4-debian-11-r3` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.22/debian-11/Dockerfile)"
+  - "[`1.22`, `1.22-debian-11`, `1.22.5`, `1.22.5-debian-11-r3` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.22/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 output_registry:
   registry: docker.io
   account: rapidfort
-repo_sets: 
+repo_sets:
   - envoy:
       input_base_tag: "1.23.0-debian-11-r"
   - envoy:
-      input_base_tag: "1.22.4-debian-11-r"
+      input_base_tag: "1.22.5-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

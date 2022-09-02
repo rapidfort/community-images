@@ -5,8 +5,10 @@ import os
 import requests
 from consts import Consts
 
+
 class RegistryHelper:
     """ Docker registry helper base class"""
+
     def __init__(self, docker_client, registry, username, password):
         self.registry = registry
         self.username = username
@@ -41,18 +43,19 @@ class RegistryHelper:
 
         tags = filter(lambda tag: search_str in tag, tags)
         tags = list(filter(
-            lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip().isdigit(),
+            lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip(
+            ).isdigit(),
             tags))
 
-        if len(tags)==0:
+        if len(tags) == 0:
             return None
 
-        tags.sort(key = lambda tag: int(tag[search_str_len:]))
+        tags.sort(key=lambda tag: int(tag[search_str_len:]))
         if tags:
             return tags[-1]
         return None
 
-    def delete_tag(self, account, repo, tag): # pylint: disable=unused-argument
+    def delete_tag(self, account, repo, tag):  # pylint: disable=unused-argument
         """ delete tag from repo """
         return True
 
@@ -60,6 +63,7 @@ class RegistryHelper:
 class DockerHubHelper(RegistryHelper):
     """ Implement dockerhub helper """
     BASE_URL = "https://registry.hub.docker.com"
+
     def __init__(self, docker_client, registry):
         username = os.environ.get("DOCKERHUB_USERNAME")
         password = os.environ.get("DOCKERHUB_PASSWORD")
@@ -74,20 +78,26 @@ class DockerHubHelper(RegistryHelper):
         """
         Get tags from the dockerhub registry API
         """
-        tags=[]
+        tags = []
 
-        url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags"
+        url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags?page_size=25"
 
         if account == "_":
             # Handle official repository here
-            url = f"{self.BASE_URL}/v2/repositories/{repo}/tags"
+            url = f"{self.BASE_URL}/v2/repositories/{repo}/tags?page_size=25"
 
-        resp = requests.get(url)
-        logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
-        if 200 <= resp.status_code < 300:
-            tag_objs = resp.json()
-            results = tag_objs.get("results", [])
-            tags = map(lambda x: x.get("name", ""), results)
+        while url:
+            resp = requests.get(url, timeout=30)
+            logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
+            if 200 <= resp.status_code < 300:
+                tag_objs = resp.json()
+                results = tag_objs.get("results", [])
+                tags += map(lambda x: x.get("name", ""), results)
+                url = tag_objs.get("next")
+
+            # break after tags array is 100 size
+            if len(tags) > 100:
+                break
         return tags
 
     def get_auth_header(self):
@@ -98,8 +108,9 @@ class DockerHubHelper(RegistryHelper):
             json={
                 "username": self.username,
                 "password": self.password
-                }
-            )
+            },
+            timeout=30
+        )
         if resp.status_code == 200:
             resp_json = resp.json()
             logging.debug(resp_json)
@@ -110,11 +121,13 @@ class DockerHubHelper(RegistryHelper):
     def delete_tag(self, account, repo, tag):
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
         auth_header = self.get_auth_header()
-        resp = requests.delete(del_url, headers=auth_header)
+        resp = requests.delete(del_url, headers=auth_header, timeout=30)
         return resp.status_code == 200
+
 
 class IronBankHelper(RegistryHelper):
     """ Iron bank helper class """
+
     def __init__(self, docker_client, registry):
         username = os.environ.get("IB_DOCKER_USERNAME")
         password = os.environ.get("IB_DOCKER_PASSWORD")
@@ -124,6 +137,7 @@ class IronBankHelper(RegistryHelper):
     @staticmethod
     def registry_url():
         return "registry1.dso.mil"
+
 
 class RegistryHelperFactory:
     """ Registry factory to get Registry helper objects """

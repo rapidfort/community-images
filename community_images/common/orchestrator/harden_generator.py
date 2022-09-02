@@ -5,14 +5,16 @@ import logging
 from consts import Consts
 from utils import Utils
 
+
 class HardenGenerator:
     """ Harden generation command handler """
+
     def __init__(self, config_name, config_dict, docker_client, repo_set_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
         self.docker_client = docker_client
         self.repo_set_mappings = repo_set_mappings
-        self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
+        self.script_dir = os.path.abspath(os.path.dirname(__file__))
 
     def generate(self, publish):
         """
@@ -21,8 +23,10 @@ class HardenGenerator:
         for tag_mappings in self.repo_set_mappings:
             try:
                 self.generate_harden_for_tag_mappings(tag_mappings, publish)
-            except Exception as exec: # pylint:disable=broad-except
-                logging.warning(f"Harden generation failed for {tag_mappings} due to {exec}")
+            except Exception as exec:  # pylint:disable=broad-except
+                logging.warning(
+                    f"Harden generation failed for {tag_mappings} due to {exec}")
+                raise
 
     def generate_harden_for_tag_mappings(self, tag_mappings, publish):
         """
@@ -30,7 +34,7 @@ class HardenGenerator:
         """
 
         image_script_dir = os.path.abspath(
-                f"{self.script_dir}/../../{self.config_name}")
+            f"{self.script_dir}/../../{self.config_name}")
 
         rfignore_path = os.path.join(image_script_dir, Consts.RF_IGNORE)
         rfignore_exists = os.path.exists(rfignore_path)
@@ -40,16 +44,18 @@ class HardenGenerator:
 
             output_tag_details = tag_mapping.output_tag_details
 
-            cmd=f"rfharden {output_tag_details.full_stub_tag} --put-meta"
+            cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta"
             if rfignore_exists:
-                cmd+=f" --profile {rfignore_path}"
+                cmd += f" --profile {rfignore_path}"
             Utils.run_cmd(cmd.split())
 
             if publish:
                 # tag input stubbed image to output stubbed image
-                hardened_image = self.docker_client.images.get(output_tag_details.full_hardened_tag)
+                hardened_image = self.docker_client.images.get(
+                    output_tag_details.full_hardened_tag)
                 result = hardened_image.tag(output_tag_details.full_tag)
-                logging.info(f"image tag:[{output_tag_details.full_tag}] success={result}")
+                logging.info(
+                    f"image tag:[{output_tag_details.full_tag}] success={result}")
 
                 # push stubbed image to output repo
                 result = self.docker_client.api.push(
@@ -68,7 +74,8 @@ class HardenGenerator:
     def _tag_util(self, full_repo_path, current_tag, new_tag):
         """ add new tag to existing image """
         # tag input stubbed image to output stubbed image
-        src_image = self.docker_client.images.get(f"{full_repo_path}:{current_tag}")
+        src_image = self.docker_client.images.get(
+            f"{full_repo_path}:{current_tag}")
 
         new_full_tag = f"{full_repo_path}:{new_tag}"
         result = src_image.tag(new_full_tag)
@@ -83,7 +90,7 @@ class HardenGenerator:
     def _roll_over_bitnami_tags(self, tag_details):
         """ add bitnami rolling tags """
         # example tag=10.6.8-debian-10-r2
-        input_tag=tag_details.tag
+        input_tag = tag_details.tag
         input_tag_array = input_tag.split("-")
         if len(input_tag_array) < 3:
             logging.warning(f"unable to decode bitnami tag: {input_tag}")
@@ -104,8 +111,9 @@ class HardenGenerator:
         maj_v = version_array[0]
         min_v = version_array[1]
 
-        version_os_tag=f"{maj_v}.{min_v}-{os_name}-{os_ver}" # 10.6-debian-10
-        major_minor_tag=f"{maj_v}.{min_v}" # 10.6
+        # 10.6-debian-10
+        version_os_tag = f"{maj_v}.{min_v}-{os_name}-{os_ver}"
+        major_minor_tag = f"{maj_v}.{min_v}"  # 10.6
 
         # add version os tag
         self._tag_util(

@@ -9,8 +9,10 @@ import time
 from commands import Commands
 from utils import Utils
 
+
 class DockerSetup:
     """ Docker setup context manager """
+
     def __init__(
             self,
             namespace_name,
@@ -28,7 +30,7 @@ class DockerSetup:
         self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.command = command
-        self.script_dir = os.path.abspath(os.path.dirname( __file__ ))
+        self.script_dir = os.path.abspath(os.path.dirname(__file__))
         self.container_list = []
         self.cert_path = None
         self.daemon = daemon
@@ -39,7 +41,7 @@ class DockerSetup:
     def __enter__(self):
         """ create a docker namespace and set it up for runner """
         # create network
-        cmd=f"docker network create -d bridge {self.namespace_name}"
+        cmd = f"docker network create -d bridge {self.namespace_name}"
         Utils.run_cmd(cmd.split())
 
         container_details = {}
@@ -47,7 +49,7 @@ class DockerSetup:
         self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
-        common_volumes =  self.runtime_props.get("volumes", {})
+        common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
 
         # create docker container
@@ -61,28 +63,28 @@ class DockerSetup:
 
             image_runtime_props = self.runtime_props.get(repo, {})
 
-            cmd="docker run --rm"
-            cmd+=" -d" if self.daemon else " -i"
-            cmd+=f" --network={self.namespace_name}"
+            cmd = "docker run --rm"
+            cmd += " -d" if self.daemon else " -i"
+            cmd += f" --network={self.namespace_name}"
 
             if self.entrypoint is not None:
-                cmd+=f" --entrypoint {self.entrypoint}"
+                cmd += f" --entrypoint {self.entrypoint}"
 
             if self.command == Commands.STUB_COVERAGE:
-                cmd+=" --cap-add=SYS_PTRACE"
+                cmd += " --cap-add=SYS_PTRACE"
 
             env_file = os.path.join(
                 self.image_script_dir, image_runtime_props.get(
                     "env_file", "docker.env"))
 
             if os.path.exists(env_file):
-                cmd+=f" --env-file {env_file}"
+                cmd += f" --env-file {env_file}"
 
             environment = image_runtime_props.get("environment", {})
             environment.update(common_environment)
 
             for key, val in environment.items():
-                cmd+=f" -e {key}={val}"
+                cmd += f" -e {key}={val}"
 
             volumes = image_runtime_props.get("volumes", {})
             volumes.update(common_volumes)
@@ -92,15 +94,16 @@ class DockerSetup:
                     self.image_script_dir, src_mnt_rel_path)
 
                 if os.path.exists(src_mnt_abs_path):
-                    cmd+=f" -v {src_mnt_abs_path}:{dst_mnt_path}"
+                    cmd += f" -v {src_mnt_abs_path}:{dst_mnt_path}"
                 else:
-                    logging.warning(f"mount path specified but dont exist {src_mnt_abs_path}")
+                    logging.warning(
+                        f"mount path specified but dont exist {src_mnt_abs_path}")
 
-            cmd+=f" --name {container_name}"
-            cmd+=f" {repo_path}:{tag}"
+            cmd += f" --name {container_name}"
+            cmd += f" {repo_path}:{tag}"
 
             if self.exec_command is not None:
-                cmd+=f" {self.exec_command}"
+                cmd += f" {self.exec_command}"
 
             logging.info(f"cmd: {cmd}")
             Utils.run_cmd(cmd.split())
@@ -128,7 +131,7 @@ class DockerSetup:
         # add docker ips for all containers
         for container_detail in container_details.values():
             container_name = container_detail["name"]
-            cmd=f"docker inspect {container_name}"
+            cmd = f"docker inspect {container_name}"
             docker_inspect_json = subprocess.check_output(cmd.split())
             docker_inspect_dict = json.loads(docker_inspect_json)
             if len(docker_inspect_dict):
@@ -146,12 +149,12 @@ class DockerSetup:
         # clean up docker container
         if self.daemon:
             for container in self.container_list:
-                cmd=f"docker kill {container}"
+                cmd = f"docker kill {container}"
                 logging.info(f"cmd: {cmd}")
                 Utils.run_cmd(cmd.split())
 
         # delete network
-        cmd=f"docker network rm {self.namespace_name}"
+        cmd = f"docker network rm {self.namespace_name}"
         Utils.run_cmd(cmd.split())
 
         # remove cert dir

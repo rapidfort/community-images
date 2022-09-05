@@ -110,7 +110,7 @@ class K8sSetup:
     def prepare_kubectl_cmd(self):
         """ Prepare kubectl command """
         cmd = f"kubectl run {self.release_name}"
-        cmd += f" --restart=Never --privileged"
+        cmd += " --restart=Never --privileged"
         cmd += f" --namespace {self.namespace_name}"
 
         image_keys = self.runtime_props.get("image_keys", {})

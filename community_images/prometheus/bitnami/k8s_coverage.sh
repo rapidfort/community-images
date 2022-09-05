@@ -7,7 +7,7 @@ set -e
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 # shellcheck disable=SC1091
-. "${SCRIPTPATH}"/mongo_helpers.sh
+. "${SCRIPTPATH}"/coverage.sh
 
 JSON_PARAMS="$1"
 

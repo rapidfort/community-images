@@ -34,6 +34,8 @@ runtimes:
     helm_repo: bitnami/apache
     tls_certs:
       generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
     image_keys:
       apache:
         repository: "image.repository"

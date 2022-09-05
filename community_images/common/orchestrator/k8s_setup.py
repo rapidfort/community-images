@@ -84,11 +84,17 @@ class K8sSetup:
             try:
                 readiness_wait_pod_name_suffix = self.runtime_props.get(
                     "readiness_wait_pod_name_suffix", ["0"])
-                for pod_name_suffix in readiness_wait_pod_name_suffix:
-                    cmd = f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
+                if not readiness_wait_pod_name_suffix:
+                    cmd = f"kubectl wait pods {self.release_name}"
                     cmd += f" -n {self.namespace_name}"
                     cmd += " --for=condition=ready --timeout=10m"
                     Utils.run_cmd(cmd.split())
+                else:
+                    for pod_name_suffix in readiness_wait_pod_name_suffix:
+                        cmd = f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
+                        cmd += f" -n {self.namespace_name}"
+                        cmd += " --for=condition=ready --timeout=10m"
+                        Utils.run_cmd(cmd.split())
                 wait_complete = True
             except subprocess.CalledProcessError:
                 logging.info(
@@ -106,7 +112,7 @@ class K8sSetup:
     def prepare_kubectl_cmd(self):
         """ Prepare kubectl command """
         cmd = f"kubectl run {self.release_name}"
-        cmd += f" --restart='Never' --privileged"
+        cmd += f" --restart=Never --privileged"
         cmd += f" --namespace {self.namespace_name}"
 
         image_keys = self.runtime_props.get("image_keys", {})

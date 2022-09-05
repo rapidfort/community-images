@@ -54,6 +54,14 @@ runtimes:
         repository: "worker.image.repository"
         tag: "worker.image.tag"
     override_file: "overrides.yml"
+    helm_additional_params:
+      auth.username: "rf-test"
+      auth.password: "rf_password123!"
+      git.dags.enabled: true
+      git.dags.repositories[0].repository: https://github.com/rapidfort/airflow-example-dags
+      git.dags.repositories[0].name: airflow-example-dags
+      git.dags.repositories[0].branch: main
+
   - type: docker_compose
     compose_file: docker-compose.yml
     wait_time_sec: 300

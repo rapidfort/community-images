@@ -33,7 +33,7 @@ runtimes:
     script: k8s_coverage.sh
     use_helm: False
     image_keys:
-      mongodb:
+      prometheus:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
@@ -41,7 +41,7 @@ runtimes:
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      mongodb:
+      prometheus:
         repository: "PROMETHEUS_IMAGE_REPOSITORY"
         tag: "PROMETHEUS_IMAGE_TAG"
   - type: docker

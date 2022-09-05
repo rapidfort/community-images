@@ -32,8 +32,20 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: bitnami/apache
+    tls_certs:
+      generate: true
     image_keys:
       apache:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      envoy:
+        repository: "APACHE_IMAGE_REPOSITORY"
+        tag: "APACHE_IMAGE_TAG"

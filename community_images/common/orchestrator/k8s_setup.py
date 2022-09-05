@@ -192,9 +192,15 @@ class K8sSetup:
         cmd = f"kubectl -n {self.namespace_name} get svc"
         Utils.run_cmd(cmd.split())
 
-        # bring down helm install
-        cmd = f"helm delete {self.release_name} --namespace {self.namespace_name}"
-        Utils.run_cmd(cmd.split())
+        use_helm = self.runtime_props.get(
+                "use_helm", True)
+        if use_helm:
+            # bring down helm install
+            cmd = f"helm delete {self.release_name} --namespace {self.namespace_name}"
+            Utils.run_cmd(cmd.split())
+        else:
+            cmd = f"kubectl delete pod {self.release_name} --namespace {self.namespace_name}"
+            Utils.run_cmd(cmd.split())
 
         # delete the PVC associated
         cmd = "kubectl -n {self.namespace_name} delete pvc --all"

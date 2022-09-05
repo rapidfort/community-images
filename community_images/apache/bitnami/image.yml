@@ -48,6 +48,6 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      envoy:
+      apache:
         repository: "APACHE_IMAGE_REPOSITORY"
         tag: "APACHE_IMAGE_TAG"

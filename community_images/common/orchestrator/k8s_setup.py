@@ -54,12 +54,8 @@ class K8sSetup:
             self.runtime_props.get("tls_certs", {}),
             self.namespace_name)
 
-        # upgrade helm
-        cmd = "helm repo update"
-        Utils.run_cmd(cmd.split())
-
-        # Install helm
-        self.create_helm_chart(self.prepare_helm_cmd())
+        # bring up the k8s resources
+        self.create_k8s_cluster()
 
         # waiting for pod to be ready
         logging.info("waiting for pod to be ready")
@@ -107,6 +103,25 @@ class K8sSetup:
             "runtime_props": self.runtime_props
         }
 
+    def prepare_kubectl_cmd(self):
+        """ Prepare kubectl command """
+        cmd = f"kubectl run {self.release_name}"
+        cmd += f" --restart='Never' --privileged"
+        cmd += f" --namespace {self.namespace_name}"
+
+        image_keys = self.runtime_props.get("image_keys", {})
+        for repo_key, tag_details in self.image_tag_details.items():
+            if repo_key in image_keys:
+                repository_value = tag_details["repo_path"]
+                tag_value = tag_details["tag"]
+
+                cmd += f" --image {repository_value}:{tag_value}"
+
+        for key, val in self.runtime_props.get("kubectl_additional_params", {}).items():
+            cmd += f" --{key}={val}"
+
+        return cmd
+
     def prepare_helm_cmd(self):
         """ Prepare helm chart command """
         # Install helm
@@ -136,6 +151,27 @@ class K8sSetup:
             cmd += f" -f {override_file}"
 
         return cmd
+
+    def create_k8s_cluster(self):
+        """ Bring up k8s resources. """
+        use_helm = self.runtime_props.get(
+                "use_helm", True)
+        if use_helm:
+            # upgrade helm
+            cmd = "helm repo update"
+            Utils.run_cmd(cmd.split())
+
+            # Install helm
+            self.create_helm_chart(self.prepare_helm_cmd())
+        else:
+            # bring up k8s cluster using kubectl
+            self.create_kubectl_cluster(self.prepare_kubectl_cmd())
+
+    @backoff.on_exception(backoff.expo, BaseException, max_time=300)
+    def create_kubectl_cluster(self, cmd):
+        """ Create k8s cluster using kubectl command. """
+        logging.info(f"creating kubectl cluster with cmd: {cmd}")
+        Utils.run_cmd(cmd.split())
 
     @backoff.on_exception(backoff.expo, BaseException, max_time=300)
     def create_helm_chart(self, cmd):

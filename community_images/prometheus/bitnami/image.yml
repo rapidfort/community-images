@@ -31,7 +31,7 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/prometheus
+    use_helm: False
     image_keys:
       mongodb:
         repository: "image.repository"

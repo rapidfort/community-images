@@ -12,7 +12,7 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/apache
 
   # install apache, just replace repository with RapidFort registry
-  $ helm install my-apache bitnami/apache --set image.repository=anmolvirdi/apache
+  $ helm install my-apache bitnami/apache --set image.repository=rapidfort/apache
 what_is_text: |
   The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
 disclaimer: |

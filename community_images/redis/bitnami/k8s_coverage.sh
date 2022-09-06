@@ -14,7 +14,7 @@ REDIS_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}"
 
 # copy test.redis into container
 kubectl -n "${NAMESPACE}" cp \
-    "${SCRIPTPATH}"/../../common/tests/test.redis "${RELEASE_NAME}"-master-0:/tmp/test.redis
+    "${SCRIPTPATH}"/test.redis "${RELEASE_NAME}"-master-0:/tmp/test.redis
 
 # run script
 kubectl -n "${NAMESPACE}" \
@@ -23,7 +23,7 @@ kubectl -n "${NAMESPACE}" \
 
 # copy redis_coverage.sh into container
 kubectl -n "${NAMESPACE}" cp \
-    "${SCRIPTPATH}"/../../common/tests/redis_coverage.sh \
+    "${SCRIPTPATH}"/redis_coverage.sh \
     "${RELEASE_NAME}"-master-0:/tmp/redis_coverage.sh
 
 # run redis_coverage command on cluster

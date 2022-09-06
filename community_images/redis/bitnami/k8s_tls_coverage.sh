@@ -14,7 +14,7 @@ REDIS_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}"
 
 # copy test.redis into container
 kubectl -n "${NAMESPACE}" cp \
-    "${SCRIPTPATH}"/../../common/tests/test.redis "${RELEASE_NAME}"-master-0:/tmp/test.redis
+    "${SCRIPTPATH}"/test.redis "${RELEASE_NAME}"-master-0:/tmp/test.redis
 
 # run tls script
 kubectl -n "${NAMESPACE}" \

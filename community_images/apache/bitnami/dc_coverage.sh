@@ -33,10 +33,8 @@ TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports
 # run curl in loop for different endpoints
 for i in {1..20};
 do 
-    echo "Attempt: $i"
-    curl http://localhost:"${NON_TLS_PORT}"/a
-    curl http://localhost:"${NON_TLS_PORT}"/b
-    with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
-    with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
+    echo "Attempt $i"
+        curl http://localhost:"${NON_TLS_PORT}"
+        with_backoff curl https://localhost:"${TLS_PORT}" -k -v
 done
 

@@ -1,0 +1,1 @@
+../../common/tests/sysbench_tests.sh

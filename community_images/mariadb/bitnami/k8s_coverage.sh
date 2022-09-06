@@ -7,7 +7,7 @@ set -e
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 # shellcheck disable=SC1091
-. "${SCRIPTPATH}"/../../common/tests/sysbench_tests.sh
+. "${SCRIPTPATH}"/sysbench_tests.sh
 
 JSON_PARAMS="$1"
 
@@ -18,13 +18,13 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}" -o jsonpath="{.data.mariadb-root-password}" | base64 --decode)
 
 # copy test.sql into container
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${RELEASE_NAME}"-0:/tmp/test.my_sql
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/test.my_sql "${RELEASE_NAME}"-0:/tmp/test.my_sql
 
 # run script
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "mysql -h localhost -uroot -p\"$MARIADB_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
 # copy mysql_coverage.sh into container
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${RELEASE_NAME}"-0:/tmp/mysql_coverage.sh
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/mysql_coverage.sh "${RELEASE_NAME}"-0:/tmp/mysql_coverage.sh
 
 # run mysql_coverage on cluster
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "/tmp/mysql_coverage.sh"

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   prometheus1:
-    image: @IMAGE
+    image: ${PROMETHEUS_IMAGE_REPOSITORY}:${PROMETHEUS_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     ports:

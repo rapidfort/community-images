@@ -51,3 +51,9 @@ runtimes:
       apache:
         repository: "APACHE_IMAGE_REPOSITORY"
         tag: "APACHE_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    tls_certs:
+      generate: true
+      out_dir: certs
+    

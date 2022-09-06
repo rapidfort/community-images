@@ -23,7 +23,7 @@ TAG=$(jq -r '.image_tag_details.mongodb.tag' < "$JSON_PARAMS")
 # get pod name
 POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name=mongodb -o jsonpath="{.items[0].metadata.name}")
 # copy mongodb_coverage.sh into container
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/mongodb_coverage.sh "${POD_NAME}":/tmp/mongodb_coverage.sh
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/mongodb_coverage.sh "${POD_NAME}":/tmp/mongodb_coverage.sh
 
 # run mongodb_coverage on cluster
 kubectl -n "${NAMESPACE}" exec -i "${POD_NAME}" -- /bin/bash -c "/tmp/mongodb_coverage.sh"
@@ -39,7 +39,7 @@ MONGODB_ROOT_PASSWORD="${MONGODB_ROOT_PASSWORD}" \
 kubectl wait pods mongodb-release-client -n "${NAMESPACE}" --for=condition=ready --timeout=10m
 
 # copy test.mongo into container
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.mongo mongodb-release-client:/tmp/test.mongo
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/test.mongo mongodb-release-client:/tmp/test.mongo
 
 # run script
 kubectl -n "${NAMESPACE}" exec -i mongodb-release-client \

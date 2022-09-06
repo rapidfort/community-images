@@ -9,9 +9,9 @@ services:
       - '5432:5432'
     volumes:
       - 'postgresql_data:/var/lib/postgresql/data'
-      - ../../common/tests/test.psql:/tmp/test.psql
+      - test.psql:/tmp/test.psql
       - ../../common/tests/common_commands.sh:/tmp/common_commands.sh
-      - ../../common/tests/postgres_coverage.sh:/tmp/postgres_coverage.sh
+      - postgres_coverage.sh:/tmp/postgres_coverage.sh
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=my_password

@@ -19,3 +19,32 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`2`, `2-debian-11`, `2.37.0`, `2.37.0-debian-11-r11`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/prometheus/2/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets: 
+  - prometheus:
+      input_base_tag: "2.37.0-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    use_helm: False
+    image_keys:
+      prometheus:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      prometheus:
+        repository: "PROMETHEUS_IMAGE_REPOSITORY"
+        tag: "PROMETHEUS_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh

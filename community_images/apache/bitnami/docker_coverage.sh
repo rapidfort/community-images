@@ -9,7 +9,6 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 APACHE_HOST=$(jq -r '.container_details.apache.ip_address' < "$JSON_PARAMS")
 
 # Install Apache benchmark testing tool

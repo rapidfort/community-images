@@ -9,12 +9,8 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
-REPOSITORY=apache
-
-# get docker host ip
-APACHE_HOST=$(docker inspect "${NETWORK_NAME}" | jq -r ".[].NetworkSettings.Networks[\"${NETWORK_NAME}\"].IPAddress")
+APACHE_HOST=$(jq -r '.container_details.apache.ip_address' < "$JSON_PARAMS")
 
 # Install Apache benchmark testing tool
 sudo apt-get install apache2-utils -y

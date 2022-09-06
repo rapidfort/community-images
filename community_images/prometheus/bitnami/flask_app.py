@@ -21,7 +21,7 @@ def test():
 @app.route('/test1/')
 def test1():
     """The test1 endpoint"""
-    1/0  # pylint: disable=pointless-statement
+    1 / 0  # pylint: disable=pointless-statement
     return 'rest'
 
 
@@ -34,7 +34,9 @@ def handle_500(error):
 @app.route('/metrics')
 def metrics():
     """The metrics endpoint"""
-    return Response(prometheus_client.generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+    return Response(
+        prometheus_client.generate_latest(),
+        mimetype=CONTENT_TYPE_LATEST)
 
 
 if __name__ == '__main__':

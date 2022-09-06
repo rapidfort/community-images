@@ -160,9 +160,10 @@ def main():
     if not isinstance(numeric_level, int):
         raise ValueError(f"Invalid log level: {args.loglevel}")
 
-    logging.basicConfig(level=numeric_level,
-                        format="[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s",
-                        datefmt="%H:%M:%S")
+    logging.basicConfig(
+        level=numeric_level,
+        format="[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s",
+        datefmt="%H:%M:%S")
 
     logging.info(f"{args.command}, {args.config}")
     orchestrator = Orchestrator(args)

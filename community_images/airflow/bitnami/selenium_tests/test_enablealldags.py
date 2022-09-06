@@ -33,8 +33,10 @@ class TestEnablealldags():
         self.driver.quit()
 
     def test_enablealldags(self, params):
-        self.driver.get("http://{}:{}/".format(
-            params["server"], params["port"]))  # pylint: disable=consider-using-f-string
+        self.driver.get(
+            "http://{}:{}/".format(
+                params["server"],
+                params["port"]))  # pylint: disable=consider-using-f-string
         self.driver.set_window_size(1440, 790)
         self.driver.find_element(By.ID, "username").send_keys("rf-test")
         self.driver.find_element(

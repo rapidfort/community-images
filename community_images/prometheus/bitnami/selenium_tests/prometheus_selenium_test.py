@@ -39,9 +39,13 @@ class TestPrometheus():
         """The test method"""
         # Test name: s1
         # Step # | name | target | value
-        # 1 | open | /graph?g0.expr=&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h |
-        self.driver.get("http://{}:{}/".format(
-            params["server"], params["port"]))  # pylint: disable=consider-using-f-string
+        # 1 | open |
+        # /graph?g0.expr=&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h
+        # |
+        self.driver.get(
+            "http://{}:{}/".format(
+                params["server"],
+                params["port"]))  # pylint: disable=consider-using-f-string
         # 2 | setWindowSize | 1200x859 |
         self.driver.set_window_size(1200, 859)
         # 3 | click | css=.cm-line |
@@ -50,18 +54,23 @@ class TestPrometheus():
         self.driver.find_element(By.CSS_SELECTOR, ".execute-btn").click()
         # 5 | click | css=.cm-line |
         self.driver.find_element(By.CSS_SELECTOR, ".cm-line").click()
-        # 6 | editContent | css=.cm-content | <div class="cm-line">request_count_total</div>
+        # 6 | editContent | css=.cm-content | <div
+        # class="cm-line">request_count_total</div>
         element = self.driver.find_element(By.CSS_SELECTOR, ".cm-content")
         self.driver.execute_script(
-            "if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '<div class=\"cm-line\">request_count_total</div>'}", element)  # pylint: disable=line-too-long
+            "if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '<div class=\"cm-line\">request_count_total</div>'}",
+            element)  # pylint: disable=line-too-long
         # 7 | click | css=.execute-btn |
         self.driver.find_element(By.CSS_SELECTOR, ".execute-btn").click()
         # search for the text on the page now
         assert "request_count_total" in self.driver.page_source
-        # 8 | editContent | css=.cm-content | <div class="cm-line">request_latency_seconds_bucket</div> # pylint: disable=line-too-long
+        # 8 | editContent | css=.cm-content | <div
+        # class="cm-line">request_latency_seconds_bucket</div> # pylint:
+        # disable=line-too-long
         element = self.driver.find_element(By.CSS_SELECTOR, ".cm-content")
         self.driver.execute_script(
-            "if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '<div class=\"cm-line\">request_latency_seconds_bucket</div>'}", element)
+            "if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '<div class=\"cm-line\">request_latency_seconds_bucket</div>'}",
+            element)
         # 9 | click | css=.execute-btn |
         self.driver.find_element(By.CSS_SELECTOR, ".execute-btn").click()
         # search for the text on the page

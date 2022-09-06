@@ -9,7 +9,12 @@ from utils import Utils
 class HardenGenerator:
     """ Harden generation command handler """
 
-    def __init__(self, config_name, config_dict, docker_client, repo_set_mappings):
+    def __init__(
+            self,
+            config_name,
+            config_dict,
+            docker_client,
+            repo_set_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
         self.docker_client = docker_client

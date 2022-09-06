@@ -17,7 +17,7 @@ POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/name="$REPOSI
 
 # fetch service url and store the urls in URLS file
 rm -f URLS
-minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url >> URLS
+minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url | tee -a URLS
 
 # Changing "http" to "https" in the urls file
 sed -i '2,2s/http/https/' URLS

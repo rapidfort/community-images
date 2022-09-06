@@ -26,4 +26,4 @@ cd /usr/workspace/selenium_tests/
 # run pytest
 sleep 30
 
-with_backoff pytest /usr/workspace/selenium_tests/ --server "$SERVER" --port "$PORT"
+with_backoff pytest --log-level=info --log-cli-level=info --capture=tee-sys /usr/workspace/selenium_tests/ --server "$SERVER" --port "$PORT"

@@ -128,9 +128,9 @@ class TagManager:
                 logging.info(
                     f"force publish flag={self.orchestrator.force_publish}")
 
-                needs_generation = (not self.orchestrator.publish or
-                                    self.orchestrator.force_publish or
-                                    (input_tag_detail.tag != output_tag_detail.tag))
+                needs_generation = (
+                    not self.orchestrator.publish or self.orchestrator.force_publish or (
+                        input_tag_detail.tag != output_tag_detail.tag))
                 logging.info(
                     f"decision for needs generation={needs_generation}")
 

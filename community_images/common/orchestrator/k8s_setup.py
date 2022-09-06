@@ -121,7 +121,8 @@ class K8sSetup:
 
                 cmd += f" --image {repository_value}:{tag_value}"
 
-        for key, val in self.runtime_props.get("kubectl_additional_params", {}).items():
+        for key, val in self.runtime_props.get(
+                "kubectl_additional_params", {}).items():
             cmd += f" --{key}={val}"
 
         return cmd
@@ -148,7 +149,8 @@ class K8sSetup:
                 cmd += f" --set {repository_key}={repository_value}"
                 cmd += f" --set {tag_key}={tag_value}"
 
-        for key, val in self.runtime_props.get("helm_additional_params", {}).items():
+        for key, val in self.runtime_props.get(
+                "helm_additional_params", {}).items():
             cmd += f" --set {key}={val}"
 
         if self.command != Commands.LATEST_COVERAGE:
@@ -159,7 +161,7 @@ class K8sSetup:
     def create_k8s_cluster(self):
         """ Bring up k8s resources. """
         use_helm = self.runtime_props.get(
-                "use_helm", True)
+            "use_helm", True)
         if use_helm:
             # upgrade helm
             cmd = "helm repo update"
@@ -193,7 +195,7 @@ class K8sSetup:
         Utils.run_cmd(cmd.split())
 
         use_helm = self.runtime_props.get(
-                "use_helm", True)
+            "use_helm", True)
         if use_helm:
             # bring down helm install
             cmd = f"helm delete {self.release_name} --namespace {self.namespace_name}"

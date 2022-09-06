@@ -138,7 +138,10 @@ class CoverageRunner:
         return image_tag_details
 
     @staticmethod
-    def _dump_runner_to_json(image_script_dir, run_dict, file_name="run_param.json"):
+    def _dump_runner_to_json(
+            image_script_dir,
+            run_dict,
+            file_name="run_param.json"):
         file_path = os.path.abspath(os.path.join(image_script_dir, file_name))
         with open(file_path, 'w', encoding="UTF-8") as json_fp:
             json.dump(run_dict, json_fp)
@@ -233,8 +236,9 @@ class CoverageRunner:
         """ Common commands runner """
         logging.info("common command runner called")
 
-        runtime_props = {"volumes": {
-            "../../common/tests/common_commands.sh": "/tmp/common_commands.sh"}}
+        runtime_props = {
+            "volumes": {
+                "../../common/tests/common_commands.sh": "/tmp/common_commands.sh"}}
 
         with DockerSetup(
                 namespace_name,

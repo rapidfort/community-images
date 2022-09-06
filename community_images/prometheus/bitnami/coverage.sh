@@ -36,10 +36,13 @@ function test_prometheus() {
     FLASK_LOCAL_PORT=$(get_unused_port)
 
     kubectl run "${FLASK_POD_NAME}" --restart='Never' --image "${RAPIDFORT_ACCOUNT}"/flaskapp --namespace "${NAMESPACE}"
+
     # wait for flask app pod to come up
     kubectl wait pods "${FLASK_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m
+
     # port forward the pod to the host machine
     kubectl port-forward "${FLASK_POD_NAME}" "${FLASK_LOCAL_PORT}":5000 --namespace "${NAMESPACE}" &
+    PID_PF="$!"
 
     # hit the flaskapp endpoints so that prometheus metrics are published
     for i in {1..10}; do
@@ -54,5 +57,12 @@ function test_prometheus() {
 
     # run selenium tests
     "${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${PROMETHEUS_SERVER}" "${PROMETHEUS_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}"
+
+
+    # delete pod
+    kubectl delete pod "${FLASK_POD_NAME}" -n "${NAMESPACE}"
+
+    # kill pid
+    kill -9 "$PID_PF"
 
 }

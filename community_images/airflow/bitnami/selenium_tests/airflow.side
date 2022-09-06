@@ -1311,6 +1311,155 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "a61723b5-71f2-4f32-a7d0-95fc037a2fd4",
+    "name": "test-docs",
+    "commands": [{
+      "id": "e0e78768-61dd-4ac7-aa7e-b8375c113d42",
+      "comment": "",
+      "command": "open",
+      "target": "/login/?next=http%3A%2F%2F172.31.36.230%3A8080%2Fhome",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8e1297fd-d906-4aab-ad92-da00d71325f6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1200x1286",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8652a493-0598-45d0-b6dc-7d26216cdd0a",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='loginbox']/div/div[2]/form/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "rf-test"
+    }, {
+      "id": "2b2e5049-805b-42d9-907d-b625821f8cdb",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginbox']/div/div[2]/form/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "rf_password123!"
+    }, {
+      "id": "39df11d8-d9c0-4f79-94b8-8882409b34a8",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='loginbox']/div/div[2]/form/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "79dbb5a0-9224-4846-b61c-bb9a3a8f6c55",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Docs",
+      "targets": [
+        ["linkText=Docs", "linkText"],
+        ["css=.dropdown:nth-child(5) > .dropdown-toggle", "css:finder"],
+        ["xpath=//a[contains(text(),'Docs')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0)')])[4]", "xpath:href"],
+        ["xpath=//div[2]/ul/li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Docs')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eed63b1e-ccae-42be-a5da-6c367452d64c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=REST API Reference (Swagger UI)",
+      "targets": [
+        ["linkText=REST API Reference (Swagger UI)", "linkText"],
+        ["css=.dropdown:nth-child(5) li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'REST API Reference (Swagger UI)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/v1/ui/')]", "xpath:href"],
+        ["xpath=//li[5]/ul/li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'REST API Reference (Swagger UI)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf981a40-4fe6-474a-9f96-3bb0ab680981",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8cf59b96-1090-429d-8696-9fa0b123e913",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.dropdown:nth-child(5) .caret",
+      "targets": [
+        ["css=.dropdown:nth-child(5) .caret", "css:finder"],
+        ["xpath=//li[5]/a/b", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb156e5a-ded5-42cc-99ba-32afb1e9568f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=REST API Reference (Redoc)",
+      "targets": [
+        ["linkText=REST API Reference (Redoc)", "linkText"],
+        ["css=.dropdown:nth-child(5) li:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'REST API Reference (Redoc)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/redoc')]", "xpath:href"],
+        ["xpath=//li[5]/ul/li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'REST API Reference (Redoc)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "beb8950b-b825-4a5a-b5d6-f8141c4200e8",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a874d4fc-d4bc-4e17-b103-65de1813af21",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.navbar-user-icon > span",
+      "targets": [
+        ["css=.navbar-user-icon > span", "css:finder"],
+        ["xpath=//span/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a405a102-f70d-4b9f-b19e-4e1d51e3d5d6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=exit_to_appLog Out",
+      "targets": [
+        ["linkText=exit_to_appLog Out", "linkText"],
+        ["css=.navbar-right > .dropdown:nth-child(2) li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(@href, '/logout/')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'exit_to_appLog Out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "85e0b6e8-8166-406f-b074-a857c6f11512",

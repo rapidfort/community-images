@@ -14,7 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-class TestViewsecurity():
+class TestTestdocs():
     def setup_method(self, method):  # pylint: disable=unused-argument
         """setup method."""
         chrome_options = Options()
@@ -32,7 +32,7 @@ class TestViewsecurity():
         """teardown method."""
         self.driver.quit()
 
-    def test_viewsecurity(self):
+    def test_testdocs(self):
         self.driver.get(
             "http://{}:{}/".format(
                 params["server"],
@@ -41,32 +41,23 @@ class TestViewsecurity():
         self.driver.find_element(By.ID, "username").send_keys("rf-test")
         self.driver.find_element(
             By.ID, "password").send_keys("rf_password123!")
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
-        element = self.driver.find_element(By.LINK_TEXT, "Security")
+        self.driver.find_element(By.ID, "password").send_keys(Keys.ENTER)
+        element = self.driver.find_element(By.LINK_TEXT, "Docs")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "List Users").click()
-        element = self.driver.find_element(By.LINK_TEXT, "Security")
+        self.driver.find_element(By.LINK_TEXT,
+                                 "REST API Reference (Swagger UI)").click()
+        self.driver.get("http://172.31.36.230:8080/home")
+        element = self.driver.find_element(
+            By.CSS_SELECTOR, ".dropdown:nth-child(5) .caret")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "List Roles").click()
-        element = self.driver.find_element(By.LINK_TEXT, "Security")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "User\'s Statistics").click()
-        element = self.driver.find_element(By.LINK_TEXT, "Security")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "Actions").click()
-        element = self.driver.find_element(By.LINK_TEXT, "Security")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "Resources").click()
-        element = self.driver.find_element(By.LINK_TEXT, "Security")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "Permissions").click()
-        element = self.driver.find_element(By.LINK_TEXT, "FL")
+        self.driver.find_element(
+            By.LINK_TEXT,
+            "REST API Reference (Redoc)").click()
+        self.driver.get("http://172.31.36.230:8080/home")
+        element = self.driver.find_element(
+            By.CSS_SELECTOR, ".navbar-user-icon > span")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "exit_to_appLog Out").click()

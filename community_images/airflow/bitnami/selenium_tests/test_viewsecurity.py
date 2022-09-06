@@ -32,7 +32,7 @@ class TestViewsecurity():
         """teardown method."""
         self.driver.quit()
 
-    def test_viewsecurity(self):
+    def test_viewsecurity(self, params):
         self.driver.get(
             "http://{}:{}/".format(
                 params["server"],

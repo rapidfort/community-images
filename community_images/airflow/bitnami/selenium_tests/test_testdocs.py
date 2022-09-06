@@ -32,7 +32,7 @@ class TestTestdocs():
         """teardown method."""
         self.driver.quit()
 
-    def test_testdocs(self):
+    def test_testdocs(self, params):
         self.driver.get(
             "http://{}:{}/".format(
                 params["server"],

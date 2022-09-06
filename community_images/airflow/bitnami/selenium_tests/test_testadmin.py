@@ -32,7 +32,7 @@ class TestTestadmin():
         """teardown method."""
         self.driver.quit()
 
-    def test_testadmin(self):
+    def test_testadmin(self, params):
         self.driver.get(
             "http://{}:{}/".format(
                 params["server"],

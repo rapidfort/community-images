@@ -59,11 +59,21 @@ gen_main_readme()
   rm -f "${SCRIPTPATH}"/../image_list.yml
 }
 
+del_image_variants()
+{
+  declare -a image_variants=( "airflow_airflow-scheduler_bitnami" "airflow_airflow-worker_bitnami" )
+
+  for image_variant in "${image_variants[@]}"; do
+    rm -f "${SCRIPTPATH}"/../.github/workflows/"${image_variant}".yml
+  done
+}
+
 main()
 {
   gen_main_readme
   gen_image_files
   gen_image_files2
+  del_image_variants
 }
 
 main

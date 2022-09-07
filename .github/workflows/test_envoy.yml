@@ -15,13 +15,8 @@ on:
 
 permissions: read-all
 
-if: github.event_name != 'pull_request'
 env:
-  PUBLISH_FLAG: "--publish"
-
-if: github.event_name == 'pull_request'
-env:
-  PUBLISH_FLAG: "--no-publish"
+  PUBLISH_FLAG: "${{ github.event_name == 'pull_request' && '--no-publish' || '--publish' }}"
 
 jobs:
   setup:

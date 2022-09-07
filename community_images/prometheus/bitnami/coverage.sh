@@ -56,7 +56,7 @@ function test_prometheus() {
     sleep 10
 
     # run selenium tests
-    "${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${PROMETHEUS_SERVER}" "${PROMETHEUS_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}"
+    "${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${PROMETHEUS_SERVER}" "${PROMETHEUS_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1
 
 
     # delete pod

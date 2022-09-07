@@ -50,7 +50,6 @@ class TestViewbrowse():
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "Jobs").click()
-        self.driver.find_element(By.LINK_TEXT, "2").click()
         element = self.driver.find_element(By.LINK_TEXT, "Browse")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()

@@ -1,0 +1,77 @@
+name: airflow
+official_name: Apache Airflow
+official_website: https://airflow.apache.org/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/airflow
+source_image_repo_link: https://hub.docker.com/r/bitnami/airflow
+rf_docker_link: rapidfort/airflow
+image_workflow_name: airflow_bitnami
+github_location: airflow/airflow/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install airflow, just replace repository with RapidFort registry
+  $ helm install my-airflow bitnami/airflow --set image.repository=rapidfort/airflow
+what_is_text: |
+  Apache Airflow (or simply Airflow) is a platform to programmatically author, schedule, and monitor workflows.
+
+  When workflows are defined as code, they become more maintainable, versionable, testable, and collaborative.
+
+  Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.
+disclaimer: |
+  Disclaimer: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2`, `2-debian-11`, `2.3.3`, `2.3.3-debian-11-r13`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/airflow/2/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - airflow:
+      input_base_tag: "2.3.3-debian-11-r"
+    airflow-scheduler:
+      input_base_tag: "2.3.3-debian-11-r"
+    airflow-worker:
+      input_base_tag: "2.3.3-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/airflow
+    readiness_wait_deployments_suffix:
+      - web
+      - scheduler
+    image_keys:
+      airflow:
+        repository: "image.repository"
+        tag: "image.tag"
+      airflow-scheduler:
+        repository: "scheduler.image.repository"
+        tag: "scheduler.image.tag"
+      airflow-worker:
+        repository: "worker.image.repository"
+        tag: "worker.image.tag"
+    override_file: "overrides.yml"
+    helm_additional_params:
+      auth.username: "rf-test"
+      auth.password: "rf_password123!"
+      git.dags.enabled: true
+      git.dags.repositories[0].repository: https://github.com/rapidfort/airflow-example-dags
+      git.dags.repositories[0].name: airflow-example-dags
+      git.dags.repositories[0].branch: main
+
+  - type: docker_compose
+    compose_file: docker-compose.yml
+    wait_time_sec: 300
+    image_keys:
+      airflow:
+        repository: "AIRFLOW_IMAGE_REPOSITORY"
+        tag: "AIRFLOW_IMAGE_TAG"
+      airflow-scheduler:
+        repository: "AIRFLOW_SCHEDULER_IMAGE_REPOSITORY"
+        tag: "AIRFLOW_SCHEDULER_IMAGE_TAG"
+      airflow-worker:
+        repository: "AIRFLOW_WORKER_IMAGE_REPOSITORY"
+        tag: "AIRFLOW_WORKER_IMAGE_TAG"

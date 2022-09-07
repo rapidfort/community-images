@@ -57,6 +57,9 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Wordpress][ wordpress-github-link]| [![dh][dh-rf-badge]][wordpress-rf-dh-image-link] | [![rf-h][rf-h-badge]][wordpress-rf-link] | [![wordpress-image-ft][wordpress-ft-badge]][wordpress-ft-badge-link] |
 | [RabbitMQ][ rabbitmq-github-link]| [![dh][dh-rf-badge]][rabbitmq-rf-dh-image-link] | [![rf-h][rf-h-badge]][rabbitmq-rf-link] | [![rabbitmq-image-ft][rabbitmq-ft-badge]][rabbitmq-ft-badge-link] |
 | [Apache][ apache-github-link]| [![dh][dh-rf-badge]][apache-rf-dh-image-link] | [![rf-h][rf-h-badge]][apache-rf-link] | [![apache-image-ft][apache-ft-badge]][apache-ft-badge-link] |
+| [Apache Airflow][ airflow-github-link]| [![dh][dh-rf-badge]][airflow-rf-dh-image-link] | [![rf-h][rf-h-badge]][airflow-rf-link] | [![airflow-image-ft][airflow-ft-badge]][airflow-ft-badge-link] |
+| [Apache Airflow Scheduler][ airflow-scheduler-github-link]| [![dh][dh-rf-badge]][airflow-scheduler-rf-dh-image-link] | [![rf-h][rf-h-badge]][airflow-scheduler-rf-link] | [![airflow-scheduler-image-ft][airflow-scheduler-ft-badge]][airflow-scheduler-ft-badge-link] |
+| [Apache Airflow Worker][ airflow-worker-github-link]| [![dh][dh-rf-badge]][airflow-worker-rf-dh-image-link] | [![rf-h][rf-h-badge]][airflow-worker-rf-link] | [![airflow-worker-image-ft][airflow-worker-ft-badge]][airflow-worker-ft-badge-link] |
 
 ### How to use Community Images
 
@@ -247,3 +250,24 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [apache-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/apache_bitnami.yml/badge.svg
 [apache-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/apache_bitnami.yml
 [apache-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[airflow-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow/bitnami
+[airflow-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow?logo=docker&logoColor=white
+[airflow-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/airflow
+[airflow-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml/badge.svg
+[airflow-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml
+[airflow-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[airflow-scheduler-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow-scheduler/bitnami
+[airflow-scheduler-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-scheduler?logo=docker&logoColor=white
+[airflow-scheduler-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/airflow-scheduler
+[airflow-scheduler-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml/badge.svg
+[airflow-scheduler-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml
+[airflow-scheduler-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-scheduler?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022
+
+[airflow-worker-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow-worker/bitnami
+[airflow-worker-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-worker?logo=docker&logoColor=white
+[airflow-worker-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/airflow-worker
+[airflow-worker-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml/badge.svg
+[airflow-worker-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml
+[airflow-worker-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-worker?utm_source=gh-ci-landing&utm_medium=view-report&utm_id=rsa-ci-2022

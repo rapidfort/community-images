@@ -18,4 +18,42 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`2.4`, `2.4-debian-11`, `2.4.54`, `2.4.54-debian-11-r17`, `latest` (2.4/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-apache/blob/2.4.54-debian-11-r17/2.4/debian-11/Dockerfile)"
+  - "[`2.4`, `2.4-debian-11`, `2.4.54`, `2.4.54-debian-11-r31`, `latest` (2.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/apache/2.4/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets: 
+  - apache:
+      input_base_tag: "2.4.54-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/apache
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      apache:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      apache:
+        repository: "APACHE_IMAGE_REPOSITORY"
+        tag: "APACHE_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    tls_certs:
+      generate: true
+      out_dir: certs
+    

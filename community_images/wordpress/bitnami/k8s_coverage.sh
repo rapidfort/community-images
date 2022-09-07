@@ -14,4 +14,4 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 WORDPRESS_SERVER="${RELEASE_NAME}"."${NAMESPACE}".svc.cluster.local
 
 WORDPRESS_PORT='80'
-"${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${WORDPRESS_SERVER}" "${WORDPRESS_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}"
+"${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${WORDPRESS_SERVER}" "${WORDPRESS_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1

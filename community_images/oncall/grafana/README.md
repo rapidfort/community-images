@@ -1,7 +1,6 @@
 [![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-image-link]
 
 [![rf-h][rf-h-badge]][rf-image-link]
-[![image-ft][ft-badge]][ft-badge-link]
 [![DH Image][dh-rf-badge]][rf-dh-image-link]
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
@@ -114,6 +113,3 @@ If you'd like to learn more about RapidFort or our container optimization proces
 
 [source-image-repo-link]: https://hub.docker.com/r/grafana/oncall
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/oncall
-
-[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml/badge.svg
-[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/oncall_grafana.yml

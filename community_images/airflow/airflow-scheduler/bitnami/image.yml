@@ -1,0 +1,25 @@
+name: airflow-scheduler
+official_name: Apache Airflow Scheduler
+official_website: https://airflow.apache.org/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/airflow-scheduler
+source_image_repo_link: https://hub.docker.com/r/bitnami/airflow-scheduler
+rf_docker_link: rapidfort/airflow-scheduler
+image_workflow_name: airflow_bitnami
+github_location: airflow/airflow-scheduler/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-scheduler
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install airflow, just replace repository with RapidFort registry
+  $ helm install my-airflow bitnami/airflow --set image.repository=rapidfort/airflow
+what_is_text: |
+  Apache Airflow (or simply Airflow) is a platform to programmatically author, schedule, and monitor workflows.
+
+  When workflows are defined as code, they become more maintainable, versionable, testable, and collaborative.
+
+  Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.
+disclaimer: |
+  Disclaimer: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2`, `2-debian-11`, `2.3.4`, `2.3.4-debian-11-r4`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/airflow-scheduler/2/debian-11/Dockerfile)"

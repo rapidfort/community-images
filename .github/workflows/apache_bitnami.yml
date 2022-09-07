@@ -1,13 +1,6 @@
 name: Apache Run
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/**"
-      - "community_images/common/**"
-      - "community_images/apache/bitnami/**"
-    branches:
-    - main
   schedule:
   - cron: '0 * * * *'
 

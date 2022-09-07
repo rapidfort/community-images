@@ -22,7 +22,8 @@ def fetch_tags(image_repo):
 
     if 200 <= resp.status_code < 300:
         tag_objs = resp.json()
-        tags = map(lambda x: x.get("name", ""), tag_objs)
+        results = tag_objs.get("results", [])
+        tags = map(lambda x: x.get("name", ""), results)
     return tags
 
 

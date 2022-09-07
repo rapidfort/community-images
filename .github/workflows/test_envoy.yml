@@ -91,7 +91,7 @@ jobs:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         run: python3 community_images/common/orchestrator/main.py harden envoy/bitnami $PUBLISH_FLAG
   harden_coverage:
-    Name: Harden Coverage
+    name: Harden Coverage
     needs:
       - setup
       - stub
@@ -126,6 +126,8 @@ jobs:
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py latest_coverage envoy/bitnami
   report_pulls:
+    needs:
+      - setup
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:

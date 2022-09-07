@@ -16,4 +16,4 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 AIRFLOW_SERVER="${RELEASE_NAME}"."${NAMESPACE}".svc.cluster.local
 AIRFLOW_PORT='8080'
 
-"${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${AIRFLOW_SERVER}" "${AIRFLOW_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}"
+"${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${AIRFLOW_SERVER}" "${AIRFLOW_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1

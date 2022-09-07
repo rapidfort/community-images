@@ -98,5 +98,5 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [source-image-repo-link]: https://hub.docker.com/r/bitnami/airflow-worker
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/airflow-worker
 
-[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml/badge.svg
-[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/airflow_bitnami.yml
+[ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/airflow_airflow_bitnami.yml/badge.svg
+[ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/airflow_airflow_bitnami.yml

@@ -39,7 +39,7 @@ echo "Generating main readme"
 gen_main_readme()
 {
   rm -f "${SCRIPTPATH}"/../image_list.yml
-  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/
+  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/../image.lst
 
   jinja -d "${SCRIPTPATH}"/../image_list.yml \
     -f yaml "${SCRIPTPATH}"/../community_images/common/templates/main_readme.j2 > "${SCRIPTPATH}"/../README.md
@@ -59,6 +59,17 @@ gen_main_readme()
   rm -f "${SCRIPTPATH}"/../image_list.yml
 }
 
+gen_new_image_actions()
+{
+  rm -f "${SCRIPTPATH}"/../image_list.yml
+  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/../image_v2.lst
+
+  jinja -d "${SCRIPTPATH}"/../image_list.yml \
+    -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run_v3.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/image_run_v3.yml
+
+  rm -f "${SCRIPTPATH}"/../image_list.yml
+}
+
 del_image_variants()
 {
   declare -a image_variants=( "airflow_airflow-scheduler_bitnami" "airflow_airflow-worker_bitnami" )
@@ -73,6 +84,7 @@ main()
   gen_main_readme
   gen_image_files
   gen_image_files2
+  gen_new_image_actions
   del_image_variants
 }
 

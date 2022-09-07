@@ -1,6 +1,13 @@
 name: NATS Run
 
 on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - "community_images/common/**"
+      - "community_images/nats/bitnami/**"
+    branches:
+    - main
   schedule:
   - cron: '0 * * * *'
 

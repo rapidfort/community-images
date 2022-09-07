@@ -2,11 +2,11 @@ version: '2'
 
 services:
   apache:
-    image: @IMAGE
+    image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
     user: root
     volumes:
       - ./modules_list:/opt/bitnami/scripts/modules_list:ro
-      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh:ro
+      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
     cap_add:
       - SYS_PTRACE    
     ports:

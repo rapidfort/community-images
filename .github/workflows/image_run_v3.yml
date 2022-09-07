@@ -1,0 +1,967 @@
+name: Image Creation Run
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - "community_images/common/**"
+      - "community_images/envoy/bitnami/**"
+      - "community_images/etcd/bitnami/**"
+      - "community_images/influxdb/bitnami/**"
+      - "community_images/mariadb/bitnami/**"
+      - "community_images/mysql/bitnami/**"
+      - "community_images/nats/bitnami/**"
+      - "community_images/redis/bitnami/**"
+      - "community_images/redis/ironbank/**"
+      - "community_images/redis-cluster/bitnami/**"
+      - "community_images/postgresql/bitnami/**"
+      - "community_images/postgresql/ironbank/**"
+      - "community_images/airflow/airflow/bitnami/**"
+      - "community_images/oncall/grafana/**"
+      - "community_images/rabbitmq/bitnami/**"
+      - "community_images/wordpress/bitnami/**"
+      - "community_images/fluentd/bitnami/**"
+      - "community_images/apache/bitnami/**"
+      - "community_images/mongodb/bitnami/**"
+      - "community_images/prometheus/bitnami/**"
+    branches:
+    - main
+  schedule:
+  - cron: '0 * * * *'
+
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  envoy:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/envoy": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  etcd:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/etcd": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  influxdb:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/influxdb": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  mariadb:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/mariadb": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  mysql:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/mysql": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  nats:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/nats": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  redis:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/redis": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  redis-ib:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/redis6-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  redis-cluster:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/redis-cluster": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  postgresql:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/postgresql": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  postgresql-ib:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/postgresql12-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  airflow:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/airflow": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  oncall:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/oncall": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  rabbitmq:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/rabbitmq": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  wordpress:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/wordpress": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  fluentd:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/fluentd": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  apache:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/apache": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  mongodb:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/mongodb": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  prometheus:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/prometheus": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls

@@ -7,7 +7,7 @@ on:
       - "community_images/common/**"
       - "community_images/{{- github_location -}}/**"
     branches:
-    - main
+    - try_new_actions
   schedule:
   - cron: '0 * * * *'
 

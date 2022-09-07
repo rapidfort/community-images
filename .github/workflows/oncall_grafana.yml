@@ -15,8 +15,17 @@ on:
 
 permissions: read-all
 
+if: github.event_name != 'pull_request'
+env:
+  PUBLISH_FLAG: "--publish"
+
+if: github.event_name == 'pull_request'
+env:
+  PUBLISH_FLAG: "--no-publish"
+
 jobs:
-  build:
+  setup:
+    name: Setup VM and K8S
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
@@ -27,7 +36,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
-          memory: 4g
+          memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
         run: kubectl get pods -A
@@ -38,6 +47,80 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
+  stub:
+    name: Stub Image
+    needs:
+      - setup
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Stub image
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: python3 community_images/common/orchestrator/main.py stub oncall/grafana $PUBLISH_FLAG
+  stub_coverage:
+    name: Stub Coverage
+    needs:
+      - setup
+      - stub
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Run Stub Coverage
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: python3 community_images/common/orchestrator/main.py stub_coverage oncall/grafana $PUBLISH_FLAG
+  harden:
+    name: Harden Image
+    needs:
+      - setup
+      - stub
+      - stub_coverage
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Harden image
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: python3 community_images/common/orchestrator/main.py harden oncall/grafana $PUBLISH_FLAG
+  harden_coverage:
+    Name: Harden Coverage
+    needs:
+      - setup
+      - stub
+      - stub_coverage
+      - harden
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - name: Run Harden Coverage
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py harden_coverage oncall/grafana $PUBLISH_FLAG
+  latest_coverage:
+    name: Latest Coverage
+    needs:
+      - setup
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -46,16 +129,11 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish
-      - name: Create images for testing PR
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
-          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name == 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana
+        run: python3 community_images/common/orchestrator/main.py latest_coverage oncall/grafana
+  report_pulls:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}

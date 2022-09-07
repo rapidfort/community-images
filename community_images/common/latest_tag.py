@@ -17,12 +17,13 @@ def fetch_tags(image_repo):
         image_repo = image_repo[2:]
 
     resp = requests.get(
-        f"https://registry.hub.docker.com/v1/repositories/{image_repo}/tags",
+        f"https://registry.hub.docker.com/v2/repositories/{image_repo}/tags?page_size=25",
         timeout=30)
 
     if 200 <= resp.status_code < 300:
         tag_objs = resp.json()
-        tags = map(lambda x: x.get("name", ""), tag_objs)
+        results = tag_objs.get("results", [])
+        tags = map(lambda x: x.get("name", ""), results)
     return tags
 
 

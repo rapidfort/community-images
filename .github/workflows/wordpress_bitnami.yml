@@ -15,13 +15,8 @@ on:
 
 permissions: read-all
 
-if: github.event_name != 'pull_request'
 env:
-  PUBLISH_FLAG: "--publish"
-
-if: github.event_name == 'pull_request'
-env:
-  PUBLISH_FLAG: "--no-publish"
+  PUBLISH_FLAG: "${{ github.event_name == 'pull_request' && '--no-publish' || '--publish' }}"
 
 jobs:
   setup:
@@ -54,6 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
+      - uses: actions/checkout@v3
       - name: Stub image
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -70,6 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
+      - uses: actions/checkout@v3
       - name: Run Stub Coverage
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -87,6 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
+      - uses: actions/checkout@v3
       - name: Harden image
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -96,7 +94,7 @@ jobs:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         run: python3 community_images/common/orchestrator/main.py harden wordpress/bitnami $PUBLISH_FLAG
   harden_coverage:
-    Name: Harden Coverage
+    name: Harden Coverage
     needs:
       - setup
       - stub
@@ -105,6 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
+      - uses: actions/checkout@v3
       - name: Run Harden Coverage
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -121,6 +120,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
+      - uses: actions/checkout@v3
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -131,9 +131,12 @@ jobs:
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py latest_coverage wordpress/bitnami
   report_pulls:
+    needs:
+      - setup
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
+      - uses: actions/checkout@v3
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}

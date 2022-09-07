@@ -1,13 +1,6 @@
 name: InfluxDB™ Run
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/**"
-      - "community_images/common/**"
-      - "community_images/influxdb/bitnami/**"
-    branches:
-    - main
   schedule:
   - cron: '0 * * * *'
 

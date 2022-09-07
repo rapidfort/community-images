@@ -1,13 +1,6 @@
 name: Redis™ IronBank Run
 
 on:
-  pull_request:
-    paths:
-      - ".github/workflows/**"
-      - "community_images/common/**"
-      - "community_images/redis/ironbank/**"
-    branches:
-    - main
   schedule:
   - cron: '0 * * * *'
 

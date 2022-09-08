@@ -12,6 +12,9 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 rm -f URLS
 URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
 
+# sleep 5 after minikube service
+sleep 5
+
 # curl to http url
 curl "${URL}"
 

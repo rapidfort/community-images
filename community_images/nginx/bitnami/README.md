@@ -42,7 +42,7 @@ The runtime instructions for this container are no different from the official r
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # install nginx, just replace repository with RapidFort registry
-$ helm install my-nginx bitnami/nginx --set image.repository=anmolvirdi/nginx
+$ helm install my-nginx bitnami/nginx --set image.repository=rapidfort/nginx
 
 ```
 

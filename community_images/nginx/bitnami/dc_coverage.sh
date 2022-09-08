@@ -14,7 +14,7 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS"
+PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-nginx-1
 
 # exec into container and run coverage script

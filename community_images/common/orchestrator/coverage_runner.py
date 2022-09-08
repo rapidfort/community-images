@@ -236,9 +236,16 @@ class CoverageRunner:
         """ Common commands runner """
         logging.info("common command runner called")
 
+        sciprt_path_parts = len(self.config_name.split("/"))
+        common_commands_prefix = "../" * sciprt_path_parts
+        common_command_rel_path = common_commands_prefix + \
+            "common/tests/common_commands.sh"
+
+        logging.info(f"calculated common path={common_command_rel_path}")
+
         runtime_props = {
             "volumes": {
-                "../../common/tests/common_commands.sh": "/tmp/common_commands.sh"}}
+                common_command_rel_path: "/tmp/common_commands.sh"}}
 
         with DockerSetup(
                 namespace_name,

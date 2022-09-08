@@ -10,7 +10,7 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 # fetch service url and store the urls in URLS file
 rm -f URLS
-URL = $(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
+URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
 
 # curl to http url
 curl "${URL}"

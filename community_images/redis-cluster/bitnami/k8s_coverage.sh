@@ -31,7 +31,7 @@ kubectl -n "${NAMESPACE}" exec \
 kubectl run "${RELEASE_NAME}"-client --rm -i \
     --restart='Never' --namespace "${NAMESPACE}" \
     --image rapidfort/redis-cluster --command \
-    -- redis-benchmark -h "${RELEASE_NAME}" -c 10 -n 1000 -a "$REDIS_PASSWORD" --cluster
+    -- redis-benchmark -h "${RELEASE_NAME}" -c 2 -n 100 -a "$REDIS_PASSWORD" --cluster
 
 function finish {
     kubectl get pods --all-namespaces

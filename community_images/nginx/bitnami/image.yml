@@ -20,3 +20,39 @@ disclaimer: |
 docker_links:
   - "[`1.23`, `1.23-debian-11`, `1.23.1`, `1.23.1-debian-11-r11`, `latest` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/nginx/1.23/debian-11/Dockerfile)"
   - "[`1.22`, `1.22-debian-11`, `1.22.0`, `1.22.0-debian-11-r29` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/nginx/1.22/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets: 
+  - nginx:
+      input_base_tag: "1.23.1-debian-11-r" 
+  - nginx:
+      input_base_tag: "1.22.0-debian-11-r"
+  - nginx:
+      input_base_tag: "1.21.6-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/nginx
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      nginx:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      nginx:
+        repository: "NGINX_IMAGE_REPOSITORY"
+        tag: "NGINX_IMAGE_TAG"

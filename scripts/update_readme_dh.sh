@@ -12,5 +12,5 @@ FILE_LIST=$(find "${SCRIPTPATH}"/../community_images/ -type f -name "README.md")
 
 for f in ${FILE_LIST}
 do
- sed 's/gh-ci-image/dh-ci-image/g' "$f" > "$f".dockerhub
+ sed 's/utm_source=github/utm_source=dockerhub/g' "$f" > "$f".dockerhub
 done

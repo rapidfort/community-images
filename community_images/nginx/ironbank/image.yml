@@ -34,6 +34,6 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      nginx:
+      nginx-ib:
         repository: "NGINX_IMAGE_REPOSITORY"
         tag: "NGINX_IMAGE_TAG"

@@ -17,9 +17,6 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-nginx-1
 
-# exec into container and run coverage script
-docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh
-
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
 
@@ -34,7 +31,7 @@ for i in {1..20};
 do
     echo "Attempt $i"
     curl http://localhost:"${NON_TLS_PORT}"/a
-    curl http://localhost:"${NON_TLS_PORT}"/b        
+    curl http://localhost:"${NON_TLS_PORT}"/b
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
     with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
 done

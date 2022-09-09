@@ -8,7 +8,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 
 # shellcheck disable=SC1091
-. "${SCRIPTPATH}"/../../common/retry_helper.sh
+. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 
 function get_unused_port() {
     netstat -aln | awk '

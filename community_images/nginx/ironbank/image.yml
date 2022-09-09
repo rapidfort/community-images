@@ -22,7 +22,7 @@ input_registry:
 output_registry:
   registry: docker.io
   account: rapidfort
-repo_sets: 
+repo_sets:
   - nginx:
       input_base_tag: "latest"
       output_repo: nginx-ib
@@ -34,6 +34,6 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      apache:
+      nginx:
         repository: "NGINX_IMAGE_REPOSITORY"
         tag: "NGINX_IMAGE_TAG"

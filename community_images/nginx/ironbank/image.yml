@@ -16,3 +16,24 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/nginx/nginx/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank/opensource/nginx
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - nginx:
+      input_base_tag: "latest"
+      output_repo: nginx-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      nginx-ib:
+        repository: "NGINX_IMAGE_REPOSITORY"
+        tag: "NGINX_IMAGE_TAG"

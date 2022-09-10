@@ -66,13 +66,13 @@ class K8sSetup:
             if not readiness_wait_deployments_suffix:
                 cmd = f"kubectl wait deployments {self.release_name}"
                 cmd += f" -n {self.namespace_name}"
-                cmd += " --for=condition=Available=True --timeout=10m"
+                cmd += " --for=condition=Available=True --timeout=20m"
                 Utils.run_cmd(cmd.split())
             else:
                 for deployment_suffix in readiness_wait_deployments_suffix:
                     cmd = f"kubectl wait deployments {self.release_name}-{deployment_suffix}"
                     cmd += f" -n {self.namespace_name}"
-                    cmd += " --for=condition=Available=True --timeout=10m"
+                    cmd += " --for=condition=Available=True --timeout=20m"
                     Utils.run_cmd(cmd.split())
 
             wait_complete = True
@@ -91,7 +91,7 @@ class K8sSetup:
                     else:
                         cmd += f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
                     cmd += f" -n {self.namespace_name}"
-                    cmd += " --for=condition=ready --timeout=10m"
+                    cmd += " --for=condition=ready --timeout=20m"
                     Utils.run_cmd(cmd.split())
                 wait_complete = True
             except subprocess.CalledProcessError:

@@ -27,11 +27,12 @@ repo_sets:
       input_base_tag: "1.12.3-debian-11-r"
 runtimes:
   - type: docker_compose
+    script: dc_coverage.sh
     compose_file: docker-compose.yml
     tls_certs:
       generate: true
       out_dir: certs
     image_keys:
-      envoy:
+      consul:
         repository: "CONSUL_IMAGE_REPOSITORY"
         tag: "CONSUL_IMAGE_TAG"

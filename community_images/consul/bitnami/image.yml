@@ -9,7 +9,10 @@ image_workflow_name: consul_bitnami
 github_location: consul/bitnami
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fconsul
 usage_instructions: |
-  $ docker run --name consul rapidfort/consul:latest
+  $ helm repo add bitnami https://charts.bitnami.com/consul
+
+  # install consul, just replace repository with RapidFort registry
+  $ helm install my-consul bitnami/consul --set image.repository=rapidfort/consul
 what_is_text: |
   Consul is a service networking solution to automate network configurations, discover services, and enable secure connectivity across any cloud or runtime.
 disclaimer: |
@@ -29,9 +32,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    tls_certs:
-      generate: true
-      out_dir: certs
     image_keys:
       consul:
         repository: "CONSUL_IMAGE_REPOSITORY"

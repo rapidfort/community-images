@@ -58,6 +58,8 @@ jobs:
         run: docker pull rapidfort/airflow-scheduler
       - name: Pull Apache Airflow Worker
         run: docker pull rapidfort/airflow-worker
+      - name: Pull Consul Worker
+        run: docker pull rapidfort/consul
       - name: Update pull counts
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}

@@ -29,14 +29,13 @@ repo_sets:
   - consul:
       input_base_tag: "1.12.3-debian-11-r"
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    helm_repo: bitnami/consul
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
     tls_certs:
       generate: true
-      secret_name: localhost-server-tls
-      common_name: localhost
+      out_dir: certs
     image_keys:
       consul:
-        repository: "image.repository"
-        tag: "image.tag"
+        repository: "CONSUL_IMAGE_REPOSITORY"
+        tag: "CONSUL_IMAGE_TAG"

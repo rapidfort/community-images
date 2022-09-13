@@ -13,6 +13,7 @@ services:
     volumes:
      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
      - ./consul_data:/bitnami
+     - ./consul_data:/bitnami/consul
     ports:
       - '0.0.0.0::8300'
       - '0.0.0.0::8301'

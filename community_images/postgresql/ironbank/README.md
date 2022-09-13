@@ -15,7 +15,7 @@ It is the same as the [Platform One PostgreSQL IronBank][source-image-repo-link]
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
 
-[![Get the full report here or click on the image below](/contrib/github_button_3.png)][rf-view-report-link]
+<img src="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgresql-ib&utm_content=view_report_link" alt="View Report" data-canonical-src="/contrib/github_button_3.png" width="200" height="400" />
 
 [![Metrics][metrics-link]][rf-image-metrics-link]
 

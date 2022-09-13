@@ -15,7 +15,7 @@ It is the same as the [Bitnami Wordpress][source-image-repo-link] image but more
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
 
-[![Get the full report here or click on the image below](/contrib/github_button_3.png)][rf-view-report-link]
+<img src="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fwordpress?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=wordpress&utm_content=view_report_link" alt="View Report" data-canonical-src="/contrib/github_button_3.png" width="200" height="400" />
 
 [![Metrics][metrics-link]][rf-image-metrics-link]
 

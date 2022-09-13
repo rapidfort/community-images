@@ -1,5 +1,5 @@
 
-[![RapidFort](/contrib/github_logo.png)][rf-link-main-landing-logo]
+[![RapidFort](/contrib/github_banner.png)][rf-link-main-landing-logo]
 
 <h1> community-images </h1>
 

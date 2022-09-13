@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul:
-    image: bitnami/consul
+    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3

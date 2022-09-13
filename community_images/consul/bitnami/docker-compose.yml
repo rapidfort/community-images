@@ -1,18 +1,18 @@
 version: '2'
 
 services:
-  consul-node1:
+  consul:
     image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_RETRY_JOIN_ADDRESS=consul
     cap_add:
       - SYS_PTRACE
     volumes:
      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
-     - ./consul-node1_data:/bitnami
+     - ./consul_data:/bitnami
     ports:
       - '0.0.0.0::8300'
       - '0.0.0.0::8301'

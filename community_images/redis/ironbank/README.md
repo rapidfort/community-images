@@ -15,7 +15,7 @@ It is the same as the [Platform One Redis™ IronBank][source-image-repo-link] i
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
 
-[Get the full report here or click on the image below][rf-view-report-link]
+[![Get the full report here or click on the image below](/contrib/github_button_3.png)][rf-view-report-link]
 
 [![Metrics][metrics-link]][rf-image-metrics-link]
 

@@ -94,6 +94,8 @@ class DockerHubHelper(RegistryHelper):
                 results = tag_objs.get("results", [])
                 tags += map(lambda x: x.get("name", ""), results)
                 url = tag_objs.get("next")
+            else:
+                break
 
             # break after tags array is 100 size
             if len(tags) > 100:

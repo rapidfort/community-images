@@ -1,4 +1,6 @@
-[![RapidFort](/contrib/github_logo.png)][rf-rapidfort-logo-link]
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=apache&utm_content=rapidfort_logo">
+<img align="left" src="/contrib/github_logo.png" alt="RapidFort" width="200" />
+</a>
 
 [![rf-h][rf-h-badge]][rf-view-report-button]
 [![DH Image][dh-rf-badge]][rf-dh-image-link]

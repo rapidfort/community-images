@@ -1,15 +1,13 @@
-
-[![rf-h][rf-h-badge]][rf-view-report-button]
-[![DH Image][dh-rf-badge]][rf-dh-image-link]
-[![Slack][slack-badge]][slack-link]
-[![FOSSA Status][fossa-badge]][fossa-link]
-
-
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmongodb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mongodb&utm_content=rapidfort_logo">
 <img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
 <br>
+
+[![rf-h][rf-h-badge]][rf-view-report-button]
+[![DH Image][dh-rf-badge]][rf-dh-image-link]
+[![Slack][slack-badge]][slack-link]
+[![FOSSA Status][fossa-badge]][fossa-link]
 
 # RapidFort hardened image for MongoDB®
 

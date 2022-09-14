@@ -20,6 +20,7 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node1_data:/bitnami'
+      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
 
   consul-node2:
     image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
@@ -34,6 +35,7 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/bitnami'
+      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
 
   consul-node3:
     image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
@@ -48,6 +50,7 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node3_data:/bitnami'
+      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
 
 volumes:
   consul-node1_data:

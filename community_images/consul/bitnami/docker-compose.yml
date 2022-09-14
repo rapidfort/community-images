@@ -34,6 +34,8 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/bitnami'
+    depends_on: 
+      - consul-node1
 
   consul-node3:
     image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
@@ -48,6 +50,9 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node3_data:/bitnami'
+    depends_on: 
+      - consul-node1
+      - consul-node2
 
 volumes:
   consul-node1_data:

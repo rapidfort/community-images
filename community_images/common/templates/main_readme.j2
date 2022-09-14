@@ -37,10 +37,10 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 We’ve optimized and hardened some of the most popular container images on Docker Hub and are making them available to the community.
 
-| Repository                        | RapidFort Image                                | View Report                     |
+| Repository                        | View Report                                   | RapidFort Image                     |
 |-----------------------------------| ------------------------------------------     | ------------------------------- |
 {%- for image in image_list %}
-| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] | <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> |
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] |
 {%- endfor %}
 
 ### How to use Community Images

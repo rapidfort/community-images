@@ -88,12 +88,11 @@ have.
 ## Have questions?
 [![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-rapidfort-footer-logo-link]
 
-If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
-
-
 <a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
+<img align="right" src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
 </a>
+
+If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
 
 <br>
 <br>

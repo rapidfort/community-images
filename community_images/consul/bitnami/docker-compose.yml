@@ -21,7 +21,7 @@ services:
     volumes:
       - 'consul-node1_data:/bitnami'
       - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
-      - ./sample_service.json:/sample_service.json
+      - ./sample_service.json:/consul.d/sample_service.json
 
   consul-node2:
     image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}

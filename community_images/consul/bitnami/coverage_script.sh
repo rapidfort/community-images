@@ -2,6 +2,10 @@
 
 set -x
 set -e
+
+ls
+
+#Available Scripts
 ls /opt/bitnami/scripts
 
 #consul aclt token list
@@ -10,8 +14,6 @@ ls /opt/bitnami/scripts
 consul members
 
 #Registering a test service
-mkdir consul.d
-mv sample_service.json consul.d/
 consul agent -config-dir=./consul.d
 
 #Query our service using DNS api

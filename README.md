@@ -97,7 +97,7 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ### [⏫⭐️ Scroll to the star button](#start-of-content)
 
-If you believe this project has potential, feel free to **star this repo** just like many [amazing people](/stargazers)
+If you believe this project has potential, feel free to **star this repo** just like many [amazing people](https://github.com/rapidfort/community-images/stargazers)
 have.
 
 ## Additional Resources

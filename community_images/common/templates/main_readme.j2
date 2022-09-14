@@ -3,8 +3,6 @@
 <img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
-<h1> community-images </h1>
-
 [![RF Hardened][rf-h-badge]][rf-link-hardened-badge]
 [![Dockerhub][dh-rf-badge]][dh-rf]
 [![Slack][slack-badge]][slack-link]
@@ -12,6 +10,8 @@
 [![FOSSA Status][fossa-badge]][fossa-link]
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6087/badge)](https://bestpractices.coreinfrastructure.org/projects/6087)
 [![CodeQL](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml)
+
+<h1> community-images </h1>
 
 [Getting started](#getting-started) ·
 [Contributing](CONTRIBUTING.md) ·
@@ -37,10 +37,10 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 We’ve optimized and hardened some of the most popular container images on Docker Hub and are making them available to the community.
 
-| Repository                        | RapidFort Image                                | View Report                     |
+| Repository                        | View Report                                   | RapidFort Image                     |
 |-----------------------------------| ------------------------------------------     | ------------------------------- |
 {%- for image in image_list %}
-| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] | <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_view_report"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> |
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] |
 {%- endfor %}
 
 ### How to use Community Images
@@ -71,7 +71,19 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ![Demo](contrib/workflow.png)
 
+## 🌟 Support this project
+
+![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
+
+### [⏫⭐️ Scroll to the star button](#start-of-content)
+
+If you believe this project has potential, feel free to **star this repo** just like many [amazing people](https://github.com/rapidfort/community-images/stargazers)
+have.
+
 ## Additional Resources
+
+[![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-link-main-landing-footer-logo]
+
 
 Learn more about container optimization at [RapidFort.com][rf-link-additonal-resource].
 
@@ -79,7 +91,7 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [rf-link-hardened-badge]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=ci_main_landing&utm_content=rf_hardened_badge
 [rf-link-getting-started]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=ci_main_landing&utm_content=getting_started_link
 [rf-link-additonal-resource]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=ci_main_landing&utm_content=additonal_resource
-[rf-link-main-landing-logo]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=ci_main_landing&utm_content=main_landing_logo
+[rf-link-main-landing-footer-logo]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=ci_main_landing&utm_content=main_landing_footer_logo
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
 
@@ -93,7 +105,7 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [demo]: contrib/demo.gif
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
-[slack-link]: https://join.slack.com/t/slack-ch72160/shared_invite/zt-1cafpzlyb-9I5He8olcp~FxmpZKxR~CA
+[slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [ image-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/image_run_v3.yml/badge.svg
 [ image-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/image_run_v3.yml

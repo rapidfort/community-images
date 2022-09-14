@@ -28,7 +28,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb&utm_content=view_report_link">
-<img align="left" src="/contrib/github_button_3.png" alt="View Report" height="50" />
+<img align="center" src="/contrib/github_button_3.png" alt="View Report" height="50" />
 </a>
 <br>
 <br>

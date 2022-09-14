@@ -15,13 +15,14 @@ It is the same as the [Platform One PostgreSQL IronBank][source-image-repo-link]
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
 
-<img src="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgresql-ib&utm_content=view_report_link" alt="View Report" data-canonical-src="/contrib/github_button_3.png" width="200" height="400" />
-
 [![Metrics][metrics-link]][rf-image-metrics-link]
 
 ## Vulnerabilities: Original vs. Hardened
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgresql-ib&utm_content=view_report_link">
+<img align="right" src="/contrib/github_button_3.png" alt="View Report" width="200" />
+</a>
 
 ## What is PostgreSQL IronBank?
 

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul-node1:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
@@ -22,7 +22,7 @@ services:
       - 'consul-node1_data:/bitnami'
 
   consul-node2:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
@@ -36,7 +36,7 @@ services:
       - 'consul-node2_data:/bitnami'
 
   consul-node3:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3

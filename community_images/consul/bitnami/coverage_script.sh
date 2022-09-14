@@ -6,4 +6,4 @@ ls /opt/bitnami/scripts
 
 #consul aclt token list
 #consul acl boostrap
-# consul agent -data-dir=tmp/consul
+consul agent -data-dir=tmp/consul

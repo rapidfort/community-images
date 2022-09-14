@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
@@ -14,6 +14,7 @@ services:
     volumes:
      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
      - ./consul_data:/bitnami
+     - ./consul_data:/bitnami/consul
     ports:
       - '0.0.0.0::8300'
       - '0.0.0.0::8301'

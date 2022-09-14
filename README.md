@@ -91,6 +91,15 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ![Demo](contrib/workflow.png)
 
+## 🌟 Support this project
+
+![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
+
+### [⏫⭐️ Scroll to the star button](#start-of-content)
+
+If you believe this project has potential, feel free to **star this repo** just like many [amazing people](/stargazers)
+have.
+
 ## Additional Resources
 
 Learn more about container optimization at [RapidFort.com][rf-link-additonal-resource].
@@ -113,7 +122,7 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [demo]: contrib/demo.gif
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
-[slack-link]: https://join.slack.com/t/slack-ch72160/shared_invite/zt-1cafpzlyb-9I5He8olcp~FxmpZKxR~CA
+[slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [ image-ft-badge]: https://github.com/rapidfort/community-images/actions/workflows/image_run_v3.yml/badge.svg
 [ image-ft-badge-link]: https://github.com/rapidfort/community-images/actions/workflows/image_run_v3.yml

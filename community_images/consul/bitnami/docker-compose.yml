@@ -1,20 +1,14 @@
 version: '2'
 
 services:
-  consul:
-    image: bitnami/consul
+  consul-node1:
+    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=consul
-    cap_add:
-      - SYS_PTRACE
-    volumes:
-     - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
-     - ./consul_data:/bitnami
-     - ./consul_data:/bitnami/consul
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
     ports:
       - '0.0.0.0::8300'
       - '0.0.0.0::8301'
@@ -22,3 +16,43 @@ services:
       - '0.0.0.0::8500'
       - '0.0.0.0::8600'
       - '0.0.0.0::8600/udp'
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node1_data:/bitnami'
+
+  consul-node2:
+    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    user: root
+    environment:
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_ENABLE_UI=false
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node2_data:/bitnami'
+
+  consul-node3:
+    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    user: root
+    environment:
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_ENABLE_UI=false
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node3_data:/bitnami'
+
+volumes:
+  consul-node1_data:
+    driver: local
+  consul-node2_data:
+    driver: local
+  consul-node3_data:
+    driver: local

@@ -105,11 +105,11 @@ have.
 
 [![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-link-main-landing-footer-logo]
 
+Learn more about container optimization at [RapidFort.com][rf-link-additonal-resource].
+
 <a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
 <img src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
 </a>
-
-Learn more about container optimization at [RapidFort.com][rf-link-additonal-resource].
 
 
 [rf-link-hardened-badge]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=ci_main_landing&utm_content=rf_hardened_badge

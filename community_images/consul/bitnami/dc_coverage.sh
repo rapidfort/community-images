@@ -32,6 +32,8 @@ docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8500/tcp
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/tcp\"[0].HostPort"
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/udp\"[0].HostPort"
 
+sleep 60
+
 # Checking Consul member list in node2 and node3
 docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul members
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul members

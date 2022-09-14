@@ -2,6 +2,7 @@
 <img align="left" src="/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
+<br>
 
 [![rf-h][rf-h-badge]][rf-view-report-button]
 [![DH Image][dh-rf-badge]][rf-dh-image-link]

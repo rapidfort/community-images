@@ -19,7 +19,7 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-consul-node1-1
 
 #Wait for all the member nodes to get in sync
-sleep 60
+sleep 30
 
 # exec into container and run coverage script
 docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh

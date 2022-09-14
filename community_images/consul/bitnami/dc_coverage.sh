@@ -18,6 +18,9 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${PROJECT_NAME}"-consul-node1-1
 
+#Wait for all the member nodes to get in sync
+sleep 60
+
 # exec into container and run coverage script
 docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh
 
@@ -31,8 +34,6 @@ docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8301/udp
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8500/tcp\"[0].HostPort"
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/tcp\"[0].HostPort"
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/udp\"[0].HostPort"
-
-sleep 60
 
 # Checking Consul member list in node2 and node3
 docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul members

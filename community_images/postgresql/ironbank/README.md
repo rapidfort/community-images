@@ -1,5 +1,5 @@
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgresql-ib&utm_content=rapidfort_logo">
-<img align="left" src="/contrib/github_logo.png" alt="RapidFort" width="200" />
+<img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
 <br>

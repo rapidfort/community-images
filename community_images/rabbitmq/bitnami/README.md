@@ -1,5 +1,5 @@
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Frabbitmq?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=rabbitmq&utm_content=rapidfort_logo">
-<img align="left" src="/contrib/github_logo.png" alt="RapidFort" width="200" />
+<img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
 <br>

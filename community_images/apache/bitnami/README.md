@@ -23,7 +23,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 ## Vulnerabilities: Original vs. Hardened
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=apache&utm_content=view_report_link">
-<img align="right" src="/contrib/github_button_3.png" alt="View Report" width="200" />
+<img src="/contrib/github_button_3.png" alt="View Report" width="200" />
 </a>
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]

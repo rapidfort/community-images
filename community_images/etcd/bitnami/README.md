@@ -77,6 +77,14 @@ We are making secure copies of the images we use every day and the most popular 
 * [`3.5`, `3.5-debian-11`, `3.5.4`, `3.5.4-debian-11-r23`, `latest` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/etcd/3.5/debian-11/Dockerfile)
 * [`3.4`, `3.4-debian-11`, `3.4.20`, `3.4.20-debian-11-r0` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/etcd/3.4/debian-11/Dockerfile)
 
+## Need support
+
+Join our slack community for any questions.
+
+<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
+<img src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
+</a>
+
 ## 🌟 Support this project
 
 ![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
@@ -89,9 +97,6 @@ have.
 ## Have questions?
 [![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-rapidfort-footer-logo-link]
 
-<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img align="right" src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
-</a>
 
 If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
 

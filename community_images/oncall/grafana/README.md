@@ -97,6 +97,14 @@ We are making secure copies of the images we use every day and the most popular 
 ## Supported tags and respective `Dockerfile` links
 * [`v1.0.0`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)
 
+## Need support
+
+Join our slack community for any questions.
+
+<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
+<img src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
+</a>
+
 ## 🌟 Support this project
 
 ![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
@@ -109,9 +117,6 @@ have.
 ## Have questions?
 [![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-rapidfort-footer-logo-link]
 
-<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img align="right" src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
-</a>
 
 If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
 

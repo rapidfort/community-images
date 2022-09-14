@@ -91,6 +91,13 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ![Demo](contrib/workflow.png)
 
+## Need support
+
+Join our slack community for any questions.
+
+<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
+<img src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
+</a>
 
 ## 🌟 Support this project
 
@@ -105,9 +112,6 @@ have.
 
 [![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-link-main-landing-footer-logo]
 
-<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img align="right" src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
-</a>
 
 Learn more about container optimization at [RapidFort.com][rf-link-additonal-resource].
 

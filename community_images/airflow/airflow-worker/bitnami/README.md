@@ -16,7 +16,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 <br>
 
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-worker?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-worker&utm_content=view_report_link">
-<img src="/contrib/github_button_3.png" alt="View Report" width="200" height="400" /></a>
+<img src="/contrib/github_button_3.png" alt="View Report" height="50" /></a>
 
 [![Metrics][metrics-link]][rf-image-metrics-link]
 

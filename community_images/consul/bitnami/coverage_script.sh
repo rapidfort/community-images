@@ -12,7 +12,7 @@ consul members
 #Registering a test service
 mkdir consul.d
 touch consul.d/web.json
-cat '{"service": {"name": "web", "tags": ["rails"], "port":80}}' >> consul.d/web.json
+echo '{"service": {"name": "web", "tags": ["rails"], "port":80}}' >> consul.d/web.json
 consul agent -config-dir=./consul.d
 
 #Query our service using DNS api

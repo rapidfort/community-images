@@ -14,7 +14,7 @@ ls /opt/bitnami/scripts
 consul members
 
 #Registering a test service
-consul agent -config-dir=./consul.d
+consul agent -data-dir=./var/consul -config-dir=./consul.d
 
 #Query our service using DNS api
 dig @127.0.0.1 -p 8600 rails.web.service.consul SRV

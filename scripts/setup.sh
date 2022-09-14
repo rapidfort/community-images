@@ -61,7 +61,8 @@ kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 sudo apt-get install jq parallel -y
 
 # install docker-compose latest
-DC_VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+# DC_VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+DC_VERSION=v2.9.0 #2.11.0 again introduced breaking changes
 DC_DESTINATION=/usr/local/bin/docker-compose
 echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"

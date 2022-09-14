@@ -74,7 +74,14 @@ We are making secure copies of the images we use every day and the most popular 
 * [`1.23`, `1.23-debian-11`, `1.23.0`, `1.23.0-debian-11-r8`, `latest` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.23/debian-11/Dockerfile)
 * [`1.22`, `1.22-debian-11`, `1.22.5`, `1.22.5-debian-11-r3` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/envoy/1.22/debian-11/Dockerfile)
 
-Subscribe to project updates by watching the [rapidfort/community-images GitHub repo](https://github.com/rapidfort/community-images).
+## 🌟 Support this project
+
+![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
+
+### [⏫⭐️ Scroll to the star button](#start-of-content)
+
+If you believe this project has potential, feel free to **star this repo** just like many [amazing people](https://github.com/rapidfort/community-images/stargazers)
+have.
 
 ## Have questions?
 [![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-rapidfort-footer-logo-link]

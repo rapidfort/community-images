@@ -1,4 +1,8 @@
-[![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-rapidfort-logo-link]
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fgrafana%2Foncall?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=oncall&utm_content=rapidfort_logo">
+<img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
+</a>
+
+<br>
 
 [![rf-h][rf-h-badge]][rf-view-report-button]
 [![DH Image][dh-rf-badge]][rf-dh-image-link]
@@ -15,13 +19,20 @@ It is the same as the [Grafana Grafana Oncall][source-image-repo-link] image but
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
 
-[Get the full report here or click on the image below][rf-view-report-link]
-
 [![Metrics][metrics-link]][rf-image-metrics-link]
 
-## Vulnerabilities: Original vs. Hardened
+<h2> Vulnerabilities: Original vs. Hardened
+
+</h2>
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
+
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fgrafana%2Foncall?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=oncall&utm_content=view_report_link">
+<img align="center" src="/contrib/github_button_3.png" alt="View Report" height="50" />
+</a>
+<br>
+<br>
+
 
 ## What is Grafana Oncall?
 

@@ -1,8 +1,8 @@
-[![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
+[![Rapidfort](/contrib/github_logo.png)](https://rapidfort.com)
 
 # Trouble Shooting Guide
 
-## Background: 
+## Background:
 "RapidFort Community Images" is an open-source project to continuously optimize and harden popular Docker images. We pick up a source image ("upstream image"), add coverage scripts, and use RapidFort to optimize and harden the image. A hardened image is automatically created every time a new image is pushed to Docker Hub.
 
 
@@ -10,7 +10,7 @@ Optimized images are significantly smaller and carry fewer vulnerabilities while
 
 You can contribute to this project by adding new images, improving coverage scripts, and adding regression and benchmark tests.
 
-![Demo](contrib/coverage.png)
+![Demo](contrib/workflow.png)
 
 The community images project relies on the upstream source images to work correctly. Broadly, the issues will fall into the following categories:
 

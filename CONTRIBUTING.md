@@ -1,4 +1,4 @@
-[![Rapidfort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)](https://rapidfort.com) 
+[![Rapidfort](/contrib/github_logo.png)](https://rapidfort.com)
 
 # Contributing Guidelines
 
@@ -45,7 +45,7 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't, the DCO chec
 
 ### Documentation Requirements
 
-- An image must include `README.md`. 
+- An image must include `README.md`.
 - [image_generator.sh](https://github.com/rapidfort/community-images/blob/main/scripts/image_generator.sh) generates README.md automatically from image.yml. Please run `./scripts/image_generator.sh` after making changes in image-specific [image.yml](https://github.com/rapidfort/community-images/blob/main/community_images/template/provider/image.yml).
 - The title of the PR starts with the image name (e.g. `[image/provider]`)
 
@@ -56,7 +56,7 @@ Notice the `Author` and `Signed-off-by` lines match. If they don't, the DCO chec
 1. When the PR passes all tests, the reviewer(s) merge the PR in the GitHub `master` branch.
 1. Then our CI/CD system will push the image to the Rapidfort Dockerhub registry.
 
-### Testing 
+### Testing
 
 1. Determine the types of tests you will need based on your image.
 1. Ensure tests exercise all workflows to ensure hardened images don't break in production.

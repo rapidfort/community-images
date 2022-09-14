@@ -9,8 +9,8 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   const page = await browser.newPage();
 
   await page.setViewport({
-    width: 500,
-    height: 500,
+    width: 5120,
+    height: 3840,
     deviceScaleFactor: 1.25,
   });
 

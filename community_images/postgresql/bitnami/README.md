@@ -80,6 +80,14 @@ We are making secure copies of the images we use every day and the most popular 
 * [`11`, `11-debian-11`, `11.17.0`, `11.17.0-debian-11-r0` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)
 * [`10`, `10-debian-11`, `10.22.0`, `10.22.0-debian-11-r0` (10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/10/debian-11/Dockerfile)
 
+## Questions?
+
+Join our slack community for any questions.
+
+<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
+<img src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
+</a>
+
 ## 🌟 Support this project
 
 ![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)

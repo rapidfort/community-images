@@ -77,6 +77,14 @@ We are making secure copies of the images we use every day and the most popular 
 * [`7.0`, `7.0-debian-11`, `7.0.4`, `7.0.4-debian-11-r12`, `latest` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/redis/7.0/debian-11/Dockerfile)
 * [`6.2`, `6.2-debian-11`, `6.2.7`, `6.2.7-debian-11-r26` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/redis/6.2/debian-11/Dockerfile)
 
+## Questions?
+
+Join our slack community for any questions.
+
+<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
+<img src="/contrib/join_slack.png" alt="RapidFort Community Slack" width="200" />
+</a>
+
 ## 🌟 Support this project
 
 ![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)

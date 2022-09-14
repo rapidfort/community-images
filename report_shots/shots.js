@@ -11,10 +11,8 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   await page.setViewport({
     width: 5120,
     height: 3840,
-    deviceScaleFactor: 8,
+    deviceScaleFactor: 1.25,
   });
-
-  await page.setViewport({width: 3600, height: 2160});
 
   await page.goto(imageUrl, { waitUntil: 'networkidle0' }); // wait until page load
   await page.emulateMediaFeatures([{

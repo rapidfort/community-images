@@ -21,7 +21,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 ## Vulnerabilities: Original vs. Hardened
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]  <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-worker?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-worker&utm_content=view_report_link">
-<img align="right" src="/contrib/github_button_3.png" alt="View Report" height="50" /></a>
+<img align="center" src="/contrib/github_button_3.png" alt="View Report" height="50" /></a>
 
 ## What is Apache Airflow Worker?
 

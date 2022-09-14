@@ -16,7 +16,7 @@ echo "Json params for docker compose coverage = $JSON"
 
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
-CONTAINER_NAME="${PROJECT_NAME}"-consul1-1
+CONTAINER_NAME="${PROJECT_NAME}"-consul-node1-1
 
 # exec into container and run coverage script
 docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh

@@ -9,9 +9,7 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   const page = await browser.newPage();
 
   await page.setViewport({
-    width: 5120,
-    height: 3840,
-    deviceScaleFactor: 8,
+    width: 800, height: 800, deviceScaleFactor: 2
   });
 
   await page.goto(imageUrl, { waitUntil: 'networkidle0' }); // wait until page load

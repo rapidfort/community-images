@@ -22,6 +22,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 [![Metrics][metrics-link]][rf-image-metrics-link]
 
 <h2> Vulnerabilities: Original vs. Hardened
+&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fnginx%2Fnginx?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=nginx-ib&utm_content=view_report_link">
 <img src="/contrib/github_button_3.png" alt="View Report" width="200" />
 </a>

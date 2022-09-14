@@ -12,7 +12,7 @@ consul members
 #Registering a test service
 mkdir consul.d
 echo '{"service": {"name": "web", "tags": ["rails"], "port":80}}' >> consul.d/web.json
-consul agent -dev -config-dir=./consul.d -node=node1
+consul agent -dev -config-dir=./consul.d
 
 #Query our service using DNS api
 dig @127.0.0.1 -p 8600 rails.web.service.consul SRV

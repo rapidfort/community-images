@@ -1,5 +1,7 @@
 
-[![RapidFort](/contrib/github_logo.png)][rf-link-main-landing-logo]
+<a href="https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=ci_main_landing&utm_content=main_landing_logo">
+<img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
+</a>
 
 <h1> community-images </h1>
 

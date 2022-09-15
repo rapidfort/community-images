@@ -55,8 +55,9 @@ services:
     image: bitnami/consul
     user: root
     environment:
-      - CONSUL_AGENT_MODE=client
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
       - CONSUL_ENABLE_UI=false
     cap_add:
       - SYS_PTRACE
@@ -65,6 +66,7 @@ services:
       - ./client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
     depends_on:
       - consul-node1
+    command: "agent"
 
 volumes:
   consul-node1_data:

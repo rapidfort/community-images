@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul-node1:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
@@ -24,7 +24,7 @@ services:
       - ./sample_service.json:/consul.d/sample_service.json
 
   consul-node2:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
@@ -38,7 +38,7 @@ services:
       - 'consul-node2_data:/bitnami'
 
   consul-node3:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
@@ -52,13 +52,13 @@ services:
       - 'consul-node3_data:/bitnami'
 
   consul-node4:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     environment:
       - CONSUL_AGENT_MODE=client
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=["consul-node1", "consul-node2", "consul-node3"]
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
       - CONSUL_ENABLE_UI=false
     cap_add:
       - SYS_PTRACE

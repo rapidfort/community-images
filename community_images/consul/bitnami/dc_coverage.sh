@@ -38,7 +38,7 @@ docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/udp
 # Checking Consul member list in node2 and node3
 docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul members
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul members
-docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul members
+# docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul members
 
 # exec into consul client(node4) and run coverage script
 docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/bitnami/scripts/coverage_script.sh

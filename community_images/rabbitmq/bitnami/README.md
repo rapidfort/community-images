@@ -1,5 +1,5 @@
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Frabbitmq?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=rabbitmq&utm_content=rapidfort_logo">
-<img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
 <br>
@@ -29,7 +29,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Frabbitmq?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=rabbitmq&utm_content=get_full_report_button">
-<img align="center" src="/contrib/github_button_3.png" alt="View Report" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.png" alt="View Report" height="50" />
 </a>
 <br>
 <br>
@@ -76,6 +76,14 @@ We are making secure copies of the images we use every day and the most popular 
 ## Supported tags and respective `Dockerfile` links
 * [`3.10`, `3.10-debian-11`, `3.10.7`, `3.10.7-debian-11-r7`, `latest` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/rabbitmq/3.10/debian-11/Dockerfile)
 * [`3.9`, `3.9-debian-11`, `3.9.22`, `3.9.22-debian-11-r7` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/rabbitmq/3.9/debian-11/Dockerfile)
+
+## Need support
+
+Join our slack community for any questions.
+
+<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/join_slack3.png" alt="RapidFort Community Slack" width="200" />
+</a>
 
 ## 🌟 Support this project
 

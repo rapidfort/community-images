@@ -14,7 +14,9 @@ ls /opt/bitnami/scripts
 consul members
 
 #Registering a test service
-consul agent -data-dir=./var/consul -config-dir=./consul.d
+consul services register /consul.d/sample_service.json
+consul reload
+sleep 10
 
 #Query our service using DNS api
 dig @127.0.0.1 -p 8600 rails.web.service.consul SRV
@@ -26,6 +28,5 @@ curl http://localhost:8500/vi/catalog/service/web
 curl 'http://localhost:8500/v1/health/service/web?passing'
 
 #Removing service
-consul leave
-rm -rf comsul.d 
+consul services deregister web.json
 consul reload

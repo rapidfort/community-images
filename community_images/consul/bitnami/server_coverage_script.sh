@@ -8,6 +8,9 @@ ls
 # Available Scripts
 ls /opt/bitnami/scripts
 
+# Display the congiguration of the server
+cat /opt/bitnami/consul/consul.json
+
 # consul aclt token list
 # consul acl boostrap
 consul members

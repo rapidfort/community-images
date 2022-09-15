@@ -58,7 +58,7 @@ services:
       - CONSUL_AGENT_MODE=client
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_RETRY_JOIN_ADDRESS=["consul-node1", "consul-node2", "consul-node3"]
       - CONSUL_ENABLE_UI=false
     cap_add:
       - SYS_PTRACE

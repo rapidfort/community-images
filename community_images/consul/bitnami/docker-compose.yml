@@ -64,15 +64,15 @@ services:
     cap_add:
       - SYS_PTRACE
     volumes:
-      - 'consul-node3_data:/bitnami'
+      - 'consul-node4_data:/bitnami'
       - ./client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
 
-
-command: "agent -retry-join consul-server-bootstrap -client 0.0.0.0"
 volumes:
   consul-node1_data:
     driver: local
   consul-node2_data:
     driver: local
   consul-node3_data:
+    driver: local
+  consul-node4_data:
     driver: local

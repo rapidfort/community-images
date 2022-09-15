@@ -20,7 +20,7 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node1_data:/bitnami'
-      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+      - ./server_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
       - ./sample_service.json:/consul.d/sample_service.json
 
   consul-node2:
@@ -36,7 +36,6 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/bitnami'
-      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
 
   consul-node3:
     image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
@@ -51,8 +50,25 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node3_data:/bitnami'
-      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
 
+  consul-node4:
+    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    user: root
+    environment:
+      - CONSUL_AGENT_MODE=client
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_ENABLE_UI=false
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node3_data:/bitnami'
+      - ./client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+
+
+command: "agent -retry-join consul-server-bootstrap -client 0.0.0.0"
 volumes:
   consul-node1_data:
     driver: local

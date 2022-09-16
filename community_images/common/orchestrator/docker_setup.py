@@ -46,6 +46,7 @@ class DockerSetup:
         common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
 
+        any_daemons = False
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
             repo_path = tag_details["repo_path"]
@@ -60,6 +61,9 @@ class DockerSetup:
             daemon = image_runtime_props.get("daemon", True)
             entrypoint = image_runtime_props.get("entrypoint")
             exec_command = image_runtime_props.get("exec_command")
+
+            if not any_daemons:
+                any_daemons = daemon
 
             cmd = "docker run --rm"
             cmd += " -d" if daemon else " -i"
@@ -110,7 +114,7 @@ class DockerSetup:
             self.container_list.append(container_name)
             container_details[repo] = container_detail
 
-        if self.daemon:
+        if any_daemons:
             # sleep for few seconds
             time.sleep(self.runtime_props.get("wait_time_sec", 30))
             container_details = self._get_docker_ips(container_details)

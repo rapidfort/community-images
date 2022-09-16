@@ -41,6 +41,7 @@ class DockerSetup:
         self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
+        common_daemon = self.runtime_props.get("daemon", True)
         common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
 
@@ -55,7 +56,10 @@ class DockerSetup:
 
             image_runtime_props = self.runtime_props.get(repo, {})
 
-            daemon = image_runtime_props.get("daemon", True)
+            daemon = image_runtime_props.get("daemon")
+            if not daemon:
+                common_daemon = daemon
+
             entrypoint = image_runtime_props.get("entrypoint")
             exec_command = image_runtime_props.get("exec_command")
 

@@ -45,5 +45,6 @@ runtimes:
   - type: docker
     entrypoint: /tmp/sleep_script.sh
     script: docker_coverage.sh
-    volumes:
-      sleep_script.sh:/tmp/sleep_script.sh
+    curl:
+      volumes:
+        sleep_script.sh:/tmp/sleep_script.sh

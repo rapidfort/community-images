@@ -1,0 +1,3 @@
+#!/bin/ash
+
+sleep infinity

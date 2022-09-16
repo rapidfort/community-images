@@ -4,11 +4,14 @@ services:
   consul-node1:
     image: bitnami/consul
     user: root
+    restart: always
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
       - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+    networks:
+      - consul
     ports:
       - '0.0.0.0::8300'
       - '0.0.0.0::8301'
@@ -26,12 +29,15 @@ services:
   consul-node2:
     image: bitnami/consul
     user: root
+    restart: always
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
       - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
       - CONSUL_ENABLE_UI=false
+    networks:
+      - consul
     cap_add:
       - SYS_PTRACE
     volumes:
@@ -40,12 +46,15 @@ services:
   consul-node3:
     image: bitnami/consul
     user: root
+    restart: always
     environment:
       - CONSUL_BOOTSTRAP_EXPECT=3
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
       - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
       - CONSUL_ENABLE_UI=true
+    networks:
+      - consul
     cap_add:
       - SYS_PTRACE
     volumes:
@@ -59,6 +68,8 @@ services:
       - CONSUL_DISABLE_KEYRING_FILE=true
       - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
       - CONSUL_ENABLE_UI=false
+    networks:
+      - consul
     cap_add:
       - SYS_PTRACE
     volumes:
@@ -67,6 +78,9 @@ services:
     depends_on:
       - consul-node1
 
+networks:
+  consul:
+    driver: bridge
 volumes:
   consul-node1_data:
     driver: local

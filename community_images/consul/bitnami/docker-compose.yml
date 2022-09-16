@@ -49,6 +49,7 @@ services:
     restart: always
     environment:
       - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_AGENT_MODE=client
     networks:
       - consul
     cap_add:

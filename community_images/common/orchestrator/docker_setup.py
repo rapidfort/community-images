@@ -28,7 +28,7 @@ class DockerSetup:
         self.image_script_dir = image_script_dir
         self.command = command
         self.script_dir = os.path.abspath(os.path.dirname(__file__))
-        self.container_details = []
+        self.container_details = {}
         self.cert_path = None
 
     # pylint: disable=too-many-locals

@@ -28,7 +28,7 @@ class DockerSetup:
         self.image_script_dir = image_script_dir
         self.command = command
         self.script_dir = os.path.abspath(os.path.dirname(__file__))
-        self.container_list = []
+        self.container_details = []
         self.cert_path = None
 
     # pylint: disable=too-many-locals
@@ -37,8 +37,6 @@ class DockerSetup:
         # create network
         cmd = f"docker network create -d bridge {self.namespace_name}"
         Utils.run_cmd(cmd.split())
-
-        container_details = {}
 
         self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
@@ -108,19 +106,18 @@ class DockerSetup:
 
             container_detail["daemon"] = daemon
             container_detail["name"] = container_name
-            self.container_list.append(container_name)
-            container_details[repo] = container_detail
+            self.container_details[repo] = container_detail
 
         # sleep for few seconds
         time.sleep(self.runtime_props.get("wait_time_sec", 30))
-        container_details = self._get_docker_ips(container_details)
+        self.container_details = self._get_docker_ips(self.container_details)
 
         return {
             "namespace_name": self.namespace_name,
             "release_name": self.release_name,
             "image_tag_details": self.image_tag_details,
             "network_name": self.namespace_name,
-            "container_details": container_details,
+            "container_details": self.container_details,
             "image_script_dir": self.image_script_dir,
             "runtime_props": self.runtime_props
         }
@@ -149,11 +146,12 @@ class DockerSetup:
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """
         # clean up docker container
-        for container in self.container_list:
+        for container_detail in container_details.values():
             daemon = container_detail["daemon"]
+            name = container_detail["name"]
             if not daemon:
                 continue
-            cmd = f"docker kill {container}"
+            cmd = f"docker kill {name}"
             logging.info(f"cmd: {cmd}")
             Utils.run_cmd(cmd.split())
 

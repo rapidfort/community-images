@@ -46,7 +46,6 @@ class DockerSetup:
         common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
 
-        any_daemons = False
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
             repo_path = tag_details["repo_path"]
@@ -61,9 +60,6 @@ class DockerSetup:
             daemon = image_runtime_props.get("daemon", True)
             entrypoint = image_runtime_props.get("entrypoint")
             exec_command = image_runtime_props.get("exec_command")
-
-            if not any_daemons:
-                any_daemons = daemon
 
             cmd = "docker run --rm"
             cmd += " -d" if daemon else " -i"
@@ -110,14 +106,14 @@ class DockerSetup:
             logging.info(f"cmd: {cmd}")
             Utils.run_cmd(cmd.split())
 
+            container_detail["daemon"] = daemon
             container_detail["name"] = container_name
             self.container_list.append(container_name)
             container_details[repo] = container_detail
 
-        if any_daemons:
-            # sleep for few seconds
-            time.sleep(self.runtime_props.get("wait_time_sec", 30))
-            container_details = self._get_docker_ips(container_details)
+        # sleep for few seconds
+        time.sleep(self.runtime_props.get("wait_time_sec", 30))
+        container_details = self._get_docker_ips(container_details)
 
         return {
             "namespace_name": self.namespace_name,
@@ -133,6 +129,10 @@ class DockerSetup:
         # add docker ips for all containers
         for container_detail in container_details.values():
             container_name = container_detail["name"]
+            daemon = container_detail["daemon"]
+            if not daemon:
+                continue
+
             cmd = f"docker inspect {container_name}"
             docker_inspect_json = subprocess.check_output(cmd.split())
             docker_inspect_dict = json.loads(docker_inspect_json)
@@ -149,11 +149,13 @@ class DockerSetup:
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """
         # clean up docker container
-        if self.daemon:
-            for container in self.container_list:
-                cmd = f"docker kill {container}"
-                logging.info(f"cmd: {cmd}")
-                Utils.run_cmd(cmd.split())
+        for container in self.container_list:
+            daemon = container_detail["daemon"]
+            if not daemon:
+                continue
+            cmd = f"docker kill {container}"
+            logging.info(f"cmd: {cmd}")
+            Utils.run_cmd(cmd.split())
 
         # delete network
         cmd = f"docker network rm {self.namespace_name}"

@@ -57,9 +57,9 @@ class DockerSetup:
 
             image_runtime_props = self.runtime_props.get(repo, {})
 
-            daemon = self.image_runtime_props.get("daemon", True)
-            entrypoint = self.image_runtime_props.get("entrypoint")
-            exec_command = self.image_runtime_props.get("exec_command")
+            daemon = image_runtime_props.get("daemon", True)
+            entrypoint = image_runtime_props.get("entrypoint")
+            exec_command = image_runtime_props.get("exec_command")
 
             cmd = "docker run --rm"
             cmd += " -d" if daemon else " -i"

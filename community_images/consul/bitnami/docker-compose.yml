@@ -48,25 +48,19 @@ services:
     user: root
     restart: always
     environment:
-      - CONSUL_BOOTSTRAP_EXPECT=3
-      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
-      - CONSUL_DISABLE_KEYRING_FILE=true
       - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
-      - CONSUL_ENABLE_UI=true
     networks:
       - consul
     cap_add:
       - SYS_PTRACE
     volumes:
       - 'consul-node3_data:/bitnami'
+    command: "agent"
 
   consul-node4:
     image: bitnami/consul
     user: root
     environment:
-      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
-      - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
       - CONSUL_ENABLE_UI=false
     networks:
       - consul

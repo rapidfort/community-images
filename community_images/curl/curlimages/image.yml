@@ -47,4 +47,4 @@ runtimes:
     script: docker_coverage.sh
     curl:
       volumes:
-        sleep_script.sh:/tmp/sleep_script.sh
+        sleep_script.sh: /tmp/sleep_script.sh

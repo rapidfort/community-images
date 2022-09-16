@@ -146,7 +146,7 @@ class DockerSetup:
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """
         # clean up docker container
-        for container_detail in container_details.values():
+        for container_detail in self.container_details.values():
             daemon = container_detail["daemon"]
             name = container_detail["name"]
             if not daemon:

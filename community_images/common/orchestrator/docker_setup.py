@@ -20,10 +20,7 @@ class DockerSetup:
             image_tag_details,
             runtime_props,
             image_script_dir,
-            command,
-            daemon=True,
-            entrypoint=None,
-            exec_command=None):
+            command):
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
@@ -33,9 +30,6 @@ class DockerSetup:
         self.script_dir = os.path.abspath(os.path.dirname(__file__))
         self.container_list = []
         self.cert_path = None
-        self.daemon = daemon
-        self.entrypoint = entrypoint
-        self.exec_command = exec_command
 
     # pylint: disable=too-many-locals
     def __enter__(self):
@@ -63,12 +57,16 @@ class DockerSetup:
 
             image_runtime_props = self.runtime_props.get(repo, {})
 
+            daemon = self.image_runtime_props.get("daemon", True)
+            entrypoint = self.image_runtime_props.get("entrypoint")
+            exec_command = self.image_runtime_props.get("exec_command")
+
             cmd = "docker run --rm"
-            cmd += " -d" if self.daemon else " -i"
+            cmd += " -d" if daemon else " -i"
             cmd += f" --network={self.namespace_name}"
 
-            if self.entrypoint is not None:
-                cmd += f" --entrypoint {self.entrypoint}"
+            if entrypoint is not None:
+                cmd += f" --entrypoint {entrypoint}"
 
             if self.command == Commands.STUB_COVERAGE:
                 cmd += " --cap-add=SYS_PTRACE"
@@ -102,8 +100,8 @@ class DockerSetup:
             cmd += f" --name {container_name}"
             cmd += f" {repo_path}:{tag}"
 
-            if self.exec_command is not None:
-                cmd += f" {self.exec_command}"
+            if exec_command is not None:
+                cmd += f" {exec_command}"
 
             logging.info(f"cmd: {cmd}")
             Utils.run_cmd(cmd.split())

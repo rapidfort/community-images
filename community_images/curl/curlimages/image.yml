@@ -43,8 +43,8 @@ repo_sets:
       input_base_tag: "7."
 runtimes:
   - type: docker
-    entrypoint: /tmp/sleep_script.sh
     script: docker_coverage.sh
     curl:
+      entrypoint: /tmp/sleep_script.sh
       volumes:
         sleep_script.sh: /tmp/sleep_script.sh

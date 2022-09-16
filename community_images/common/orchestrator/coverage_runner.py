@@ -244,6 +244,8 @@ class CoverageRunner:
         logging.info(f"calculated common path={common_command_rel_path}")
 
         runtime_props = {
+            "daemon": False,
+            "entrypoint": "/tmp/common_commands.sh",
             "volumes": {
                 common_command_rel_path: "/tmp/common_commands.sh"}}
 
@@ -253,7 +255,5 @@ class CoverageRunner:
                 image_tag_details,
                 runtime_props,
                 image_script_dir,
-                command,
-                False,
-                "/tmp/common_commands.sh") as run_dict:
+                command) as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")

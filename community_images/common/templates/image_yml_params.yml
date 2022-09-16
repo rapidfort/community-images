@@ -165,3 +165,12 @@ docker_runtime_params:
   - name: <repo>.environment
     description: map of environment variables to be mounted in container
     value : '""'
+  - name: <repo>.exec_command
+    description: exec_command for container
+    value : '""'
+  - name: <repo>.daemon
+    description: if use daemon or interactive container flag -i or -d
+    value : 'True'
+  - name: <repo>.entrypoint
+    description: entrypoint for container
+    value : '""'

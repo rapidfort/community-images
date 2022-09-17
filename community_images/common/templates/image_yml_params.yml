@@ -57,6 +57,9 @@ params:
   - name: repo_sets
     description: array of repo_set object describe below.
     value : ['repo_set', 'repo_set']
+  - name: needs_common_commands
+    description: needs to run common commands or not
+    value : 'true'
   - name: runtimes
     description: array of runtime object describe below.
     value : ['runtime', 'runtime']

@@ -92,7 +92,8 @@ class CoverageRunner:
                 command
             )
 
-        if command == Commands.STUB_COVERAGE:
+        needs_common_commands = self.config_dict.get("needs_common_commands", True)
+        if needs_common_commands and command == Commands.STUB_COVERAGE:
             # add common commands
             self._common_command_runner(
                 image_script_dir,

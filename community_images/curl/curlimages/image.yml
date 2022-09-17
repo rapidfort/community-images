@@ -41,6 +41,7 @@ output_registry:
 repo_sets:
   - curl:
       input_base_tag: "7."
+needs_common_commands: false
 runtimes:
   - type: docker
     script: docker_coverage.sh

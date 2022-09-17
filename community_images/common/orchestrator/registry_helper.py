@@ -71,7 +71,7 @@ class DockerHubHelper(RegistryHelper):
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["tag_last_pushed"]))
         if tags:
-            return tags[-1]
+            return tags[-1]["name"]
         return None
 
 

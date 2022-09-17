@@ -2,6 +2,7 @@
 
 import logging
 import os
+import dateutil.parser
 import requests
 from consts import Consts
 
@@ -20,10 +21,9 @@ class RegistryHelper:
         """ Interface method to specify registry url"""
 
     # pylint: disable=unused-argument
-    def fetch_tags(self, account, repo):
+    def get_latest_tag(self, account, repo, search_str):
         """
-        Interface method to fetch all tags for an image_repo
-        Default returns latest
+        Find latest tags using search_str"
         """
         return Consts.LATEST
 
@@ -34,26 +34,6 @@ class RegistryHelper:
             username=self.username,
             password=self.password)
 
-    def get_latest_tag(self, account, repo, search_str):
-        """
-        Find latest tags using search_str"
-        """
-        tags = self.fetch_tags(account, repo)
-        search_str_len = len(search_str)
-
-        tags = filter(lambda tag: search_str in tag, tags)
-        tags = list(filter(
-            lambda tag: "rfstub" not in tag and tag[search_str_len:].rstrip(
-            ).isdigit(),
-            tags))
-
-        if len(tags) == 0:
-            return None
-
-        tags.sort(key=lambda tag: int(tag[search_str_len:]))
-        if tags:
-            return tags[-1]
-        return None
 
     def delete_tag(self, account, repo, tag):  # pylint: disable=unused-argument
         """ delete tag from repo """
@@ -74,7 +54,28 @@ class DockerHubHelper(RegistryHelper):
     def registry_url():
         return "docker.io"
 
-    def fetch_tags(self, account, repo):
+    def get_latest_tag(self, account, repo, search_str):
+        """
+        Find latest tags using search_str"
+        """
+        tags = self._fetch_tags(account, repo)
+
+        tags = filter(lambda tag: search_str in tag["name"], tags)
+        tags = list(filter(
+            lambda tag: "rfstub" not in tag["name"],
+            tags))
+
+        if len(tags) == 0:
+            return None
+
+        tags.sort(key=lambda tag: dateutil.parser(
+            tag["tag_last_pushed"]))
+        if tags:
+            return tags[-1]
+        return None
+
+
+    def _fetch_tags(self, account, repo):
         """
         Get tags from the dockerhub registry API
         """
@@ -92,7 +93,9 @@ class DockerHubHelper(RegistryHelper):
             if 200 <= resp.status_code < 300:
                 tag_objs = resp.json()
                 results = tag_objs.get("results", [])
-                tags += map(lambda x: x.get("name", ""), results)
+                lookup_keys = ["name", "tag_last_pushed"]
+                tag_dict = { k: results[k] for key in lookup_keys }
+                tags += tag_dict
                 url = tag_objs.get("next")
             else:
                 break

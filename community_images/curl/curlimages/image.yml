@@ -49,4 +49,5 @@ runtimes:
     curl:
       entrypoint: /tmp/sleep_script.sh
       volumes:
+        test.txt: /work/test.txt
         sleep_script.sh: /tmp/sleep_script.sh

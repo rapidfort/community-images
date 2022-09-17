@@ -12,7 +12,17 @@ echo "Json params for docker compose coverage = $JSON"
 NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 CONTAINER_NAME=$(jq -r '.container_details.curl.name' < "$JSON_PARAMS")
 
-# run test on docker container
+# run version
 docker exec \
     -i "$CONTAINER_NAME" \
-    curl --version
+    --version
+
+# run curl
+docker exec \
+    -i "$CONTAINER_NAME" \
+    -L -v https://curl.haxx.se
+
+# run post call
+docker exec \
+    -i "$CONTAINER_NAME" \
+    -d@/work/test.txt https://httpbin.org/post

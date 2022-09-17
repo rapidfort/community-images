@@ -45,6 +45,7 @@ needs_common_commands: false
 runtimes:
   - type: docker
     script: docker_coverage.sh
+    wait_time_sec: 5
     curl:
       entrypoint: /tmp/sleep_script.sh
       volumes:

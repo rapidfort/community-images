@@ -68,7 +68,7 @@ class DockerHubHelper(RegistryHelper):
         if len(tags) == 0:
             return None
 
-        tags.sort(key=lambda tag: dateutil.parser(
+        tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["tag_last_pushed"]))
         if tags:
             return tags[-1]
@@ -94,7 +94,7 @@ class DockerHubHelper(RegistryHelper):
                 tag_objs = resp.json()
                 results = tag_objs.get("results", [])
                 lookup_keys = ["name", "tag_last_pushed"]
-                tag_dict = { k: results[k] for key in lookup_keys }
+                tag_dict = { k: results[k] for k in lookup_keys }
                 tags += tag_dict
                 url = tag_objs.get("next")
             else:

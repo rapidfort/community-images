@@ -46,6 +46,5 @@ docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/bitnami/scripts/cov
 
 # Acl check
 
-
 # Shutting down consul
 docker exec -i "${CONTAINER_NAME}" consul leave

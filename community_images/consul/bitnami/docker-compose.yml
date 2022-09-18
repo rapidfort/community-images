@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul-node1:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     restart: always
     environment:
@@ -27,7 +27,7 @@ services:
       - ./configs/sample_service.json:/consul.d/sample_service.json
 
   consul-node2:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     restart: always
     networks:
@@ -55,7 +55,7 @@ services:
     command: "consul agent -server -retry-join=consul-node1 -data-dir=/opt/bitnami/consul"
 
   consul-node4:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     networks:
       - consul

@@ -25,7 +25,6 @@ services:
       - 'consul-node1_data:/bitnami'
       - ./server_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
       - ./configs/sample_service.json:/consul.d/sample_service.json
-      - ./configs/acl.hcl:/opt/bitnami/consul/acl.hcl
 
   consul-node2:
     image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
@@ -43,7 +42,6 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/bitnami'
-      - ./configs/acl.hcl:/opt/bitnami/consul/acl.hcl
 
   consul-node3:
     image: bitnami/consul
@@ -61,7 +59,6 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node3_data:/bitnami'
-      - ./configs/acl.hcl:/opt/bitnami/consul/acl.hcl
 
   consul-node4:
     image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
@@ -73,7 +70,6 @@ services:
     volumes:
       - 'consul-node4_data:/bitnami'
       - ./client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
-      - ./configs/acl.hcl:/opt/bitnami/consul/acl.hcl
     depends_on:
       - consul-node1
     command: "consul agent -node=client-1 -data-dir=/opt/bitnami/consul -join=consul-node1"

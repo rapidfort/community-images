@@ -63,6 +63,9 @@ services:
   consul-node4:
     image: bitnami/consul
     user: root
+    environment:
+      - CONSUL_AGENT_MODE=client
+      - CONSUL_ENABLE_UI=false
     networks:
       - consul
     cap_add:
@@ -72,7 +75,6 @@ services:
       - ./client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
     depends_on:
       - consul-node1
-    command: "agent -node=client-1 -join=consul-node1"
 
 networks:
   consul:

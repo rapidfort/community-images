@@ -44,7 +44,7 @@ services:
       - 'consul-node2_data:/bitnami'
 
   consul-node3:
-    image: bitnami/consul
+    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
     user: root
     restart: always
     environment:
@@ -74,7 +74,7 @@ services:
       - consul-node1
       - consul-node2
       - consul-node3
-    command: "consul agent -node=client-1 -data-dir=/opt/bitnami/consul -join=consul-node1"
+    command: "consul agent -data-dir=/opt/bitnami/consul -join=consul-node1"
     
 networks:
   consul:

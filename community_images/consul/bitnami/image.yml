@@ -39,3 +39,15 @@ runtimes:
       consul:
         repository: "CONSUL_IMAGE_REPOSITORY"
         tag: "CONSUL_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/consul
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      apache:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

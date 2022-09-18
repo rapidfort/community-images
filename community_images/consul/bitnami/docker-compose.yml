@@ -72,7 +72,7 @@ services:
       - ./client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
     depends_on:
       - consul-node1
-    command: "agent -node=client-1 -join=consul-node1"
+    command: "consul agent -node=client-1 -data-dir=/opt/consul -join=consul-node1"
 
 networks:
   consul:

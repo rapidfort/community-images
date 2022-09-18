@@ -34,7 +34,7 @@ services:
       - consul-node1
     volumes:
       - 'consul-node2_data:/bitnami'
-    command: "consul agent -server -join=consul-node1 -enable-local-script-checks"
+    command: "consul agent -server -retry-join=consul-node1 -enable-local-script-checks"
 
   consul-node3:
     image: bitnami/consul
@@ -48,7 +48,7 @@ services:
       - consul-node1
     volumes:
       - 'consul-node3_data:/bitnami'
-    command: "consul agent -server -join=consul-node1"
+    command: "consul agent -server -retry-join=consul-node1"
 
   consul-node4:
     image: bitnami/consul

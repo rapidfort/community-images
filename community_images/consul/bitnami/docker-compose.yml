@@ -20,7 +20,7 @@ services:
       - 'consul-node1_data:/bitnami'
       - ./server_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
       - ./configs/sample_service.json:/consul.d/sample_service.json
-    command: "consul agent -server -bootstrap-expect=3 -ui -client 0.0.0.0 -data-dir=/tmp/consuldata"
+    command: "consul agent -server -bootstrap-expect=3 -ui -client 0.0.0.0"
 
   consul-node2:
     image: bitnami/consul

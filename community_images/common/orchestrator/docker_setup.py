@@ -31,7 +31,7 @@ class DockerSetup:
         self.container_details = {}
         self.cert_path = None
 
-    # pylint: disable=too-many-locals
+    # pylint: disable=too-many-locals,too-many-branches,too-many-statements
     def __enter__(self):
         """ create a docker namespace and set it up for runner """
         # create network

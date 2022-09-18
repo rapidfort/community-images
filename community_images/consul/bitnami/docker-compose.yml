@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul-node1:
-    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
+    image: bitnami/consul
     user: root
     restart: always
     environment:
@@ -27,7 +27,7 @@ services:
       - ./configs/sample_service.json:/consul.d/sample_service.json
 
   consul-node2:
-    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
+    image: bitnami/consul
     user: root
     restart: always
     environment:
@@ -44,7 +44,7 @@ services:
       - 'consul-node2_data:/bitnami'
 
   consul-node3:
-    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
+    image: bitnami/consul
     user: root
     restart: always
     environment:
@@ -61,7 +61,7 @@ services:
       - 'consul-node3_data:/bitnami'
 
   consul-node4:
-    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
+    image: bitnami/consul
     user: root
     networks:
       - consul

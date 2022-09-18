@@ -5,11 +5,6 @@ services:
     image: bitnami/consul
     user: root
     restart: always
-    environment:
-      - CONSUL_BOOTSTRAP_EXPECT=3
-      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
-      - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
     networks:
       - consul
     ports:
@@ -25,40 +20,35 @@ services:
       - 'consul-node1_data:/bitnami'
       - ./server_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
       - ./configs/sample_service.json:/consul.d/sample_service.json
+    command: "consul agent -server -bootstrap-expect=3 -ui -client 0.0.0.0 -data-dir=/tmp/consuldata"
 
   consul-node2:
     image: bitnami/consul
     user: root
     restart: always
-    environment:
-      - CONSUL_BOOTSTRAP_EXPECT=3
-      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
-      - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
-      - CONSUL_ENABLE_UI=false
     networks:
       - consul
     cap_add:
       - SYS_PTRACE
+    depends_on:
+      - consul-node1
     volumes:
       - 'consul-node2_data:/bitnami'
+    command: "consul agent -server -join consul1 -disable-host-node-id -enable-local-script-checks"
 
   consul-node3:
     image: bitnami/consul
     user: root
     restart: always
-    environment:
-      - CONSUL_BOOTSTRAP_EXPECT=3
-      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
-      - CONSUL_DISABLE_KEYRING_FILE=true
-      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
-      - CONSUL_ENABLE_UI=false
     networks:
       - consul
     cap_add:
       - SYS_PTRACE
+    depends_on:
+      - consul-node1
     volumes:
       - 'consul-node3_data:/bitnami'
+    command: "consul agent -server -join =onsul1 -disable-host-node-id"
 
   consul-node4:
     image: bitnami/consul

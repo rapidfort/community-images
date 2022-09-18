@@ -42,6 +42,7 @@ class DockerSetup:
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         common_daemon = self.runtime_props.get("daemon", True)
+        common_entrypoint = self.runtime_props.get("entrypoint", True)
         common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
 
@@ -61,7 +62,11 @@ class DockerSetup:
             else:
                 daemon = image_runtime_props.get("daemon", True)
 
-            entrypoint = image_runtime_props.get("entrypoint")
+            if "entrypoint" not in image_runtime_props:
+                entrypoint = common_entrypoint
+            else:
+                entrypoint = image_runtime_props.get("entrypoint")
+
             exec_command = image_runtime_props.get("exec_command")
 
             cmd = "docker run --rm"

@@ -16,12 +16,13 @@ echo "Json params for docker compose coverage = $JSON"
 
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
+# Container name for consul-node1
 CONTAINER_NAME="${PROJECT_NAME}"-consul-node1-1
 
-#Wait for all the member nodes to get in sync
-sleep 30
+# Wait for all the member nodes to get in sync
+sleep 20
 
-# exec into consul server(node1) and run coverage script
+# Exec into consul server(node1) and run coverage script
 docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh
 
 # log for debugging
@@ -35,13 +36,16 @@ docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8500/tcp
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/tcp\"[0].HostPort"
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/udp\"[0].HostPort"
 
-# Checking Consul member list in node2 and node3
+# Checking Consul members list in all server and client nodes
 docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul members
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul members
-# docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul members
+docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul members
 
 # exec into consul client(node4) and run coverage script
 docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/bitnami/scripts/coverage_script.sh
+
+# Acl check
+
 
 # Shutting down consul
 docker exec -i "${CONTAINER_NAME}" consul leave

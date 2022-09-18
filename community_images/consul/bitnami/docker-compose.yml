@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul-node1:
-    image: bitnami/consul
+    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
     user: root
     restart: always
     networks:
@@ -23,7 +23,7 @@ services:
     command: "consul agent -server -bootstrap-expect=3 -ui -client 0.0.0.0 -data-dir=/opt/bitnami/consul"
 
   consul-node2:
-    image: bitnami/consul
+    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
     user: root
     restart: always
     networks:
@@ -51,7 +51,7 @@ services:
     command: "consul agent -server -retry-join=consul-node1 -data-dir=/opt/bitnami/consul"
 
   consul-node4:
-    image: bitnami/consul
+    image: anmolvirdi/consul:1.12.3-debian-11-r15-rfstub
     user: root
     networks:
       - consul

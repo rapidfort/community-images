@@ -56,7 +56,7 @@ class DockerSetup:
 
             image_runtime_props = self.runtime_props.get(repo, {})
 
-            if daemon not in image_runtime_props:
+            if "daemon" not in image_runtime_props:
                 daemon = common_daemon
             else:
                 daemon = image_runtime_props.get("daemon", True)

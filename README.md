@@ -96,10 +96,10 @@ You can contribute to this project by adding new images, improving coverage scri
 Join our slack community for any questions.
 
 <a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img src="/contrib/join_slack3.png" alt="RapidFort Community Slack" width="200" />
+<img src="/contrib/join_slack4.png" alt="RapidFort Community Slack" width="200" />
 </a>
 
-## 🌟 Support this project
+## 🌟 Star this project
 
 ![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
 

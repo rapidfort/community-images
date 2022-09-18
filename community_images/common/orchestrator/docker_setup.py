@@ -42,7 +42,7 @@ class DockerSetup:
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         common_daemon = self.runtime_props.get("daemon", True)
-        common_entrypoint = self.runtime_props.get("entrypoint", True)
+        common_entrypoint = self.runtime_props.get("entrypoint")
         common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
 

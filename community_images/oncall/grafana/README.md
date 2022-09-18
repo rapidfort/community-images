@@ -102,7 +102,7 @@ We are making secure copies of the images we use every day and the most popular 
 Join our slack community for any questions.
 
 <a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/join_slack3.png" alt="RapidFort Community Slack" width="200" />
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/join_slack4.png" alt="RapidFort Community Slack" width="200" />
 </a>
 
 ## 🌟 Support this project

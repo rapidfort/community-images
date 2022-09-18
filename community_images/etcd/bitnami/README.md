@@ -74,15 +74,15 @@ RapidFort’s hardened [rapidfort/etcd][rf-dh-image-link] image has been optimiz
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.5`, `3.5-debian-11`, `3.5.4`, `3.5.4-debian-11-r23`, `latest` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/etcd/3.5/debian-11/Dockerfile)
-* [`3.4`, `3.4-debian-11`, `3.4.20`, `3.4.20-debian-11-r0` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/etcd/3.4/debian-11/Dockerfile)
+* [`3.5`, `3.5-debian-11`, `3.5.5`, `3.5.5-debian-11-r0`, `latest` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/etcd/3.5/debian-11/Dockerfile)
+* [`3.4`, `3.4-debian-11`, `3.4.21`, `3.4.21-debian-11-r0` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/etcd/3.4/debian-11/Dockerfile)
 
 ## Need support
 
 Join our slack community for any questions.
 
 <a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/join_slack3.png" alt="RapidFort Community Slack" width="200" />
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/join_slack4.png" alt="RapidFort Community Slack" width="200" />
 </a>
 
 ## 🌟 Support this project

@@ -50,6 +50,7 @@ services:
       - SYS_PTRACE
     depends_on:
       - consul-node1
+      - consul-node2
     volumes:
       - 'consul-node3_data:/bitnami'
       - ./scripts/client_container_test.sh:/opt/bitnami/scripts/coverage_script.sh

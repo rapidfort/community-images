@@ -25,3 +25,9 @@ docker exec \
 docker exec \
     -i "$CONTAINER_NAME" \
     curl -d@/work/test.txt https://httpbin.org/post
+
+# run curl 2
+docker exec \
+    -i "$CONTAINER_NAME" \
+    curl -sI https://curl.se -o/dev/null -w '%{http_version}\n'
+

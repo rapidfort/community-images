@@ -63,6 +63,9 @@ services:
   consul-node4:
     image: bitnami/consul
     user: root
+    restart: always
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
     networks:
       - consul
     cap_add:

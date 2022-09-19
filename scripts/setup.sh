@@ -76,4 +76,4 @@ minikube addons enable ingress
 
 # add common python modules
 pip install --upgrade pip
-pip install backoff
+pip install backoff python-dateutil

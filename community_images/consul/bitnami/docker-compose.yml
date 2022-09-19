@@ -9,6 +9,7 @@ services:
       - CONSUL_BOOTSTRAP_EXPECT=3
       - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
       - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_BIND_INTERFACE=eth0
     networks:
       - consul
     ports:
@@ -29,6 +30,8 @@ services:
     image: bitnami/consul
     user: root
     restart: always
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
     networks:
       - consul
     cap_add:
@@ -43,6 +46,8 @@ services:
     image: bitnami/consul
     user: root
     restart: always
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
     networks:
       - consul
     cap_add:

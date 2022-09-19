@@ -25,6 +25,7 @@ services:
       - 'consul-node1_data:/bitnami'
       - ./scripts/server_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
       - ./configs/sample_service.json:/consul.d/sample_service.json
+    command: "consul agent -server -join=consul-node1 -retry-join=consul-node1 -enable-local-script-checks -data-dir=/opt/bitnami/consul"
 
   consul-node2:
     image: bitnami/consul
@@ -40,7 +41,7 @@ services:
       - consul-node1
     volumes:
       - 'consul-node2_data:/bitnami'
-    command: "consul agent -server -join=consul-node1 -retry-join=consul-node1 -enable-local-script-checks -data-dir=/opt/bitnami/consul"
+    command: "consul agent -server -join=consul-node1 -retry-join=consul-node1 -data-dir=/opt/bitnami/consul"
 
   consul-node3:
     image: bitnami/consul

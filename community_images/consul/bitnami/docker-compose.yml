@@ -30,6 +30,12 @@ services:
     image: bitnami/consul
     user: root
     restart: always
+    environment:
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_ENABLE_UI=true
     networks:
       - consul
     cap_add:
@@ -38,12 +44,17 @@ services:
       - consul-node1
     volumes:
       - 'consul-node2_data:/bitnami'
-    command: "consul agent -server -join=consul-node1 -retry-join=consul-node1 -data-dir=/opt/bitnami/consul"
 
   consul-node3:
     image: bitnami/consul
     user: root
     restart: always
+    environment:
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_ENABLE_UI=false
     networks:
       - consul
     cap_add:
@@ -54,7 +65,6 @@ services:
     volumes:
       - 'consul-node3_data:/bitnami'
       - ./scripts/client_container_test.sh:/opt/bitnami/scripts/coverage_script.sh
-    command: "consul agent -server -join=consul-node1 -retry-join=consul-node1 -data-dir=/opt/bitnami/consul"
 
   consul-node4:
     image: bitnami/consul

@@ -49,6 +49,8 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
+### [Source Image Usage Instructions](https://repo1.dso.mil/dsop/opensource/redis/redis6/-/blob/development/README.md)
+
 ```sh
 $ docker run -it --rm -p6379:6379 rapidfort/redis6-ib:latest
 

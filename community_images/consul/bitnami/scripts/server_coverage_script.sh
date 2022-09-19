@@ -39,8 +39,6 @@ consul connect proxy
 # consul watch -type=nodes /usr/bin/my-nodes-handler.sh
 
 # Consul kv
-# consul kv put redis/config/connections 5
-# consul kv get redis/config/connections
-# consul kv get -detailed redis/config/connections
-# consul kv delete redis/config/connections
-
+consul kv put redis/config/connections 5
+consul kv get -detailed redis/config/connections
+consul kv delete redis/config/connections

@@ -49,6 +49,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
+### [Source Image Usage Instructions](https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/README.md)
+
 ```sh
 $ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql12-ib:latest
 

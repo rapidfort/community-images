@@ -49,6 +49,8 @@ Disclaimer: The respective trademarks mentioned in the offering are owned by the
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
+### [Source Image Usage Instructions](https://github.com/bitnami/containers/blob/main/bitnami/mongodb/README.md)
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 

@@ -92,7 +92,8 @@ class CoverageRunner:
                 command
             )
 
-        if command == Commands.STUB_COVERAGE:
+        needs_common_commands = self.config_dict.get("needs_common_commands", True)
+        if needs_common_commands and command == Commands.STUB_COVERAGE:
             # add common commands
             self._common_command_runner(
                 image_script_dir,
@@ -244,6 +245,8 @@ class CoverageRunner:
         logging.info(f"calculated common path={common_command_rel_path}")
 
         runtime_props = {
+            "daemon": False,
+            "entrypoint": "/tmp/common_commands.sh",
             "volumes": {
                 common_command_rel_path: "/tmp/common_commands.sh"}}
 
@@ -253,7 +256,5 @@ class CoverageRunner:
                 image_tag_details,
                 runtime_props,
                 image_script_dir,
-                command,
-                False,
-                "/tmp/common_commands.sh") as run_dict:
+                command) as run_dict:
             logging.info(f"Calling common commands with params: {run_dict}")

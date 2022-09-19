@@ -94,8 +94,6 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ## Need support
 
-Join our slack community for any questions.
-
 <a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
 <img src="/contrib/github_banner.png" alt="RapidFort Community Slack" width="600" />
 </a>

@@ -51,3 +51,8 @@ runtimes:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
+  - type: docker
+    script: docker_coverage.sh
+    tls_certs:
+      generate: true
+      out_dir: certs

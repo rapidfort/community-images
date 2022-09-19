@@ -1,5 +1,4 @@
-# shellcheck shell=dash
-
 #!/bin/ash
+# shellcheck shell=dash
 
 sleep infinity

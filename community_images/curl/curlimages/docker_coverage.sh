@@ -19,7 +19,7 @@ docker exec \
 # use entrypoint
 docker exec \
     -i "$CONTAINER_NAME" \
-    entrypoint.sh --version
+    /entrypoint.sh --version
 
 # run curl
 docker exec \

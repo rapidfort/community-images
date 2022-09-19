@@ -16,6 +16,11 @@ docker exec \
     -i "$CONTAINER_NAME" \
     curl --version
 
+# use entrypoint
+docker exec \
+    -i "$CONTAINER_NAME" \
+    entrypoint.sh --version
+
 # run curl
 docker exec \
     -i "$CONTAINER_NAME" \
@@ -26,8 +31,12 @@ docker exec \
     -i "$CONTAINER_NAME" \
     curl -d@/work/test.txt https://httpbin.org/post
 
-# run curl 2
+# run http2
 docker exec \
     -i "$CONTAINER_NAME" \
     curl -sI https://curl.se -o/dev/null -w '%{http_version}\n'
 
+# test brotli compression
+docker exec \
+    -i "$CONTAINER_NAME" \
+    curl --compressed https://httpbin.org/brotli

@@ -4,6 +4,7 @@ official_website: https://prometheus.io/
 source_image_provider: Bitnami
 source_image_repo: docker.io/bitnami/prometheus
 source_image_repo_link: https://hub.docker.com/r/bitnami/prometheus
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/prometheus/README.md
 rf_docker_link: rapidfort/prometheus
 image_workflow_name: prometheus_bitnami
 github_location: prometheus/bitnami
@@ -25,7 +26,7 @@ input_registry:
 output_registry:
   registry: docker.io
   account: rapidfort
-repo_sets: 
+repo_sets:
   - prometheus:
       input_base_tag: "2.37.0-debian-11-r"
 runtimes:

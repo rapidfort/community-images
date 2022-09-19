@@ -4,6 +4,7 @@ official_website: https://www.influxdata.com/products/influxdb-overview
 source_image_provider: Bitnami
 source_image_repo: docker.io/bitnami/influxdb
 source_image_repo_link: https://hub.docker.com/r/bitnami/influxdb
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/influxdb/README.md
 rf_docker_link: rapidfort/influxdb
 image_workflow_name: influxdb_bitnami
 github_location: influxdb/bitnami
@@ -25,7 +26,7 @@ input_registry:
 output_registry:
   registry: docker.io
   account: rapidfort
-repo_sets: 
+repo_sets:
   - influxdb:
       input_base_tag: "2.3.0-debian-11-r"
 runtimes:

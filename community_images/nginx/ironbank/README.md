@@ -49,6 +49,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
+### [Source Image Usage Instructions](https://repo1.dso.mil/dsop/opensource/nginx/nginx/-/blob/development/README.md)
+
 ```sh
 $ docker run -v /some/content:/usr/share/nginx/html:ro -d rapidfort/nginx-ib:latest
 

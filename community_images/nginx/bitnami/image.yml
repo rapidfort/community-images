@@ -4,6 +4,7 @@ official_website: http://nginx.org/
 source_image_provider: Bitnami
 source_image_repo: docker.io/bitnami/nginx
 source_image_repo_link: https://hub.docker.com/r/bitnami/nginx
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/nginx/README.md
 rf_docker_link: rapidfort/nginx
 image_workflow_name: nginx_bitnami
 github_location: nginx/bitnami
@@ -26,9 +27,9 @@ input_registry:
 output_registry:
   registry: docker.io
   account: rapidfort
-repo_sets: 
+repo_sets:
   - nginx:
-      input_base_tag: "1.23.1-debian-11-r" 
+      input_base_tag: "1.23.1-debian-11-r"
   - nginx:
       input_base_tag: "1.22.0-debian-11-r"
   - nginx:

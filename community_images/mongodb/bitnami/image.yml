@@ -4,6 +4,7 @@ official_website: https://www.mongodb.com/
 source_image_provider: Bitnami
 source_image_repo: docker.io/bitnami/mongodb
 source_image_repo_link: https://hub.docker.com/r/bitnami/mongodb
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/mongodb/README.md
 rf_docker_link: rapidfort/mongodb
 image_workflow_name: mongodb_bitnami
 github_location: mongodb/bitnami
@@ -26,7 +27,7 @@ input_registry:
 output_registry:
   registry: docker.io
   account: rapidfort
-repo_sets: 
+repo_sets:
   - mongodb:
       input_base_tag: "6.0.1-debian-11-r"
   - mongodb:

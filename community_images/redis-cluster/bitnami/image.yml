@@ -4,6 +4,7 @@ official_website: http://redis.io
 source_image_provider: Bitnami
 source_image_repo: docker.io/bitnami/redis-cluster
 source_image_repo_link: https://hub.docker.com/r/bitnami/redis-cluster
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/redis-cluster/README.md
 rf_docker_link: rapidfort/redis-cluster
 image_workflow_name: redis-cluster_bitnami
 github_location: redis-cluster/bitnami
@@ -43,11 +44,11 @@ runtimes:
       secret_name: rf-redis-cluster-tls
       common_name: rf-redis-cluster
     helm_additional_params:
-       tls.enabled: true 
+       tls.enabled: true
        tls.existingSecret: rf-redis-cluster-tls
        tls.certCAFilename: ca.crt
        tls.certFilename: tls.crt
-       tls.certKeyFilename: tls.key 
+       tls.certKeyFilename: tls.key
     image_keys:
       redis-cluster: {}
     override_file: "overrides.yml"

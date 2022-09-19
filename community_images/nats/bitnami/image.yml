@@ -4,6 +4,7 @@ official_website: https://nats.io
 source_image_provider: Bitnami
 source_image_repo: docker.io/bitnami/nats
 source_image_repo_link: https://hub.docker.com/r/bitnami/nats
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/nats/README.md
 rf_docker_link: rapidfort/nats
 image_workflow_name: nats_bitnami
 github_location: nats/bitnami
@@ -25,7 +26,7 @@ input_registry:
 output_registry:
   registry: docker.io
   account: rapidfort
-repo_sets: 
+repo_sets:
   - nats:
       input_base_tag: "2.8.4-debian-11-r"
 runtimes:

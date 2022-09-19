@@ -49,6 +49,8 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
+### [Source Image Usage Instructions](https://github.com/bitnami/containers/blob/main/bitnami/redis-cluster/README.md)
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 

@@ -49,6 +49,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
+### [Source Image Usage Instructions](https://github.com/bitnami/containers/blob/main/bitnami/envoy/README.md)
+
 ```sh
 $ docker run --name envoy rapidfort/envoy:latest
 

@@ -1,0 +1,53 @@
+name: curl
+official_name: Curl
+official_website: https://github.com/curl/curl-docker
+source_image_provider: curlimages
+source_image_repo: docker.io/curlimages/curl
+source_image_repo_link: https://hub.docker.com/r/curlimages/curl
+rf_docker_link: rapidfort/curl
+image_workflow_name: curl_curlimages
+github_location: curl/curlimages
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fcurlimages%2Fcurl
+usage_instructions: |
+  # Check everything works properly by running:
+
+  $ docker run --rm rapidfort/curl:latest --version
+
+  # Here is a more specific example of running curl docker container:
+
+  $ docker run --rm rapidfort/curl:latest -L -v https://curl.haxx.se
+
+  # To work with files it is best to mount directory:
+
+  $ docker run --rm -it -v "$PWD:/work" rapidfort/curl -d@/work/test.txt https://httpbin.org/post
+
+what_is_text: |
+  curl is a command line tool and library for transferring data with URLs.
+
+  curl is used in command lines or scripts to transfer data. It is also used in cars, television sets, routers, printers, audio equipment, mobile phones, tablets, settop boxes, media players and is the internet transfer backbone for thousands of software applications affecting billions of humans daily.
+  Supports the following protocols (so far!):.
+  DICT, FILE, FTP, FTPS, Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, Telnet and TFTP. curl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP form based upload, proxies, HTTP/2, cookies, user+password authentication (Basic, Plain, Digest, CRAM-MD5, NTLM, Negotiate and Kerberos), file transfer resume, proxy tunnelling and more.
+
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`7.xx.x`, `latest` (latest/Dockerfile)](https://github.com/curl/curl-docker/blob/master/alpine/latest/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: curlimages
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - curl:
+      input_base_tag: "7."
+needs_common_commands: false
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    wait_time_sec: 5
+    curl:
+      entrypoint: /tmp/sleep_script.sh
+      volumes:
+        test.txt: /work/test.txt
+        sleep_script.sh: /tmp/sleep_script.sh

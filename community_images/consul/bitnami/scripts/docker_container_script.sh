@@ -9,8 +9,8 @@ set -e
 ls /opt/bitnami/scripts
 consul reload
 
-# Consul Monitor
-consul monitor -log-json
+# # Consul Monitor
+# consul monitor -log-json
 
 # Consul Namespace
 consul namespace create -name team1

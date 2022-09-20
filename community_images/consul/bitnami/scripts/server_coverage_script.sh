@@ -35,10 +35,6 @@ consul debug -interval=15s -duration=1m
 # Consul connect
 consul connect proxy
 
-# Consul watch 
-# @To be shifted to docker_coverage
-# consul watch -type=nodes /usr/bin/my-nodes-handler.sh
-
 # Consul kv
 consul kv put redis/config/connections 5
 consul kv get -detailed redis/config/connections

@@ -100,7 +100,7 @@ You can contribute to this project by adding new images, improving coverage scri
 
 ## 🌟 Star this project
 
-![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
+[![][https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif]](https://github.com/rapidfort/community-images/stargazers)
 
 ### [⏫⭐️ Scroll to the star button](#start-of-content)
 
@@ -109,7 +109,7 @@ have.
 
 ## Additional Resources
 
-[![RapidFort](https://assets.website-files.com/6102f7f1589f985b19197b3d/61082629d82d1361e5835b58_rapidfort_logo-new.svg)][rf-link-main-landing-footer-logo]
+[![RapidFort][https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png]][rf-link-main-landing-footer-logo]
 
 
 Learn more about container optimization at [RapidFort.com][rf-link-additonal-resource].

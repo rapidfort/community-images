@@ -37,3 +37,4 @@ runtimes:
     volumes:
       configs/server.json: /opt/bitnami/consul/consul.json
       certs/: /consul/config/certs/
+      scripts/dokcer_container_script.sh: /opt/bitnami/scripts/coverage_script.sh

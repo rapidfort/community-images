@@ -11,4 +11,5 @@ echo "Json params for docker coverage = $JSON"
 
 CONTAINER_NAME=$(jq -r '.container_details.consul.name' < "$JSON_PARAMS")
 
-docker exec -i "${CONTAINER_NAME}" ls 
+# Running container coverage script
+docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh

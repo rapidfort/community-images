@@ -20,6 +20,7 @@ consul catalog nodes
 consul catalog services
 
 # Consul Snapshot
+su root
 consul snapshot save backup.snap
 
 # Consul ACLs

@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  memcached:
+    image: ${MEMCACHED_IMAGE_REPOSITORY}:${MEMCACHED_IMAGE_TAG}
+    ports:
+      - '11211:11211'

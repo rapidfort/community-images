@@ -18,9 +18,10 @@
     },
     "serf_lan":"0.0.0.0",
     "ui_dir": "/ui",
-    "node_name": "consul-server-1",
-    "acl_datacenter": "dc1",
-    "acl_master_token": "token",
-    "acl_default_policy": "deny",
-    "acl_down_policy": "deny"
+    "acl": {
+        "enabled":true,
+        "default_policy":"deny",
+        "enable_token_persistence":true
+      },
+    "node_name": "consul-server-1"
 }

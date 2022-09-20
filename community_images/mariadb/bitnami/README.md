@@ -101,7 +101,8 @@ If you believe this project has potential, feel free to **star this repo** just 
 have.
 
 ## Have questions?
-[![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png)][rf-link-main-landing-footer-logo]
+
+[![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png)][rf-rapidfort-footer-logo-link]
 
 
 If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].

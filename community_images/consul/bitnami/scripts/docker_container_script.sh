@@ -9,13 +9,8 @@ set -e
 ls /opt/bitnami/scripts
 consul reload
 
-# # Consul Monitor
+# Consul Monitor
 # consul monitor -log-json
-
-# Consul Namespace
-consul namespace create -name team1
-consul namespace list
-consul namespace delete team1
 
 # Consul Catalg
 # List all datacenters:

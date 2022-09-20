@@ -9,6 +9,6 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-CONTAINER_NAME=$(jq -r '.container_details.consul.ip_address' < "$JSON_PARAMS")
+CONTAINER_NAME=$(jq -r '.container_details.consul.name' < "$JSON_PARAMS")
 
 docker exec -i "${CONTAINER_NAME}" ls 

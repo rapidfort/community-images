@@ -32,7 +32,6 @@ repo_sets:
       input_base_tag: "1.6.17-debian-11-r"
 runtimes:
   - type: k8s
-    script: k8s_coverage.sh
     helm_repo: bitnami/memcached
     readiness_wait_pod_name_suffix:
       - "master-0"
@@ -47,4 +46,3 @@ runtimes:
         repository: "MEMCACHED_IMAGE_REPOSITORY"
         tag: "MEMCACHED_IMAGE_TAG"
   - type: docker
-    script: docker_coverage.sh

@@ -1,13 +1,25 @@
 {
+    "datacenter":"dc1",
+    "domain":"consul",
+    "data_dir":"/opt/bitnami/consul/data",
+    "pid_file":"/opt/bitnami/consul/tmp/consul.pid",
+    "server":true,
+    "ui":true,
+    "bootstrap_expect":1,
+    "addresses": {
+        "http":"0.0.0.0"
+    },
+    "retry_join": ["127.0.0.1"],
+    "ports": {
+        "http":8500,
+        "dns":8600,
+        "serf_lan":8301,
+        "server":8300
+    },
+    "serf_lan":"0.0.0.0",
     "ui_dir": "/ui",
-    "server": true,
-    "client_addr": "0.0.0.0",
-    "bind_addr": "0.0.0.0",
-    "data_dir": "/data",
-    "bootstrap_expect": 1,
-    "node_name": "consul-server-0",
-    "datacenter": "ynu0",
-    "acl_datacenter": "ynu0",
+    "node_name": "consul-server-1",
+    "acl_datacenter": "dc1",
     "acl_master_token": "token",
     "acl_default_policy": "deny",
     "acl_down_policy": "deny"

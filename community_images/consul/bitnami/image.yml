@@ -35,5 +35,5 @@ runtimes:
       generate: true
       out_dir: certs
     volumes:
-      configs/server.json: /consul/config/server.json
+      configs/server.json: /opt/bitnami/consul/consul.json
       certs/: /consul/config/certs/

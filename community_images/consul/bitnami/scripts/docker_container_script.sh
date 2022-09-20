@@ -7,6 +7,7 @@ set -e
 
 # Available Scripts
 ls /opt/bitnami/scripts
+consul reload
 
 # Consul ACLs
 # Bootstrap Consul's ACLs:
@@ -51,3 +52,6 @@ consul snapshot save backup.snap
 
 # Consul validate
 consul validate /opt/bitnami/consul/
+
+# Consul watch
+consul watch -type=nodes /usr/bin/my-nodes-handler.sh

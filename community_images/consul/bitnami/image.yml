@@ -35,6 +35,6 @@ runtimes:
       generate: true
       out_dir: certs
     volumes:
-      configs/server.json: /opt/bitnami/consul/consul.json
+      configs/server.json: /server.json
       certs/: /consul/config/certs/
       scripts/docker_container_script.sh: /opt/bitnami/scripts/coverage_script.sh

@@ -20,7 +20,7 @@ consul catalog nodes
 consul catalog services
 
 # Consul agent
-consul agent -data-dir=/opt/bitnami/consul
+consul agent -config-file=/server.json
 
 # Consul Snapshot
 consul snapshot save backup.snap

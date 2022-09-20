@@ -9,26 +9,33 @@ set -e
 ls /opt/bitnami/scripts
 consul reload
 
-# Consul ACLs
-# Bootstrap Consul's ACLs:
-consul acl bootstrap
+# Consul Monitor
+consul monitor -log-json
 
-# Create a sample policy:
-consul acl policy create -name "acl-replication" -description "Token capable of replicating ACL policies" -rules 'acl = "read"'
-
-# Create a token list:
-consul acl token create -description "Agent Policy Replication - my-agent" -policy-name "acl-replication"
-
-# List all ACL tokens
-consul acl token list
+# Consul Namespace
+consul namespace create -name team1
+consul namespace list
+consul namespace delete team1
 
 # Consul Catalg
 # List all datacenters:
 consul catalog datacenters
-
 # List all nodes and services
 consul catalog nodes
 consul catalog services
+
+# Consul Snapshot
+consul snapshot save backup.snap
+
+# Consul ACLs
+# Bootstrap Consul's ACLs:
+consul acl bootstrap
+# Create a sample policy:
+consul acl policy create -name "acl-replication" -description "Token capable of replicating ACL policies" -rules 'acl = "read"'
+# Create a token list:
+consul acl token create -description "Agent Policy Replication - my-agent" -policy-name "acl-replication"
+# List all ACL tokens
+consul acl token list
 
 # Consul keygen
 consul keygen
@@ -38,17 +45,6 @@ consul license reset
 
 # Consul Maint
 consul maint
-
-# Consul Monitor
-consul monitor -log-json
-
-# Consul Namespace
-consul namespace create -name team1
-consul namespace list
-consul namespace delete team1
-
-# Consul Snapshot
-consul snapshot save backup.snap
 
 # Consul validate
 consul validate /opt/bitnami/consul/

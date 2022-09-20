@@ -19,8 +19,10 @@ consul catalog datacenters
 consul catalog nodes
 consul catalog services
 
+# Consul agent
+consul agent -data-dir=/opt/bitnami/consul
+
 # Consul Snapshot
-su root
 consul snapshot save backup.snap
 
 # Consul ACLs

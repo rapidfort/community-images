@@ -9,5 +9,6 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-CONSUL_HOST=$(jq -r '.container_details.apache.ip_address' < "$JSON_PARAMS")
+NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
+CONSUL_HOST=$(jq -r '.container_details.consul.ip_address' < "$JSON_PARAMS")
 

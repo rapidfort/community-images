@@ -1,0 +1,14 @@
+{
+    "ui_dir": "/ui",
+    "server": true,
+    "client_addr": "0.0.0.0",
+    "bind_addr": "0.0.0.0",
+    "data_dir": "/data",
+    "bootstrap_expect": 1,
+    "node_name": "consul-server-0",
+    "datacenter": "ynu0",
+    "acl_datacenter": "ynu0",
+    "acl_master_token": "token",
+    "acl_default_policy": "deny",
+    "acl_down_policy": "deny"
+}

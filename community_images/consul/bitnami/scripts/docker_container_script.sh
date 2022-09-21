@@ -42,4 +42,5 @@ consul keygen
 consul maint
 
 # Consul watch
+grep -R "my-nodes-handler" *
 consul watch -type=nodes /usr/bin/my-nodes-handler.sh

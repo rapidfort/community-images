@@ -58,7 +58,7 @@ helm install \
 kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 
 # install some helpers
-sudo apt-get install jq parallel -y
+sudo apt-get install jq parallel expect -y
 
 # install docker-compose latest
 DC_VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')

@@ -17,8 +17,5 @@ echo "Json params for docker compose coverage = $JSON"
 # Container name for consul-server1
 CONTAINER_NAME=consul-server1
 
-# Wait for all the member nodes to get in sync
-sleep 20
-
 # Consul ACLs
 docker exec -i consul-server1 consul acl bootstrap

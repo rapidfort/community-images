@@ -1,4 +1,4 @@
-version: '3.7'
+version: '2'
 
 services:
   
@@ -9,8 +9,8 @@ services:
     environment:
       CONSUL_HTTP_ADDR: "consul-server1:8500"
     volumes:
-     - ./configs/server.json: /server.json
-     - ./acls/: /opt/bitnami/consul/conf/acls
+     - ./configs/server.json:/server.json
+     - ./configs/acls/:/opt/bitnami/consul/conf/acls/
     networks:
       - consul
     ports:

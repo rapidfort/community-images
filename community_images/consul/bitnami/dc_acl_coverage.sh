@@ -22,6 +22,3 @@ sleep 20
 
 # Consul ACLs
 docker exec -i consul-server1 consul acl bootstrap
-
-# Shutting down consul
-docker exec -i consul-server1 consul leave

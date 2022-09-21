@@ -21,7 +21,7 @@ CONTAINER_NAME=consul-server1
 docker exec -i consul-server1 consul acl bootstrap
 
 # Registering a service
-consul services register -name=web
+docker exec -i consul-server1 consul services register -name=web
 
 # Consul connect
 docker exec -i consul-server1 docker exec -i consul-server1 consul connect proxy -service=web

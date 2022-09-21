@@ -19,4 +19,5 @@ curl http://localhost:8500/vi/catalog/service/web
 curl 'http://localhost:8500/v1/health/service/web?passing'
 
 # Create client certs
+consul tls ca create
 consul tls cert create -client

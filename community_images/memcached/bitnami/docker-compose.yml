@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  memcached:
+    image: ${MEMCACHED_IMAGE_REPOSITORY}:${MEMCACHED_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '11211:11211'

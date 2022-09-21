@@ -1,0 +1,48 @@
+name: memcached
+official_name: Memcached
+official_website: http://memcached.org/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/memcached
+source_image_repo_link: https://hub.docker.com/r/bitnami/memcached
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/memcached/README.md
+rf_docker_link: rapidfort/memcached
+image_workflow_name: memcached_bitnami
+github_location: memcached/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmemcached
+usage_instructions: |
+  # Docker
+  $ docker run --name memcached rapidfort/memcached:latest
+  # Kubernetes
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+  $ helm install my-release rapidfort/memcached
+what_is_text: |
+  Memcached is an high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1`, `1-debian-11`, `1.6.17`, `1.6.17-debian-11-r8`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/memcached/1/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - memcached:
+      input_base_tag: "1.6.17-debian-11-r"
+runtimes:
+  - type: k8s
+    helm_repo: bitnami/memcached
+    readiness_wait_pod_name_suffix:
+      - "master-0"
+    image_keys:
+      memcached: {}
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      memcached:
+        repository: "MEMCACHED_IMAGE_REPOSITORY"
+        tag: "MEMCACHED_IMAGE_TAG"
+  - type: docker

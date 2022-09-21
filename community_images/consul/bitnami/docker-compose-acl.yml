@@ -4,6 +4,7 @@ services:
   
   consul-server1:
     image: bitnami/consul
+    user: root
     container_name: consul-server1
     restart: always
     environment:

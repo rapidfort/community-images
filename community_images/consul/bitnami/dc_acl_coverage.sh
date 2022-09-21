@@ -14,16 +14,14 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
-
 # Container name for consul-server1
-CONTAINER_NAME="${PROJECT_NAME}"-consul-server1-1
+CONTAINER_NAME=consul-server1
 
 # Wait for all the member nodes to get in sync
 sleep 20
 
 # Consul ACLs
-docker exec -i "${PROJECT_NAME}"-consul-server1-1 consul acl bootstrap
+docker exec -i consul-server1 consul acl bootstrap
 
 # Shutting down consul
-docker exec -i "${CONTAINER_NAME}" consul leave
+docker exec -i consul-server1 consul leave

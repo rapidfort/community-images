@@ -41,8 +41,5 @@ consul keygen
 # Consul Maint
 consul maint
 
-# Consul validate
-consul validate /opt/bitnami/consul/
-
 # Consul watch
 consul watch -type=nodes /usr/bin/my-nodes-handler.sh

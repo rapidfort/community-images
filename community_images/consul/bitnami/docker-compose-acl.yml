@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  
+  consul-server1:
+    image: bitnami/consul
+    container_name: consul-server1
+    restart: always
+    environment:
+      CONSUL_HTTP_ADDR: "consul-server1:8500"
+    volumes:
+     - ./configs/server.json: /server.json
+     - ./acls/: /opt/bitnami/consul/conf/acls
+    networks:
+      - consul
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+    command: "agent -bootstrap-expect=1 -config-file=server.json"
+
+networks:
+  consul:
+    driver: bridge

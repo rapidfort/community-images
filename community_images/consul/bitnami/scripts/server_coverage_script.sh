@@ -16,9 +16,6 @@ consul services register /consul.d/sample_service.json
 consul reload
 sleep 10
 
-# Display the congiguration of the server
-cat /opt/bitnami/consul/consul.json
-
 # Query our service using HTTP Api
 curl http://localhost:8500/vi/catalog/service/web
 
@@ -42,3 +39,16 @@ consul kv delete redis/config/connections
 
 # Consul Operator Raft
 consul operator raft list-peers
+
+# Consul keygen
+consul keygen
+
+# Consul Maint
+consul maint
+
+# Consul Catalg
+# List all datacenters:
+consul catalog datacenters
+# List all nodes and services
+consul catalog nodes
+consul catalog services

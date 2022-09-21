@@ -23,10 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ '{{' }} github.token {{ '}}' }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:

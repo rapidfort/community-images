@@ -57,6 +57,9 @@ params:
   - name: repo_sets
     description: array of repo_set object describe below.
     value : ['repo_set', 'repo_set']
+  - name: needs_common_commands
+    description: needs to run common commands or not
+    value : 'true'
   - name: runtimes
     description: array of runtime object describe below.
     value : ['runtime', 'runtime']
@@ -164,4 +167,13 @@ docker_runtime_params:
     value : '""'
   - name: <repo>.environment
     description: map of environment variables to be mounted in container
+    value : '""'
+  - name: <repo>.exec_command
+    description: exec_command for container
+    value : '""'
+  - name: <repo>.daemon
+    description: if use daemon or interactive container flag -i or -d
+    value : 'True'
+  - name: <repo>.entrypoint
+    description: entrypoint for container
     value : '""'

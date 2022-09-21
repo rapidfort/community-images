@@ -27,6 +27,8 @@ on:
       - "community_images/nginx/ironbank/**"
       - "community_images/nginx/bitnami/**"
       - "community_images/consul/bitnami/**"
+      - "community_images/curl/curlimages/**"
+      - "community_images/memcached/bitnami/**"
     branches:
     - main
   schedule:
@@ -41,10 +43,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -90,10 +88,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -139,10 +133,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -188,10 +178,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -237,10 +223,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -286,10 +268,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -335,10 +313,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -384,10 +358,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -433,10 +403,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -482,10 +448,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -531,10 +493,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -580,10 +538,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -629,10 +583,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -678,10 +628,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -727,10 +673,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -776,10 +718,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -825,10 +763,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -874,10 +808,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -923,10 +853,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -972,10 +898,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -1021,10 +943,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -1066,14 +984,100 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/nginx": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  curl:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/curl": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  memcached:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami --publish
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/memcached": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   consul:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        with:
-          access_token: ${{ github.token }}
       - uses: actions/checkout@v3
       - name: Start minikube
         with:
@@ -1114,4 +1118,4 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/consul": 1 }' \
-           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls           

@@ -20,10 +20,7 @@ class DockerSetup:
             image_tag_details,
             runtime_props,
             image_script_dir,
-            command,
-            daemon=True,
-            entrypoint=None,
-            exec_command=None):
+            command):
         self.namespace_name = namespace_name
         self.release_name = release_name
         self.image_tag_details = image_tag_details
@@ -31,24 +28,21 @@ class DockerSetup:
         self.image_script_dir = image_script_dir
         self.command = command
         self.script_dir = os.path.abspath(os.path.dirname(__file__))
-        self.container_list = []
+        self.container_details = {}
         self.cert_path = None
-        self.daemon = daemon
-        self.entrypoint = entrypoint
-        self.exec_command = exec_command
 
-    # pylint: disable=too-many-locals
+    # pylint: disable=too-many-locals,too-many-branches,too-many-statements
     def __enter__(self):
         """ create a docker namespace and set it up for runner """
         # create network
         cmd = f"docker network create -d bridge {self.namespace_name}"
         Utils.run_cmd(cmd.split())
 
-        container_details = {}
-
         self.cert_path = Utils.generate_ssl_certs(
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
+        common_daemon = self.runtime_props.get("daemon", True)
+        common_entrypoint = self.runtime_props.get("entrypoint")
         common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
 
@@ -63,12 +57,24 @@ class DockerSetup:
 
             image_runtime_props = self.runtime_props.get(repo, {})
 
+            if "daemon" not in image_runtime_props:
+                daemon = common_daemon
+            else:
+                daemon = image_runtime_props.get("daemon", True)
+
+            if "entrypoint" not in image_runtime_props:
+                entrypoint = common_entrypoint
+            else:
+                entrypoint = image_runtime_props.get("entrypoint")
+
+            exec_command = image_runtime_props.get("exec_command")
+
             cmd = "docker run --rm"
-            cmd += " -d" if self.daemon else " -i"
+            cmd += " -d" if daemon else " -i"
             cmd += f" --network={self.namespace_name}"
 
-            if self.entrypoint is not None:
-                cmd += f" --entrypoint {self.entrypoint}"
+            if entrypoint is not None:
+                cmd += f" --entrypoint {entrypoint}"
 
             if self.command == Commands.STUB_COVERAGE:
                 cmd += " --cap-add=SYS_PTRACE"
@@ -102,27 +108,26 @@ class DockerSetup:
             cmd += f" --name {container_name}"
             cmd += f" {repo_path}:{tag}"
 
-            if self.exec_command is not None:
-                cmd += f" {self.exec_command}"
+            if exec_command is not None:
+                cmd += f" {exec_command}"
 
             logging.info(f"cmd: {cmd}")
             Utils.run_cmd(cmd.split())
 
+            container_detail["daemon"] = daemon
             container_detail["name"] = container_name
-            self.container_list.append(container_name)
-            container_details[repo] = container_detail
+            self.container_details[repo] = container_detail
 
-        if self.daemon:
-            # sleep for few seconds
-            time.sleep(self.runtime_props.get("wait_time_sec", 30))
-            container_details = self._get_docker_ips(container_details)
+        # sleep for few seconds
+        time.sleep(self.runtime_props.get("wait_time_sec", 30))
+        self.container_details = self._get_docker_ips(self.container_details)
 
         return {
             "namespace_name": self.namespace_name,
             "release_name": self.release_name,
             "image_tag_details": self.image_tag_details,
             "network_name": self.namespace_name,
-            "container_details": container_details,
+            "container_details": self.container_details,
             "image_script_dir": self.image_script_dir,
             "runtime_props": self.runtime_props
         }
@@ -131,6 +136,10 @@ class DockerSetup:
         # add docker ips for all containers
         for container_detail in container_details.values():
             container_name = container_detail["name"]
+            daemon = container_detail["daemon"]
+            if not daemon:
+                continue
+
             cmd = f"docker inspect {container_name}"
             docker_inspect_json = subprocess.check_output(cmd.split())
             docker_inspect_dict = json.loads(docker_inspect_json)
@@ -147,11 +156,14 @@ class DockerSetup:
     def __exit__(self, type, value, traceback):
         """ delete docker namespace """
         # clean up docker container
-        if self.daemon:
-            for container in self.container_list:
-                cmd = f"docker kill {container}"
-                logging.info(f"cmd: {cmd}")
-                Utils.run_cmd(cmd.split())
+        for container_detail in self.container_details.values():
+            daemon = container_detail["daemon"]
+            name = container_detail["name"]
+            if not daemon:
+                continue
+            cmd = f"docker kill {name}"
+            logging.info(f"cmd: {cmd}")
+            Utils.run_cmd(cmd.split())
 
         # delete network
         cmd = f"docker network rm {self.namespace_name}"

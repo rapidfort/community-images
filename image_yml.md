@@ -22,6 +22,7 @@
    | `output_registry.registry` | output registry to which docker image should be pused, ex: docker.io | `""` | yes |
    | `output_registry.account` | output account to which hardened image will be pushed, usually "rapidfort" | `""` | yes |
    | `repo_sets` | array of repo_set object describe below. | `['repo_set', 'repo_set']` | yes |
+   | `needs_common_commands` | needs to run common commands or not | `true` | yes |
    | `runtimes` | array of runtime object describe below. | `['runtime', 'runtime']` | yes |
 
 ## repo_set parameters
@@ -71,3 +72,6 @@
    | `<repo>.env_file` | repo specific environment file for default env variables | `docker.env` | False |
    | `<repo>.volumes` | map of input volumes, relative to script dir and mounted volume in container | `""` | yes |
    | `<repo>.environment` | map of environment variables to be mounted in container | `""` | yes |
+   | `<repo>.exec_command` | exec_command for container | `""` | yes |
+   | `<repo>.daemon` | if use daemon or interactive container flag -i or -d | `True` | yes |
+   | `<repo>.entrypoint` | entrypoint for container | `""` | yes |

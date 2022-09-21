@@ -20,7 +20,7 @@ services:
       - "8500:8500"
       - "8600:8600/tcp"
       - "8600:8600/udp"
-    command: "consul agent -bootstrap-expect=1 -config-file=server.json -join=consul-server-1"
+    command: "consul agent -server -bootstrap-expect=1 -config-file=server.json"
 
 networks:
   consul:

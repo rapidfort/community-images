@@ -21,7 +21,7 @@ CONTAINER_NAME=consul-server1
 docker exec -i consul-server1 consul acl bootstrap
 
 # Consul connect
-consul connect proxy
+docker exec -i consul-server1 consul connect proxy
 
 # Using consul debug
 docker exec -i consul-server1 consul debug -interval=15s -duration=1m

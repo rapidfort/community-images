@@ -14,8 +14,5 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-# Container name for consul-server1
-CONTAINER_NAME=consul-server1
-
 # Consul ACLs
 docker exec -i consul-server1 consul acl bootstrap

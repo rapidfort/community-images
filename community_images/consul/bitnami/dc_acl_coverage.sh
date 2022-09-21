@@ -24,7 +24,7 @@ docker exec -i consul-server1 consul acl bootstrap
 consul services register -name=web
 
 # Consul connect
-docker exec -i consul-server1 consul connect proxy -servie=web
+docker exec -i consul-server1 docker exec -i consul-server1 consul connect proxy -service=web
 
 # Using consul debug
 docker exec -i consul-server1 consul debug -interval=15s -duration=1m

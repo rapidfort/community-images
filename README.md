@@ -63,6 +63,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Apache Airflow Scheduler][ airflow-scheduler-github-link]| <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-scheduler?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-scheduler&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][airflow-scheduler-rf-dh-image-link] |
 | [Apache Airflow Worker][ airflow-worker-github-link]| <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-worker?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-worker&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][airflow-worker-rf-dh-image-link] |
 | [Curl][ curl-github-link]| <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fcurlimages%2Fcurl?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=curl&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][curl-rf-dh-image-link] |
+| [Memcached][ memcached-github-link]| <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmemcached?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=memcached&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][memcached-rf-dh-image-link] |
 
 ### How to use Community Images
 
@@ -257,4 +258,9 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [curl-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/curl?logo=docker&logoColor=white
 [curl-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/curl
 [curl-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fcurlimages%2Fcurl?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=curl&utm_content=landing_view_report
+
+[memcached-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/memcached/bitnami
+[memcached-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/memcached?logo=docker&logoColor=white
+[memcached-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/memcached
+[memcached-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmemcached?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=memcached&utm_content=landing_view_report
 

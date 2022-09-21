@@ -22,9 +22,6 @@ curl http://localhost:8500/vi/catalog/service/web
 # Checking for the healthy instances
 curl 'http://localhost:8500/v1/health/service/web?passing'
 
-# Consul connect
-consul connect redirect-traffic -proxy-uid 1234 -proxy-id web
-
 # Removing service
 consul services deregister /consul.d/sample_service.json
 

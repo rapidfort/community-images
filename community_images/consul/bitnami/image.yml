@@ -30,6 +30,28 @@ repo_sets:
       input_base_tag: "1.12.3-debian-11-r"
 runtimes:
   - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      consul:
+        repository: "CONSUL_IMAGE_REPOSITORY"
+        tag: "CONSUL_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/consul
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      apache:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
     script: dc_acl_coverage.sh
     compose_file: docker-compose-acl.yml
     tls_certs:

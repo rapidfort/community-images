@@ -60,6 +60,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [Apache Airflow][ airflow-github-link]| [![dh][dh-rf-badge]][airflow-rf-dh-image-link] | [![rf-h][rf-h-badge]][airflow-rf-link] |
 | [Apache Airflow Scheduler][ airflow-scheduler-github-link]| [![dh][dh-rf-badge]][airflow-scheduler-rf-dh-image-link] | [![rf-h][rf-h-badge]][airflow-scheduler-rf-link] |
 | [Apache Airflow Worker][ airflow-worker-github-link]| [![dh][dh-rf-badge]][airflow-worker-rf-dh-image-link] | [![rf-h][rf-h-badge]][airflow-worker-rf-link] |
+| [Consul][ consul-github-link]| [![dh][dh-rf-badge]][consul-rf-dh-image-link] | [![rf-h][rf-h-badge]][consul-rf-link] |
 
 ### How to use Community Images
 
@@ -228,4 +229,9 @@ Learn more about container optimization at [RapidFort.com](https://rapidfort.com
 [airflow-worker-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-worker?logo=docker&logoColor=white
 [airflow-worker-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/airflow-worker
 [airflow-worker-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-worker?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-worker&utm_content=landing_view_report
+
+[consul-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/consul/bitnami
+[consul-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/consul?logo=docker&logoColor=white
+[consul-rf-dh-image-link]: https://hub.docker.com/r/rapidfort/consul
+[consul-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul&utm_content=landing_view_report
 

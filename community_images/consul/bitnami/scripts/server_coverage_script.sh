@@ -25,10 +25,6 @@ curl 'http://localhost:8500/v1/health/service/web?passing'
 # Removing service
 consul services deregister /consul.d/sample_service.json
 
-# Using consul debug
-consul reload
-consul debug -interval=15s -duration=1m
-
 # Consul connect
 consul connect proxy
 

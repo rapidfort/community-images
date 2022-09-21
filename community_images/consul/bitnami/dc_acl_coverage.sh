@@ -19,3 +19,6 @@ CONTAINER_NAME=consul-server1
 
 # Consul ACLs
 docker exec -i consul-server1 consul acl bootstrap
+
+# Using consul debug
+docker exec -i consul-server1 consul debug -interval=15s -duration=1m

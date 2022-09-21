@@ -12,6 +12,7 @@ services:
     volumes:
      - ./configs/server.json:/server.json
      - ./configs/acls/:/opt/bitnami/consul/conf/acls/
+     - ./configs/sample_service.json:/consul.d/sample_service.json
     networks:
       - consul
     ports:

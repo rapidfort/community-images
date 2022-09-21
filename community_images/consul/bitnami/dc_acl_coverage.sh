@@ -20,8 +20,12 @@ CONTAINER_NAME=consul-server1
 # Consul ACLs
 docker exec -i consul-server1 consul acl bootstrap
 
+# Registering a service
+docker exec -i consul-server1 consul services register /consul.d/sample_service.json
+
 # Consul connect
-docker exec -i consul-server1 consul connect proxy
+docker exec -i consul-server1 consul connect proxy -servie=web
 
 # Using consul debug
 docker exec -i consul-server1 consul debug -interval=15s -duration=1m
+

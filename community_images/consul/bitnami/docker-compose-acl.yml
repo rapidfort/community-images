@@ -14,6 +14,8 @@ services:
      - ./configs/acls/:/opt/bitnami/consul/conf/acls/
     networks:
       - consul
+    cap_add:
+      - SYS_PTRACE
     ports:
       - "8500:8500"
       - "8600:8600/tcp"

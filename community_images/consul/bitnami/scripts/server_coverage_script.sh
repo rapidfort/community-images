@@ -16,9 +16,6 @@ consul services register /consul.d/sample_service.json
 consul reload
 sleep 10
 
-# Consul connect proxy
-consul-server1 consul connect proxy -service=web
-
 # Query our service using HTTP Api
 curl http://localhost:8500/vi/catalog/service/web
 

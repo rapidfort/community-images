@@ -26,7 +26,7 @@ curl 'http://localhost:8500/v1/health/service/web?passing'
 consul services deregister /consul.d/sample_service.json
 
 # Consul connect
-consul connect proxy
+consul connect redirect-traffic -proxy-uid 1234 -proxy-id web
 
 # Consul kv
 consul kv put redis/config/connections 5

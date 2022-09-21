@@ -38,9 +38,6 @@ consul catalog services
 # Consul keygen
 consul keygen
 
-# Consul License
-consul license reset
-
 # Consul Maint
 consul maint
 

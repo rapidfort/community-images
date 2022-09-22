@@ -10,6 +10,10 @@ services:
     environment:
       - 'REDIS_PASSWORD=bitnami'
       - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_TLS_ENABLED=yes'
+      - 'REDIS_TLS_CERT_FILE=./certs/tls.crt'
+      - 'REDIS_TLS_KEY_FILE=./certs/tls.key'
+      - 'REDIS_TLS_CA_FILE=./certs/ca.crt'
     cap_add:
       - SYS_PTRACE
 
@@ -20,6 +24,10 @@ services:
     environment:
       - 'REDIS_PASSWORD=bitnami'
       - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_TLS_ENABLED=yes'
+      - 'REDIS_TLS_CERT_FILE=./certs/tls.crt'
+      - 'REDIS_TLS_KEY_FILE=./certs/tls.key'
+      - 'REDIS_TLS_CA_FILE=./certs/ca.crt'
     cap_add:
       - SYS_PTRACE
 
@@ -30,6 +38,10 @@ services:
     environment:
       - 'REDIS_PASSWORD=bitnami'
       - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_TLS_ENABLED=yes'
+      - 'REDIS_TLS_CERT_FILE=./certs/tls.crt'
+      - 'REDIS_TLS_KEY_FILE=./certs/tls.key'
+      - 'REDIS_TLS_CA_FILE=./certs/ca.crt'
     cap_add:
       - SYS_PTRACE
 
@@ -40,6 +52,10 @@ services:
     environment:
       - 'REDIS_PASSWORD=bitnami'
       - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_TLS_ENABLED=yes'
+      - 'REDIS_TLS_CERT_FILE=./certs/tls.crt'
+      - 'REDIS_TLS_KEY_FILE=./certs/tls.key'
+      - 'REDIS_TLS_CA_FILE=./certs/ca.crt'
     cap_add:
       - SYS_PTRACE
 
@@ -50,6 +66,10 @@ services:
     environment:
       - 'REDIS_PASSWORD=bitnami'
       - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
+      - 'REDIS_TLS_ENABLED=yes'
+      - 'REDIS_TLS_CERT_FILE=./certs/tls.crt'
+      - 'REDIS_TLS_KEY_FILE=./certs/tls.key'
+      - 'REDIS_TLS_CA_FILE=./certs/ca.crt'
     cap_add:
       - SYS_PTRACE
 

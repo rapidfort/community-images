@@ -52,6 +52,8 @@ The runtime instructions for this container are no different from the official r
 <a href="https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
 </a>
+<br>
+<br>
 
 ```sh
 $ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql12-ib:latest

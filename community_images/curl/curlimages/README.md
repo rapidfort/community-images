@@ -29,7 +29,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fcurlimages%2Fcurl?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=curl&utm_content=get_full_report_button">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.png" alt="View Report" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>

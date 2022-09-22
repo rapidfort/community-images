@@ -17,7 +17,7 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
-CONTAINER_NAME="${PROJECT_NAME}"-redis-node-0
+CONTAINER_NAME="${PROJECT_NAME}"-redis-node-0-1
 REDIS_PASSWORD=bitnami
 
 docker exec -i "$CONTAINER_NAME" \

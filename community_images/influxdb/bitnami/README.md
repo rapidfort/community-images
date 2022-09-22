@@ -50,7 +50,7 @@ InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, a
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
 <a href="https://github.com/bitnami/containers/blob/main/bitnami/influxdb/README.md">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>

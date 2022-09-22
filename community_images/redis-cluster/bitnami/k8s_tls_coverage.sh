@@ -16,4 +16,4 @@ REDIS_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}"
 kubectl -n "${NAMESPACE}" exec \
     -i "${RELEASE_NAME}"-0 \
     -- /bin/bash -c \
-    "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h ${RELEASE_NAME} -p 6379 --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt -c $line"
+    "REDISCLI_AUTH=${REDIS_PASSWORD} redis-cli -h ${RELEASE_NAME} -p 6379 --tls --cert /opt/bitnami/redis/certs/tls.crt --key /opt/bitnami/redis/certs/tls.key --cacert /opt/bitnami/redis/certs/ca.crt -c ping"

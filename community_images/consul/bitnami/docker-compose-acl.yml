@@ -8,7 +8,7 @@ services:
     container_name: consul-server1
     restart: always
     environment:
-      CONSUL_HTTP_ADDR: "consul-server1:8500"
+     - CONSUL_RETRY_JOIN_ADDRESS=consul-server1
     volumes:
      - ./configs/server.json:/server.json
      - ./configs/acls/:/opt/bitnami/consul/conf/acls/
@@ -20,7 +20,7 @@ services:
       - "8500:8500"
       - "8600:8600/tcp"
       - "8600:8600/udp"
-    command: "consul agent -server -bootstrap-expect=1 -config-file=server.json"
+    command: "consul agent -server -bootstrap-expect=1 -retry-join=consul-server1 -config-file=server.json"
 
 networks:
   consul:

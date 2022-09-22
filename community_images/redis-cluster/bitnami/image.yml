@@ -54,10 +54,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    tls_certs:
-      generate: true
-      secret_name: rf-redis-cluster-tls
-      common_name: rf-redis-cluster
     image_keys:
       redis-cluster:
         repository: "REDIS_CLUSTER_IMAGE_REPOSITORY"

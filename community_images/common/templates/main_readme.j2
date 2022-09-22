@@ -3,6 +3,9 @@
 <img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
+<h1> community-images </h1>
+
+
 [![RF Hardened][rf-h-badge]][rf-link-hardened-badge]
 [![Dockerhub][dh-rf-badge]][dh-rf]
 [![Slack][slack-badge]][slack-link]
@@ -11,7 +14,6 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6087/badge)](https://bestpractices.coreinfrastructure.org/projects/6087)
 [![CodeQL](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml)
 
-<h1> community-images </h1>
 
 [Getting started](#getting-started) ·
 [Contributing](CONTRIBUTING.md) ·
@@ -40,7 +42,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | Repository                        | View Report                                   | RapidFort Image                     |
 |-----------------------------------| ------------------------------------------     | ------------------------------- |
 {%- for image in image_list %}
-| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.png" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] |
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.svg" alt="View Report" height="25" /> </a> | [![dh][dh-rf-badge]][ {{- image.name -}} -rf-dh-image-link] |
 {%- endfor %}
 
 ### How to use Community Images

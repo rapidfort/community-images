@@ -22,7 +22,7 @@ REDIS_PASSWORD=bitnami
 
 # run all redis commands in test.redis
 docker exec -i "$CONTAINER_NAME" \
-    bash -c "/tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} localhost -p 9379 /tmp/test.redis --tls --cert /certs/server.crt --key /certs/server.key"
+    bash -c "/tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} localhost 6379 /tmp/test.redis"
 
 # run redis coverage
 docker exec -i "$CONTAINER_NAME" \

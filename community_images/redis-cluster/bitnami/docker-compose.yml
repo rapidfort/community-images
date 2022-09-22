@@ -5,7 +5,7 @@ services:
     volumes:
       - redis-cluster_data-0:/bitnami/redis/data
       - ../../common/tests/test.redis:/tmp/test.redis
-      - redis_cluster_runner.sh:/tmp/redis_cluster_runner.sh
+      - ./redis_cluster_runner.sh:/tmp/redis_cluster_runner.sh
 
     environment:
       - 'REDIS_PASSWORD=bitnami'

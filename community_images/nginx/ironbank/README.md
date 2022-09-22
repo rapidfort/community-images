@@ -52,6 +52,8 @@ The runtime instructions for this container are no different from the official r
 <a href="https://repo1.dso.mil/dsop/opensource/nginx/nginx/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
 </a>
+<br>
+<br>
 
 ```sh
 $ docker run -v /some/content:/usr/share/nginx/html:ro -d rapidfort/nginx-ib:latest

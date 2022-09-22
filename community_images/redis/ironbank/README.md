@@ -29,7 +29,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fredis%2Fredis6?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-ib&utm_content=get_full_report_button">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.png" alt="View Report" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>
@@ -49,7 +49,11 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
-### [Source Image Usage Instructions](https://repo1.dso.mil/dsop/opensource/redis/redis6/-/blob/development/README.md)
+<a href="https://repo1.dso.mil/dsop/opensource/redis/redis6/-/blob/development/README.md">
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
+</a>
+<br>
+<br>
 
 ```sh
 $ docker run -it --rm -p6379:6379 rapidfort/redis6-ib:latest

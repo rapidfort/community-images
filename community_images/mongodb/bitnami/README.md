@@ -29,7 +29,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
 <a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmongodb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mongodb&utm_content=get_full_report_button">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.png" alt="View Report" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>
@@ -49,7 +49,11 @@ Disclaimer: The respective trademarks mentioned in the offering are owned by the
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
-### [Source Image Usage Instructions](https://github.com/bitnami/containers/blob/main/bitnami/mongodb/README.md)
+<a href="https://github.com/bitnami/containers/blob/main/bitnami/mongodb/README.md">
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
+</a>
+<br>
+<br>
 
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami

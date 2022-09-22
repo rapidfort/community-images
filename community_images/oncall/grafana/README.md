@@ -49,7 +49,9 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
-### [Source Image Usage Instructions](https://github.com/grafana/oncall/blob/dev/README.md)
+<a href="https://github.com/grafana/oncall/blob/dev/README.md">
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
+</a>
 
 ```sh
 #1. Download docker-compose.yaml:

@@ -52,6 +52,8 @@ The runtime instructions for this container are no different from the official r
 <a href="https://github.com/bitnami/containers/blob/main/bitnami/redis-cluster/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
 </a>
+<br>
+<br>
 
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami

@@ -17,5 +17,5 @@ input="${REDIS_TEST_FILE}"
 while IFS= read -r line
 do
     # shellcheck disable=SC2086
-    REDISCLI_AUTH="${REDIS_PASSWORD}" redis-cli -h "${REDIS_HOST}" -p "${REDIS_PORT}" ${TLS_PREFILX[@]}" -c $line
+    REDISCLI_AUTH="${REDIS_PASSWORD}" redis-cli -h "${REDIS_HOST}" -p "${REDIS_PORT}" "${TLS_PREFILX[@]}" -c $line
 done < "$input"

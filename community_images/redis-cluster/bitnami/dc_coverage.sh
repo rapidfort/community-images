@@ -21,10 +21,7 @@ CONTAINER_NAME="${PROJECT_NAME}"-redis-node-0-1
 REDIS_PASSWORD=bitnami
 
 docker exec -i "$CONTAINER_NAME" \
-    /bin/bash -c \
-    "/tmp/redis_cluster_runner.sh" \
-    ${REDIS_PASSWORD} ${RELEASE_NAME} /tmp/test.redis
+    bash -c "/tmp/redis_cluster_runner.sh ${REDIS_PASSWORD} ${RELEASE_NAME} /tmp/test.redis"
 
 docker exec -i "$CONTAINER_NAME" \
-    redis-benchmark -h "${RELEASE_NAME}" \
-    -c 2 -n 100 -a "$REDIS_PASSWORD" --cluster
+    "redis-benchmark -h ${RELEASE_NAME} -c 2 -n 100 -a ${REDIS_PASSWORD} --cluster"

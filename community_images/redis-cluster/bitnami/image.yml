@@ -31,7 +31,6 @@ repo_sets:
       input_base_tag: "7.0.4-debian-11-r"
 runtimes:
   - type: k8s
-    script: k8s_coverage.sh
     helm_repo: bitnami/redis-cluster
     image_keys:
       redis-cluster: {}
@@ -53,6 +52,7 @@ runtimes:
       redis-cluster: {}
     override_file: "overrides.yml"
   - type: docker_compose
+    script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
       redis-cluster:

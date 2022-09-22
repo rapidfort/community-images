@@ -3,6 +3,9 @@
 <img src="/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
+<h1> community-images </h1>
+
+
 [![RF Hardened][rf-h-badge]][rf-link-hardened-badge]
 [![Dockerhub][dh-rf-badge]][dh-rf]
 [![Slack][slack-badge]][slack-link]
@@ -11,7 +14,6 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6087/badge)](https://bestpractices.coreinfrastructure.org/projects/6087)
 [![CodeQL](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml)
 
-<h1> community-images </h1>
 
 [Getting started](#getting-started) ·
 [Contributing](CONTRIBUTING.md) ·

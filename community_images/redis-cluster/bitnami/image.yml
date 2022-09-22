@@ -53,6 +53,7 @@ runtimes:
       redis-cluster: {}
     override_file: "overrides.yml"
   - type: docker_compose
+    script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
       redis-cluster:

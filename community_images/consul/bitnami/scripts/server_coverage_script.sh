@@ -6,12 +6,15 @@ set -e
 # Available Scripts
 ls /opt/bitnami/scripts
 
-# consul acl token list
-# consul acl boostrap
+# General commands
 consul members
 consul info
 
-# Registering a test service
+# Consul snapshot
+consul snapshot save backup.snap
+consul snapshot inspect backup.snap
+
+# Registering a test service(This will be deregistered in the main dc_coverage itselfS)
 consul services register /consul.d/sample_service.json
 consul reload
 sleep 10
@@ -21,9 +24,6 @@ curl http://localhost:8500/vi/catalog/service/web
 
 # Checking for the healthy instances
 curl 'http://localhost:8500/v1/health/service/web?passing'
-
-# Removing service
-consul services deregister /consul.d/sample_service.json
 
 # Consul kv
 consul kv put redis/config/connections 5

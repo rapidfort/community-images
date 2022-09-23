@@ -16,3 +16,4 @@ echo "Json params for docker compose coverage = $JSON"
 
 # Consul ACLs
 docker exec -i consul-server1 consul acl bootstrap
+docker exec -i consul-server1 consul acl token list

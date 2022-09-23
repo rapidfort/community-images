@@ -22,7 +22,7 @@ CONTAINER_NAME="${PROJECT_NAME}"-consul-node1-1
 # Wait for all the member nodes to get in sync
 sleep 20
 
-# Exec into consul server(node1) and run coverage script
+# Exec into consul server(node1) and run coverage scrip(Additional: This script also has instructions to register a sample service)
 docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh
 
 # log for debugging
@@ -46,6 +46,9 @@ docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/bitnami/scripts/cov
 
 # Query our service using DNS API on consul-node1 via consul-node3
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 bash -c /opt/bitnami/scripts/coverage_script.sh
+
+# Deregistering/removing sample service in consul-node1
+consul services deregister /consul.d/sample_service.json   
 
 # Shutting down consul
 docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul leave

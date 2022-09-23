@@ -16,6 +16,7 @@
 
 
 [Getting started](#getting-started) ·
+[Supported containers](#supported-containers) ·
 [Contributing](CONTRIBUTING.md) ·
 [Build Process](#how-community-images-are-built) ·
 [Additional resources](#additional-resources)
@@ -35,7 +36,7 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 [RapidFort][rf-link-getting-started] scans your Docker containers for vulnerabilities and looks for unused components that can be removed.
 
-## What containers are supported?
+<h2 id="supported-containers">What containers are supported?</h2>
 
 We’ve optimized and hardened some of the most popular container images on Docker Hub and are making them available to the community.
 

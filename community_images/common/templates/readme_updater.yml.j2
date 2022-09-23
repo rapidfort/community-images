@@ -1,6 +1,8 @@
 name: Readme Updater
 
 on:
+  schedule:
+  - cron: '0 0 * * *'
   push:
     branches: [ main ]
     paths:
@@ -34,7 +36,7 @@ jobs:
 
       - name: Update readme for dockerhub
         run: ./scripts/update_readme_dh.sh
-        
+
 {%- for image in image_list %}
       - name: Docker Hub Description {{ image.official_name }}
         uses: peter-evans/dockerhub-description@v3

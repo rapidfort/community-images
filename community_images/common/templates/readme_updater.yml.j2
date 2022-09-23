@@ -1,6 +1,8 @@
 name: Readme Updater
 
 on:
+  schedule:
+  - cron: '0 0 * * *'
   push:
     branches: [ main ]
     paths:
@@ -23,7 +25,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Generate new readme and image files
-        run: ./scripts/image_generator.sh
+        run: |
+          pip install --upgrade pip
+          pip install requests
+          ./scripts/image_generator.sh
 
       - name: Check if new changes detected
         run: |
@@ -34,7 +39,7 @@ jobs:
 
       - name: Update readme for dockerhub
         run: ./scripts/update_readme_dh.sh
-        
+
 {%- for image in image_list %}
       - name: Docker Hub Description {{ image.official_name }}
         uses: peter-evans/dockerhub-description@v3

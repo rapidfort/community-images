@@ -12,56 +12,56 @@ jobs:
     runs-on: ubuntu-latest
     environment: actions-cicd
     steps:
-      - name: Pull MariaDB
-        run: docker pull rapidfort/mariadb
-      - name: Pull MongoDB®
-        run: docker pull rapidfort/mongodb
-      - name: Pull MySQL
-        run: docker pull rapidfort/mysql
-      - name: Pull NGINX
-        run: docker pull rapidfort/nginx
-      - name: Pull PostgreSQL
-        run: docker pull rapidfort/postgresql
-      - name: Pull Redis™
-        run: docker pull rapidfort/redis
-      - name: Pull Redis™ Cluster
-        run: docker pull rapidfort/redis-cluster
-      - name: Pull Envoy
-        run: docker pull rapidfort/envoy
-      - name: Pull Fluentd
-        run: docker pull rapidfort/fluentd
-      - name: Pull Grafana Oncall
-        run: docker pull rapidfort/oncall
-      - name: Pull InfluxDB™
-        run: docker pull rapidfort/influxdb
-      - name: Pull Etcd
-        run: docker pull rapidfort/etcd
-      - name: Pull NATS
-        run: docker pull rapidfort/nats
-      - name: Pull Redis™ IronBank
-        run: docker pull rapidfort/redis6-ib
-      - name: Pull PostgreSQL IronBank
-        run: docker pull rapidfort/postgresql12-ib
-      - name: Pull NGINX IronBank
-        run: docker pull rapidfort/nginx-ib
-      - name: Pull Prometheus
-        run: docker pull rapidfort/prometheus
-      - name: Pull Wordpress
-        run: docker pull rapidfort/wordpress
-      - name: Pull RabbitMQ
-        run: docker pull rapidfort/rabbitmq
-      - name: Pull Apache
-        run: docker pull rapidfort/apache
       - name: Pull Apache Airflow
         run: docker pull rapidfort/airflow
       - name: Pull Apache Airflow Scheduler
         run: docker pull rapidfort/airflow-scheduler
       - name: Pull Apache Airflow Worker
         run: docker pull rapidfort/airflow-worker
+      - name: Pull Apache
+        run: docker pull rapidfort/apache
       - name: Pull Curl
         run: docker pull rapidfort/curl
+      - name: Pull Envoy
+        run: docker pull rapidfort/envoy
+      - name: Pull Etcd
+        run: docker pull rapidfort/etcd
+      - name: Pull Fluentd
+        run: docker pull rapidfort/fluentd
+      - name: Pull InfluxDB™
+        run: docker pull rapidfort/influxdb
+      - name: Pull MariaDB
+        run: docker pull rapidfort/mariadb
       - name: Pull Memcached
         run: docker pull rapidfort/memcached
+      - name: Pull MongoDB®
+        run: docker pull rapidfort/mongodb
+      - name: Pull MySQL
+        run: docker pull rapidfort/mysql
+      - name: Pull NATS
+        run: docker pull rapidfort/nats
+      - name: Pull NGINX
+        run: docker pull rapidfort/nginx
+      - name: Pull NGINX IronBank
+        run: docker pull rapidfort/nginx-ib
+      - name: Pull Grafana Oncall
+        run: docker pull rapidfort/oncall
+      - name: Pull PostgreSQL
+        run: docker pull rapidfort/postgresql
+      - name: Pull PostgreSQL IronBank
+        run: docker pull rapidfort/postgresql12-ib
+      - name: Pull Prometheus
+        run: docker pull rapidfort/prometheus
+      - name: Pull RabbitMQ
+        run: docker pull rapidfort/rabbitmq
+      - name: Pull Redis™
+        run: docker pull rapidfort/redis
+      - name: Pull Redis™ Cluster
+        run: docker pull rapidfort/redis-cluster
+      - name: Pull Redis™ IronBank
+        run: docker pull rapidfort/redis6-ib
+      - name: Pull Wordpress
+        run: docker pull rapidfort/wordpress
       - name: Update pull counts
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
@@ -70,5 +70,5 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/mariadb": 1 ,  "rapidfort/mongodb": 1 ,  "rapidfort/mysql": 1 ,  "rapidfort/nginx": 1 ,  "rapidfort/postgresql": 1 ,  "rapidfort/redis": 1 ,  "rapidfort/redis-cluster": 1 ,  "rapidfort/envoy": 1 ,  "rapidfort/fluentd": 1 ,  "rapidfort/oncall": 1 ,  "rapidfort/influxdb": 1 ,  "rapidfort/etcd": 1 ,  "rapidfort/nats": 1 ,  "rapidfort/redis6-ib": 1 ,  "rapidfort/postgresql12-ib": 1 ,  "rapidfort/nginx-ib": 1 ,  "rapidfort/prometheus": 1 ,  "rapidfort/wordpress": 1 ,  "rapidfort/rabbitmq": 1 ,  "rapidfort/apache": 1 ,  "rapidfort/airflow": 1 ,  "rapidfort/airflow-scheduler": 1 ,  "rapidfort/airflow-worker": 1 ,  "rapidfort/curl": 1 ,  "rapidfort/memcached": 1  }' \
+           -d '{ "rapidfort/airflow": 1 ,  "rapidfort/airflow-scheduler": 1 ,  "rapidfort/airflow-worker": 1 ,  "rapidfort/apache": 1 ,  "rapidfort/curl": 1 ,  "rapidfort/envoy": 1 ,  "rapidfort/etcd": 1 ,  "rapidfort/fluentd": 1 ,  "rapidfort/influxdb": 1 ,  "rapidfort/mariadb": 1 ,  "rapidfort/memcached": 1 ,  "rapidfort/mongodb": 1 ,  "rapidfort/mysql": 1 ,  "rapidfort/nats": 1 ,  "rapidfort/nginx": 1 ,  "rapidfort/nginx-ib": 1 ,  "rapidfort/oncall": 1 ,  "rapidfort/postgresql": 1 ,  "rapidfort/postgresql12-ib": 1 ,  "rapidfort/prometheus": 1 ,  "rapidfort/rabbitmq": 1 ,  "rapidfort/redis": 1 ,  "rapidfort/redis-cluster": 1 ,  "rapidfort/redis6-ib": 1 ,  "rapidfort/wordpress": 1  }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls

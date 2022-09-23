@@ -25,7 +25,7 @@ gen_main_readme()
 {
   echo "Generating main readme"
   rm -f "${SCRIPTPATH}"/../image_list.yml
-  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/../image.lst
+  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/../image.lst yes
 
   jinja -d "${SCRIPTPATH}"/../image_list.yml \
     -f yaml "${SCRIPTPATH}"/../community_images/common/templates/main_readme.j2 > "${SCRIPTPATH}"/../README.md
@@ -48,7 +48,7 @@ gen_main_readme()
 gen_new_image_actions()
 {
   rm -f "${SCRIPTPATH}"/../image_list.yml
-  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/../builder.lst
+  python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/../builder.lst no
 
   jinja -d "${SCRIPTPATH}"/../image_list.yml \
     -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run_v3.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/image_run_v3.yml

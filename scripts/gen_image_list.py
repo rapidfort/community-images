@@ -22,6 +22,7 @@ def get_image_dh_data(image_dict):
         image_dict["pull_count"] = resp_json.get("pull_count")
         image_dict["last_updated"] = resp_json.get("last_updated")
         image_dict["star_count"] = resp_json.get("star_count")
+        image_dict["pull_count_formatted"] = format(image_dict["pull_count"], ",")
         print(f"Got image data for {rf_docker_link}")
         print(f"p:{image_dict['pull_count']}, lu:{image_dict['last_updated']}, s:{image_dict['star_count']}")
     else:

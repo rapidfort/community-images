@@ -94,6 +94,11 @@ RapidFort is an industry-leading container optimization solution that minimizes 
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
+<a href="https://github.com/rapidfort/community-images/tree/main/community_images/oncall/grafana">
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
+</a>
+<br>
+<br>
 
 ## What’s the difference between the official [Grafana Grafana Oncall][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/oncall][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.

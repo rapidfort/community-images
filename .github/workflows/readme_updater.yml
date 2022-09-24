@@ -30,13 +30,6 @@ jobs:
           pip install requests
           ./scripts/image_generator.sh
 
-      - name: Check if new changes detected
-        run: |
-          if [[ $(git status --porcelain) ]]; then
-            echo "Fail as the image_generator script was not run"
-            exit 1
-          fi
-
       - name: Update readme for dockerhub
         run: ./scripts/update_readme_dh.sh
       - name: Docker Hub Description Apache Airflow

@@ -4,8 +4,8 @@ This is consumed by jinja template for generating main readme
 """
 
 import os
-import requests
 import sys
+import requests
 import yaml
 
 def get_image_dh_data(image_dict):
@@ -16,7 +16,7 @@ def get_image_dh_data(image_dict):
     """
     rf_docker_link = image_dict["rf_docker_link"]
     url = f"https://hub.docker.com/v2/repositories/{rf_docker_link}/"
-    resp = requests.get(url)
+    resp = requests.get(url, timeout=30)
     if 199 <= resp.status_code < 400:
         resp_json = resp.json()
         image_dict["pull_count"] = resp_json.get("pull_count")
@@ -74,7 +74,7 @@ def main():
     image_list_file = "image.lst"
     if len(sys.argv) == 3:
         image_list_file = sys.argv[1]
-        needs_dh_data = True if sys.argv[2]=="yes" else False
+        needs_dh_data = sys.argv[2]=="yes"
 
     print(f"Using image list={image_list_file}")
     merge_yaml_files(image_list_file, needs_dh_data)

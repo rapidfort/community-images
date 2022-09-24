@@ -50,7 +50,7 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
 <a href="https://github.com/bitnami/containers/blob/main/bitnami/redis-cluster/README.md">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.png" alt="View Detailed Instructions" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>
@@ -73,6 +73,11 @@ RapidFort is an industry-leading container optimization solution that minimizes 
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
+<a href="https://github.com/rapidfort/community-images/tree/main/community_images/redis-cluster/bitnami">
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
+</a>
+<br>
+<br>
 
 ## What’s the difference between the official [Bitnami Redis™ Cluster][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/redis-cluster][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
@@ -130,8 +135,8 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis-cluster/bitnami/assets/metrics.png
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis-cluster/bitnami/assets/cve_reduction.png
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis-cluster/bitnami/assets/metrics.webp
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis-cluster/bitnami/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://hub.docker.com/r/bitnami/redis-cluster
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis-cluster

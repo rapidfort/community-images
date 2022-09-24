@@ -27,13 +27,15 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
   await page.waitForSelector('#carousel__container');
   const metrics = await page.$('#carousel__container');
   await metrics.screenshot({
-    path: util.format('%s/metrics.png', imageSavePath)
+    path: util.format('%s/metrics.webp', imageSavePath),
+    type: 'webp'
     });
 
   await page.waitForSelector('#card-statistics-histogram');
   const cve_details = await page.$('#card-statistics-histogram');
   await cve_details.screenshot({
-    path: util.format('%s/cve_reduction.png', imageSavePath)
+    path: util.format('%s/cve_reduction.webp', imageSavePath),
+    type: 'webp'
     });
 
   await page.close();

@@ -4,6 +4,10 @@ services:
     image: ${REDIS_CLUSTER_IMAGE_REPOSITORY}:${REDIS_CLUSTER_IMAGE_TAG}
     volumes:
       - redis-cluster_data-0:/bitnami/redis/data
+      - ../../common/tests/test.redis:/tmp/test.redis
+      - ../../common/tests/redis_coverage.sh:/tmp/redis_coverage.sh
+      - ./redis_cluster_runner.sh:/tmp/redis_cluster_runner.sh
+
     environment:
       - 'REDIS_PASSWORD=bitnami'
       - 'REDIS_NODES=redis-node-0 redis-node-1 redis-node-2 redis-node-3 redis-node-4 redis-node-5'
@@ -68,7 +72,7 @@ services:
       - 'REDIS_CLUSTER_CREATOR=yes'
     cap_add:
       - SYS_PTRACE
-      
+
 volumes:
   redis-cluster_data-0:
     driver: local

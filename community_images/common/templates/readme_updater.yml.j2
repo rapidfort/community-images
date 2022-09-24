@@ -18,6 +18,8 @@ permissions: read-all
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     environment: actions-cicd
 
     steps:
@@ -29,6 +31,14 @@ jobs:
           pip install --upgrade pip
           pip install requests
           ./scripts/image_generator.sh
+
+      - name: Push changes
+        run: |
+          if [[ $(git status --porcelain) ]]; then
+            git config user.name "Rapidfort Readme Bot"
+            git config user.email "info@rapidfort.com"
+            git add . && git commit -am "Update main readme via script" --signoff && git push --force
+          fi
 
       - name: Update readme for dockerhub
         run: ./scripts/update_readme_dh.sh

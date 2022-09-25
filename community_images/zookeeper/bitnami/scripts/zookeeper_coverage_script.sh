@@ -3,8 +3,22 @@
 set -e
 set -x
 
+# get the server version number
+zkServer.sh version
+
+# print the help message for transactin log command
+zkTxnLogToolkit.sh --help
+
+# print the help message for snapshot comparison command
+zkSnapshotComparer.sh --help
+
+# print the help message for cleanup command
+zkCleanup.sh --help
+
 # run zookeeper specific commands for coverage
 zkCli.sh <<EOF
+version
+whoami
 create /FirstZnode "simple data node"
 get /FirstZnode
 ls /

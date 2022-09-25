@@ -39,6 +39,8 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: bitnami/zookeeper
+    helm_additional_params:
+      persistence.enabled: false
     image_keys:
       zookeeper:
         repository: "image.repository"

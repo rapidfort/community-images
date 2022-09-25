@@ -7,13 +7,13 @@ set -x
 zkServer.sh version
 
 # print the help message for transactin log command
-zkTxnLogToolkit.sh --help
+zkTxnLogToolkit.sh --help || true
 
 # print the help message for snapshot comparison command
-zkSnapshotComparer.sh --help
+zkSnapshotComparer.sh --help || true
 
 # print the help message for cleanup command
-zkCleanup.sh --help
+zkCleanup.sh --help || true
 
 # run zookeeper specific commands for coverage
 zkCli.sh <<EOF
@@ -43,4 +43,5 @@ create /quota_test/child_1
 create /quota_test/child_2
 create /quota_test/child_3
 listquota /quota_test
+quit
 EOF

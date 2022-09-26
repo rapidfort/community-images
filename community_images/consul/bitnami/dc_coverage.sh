@@ -48,7 +48,7 @@ docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/bitnami/scripts/cov
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
 # Deregistering/removing sample service in consul-node1
-consul services deregister /consul.d/sample_service.json   
+docker exec -i "${CONTAINER_NAME}" consul services deregister /consul.d/sample_service.json   
 
 # Shutting down consul
 docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul leave

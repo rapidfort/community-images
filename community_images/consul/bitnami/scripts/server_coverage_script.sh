@@ -7,7 +7,13 @@ set -e
 ls /opt/bitnami/scripts
 
 # General commands
-consul members
+consul members | tee -a members
+SERVERS=$(grep -w "server" -c members)
+CLIENTS=$(grep -w "client" -c members)
+# Checking the members in the cluster
+echo "Number of Servers Active = $SERVERS"
+echo "Number of Clients Active = $CLIENTS"
+rm members
 consul info
 
 # Consul snapshot
@@ -20,14 +26,17 @@ consul reload
 sleep 10
 
 # Query our service using HTTP Api
-curl http://localhost:8500/vi/catalog/service/web
+curl http://localhost:8500/v1/catalog/service/web
 
 # Checking for the healthy instances
-curl 'http://localhost:8500/v1/health/service/web?passing'
+curl http://localhost:8500/v1/health/service/web?passing
 
 # Consul kv
 consul kv put redis/config/connections 5
-consul kv get -detailed redis/config/connections
+consul kv get -detailed redis/config/connections | tee -a file
+# To check the number of connections (Should be 5)
+grep "Value" file
+rm file
 consul kv delete redis/config/connections
 
 # Consul Operator Raft

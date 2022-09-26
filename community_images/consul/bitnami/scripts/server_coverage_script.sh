@@ -35,8 +35,9 @@ curl http://localhost:8500/v1/health/service/web?passing
 consul kv put redis/config/connections 5
 consul kv get -detailed redis/config/connections | tee -a file
 # To check the number of connections (Should be 5)
-grep "Value" file
+CONNECTIONS=$(grep "Value" file)
 rm file
+echo "$CONNECTIONS"
 consul kv delete redis/config/connections
 
 # Consul Operator Raft

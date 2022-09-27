@@ -5,7 +5,8 @@ set -x
 
 function test_zookeeper() {
     CONTAINER_NAME=$1
-    docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh
+    NAMESPACE=$2
+    docker exec -i "${CONTAINER_NAME}" -n "${NAMESPACE}" bash -c /opt/bitnami/scripts/coverage_script.sh
 
     # log for debugging
     docker inspect "${CONTAINER_NAME}"

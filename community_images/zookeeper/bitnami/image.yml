@@ -42,6 +42,9 @@ runtimes:
     # disabling persistence otherwise PVC creation fails for data dir
     helm_additional_params:
       persistence.enabled: false
+      replicaCount: 3
+      auth.enabled: false
+      allowAnonymousLogin: true
     image_keys:
       zookeeper:
         repository: "image.repository"

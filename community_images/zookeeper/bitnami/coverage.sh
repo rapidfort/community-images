@@ -15,5 +15,5 @@ function test_zookeeper() {
     fi
    
 
-    "${CMD}" exec -i "${CONTAINER_NAME}" -n "${NAMESPACE}" bash -c /opt/bitnami/scripts/coverage_script.sh
+    "${CMD}" exec -i "${CONTAINER_NAME}" -n "${NAMESPACE}" bash /opt/bitnami/scripts/coverage_script.sh
 }

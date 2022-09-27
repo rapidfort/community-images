@@ -9,9 +9,6 @@ ls /opt/bitnami/scripts
 # Checking version
 consul version -format=json
 
-# Registering a test service via client
-consul reload
-
 # Query our service using HTTP Api
 curl http://localhost:8500/v1/catalog/service/web
 

@@ -18,4 +18,4 @@ SELECT * FROM users LIMIT 15;
 
 DROP TABLE users;
 
-select extract(timezone from '2017-01-01'::timestamptz);
+SELECT timestamp with time zone '2025-11-20 00:00:00+00' AT TIME ZONE 'Africa/Cairo';

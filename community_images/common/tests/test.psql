@@ -17,3 +17,5 @@ SELECT * FROM users WHERE gender = 'male';
 SELECT * FROM users LIMIT 15;
 
 DROP TABLE users;
+
+select extract(timezone from '2017-01-01'::timestamptz);

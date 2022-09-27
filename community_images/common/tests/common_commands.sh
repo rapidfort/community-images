@@ -17,7 +17,7 @@ function run_commands()
 sleep 1
 
 declare -a command_array=(
-    cp mkdir chmod ls mv rm ln rmdir chgrp chown touch cat grep sed tar sort head
+    cp mkdir chmod ls mv rm ln rmdir chgrp chown touch cat grep sed tar sort head date
 )
 
 for cmd in "${command_array[@]}"
@@ -30,3 +30,10 @@ if command -v clear -V &> /dev/null
 then
     clear -V
 fi
+
+# invoke tzdata package
+TZBase=$(LC_ALL=C TZ=UTC0 date)
+UTdate=$(LC_ALL=C TZ=UTC0 date -d "$TZBase")
+TZdate=$(unset TZ ; LANG=C date -d "$TZBase")
+echo "Local time is now:      $TZdate."
+echo "Universal Time is now:  $UTdate."

@@ -6,8 +6,14 @@ set -x
 function test_zookeeper() {
     CONTAINER_NAME=$1
     NAMESPACE=$2
-    docker exec -i "${CONTAINER_NAME}" -n "${NAMESPACE}" bash -c /opt/bitnami/scripts/coverage_script.sh
+    USE_KUBECTL=$3
 
-    # log for debugging
-    docker inspect "${CONTAINER_NAME}"
+    CMD="docker"
+
+    if [[ "${USE_KUBECTL}" == "yes" ]]; then
+        CMD="kubectl"
+    fi
+   
+
+    "${CMD}" exec -i "${CONTAINER_NAME}" -n "${NAMESPACE}" bash -c /opt/bitnami/scripts/coverage_script.sh
 }

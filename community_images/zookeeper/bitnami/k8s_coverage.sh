@@ -22,4 +22,4 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 sleep 60
 
 CONTAINER_NAME="${RELEASE_NAME}-0"
-test_zookeeper "${CONTAINER_NAME}" "${NAMESPACE}"
+test_zookeeper "${CONTAINER_NAME}" "${NAMESPACE}" "yes"

@@ -17,9 +17,12 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - "8500:8500"
-      - "8600:8600/tcp"
-      - "8600:8600/udp"
+      - '0.0.0.0::8300'
+      - '0.0.0.0::8301'
+      - '0.0.0.0::8301/udp'
+      - '0.0.0.0::8500'
+      - '0.0.0.0::8600'
+      - '0.0.0.0::8600/udp'
     command: "consul agent -server -bootstrap-expect=1 -retry-join=consul-server1 -config-file=server.json"
 
 networks:

@@ -30,10 +30,3 @@ if command -v clear -V &> /dev/null
 then
     clear -V
 fi
-
-# invoke tzdata package
-TZBase=$(LC_ALL=C TZ=UTC0 date)
-UTdate=$(LC_ALL=C TZ=UTC0 date -d "$TZBase")
-TZdate=$(unset TZ ; LANG=C date -d "$TZBase")
-echo "Local time is now:      $TZdate."
-echo "Universal Time is now:  $UTdate."

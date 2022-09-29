@@ -17,7 +17,7 @@ function run_commands()
 sleep 1
 
 declare -a command_array=(
-    cp mkdir chmod ls mv rm ln rmdir chgrp chown touch cat grep sed tar sort head
+    cp mkdir chmod ls mv rm ln rmdir chgrp chown touch cat grep sed tar sort head date
 )
 
 for cmd in "${command_array[@]}"

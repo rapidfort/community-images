@@ -1,0 +1,64 @@
+name: consul
+official_name: Consul
+official_website: https://www.consul.io/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/consul
+source_image_repo_link: https://hub.docker.com/r/bitnami/consul
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/consul/README.md
+rf_docker_link: rapidfort/consul
+image_workflow_name: consul_bitnami
+github_location: consul/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fconsul
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/consul
+
+  # install consul, just replace repository with RapidFort registry
+  $ helm install my-consul bitnami/consul --set image.repository=rapidfort/consul
+what_is_text: |
+  Consul is a service networking solution to automate network configurations, discover services, and enable secure connectivity across any cloud or runtime.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1`, `1-debian-11`, `1.12.3`, `1.12.3-debian-11-r7`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-consul/blob/1.12.3-debian-11-r7/1/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - consul:
+      input_base_tag: "1.12.3-debian-11-r"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      consul:
+        repository: "CONSUL_IMAGE_REPOSITORY"
+        tag: "CONSUL_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/consul
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      apache:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_acl_coverage.sh
+    compose_file: docker-compose-acl.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      consul:
+        repository: "CONSUL_IMAGE_REPOSITORY"
+        tag: "CONSUL_IMAGE_TAG"

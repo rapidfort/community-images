@@ -71,8 +71,8 @@ del_image_variants()
 
 main()
 {
-  # gen_main_readme
-  # gen_image_readme
+  gen_main_readme
+  gen_image_readme
   # gen_image_files
   # gen_image_files2
   gen_new_image_actions

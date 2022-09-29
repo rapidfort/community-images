@@ -9,6 +9,7 @@ on:
       - "community_images/common/**"
       - "community_images/airflow/airflow/bitnami/**"
       - "community_images/apache/bitnami/**"
+      - "community_images/consul/bitnami/**"
       - "community_images/curl/curlimages/**"
       - "community_images/envoy/bitnami/**"
       - "community_images/etcd/bitnami/**"
@@ -119,6 +120,47 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/apache": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  consul:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: ./scripts/setup.sh
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/consul": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   curl:
     runs-on: ubuntu-latest

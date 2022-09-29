@@ -21,9 +21,11 @@ done
 # this script keeps track of all things which need to be installed on github actions worker VM
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
+RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-frontrow.rapidfort.io}
+
 if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
-  curl  https://frontrow.rapidfort.com/cli/ | bash
+  curl  https://"$RF_PLATFORM_HOST"/cli/ | bash
   rflogin
 
   # do docker login

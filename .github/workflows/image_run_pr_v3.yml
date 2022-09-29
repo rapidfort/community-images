@@ -1,10 +1,37 @@
 
-name: Image Creation Run
+name: Image Creation PR Run
 
 on:
 
-  schedule:
-  - cron: '0 * * * *'
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - "community_images/common/**"
+      - "community_images/airflow/airflow/bitnami/**"
+      - "community_images/apache/bitnami/**"
+      - "community_images/curl/curlimages/**"
+      - "community_images/envoy/bitnami/**"
+      - "community_images/etcd/bitnami/**"
+      - "community_images/fluentd/bitnami/**"
+      - "community_images/influxdb/bitnami/**"
+      - "community_images/mariadb/bitnami/**"
+      - "community_images/memcached/bitnami/**"
+      - "community_images/mongodb/bitnami/**"
+      - "community_images/mysql/bitnami/**"
+      - "community_images/nats/bitnami/**"
+      - "community_images/nginx/bitnami/**"
+      - "community_images/nginx/ironbank/**"
+      - "community_images/oncall/grafana/**"
+      - "community_images/postgresql/bitnami/**"
+      - "community_images/postgresql/ironbank/**"
+      - "community_images/prometheus/bitnami/**"
+      - "community_images/rabbitmq/bitnami/**"
+      - "community_images/redis/bitnami/**"
+      - "community_images/redis-cluster/bitnami/**"
+      - "community_images/redis/ironbank/**"
+      - "community_images/wordpress/bitnami/**"
+    branches:
+    - main
 
   workflow_dispatch:
 
@@ -14,7 +41,7 @@ jobs:
   airflow:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -32,15 +59,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami
 
 
       - name: Report pulls
@@ -55,7 +82,7 @@ jobs:
   apache:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -73,15 +100,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami
 
 
       - name: Report pulls
@@ -96,7 +123,7 @@ jobs:
   curl:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -114,15 +141,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages
 
 
       - name: Report pulls
@@ -137,7 +164,7 @@ jobs:
   envoy:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -155,15 +182,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami
 
 
       - name: Report pulls
@@ -178,7 +205,7 @@ jobs:
   etcd:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -196,15 +223,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami
 
 
       - name: Report pulls
@@ -219,7 +246,7 @@ jobs:
   fluentd:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -237,15 +264,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami
 
 
       - name: Report pulls
@@ -260,7 +287,7 @@ jobs:
   influxdb:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -278,15 +305,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
 
 
       - name: Report pulls
@@ -301,7 +328,7 @@ jobs:
   mariadb:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -319,15 +346,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami
 
 
       - name: Report pulls
@@ -342,7 +369,7 @@ jobs:
   memcached:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -360,15 +387,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami
 
 
       - name: Report pulls
@@ -383,7 +410,7 @@ jobs:
   mongodb:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -401,15 +428,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami
 
 
       - name: Report pulls
@@ -424,7 +451,7 @@ jobs:
   mysql:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -442,15 +469,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami
 
 
       - name: Report pulls
@@ -465,7 +492,7 @@ jobs:
   nats:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -483,15 +510,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami
 
 
       - name: Report pulls
@@ -506,7 +533,7 @@ jobs:
   nginx:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -524,15 +551,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami
 
 
       - name: Report pulls
@@ -547,7 +574,7 @@ jobs:
   nginx-ib:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -565,15 +592,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank
 
 
       - name: Report pulls
@@ -588,7 +615,7 @@ jobs:
   oncall:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -606,15 +633,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana
 
 
       - name: Report pulls
@@ -629,7 +656,7 @@ jobs:
   postgresql:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -647,15 +674,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami
 
 
       - name: Report pulls
@@ -670,7 +697,7 @@ jobs:
   postgresql-ib:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -688,15 +715,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank
 
 
       - name: Report pulls
@@ -711,7 +738,7 @@ jobs:
   prometheus:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -729,15 +756,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami
 
 
       - name: Report pulls
@@ -752,7 +779,7 @@ jobs:
   rabbitmq:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -770,15 +797,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami
 
 
       - name: Report pulls
@@ -793,7 +820,7 @@ jobs:
   redis:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -811,15 +838,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami
 
 
       - name: Report pulls
@@ -834,7 +861,7 @@ jobs:
   redis-cluster:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -852,15 +879,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami
 
 
       - name: Report pulls
@@ -875,7 +902,7 @@ jobs:
   redis-ib:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -893,15 +920,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank
 
 
       - name: Report pulls
@@ -916,7 +943,7 @@ jobs:
   wordpress:
     runs-on: ubuntu-latest
 
-    environment: actions-cicd
+    environment: actions-cicd-pr
 
     steps:
       - uses: actions/checkout@v3
@@ -934,15 +961,15 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: ./scripts/setup.sh
 
-      - name: Create images and publish to dockerhub
+      - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami --publish
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami
 
 
       - name: Report pulls

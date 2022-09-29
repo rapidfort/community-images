@@ -49,7 +49,7 @@ class HardenGenerator:
 
             output_tag_details = tag_mapping.output_tag_details
 
-            cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta --keep-pkgs-coherent"
+            cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta"
             if rfignore_exists:
                 cmd += f" --profile {rfignore_path}"
             Utils.run_cmd(cmd.split())

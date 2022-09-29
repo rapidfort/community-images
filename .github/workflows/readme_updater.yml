@@ -18,6 +18,8 @@ permissions: read-all
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     environment: actions-cicd
 
     steps:
@@ -29,6 +31,14 @@ jobs:
           pip install --upgrade pip
           pip install requests
           ./scripts/image_generator.sh
+
+      - name: Push changes
+        run: |
+          if [[ $(git status --porcelain) ]]; then
+            git config user.name "Rapidfort Readme Bot"
+            git config user.email "info@rapidfort.com"
+            git add . && git commit -am "Update main readme via script" --signoff && git push --force
+          fi
 
       - name: Update readme for dockerhub
         run: ./scripts/update_readme_dh.sh
@@ -232,6 +242,14 @@ jobs:
           repository: rapidfort/wordpress
           readme-filepath: ./community_images/wordpress/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Wordpress
+      - name: Docker Hub Description Zookeeper
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/zookeeper
+          readme-filepath: ./community_images/zookeeper/bitnami/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Zookeeper
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

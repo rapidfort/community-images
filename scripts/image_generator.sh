@@ -50,8 +50,12 @@ gen_new_image_actions()
   rm -f "${SCRIPTPATH}"/../image_list.yml
   python3 "${SCRIPTPATH}"/gen_image_list.py "${SCRIPTPATH}"/../builder.lst no
 
-  jinja -d "${SCRIPTPATH}"/../image_list.yml \
+  jinja -d "${SCRIPTPATH}"/../image_list.yml -D output main_build \
     -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run_v3.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/image_run_v3.yml
+
+  jinja -d "${SCRIPTPATH}"/../image_list.yml -D output pull_request \
+    -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_run_v3.yml.j2 > "${SCRIPTPATH}"/../.github/workflows/image_run_pr_v3.yml
+
 
   rm -f "${SCRIPTPATH}"/../image_list.yml
 }
@@ -67,8 +71,8 @@ del_image_variants()
 
 main()
 {
-  gen_main_readme
-  gen_image_readme
+  # gen_main_readme
+  # gen_image_readme
   # gen_image_files
   # gen_image_files2
   gen_new_image_actions

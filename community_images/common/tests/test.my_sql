@@ -32,3 +32,11 @@ SELECT COUNT(*) FROM users WHERE gender = 'male';
 SELECT * FROM users LIMIT 15;
 
 DROP TABLE users;
+
+SELECT @@GLOBAL.time_zone, @@SESSION.time_zone;
+
+SELECT COUNT(*) FROM mysql.time_zone_name;
+
+SELECT
+  CONVERT_TZ('2007-03-11 2:00:00','US/Eastern','US/Central') AS time1,
+  CONVERT_TZ('2007-03-11 3:00:00','US/Eastern','US/Central') AS time2;

@@ -13,6 +13,12 @@ services:
     networks:
       - haproxy
   
+  apache-php-3:
+    build: ./configs/sample-server
+    container_name: apache-php-3
+    networks:
+      - haproxy
+
   haproxy:
     image: bitnami/haproxy
     user: root
@@ -26,6 +32,7 @@ services:
     depends_on: 
       - apache-php-1
       - apache-php-2
+      - apache-php-3
 
 networks:
   haproxy:

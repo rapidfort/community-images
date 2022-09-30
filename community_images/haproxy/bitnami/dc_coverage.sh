@@ -28,7 +28,7 @@ docker inspect "${CONTAINER_NAME}"
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort"
 PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort")
 
-# run curl in loop for different endpoints
+# run curl in loop (roundrobin)
 for i in {1..10};
 do 
     echo "Attempt $i"

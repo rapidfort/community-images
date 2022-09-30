@@ -35,3 +35,16 @@ do
     curl http://localhost:"${PORT}"
 done
 
+# run curl in loop for acl app1
+for i in {1..10};
+do 
+    echo "Attempt $i"
+    curl http://localhost:"${PORT}"/app1
+done
+
+# run curl in loop for acl app2
+for i in {1..10};
+do 
+    echo "Attempt $i"
+    curl http://localhost:"${PORT}"/app2
+done

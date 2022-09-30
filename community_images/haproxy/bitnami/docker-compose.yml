@@ -29,6 +29,7 @@ services:
     image: bitnami/haproxy
     user: root
     volumes:
+      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
       - ./configs/haproxy.cfg:/bitnami/haproxy/conf/haproxy.cfg
     container_name: haproxy
     networks:

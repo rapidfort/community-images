@@ -11,7 +11,7 @@ services:
 
   apache-php-2:
     image: php:7.0-apache
-    container_name: apache-php-1
+    container_name: apache-php-2
     volumes:
       - ./sample-server/src/index.php:/var/www/html/index.php
     networks:
@@ -19,7 +19,7 @@ services:
   
   apache-php-3:
     image: php:7.0-apache
-    container_name: apache-php-1
+    container_name: apache-php-3
     volumes:
       - ./sample-server/src/index.php:/var/www/html/index.php
     networks:
@@ -27,7 +27,7 @@ services:
     
   apache-php-4:
     image: php:7.0-apache
-    container_name: apache-php-1
+    container_name: apache-php-4
     volumes:
       - ./sample-server/src/index.php:/var/www/html/index.php
     networks:

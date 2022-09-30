@@ -5,7 +5,7 @@ services:
     image: php:7.0-apache
     container_name: apache-php-1
     volumes:
-      - ./sample-server/src/index.php:/var/www/html/index.php
+      - ./sample-server/src/:/var/www/html/
     networks:
       - haproxy
 
@@ -13,7 +13,7 @@ services:
     image: php:7.0-apache
     container_name: apache-php-2
     volumes:
-      - ./sample-server/src/index.php:/var/www/html/index.php
+      - ./sample-server/src/:/var/www/html/
     networks:
       - haproxy
   
@@ -21,7 +21,7 @@ services:
     image: php:7.0-apache
     container_name: apache-php-3
     volumes:
-      - ./sample-server/src/index.php:/var/www/html/index.php
+      - ./sample-server/src/:/var/www/html/
     networks:
       - haproxy
     
@@ -29,7 +29,7 @@ services:
     image: php:7.0-apache
     container_name: apache-php-4
     volumes:
-      - ./sample-server/src/index.php:/var/www/html/index.php
+      - ./sample-server/src/:/var/www/html/
     networks:
       - haproxy
 

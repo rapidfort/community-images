@@ -4,10 +4,14 @@ services:
   apache-php-1:
     build: ./configs/sample-server
     container_name: apache-php-1
+    networks:
+      - haproxy
 
   apache-php-2:
     build: ./configs/sample-server
     container_name: apache-php-2
+    networks:
+      - haproxy
   
   haproxy:
     image: bitnami/haproxy
@@ -15,8 +19,14 @@ services:
     volumes:
       - ./configs/haproxy.cfg:/bitnami/haproxy/conf/haproxy.cfg
     container_name: haproxy
+    networks:
+      - haproxy
     ports: 
       - '0.0.0.0::80'
     depends_on: 
       - apache-php-1
       - apache-php-2
+
+networks:
+  haproxy:
+    driver: bridge

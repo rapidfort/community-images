@@ -192,6 +192,10 @@ class K8sSetup:
         cmd = f"kubectl -n {self.namespace_name} get pods"
         Utils.run_cmd(cmd.split())
 
+        cmd = f"kubectl -n {self.namespace_name} get pods"
+        cmd += f" --output=name | xargs -I % kubectl -n {self.namespace_name} logs %"
+        Utils.run_cmd(cmd.split())
+
         cmd = f"kubectl -n {self.namespace_name} get svc"
         Utils.run_cmd(cmd.split())
 

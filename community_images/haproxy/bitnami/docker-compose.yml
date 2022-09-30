@@ -36,10 +36,10 @@ services:
     ports: 
       - '0.0.0.0::80'
     depends_on: 
-      - apache-php-1
-      - apache-php-2
-      - apache-php-3
-      - apache-php-4
+      - python-flask-1
+      - python-flask-2
+      - python-flask-3
+      - python-flask-4
 
 networks:
   haproxy:

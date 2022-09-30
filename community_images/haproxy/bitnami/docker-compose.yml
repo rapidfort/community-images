@@ -1,35 +1,27 @@
 version: '2'
 
 services:
-  apache-php-1:
-    image: php:7.0-apache
-    container_name: apache-php-1
-    volumes:
-      - ./sample-server/src/:/var/www/html/
+  python-flask-1:
+    build: ./configs/sample-server
+    container_name: python-flask-1
     networks:
       - haproxy
 
-  apache-php-2:
-    image: php:7.0-apache
-    container_name: apache-php-2
-    volumes:
-      - ./sample-server/src/:/var/www/html/
+  python-flask-2:
+    build: ./configs/sample-server
+    container_name: python-flask-2
     networks:
       - haproxy
   
-  apache-php-3:
-    image: php:7.0-apache
-    container_name: apache-php-3
-    volumes:
-      - ./sample-server/src/:/var/www/html/
+  python-flask-3:
+    build: ./configs/sample-server
+    container_name: python-flask-3
     networks:
       - haproxy
     
-  apache-php-4:
-    image: php:7.0-apache
-    container_name: apache-php-4
-    volumes:
-      - ./sample-server/src/:/var/www/html/
+  python-flask-4:
+    build: ./configs/sample-server
+    container_name: python-flask-4
     networks:
       - haproxy
 

@@ -18,6 +18,12 @@ services:
     container_name: apache-php-3
     networks:
       - haproxy
+    
+  apache-php-4:
+    build: ./configs/sample-server
+    container_name: apache-php-4
+    networks:
+      - haproxy
 
   haproxy:
     image: bitnami/haproxy
@@ -33,6 +39,7 @@ services:
       - apache-php-1
       - apache-php-2
       - apache-php-3
+      - apache-php-4
 
 networks:
   haproxy:

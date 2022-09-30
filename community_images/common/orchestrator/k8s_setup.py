@@ -97,6 +97,7 @@ class K8sSetup:
             except subprocess.CalledProcessError:
                 logging.info(
                     f"Wait for {pod_name_suffix} also failed, reraising error")
+                self.cleanup()
                 raise
 
         return {
@@ -185,7 +186,7 @@ class K8sSetup:
         logging.info(f"cmd: {cmd}")
         Utils.run_cmd(cmd.split())
 
-    def __exit__(self, type, value, traceback):
+    def cleanup(self):
         """ clean up k8s namespace """
         # log pods
         cmd = f"kubectl -n {self.namespace_name} get pods"
@@ -211,3 +212,6 @@ class K8sSetup:
         # delete namespace
         cmd = f"kubectl delete namespace {self.namespace_name}"
         Utils.run_cmd(cmd.split())
+
+    def __exit__(self, type, value, traceback):
+        self.cleanup()

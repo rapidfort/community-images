@@ -41,3 +41,5 @@ function run() {
     $notFoundCallback();
   }
 }
+
+?>

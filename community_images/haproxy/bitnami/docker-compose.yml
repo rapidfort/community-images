@@ -2,26 +2,34 @@ version: '2'
 
 services:
   apache-php-1:
-    build: ./configs/sample-server
+    image: php:7.0-apache
     container_name: apache-php-1
+    volumes:
+      - ./sample-server/src/index.php:/var/www/html/index.php
     networks:
       - haproxy
 
   apache-php-2:
-    build: ./configs/sample-server
-    container_name: apache-php-2
+    image: php:7.0-apache
+    container_name: apache-php-1
+    volumes:
+      - ./sample-server/src/index.php:/var/www/html/index.php
     networks:
       - haproxy
   
   apache-php-3:
-    build: ./configs/sample-server
-    container_name: apache-php-3
+    image: php:7.0-apache
+    container_name: apache-php-1
+    volumes:
+      - ./sample-server/src/index.php:/var/www/html/index.php
     networks:
       - haproxy
     
   apache-php-4:
-    build: ./configs/sample-server
-    container_name: apache-php-4
+    image: php:7.0-apache
+    container_name: apache-php-1
+    volumes:
+      - ./sample-server/src/index.php:/var/www/html/index.php
     networks:
       - haproxy
 

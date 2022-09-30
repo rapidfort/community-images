@@ -197,7 +197,7 @@ class K8sSetup:
         pod_list = pods.decode('utf-8').split()
 
         for pod in pod_list:
-            cmd += f"kubectl -n {self.namespace_name} logs {pod}"
+            cmd = f"kubectl -n {self.namespace_name} logs {pod}"
             Utils.run_cmd(cmd.split())
 
         cmd = f"kubectl -n {self.namespace_name} get svc"

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   python-flask-1:
-    image: python:3.6
+    image: rapidfort/flaskapp
     volumes:
       - ./configs/sample-server/app:/app
     container_name: python-flask-1
@@ -18,7 +18,7 @@ services:
       - python3 app/app.py
 
   python-flask-2:
-    image: python:3.6
+    image: rapidfort/flaskapp
     volumes:
       - ./configs/sample-server/app:/app
     container_name: python-flask-2
@@ -34,7 +34,7 @@ services:
       - python3 app/app.py
   
   python-flask-3:
-    image: python:3.6
+    image: rapidfort/flaskapp
     volumes:
       - ./configs/sample-server/app:/app
     container_name: python-flask-3
@@ -50,7 +50,7 @@ services:
       - python3 app/app.py
     
   python-flask-4:
-    image: python:3.6
+    image: rapidfort/flaskapp
     volumes:
       - ./configs/sample-server/app:/app
     container_name: python-flask-4

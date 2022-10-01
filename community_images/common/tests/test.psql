@@ -17,3 +17,5 @@ SELECT * FROM users WHERE gender = 'male';
 SELECT * FROM users LIMIT 15;
 
 DROP TABLE users;
+
+SELECT timestamp with time zone '2025-11-20 00:00:00+00' AT TIME ZONE 'Africa/Cairo';

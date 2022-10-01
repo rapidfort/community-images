@@ -6,6 +6,7 @@ web:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
+    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:
@@ -23,6 +24,7 @@ scheduler:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
+    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:
@@ -40,6 +42,7 @@ worker:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
+    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:

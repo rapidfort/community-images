@@ -201,6 +201,7 @@ class K8sSetup:
         if health_check_script is None:
             return
 
+        logging.info(f"running health check script: {health_check_script}")
         timeout = self.runtime_props.get("health_check_timeout", 300)
         # run the health check script
         script_path = f"{self.image_script_dir}/{health_check_script}"

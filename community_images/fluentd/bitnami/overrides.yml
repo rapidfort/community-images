@@ -5,6 +5,7 @@ forwarder:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
+    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:
@@ -20,6 +21,7 @@ aggregator:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
+    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:

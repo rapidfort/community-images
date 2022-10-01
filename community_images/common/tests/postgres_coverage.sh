@@ -34,3 +34,9 @@ fi
 psql --version
 reindexdb --version
 vacuumdb --version
+
+# add tzdata
+FILE=/usr/sbin/tzconfig
+if [ -f "$FILE" ]; then
+    /usr/sbin/tzconfig
+fi

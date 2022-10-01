@@ -16,5 +16,6 @@ spec:
     name: mongodb-release-client
     image: ${IMAGE_REPOSITORY}:${TAG}
     securityContext:
+      allowPrivilegeEscalation: true
       capabilities:
         add: ["SYS_PTRACE"]

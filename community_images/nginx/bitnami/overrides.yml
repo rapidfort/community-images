@@ -5,6 +5,7 @@ containerSecurityContext:
   enabled: true
   runAsUser: 0
   runAsNonRoot: false
+  allowPrivilegeEscalation: true
   capabilities:
     add: ["SYS_PTRACE"]
 extraEnvVars:

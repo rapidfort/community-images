@@ -4,6 +4,7 @@ image:
 master:
   containerSecurityContext:
     enabled: true
+    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:
@@ -18,6 +19,7 @@ master:
 replica:
   containerSecurityContext:
     enabled: true
+    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:

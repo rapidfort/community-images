@@ -4,9 +4,7 @@ services:
   python-flask-1:
     image: rapidfort/flaskapp
     volumes:
-      - ./configs/sample-server/app/app.py:./flask_app.py
-      - ./configs/sample-server/app/templates/error.html:./templates/error.html
-      - ./configs/sample-server/app/templates/index.html:./templates/index.html
+      - ./configs/sample-server/:/
     container_name: python-flask-1
     cap_add:
       - SYS_PTRACE

@@ -197,6 +197,7 @@ class K8sSetup:
         Utils.run_cmd(cmd.split())
 
     def run_health_check(self):
+        """ Run health check """
         health_check_script = self.runtime_props.get("health_check_script", "")
         if health_check_script is None:
             return
@@ -212,8 +213,8 @@ class K8sSetup:
                 stderr=subprocess.STDOUT,
                 timeout=timeout
             ).decode("utf-8")
-        except subprocess.CalledProcessError as e:
-            logging.info(f"Error running health check script: {e.output}")
+        except subprocess.CalledProcessError as ex:
+            logging.info(f"Error running health check script: {ex.output}")
             raise
         logging.info(f"health check output: {output}")
 

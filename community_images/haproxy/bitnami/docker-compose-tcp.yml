@@ -38,7 +38,7 @@ services:
         python3 app/app.py
 
   haproxy:
-    image: bitnami/haproxy
+    image: ${HAPROXY_IMAGE_REPOSITORY}:${HAPROXY_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/haproxy-tcp.cfg:/bitnami/haproxy/conf/haproxy.cfg

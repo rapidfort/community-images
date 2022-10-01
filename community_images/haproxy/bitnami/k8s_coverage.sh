@@ -14,17 +14,17 @@ minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url | tee -a URLS
 
 cat URLS
 
-# # curl to urls
-# while read -r p;
-# do
-#     curl -k "${p}"
-# done <URLS
+# curl to url
+while read -r p;
+do
+    curl -k "${p}"
+done <URLS
 
-# #Removing urls file
-# rm URLS
+#Removing urls file
+rm URLS
 
-# # fetch minikube ip
-# MINIKUBE_IP=$(minikube ip)
+# fetch minikube ip
+MINIKUBE_IP=$(minikube ip)
 
-# # curl to https url
-# curl http://"${MINIKUBE_IP}" -k
+# curl to https url
+curl http://"${MINIKUBE_IP}" -k

@@ -13,8 +13,6 @@ services:
     expose:
       - "8080"
     command:
-      - |
-      - pip install -r flask==1.0.2
       - python3 app/app.py
 
   python-flask-2:
@@ -29,8 +27,6 @@ services:
     expose:
       - "8080"
     command:
-      - |
-      - pip install -r flask==1.0.2
       - python3 app/app.py
   
   python-flask-3:
@@ -45,8 +41,6 @@ services:
     expose:
       - "8080"
     command:
-      - |
-      - pip install -r flask==1.0.2
       - python3 app/app.py
     
   python-flask-4:
@@ -61,8 +55,6 @@ services:
     expose:
       - "8080"
     command:
-      - |
-      - pip install -r flask==1.0.2
       - python3 app/app.py
 
   haproxy:

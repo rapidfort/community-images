@@ -12,8 +12,6 @@ services:
       - haproxy
     expose:
       - "8080"
-    command:
-      - python3 app/app.py
 
   python-flask-2:
     image: rapidfort/flaskapp

@@ -3,6 +3,7 @@ image:
   pullPolicy: Always
 containerSecurityContext:
   enabled: true
+  allowPrivilegeEscalation: true
   capabilities:
     add: ["SYS_PTRACE"]
 redis:

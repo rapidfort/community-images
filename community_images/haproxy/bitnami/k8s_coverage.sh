@@ -12,21 +12,19 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 rm -f URLS
 minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url | tee -a URLS
 
-# Changing "http" to "https" in the urls file
-sed -i '2,2s/http/https/' URLS
 cat URLS
 
-# curl to urls
-while read -r p;
-do
-    curl -k "${p}"
-done <URLS
+# # curl to urls
+# while read -r p;
+# do
+#     curl -k "${p}"
+# done <URLS
 
-#Removing urls file
-rm URLS
+# #Removing urls file
+# rm URLS
 
-# fetch minikube ip
-MINIKUBE_IP=$(minikube ip)
+# # fetch minikube ip
+# MINIKUBE_IP=$(minikube ip)
 
-# curl to https url
-curl http://"${MINIKUBE_IP}" -k
+# # curl to https url
+# curl http://"${MINIKUBE_IP}" -k

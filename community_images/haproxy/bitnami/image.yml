@@ -52,9 +52,14 @@ runtimes:
       haproxy:
         repository: "HAPROXY_IMAGE_REPOSITORY"
         tag: "HAPROXY_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
+  - type: docker_compose
+    script: dc_coverage-tcp.sh
+    compose_file: docker-compose-tcp.yml
     tls_certs:
       generate: true
       out_dir: certs
+    image_keys:
+      haproxy:
+        repository: "HAPROXY_IMAGE_REPOSITORY"
+        tag: "HAPROXY_IMAGE_TAG"
 

@@ -16,29 +16,13 @@ services:
       - SYS_PTRACE
     networks:
       - haproxy
-  
-  python-flask-3:
-    build: ./configs/sample-server
-    container_name: python-flask-3
-    cap_add:
-      - SYS_PTRACE
-    networks:
-      - haproxy
-    
-  python-flask-4:
-    build: ./configs/sample-server
-    container_name: python-flask-4
-    cap_add:
-      - SYS_PTRACE
-    networks:
-      - haproxy
 
   haproxy:
     image: bitnami/haproxy
     user: root
     volumes:
       - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
-      - ./configs/haproxy.cfg:/bitnami/haproxy/conf/haproxy.cfg
+      - ./configs/haproxy-tcp.cfg:/bitnami/haproxy/conf/haproxy.cfg
     container_name: haproxy
     networks:
       - haproxy
@@ -49,8 +33,6 @@ services:
     depends_on: 
       - python-flask-1
       - python-flask-2
-      - python-flask-3
-      - python-flask-4
 
 networks:
   haproxy:

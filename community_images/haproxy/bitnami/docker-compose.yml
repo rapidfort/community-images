@@ -34,7 +34,7 @@ services:
       - haproxy
 
   haproxy:
-    image: bitnami/haproxy
+    image: ${HAPROXY_IMAGE_REPOSITORY}:${HAPROXY_IMAGE_TAG}
     user: root
     volumes:
       - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh

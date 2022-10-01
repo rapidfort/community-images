@@ -38,10 +38,9 @@ services:
         python3 app/app.py
 
   haproxy:
-    image: ${HAPROXY_IMAGE_REPOSITORY}:${HAPROXY_IMAGE_TAG}
+    image: bitnami/haproxy
     user: root
     volumes:
-      - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
       - ./configs/haproxy-tcp.cfg:/bitnami/haproxy/conf/haproxy.cfg
     container_name: haproxy
     networks:

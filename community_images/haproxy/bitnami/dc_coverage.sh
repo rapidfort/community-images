@@ -66,7 +66,7 @@ done
 
 # Changing load balancing mode from leastconn to source mode
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/conf/haproxy.cfg /bitnami/haproxy/haproxy.cfg
-docker exec -i "${CONTAINER_NAME}" sed -i 's/leastconn/source/g' /bitnami/haproxy/conf/haproxy.cfg
+docker exec -i "${CONTAINER_NAME}" sed -i 's/leastconn/source/g' /bitnami/haproxy/haproxy.cfg
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/haproxy.cfg /bitnami/haproxy/conf/haproxy.cfg
 # reloading
 docker kill -s HUP haproxy

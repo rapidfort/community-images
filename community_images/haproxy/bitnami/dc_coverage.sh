@@ -51,7 +51,7 @@ curl http://localhost:"${PORT}"/admin
 
 # Changing load balancing mode from roundrobin to leastconn
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/conf/haproxy.cfg /bitnami/haproxy/haproxy.cfg
-sed -i 's/roundrobin/leastconn/g' /bitnami/haproxy/haproxy.cfg
+docker exec -i "${CONTAINER_NAME}" sed -i 's/roundrobin/leastconn/g' /bitnami/haproxy/haproxy.cfg
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/haproxy.cfg /bitnami/haproxy/conf/haproxy.cfg
 # reloading
 docker kill -s HUP haproxy
@@ -66,7 +66,7 @@ done
 
 # Changing load balancing mode from leastconn to source mode
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/conf/haproxy.cfg /bitnami/haproxy/haproxy.cfg
-sed -i 's/leastconn/source/g' /bitnami/haproxy/conf/haproxy.cfg
+docker exec -i "${CONTAINER_NAME}" sed -i 's/leastconn/source/g' /bitnami/haproxy/conf/haproxy.cfg
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/haproxy.cfg /bitnami/haproxy/conf/haproxy.cfg
 # reloading
 docker kill -s HUP haproxy

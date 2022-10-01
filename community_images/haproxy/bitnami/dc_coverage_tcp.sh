@@ -34,7 +34,7 @@ done
 
 # Changing compression algo from identity to gzip
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/conf/haproxy.cfg /bitnami/haproxy/haproxy.cfg
-sed -i 's/identity/gzip/g' /bitnami/haproxy/haproxy.cfg
+docker exec -i "${CONTAINER_NAME}" sed -i 's/identity/gzip/g' /bitnami/haproxy/haproxy.cfg
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/haproxy.cfg /bitnami/haproxy/conf/haproxy.cfg
 # reloading
 docker kill -s HUP haproxy
@@ -49,7 +49,7 @@ done
 
 # Changing compression algo from gzip to deflate
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/conf/haproxy.cfg /bitnami/haproxy/haproxy.cfg
-sed -i 's/gzip/deflate/g' /bitnami/haproxy/conf/haproxy.cfg
+docker exec -i "${CONTAINER_NAME}" sed -i 's/gzip/deflate/g' /bitnami/haproxy/conf/haproxy.cfg
 docker exec -i "${CONTAINER_NAME}" cp /bitnami/haproxy/haproxy.cfg /bitnami/haproxy/conf/haproxy.cfg
 # reloading
 docker kill -s HUP haproxy

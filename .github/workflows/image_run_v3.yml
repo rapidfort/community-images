@@ -300,7 +300,9 @@ jobs:
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   haproxy:
     runs-on: ubuntu-latest
+
     environment: actions-cicd
+
     steps:
       - uses: actions/checkout@v3
       - name: Start minikube
@@ -315,25 +317,19 @@ jobs:
           RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
         run: ./scripts/setup.sh
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami --publish
-      - name: Create images for testing PR
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
-          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        if: github.event_name == 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami
+
+
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}

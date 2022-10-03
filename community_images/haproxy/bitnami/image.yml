@@ -1,0 +1,65 @@
+name: haproxy
+official_name: HAProxy
+official_website: http://www.haproxy.org/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/haproxy
+source_image_repo_link: https://hub.docker.com/r/bitnami/haproxy
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/haproxy/README.md
+rf_docker_link: rapidfort/haproxy
+image_workflow_name: haproxy_bitnami
+github_location: haproxy/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fhaproxy
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/haproxy
+
+  # install haproxy, just replace repository with RapidFort registry
+  $ helm install my-haproxy bitnami/haproxy --set image.repository=rapidfort/haproxy
+what_is_text: |
+  HAProxy is a TCP proxy and a HTTP reverse proxy. It supports SSL termination and offloading, TCP and HTTP normalization, traffic regulation, caching and protection against DDoS attacks.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2`, `2-debian-11`, `2.6.6`, `2.6.6-debian-11-r1`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/haproxy/2/debian-11/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: bitnami
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - haproxy:
+      input_base_tag: "2.6.6-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/haproxy
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      haproxy:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      haproxy:
+        repository: "HAPROXY_IMAGE_REPOSITORY"
+        tag: "HAPROXY_IMAGE_TAG"
+  - type: docker_compose
+    script: dc_coverage_tcp.sh
+    compose_file: docker-compose-tcp.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      haproxy:
+        repository: "HAPROXY_IMAGE_REPOSITORY"
+        tag: "HAPROXY_IMAGE_TAG"
+

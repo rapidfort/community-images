@@ -31,5 +31,7 @@ runtimes:
   - type: docker
     script: docker_coverage.sh
     mysql8-ib:
+      exec_command: --default-authentication-plugin=mysql_native_password
       environment:
         MYSQL_ROOT_PASSWORD: my_root_password
+        MYSQL_ROOT_HOST: %

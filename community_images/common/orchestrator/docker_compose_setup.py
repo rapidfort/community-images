@@ -3,6 +3,7 @@
 import logging
 import os
 import shutil
+import subprocess
 import time
 from utils import Utils
 
@@ -97,9 +98,12 @@ class DockerComposeSetup:
         Utils.run_cmd(cmd.split())
 
         # kill docker-compose setup container
-        cmd = f"docker-compose -f {self.docker_file}"
-        cmd += f" -p {self.namespace_name} down --remove-orphans"
-        Utils.run_cmd(cmd.split())
+        try:
+            cmd = f"docker-compose -f {self.docker_file}"
+            cmd += f" -p {self.namespace_name} down --remove-orphans"
+            Utils.run_cmd(cmd.split())
+        except subprocess.CalledProcessError as excp:
+            logging.info(f"docker-compose down failed due to {excp}")
 
         # remove temp env file
         os.remove(self.temp_env_file)

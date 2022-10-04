@@ -11,6 +11,7 @@ echo "Json params for docker coverage = $JSON"
 
 CONTAINER_NAME=$(jq -r '.container_details."mysql8-ib".name' < "$JSON_PARAMS")
 NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
+MYSQL_HOST=$(jq -r '.container_details."mysql8-ib".ip_address' < "$JSON_PARAMS")
 
 SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
 
@@ -48,7 +49,7 @@ docker run --network="${NETWORK_NAME}" \
     --oltp-table-size=100000 \
     --oltp-tables-count=24 \
     --threads=1 \
-    --mysql-host="${CONTAINER_NAME}" \
+    --mysql-host="${MYSQL_HOST}" \
     --mysql-port=3306 \
     --mysql-user=root \
     --mysql-password="${MYSQL_ROOT_PASSWORD}" \
@@ -68,7 +69,7 @@ docker run --network="${NETWORK_NAME}" \
     --oltp-tables-count=24 \
     --threads=4 \
     --time=45 \
-    --mysql-host="${CONTAINER_NAME}" \
+    --mysql-host="${MYSQL_HOST}" \
     --mysql-port=3306 \
     --mysql-user=root \
     --mysql-password="${MYSQL_ROOT_PASSWORD}" \

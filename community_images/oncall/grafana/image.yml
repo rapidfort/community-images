@@ -44,9 +44,6 @@ docker_links:
 input_registry:
   registry: docker.io
   account: grafana
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - oncall:
       input_base_tag: "v1.0."

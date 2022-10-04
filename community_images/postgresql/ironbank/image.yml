@@ -20,9 +20,6 @@ docker_links:
 input_registry:
   registry: registry1.dso.mil
   account: ironbank/opensource/postgres
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - postgresql12:
       input_base_tag: latest

@@ -52,6 +52,7 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          RAPIDFORT_ACCOUNT: ${{ '{{' }} secrets.RAPIDFORT_ACCOUNT {{ '}}' }}
           IB_DOCKER_USERNAME: ${{ '{{' }} secrets.IB_DOCKER_USERNAME {{ '}}' }}
           IB_DOCKER_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
         if: github.event_name != 'pull_request'
@@ -61,6 +62,7 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          RAPIDFORT_ACCOUNT: ${{ '{{' }} secrets.RAPIDFORT_ACCOUNT {{ '}}' }}
           IB_DOCKER_USERNAME: ${{ '{{' }} secrets.IB_DOCKER_USERNAME {{ '}}' }}
           IB_DOCKER_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
         if: github.event_name == 'pull_request'

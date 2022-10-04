@@ -5,7 +5,6 @@ set -x
 
 # shellcheck disable=SC1091
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
@@ -35,7 +34,7 @@ function test_prometheus() {
     FLASK_POD_NAME="flaskapp"
     FLASK_LOCAL_PORT=$(get_unused_port)
 
-    kubectl run "${FLASK_POD_NAME}" --restart='Never' --image "${RAPIDFORT_ACCOUNT}"/flaskapp --namespace "${NAMESPACE}"
+    kubectl run "${FLASK_POD_NAME}" --restart='Never' --image rapidfort/flaskapp --namespace "${NAMESPACE}"
 
     # wait for flask app pod to come up
     kubectl wait pods "${FLASK_POD_NAME}" -n "${NAMESPACE}" --for=condition=ready --timeout=10m

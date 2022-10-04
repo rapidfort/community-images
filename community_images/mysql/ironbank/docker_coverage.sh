@@ -41,8 +41,7 @@ docker exec -i "${CONTAINER_NAME}" \
 
 # prepare benchmark
 docker run --network="${NETWORK_NAME}" \
-    --name sb-prepare \
-    --rm -i --restart='Never' \
+    --name sb-prepare --rm -i \
     severalnines/sysbench \
     sysbench \
     --db-driver=mysql \
@@ -59,8 +58,7 @@ docker run --network="${NETWORK_NAME}" \
 
 # execute test
 docker run --network="${NETWORK_NAME}" \
-    --name sb-run \
-    --rm -i --restart='Never' \
+    --name sb-run --rm -i \
     severalnines/sysbench \
     sysbench \
     --db-driver=mysql \

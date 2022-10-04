@@ -23,9 +23,6 @@ docker_links:
 input_registry:
   registry: docker.io
   account: bitnami
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - prometheus:
       input_base_tag: "2.37.0-debian-11-r"

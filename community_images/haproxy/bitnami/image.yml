@@ -23,9 +23,6 @@ docker_links:
 input_registry:
   registry: docker.io
   account: bitnami
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - haproxy:
       input_base_tag: "2.6.6-debian-11-r"

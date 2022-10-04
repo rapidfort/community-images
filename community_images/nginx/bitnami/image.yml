@@ -24,9 +24,6 @@ docker_links:
 input_registry:
   registry: docker.io
   account: bitnami
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - nginx:
       input_base_tag: "1.23.1-debian-11-r"

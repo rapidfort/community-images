@@ -23,9 +23,6 @@ docker_links:
 input_registry:
   registry: docker.io
   account: bitnami
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - fluentd:
       input_base_tag: "1.15.1-debian-11-r"

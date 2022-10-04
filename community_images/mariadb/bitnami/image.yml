@@ -28,9 +28,6 @@ docker_links:
 input_registry:
   registry: docker.io
   account: bitnami
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - mariadb:
       input_base_tag: "10.8.4-debian-11-r"

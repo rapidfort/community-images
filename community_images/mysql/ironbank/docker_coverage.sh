@@ -36,7 +36,7 @@ docker exec -i "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"
 
 # create sbtest schema
 docker exec -i "${CONTAINER_NAME}" \
-    -- /bin/bash -c \
+    /bin/bash -c \
     "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
 
 # prepare benchmark

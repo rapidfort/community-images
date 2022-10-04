@@ -21,6 +21,9 @@ done
 # this script keeps track of all things which need to be installed on github actions worker VM
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../community_images/common/scripts/bash_helper.sh
+
 RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-frontrow.rapidfort.io}
 
 if [[ "${EPH_SETUP}" = "no" ]]; then
@@ -63,10 +66,10 @@ kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 sudo apt-get install jq parallel expect -y
 
 # install docker-compose latest
-DC_VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+DC_VERSION="$(with_backoff curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
 DC_DESTINATION=/usr/local/bin/docker-compose
 echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
-sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"
+with_backoff sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"
 sudo chmod 755 $DC_DESTINATION
 
 # upgrade bash, curl, openssl

@@ -43,7 +43,7 @@ docker exec -i "${CONTAINER_NAME}" \
 docker run --network="${NETWORK_NAME}" \
     --name sb-prepare \
     --rm -i --restart='Never' \
-    --image severalnines/sysbench \
+    severalnines/sysbench \
     sysbench \
     --db-driver=mysql \
     --oltp-table-size=100000 \
@@ -61,7 +61,7 @@ docker run --network="${NETWORK_NAME}" \
 docker run --network="${NETWORK_NAME}" \
     --name sb-run \
     --rm -i --restart='Never' \
-    --image severalnines/sysbench \
+    severalnines/sysbench \
     sysbench \
     --db-driver=mysql \
     --report-interval=2 \

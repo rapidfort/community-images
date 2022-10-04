@@ -9,7 +9,7 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-CONTAINER_NAME=$(jq -r '.container_details.mysql8-ib.name' < "$JSON_PARAMS")
+CONTAINER_NAME=$(jq -r '.container_details."mysql8-ib".name' < "$JSON_PARAMS")
 SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
 
 

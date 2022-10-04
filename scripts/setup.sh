@@ -22,7 +22,7 @@ done
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
 # shellcheck disable=SC1091
-. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
+. "${SCRIPTPATH}"/../community_images/common/scripts/bash_helper.sh
 
 RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-frontrow.rapidfort.io}
 
@@ -66,7 +66,7 @@ kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 sudo apt-get install jq parallel expect -y
 
 # install docker-compose latest
-with_backoff DC_VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+with_backoff DC_VERSION="$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
 DC_DESTINATION=/usr/local/bin/docker-compose
 echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 with_backoff sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"

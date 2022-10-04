@@ -18,6 +18,7 @@ REPO_PATH=$(jq -r '.image_tag_details."redis6-ib".repo_path' < "$JSON_PARAMS")
 TAG=$(jq -r '.image_tag_details."redis6-ib".tag' < "$JSON_PARAMS")
 
 # run redis-client tests
-docker run --rm -i --network="${NAMESPACE}" \
+docker run --rm -i --cap-add=SYS_PTRACE \
+    --network="${NAMESPACE}" \
     "${REPO_PATH}:${TAG}" \
     redis-benchmark -h "${REDIS_HOST}" -p 6379 -n 1000 -c 10

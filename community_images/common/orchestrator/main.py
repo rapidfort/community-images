@@ -100,11 +100,11 @@ class Orchestrator:
                 tag_manager.repo_set_mappings
             ).run(Commands.HARDEN_COVERAGE)
 
-        CoverageRunner(
-            self.config_name,
-            self.config_dict,
-            tag_manager.repo_set_mappings
-        ).run(Commands.LATEST_COVERAGE)
+            CoverageRunner(
+                self.config_name,
+                self.config_dict,
+                tag_manager.repo_set_mappings
+            ).run(Commands.LATEST_COVERAGE)
 
     def _auth_registries(self):
         """ Authenticate to registries

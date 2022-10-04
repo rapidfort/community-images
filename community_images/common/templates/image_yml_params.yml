@@ -48,12 +48,6 @@ params:
   - name: input_registry.account
     description: 'accout in registry from which source image is pulled, ex: bitnami'
     value : '""'
-  - name: output_registry.registry
-    description: 'output registry to which docker image should be pused, ex: docker.io'
-    value : '""'
-  - name: output_registry.account
-    description: 'output account to which hardened image will be pushed, usually "rapidfort"'
-    value : '""'
   - name: repo_sets
     description: array of repo_set object describe below.
     value : ['repo_set', 'repo_set']

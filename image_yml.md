@@ -19,8 +19,6 @@
    | `docker_links` | array of all the different image versions build along with link to original Dockerfile | `['""', '""']` | yes |
    | `input_registry.registry` | source registry used to pull docker image, ex: docker.io | `""` | yes |
    | `input_registry.account` | accout in registry from which source image is pulled, ex: bitnami | `""` | yes |
-   | `output_registry.registry` | output registry to which docker image should be pused, ex: docker.io | `""` | yes |
-   | `output_registry.account` | output account to which hardened image will be pushed, usually "rapidfort" | `""` | yes |
    | `repo_sets` | array of repo_set object describe below. | `['repo_set', 'repo_set']` | yes |
    | `needs_common_commands` | needs to run common commands or not | `true` | yes |
    | `runtimes` | array of runtime object describe below. | `['runtime', 'runtime']` | yes |

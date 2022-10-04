@@ -10,8 +10,9 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for docker coverage = $JSON"
 
 CONTAINER_NAME=$(jq -r '.container_details."mysql8-ib".name' < "$JSON_PARAMS")
-SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
+NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 
+SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
 
 
 # shellcheck disable=SC1091
@@ -33,43 +34,45 @@ docker cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${CONTAINER_NAME
 # run mysql_coverage on cluster
 docker exec -i "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"
 
-# # create sbtest schema
-# kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \
-#     -- /bin/bash -c \
-#     "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
+# create sbtest schema
+docker exec -i "${CONTAINER_NAME}" \
+    -- /bin/bash -c \
+    "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
 
-# # prepare benchmark
-# kubectl run -n "${NAMESPACE}" sb-prepare \
-#     --rm -i --restart='Never' \
-#     --image severalnines/sysbench \
-#     --command -- sysbench \
-#     --db-driver=mysql \
-#     --oltp-table-size=100000 \
-#     --oltp-tables-count=24 \
-#     --threads=1 \
-#     --mysql-host="${RELEASE_NAME}" \
-#     --mysql-port=3306 \
-#     --mysql-user=root \
-#     --mysql-password="${MYSQL_ROOT_PASSWORD}" \
-#     --mysql-debug=on \
-#     /usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \
-#     run
+# prepare benchmark
+docker run --network="${NETWORK_NAME}" \
+    --name sb-prepare \
+    --rm -i --restart='Never' \
+    --image severalnines/sysbench \
+    sysbench \
+    --db-driver=mysql \
+    --oltp-table-size=100000 \
+    --oltp-tables-count=24 \
+    --threads=1 \
+    --mysql-host="${CONTAINER_NAME}" \
+    --mysql-port=3306 \
+    --mysql-user=root \
+    --mysql-password="${MYSQL_ROOT_PASSWORD}" \
+    --mysql-debug=on \
+    /usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \
+    run
 
-# # execute test
-# kubectl run -n "${NAMESPACE}" sb-run \
-#     --rm -i --restart='Never' \
-#     --image severalnines/sysbench \
-#     --command -- sysbench \
-#     --db-driver=mysql \
-#     --report-interval=2 \
-#     --mysql-table-engine=innodb \
-#     --oltp-table-size=100000 \
-#     --oltp-tables-count=24 \
-#     --threads=4 \
-#     --time=45 \
-#     --mysql-host="${RELEASE_NAME}" \
-#     --mysql-port=3306 \
-#     --mysql-user=root \
-#     --mysql-password="${MYSQL_ROOT_PASSWORD}" \
-#     /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
-#     run
+# execute test
+docker run --network="${NETWORK_NAME}" \
+    --name sb-run \
+    --rm -i --restart='Never' \
+    --image severalnines/sysbench \
+    sysbench \
+    --db-driver=mysql \
+    --report-interval=2 \
+    --mysql-table-engine=innodb \
+    --oltp-table-size=100000 \
+    --oltp-tables-count=24 \
+    --threads=4 \
+    --time=45 \
+    --mysql-host="${CONTAINER_NAME}" \
+    --mysql-port=3306 \
+    --mysql-user=root \
+    --mysql-password="${MYSQL_ROOT_PASSWORD}" \
+    /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
+    run

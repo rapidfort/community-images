@@ -3,31 +3,35 @@
 set -x
 set -e
 
-# # shellcheck disable=SC1091
-# SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+JSON_PARAMS="$1"
 
-# # shellcheck disable=SC1091
-# # . "${SCRIPTPATH}"/../../common/tests/sysbench_tests.sh
+JSON=$(cat "$JSON_PARAMS")
 
-# JSON_PARAMS="$1"
+echo "Json params for docker coverage = $JSON"
 
-# NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
-# RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
+CONTAINER_NAME=$(jq -r '.container_details.fluentd.name' < "$JSON_PARAMS")
+SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
 
-# # get mysql password
-# MYSQL_ROOT_PASSWORD=my_root_password
 
-# # copy test.sql into container
-# kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${RELEASE_NAME}"-0:/tmp/test.my_sql
 
-# # run script
-# kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/tests/sysbench_tests.sh
 
-# # copy mysql_coverage.sh into container
-# kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${RELEASE_NAME}"-0:/tmp/mysql_coverage.sh
+# get mysql password
+MYSQL_ROOT_PASSWORD=my_root_password
 
-# # run mysql_coverage on cluster
-# kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "/tmp/mysql_coverage.sh"
+# copy test.sql into container
+docker cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${CONTAINER_NAME}":/tmp/test.my_sql
+
+# run script
+docker exec -i "${CONTAINER_NAME}" \
+    /bin/bash -c "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
+
+# copy mysql_coverage.sh into container
+docker cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${CONTAINER_NAME}":/tmp/mysql_coverage.sh
+
+# run mysql_coverage on cluster
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"
 
 # # create sbtest schema
 # kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \

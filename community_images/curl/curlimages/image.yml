@@ -36,9 +36,6 @@ docker_links:
 input_registry:
   registry: docker.io
   account: curlimages
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - curl:
       input_base_tag: "7."

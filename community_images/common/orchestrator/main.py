@@ -100,11 +100,11 @@ class Orchestrator:
                 tag_manager.repo_set_mappings
             ).run(Commands.HARDEN_COVERAGE)
 
-        CoverageRunner(
-            self.config_name,
-            self.config_dict,
-            tag_manager.repo_set_mappings
-        ).run(Commands.LATEST_COVERAGE)
+            CoverageRunner(
+                self.config_name,
+                self.config_dict,
+                tag_manager.repo_set_mappings
+            ).run(Commands.LATEST_COVERAGE)
 
     def _auth_registries(self):
         """ Authenticate to registries
@@ -113,14 +113,11 @@ class Orchestrator:
         input_registry:
             registry: docker.io
             account: bitnami
-        output_registry:
-            registry: docker.io
-            account: rapidfort
         """
         input_registry_url = self.config_dict.get(
             "input_registry", {}).get("registry")
-        output_registry_url = self.config_dict.get(
-            "output_registry", {}).get("registry")
+        output_registry_url = os.environ.get(
+            "RAPIDFORT_OUTPUT_REGISTRY", "docker.io")
 
         input_registry_helper = RegistryHelperFactory.get_registry_helper(
             self.docker_client, input_registry_url)

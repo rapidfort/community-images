@@ -1,7 +1,7 @@
 """ Tag Manager module """
 
 import logging
-
+import os
 
 class TagDetail:
     """ Tag Details class """
@@ -73,12 +73,15 @@ class TagManager:
         self.config_dict = self.orchestrator.config_dict
         self.repo_set_mappings = self._prepare_repo_set_mappings()
 
-    def _get_tag_detail(self, registry_str, registry_helper, repo, base_tag):
-        """Generate tag details object"""
+    def _get_registry_account(self, registry_str):
+        """ Get registry, account from registry_str """
         registry_dict = self.config_dict.get(registry_str)
         registry = registry_dict.get("registry")
         account = registry_dict.get("account")
+        return registry, account
 
+    def _get_tag_detail(self, registry, account, registry_helper, repo, base_tag):
+        """Generate tag details object"""
         latest_tag = None
 
         if base_tag != "latest":
@@ -91,7 +94,7 @@ class TagManager:
             f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")
         return TagDetail(registry, account, repo, latest_tag)
 
-    def _prepare_repo_set_mappings(self):
+    def _prepare_repo_set_mappings(self): # pylint:disable=too-many-locals
         """
         Uses schema to prepare tag list
         repo_sets:
@@ -108,13 +111,22 @@ class TagManager:
                 output_repo = repo_values.get("output_repo", input_repo)
                 base_tag = repo_values.get("input_base_tag")
 
+                input_registry, input_account = self._get_registry_account(
+                    "input_registry"
+                )
+
                 input_tag_detail = self._get_tag_detail(
-                    "input_registry",
+                    input_registry, input_account,
                     self.orchestrator.input_registry_helper,
                     input_repo, base_tag)
 
+                output_registry = os.environ.get(
+                    "RAPIDFORT_OUTPUT_REGISTRY", "docker.io")
+                output_account = os.environ.get(
+                    "RAPIDFORT_ACCOUNT", "rapidfort")
+
                 output_tag_detail = self._get_tag_detail(
-                    "output_registry",
+                    output_registry, output_account,
                     self.orchestrator.output_registry_helper,
                     output_repo, base_tag)
 

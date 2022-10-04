@@ -3,6 +3,7 @@
 import logging
 import os
 import dateutil.parser
+import backoff
 import requests
 from consts import Consts
 
@@ -27,6 +28,7 @@ class RegistryHelper:
         """
         return Consts.LATEST
 
+    @backoff.on_exception(backoff.expo, BaseException, max_time=300)
     def auth(self):
         """ auth docker client """
         self.docker_client.login(

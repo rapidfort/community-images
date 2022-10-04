@@ -98,7 +98,7 @@ class DockerComposeSetup:
 
         # kill docker-compose setup container
         cmd = f"docker-compose -f {self.docker_file}"
-        cmd += f" -p {self.namespace_name} down"
+        cmd += f" -p {self.namespace_name} down --remove-orphans"
         Utils.run_cmd(cmd.split())
 
         # remove temp env file

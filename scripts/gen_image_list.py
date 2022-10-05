@@ -26,8 +26,8 @@ def get_image_dh_data(image_dict):
         print(f"Got image data for {rf_docker_link}")
         print(f"p:{image_dict['pull_count']}, lu:{image_dict['last_updated']}, s:{image_dict['star_count']}")
     else:
-        print("failed to get dh data [%d]: %s ", resp.status_code, resp.texts)
-        sys.exit(1)
+        print("failed to get dh data [%d]: %s ", resp.status_code, resp.text)
+        image_dict["pull_count"] = 0
     return image_dict
 
 

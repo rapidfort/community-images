@@ -19,10 +19,10 @@ docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/Dockerfile)"
 input_registry:
   registry: registry1.dso.mil
-  account: ironbank/opensource/postgres
+  account: ironbank
 repo_sets:
-  - postgresql12:
-      input_base_tag: latest
+  - opensource/postgres/postgresql12:
+      input_base_tag: "12."
       output_repo: postgresql12-ib
 runtimes:
   - type: docker_compose

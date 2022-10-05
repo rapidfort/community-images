@@ -19,10 +19,10 @@ docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/mysql/mysql8/-/blob/development/Dockerfile)"
 input_registry:
   registry: registry1.dso.mil
-  account: ironbank/opensource/mysql
+  account: ironbank
 repo_sets:
-  - mysql8:
-      input_base_tag: latest
+  - opensource/mysql/mysql8:
+      input_base_tag: "8."
       output_repo: mysql8-ib
 runtimes:
   - type: docker

@@ -19,10 +19,10 @@ docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/nginx/nginx/-/blob/development/Dockerfile)"
 input_registry:
   registry: registry1.dso.mil
-  account: ironbank/opensource/nginx
+  account: ironbank
 repo_sets:
-  - nginx:
-      input_base_tag: "latest"
+  - opensource/nginx/nginx:
+      input_base_tag: "1."
       output_repo: nginx-ib
 runtimes:
   - type: docker_compose

@@ -20,9 +20,6 @@ docker_links:
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
-output_registry:
-  registry: docker.io
-  account: rapidfort
 repo_sets:
   - opensource/mysql/mysql8:
       input_base_tag: "8."

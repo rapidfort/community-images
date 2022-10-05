@@ -19,10 +19,10 @@ docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/redis/redis6/-/blob/development/Dockerfile)"
 input_registry:
   registry: registry1.dso.mil
-  account: ironbank/opensource/redis
+  account: ironbank
 repo_sets:
-  - redis6:
-      input_base_tag: latest
+  - opensource/redis/redis6:
+      input_base_tag: "6."
       output_repo: redis6-ib
 runtimes:
   - type: docker_compose

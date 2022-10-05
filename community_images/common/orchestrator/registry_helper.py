@@ -4,6 +4,8 @@ import logging
 import os
 import dateutil.parser
 import backoff
+import urllib.parse
+from requests.auth import HTTPBasicAuth
 import requests
 from consts import Consts
 
@@ -131,6 +133,7 @@ class DockerHubHelper(RegistryHelper):
 
 class IronBankHelper(RegistryHelper):
     """ Iron bank helper class """
+    BASE_URL = "https://registry1.dso.mil"
 
     def __init__(self, docker_client, registry):
         username = os.environ.get("IB_DOCKER_USERNAME")
@@ -141,6 +144,59 @@ class IronBankHelper(RegistryHelper):
     @staticmethod
     def registry_url():
         return "registry1.dso.mil"
+
+    def get_latest_tag(self, account, repo, search_str):
+        """
+        Find latest tags using search_str"
+        """
+        tags = self._fetch_tags(account, repo)
+
+        tags = filter(lambda tag: search_str in tag["name"], tags)
+        tags = list(filter(
+            lambda tag: "sha" not in tag["name"],
+            tags))
+
+        if len(tags) == 0:
+            return None
+
+        tags.sort(key=lambda tag: dateutil.parser.parse(
+            tag["push_time"]))
+        if tags:
+            return tags[-1]["name"]
+        return None
+
+
+    def _fetch_tags(self, account, repo):
+        """
+        Get tags from the dockerhub registry API
+        """
+        tags = []
+        url_safe_repo = urllib.parse.quote(repo, safe='')
+        url = f"{self.BASE_URL}/api/v2.0/projects/{account}/repositories/{url_safe_repo}/artifacts?page_size=100"
+        auth = HTTPBasicAuth(self.username, self.password)
+
+        for page in range(0,100):
+            page_url = f"{url}&page={page}"
+            resp = requests.get(page_url, auth=auth, timeout=30)
+            logging.debug(f"page_url : {page_url}, {resp.status_code}, {resp.text}")
+            if 200 <= resp.status_code < 300:
+                artifacts = resp.json()
+                if len(artifacts) == 0:
+                    break
+
+                for artifact in artifacts:
+                    local_tag_list = artifact.get("tags")
+                    logging.debug(f"artifact={artifact}")
+                    if local_tag_list:
+                        tags += local_tag_list
+            else:
+                break
+
+        return tags
+
+    def get_auth_header(self):
+        """ get auth header for JWT """
+        return
 
 
 class RegistryHelperFactory:

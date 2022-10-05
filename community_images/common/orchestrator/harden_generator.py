@@ -78,7 +78,7 @@ class HardenGenerator:
                 if tag_mapping.input_tag_details.account == Consts.BITNAMI:
                     self._roll_over_bitnami_tags(output_tag_details)
 
-    @backoff.on_exception(backoff.expo, BaseException, max_time=300)
+    @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
     def _run_harden_command(self, rfharden_cmd): # pylint: disable=unused-argument
         """ Run harden command with backoff """
         Utils.run_cmd(rfharden_cmd.split())

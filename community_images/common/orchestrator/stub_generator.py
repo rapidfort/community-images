@@ -71,7 +71,7 @@ class StubGenerator:
                 output_tag_details.stub_tag)
             logging.info(f"docker client push result: {result}")
 
-    @backoff.on_exception(backoff.expo, BaseException, max_time=300)
+    @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
     def _run_stub_command(self, tag): # pylint: disable=unused-argument
         """ Run stub command with backoff """
         Utils.run_cmd(["rfstub", tag])

@@ -2,6 +2,7 @@
 
 import os
 import logging
+import backoff
 from consts import Consts
 from utils import Utils
 
@@ -49,10 +50,11 @@ class HardenGenerator:
 
             output_tag_details = tag_mapping.output_tag_details
 
-            cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta"
+            rfharden_cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta"
             if rfignore_exists:
-                cmd += f" --profile {rfignore_path}"
-            Utils.run_cmd(cmd.split())
+                rfharden_cmd += f" --profile {rfignore_path}"
+
+            self._run_harden_command(rfharden_cmd)
 
             if publish:
                 # tag input stubbed image to output stubbed image
@@ -75,6 +77,11 @@ class HardenGenerator:
 
                 if tag_mapping.input_tag_details.account == Consts.BITNAMI:
                     self._roll_over_bitnami_tags(output_tag_details)
+
+    @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
+    def _run_harden_command(self, rfharden_cmd): # pylint: disable=unused-argument
+        """ Run harden command with backoff """
+        Utils.run_cmd(rfharden_cmd.split())
 
     def _tag_util(self, full_repo_path, current_tag, new_tag):
         """ add new tag to existing image """

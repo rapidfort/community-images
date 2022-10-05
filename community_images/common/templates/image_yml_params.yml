@@ -105,6 +105,14 @@ k8s_runtime_params:
     description: additional key value parameters rendered as --set key=value for helm install command
     value: '""'
     required: no
+  - name: readiness_check_script
+    description: readiness check script to run for k8s deployment
+    value: '""'
+    required: no
+  - name: readiness_check_timeout
+    description: timeout for readiness check script to run in seconds
+    value: '300'
+    required: no
   - name: image_keys.<repo>.repository
     description: key to use for helm install command to specify image repository, needed for multi container system
     value : 'image.repository'

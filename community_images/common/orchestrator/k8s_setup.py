@@ -59,9 +59,9 @@ class K8sSetup:
 
         # if health check script is available, use the health check script to wait
         # for cluster health
-        if self.runtime_props.get("health_check_script", ""):
+        if self.runtime_props.get("readiness_check_script", ""):
             try:
-                self.run_health_check()
+                self.run_readiness_check_script()
             except subprocess.CalledProcessError:
                 self.cleanup()
                 raise
@@ -76,7 +76,7 @@ class K8sSetup:
                 if not readiness_wait_deployments_suffix:
                     cmd = f"kubectl wait deployments {self.release_name}"
                     cmd += f" -n {self.namespace_name}"
-                    cmd += " --for=condition=Available=True --timeout=20m"
+                    cmd += " --for=condition=ready --timeout=20m"
                     Utils.run_cmd(cmd.split())
                 else:
                     for deployment_suffix in readiness_wait_deployments_suffix:
@@ -196,27 +196,18 @@ class K8sSetup:
         logging.info(f"cmd: {cmd}")
         Utils.run_cmd(cmd.split())
 
-    def run_health_check(self):
+    def run_readiness_check_script(self):
         """ Run health check """
-        health_check_script = self.runtime_props.get("health_check_script", "")
-        if health_check_script is None:
+        readiness_check_script = self.runtime_props.get("readiness_check_script", "")
+        if readiness_check_script is None:
             return
 
-        logging.info(f"running health check script: {health_check_script}")
-        timeout = self.runtime_props.get("health_check_timeout", 300)
+        logging.info(f"running readiness check script: {readiness_check_script}")
+        timeout = self.runtime_props.get("readiness_check_timeout", 300)
         # run the health check script
-        script_path = f"{self.image_script_dir}/{health_check_script}"
+        script_path = f"{self.image_script_dir}/{readiness_check_script}"
         cmd = f"bash {script_path} {self.namespace_name} {self.release_name}"
-        try:
-            output = subprocess.check_output(
-                cmd.split(),
-                stderr=subprocess.STDOUT,
-                timeout=timeout
-            ).decode("utf-8")
-        except subprocess.CalledProcessError as ex:
-            logging.info(f"Error running health check script: {ex.output}")
-            raise
-        logging.info(f"health check output: {output}")
+        Utils.run_cmd(cmd.split(), timeout=timeout)
 
     def cleanup(self):
         """ clean up k8s namespace """

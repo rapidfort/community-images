@@ -98,9 +98,9 @@ spec:
         return True
 
     @staticmethod
-    def run_cmd(cmd_array):
+    def run_cmd(cmd_array, timeout=None):
         """ runs commands and dumps logs to logging.info """
         cmd = " ".join(cmd_array)
         logging.info(f"cmd: {cmd}")
-        output_pipe = subprocess.check_output(cmd_array, stderr=sys.stdout)
+        output_pipe = subprocess.check_output(cmd_array, stderr=sys.stdout, timeout=timeout)
         logging.info("%s", output_pipe.decode("utf-8"))

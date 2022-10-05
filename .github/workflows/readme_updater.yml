@@ -162,6 +162,14 @@ jobs:
           repository: rapidfort/mysql
           readme-filepath: ./community_images/mysql/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MySQL
+      - name: Docker Hub Description MySQL IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/mysql8-ib
+          readme-filepath: ./community_images/mysql/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for MySQL IronBank
       - name: Docker Hub Description NATS
         uses: peter-evans/dockerhub-description@v3
         with:

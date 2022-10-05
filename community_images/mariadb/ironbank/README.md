@@ -37,7 +37,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 ## What is MariaDB IronBank?
 
-> mariadb is the world's most popular open source database. With its proven performance, reliability and ease-of-use, mariadb has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.
+> MariaDB Server is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
 
 
 [Overview of MariaDB IronBank](https://www.mariadb.com/)
@@ -49,14 +49,14 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
-<a href="https://repo1.dso.mil/dsop/opensource/mariadb/mariadb/-/blob/development/README.md">
+<a href="https://repo1.dso.mil/dsop/opensource/mariadb/mariadb106/-/blob/development/Dockerfile">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>
 
 ```sh
-$ docker run --name some-mariadb -e mariadb_ROOT_PASSWORD=my-secret-pw -d rapidfort/mariadb-ib:latest
+$ docker run --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  rapidfort/mariadb-ib:latest
 
 ```
 
@@ -82,7 +82,7 @@ RapidFort’s hardened [rapidfort/mariadb-ib][rf-dh-image-link] image has been o
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/mariadb/mariadb/-/blob/development/Dockerfile)
+* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/mariadb/mariadb106/-/blob/development/Dockerfile)
 
 ## Need support
 

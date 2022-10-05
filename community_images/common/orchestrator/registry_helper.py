@@ -180,7 +180,10 @@ class IronBankHelper(RegistryHelper):
         if 200 <= resp.status_code < 300:
             artifacts = resp.json()
             for artifact in artifacts:
-                tags += artifact.get("tags",[])
+                local_tag_list = artifact.get("tags")
+                logging.debug(artifact)
+                if local_tag_list:
+                    tags += local_tag_list
 
         return tags
 

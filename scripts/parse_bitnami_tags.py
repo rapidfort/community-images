@@ -1,28 +1,40 @@
+import re
 import requests
 import json
-url = "https://raw.githubusercontent.com/bitnami/containers/main/bitnami/envoy/README.md"
-import re
-r=requests.get(url)
-
-docker_lines = []
-for line in r.text.split('\n'):
-    if "/Dockerfile" in line:
-        docker_lines.append(line[2:])
 
 
-for dl in docker_lines:
-    dl_search = re.search("\[(.*?)\]", dl)
-    if dl_search:
-        dl_array = f"[{dl_search.group(1)}]"
-        dl_array = dl_array.replace('`','"')
+def get_docker_lines(container_name):
+    url = "https://raw.githubusercontent.com/bitnami/"
+    url += f"containers/main/bitnami/{container_name}/README.md"
+    r=requests.get(url)
+    docker_lines = []
 
-        b1=dl_array.find("(")
-        if b1:
-            dl_array=f"{dl_array[:b1]}]"
+    if 199 < r.status_code < 400:
+        for line in r.text.split('\n'):
+            if "/Dockerfile" in line:
+                docker_lines.append(line[2:])
+    return docker_lines
 
-        ar = json.loads(dl_array)
-        abs_tag = ar[3]
-        rloc = abs_tag.find("-r")
-        print(abs_tag[:rloc+2])
+def get_input_base_tags(docker_lines):
+    base_tags = []
+    for dl in docker_lines:
+        dl_search = re.search("\[(.*?)\]", dl)
+        if dl_search:
+            dl_array = f"[{dl_search.group(1)}]"
+            dl_array = dl_array.replace('`','"')
 
+            b1=dl_array.find("(")
+            if b1:
+                dl_array=f"{dl_array[:b1]}]"
 
+            ar = json.loads(dl_array)
+            abs_tag = ar[3]
+            rloc = abs_tag.find("-r")
+            base_tags.append(abs_tag[:rloc+2])
+    return base_tags
+
+dl = get_docker_lines("envoy")
+print(dl)
+
+bt = get_input_base_tags(dl)
+print(bt)

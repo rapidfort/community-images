@@ -45,6 +45,8 @@
    | `tls_certs.secret_name` | secret name to store tls certs | `""` | yes |
    | `tls_certs.common_name` | common name to use in generated tls certs, defaults to localhost | `localhost` | yes |
    | `helm_additional_params` | additional key value parameters rendered as --set key=value for helm install command | `""` | False |
+   | `readiness_check_script` | readiness check script to run for k8s deployment | `""` | False |
+   | `readiness_check_timeout` | timeout for readiness check script to run in seconds | `300` | False |
    | `image_keys.<repo>.repository` | key to use for helm install command to specify image repository, needed for multi container system | `image.repository` | False |
    | `image_keys.<repo>.tag` | key to use for helm install command to specify image tag, needed for multi container system | `image.tag` | False |
 

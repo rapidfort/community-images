@@ -57,48 +57,58 @@ class K8sSetup:
         # bring up the k8s resources
         self.create_k8s_cluster()
 
-        # waiting for pod to be ready
-        logging.info("waiting for pod to be ready")
-        wait_complete = False
-        try:
-            readiness_wait_deployments_suffix = self.runtime_props.get(
-                "readiness_wait_deployments_suffix")
-            if not readiness_wait_deployments_suffix:
-                cmd = f"kubectl wait deployments {self.release_name}"
-                cmd += f" -n {self.namespace_name}"
-                cmd += " --for=condition=Available=True --timeout=20m"
-                Utils.run_cmd(cmd.split())
-            else:
-                for deployment_suffix in readiness_wait_deployments_suffix:
-                    cmd = f"kubectl wait deployments {self.release_name}-{deployment_suffix}"
-                    cmd += f" -n {self.namespace_name}"
-                    cmd += " --for=condition=Available=True --timeout=20m"
-                    Utils.run_cmd(cmd.split())
-
-            wait_complete = True
-        except subprocess.CalledProcessError:
-            logging.info(
-                "Wait deployment command failed, try waiting for pod-0")
-
-        if not wait_complete:
+        # if health check script is available, use the health check script to wait
+        # for cluster health
+        if self.runtime_props.get("readiness_check_script", ""):
             try:
-                readiness_wait_pod_name_suffix = self.runtime_props.get(
-                    "readiness_wait_pod_name_suffix", ["0"])
-                for pod_name_suffix in readiness_wait_pod_name_suffix:
-                    cmd = ""
-                    if pod_name_suffix == "":
-                        cmd += f"kubectl wait pods {self.release_name}"
-                    else:
-                        cmd += f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
+                self.run_readiness_check_script()
+            except subprocess.CalledProcessError:
+                self.cleanup()
+                raise
+
+        else:
+            # waiting for pod to be ready
+            logging.info("waiting for pod to be ready")
+            wait_complete = False
+            try:
+                readiness_wait_deployments_suffix = self.runtime_props.get(
+                    "readiness_wait_deployments_suffix")
+                if not readiness_wait_deployments_suffix:
+                    cmd = f"kubectl wait deployments {self.release_name}"
                     cmd += f" -n {self.namespace_name}"
                     cmd += " --for=condition=ready --timeout=20m"
                     Utils.run_cmd(cmd.split())
+                else:
+                    for deployment_suffix in readiness_wait_deployments_suffix:
+                        cmd = f"kubectl wait deployments {self.release_name}-{deployment_suffix}"
+                        cmd += f" -n {self.namespace_name}"
+                        cmd += " --for=condition=Available=True --timeout=20m"
+                        Utils.run_cmd(cmd.split())
+
                 wait_complete = True
             except subprocess.CalledProcessError:
                 logging.info(
-                    f"Wait for {pod_name_suffix} also failed, reraising error")
-                self.cleanup()
-                raise
+                    "Wait deployment command failed, try waiting for pod-0")
+
+            if not wait_complete:
+                try:
+                    readiness_wait_pod_name_suffix = self.runtime_props.get(
+                        "readiness_wait_pod_name_suffix", ["0"])
+                    for pod_name_suffix in readiness_wait_pod_name_suffix:
+                        cmd = ""
+                        if pod_name_suffix == "":
+                            cmd += f"kubectl wait pods {self.release_name}"
+                        else:
+                            cmd += f"kubectl wait pods {self.release_name}-{pod_name_suffix}"
+                        cmd += f" -n {self.namespace_name}"
+                        cmd += " --for=condition=ready --timeout=20m"
+                        Utils.run_cmd(cmd.split())
+                    wait_complete = True
+                except subprocess.CalledProcessError:
+                    logging.info(
+                        f"Wait for {pod_name_suffix} also failed, reraising error")
+                    self.cleanup()
+                    raise
 
         return {
             "namespace_name": self.namespace_name,
@@ -185,6 +195,19 @@ class K8sSetup:
         """ Create helm chart """
         logging.info(f"cmd: {cmd}")
         Utils.run_cmd(cmd.split())
+
+    def run_readiness_check_script(self):
+        """ Run health check """
+        readiness_check_script = self.runtime_props.get("readiness_check_script", "")
+        if readiness_check_script is None:
+            return
+
+        logging.info(f"running readiness check script: {readiness_check_script}")
+        timeout = self.runtime_props.get("readiness_check_timeout", 300)
+        # run the health check script
+        script_path = f"{self.image_script_dir}/{readiness_check_script}"
+        cmd = f"bash {script_path} {self.namespace_name} {self.release_name}"
+        Utils.run_cmd(cmd.split(), timeout=timeout)
 
     def cleanup(self):
         """ clean up k8s namespace """

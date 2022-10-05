@@ -19,10 +19,10 @@ docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/mariadb/mariadb106/-/blob/development/Dockerfile)"
 input_registry:
   registry: registry1.dso.mil
-  account: ironbank/opensource/mariadb
+  account: ironbank
 repo_sets:
-  - mariadb:
-      input_base_tag: latest
+  - opensource/mariadb/mariadb:
+      input_base_tag: "10."
       output_repo: mariadb-ib
 runtimes:
   - type: docker

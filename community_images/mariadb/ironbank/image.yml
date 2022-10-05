@@ -1,0 +1,35 @@
+name: mariadb-ib
+official_name: MariaDB IronBank
+official_website: https://www.mariadb.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/mariadb/mariadb
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fmariadb%2Fmariadb
+source_image_readme: https://repo1.dso.mil/dsop/opensource/mariadb/mariadb106/-/blob/development/Dockerfile
+rf_docker_link: rapidfort/mariadb-ib
+image_workflow_name: mariadb_ironbank
+github_location: mariadb/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmariadb%2Fmariadb
+usage_instructions: |
+  $ docker run --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  rapidfort/mariadb-ib:latest
+what_is_text: |
+  MariaDB Server is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/mariadb/mariadb106/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank/opensource/mariadb
+repo_sets:
+  - mariadb:
+      input_base_tag: latest
+      output_repo: mariadb-ib
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    wait_time_sec: 60
+    mariadb-ib:
+      exec_command: --default-authentication-plugin=mysql_native_password
+      environment:
+        MARIADB_ROOT_PASSWORD: my_root_password
+        MARIADB_ROOT_HOST: "%"

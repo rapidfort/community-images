@@ -70,6 +70,7 @@ class StubGenerator:
             result = stub_image.tag(output_tag_details.full_stub_tag)
 
             # push stubbed image to output repo
+            logging.warning("output_tag_details: [{output_tag_details}]")
             result = self.docker_client.api.push(
                 output_tag_details.full_repo_path,
                 output_tag_details.stub_tag)

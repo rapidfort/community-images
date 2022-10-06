@@ -92,7 +92,7 @@ class DockerHubHelper(RegistryHelper):
             url = f"{self.BASE_URL}/v2/repositories/{repo}/tags?page_size=25"
 
         while url:
-            resp = requests.get(url, timeout=30)
+            resp = requests.get(url, timeout=60)
             logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
             if 200 <= resp.status_code < 300:
                 tag_objs = resp.json()
@@ -177,7 +177,7 @@ class IronBankHelper(RegistryHelper):
 
         for page in range(0,100):
             page_url = f"{url}&page={page}"
-            resp = requests.get(page_url, auth=auth, timeout=30)
+            resp = requests.get(page_url, auth=auth, timeout=120)
             logging.debug(f"page_url : {page_url}, {resp.status_code}, {resp.text}")
             if 200 <= resp.status_code < 300:
                 artifacts = resp.json()

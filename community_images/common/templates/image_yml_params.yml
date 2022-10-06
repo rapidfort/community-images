@@ -13,10 +13,10 @@ params:
     description: "source image provider, ex: Bitnami"
     value: '""'
   - name: source_image_repo
-    description: soucre image docker repo, used for linking image in frontrow
+    description: source image docker repo, used for linking image in frontrow
     value: '""'
   - name: source_image_repo_link
-    description: soucre image docker repo url
+    description: source image docker repo url
     value: '""'
   - name: rf_docker_link
     description: 'rapidfort docker link, ex: rapidfort/<image>'

@@ -23,10 +23,10 @@ docker_links:
   - "[`3.x.x-ubuntu`, `3.x-ubuntu`, `ubuntu`, (latest/Dockerfile)](https://github.com/Kong/docker-kong/blob/5a2610d900717a4a6c8ee98bc421d0d4599b126f/ubuntu/Dockerfile)"
 input_registry:
   registry: docker.io
-  account: kong
+  account: _
 repo_sets:
   - kong:
-      input_base_tag: "3.0.0-ubuntu"
+      input_base_tag: "-ubuntu"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

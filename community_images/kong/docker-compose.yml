@@ -2,9 +2,8 @@ version: '2'
 
 services:
   template:
-    image: ${IMAGE}:${TAG}
+    image: ${KONG_IMAGE_REPOSITORY}:${KONG_IMAGE_TAG}
     user: root
     cap_add:
       - SYS_PTRACE
-    ports:
-      - '8080'
+

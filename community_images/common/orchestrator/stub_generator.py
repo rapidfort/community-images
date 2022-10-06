@@ -39,12 +39,18 @@ class StubGenerator:
         """
         Generate stubs for tag mappings
         """
+        logging.info("In generate_stub_for_tag_mappings")
         for tag_mapping in tag_mappings:
             if not tag_mapping.needs_generation:
                 continue
 
             input_tag_details = tag_mapping.input_tag_details
             output_tag_details = tag_mapping.output_tag_details
+            logging.info(
+                f"output tag:[{output_tag_details.full_stub_tag}]")
+            logging.info(
+                f"input tag:[{input_tag_details.full_stub_tag}]")
+
 
             if tag_mapping.input_tag_details.account == Consts.BITNAMI:
                 # create image with RapidFort banner
@@ -62,10 +68,6 @@ class StubGenerator:
             stub_image = self.docker_client.images.get(
                 input_tag_details.full_stub_tag)
             result = stub_image.tag(output_tag_details.full_stub_tag)
-            logging.info(
-                f"output tag:[{output_tag_details.full_stub_tag}]")
-            logging.info(
-                f"input tag:[{input_tag_details.full_stub_tag}]")
 
             # push stubbed image to output repo
             result = self.docker_client.api.push(

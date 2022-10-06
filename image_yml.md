@@ -7,8 +7,8 @@
    | `official_name` | Official name of the image | `""` | yes |
    | `official_website` | official website of the image | `""` | yes |
    | `source_image_provider` | source image provider, ex: Bitnami | `""` | yes |
-   | `source_image_repo` | soucre image docker repo, used for linking image in frontrow | `""` | yes |
-   | `source_image_repo_link` | soucre image docker repo url | `""` | yes |
+   | `source_image_repo` | source image docker repo, used for linking image in frontrow | `""` | yes |
+   | `source_image_repo_link` | source image docker repo url | `""` | yes |
    | `rf_docker_link` | rapidfort docker link, ex: rapidfort/<image> | `""` | yes |
    | `image_workflow_name` | used for generating github action file name | `""` | yes |
    | `github_location` | relative location of image folder in community_image | `""` | yes |

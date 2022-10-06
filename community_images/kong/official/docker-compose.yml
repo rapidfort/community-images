@@ -6,4 +6,5 @@ services:
     user: root
     cap_add:
       - SYS_PTRACE
-
+    ports:
+      - '8080'

@@ -1,0 +1,45 @@
+name: traefik
+official_name: TRAEFIK
+official_website: https://traefik.io/
+source_image_provider: Traefik
+source_image_repo: docker.io/library/traefik
+source_image_repo_link: https://hub.docker.com/_/traefik
+source_image_readme: https://github.com/traefik/traefik-library-image/blob/master/README.md
+rf_docker_link: rapidfort/traefik
+image_workflow_name: traefik
+github_location: traefik/traefik
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Ftraefik%2Ftraefik
+usage_instructions: |
+  $ helm repo add traefik https://helm.traefik.io/traefik
+
+  # install traefik, just replace repository with RapidFort registry
+  $ helm install traefik traefik/traefik --set image.repository=rapidfort/traefik
+what_is_text: |
+  Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy. Traefik integrates with your existing infrastructure components (Docker, Swarm mode, Kubernetes, Marathon, Consul, Etcd, Rancher, Amazon ECS, ...) and configures itself automatically and dynamically. Pointing Traefik at your orchestrator should be the only configuration step you need.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2.9.1`, `2.9.1`, `2.9`, `banon`, `latest` (0f110537214ee33ecc4595e7715f2db74cf5b08e/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/0f110537214ee33ecc4595e7715f2db74cf5b08e/alpine/Dockerfile)"
+  # - "[`1.7.34`, `1.7`, `maroilles` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)"
+  # - "[`1.7.34-alpine`, `1.7-alpine`, `maroilles-alpine` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: traefik
+repo_sets:
+  - traefik:
+    input_base_tag: "v2.9.1"
+  # - traefik:
+  #   input_base_tag: "1.23.1-debian-11-r"
+  # - traefik:
+  #   input_base_tag: "1.23.1-debian-11-r"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      traefik:
+        repository: "TRAEFIK_IMAGE_REPOSITORY"
+        tag: "TRAEFIK_IMAGE_TAG"

@@ -92,7 +92,6 @@ services:
       timeout: 10s
       retries: 10
     restart: on-failure:5
-    read_only: true
     volumes:
       - kong_prefix_vol:${KONG_PREFIX:-/var/run/kong}
       - kong_tmp_vol:/tmp

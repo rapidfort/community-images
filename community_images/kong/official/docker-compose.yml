@@ -95,7 +95,7 @@ services:
     volumes:
       - kong_prefix_vol:${KONG_PREFIX:-/var/run/kong}
       - kong_tmp_vol:/tmp
-      - ./config:/opt/kong
+      - ./:/opt/kong
     security_opt:
       - no-new-privileges
 

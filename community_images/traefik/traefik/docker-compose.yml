@@ -2,9 +2,16 @@ version: '2'
 
 services:
   template:
-    image: ${IMAGE}:${TAG}
-    user: root
+    image: ${TRAEFIK_IMAGE_REPOSITORY}:${TRAEFIK_IMAGE_TAG}
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
+    ports:
+      # The HTTP port
+      - "280:80"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
     cap_add:
       - SYS_PTRACE
-    ports:
-      - '8080'

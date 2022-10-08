@@ -24,7 +24,7 @@ class Orchestrator:
         self.docker_client = docker.from_env()
         self.publish = args.publish
         self.force_publish = args.force_publish
-        self.config_name = self.args.config
+        self.config_name = self.args.config.strip("/")
         self.input_registry_helper, self.output_registry_helper = self._auth_registries()
 
     def _load_config(self) -> dict:

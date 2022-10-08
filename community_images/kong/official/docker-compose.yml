@@ -102,8 +102,6 @@ services:
       - kong_prefix_vol:${KONG_PREFIX:-/var/run/kong}
       - kong_tmp_vol:/tmp
       - ./:/opt/kong
-    security_opt:
-      - no-new-privileges
 
   db:
     image: postgres:9.5

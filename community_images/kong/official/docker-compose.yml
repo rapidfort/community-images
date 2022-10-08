@@ -27,6 +27,8 @@ services:
     image: ${KONG_IMAGE_REPOSITORY}:${KONG_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
+      - SETUID
+      - SETGID
     command: kong migrations bootstrap
     profiles: ["database"]
     depends_on:
@@ -43,6 +45,8 @@ services:
     image: ${KONG_IMAGE_REPOSITORY}:${KONG_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
+      - SETUID
+      - SETGID
     command: kong migrations up && kong migrations finish
     profiles: ["database"]
     depends_on:
@@ -59,6 +63,8 @@ services:
     image: ${KONG_IMAGE_REPOSITORY}:${KONG_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
+      - SETUID
+      - SETGID
     user: "${KONG_USER:-kong}"
     environment:
       <<: *kong-env

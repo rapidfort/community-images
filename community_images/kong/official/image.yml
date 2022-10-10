@@ -30,6 +30,7 @@ repo_sets:
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
+    wait_time_sec: 60
     compose_file: docker-compose.yml
     image_keys:
       kong:

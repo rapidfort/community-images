@@ -40,7 +40,7 @@ services:
   # Kong database migration
   #######################################
   kong-migration:
-    image: ${KONG_DOCKER_TAG:-kong:latest}
+    image: ${KONG_IMAGE_REPOSITORY}:${KONG_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
       - SETUID
@@ -64,7 +64,7 @@ services:
   # Kong: The API Gateway
   #######################################
   kong:
-    image: ${KONG_DOCKER_TAG:-kong:latest}
+    image: ${KONG_IMAGE_REPOSITORY}:${KONG_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
       - SETUID

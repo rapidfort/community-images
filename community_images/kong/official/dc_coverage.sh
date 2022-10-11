@@ -126,8 +126,9 @@ curl -X POST http://localhost:8001/consumers/vgupta/plugins \
    --data "config.content_type=application/json; charset=utf-8" \
    --data "config.cache_ttl=30" \
    --data "config.strategy=memory"
-curl -i -s -XGET http://localhost:8000/mock/requests -- --data "consumer.username=vgupta"| grep X-Cache
-curl -i -s -XGET http://localhost:8000/mock/requests -- --data "consumer.username=vgupta"| grep X-Cache
+curl -i -s -XGET http://localhost:8000/mock/requests --data "consumer.username=vgupta"| grep X-Cache
+curl -i -s -XGET http://localhost:8000/mock/requests --data "consumer.username=vgupta"| grep X-Cache
+
 ## END PROXY CACHING ##
 
 ##############

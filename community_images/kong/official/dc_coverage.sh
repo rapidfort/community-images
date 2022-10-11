@@ -59,7 +59,7 @@ curl -i -X POST http://localhost:8001/plugins \
   --data config.policy=local
 
 # Validate  rate limiting
-for _ in {1..6}; do curl -s -i localhost:8000/mock/request; echo; sleep 1; done
+for _ in {1..6}; do curl -i localhost:8000/mock/request; echo; sleep 1; done
 
 # Service level rate limiting
 curl -X POST http://localhost:8001/services/example_service/plugins \
@@ -79,7 +79,7 @@ curl -X POST http://localhost:8001/plugins \
    --data "consumer.username=ddooley" \
    --data "config.second=2"
 
-for _ in {1..3}; do curl -s -i http://localhost:8000/mock/request --data "consumer.username=ddooley"; echo; sleep 1; done
+for _ in {1..3}; do curl -i http://localhost:8000/mock/request --data "consumer.username=ddooley"; echo; sleep 1; done
 
 ## END RATE LIMITING ##
 

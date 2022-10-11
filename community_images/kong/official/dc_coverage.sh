@@ -79,7 +79,7 @@ curl -X POST http://localhost:8001/plugins \
    --data "consumer.username=ddooley" \
    --data "config.second=2"
 
-for _ in {1..3}; do curl -s -i localhost:8000/mock/request --data "consumer.username=ddooley"; echo; sleep 1; done
+for _ in {1..3}; do curl -s -i http://localhost:8000/mock/request --data "consumer.username=ddooley"; echo; sleep 1; done
 ## END RATE LIMITING ##
 
 
@@ -156,7 +156,7 @@ curl -i http://localhost:8000/mock/request \
 curl -X POST http://localhost:8001/services/example_service/plugins \
      --data name=key-auth
 # Route based key authentication
-curl -X POST http://localhost:8001/routes/example_route/plugins \\
+curl -X POST http://localhost:8001/routes/example_route/plugins \
     --data name=key-auth
 ## END KEY AUTH ##
 

@@ -5,6 +5,8 @@ volumes:
 
 networks:
  kong-net:
+  external: false
+
 
 services:
 
@@ -23,7 +25,6 @@ services:
       POSTGRES_USER: kong
       POSTGRES_PASSWORD: kongpass
       POSTGRES_DB: kong
-      POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
       - "5432:5432"
     healthcheck:
@@ -79,6 +80,7 @@ services:
       KONG_ADMIN_LISTEN: 0.0.0.0:8001
     depends_on:
       - kong-database
+      - kong-migration
     healthcheck:
       test: ["CMD", "kong", "health"]
       interval: 10s
@@ -100,7 +102,7 @@ services:
       - kong-net
     restart: on-failure
     depends_on:
-      - kong-database
+      - kong-migration
 
   #######################################
   # Konga: Kong GUI
@@ -115,6 +117,6 @@ services:
       DB_URI: postgresql://kong:kongpass@kong-database:5432/konga
       NODE_ENV: production
     depends_on:
-      - kong-database
+      - kong-prepare
     ports:
       - "1337:1337"

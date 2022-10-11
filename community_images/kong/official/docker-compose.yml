@@ -40,6 +40,8 @@ services:
     image: ${KONG_DOCKER_TAG:-kong:latest}
     cap_add:
       - SYS_PTRACE
+      - SETUID
+      - SETGID
     command: kong migrations bootstrap
     networks:
       - kong-net
@@ -60,6 +62,8 @@ services:
     image: ${KONG_DOCKER_TAG:-kong:latest}
     cap_add:
       - SYS_PTRACE
+      - SETUID
+      - SETGID
     restart: on-failure
     networks:
       - kong-net

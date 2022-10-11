@@ -97,8 +97,8 @@ curl -i -X POST http://localhost:8001/plugins \
   --data "config.strategy=memory"
 
 # Get a cache MISS, then a HIT
-curl -i -X GET http://localhost:8000/mock/requests | grep X-Cache
-curl -i -X GET http://localhost:8000/mock/requests | grep X-Cache
+curl -i -X GET http://localhost:8000/mock/requests
+curl -i -X GET http://localhost:8000/mock/requests
 
 # Service level caching
 curl -X POST http://localhost:8001/services/example_service/plugins \
@@ -121,6 +121,7 @@ curl -X POST http://localhost:8001/routes/example_route/plugins \
 # Consumer level caching
 curl -X POST http://localhost:8001/consumers/ \
   --data username=vgupta
+
 curl -X POST http://localhost:8001/consumers/vgupta/plugins \
    --data "name=proxy-cache" \
    --data "config.request_method=GET" \

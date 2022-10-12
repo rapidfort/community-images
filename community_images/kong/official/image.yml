@@ -38,8 +38,8 @@ runtimes:
         tag: "KONG_IMAGE_TAG"
   - type: k8s
     script: k8s_coverage.sh
-    readiness_check_script: kong_setup.sh
     helm_repo: kong/kong
+    readiness_check_script: kong_setup.sh
     image_keys:
       kong:
         repository: "image.repository"

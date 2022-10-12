@@ -20,18 +20,18 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`v2.9.1`, `2.9.1`, `2.9`, `banon`, `latest` (0f110537214ee33ecc4595e7715f2db74cf5b08e/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/0f110537214ee33ecc4595e7715f2db74cf5b08e/alpine/Dockerfile)"
-  # - "[`1.7.34`, `1.7`, `maroilles` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)"
-  # - "[`1.7.34-alpine`, `1.7-alpine`, `maroilles-alpine` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)"
+  - "[`1.7.34`, `1.7`, `maroilles` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)"
+  - "[`1.7.34-alpine`, `1.7-alpine`, `maroilles-alpine` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - traefik:
-      input_base_tag: "v2.9.1"
-  # - traefik:
-  #     input_base_tag: "1.23.1-debian-11-r"
-  # - traefik:
-  #     input_base_tag: "1.23.1-debian-11-r"
+      input_base_tag: '"v2.9.1"'
+  - traefik:
+      input_base_tag: '"1.7.34"'
+  - traefik:
+      input_base_tag: '"1.7.34-alpine"'
 needs_common_commands: False                                                                                            
 runtimes:
   - type: docker_compose

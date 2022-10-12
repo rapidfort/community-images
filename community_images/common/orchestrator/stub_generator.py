@@ -39,7 +39,6 @@ class StubGenerator:
         """
         Generate stubs for tag mappings
         """
-        logging.warning("In generate_stub_for_tag_mappings")
         for tag_mapping in tag_mappings:
             if not tag_mapping.needs_generation:
                 continue
@@ -63,12 +62,14 @@ class StubGenerator:
                 )
 
             self._run_stub_command(input_tag_details.full_tag)
-
+ 
             # tag input stubbed image to output stubbed image
             stub_image = self.docker_client.images.get(
                 input_tag_details.full_stub_tag)
 
             result = stub_image.tag(output_tag_details.full_stub_tag)
+            logging.info(
+                f"image tag:[{output_tag_details.full_stub_tag}] success={result}")
             # push stubbed image to output repo
             result = self.docker_client.api.push(
                 output_tag_details.full_repo_path,

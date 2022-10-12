@@ -15,3 +15,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     cap_add:
       - SYS_PTRACE
+
+  whoami:
+    # A container that exposes an API to show its IP address
+    image: traefik/whoami
+    labels:
+      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+      

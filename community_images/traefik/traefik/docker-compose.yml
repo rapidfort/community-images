@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  template:
+  traefik:
     image: ${TRAEFIK_IMAGE_REPOSITORY}:${TRAEFIK_IMAGE_TAG}
     # Enables the web UI and tells Traefik to listen to docker
     command: --api.insecure=true --providers.docker

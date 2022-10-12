@@ -32,6 +32,7 @@ repo_sets:
   #     input_base_tag: "1.23.1-debian-11-r"
   # - traefik:
   #     input_base_tag: "1.23.1-debian-11-r"
+needs_common_commands: False                                                                                            
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

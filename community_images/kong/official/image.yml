@@ -6,8 +6,8 @@ source_image_repo: docker.io/kong
 source_image_repo_link: https://hub.docker.com/_/kong
 source_image_readme: https://github.com/kong/kong#readme
 rf_docker_link: rapidfort/kong
-image_workflow_name: kong
-github_location: kong
+image_workflow_name: kong_official
+github_location: kong/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2kong
 usage_instructions: |
   # Start the Gateway stack using
@@ -44,5 +44,5 @@ runtimes:
       kong:
         repository: "image.repository"
         tag: "image.tag"
-    override_file: "overrides.yml" 
+    override_file: "overrides.yml"
 

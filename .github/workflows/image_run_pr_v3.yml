@@ -16,7 +16,7 @@ on:
       - "community_images/fluentd/bitnami/**"
       - "community_images/haproxy/bitnami/**"
       - "community_images/influxdb/bitnami/**"
-      - "community_images/kong/**"
+      - "community_images/kong/official/**"
       - "community_images/mariadb/bitnami/**"
       - "community_images/mariadb/ironbank/**"
       - "community_images/memcached/bitnami/**"
@@ -452,7 +452,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
         if: github.event_name == 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run kong
+        run: python3 community_images/common/orchestrator/main.py hourly_run kong/official
 
 
       - name: Report pulls

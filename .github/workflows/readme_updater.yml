@@ -130,6 +130,14 @@ jobs:
           repository: rapidfort/influxdb
           readme-filepath: ./community_images/influxdb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for InfluxDB™
+      - name: Docker Hub Description Kong
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kong
+          readme-filepath: ./community_images/kong/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kong
       - name: Docker Hub Description MariaDB
         uses: peter-evans/dockerhub-description@v3
         with:

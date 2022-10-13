@@ -1,0 +1,48 @@
+name: kong
+official_name: Kong
+official_website: https://konghq.com
+source_image_provider: The Kong Docker Maintainers
+source_image_repo: docker.io/kong
+source_image_repo_link: https://hub.docker.com/_/kong
+source_image_readme: https://github.com/kong/kong#readme
+rf_docker_link: rapidfort/kong
+image_workflow_name: kong
+github_location: kong
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2kong
+usage_instructions: |
+  # Start the Gateway stack using
+  $ docker-compose up
+
+what_is_text: |
+  Kong or Kong API Gateway is a cloud-native, platform-agnostic, scalable API Gateway distinguished for its high performance and extensibility via plugins.
+
+  By providing functionality for proxying, routing, load balancing, health checking, authentication (and more), Kong serves as the central layer for orchestrating microservices or conventional API traffic with ease.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`3.x.x-ubuntu`, `3.x-ubuntu`, `ubuntu`, (latest/Dockerfile)](https://github.com/Kong/docker-kong/blob/5a2610d900717a4a6c8ee98bc421d0d4599b126f/ubuntu/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - kong:
+      input_base_tag: "3.0.0-ubuntu"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    wait_time_sec: 60
+    compose_file: docker-compose.yml
+    image_keys:
+      kong:
+        repository: "KONG_IMAGE_REPOSITORY"
+        tag: "KONG_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: kong/kong
+    readiness_check_script: kong_setup.sh
+    image_keys:
+      kong:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml" 
+

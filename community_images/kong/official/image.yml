@@ -2,13 +2,13 @@ name: kong
 official_name: Kong
 official_website: https://konghq.com
 source_image_provider: The Kong Docker Maintainers
-source_image_repo: docker.io/kong
+source_image_repo: docker.io/library/kong
 source_image_repo_link: https://hub.docker.com/_/kong
 source_image_readme: https://github.com/kong/kong#readme
 rf_docker_link: rapidfort/kong
 image_workflow_name: kong_official
 github_location: kong/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2kong
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fkong
 usage_instructions: |
   # Start the Gateway stack using
   $ docker-compose up

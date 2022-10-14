@@ -12,8 +12,10 @@ services:
     ports:                                                                                                              
       # The HTTP port                                                                                                   
       - "82:80"                                                                                                            
+      - "445:443"                                                                                                            
       # The Web UI (enabled by --api.insecure=true)                                                                     
       - "8080" 
+      - "8443"
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock

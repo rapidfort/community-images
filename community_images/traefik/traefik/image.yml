@@ -37,6 +37,9 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
     image_keys:
       traefik:
         repository: "TRAEFIK_IMAGE_REPOSITORY"

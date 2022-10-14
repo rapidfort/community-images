@@ -7,12 +7,11 @@ services:
     command:                                                                                                            
       #- "--log.level=DEBUG"                                                                                            
       - "--api.insecure=true"                                                                                           
-      - "--providers.docker=true"                                                                                       
-      - "--providers.docker.exposedbydefault=false"                                                                     
-      - "--entrypoints.web.address=:80"                                                                                 
+      - "--providers.docker=true"                               
+      - "--providers.docker.exposedbydefault=true"                                                                     
     ports:                                                                                                              
       # The HTTP port                                                                                                   
-      - "80"                                                                                                            
+      - "82:80"                                                                                                            
       # The Web UI (enabled by --api.insecure=true)                                                                     
       - "8080" 
     volumes:
@@ -25,7 +24,7 @@ services:
     # A container that exposes an API to show its IP address
     image: traefik/whoami
     deploy:
-      replicas: 2
+      replicas: 3
     labels:
       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
     cap_add:

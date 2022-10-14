@@ -11,26 +11,15 @@ echo "Json params for docker coverage = $JSON"
 
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
-# Container name for consul-node1
-CONTAINER_NAME="${PROJECT_NAME}"-reverse-proxy-1
+NON_TLS_PORT="82"
+TLS_PORT="445"
 
-# log for debugging
-docker inspect "${CONTAINER_NAME}"
-
-NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
-# ENVOY_HOST=$(jq -r '.container_details.envoy.ip_address' < "$JSON_PARAMS")
-
-# find non-tls and tls port
-docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort"
-docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort"
-NON_TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
-TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
-
-for i in {1..5};
+# Testing load balencer 
+for i in {1..3};
 do
     echo "Attempt $i"
-    curl http://localhost:"${NON_TLS_PORT}"/whoami
-    curl http://localhost:"${NON_TLS_PORT}"/whoami        
-    with_backoff curl https://localhost:"${TLS_PORT}"/whoami -k -v
-    with_backoff curl https://localhost:"${TLS_PORT}"/whoami -k -v
+    curl -H Host:whoami.docker.localhost http://127.0.0.1:"${NON_TLS_PORT}"
+    curl http://localhost:"${NON_TLS_PORT}"       
+    with_backoff curl -H Host:whoami.docker.localhost http://127.0.0.1:"${TLS_PORT}" -k -v
+    with_backoff curl -H Host:whoami.docker.localhost http://127.0.0.1:"${TLS_PORT}" -k -v
 done

@@ -8,11 +8,12 @@ services:
       #- "--log.level=DEBUG"                                                                                            
       - "--api.insecure=true"                                                                                           
       - "--providers.docker=true"                               
-      - "--providers.docker.exposedbydefault=true"                                                                     
+      - "--providers.docker.exposedbydefault=false"                                                                     
+      - "--entrypoints.web.address=:80"  
     ports:                                                                                                              
       # The HTTP port                                                                                                   
-      - "82:80"                                                                                                            
-      - "445:443"                                                                                                            
+      - "80"                                                                                                            
+      - "443"                                                                                                            
       # The Web UI (enabled by --api.insecure=true)                                                                     
       - "8080" 
       - "8443"

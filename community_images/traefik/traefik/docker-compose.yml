@@ -27,7 +27,7 @@ services:
     # A container that exposes an API to show its IP address
     image: traefik/whoami
     deploy:
-      replicas: 3
+      replicas: 2
     labels:
       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
     cap_add:

@@ -49,6 +49,9 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 # add kong repo  FIXME: add this as param
 helm repo add kong https://charts.konghq.com
 
+# add hashicorp helm repo
+helm repo add hashicorp https://helm.releases.hashicorp.com
+
 # remove file
 rm -f get_helm.sh
 

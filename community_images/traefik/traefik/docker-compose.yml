@@ -5,7 +5,6 @@ services:
     image: ${TRAEFIK_IMAGE_REPOSITORY}:${TRAEFIK_IMAGE_TAG}
     # Enables the web UI and tells Traefik to listen to docker
     command:                                                                                                            
-      #- "--log.level=DEBUG"                                                                                            
       - "--api.insecure=true"                                                                                           
       - "--providers.docker=true"                               
       - "--providers.docker.exposedbydefault=false"                                                                     

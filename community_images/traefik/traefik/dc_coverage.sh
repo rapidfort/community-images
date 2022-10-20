@@ -17,6 +17,4 @@ for i in {1..3};
 do
     echo "Attempt $i"
     docker run -d --net "$NETWORK_NAME" rapidfort/curl "-H Host:whoami.docker.localhost http://127.0.0.1" 
-    docker run -d --net "$NETWORK_NAME" rapidfort/curl "-H Host:whoami.docker.localhost http://127.0.0.1" 
-    docker run -d --net "$NETWORK_NAME" rapidfort/curl "-H Host:whoami.docker.localhost http://127.0.0.1" 
 done

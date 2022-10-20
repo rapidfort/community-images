@@ -221,6 +221,7 @@ class K8sSetup:
 
         for pod in pod_list:
             cmd = f"kubectl -n {self.namespace_name} logs {pod}"
+            cmd += " --all-containers --ignore-errors"
             Utils.run_cmd(cmd.split())
 
         cmd = f"kubectl -n {self.namespace_name} get svc"

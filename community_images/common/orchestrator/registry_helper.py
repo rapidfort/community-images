@@ -2,9 +2,9 @@
 
 import logging
 import os
+import urllib.parse
 import dateutil.parser
 import backoff
-import urllib.parse
 from requests.auth import HTTPBasicAuth
 import requests
 from consts import Consts

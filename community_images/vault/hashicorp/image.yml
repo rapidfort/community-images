@@ -30,6 +30,9 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: hashicorp/vault
+    # disabling persistence otherwise PVC creation fails for data dir
+    helm_additional_params:
+      persistence.enabled: false
     image_keys:
       vault:
         repository: "image.repository"

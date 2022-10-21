@@ -32,7 +32,6 @@ repo_sets:
       input_base_tag: '"1.7.34"'
   - traefik:
       input_base_tag: '"1.7.34-alpine"'
-needs_common_commands: False                                                                                            
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

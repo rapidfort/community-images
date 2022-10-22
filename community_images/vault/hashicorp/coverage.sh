@@ -10,7 +10,7 @@ test_vault() {
     KUBERNETES_PORT_443_TCP_ADDR=$(minikube ip)
     K8S_API_PORT=8443
     # verify that the vault is installed correctly
-    kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" vault
+    kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault version
 
     # generate the unseal keys and root token and store in cluster-keys.json
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault operator init \

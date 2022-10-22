@@ -3,6 +3,8 @@
 set -x
 set -e
 
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 

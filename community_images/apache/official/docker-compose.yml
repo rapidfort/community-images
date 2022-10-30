@@ -5,8 +5,8 @@ services:
     image: httpd
     user: root
     volumes:
-      - ./modules_list:/modules_list:ro
-      - ./coverage_script.sh:/coverage_script.sh
+      - ./modules_list:/usr/local/modules_list:ro
+      - ./coverage_script.sh:/usr/local/coverage_script.sh
     cap_add:
       - SYS_PTRACE    
     ports:

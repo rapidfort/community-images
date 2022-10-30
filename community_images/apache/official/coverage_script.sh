@@ -4,7 +4,8 @@ set -x
 set -e
 ls modules/
 httpd -M
-sed -i '/LoadModule /d' /conf/httpd.conf
+ls
+sed -i '/LoadModule /d' conf/httpd.conf
 cat modules_list >> conf/httpd.conf
 apachectl configtest
 apachectl -k graceful

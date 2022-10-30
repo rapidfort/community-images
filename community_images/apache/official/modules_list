@@ -13,7 +13,7 @@ LoadModule authn_dbm_module modules/mod_authn_dbm.so
 LoadModule authn_file_module modules/mod_authn_file.so
 LoadModule authn_socache_module modules/mod_authn_socache.so
 # 
-LoadModule authn_fcgi_module modules/mod_authn_fcgi.so
+LoadModule authnz_fcgi_module modules/mod_authnz_fcgi.so
 LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
 LoadModule authz_core_module modules/mod_authz_core.so
 LoadModule authz_dbd_module modules/mod_authz_dbd.so
@@ -59,6 +59,8 @@ LoadModule file_cache_module modules/mod_file_cache.so
 LoadModule filter_module modules/mod_filter.so
 LoadModule headers_module modules/mod_headers.so
 # 
+LoadModule status_module modules/mod_status.so
+LoadModule watchdog_module modules/mod_watchdog.so
 LoadModule heartbeat_module modules/mod_heartbeat.so
 LoadModule heartmonitor_module modules/mod_heartmonitor.so
 LoadModule http2_module modules/mod_http2.so
@@ -86,8 +88,8 @@ LoadModule macro_module modules/mod_macro.so
 LoadModule md_module modules/mod_md.so
 LoadModule mime_module modules/mod_mime.so
 LoadModule mime_magic_module modules/mod_mime_magic.so
-# LoadModule mpm_event_module modules/mod_mpm_event.so
-LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+LoadModule mpm_event_module modules/mod_mpm_event.so
+#LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
 #LoadModule mpm_worker_module modules/mod_mpm_worker.so
 LoadModule negotiation_module modules/mod_negotiation.so
 #LoadModule unixd_module modules/mod_unixd.so
@@ -129,7 +131,7 @@ LoadModule socache_redis_module modules/mod_socache_redis.so
 LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 LoadModule speling_module modules/mod_speling.so
 LoadModule ssl_module modules/mod_ssl.so
-LoadModule status_module modules/mod_status.so
+#LoadModule status_module modules/mod_status.so
 LoadModule substitute_module modules/mod_substitute.so
 # 
 LoadModule suexec_module modules/mod_suexec.so
@@ -138,6 +140,6 @@ LoadModule userdir_module modules/mod_userdir.so
 LoadModule usertrack_module modules/mod_usertrack.so
 LoadModule version_module modules/mod_version.so
 LoadModule vhost_alias_module modules/mod_vhost_alias.so
-LoadModule watchdog_module modules/mod_watchdog.so
+#LoadModule watchdog_module modules/mod_watchdog.so
 # 
 LoadModule xml2enc_module modules/mod_xml2enc.so

@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  apache:
+    image: httpd
+    user: root
+    volumes:
+      - ./modules_list:/modules_list:ro
+      - ./coverage_script.sh:/coverage_script.sh
+    cap_add:
+      - SYS_PTRACE    
+    ports:
+      - '0.0.0.0::8080'
+      - '0.0.0.0::8443'

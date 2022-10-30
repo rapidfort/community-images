@@ -2,7 +2,7 @@ version: '2'
 
 services:
   apache:
-    image: httpd
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
       - ./modules_list:/usr/local/apache2/modules_list:ro

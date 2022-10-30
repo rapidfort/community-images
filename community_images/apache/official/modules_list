@@ -80,7 +80,7 @@ LoadModule mpm_event_module modules/mod_mpm_event.so
 #LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
 #LoadModule mpm_worker_module modules/mod_mpm_worker.so
 LoadModule negotiation_module modules/mod_negotiation.so
-#LoadModule unixd_module modules/mod_unixd.so
+LoadModule unixd_module modules/mod_unixd.so
 LoadModule optional_fn_export_module modules/mod_optional_fn_export.so
 LoadModule optional_fn_import_module modules/mod_optional_fn_import.so
 LoadModule optional_hook_export_module modules/mod_optional_hook_export.so

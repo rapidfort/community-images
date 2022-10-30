@@ -10,4 +10,4 @@ cat modules_list >> conf/httpd.conf
 apachectl configtest
 apachectl -k graceful
 httpd -M
-#Modules excluded: ["unixd_module" "pagespeed_module" "pagespeed_ap24_module" "mpm_worker_module" "mpm_event_module"]
+#Modules excluded: ["unixd_module" "mpm_worker_module" "mpm_event_module"]

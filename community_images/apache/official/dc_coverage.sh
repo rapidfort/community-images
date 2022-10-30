@@ -37,4 +37,3 @@ do
         curl http://localhost:"${NON_TLS_PORT}"
         with_backoff curl https://localhost:"${TLS_PORT}" -k -v
 done
-

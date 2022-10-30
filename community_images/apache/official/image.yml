@@ -10,10 +10,9 @@ image_workflow_name: apache_official
 github_location: apache/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache-official
 usage_instructions: |
-  $ helm repo add bitnami https://charts.bitnami.com/apache
-
-  # install apache, just replace repository with RapidFort registry
-  $ helm install my-apache bitnami/apache --set image.repository=rapidfort/apache
+  # Using docker run:
+  $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ rapidfort/apache-official
+  # PWD can be replaced with the directory containing all your HTML.
 what_is_text: |
   The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
 disclaimer: |

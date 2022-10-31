@@ -6,9 +6,29 @@ services:
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
-      - ./modules_list:/usr/local/apache2/modules_list:ro
-      - ./coverage_script.sh:/usr/local/apache2/coverage_script.sh
-      - ./pic/:/usr/local/apache2/pic
+      - ./configs/server-configs/httpd1.conf:/usr/local/apache2//conf/httpd.conf
+    cap_add:
+      - SYS_PTRACE    
+    ports:
+      - "0.0.0.0::80"
+      - "0.0.0.0::443"
+  apache-prefork-mpm:
+    image: httpd:2.4
+    user: root
+    volumes:
+      - ./configs/index.html:/usr/local/apache2/htdocs/index.html
+      - ./configs/server-configs/httpd2.conf:/usr/local/apache2//conf/httpd.conf
+    cap_add:
+      - SYS_PTRACE    
+    ports:
+      - "0.0.0.0::80"
+      - "0.0.0.0::443"
+  apache-worker-mpm:
+    image: httpd:2.4
+    user: root
+    volumes:
+      - ./configs/index.html:/usr/local/apache2/htdocs/index.html
+      - ./configs/server-configs/httpd3.conf:/usr/local/apache2//conf/httpd.conf
     cap_add:
       - SYS_PTRACE    
     ports:

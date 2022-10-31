@@ -14,6 +14,10 @@ services:
     ports:
       - "0.0.0.0::80"
       - "0.0.0.0::443"
+    command: |
+             sed -i '/SSLCertificateFile.*snakeoil\.pem/c\SSLCertificateFile \/etc\/ssl\/certs\/server.crt' /etc/apache2/sites-available/default-ssl.conf
+             sed -i '/SSLCertificateKeyFile.*snakeoil\.key/cSSLCertificateKeyFile /etc/ssl/private/server.key\' /etc/apache2/sites-available/default-ssl.conf
+  
   apache-prefork-mpm:
     image: httpd:2.4
     user: root

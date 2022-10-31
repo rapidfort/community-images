@@ -2,7 +2,7 @@ version: '2'
 
 services:
   apache:
-    image: httpd:2.4
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAGS}
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html

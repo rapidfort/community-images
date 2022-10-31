@@ -7,6 +7,8 @@ services:
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
       - ./configs/server-configs/httpd1.conf:/usr/local/apache2//conf/httpd.conf
+      - ./certs/server.crt:/etc/ssl/certs/server.crt
+      - ./certs/server.key:/etc/ssl/private/server.key
     cap_add:
       - SYS_PTRACE    
     ports:

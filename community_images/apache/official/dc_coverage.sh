@@ -18,14 +18,10 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${PROJECT_NAME}"-apache-1
 
-# exec into container and run coverage script
+# checking all modules and config test
 docker exec -i "${CONTAINER_NAME}" ls
 docker exec -i "${CONTAINER_NAME}" httpd -M
-docker exec -i "${CONTAINER_NAME}" sed -i '/LoadModule /d' conf/httpd.conf
-docker exec -i "${CONTAINER_NAME}" tee < /usr/local/apache2/modules_list -a conf/httpd.conf
 docker exec -i "${CONTAINER_NAME}" apachectl configtest
-docker exec -i "${CONTAINER_NAME}" apachectl -k graceful
-docker exec -i "${CONTAINER_NAME}" httpd -M
 
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
@@ -37,7 +33,7 @@ NON_TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.P
 TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"443/tcp\"[0].HostPort")
 
 # run curl in loop for different endpoints
-for i in {1..20};
+for i in {1..5};
 do
     echo "Attempt $i"
         curl http://localhost:"${NON_TLS_PORT}"

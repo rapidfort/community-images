@@ -5,10 +5,10 @@ source_image_provider: Apache
 source_image_repo: docker.io/library/httpd
 source_image_repo_link: https://hub.docker.com/_/httpd
 source_image_readme: https://github.com/docker-library/docs/blob/master/httpd/README.md
-rf_docker_link: rapidfort/apache-official
+rf_docker_link: anmolvirdi/apache-official
 image_workflow_name: apache_official
 github_location: apache/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fapache-official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fapache-official
 usage_instructions: |
   # Using docker run:
   $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ rapidfort/apache-official
@@ -24,7 +24,7 @@ input_registry:
   registry: docker.io
   account: library
 repo_sets:
-  - apache-official:
+  - httpd:
       input_base_tag: "2.4.54-alpine"
 runtimes:
   - type: docker_compose
@@ -34,7 +34,7 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      apache:
+      httpd:
         repository: "APACHE_OFFICIAL_IMAGE_REPOSITORY"
         tag: "APACHE_OFFICIAL_IMAGE_TAG"
   - type: docker

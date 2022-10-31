@@ -33,9 +33,22 @@ NON_TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.P
 TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"443/tcp\"[0].HostPort")
 
 # run curl in loop for different endpoints
+# Apache Server 1 (MPM Event module enabled, ssl enabled)
 for i in {1..5};
 do
-    echo "Attempt $i"
+    echo "Attempt on Apache-server-1 $i"
         curl http://localhost:"${NON_TLS_PORT}"
-        #with_backoff curl https://localhost:"${TLS_PORT}" -k -v
+        with_backoff curl https://localhost:"${TLS_PORT}" -k -v
+done
+# Apache Server 2 (MPM Prefork module enabled) 
+for i in {1..5};
+do
+    echo "Attempt on Apache-server-2 $i"
+        curl http://localhost:"${NON_TLS_PORT}"
+done
+# Apache Server 3 (MPM Worker module enable)
+for i in {1..5};
+do
+    echo "Attempt on Apache-server-3 $i"
+        curl http://localhost:"${NON_TLS_PORT}"
 done

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   apache:
-    image: httpd:2.4
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
@@ -15,7 +15,7 @@ services:
       - "0.0.0.0::80"
       - "0.0.0.0::443"  
   apache-prefork-mpm:
-    image: httpd:2.4
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
@@ -26,7 +26,7 @@ services:
       - "0.0.0.0::80"
       - "0.0.0.0::443"
   apache-worker-mpm:
-    image: httpd:2.4
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html

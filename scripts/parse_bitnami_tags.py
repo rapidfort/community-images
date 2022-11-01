@@ -14,6 +14,7 @@ import yaml
 class BitnamiTagsHelper:
     def __init__(self):
         self.clone_path = tempfile.mkdtemp()
+        self.script_path = os.path.dirname(os.path.abspath(__file__))
         self.image_list_file = "image.lst"
 
     def clone_bitnami_repo(self):
@@ -27,8 +28,8 @@ class BitnamiTagsHelper:
     def get_common_assets(self):
         """ Check all the assets we have in common with bitnami """
         bcontainer_list = []
-        script_path = os.path.dirname(os.path.abspath(__file__))
-        image_lst_path = os.path.join(script_path, "..", self.image_list_file)
+
+        image_lst_path = os.path.join(self.script_path, "..", self.image_list_file)
         image_list = []
         with open(image_lst_path, "r", encoding="utf8") as stream:
             for image_path in stream.readlines():
@@ -108,6 +109,12 @@ class BitnamiTagsHelper:
             search_tags.append(search_tag)
         return sorted(search_tags, reverse=True), sorted(docker_links, reverse=True)
 
+    def dump_bitnami_tags(self, tags_dict):
+        """ dump bitnami tags to yml format """
+        out_yml_path = os.path.join(self.script_path, "..", "bitnami_tags.yml")
+        with open(out_yml_path, "w", encoding="utf8") as outfile:
+            yaml.dump(tags_dict, outfile, default_flow_style=False)
+
 
 def main():
     bth = BitnamiTagsHelper()
@@ -118,13 +125,13 @@ def main():
     for asset in assets:
         asset_dict = bth.read_asset(asset)
         tags_dict[asset] = {}
-        tags_dict[asset]["asset_dict"] = asset_dict
+        # tags_dict[asset]["asset_dict"] = asset_dict
         search_tags, docker_links = bth.generate_outputs(asset, asset_dict)
         tags_dict[asset]["search_tags"] = search_tags
         tags_dict[asset]["docker_links"] = docker_links
 
     shutil.rmtree(clone_path)
-    print(tags_dict)
+    bth.dump_bitnami_tags(tags_dict)
 
 if __name__ == "__main__":
     main()

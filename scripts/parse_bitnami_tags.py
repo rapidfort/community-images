@@ -1,40 +1,56 @@
-import re
-import requests
-import json
+# This script fetches bitnami repo locally and
+# creates a dict of all bitnami assets which we support
+# for these assets, we can generate search string for pulling image
+# we can also generate docker_links array for documentation
+
+import logging
+import shutil
+import subprocess
+import sys
+import tempfile
 
 
-def get_docker_lines(container_name):
-    url = "https://raw.githubusercontent.com/bitnami/"
-    url += f"containers/main/bitnami/{container_name}/README.md"
-    r=requests.get(url)
-    docker_lines = []
+class BitnamiTagsHelper:
+    def __init__(self):
+        self.clone_path = tempfile.mkdtemp()
 
-    if 199 < r.status_code < 400:
-        for line in r.text.split('\n'):
-            if "/Dockerfile" in line:
-                docker_lines.append(line[2:])
-    return docker_lines
+    def clone_bitnami_repo(self):
+        """ clones the latest bitnami repo locally """
+        cmd = f"git clone --depth 1 git@github.com:bitnami/containers.git {self.clone_path}"
+        cmd_array = cmd.split()
+        output_pipe = subprocess.check_output(cmd_array, stderr=sys.stdout)
+        logging.info("%s", output_pipe.decode("utf-8"))
+        return self.clone_path
 
-def get_input_base_tags(docker_lines):
-    base_tags = []
-    for dl in docker_lines:
-        dl_search = re.search("\[(.*?)\]", dl)
-        if dl_search:
-            dl_array = f"[{dl_search.group(1)}]"
-            dl_array = dl_array.replace('`','"')
+    def get_common_assets(self):
+        """ Check all the assets we have in common with bitnami """
+        return []
 
-            b1=dl_array.find("(")
-            if b1:
-                dl_array=f"{dl_array[:b1]}]"
+    def read_asset(self):
+        """ For a given asset read branch/distro/tags-info and create a dict """
+        return {}
 
-            ar = json.loads(dl_array)
-            abs_tag = ar[3]
-            rloc = abs_tag.find("-r")
-            base_tags.append(abs_tag[:rloc+2])
-    return base_tags
+    def generate_docker_links(self):
+        """ Use given asset dict generate docker_links array for documentation """
+        return []
 
-dl = get_docker_lines("envoy")
-print(dl)
+    def generate_search_tags(self):
+        """ Use given asset dict generate search tags """
+        return []
 
-bt = get_input_base_tags(dl)
-print(bt)
+
+def main():
+    bth = BitnamiTagsHelper()
+    clone_path = bth.clone_bitnami_repo()
+    print(clone_path)
+
+    assets = bth.get_common_assets()
+    for asset in assets:
+        asset_dict = bth.read_asset(asset)
+        docker_links = bth.generate_docker_links(asset_dict)
+        search_tags = bth.generate_search_tags(asset_dict)
+
+    shutil.rmtree(clone_path)
+
+if __name__ == "__main__":
+    main()

@@ -9,7 +9,7 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-APACHE_HOST=$(jq -r '.container_details.httpd.ip_address' < "$JSON_PARAMS")
+APACHE_HOST=$(jq -r '.container_details."apache-official".ip_address' < "$JSON_PARAMS")
 
 # Install Apache benchmark testing tool
 sudo apt-get install apache2-utils -y

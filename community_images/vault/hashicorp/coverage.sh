@@ -3,6 +3,8 @@
 set -e
 set -x
 
+# shellcheck disable=SC1091
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 test_vault() {
     VAULT_CONTAINER=$1
@@ -37,11 +39,8 @@ test_vault() {
     # enable kubernetes based authentication
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault auth enable kubernetes
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault write auth/kubernetes/config kubernetes_host="https://${KUBERNETES_PORT_443_TCP_ADDR}:${K8S_API_PORT}"
-    kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault policy write webapp - <<EOF
-        path "secret/data/webapp/config" {
-            capabilities = ["read"]
-    }
-EOF
+    kubectl cp "${SCRIPTPATH}"/policy.hcl -n "${NAMESPACE}" "${VAULT_CONTAINER}":/tmp/
+    kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault policy write webapp /tmp/policy.hcl
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault write auth/kubernetes/role/webapp \
         bound_service_account_names=vault \
         bound_service_account_namespaces=default \
@@ -49,6 +48,8 @@ EOF
         ttl=24h
 
     NAMESPACE="${NAMESPACE}" kubectl apply --filename deployment-webapp.yml
+    # wait for the earlier pod/deployment to finish
+    kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
     kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" 8080:8080
     PID_PF="$!"
 

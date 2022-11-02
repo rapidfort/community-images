@@ -65,7 +65,9 @@ class DockerHubHelper(RegistryHelper):
         """
         tags = self._fetch_tags(account, repo)
 
-        tags = filter(lambda tag: re.search(search_str, tag), tags)
+        search_str = re.compile(search_str)
+        # print(tags)
+        tags = filter(lambda tag: search_str.search(tag["name"]), tags)
         # tags = filter(lambda tag: search_str in tag["name"], tags)
         tags = list(filter(
             lambda tag: "rfstub" not in tag["name"],

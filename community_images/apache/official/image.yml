@@ -38,7 +38,7 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      httpd:
+      apache-official:
         repository: "APACHE_OFFICIAL_IMAGE_REPOSITORY"
         tag: "APACHE_OFFICIAL_IMAGE_TAG"
   - type: docker

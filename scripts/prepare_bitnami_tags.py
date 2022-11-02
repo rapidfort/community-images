@@ -125,7 +125,6 @@ def main():
     for asset in assets:
         asset_dict = bth.read_asset(asset)
         tags_dict[asset] = {}
-        # tags_dict[asset]["asset_dict"] = asset_dict
         search_tags, docker_links = bth.generate_outputs(asset, asset_dict)
         tags_dict[asset]["search_tags"] = search_tags
         tags_dict[asset]["docker_links"] = docker_links

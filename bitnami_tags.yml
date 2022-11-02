@@ -39,17 +39,17 @@ envoy:
 etcd:
   docker_links:
   - '[`3.5`, `3.5-debian-11`, `3.5.5`, `3.5.5-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)'
-  - '[`3.4`, `3.4-debian-11`, `3.4.21`, `3.4.21-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)'
+  - '[`3.4`, `3.4-debian-11`, `3.4.22`, `3.4.22-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)'
   - '[`3.3`, `3.3-debian-11`, `3.3.27`, `3.3.27-debian-11-r` (3.3/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.3/debian-11/Dockerfile)'
   search_tags:
   - 3.5.5-debian-11-r
-  - 3.4.21-debian-11-r
+  - 3.4.22-debian-11-r
   - 3.3.27-debian-11-r
 fluentd:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.15.2`, `1.15.2-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.15.3`, `1.15.3-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.15.2-debian-11-r
+  - 1.15.3-debian-11-r
 haproxy:
   docker_links:
   - '[`2`, `2-debian-11`, `2.6.6`, `2.6.6-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
@@ -98,9 +98,9 @@ mysql:
   - 5.7.40-debian-11-r
 nats:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.9.4`, `2.9.4-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.9.5`, `2.9.5-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.9.4-debian-11-r
+  - 2.9.5-debian-11-r
 nginx:
   docker_links:
   - '[`1.23`, `1.23-debian-11`, `1.23.2`, `1.23.2-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.23/debian-11/Dockerfile)'

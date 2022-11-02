@@ -3,9 +3,9 @@
 import logging
 import os
 import urllib.parse
+import re
 import dateutil.parser
 import backoff
-import re
 from requests.auth import HTTPBasicAuth
 import requests
 from consts import Consts
@@ -66,9 +66,7 @@ class DockerHubHelper(RegistryHelper):
         tags = self._fetch_tags(account, repo)
 
         search_str = re.compile(search_str)
-        # print(tags)
         tags = filter(lambda tag: search_str.search(tag["name"]), tags)
-        # tags = filter(lambda tag: search_str in tag["name"], tags)
         tags = list(filter(
             lambda tag: "rfstub" not in tag["name"],
             tags))

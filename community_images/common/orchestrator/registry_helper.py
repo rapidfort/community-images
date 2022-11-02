@@ -5,6 +5,7 @@ import os
 import urllib.parse
 import dateutil.parser
 import backoff
+import re
 from requests.auth import HTTPBasicAuth
 import requests
 from consts import Consts
@@ -64,7 +65,8 @@ class DockerHubHelper(RegistryHelper):
         """
         tags = self._fetch_tags(account, repo)
 
-        tags = filter(lambda tag: search_str in tag["name"], tags)
+        tags = filter(lambda tag: re.search(search_str, tag), tags)
+        # tags = filter(lambda tag: search_str in tag["name"], tags)
         tags = list(filter(
             lambda tag: "rfstub" not in tag["name"],
             tags))

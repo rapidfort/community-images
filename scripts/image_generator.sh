@@ -71,10 +71,9 @@ del_image_variants()
 
 main()
 {
+  python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
   gen_main_readme
   gen_image_readme
-  # gen_image_files
-  # gen_image_files2
   gen_new_image_actions
   del_image_variants
 }

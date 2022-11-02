@@ -1,7 +1,9 @@
-# This script fetches bitnami repo locally and
-# creates a dict of all bitnami assets which we support
-# for these assets, we can generate search string for pulling image
-# we can also generate docker_links array for documentation
+"""
+This script fetches bitnami repo locally and
+creates a dict of all bitnami assets which we support
+for these assets, we can generate search string for pulling image
+we can also generate docker_links array for documentation
+"""
 
 import logging
 import os
@@ -12,6 +14,7 @@ import tempfile
 import yaml
 
 class BitnamiTagsHelper:
+    """ Bitnami tags helper """
     def __init__(self):
         self.clone_path = tempfile.mkdtemp()
         self.script_path = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +33,6 @@ class BitnamiTagsHelper:
         bcontainer_list = []
 
         image_lst_path = os.path.join(self.script_path, "..", self.image_list_file)
-        image_list = []
         with open(image_lst_path, "r", encoding="utf8") as stream:
             for image_path in stream.readlines():
                 image_path_parts = image_path.split("/")
@@ -117,6 +119,7 @@ class BitnamiTagsHelper:
 
 
 def main():
+    """ main function """
     bth = BitnamiTagsHelper()
     clone_path = bth.clone_bitnami_repo()
 

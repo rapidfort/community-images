@@ -74,14 +74,14 @@ jobs:
           repository: rapidfort/apache
           readme-filepath: ./community_images/apache/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache
-      - name: Docker Hub Description Apache
+      - name: Docker Hub Description Apache Official
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/apache-official
           readme-filepath: ./community_images/apache/official/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Apache
+          short-description: RapidFort optimized, hardened image for Apache Official
       - name: Docker Hub Description Consul
         uses: peter-evans/dockerhub-description@v3
         with:

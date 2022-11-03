@@ -107,9 +107,17 @@ class BitnamiTagsHelper:
             docker_link = f"{branch}/{distro}/Dockerfile"
             docker_link_url = f"https://github.com/bitnami/containers/tree/main/bitnami/{asset}/{branch}/{distro}/Dockerfile"
             docker_link_line = f"[`{tag_array[0]}`, `{tag_array[1]}`, `{tag_array[2]}`, `{search_tag}` ({docker_link})]({docker_link_url})"
-            docker_links.append(docker_link_line)
-            search_tags.append(search_tag)
-        return sorted(search_tags, reverse=True), sorted(docker_links, reverse=True)
+            docker_links.append((docker_link_line, float(branch)))
+            search_tags.append((search_tag, float(branch)))
+        sorted_search_tags = sorted(search_tags, key=lambda k: k[1],reverse=True)
+        sorted_docker_links = sorted(docker_links, key=lambda k: k[1], reverse=True)
+        if asset == "rabbitmq":
+            print(search_tags)
+            print(sorted_search_tags)
+        search_tags_list = list(map(lambda x: x[0], sorted_search_tags))
+        docker_links_list = list(map(lambda x: x[0], sorted_docker_links))
+        return search_tags_list, docker_links_list
+
 
     def dump_bitnami_tags(self, tags_dict):
         """ dump bitnami tags to yml format """

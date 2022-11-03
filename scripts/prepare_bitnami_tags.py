@@ -19,6 +19,7 @@ class BitnamiTagsHelper:
         self.clone_path = tempfile.mkdtemp()
         self.script_path = os.path.dirname(os.path.abspath(__file__))
         self.image_list_file = "image.lst"
+        self.excluded_path_dict = {}
 
     def clone_bitnami_repo(self):
         """ clones the latest bitnami repo locally """
@@ -27,6 +28,20 @@ class BitnamiTagsHelper:
         output_pipe = subprocess.check_output(cmd_array, stderr=sys.stdout)
         logging.info("%s", output_pipe.decode("utf-8"))
         return self.clone_path
+
+
+    def _read_excluded_branch_list(self, image_dir_path):
+        """ get bitnami_excluded_branches from image.yml for the asset """
+        image_dir_path = image_dir_path.rstrip()
+        image_yml_path = os.path.join(
+            self.script_path, "..", "community_images", image_dir_path, "image.yml")
+        try:
+            with open(image_yml_path, "r", encoding="utf8") as yml_stream:
+                image_dict = yaml.safe_load(yml_stream)
+                return image_dict.get("bitnami_excluded_branches", [])
+        except yaml.YAMLError as exc:
+            logging.error(exc)
+        return []
 
     def get_common_assets(self):
         """ Check all the assets we have in common with bitnami """
@@ -40,6 +55,8 @@ class BitnamiTagsHelper:
                 if image_path_parts and "bitnami" in image_path_parts[-1]:
                     bcontainer_name = image_path_parts[-2]
                     bcontainer_list.append(bcontainer_name)
+                    self.excluded_path_dict[bcontainer_name] = self._read_excluded_branch_list(
+                        image_path)
 
         return bcontainer_list
 
@@ -76,7 +93,11 @@ class BitnamiTagsHelper:
         logging.info("Reading asset %s", asset)
         asset_dir = os.path.join(self.clone_path, "bitnami", asset)
         branch_dirs = self._get_dirs(asset_dir)
+        excluded_branch_list = self.excluded_path_dict.get(asset, [])
         for branch_dir in branch_dirs:
+            if branch_dir.split("/")[-1] in excluded_branch_list:
+                print(f"ignored {branch_dir} for {asset}")
+                continue
             distro_dirs = self._get_dirs(branch_dir)
             for distro_dir in distro_dirs:
                 tag_file = os.path.join(distro_dir, "tags-info.yaml")

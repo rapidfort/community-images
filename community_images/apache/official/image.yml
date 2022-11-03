@@ -1,0 +1,48 @@
+name: apache-official
+official_name: Apache Official
+official_website: https://httpd.apache.org/
+source_image_provider: The Docker Community
+source_image_repo: docker.io/library/httpd
+source_image_repo_link: https://hub.docker.com/_/httpd
+source_image_readme: https://github.com/docker-library/docs/blob/master/httpd/README.md
+rf_docker_link: rapidfort/apache-official
+image_workflow_name: apache_official
+github_location: apache/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fapache-official
+usage_instructions: |
+  # Using docker run:
+  $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ rapidfort/apache-official
+  # PWD can be replaced with the directory containing all your HTML.
+what_is_text: |
+  The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2.4.54`, `2.4`, `2`, `latest`, `2.4.54-bullseye`, `2.4-bullseye`, `2-bullseye`, `bullseye`](https://github.com/docker-library/httpd/blob/f3b7fd9c8ef59d1ad46c8b2a27df3e02d822834f/2.4/Dockerfile)"
+  - "[`2.4.54-alpine`, `2.4-alpine`, `2-alpine`, `alpine`, `2.4.54-alpine3.16`, `2.4-alpine3.16`, `2-alpine3.16`, `alpine3.16`](https://github.com/docker-library/httpd/blob/f3b7fd9c8ef59d1ad46c8b2a27df3e02d822834f/2.4/alpine/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - httpd:
+      input_base_tag: "2.4.*-bullseye"
+      output_repo: apache-official
+  - httpd:
+      input_base_tag: "2.4.*-alpine"
+      output_repo: apache-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      apache-official:
+        repository: "APACHE_OFFICIAL_IMAGE_REPOSITORY"
+        tag: "APACHE_OFFICIAL_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    tls_certs:
+      generate: true
+      out_dir: certs

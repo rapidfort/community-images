@@ -20,6 +20,7 @@ class BitnamiTagsHelper:
         self.script_path = os.path.dirname(os.path.abspath(__file__))
         self.image_list_file = "image.lst"
         self.excluded_path_dict = {}
+        self.current_repo_set = {}
 
     def clone_bitnami_repo(self):
         """ clones the latest bitnami repo locally """
@@ -30,18 +31,29 @@ class BitnamiTagsHelper:
         return self.clone_path
 
 
-    def _read_excluded_branch_list(self, image_dir_path):
-        """ get bitnami_excluded_branches from image.yml for the asset """
+    def _read_image_dict(self, image_dir_path):
+        """ get image_dict from image.yml for the asset """
         image_dir_path = image_dir_path.rstrip()
         image_yml_path = os.path.join(
             self.script_path, "..", "community_images", image_dir_path, "image.yml")
         try:
             with open(image_yml_path, "r", encoding="utf8") as yml_stream:
                 image_dict = yaml.safe_load(yml_stream)
-                return image_dict.get("bitnami_excluded_branches", [])
+                return image_dict
         except yaml.YAMLError as exc:
             logging.error(exc)
         return []
+
+    def _add_current_images(self, image_dict):
+        """ add current images """
+        name = image_dict.get("name")
+        for repo in image_dict.get("repo_sets", []):
+            for image_name, repo_image_dict in repo.items():
+                if "input_base_tag" in repo_image_dict:
+                    if image_name not in self.current_repo_set:
+                        self.current_repo_set[image_name] = []
+                    self.current_repo_set[image_name].append(
+                        repo_image_dict["input_base_tag"])
 
     def get_common_assets(self):
         """ Check all the assets we have in common with bitnami """
@@ -55,8 +67,10 @@ class BitnamiTagsHelper:
                 if image_path_parts and "bitnami" in image_path_parts[-1]:
                     bcontainer_name = image_path_parts[-2]
                     bcontainer_list.append(bcontainer_name)
-                    self.excluded_path_dict[bcontainer_name] = self._read_excluded_branch_list(
+                    image_dict = self._read_image_dict(
                         image_path)
+                    self._add_current_images(image_dict)
+                    self.excluded_path_dict[bcontainer_name] = image_dict.get("bitnami_excluded_branches", [])
 
         return bcontainer_list
 
@@ -140,6 +154,10 @@ class BitnamiTagsHelper:
         sorted_docker_links = self.sort_sem_ver(docker_links, idx=1, reverse=True)
         search_tags_list = list(map(lambda x: x[0], sorted_search_tags))
         docker_links_list = list(map(lambda x: x[0], sorted_docker_links))
+        if sorted(self.current_repo_set[asset]) != sorted(search_tags_list):
+            logging.warning(f"{asset} needs update")
+            logging.warning(f"Current: {self.current_repo_set[asset]}")
+            logging.warning(f"Expected: {search_tags_list}")
         return search_tags_list, docker_links_list
 
 

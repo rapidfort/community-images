@@ -23,6 +23,8 @@ input_registry:
   account: bitnami
 repo_sets:
   - postgresql:
+      input_base_tag: "15.0.0-debian-11-r"
+  - postgresql:
       input_base_tag: "14.5.0-debian-11-r"
   - postgresql:
       input_base_tag: "13.8.0-debian-11-r"

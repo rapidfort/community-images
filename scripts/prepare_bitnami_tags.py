@@ -24,7 +24,7 @@ class BitnamiTagsHelper:
 
     def clone_bitnami_repo(self):
         """ clones the latest bitnami repo locally """
-        cmd = f"git clone --depth 1 git@github.com:bitnami/containers.git {self.clone_path}"
+        cmd = f"git clone --depth 1 https://github.com/bitnami/containers.git {self.clone_path}"
         cmd_array = cmd.split()
         output_pipe = subprocess.check_output(cmd_array, stderr=sys.stdout)
         logging.info("%s", output_pipe.decode("utf-8"))

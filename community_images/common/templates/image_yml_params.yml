@@ -39,6 +39,9 @@ params:
   - name: disclaimer
     description: 'disclaimer or any legal liability notice to be added'
     value : '""'
+  - name: bitnami_excluded_branches
+    description: 'bitnami tags are auto generated, this list allows specific branches to be exculded'
+    value : ['""', '""']
   - name: docker_links
     description: array of all the different image versions build along with link to original Dockerfile
     value : ['""', '""']

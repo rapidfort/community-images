@@ -71,7 +71,7 @@ kubectl run -n "${NAMESPACE}" sb-run \
     run
 
 # run mysql_coverage on cluster
-kubectl -n "${NAMESPACE}" kill pod "${RELEASE_NAME}"-0
+kubectl -n "${NAMESPACE}" delete pod "${RELEASE_NAME}"-0
 
 # wait for pod to be available again
 kubectl -n "${NAMESPACE}" wait pod "${RELEASE_NAME}"-0 --for=condition=ready --timeout=5m

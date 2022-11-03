@@ -18,14 +18,12 @@ what_is_text: |
   InfluxDB is a time series database built from the ground up to handle high write and query loads. InfluxDB is meant to be used as a backing store for any use case involving large amounts of timestamped data, including DevOps monitoring, application metrics, IoT sensor data, and real-time analytics.
 disclaimer: |
   InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
-docker_links:
-  - "[`2`, `2-debian-11`, `2.3.0`, `2.3.0-debian-11-r16`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/influxdb/2/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - influxdb:
-      input_base_tag: "2.3.0-debian-11-r"
+      input_base_tag: "2.5.0-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

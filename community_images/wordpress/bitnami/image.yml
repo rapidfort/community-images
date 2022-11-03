@@ -18,14 +18,12 @@ what_is_text: |
   WordPress gives you everything you need to start your website today. Free hosting, your own domain, a world-class support team, and so much more
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-docker_links:
-  - "[`6`, `6-debian-11`, `6.0.1`, `6.0.1-debian-11-r18`, `latest` (6/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/wordpress/6/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - wordpress:
-      input_base_tag: "6.0.1-debian-11-r"
+      input_base_tag: "6.1.0-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

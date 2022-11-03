@@ -18,14 +18,12 @@ what_is_text: |
   NATS is a connective technology built for the ever increasingly hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, IoT and can be used to augment or replace traditional messaging
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-docker_links:
-  - "[`2`, `2-debian-11`, `2.8.4`, `2.8.4-debian-11-r26`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/nats/2/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - nats:
-      input_base_tag: "2.8.4-debian-11-r"
+      input_base_tag: "2.9.5-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

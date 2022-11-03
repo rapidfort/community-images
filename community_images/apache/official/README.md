@@ -9,11 +9,11 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-# RapidFort hardened image for Apache
+# RapidFort hardened image for Apache Official
 
-RapidFort’s container optimization process hardened this Apache container. This container is free to use and has no license limitations.
+RapidFort’s container optimization process hardened this Apache Official container. This container is free to use and has no license limitations.
 
-It is the same as the [Apache Apache][source-image-repo-link] image but more secure.
+It is the same as the [The Docker Community Apache Official][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
@@ -35,17 +35,17 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 <br>
 
 
-## What is Apache?
+## What is Apache Official?
 
 > The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
 
 
-[Overview of Apache](https://httpd.apache.org/)
+[Overview of Apache Official](https://httpd.apache.org/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened Apache image?
+## How do I use this hardened Apache Official image?
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -66,7 +66,7 @@ $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/h
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [Apache Apache][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [The Docker Community Apache Official][source-image-repo-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
@@ -78,7 +78,7 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 <br>
 
-## What’s the difference between the official [Apache Apache][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [The Docker Community Apache Official][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/apache-official][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.

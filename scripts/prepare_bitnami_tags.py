@@ -89,6 +89,11 @@ class BitnamiTagsHelper:
                     asset_dict[tag_version]["tag_array"] = tag_array
         return asset_dict
 
+    @staticmethod
+    def sort_sem_ver(sem_vers, idx=0, reverse=False):
+        """ sort array of semvers, accepts a tuple of list """
+        return sorted(sem_vers, key = lambda x: [int(y) for y in x[idx].split('.')], reverse=reverse)
+
     def generate_outputs(self, asset, asset_dict):
         """ Use given asset dict generate docker_links and search_tags array for documentation
         Sample input
@@ -107,13 +112,11 @@ class BitnamiTagsHelper:
             docker_link = f"{branch}/{distro}/Dockerfile"
             docker_link_url = f"https://github.com/bitnami/containers/tree/main/bitnami/{asset}/{branch}/{distro}/Dockerfile"
             docker_link_line = f"[`{tag_array[0]}`, `{tag_array[1]}`, `{tag_array[2]}`, `{search_tag}` ({docker_link})]({docker_link_url})"
-            docker_links.append((docker_link_line, float(branch)))
-            search_tags.append((search_tag, float(branch)))
-        sorted_search_tags = sorted(search_tags, key=lambda k: k[1],reverse=True)
-        sorted_docker_links = sorted(docker_links, key=lambda k: k[1], reverse=True)
-        if asset == "rabbitmq":
-            print(search_tags)
-            print(sorted_search_tags)
+            docker_links.append((docker_link_line, branch))
+            search_tags.append((search_tag, branch))
+
+        sorted_search_tags = self.sort_sem_ver(search_tags, idx=1, reverse=True)
+        sorted_docker_links = self.sort_sem_ver(docker_links, idx=1, reverse=True)
         search_tags_list = list(map(lambda x: x[0], sorted_search_tags))
         docker_links_list = list(map(lambda x: x[0], sorted_docker_links))
         return search_tags_list, docker_links_list

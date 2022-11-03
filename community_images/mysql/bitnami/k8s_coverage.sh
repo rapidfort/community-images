@@ -69,3 +69,9 @@ kubectl run -n "${NAMESPACE}" sb-run \
     --mysql-password="${MYSQL_ROOT_PASSWORD}" \
     /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
     run
+
+# run mysql_coverage on cluster
+kubectl -n "${NAMESPACE}" kill pod "${RELEASE_NAME}"-0
+
+# wait for pod to be available again
+kubectl -n "${NAMESPACE}" wait pod "${RELEASE_NAME}"-0 --for=condition=ready --timeout=5m

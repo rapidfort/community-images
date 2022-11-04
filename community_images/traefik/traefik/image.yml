@@ -43,3 +43,11 @@ runtimes:
       traefik:
         repository: "TRAEFIK_IMAGE_REPOSITORY"
         tag: "TRAEFIK_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: traefik/traefik
+    image_keys:
+      kong:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

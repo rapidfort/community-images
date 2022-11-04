@@ -48,6 +48,9 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # add kong repo  FIXME: add this as param
 helm repo add kong https://charts.konghq.com
+# add traefik repo FIXME: like Kong Vinod, if you are paramaterizing this
+helm repo add traefik https://helm.traefik.io/traefik
+
 
 # remove file
 rm -f get_helm.sh

@@ -1,0 +1,58 @@
+name: mariadb
+official_name: MariaDB
+official_website: https://www.mariadb.com/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/mariadb
+source_image_repo_link: https://hub.docker.com/r/bitnami/mariadb
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/mariadb/README.md
+rf_docker_link: rapidfort/mariadb
+image_workflow_name: mariadb_bitnami
+github_location: mariadb/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fmariadb
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install mariadb, just replace repository with RapidFort registry
+  $ helm install my-mariadb bitnami/mariadb --set image.repository=rapidfort/mariadb
+what_is_text: |
+  MariaDB Server is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: bitnami
+repo_sets:
+  - mariadb:
+      input_base_tag: "10.9.3-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.8.5-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.7.6-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.6.10-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.5.17-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.4.26-debian-11-r"
+  - mariadb:
+      input_base_tag: "10.3.36-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm_repo: bitnami/mariadb
+    wait_time_sec: 120
+    image_keys:
+      mariadb:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    compose_file: docker-compose.yml
+    image_keys:
+      mariadb:
+        repository: "MARIADB_IMAGE_REPOSITORY"
+        tag: "MARIADB_IMAGE_TAG"
+  - type: docker
+    mariadb:
+      environment:
+        MARIADB_ROOT_PASSWORD: my_root_password

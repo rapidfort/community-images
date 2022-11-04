@@ -46,6 +46,10 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: traefik/traefik
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
     image_keys:
       kong:
         repository: "image.repository"

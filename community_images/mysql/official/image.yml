@@ -26,13 +26,15 @@ input_registry:
 repo_sets:
   - mysql:
       input_base_tag: "8.0.*-debian"
+      output_repo: mysql-official
   - mysql:
       input_base_tag: "5.7.*-debian"
+      output_repo: mysql-official
 runtimes:
   - type: docker
     script: docker_coverage.sh
     wait_time_sec: 60
-    mysql8-ib:
+    mysql-official:
       exec_command: --default-authentication-plugin=mysql_native_password
       environment:
         MYSQL_ROOT_PASSWORD: my_root_password

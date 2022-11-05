@@ -23,7 +23,7 @@ input_registry:
   account: bitnami
 repo_sets:
   - nats:
-      input_base_tag: "2.9.5-debian-11-r"
+      input_base_tag: "2.9.6-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

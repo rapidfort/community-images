@@ -46,7 +46,6 @@ class BitnamiTagsHelper:
 
     def _add_current_images(self, image_dict):
         """ add current images """
-        name = image_dict.get("name")
         for repo in image_dict.get("repo_sets", []):
             for image_name, repo_image_dict in repo.items():
                 if "input_base_tag" in repo_image_dict:
@@ -129,6 +128,7 @@ class BitnamiTagsHelper:
         """ sort array of semvers, accepts a tuple of list """
         return sorted(sem_vers, key = lambda x: [int(y) for y in x[idx].split('.')], reverse=reverse)
 
+    # pylint: disable = too-many-locals
     def generate_outputs(self, asset, asset_dict):
         """ Use given asset dict generate docker_links and search_tags array for documentation
         Sample input

@@ -1,0 +1,41 @@
+name: mysql-official
+official_name: MySQL Official
+official_website: https://www.mysql.com/
+source_image_provider: The Docker Community
+source_image_repo: docker.io/library/mysql
+source_image_repo_link: https://hub.docker.com/_/mysql
+source_image_readme: https://github.com/docker-library/docs/blob/master/mysql/README.md
+rf_docker_link: rapidfort/mysql8-official
+image_workflow_name: mysql_official
+github_location: mysql/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmysql
+usage_instructions: |
+  $ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d rapidfort/mysql-official:latest
+what_is_text: |
+  MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`8.0.31`, `8.0`, `8`, `latest` (Dockerfile)]()"
+  - "[`8.0.31-debian`, `8.0-debian`, `8-debian`,` debian` (Dockerfile)]()"
+  - "[`5.7.40`, `5.7`, `5` (Dockerfile)]()"
+  - "[`5.7.40-debian`, `5.7-debian`, `5-debian` (Dockerfile)]()"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - mysql:
+      input_base_tag: "8.0.*-debian"
+      output_repo: mysql-official
+  - mysql:
+      input_base_tag: "5.7.*-debian"
+      output_repo: mysql-official
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    wait_time_sec: 60
+    mysql-official:
+      exec_command: --default-authentication-plugin=mysql_native_password
+      environment:
+        MYSQL_ROOT_PASSWORD: my_root_password
+        MYSQL_ROOT_HOST: "%"

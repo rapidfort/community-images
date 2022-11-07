@@ -226,6 +226,14 @@ jobs:
           repository: rapidfort/nginx-ib
           readme-filepath: ./community_images/nginx/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for NGINX IronBank
+      - name: Docker Hub Description NGINX Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/nginx-official
+          readme-filepath: ./community_images/nginx/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for NGINX Official
       - name: Docker Hub Description Grafana Oncall
         uses: peter-evans/dockerhub-description@v3
         with:

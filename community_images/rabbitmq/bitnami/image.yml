@@ -31,7 +31,10 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/rabbitmq
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: rabbitmq
     image_keys:
       rabbitmq:
         repository: "image.repository"

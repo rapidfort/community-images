@@ -27,7 +27,10 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/influxdb
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: influxdb
     image_keys:
       influxdb:
         repository: "image.repository"

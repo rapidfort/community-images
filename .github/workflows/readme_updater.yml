@@ -298,6 +298,14 @@ jobs:
           repository: rapidfort/redis6-ib
           readme-filepath: ./community_images/redis/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ IronBank
+      - name: Docker Hub Description Redis™ Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis-official
+          readme-filepath: ./community_images/redis/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Redis™ Official
       - name: Docker Hub Description Wordpress
         uses: peter-evans/dockerhub-description@v3
         with:

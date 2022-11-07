@@ -58,6 +58,8 @@ jobs:
         run: docker pull rapidfort/nginx
       - name: Pull NGINX IronBank
         run: docker pull rapidfort/nginx-ib
+      - name: Pull NGINX Official
+        run: docker pull rapidfort/nginx-official
       - name: Pull Grafana Oncall
         run: docker pull rapidfort/oncall
       - name: Pull PostgreSQL

@@ -39,7 +39,9 @@
 ### k8s runtime parameters
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
-   | `helm_repo` | helm repo to use for k8s runtime, ex: 'bitnami/nats' | `""` | yes |
+   | `helm.repo` | helm repo to use for k8s runtime, ex: 'bitnami' | `""` | yes |
+   | `helm.repo_url` | helm repo URL to use for k8s runtime, ex: 'https://charts.bitnami.com/bitnami' | `""` | yes |
+   | `helm.chart` | helm chart to use for k8s runtime, ex: 'nats' | `""` | yes |
    | `readiness_wait_pod_name_suffix` | only valid for wait_type: pod, defaults to 0 | `["0"]` | False |
    | `readiness_wait_deployments_suffix` | wait for list of deployment suffix, {release_name}-suffix | `[""]` | False |
    | `tls_certs.generate` | if tls certs generation is needed true/false | `false` | False |

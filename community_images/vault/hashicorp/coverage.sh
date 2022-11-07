@@ -49,7 +49,7 @@ test_vault() {
         policies=webapp \
         ttl=24h
 
-    NAMESPACE="${NAMESPACE}" kubectl apply --filename deployment-webapp.yml
+    kubectl apply --filename deployment-webapp.yml -n "${NAMESPACE}"
     echo "sleeping for 30 seconds"
     sleep 30
     # wait for the earlier pod/deployment to finish

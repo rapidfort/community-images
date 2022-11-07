@@ -246,7 +246,7 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 
 [nginx-official-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/nginx/official
 [nginx-official-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/nginx-official?logo=docker&logoColor=white
-[nginx-official-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fnginx-official?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=nginx-official&utm_content=landing_view_report
+[nginx-official-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fnginx?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=nginx-official&utm_content=landing_view_report
 
 [oncall-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/oncall/grafana
 [oncall-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/oncall?logo=docker&logoColor=white

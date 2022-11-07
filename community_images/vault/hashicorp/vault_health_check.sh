@@ -13,7 +13,7 @@ RELEASE_NAME=$2
 
 POD_NAME="rf-vault-0"
 # wait for the pod to go in th running state
-while [ "$(kubectl get pods "${POD_NAME}" -o 'jsonpath={..status.phase}')" != "Running" ]; do
+while [ "$(kubectl get pods "${POD_NAME}" -n "${NAMESPACE}" -o 'jsonpath={..status.phase}')" != "Running" ]; do
  echo "waiting for pod" && sleep 1;
 done
 

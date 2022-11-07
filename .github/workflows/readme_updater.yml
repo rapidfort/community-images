@@ -199,7 +199,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/mysql8-official
+          repository: rapidfort/mysql-official
           readme-filepath: ./community_images/mysql/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MySQL Official
       - name: Docker Hub Description NATS
@@ -290,6 +290,14 @@ jobs:
           repository: rapidfort/redis6-ib
           readme-filepath: ./community_images/redis/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ IronBank
+      - name: Docker Hub Description Redis™ Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis-official
+          readme-filepath: ./community_images/redis/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Redis™ Official
       - name: Docker Hub Description Wordpress
         uses: peter-evans/dockerhub-description@v3
         with:

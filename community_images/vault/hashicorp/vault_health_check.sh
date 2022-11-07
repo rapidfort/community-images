@@ -18,6 +18,6 @@ while [ "$(kubectl get pods "${POD_NAME}" -n "${NAMESPACE}" -o 'jsonpath={..stat
 done
 
 # wait for the pod to be initialized
-until kubectl logs "${POD_NAME}" -n "${NAMESPACE}" | grep -q "seal"; do
+until kubectl logs "${POD_NAME}" -n "${NAMESPACE}" | grep -q "seal configuration missing"; do
   sleep 1
 done

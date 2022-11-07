@@ -6,6 +6,9 @@ set -x
 # shellcheck disable=SC1091
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
+
 test_vault() {
     VAULT_CONTAINER=$1
     NAMESPACE=$2
@@ -47,9 +50,11 @@ test_vault() {
         ttl=24h
 
     NAMESPACE="${NAMESPACE}" kubectl apply --filename deployment-webapp.yml
+    echo "sleeping for 30 seconds"
+    sleep 30
     # wait for the earlier pod/deployment to finish
     # the pod goes into the running state 
-    kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
+    with_backoff kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
     kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" 8080:8080
     PID_PF="$!"
 

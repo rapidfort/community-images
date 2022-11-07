@@ -7,18 +7,21 @@ services:
     command:                                                                                                            
       - "--api.insecure=true"                                                                                           
       - "--providers.docker=true"                               
-      - "--providers.docker.exposedbydefault=false"                                                                     
-      - "--entrypoints.web.address=:80"  
+      - "--providers.file.directory=/traefikConfig"                                                                   
+      - "--entrypoints.web.address=:8081"
+      - "--entrypoints.websecure.address=:443"
     ports:                                                                                                              
       # The HTTP port                                                                                                   
-      - "80"                                                                                                            
-      - "443"                                                                                                            
+      - "8081:80"                                                                                                            
+      - "8443:8443"                                                                                                            
       # The Web UI (enabled by --api.insecure=true)                                                                     
-      - "8080" 
-      - "8443"
+      - "8080:8080" 
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
+      # Traefik config File to point to certificates
+      - ./config:/traefikConfig
+      - ./certs:/certs
     cap_add:
       - SYS_PTRACE
 
@@ -28,6 +31,10 @@ services:
     deploy:
       replicas: 2
     labels:
-      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
-    cap_add:
-      - SYS_PTRACE
+    # Create a router called whoami listening on the websecure entrypoint
+      - "traefik.http.routers.whoami.entrypoints=websecure"
+      # Force TLS
+      - "traefik.http.routers.whoami.tls=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost)"
+      # Send traffic to the container via port 8080
+      - "traefik.http.services.whoami-service.loadbalancer.server.port=8080"

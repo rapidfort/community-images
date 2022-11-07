@@ -58,7 +58,7 @@ test_vault() {
     # wait for the earlier pod/deployment to finish
     # the pod goes into the running state 
     with_backoff kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
-    kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" -n "${NAMESPACE}" 44444:8080
+    kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" -n "${NAMESPACE}" 44444:8080 &
     PID_PF="$!"
 
     out=$(curl http://localhost:44444 | grep -ic "static-secret")

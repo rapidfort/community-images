@@ -49,34 +49,34 @@ test_vault() {
         policies=webapp \
         ttl=24h
 
-    # create the service account for webapp
-    kubectl apply --filename "${SCRIPTPATH}"/serviceaccount.yml -n "${NAMESPACE}"
-    sleep 2
-    kubectl apply --filename "${SCRIPTPATH}"/deployment-webapp.yml -n "${NAMESPACE}"
-    echo "sleeping for 30 seconds"
-    sleep 30
-    # wait for the earlier pod/deployment to finish
-    # the pod goes into the running state 
-    with_backoff kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
-    kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" -n "${NAMESPACE}" 44444:8080 &
-    PID_PF="$!"
-    # wait for the port to be available
-    until netstat -anlp | grep -q 44444; do echo "waiting for the port 44444 to be accessible..."; sleep 1; done
+    # # create the service account for webapp
+    # kubectl apply --filename "${SCRIPTPATH}"/serviceaccount.yml -n "${NAMESPACE}"
+    # sleep 2
+    # kubectl apply --filename "${SCRIPTPATH}"/deployment-webapp.yml -n "${NAMESPACE}"
+    # echo "sleeping for 30 seconds"
+    # sleep 30
+    # # wait for the earlier pod/deployment to finish
+    # # the pod goes into the running state 
+    # with_backoff kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
+    # kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" -n "${NAMESPACE}" 44444:8080 &
+    # PID_PF="$!"
+    # # wait for the port to be available
+    # until netstat -anlp | grep -q 44444; do echo "waiting for the port 44444 to be accessible..."; sleep 1; done
 
-    out=$(curl http://localhost:44444 | grep -ic "static-secret")
-    # verify the output
-    if (( out < 1 )); then
-        echo "the secret is not correctly mounted to the web application"
-        return 1
-    fi
+    # out=$(curl http://localhost:44444 | grep -ic "static-secret")
+    # # verify the output
+    # if (( out < 1 )); then
+    #     echo "the secret is not correctly mounted to the web application"
+    #     return 1
+    # fi
 
-    out=$(curl http://localhost:44444 | grep -ic "static-user")
-    # verify the output
-    if (( out < 1 )); then
-        echo "the secret is not correctly mounted to the web application"
-        return 1
-    fi
+    # out=$(curl http://localhost:44444 | grep -ic "static-user")
+    # # verify the output
+    # if (( out < 1 )); then
+    #     echo "the secret is not correctly mounted to the web application"
+    #     return 1
+    # fi
 
-    # kill the port forward process
-    kill -9 "${PID_PF}"
+    # # kill the port forward process
+    # kill -9 "${PID_PF}"
 }

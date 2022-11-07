@@ -11,5 +11,13 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE=$1
 RELEASE_NAME=$2
 
-with_backoff kubectl wait pods "${RELEASE_NAME}"-0 -n "${NAMESPACE}" \
-    --for=condition=ready --timeout=20m
+POD_NAME="rf-vault-0"
+# wait for the pod to go in th running state
+while [ "$(kubectl get pods "${POD_NAME}" -o 'jsonpath={..status.phase}')" != "Running" ]; do
+ echo "waiting for pod" && sleep 1;
+done
+
+# wait for the pod to be initialized
+until kubectl logs "${POD_NAME}" -n "${NAMESPACE}" | grep -q "seal"; do
+  sleep 1
+done

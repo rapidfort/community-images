@@ -35,7 +35,6 @@ test_vault() {
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault kv put secret/webapp/config username="static-user" password="static-password"
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault kv get secret/webapp/config
 
-    # follow along https://learn.hashicorp.com/tutorials/vault/kubernetes-minikube-raft?in=vault/kubernetes#launch-a-web-application
     # enable kubernetes based authentication
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault auth enable kubernetes
     kubectl exec -n "${NAMESPACE}" "${VAULT_CONTAINER}" -- vault write auth/kubernetes/config kubernetes_host="https://${KUBERNETES_PORT_443_TCP_ADDR}:${K8S_API_PORT}"
@@ -49,6 +48,7 @@ test_vault() {
 
     NAMESPACE="${NAMESPACE}" kubectl apply --filename deployment-webapp.yml
     # wait for the earlier pod/deployment to finish
+    # the pod goes into the running state 
     kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
     kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" 8080:8080
     PID_PF="$!"

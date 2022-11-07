@@ -22,18 +22,16 @@ what_is_text: |
   Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.
 disclaimer: |
   Disclaimer: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-docker_links:
-  - "[`2`, `2-debian-11`, `2.3.3`, `2.3.3-debian-11-r13`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/airflow/2/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - airflow:
-      input_base_tag: "2.3.3-debian-11-r"
+      input_base_tag: "2.4.2-debian-11-r"
     airflow-scheduler:
-      input_base_tag: "2.3.3-debian-11-r"
+      input_base_tag: "2.4.2-debian-11-r"
     airflow-worker:
-      input_base_tag: "2.3.3-debian-11-r"
+      input_base_tag: "2.4.2-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

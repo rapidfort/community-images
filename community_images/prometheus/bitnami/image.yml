@@ -18,14 +18,12 @@ what_is_text: |
   Prometheus is a free software application used for event monitoring and alerting.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-docker_links:
-  - "[`2`, `2-debian-11`, `2.37.0`, `2.37.0-debian-11-r11`, `latest` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/blob/main/bitnami/prometheus/2/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - prometheus:
-      input_base_tag: "2.37.0-debian-11-r"
+      input_base_tag: "2.39.1-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

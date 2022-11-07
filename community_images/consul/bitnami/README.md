@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/consul][rf-dh-image-link] image has been optim
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1`, `1-debian-11`, `1.12.3`, `1.12.3-debian-11-r7`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-consul/blob/1.12.3-debian-11-r7/1/debian-11/Dockerfile)
+* [`1`, `1-debian-11`, `1.13.3`, `1.13.3-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/consul/1/debian-11/Dockerfile)
 
 ## Need support
 

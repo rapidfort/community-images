@@ -18,14 +18,12 @@ what_is_text: |
   Consul is a service networking solution to automate network configurations, discover services, and enable secure connectivity across any cloud or runtime.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-docker_links:
-  - "[`1`, `1-debian-11`, `1.12.3`, `1.12.3-debian-11-r7`, `latest` (1/debian-11/Dockerfile)](https://github.com/bitnami/bitnami-docker-consul/blob/1.12.3-debian-11-r7/1/debian-11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - consul:
-      input_base_tag: "1.12.3-debian-11-r"
+      input_base_tag: "1.13.3-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

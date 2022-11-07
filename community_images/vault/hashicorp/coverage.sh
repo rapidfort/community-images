@@ -49,13 +49,16 @@ test_vault() {
         policies=webapp \
         ttl=24h
 
+    # create the service account for webapp
+    kubectl apply --filename "${SCRIPTPATH}"/serviceaccount.yml -n "${NAMESPACE}"
+    sleep 2
     kubectl apply --filename deployment-webapp.yml -n "${NAMESPACE}"
     echo "sleeping for 30 seconds"
     sleep 30
     # wait for the earlier pod/deployment to finish
     # the pod goes into the running state 
     with_backoff kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
-    kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" 8080:8080
+    kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" -n "${NAMESPACE}" 8080:8080
     PID_PF="$!"
 
     out=$(curl http://localhost:8080 | grep -ic "static-secret")

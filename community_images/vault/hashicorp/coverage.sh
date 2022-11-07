@@ -60,6 +60,8 @@ test_vault() {
     with_backoff kubectl wait deployments -n "${NAMESPACE}" webapp --for=condition=Available=True --timeout=20m
     kubectl port-forward "$(kubectl get pod -n "${NAMESPACE}" -l app=webapp -o jsonpath="{.items[0].metadata.name}")" -n "${NAMESPACE}" 44444:8080 &
     PID_PF="$!"
+    # wait for the port to be available
+    until netstat -anlp | grep -q 44444; do echo "waiting for the port 44444 to be accessible..."; sleep 1; done
 
     out=$(curl http://localhost:44444 | grep -ic "static-secret")
     # verify the output

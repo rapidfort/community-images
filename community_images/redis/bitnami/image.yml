@@ -29,7 +29,10 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/redis
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: redis
     readiness_wait_pod_name_suffix:
       - "master-0"
     image_keys:
@@ -37,7 +40,10 @@ runtimes:
     override_file: "overrides.yml"
   - type: k8s
     script: k8s_tls_coverage.sh
-    helm_repo: bitnami/redis
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: redis
     readiness_wait_pod_name_suffix:
       - "master-0"
     tls_certs:

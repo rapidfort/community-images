@@ -52,7 +52,7 @@ test_vault() {
     # create the service account for webapp
     kubectl apply --filename "${SCRIPTPATH}"/serviceaccount.yml -n "${NAMESPACE}"
     sleep 2
-    kubectl apply --filename deployment-webapp.yml -n "${NAMESPACE}"
+    kubectl apply --filename "${SCRIPTPATH}"/deployment-webapp.yml -n "${NAMESPACE}"
     echo "sleeping for 30 seconds"
     sleep 30
     # wait for the earlier pod/deployment to finish

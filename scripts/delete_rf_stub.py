@@ -1,13 +1,9 @@
+""" Helper script to delete rfstub tags """
 import logging
-import docker
 import os
-import urllib.parse
-import re
-import dateutil.parser
-import backoff
-from requests.auth import HTTPBasicAuth
-import requests
 import time
+import docker
+import requests
 
 class RegistryHelper:
     """ Docker registry helper base class"""
@@ -30,6 +26,7 @@ class DockerHubHelper(RegistryHelper):
 
     @staticmethod
     def registry_url():
+        """ registry url """
         return "docker.io"
 
     def get_rfstub_tag(self, account, repo):
@@ -87,6 +84,7 @@ class DockerHubHelper(RegistryHelper):
         return {}
 
     def delete_tag(self, account, repo, tag):
+        """ delete tags """
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
         auth_header = self.get_auth_header()
         resp = requests.delete(del_url, headers=auth_header, timeout=30)
@@ -95,9 +93,9 @@ class DockerHubHelper(RegistryHelper):
         return resp.status_code == 200
 
 if __name__ == "__main__":
-    docker_client = docker.from_env()
-    dh = DockerHubHelper(docker_client)
-    repos = ['airflow',
+    dc = docker.from_env()
+    dh = DockerHubHelper(dc)
+    repos_to_del = ['airflow',
                 'airflow-scheduler',
                 'airflow-worker',
                 'apache',
@@ -130,7 +128,7 @@ if __name__ == "__main__":
                 'redis6-ib',
                 'redis-official',
                 'zookeeper']
-    for repo in repos:
-        tags = dh.get_rfstub_tag("rapidfort", repo)
-        for tag in tags:
-            dh.delete_tag("rapidfort", repo, tag)
+    for repo_to_del in repos_to_del:
+        del_tags = dh.get_rfstub_tag("rapidfort", repo_to_del)
+        for del_tag in del_tags:
+            dh.delete_tag("rapidfort", repo_to_del, del_tag)

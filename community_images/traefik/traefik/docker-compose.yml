@@ -1,29 +1,42 @@
-version: '2'
+version: '3'
 
 services:
   reverse-proxy:
     image: ${TRAEFIK_IMAGE_REPOSITORY}:${TRAEFIK_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
     # Enables the web UI and tells Traefik to listen to docker
-    command:                                                                                                            
-      - "--api.insecure=true"                                                                                           
+    command:
+      - "--api.insecure=true"
+      - "--log.filePath=/traefik.log"
+      - "--log.format=json"
+      - "--log.level=DEBUG"
       - "--providers.docker=true"                               
-      - "--providers.file.directory=/traefikConfig"                                                                   
-      - "--entrypoints.web.address=:8081"
-      - "--entrypoints.websecure.address=:443"
-    ports:                                                                                                              
-      # The HTTP port                                                                                                   
-      - "8081:80"                                                                                                            
-      - "8443:8443"                                                                                                            
+      - "--providers.file.directory=/dockerProvider/"
+      - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web-secure.address=:443"
+      - "--entryPoints.ping.address=:8082"
+      - "--ping.entryPoint=ping"
+      - "--ping=true"
+    ports:
+      # The HTTP port
+      - "8081:80"
+      # Expose 9443 for TLS
+      - "9443:443"
+      # Expose Ping
+      - "8082:8082"
       # The Web UI (enabled by --api.insecure=true)                                                                     
       - "8080:8080" 
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
       # Traefik config File to point to certificates
-      - ./config:/traefikConfig
-      - ./certs:/certs
-    cap_add:
-      - SYS_PTRACE
+      - "./dockerProvider:/dockerProvider"
+      - "./certs:/certs"
+    labels:
+      - "traefik.http.routers.ping.rule=Host(`whoami.docker.localhost`) && Path(`/ping`)"
+      - "traefik.http.routers.ping.service=ping@internal"
 
   whoami:
     # A container that exposes an API to show its IP address
@@ -31,10 +44,5 @@ services:
     deploy:
       replicas: 2
     labels:
-    # Create a router called whoami listening on the websecure entrypoint
-      - "traefik.http.routers.whoami.entrypoints=websecure"
-      # Force TLS
       - "traefik.http.routers.whoami.tls=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost)"
-      # Send traffic to the container via port 8080
-      - "traefik.http.services.whoami-service.loadbalancer.server.port=8080"

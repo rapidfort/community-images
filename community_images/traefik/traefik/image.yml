@@ -52,7 +52,7 @@ runtimes:
       secret_name: localhost-server-tls
       common_name: localhost
     image_keys:
-      kong:
+      traefik:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"

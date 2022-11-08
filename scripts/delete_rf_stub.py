@@ -92,10 +92,12 @@ class DockerHubHelper(RegistryHelper):
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
         auth_header = self.get_auth_header()
         resp = requests.delete(del_url, headers=auth_header, timeout=30)
+        print(del_url)
         return resp.status_code == 200
 
 if __name__ == "__main__":
     docker_client = docker.from_env()
     dh = DockerHubHelper(docker_client)
     tags = dh.get_rfstub_tag("rapidfort", "postgresql")
-    print(tags)
+    for tag in tags:
+        dh.delete_tag("rapidfort", "postgresql", tag)

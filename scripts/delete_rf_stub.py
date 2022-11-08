@@ -65,8 +65,8 @@ class DockerHubHelper(RegistryHelper):
             else:
                 break
 
-            # break after tags array is 100 size
-            if len(tags) > 100:
+            # break after tags array is 10000 size
+            if len(tags) > 10000:
                 break
         return tags
 

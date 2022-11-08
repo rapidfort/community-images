@@ -41,7 +41,7 @@ class DockerHubHelper(RegistryHelper):
             lambda tag: "rfstub" in tag["name"],
             tags))
 
-        return tags
+        return map(lambda x:x.get("name"), tags)
 
 
     def _fetch_tags(self, account, repo):

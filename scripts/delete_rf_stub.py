@@ -65,9 +65,6 @@ class DockerHubHelper(RegistryHelper):
             else:
                 break
 
-            # break after tags array is 10000 size
-            if len(tags) > 10000:
-                break
         return tags
 
     def get_auth_header(self):

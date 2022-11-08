@@ -7,6 +7,7 @@ import dateutil.parser
 import backoff
 from requests.auth import HTTPBasicAuth
 import requests
+import time
 
 class RegistryHelper:
     """ Docker registry helper base class"""
@@ -89,12 +90,47 @@ class DockerHubHelper(RegistryHelper):
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
         auth_header = self.get_auth_header()
         resp = requests.delete(del_url, headers=auth_header, timeout=30)
-        print(del_url)
+        print(resp.status_code, del_url)
+        time.sleep(0.1)
         return resp.status_code == 200
 
 if __name__ == "__main__":
     docker_client = docker.from_env()
     dh = DockerHubHelper(docker_client)
-    tags = dh.get_rfstub_tag("rapidfort", "postgresql")
-    for tag in tags:
-        dh.delete_tag("rapidfort", "postgresql", tag)
+    repos = ['airflow',
+                'airflow-scheduler',
+                'airflow-worker',
+                'apache',
+                'apache-official',
+                'consul',
+                'curl',
+                'envoy',
+                'etcd',
+                'fluentd',
+                'haproxy',
+                'influxdb',
+                'kong',
+                'mariadb',
+                'mariadb-ib',
+                'memcached',
+                'mongodb',
+                'mysql',
+                'mysql8-ib',
+                'mysql-official',
+                'nats',
+                'nginx',
+                'nginx-ib',
+                'nginx-official',
+                'oncall',
+                'postgresql',
+                'postgresql12-ib',
+                'prometheus',
+                'rabbitmq',
+                'redis-cluster',
+                'redis6-ib',
+                'redis-official',
+                'zookeeper']
+    for repo in repos:
+        tags = dh.get_rfstub_tag("rapidfort", repo)
+        for tag in tags:
+            dh.delete_tag("rapidfort", repo, tag)

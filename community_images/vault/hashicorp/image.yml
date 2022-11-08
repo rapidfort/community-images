@@ -26,6 +26,7 @@ input_registry:
 repo_sets:
   - vault:
       input_base_tag: "1.12.0"
+needs_common_commands: False
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

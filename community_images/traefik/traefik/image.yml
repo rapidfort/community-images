@@ -47,6 +47,7 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm_repo: traefik/traefik
+    wait_time_sec: 30
     tls_certs:
       generate: true
       secret_name: localhost-server-tls
@@ -56,3 +57,4 @@ runtimes:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
+    

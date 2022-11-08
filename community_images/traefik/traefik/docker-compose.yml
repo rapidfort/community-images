@@ -21,13 +21,13 @@ services:
       - "--ping=true"
     ports:
       # The HTTP port
-      - "8081:80"
-      # Expose 9443 for TLS
-      - "9443:443"
+      - '0.0.0.0::80'
+      # 443 for TLS
+      - '0.0.0.0::443'
       # Expose Ping
-      - "8082:8082"
-      # The Web UI (enabled by --api.insecure=true)                                                                     
-      - "8080:8080" 
+      - '0.0.0.0::8082'
+      # The Web UI (enabled by --api.insecure=true) 
+      - '0.0.0.0::8080'                                                                    
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock

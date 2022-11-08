@@ -30,7 +30,10 @@ needs_common_commands: False
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: hashicorp/vault
+    helm:
+      repo: hashicorp
+      repo_url: https://helm.releases.hashicorp.com
+      chart: vault
     readiness_check_script: vault_health_check.sh
     # disabling persistence otherwise PVC creation fails for data dir
     helm_additional_params:

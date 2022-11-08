@@ -37,7 +37,10 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/postgresql
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: postgresql
     image_keys:
       postgresql: {}
     override_file: "overrides.yml"

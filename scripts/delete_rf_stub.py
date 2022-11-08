@@ -1,4 +1,5 @@
 import logging
+import docker
 import os
 import urllib.parse
 import re

@@ -90,7 +90,7 @@ class DockerHubHelper(RegistryHelper):
         del_url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags/{tag}/"
         auth_header = self.get_auth_header()
         resp = requests.delete(del_url, headers=auth_header, timeout=30)
-        print(resp.status_code, del_url)
+        print(resp.status_code, resp.text, del_url)
         time.sleep(0.1)
         return resp.status_code == 200
 

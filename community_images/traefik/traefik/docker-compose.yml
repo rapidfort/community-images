@@ -44,4 +44,8 @@ services:
     deploy:
       replicas: 2
     labels:
+      - "traefik.http.routers.whoami.tls=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+      - "traefik.http.routers.whoami.entrypoints=web-secure"
+      - "traefik.http.routers.httpwhoami.rule=Host(`whoami.docker.localhost`)"
+      - "traefik.http.routers.httpwhoami.entrypoints=web"

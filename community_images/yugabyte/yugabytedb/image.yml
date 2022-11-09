@@ -34,4 +34,13 @@ repo_sets:
       input_base_tag: "2.15.*"
   - yugabyte:
       input_base_tag: "2.14.*"
-runtimes: {}
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    yugabyte:
+      ports:
+        - "0.0.0.0::7000"
+        - "0.0.0.0::9000"
+        - "0.0.0.0::5433"
+        - "0.0.0.0::9042"
+      exec_command: "bin/yugabyted start --daemon=false"

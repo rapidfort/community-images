@@ -35,7 +35,7 @@ services:
       - "./dockerProvider:/dockerProvider"
       - "./certs:/certs"
     labels:
-      - "traefik.http.routers.ping.rule=Host(`whoami.docker.localhost`) && Path(`/ping`)"
+      - "traefik.http.routers.ping.rule=Host(`ping.docker.localhost`) && Path(`/ping`)"
       - "traefik.http.routers.ping.service=ping@internal"
 
   whoami:
@@ -44,5 +44,4 @@ services:
     deploy:
       replicas: 2
     labels:
-      - "traefik.http.routers.whoami.tls=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"

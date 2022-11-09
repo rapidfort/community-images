@@ -35,8 +35,9 @@ rm dashboard
 curl -s http://localhost:"${PING_PORT}"/ping
 
 # run curl in loop for different endpoints
-for i in {1..20};
+for i in {1..3};
 do 
     echo "Attempt $i"
-    curl -H Host:whoami.docker.localhost https://localhost:"${TLS_PORT}" -k -s
+    curl https://localhost:"${TLS_PORT}" --header 'Host:whoami.docker.localhost' https://localhost:"${TLS_PORT}" -k -s
+    curl http://localhost:"${NON_TLS_PORT}" --header 'Host:whoami.docker.localhost' -s
 done

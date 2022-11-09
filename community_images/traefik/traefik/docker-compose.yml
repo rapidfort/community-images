@@ -7,7 +7,6 @@ services:
       - SYS_PTRACE
     # Enables the web UI and tells Traefik to listen to docker
     command:
-      - "--api.insecure=true"
       - "--log.filePath=/traefik.log"
       - "--log.format=json"
       - "--log.level=DEBUG"
@@ -19,6 +18,7 @@ services:
       - "--entryPoints.ping.address=:8082"
       - "--ping.entryPoint=ping"
       - "--ping=true"
+      - ${APIINSECURE}
     ports:
       # The HTTP port
       - '0.0.0.0::80'

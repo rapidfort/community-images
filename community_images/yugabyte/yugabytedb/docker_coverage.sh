@@ -9,5 +9,15 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-# NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
-# ENVOY_HOST=$(jq -r '.container_details.envoy.ip_address' < "$JSON_PARAMS")
+SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
+NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
+YB_CTR_NAME=$(jq -r '.container_details.yugabyte.name' < "$JSON_PARAMS")
+
+docker exec -it yugabyte /home/yugabyte/bin/ysqlsh --echo-queries
+
+# copy test.psql into container
+docker cp "${SCRIPTPATH}"/../../common/tests/test.psql "${YB_CTR_NAME}":/tmp/test.psql
+
+# run script
+docker exec -i "${YB_CTR_NAME}" \
+    -- /bin/bash -c "ysqlsh -h localhost -p 5433  --echo-queries -f /tmp/test.sql"

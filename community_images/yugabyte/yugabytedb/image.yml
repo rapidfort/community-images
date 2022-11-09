@@ -30,8 +30,8 @@ input_registry:
   registry: docker.io
   account: yugabytedb
 repo_sets:
-  - redis:
+  - yugabyte:
       input_base_tag: "2.15.*"
-  - redis:
+  - yugabyte:
       input_base_tag: "2.14.*"
 runtimes: {}

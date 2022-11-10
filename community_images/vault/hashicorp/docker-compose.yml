@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  template:
+    image: ${IMAGE}:${TAG}
+    user: root
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '8080'

@@ -29,3 +29,10 @@ docker cp "${SCRIPTPATH}"/../../common/tests/test.psql "${YB_CTR_NAME}":/tmp/tes
 # run script
 docker exec -i "${YB_CTR_NAME}" /bin/bash -c \
     "ysqlsh -h ${YB_HOST} -p 5433 -U yugabyte -d yugabyte -f /tmp/test.psql"
+
+# exercise all webpages
+UI_PORT=$(docker inspect "${YB_CTR_NAME}" | jq -r ".[].NetworkSettings.Ports.\"15433/tcp\"[0].HostPort")
+HTML_DIR="${SCRIPTPATH}"/html_output
+mkdir -p "${HTML_DIR}"
+httrack http://${YB_HOST}:${UI_PORT} -O "${HTML_DIR}"
+rm -rf "${HTML_DIR}"

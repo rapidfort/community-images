@@ -42,5 +42,6 @@ runtimes:
         - "0.0.0.0::7000"
         - "0.0.0.0::9000"
         - "0.0.0.0::5433"
+        - "0.0.0.0::15433"
         - "0.0.0.0::9042"
       exec_command: "bin/yugabyted start --daemon=false"

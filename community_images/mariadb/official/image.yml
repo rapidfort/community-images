@@ -29,4 +29,4 @@ runtimes:
   - type: docker
     mariadb:
       environment:
-        MARIADB_ROOT_PASSWORD: my_root_password_testing
+        MARIADB_ROOT_PASSWORD: my-secret-pw

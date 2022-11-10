@@ -19,5 +19,5 @@ YB_CTR_NAME=$(jq -r '.container_details.yugabyte.name' < "$JSON_PARAMS")
 docker cp "${SCRIPTPATH}"/../../common/tests/test.psql "${YB_CTR_NAME}":/tmp/test.psql
 
 # run script
-docker exec -i "${YB_CTR_NAME}" \
-    -- /bin/bash -c "ysqlsh -h ${YB_HOST} -p 5433 -U yugabyte -d yugabyte -f /tmp/test.sql"
+docker exec -i "${YB_CTR_NAME}" /bin/bash -c \
+    "ysqlsh -h ${YB_HOST} -p 5433 -U yugabyte -d yugabyte -f /tmp/test.psql"

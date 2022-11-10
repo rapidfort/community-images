@@ -15,6 +15,14 @@ YB_HOST=$(jq -r '.container_details.yugabyte.ip_address' < "$JSON_PARAMS")
 
 YB_CTR_NAME=$(jq -r '.container_details.yugabyte.name' < "$JSON_PARAMS")
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
+
+# wait for container to be up
+with_backoff docker exec -i "${YB_CTR_NAME}" /bin/bash -c \
+    "./bin/yugabyted status"
+
+
 # copy test.psql into container
 docker cp "${SCRIPTPATH}"/../../common/tests/test.psql "${YB_CTR_NAME}":/tmp/test.psql
 

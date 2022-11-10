@@ -3,5 +3,9 @@ image:
   pullPolicy: Always
 securityContext:
   runAsUser: 1001
+  readOnlyRootFilesystem: false
   capabilities:
-    add: ["SYS_PTRACE"]
+    add:
+      - SYS_PTRACE
+      - SETUID
+      - SETGID

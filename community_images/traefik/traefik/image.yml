@@ -12,8 +12,8 @@ report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Ft
 usage_instructions: |
   $ helm repo add traefik https://helm.traefik.io/traefik
 
-  # install traefik, just replace repository with RapidFort registry
-  $ helm install traefik traefik/traefik --set image.repository=rapidfort/traefik
+  # install traefik, just replace repository with RapidFort image.name and the image.tag
+  $ helm install traefik traefik/traefik --set image.name=rapidfort/traefik --set image.tag=v2.9.4
 what_is_text: |
   Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy. Traefik integrates with your existing infrastructure components (Docker, Swarm mode, Kubernetes, Marathon, Consul, Etcd, Rancher, Amazon ECS, ...) and configures itself automatically and dynamically. Pointing Traefik at your orchestrator should be the only configuration step you need.
 disclaimer: |

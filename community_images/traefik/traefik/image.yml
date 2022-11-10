@@ -27,7 +27,7 @@ input_registry:
   account: library
 repo_sets:
   - traefik:
-      input_base_tag: "v2.9.4"
+      input_base_tag: "v2.9.[0-9.]*$"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

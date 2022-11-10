@@ -28,10 +28,6 @@ input_registry:
 repo_sets:
   - traefik:
       input_base_tag: "v2.9.4"
-  - traefik:
-      input_base_tag: "1.7.34"
-  - traefik:
-      input_base_tag: "1.7.34-alpine"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

@@ -82,7 +82,7 @@ jobs:
         run: docker pull rapidfort/vault
       - name: Pull Wordpress
         run: docker pull rapidfort/wordpress
-      - name: Pull yugabyte
+      - name: Pull Yugabyte
         run: docker pull rapidfort/yugabyte
       - name: Pull Zookeeper
         run: docker pull rapidfort/zookeeper

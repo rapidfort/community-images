@@ -188,3 +188,6 @@ docker_runtime_params:
   - name: <repo>.entrypoint
     description: entrypoint for container
     value : '""'
+  - name: <repo>.ports
+    description: list of ports to expose
+    value : '["", ""]'

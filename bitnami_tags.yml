@@ -106,17 +106,17 @@ postgresql:
   docker_links:
   - '[`15`, `15-debian-11`, `15.0.0`, `15.0.0-debian-11-r` (15/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-11/Dockerfile)'
   - '[`14`, `14-debian-11`, `14.5.0`, `14.5.0-debian-11-r` (14/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-11/Dockerfile)'
-  - '[`13`, `13-debian-11`, `13.8.0`, `13.8.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)'
-  - '[`12`, `12-debian-11`, `12.12.0`, `12.12.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)'
-  - '[`11`, `11-debian-11`, `11.17.0`, `11.17.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)'
-  - '[`10`, `10-debian-11`, `10.22.0`, `10.22.0-debian-11-r` (10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/10/debian-11/Dockerfile)'
+  - '[`13`, `13-debian-11`, `13.9.0`, `13.9.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)'
+  - '[`12`, `12-debian-11`, `12.13.0`, `12.13.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)'
+  - '[`11`, `11-debian-11`, `11.18.0`, `11.18.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)'
+  - '[`10`, `10-debian-11`, `10.23.0`, `10.23.0-debian-11-r` (10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/10/debian-11/Dockerfile)'
   search_tags:
   - 15.0.0-debian-11-r
   - 14.5.0-debian-11-r
-  - 13.8.0-debian-11-r
-  - 12.12.0-debian-11-r
-  - 11.17.0-debian-11-r
-  - 10.22.0-debian-11-r
+  - 13.9.0-debian-11-r
+  - 12.13.0-debian-11-r
+  - 11.18.0-debian-11-r
+  - 10.23.0-debian-11-r
 prometheus:
   docker_links:
   - '[`2`, `2-debian-11`, `2.40.1`, `2.40.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-11/Dockerfile)'

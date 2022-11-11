@@ -60,7 +60,7 @@ helm install \
 kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 
 # install some helpers
-sudo apt-get install jq parallel expect -y
+sudo apt-get install jq parallel expect httrack -y
 
 # install docker-compose latest
 DC_VERSION="$(with_backoff curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
@@ -69,7 +69,7 @@ echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSI
 with_backoff sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"
 sudo chmod 755 $DC_DESTINATION
 
-# upgrade bash, curl, openssl
+# upgrade bash, curl, openssl,
 sudo apt-get install --only-upgrade bash openssl curl -y
 bash --version
 

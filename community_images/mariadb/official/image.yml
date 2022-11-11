@@ -23,7 +23,7 @@ input_registry:
   account: # need review
 repo_sets:
   - mariadb:
-      input_base_tag: "10.10.1-rc-jammy"
+      input_base_tag: "10.10.*"
       output_repo: mariadb
 runtimes:
   - type: docker

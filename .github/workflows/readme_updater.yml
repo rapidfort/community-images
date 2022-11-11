@@ -322,6 +322,14 @@ jobs:
           repository: rapidfort/wordpress
           readme-filepath: ./community_images/wordpress/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Wordpress
+      - name: Docker Hub Description yugabyte
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/yugabyte
+          readme-filepath: ./community_images/yugabyte/yugabytedb/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for yugabyte
       - name: Docker Hub Description Zookeeper
         uses: peter-evans/dockerhub-description@v3
         with:

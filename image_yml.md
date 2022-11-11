@@ -78,3 +78,4 @@
    | `<repo>.exec_command` | exec_command for container | `""` | yes |
    | `<repo>.daemon` | if use daemon or interactive container flag -i or -d | `True` | yes |
    | `<repo>.entrypoint` | entrypoint for container | `""` | yes |
+   | `<repo>.ports` | list of ports to expose | `["", ""]` | yes |

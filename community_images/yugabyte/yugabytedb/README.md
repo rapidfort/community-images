@@ -9,11 +9,11 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-# RapidFort hardened image for yugabyte
+# RapidFort hardened image for Yugabyte
 
-RapidFort’s container optimization process hardened this yugabyte container. This container is free to use and has no license limitations.
+RapidFort’s container optimization process hardened this Yugabyte container. This container is free to use and has no license limitations.
 
-It is the same as the [yugabyteDB yugabyte][source-image-repo-link] image but more secure.
+It is the same as the [yugabyteDB Yugabyte][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
@@ -35,17 +35,17 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 <br>
 
 
-## What is yugabyte?
+## What is Yugabyte?
 
 > YugabyteDB is a high-performance, cloud-native, distributed SQL database that aims to support all PostgreSQL features. It is best suited for cloud-native OLTP (i.e., real-time, business-critical) applications that need absolute data correctness and require at least one of the following: scalability, high tolerance to failures, or globally-distributed deployments.
 
 
-[Overview of yugabyte](https://www.yugabyte.com/)
+[Overview of Yugabyte](https://www.yugabyte.com/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened yugabyte image?
+## How do I use this hardened Yugabyte image?
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -72,7 +72,7 @@ $ helm install yb-demo yugabytedb/yugabyte \
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [yugabyteDB yugabyte][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [yugabyteDB Yugabyte][source-image-repo-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
@@ -84,7 +84,7 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 <br>
 
-## What’s the difference between the official [yugabyteDB yugabyte][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [yugabyteDB Yugabyte][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/yugabyte][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.

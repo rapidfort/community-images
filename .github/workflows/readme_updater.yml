@@ -306,14 +306,6 @@ jobs:
           repository: rapidfort/redis-official
           readme-filepath: ./community_images/redis/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ Official
-      - name: Docker Hub Description Vault
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/vault
-          readme-filepath: ./community_images/vault/hashicorp/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Vault
       - name: Docker Hub Description Wordpress
         uses: peter-evans/dockerhub-description@v3
         with:

@@ -9,7 +9,6 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 
 NAMESPACE=$1
-RELEASE_NAME=$2
 
 POD_NAME="rf-vault-0"
 # wait for the pod to go in th running state

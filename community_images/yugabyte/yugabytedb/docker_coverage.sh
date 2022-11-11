@@ -10,7 +10,6 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for docker coverage = $JSON"
 
 SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
-NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
 YB_HOST=$(jq -r '.container_details.yugabyte.ip_address' < "$JSON_PARAMS")
 
 YB_CTR_NAME=$(jq -r '.container_details.yugabyte.name' < "$JSON_PARAMS")
@@ -34,5 +33,5 @@ docker exec -i "${YB_CTR_NAME}" /bin/bash -c \
 UI_PORT=$(docker inspect "${YB_CTR_NAME}" | jq -r ".[].NetworkSettings.Ports.\"15433/tcp\"[0].HostPort")
 HTML_DIR="${SCRIPTPATH}"/html_output
 mkdir -p "${HTML_DIR}"
-httrack http://${YB_HOST}:${UI_PORT} -O "${HTML_DIR}"
+httrack http://"${YB_HOST}":"${UI_PORT}" -O "${HTML_DIR}"
 rm -rf "${HTML_DIR}"

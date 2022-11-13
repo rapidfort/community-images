@@ -14,8 +14,17 @@ gen_image_readme()
 {
   while IFS="" read -r p || [ -n "$p" ]
   do
-    jinja -d community_images/"${p}"/image.yml \
+    rm -f community_images/"${p}"/image.tmp.yml
+
+    # this allows us to merge bitnami tags file into image.yml
+    python3 "${SCRIPTPATH}"/prepare_image_yml.py \
+      "${SCRIPTPATH}"/../community_images/"${p}"/image.yml \
+      "${SCRIPTPATH}"/../community_images/"${p}"/image.tmp.yml
+
+    jinja -d community_images/"${p}"/image.tmp.yml \
       -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
+
+    rm -f community_images/"${p}"/image.tmp.yml
 
   done < "${SCRIPTPATH}"/../image.lst
 }
@@ -71,10 +80,9 @@ del_image_variants()
 
 main()
 {
+  python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
   gen_main_readme
   gen_image_readme
-  # gen_image_files
-  # gen_image_files2
   gen_new_image_actions
   del_image_variants
 }

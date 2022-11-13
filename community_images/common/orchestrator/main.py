@@ -61,6 +61,7 @@ class Orchestrator:
             ).run(command)
         elif command == Commands.HARDEN:
             HardenGenerator(
+                self,
                 self.config_name,
                 self.config_dict,
                 self.docker_client,
@@ -87,6 +88,7 @@ class Orchestrator:
         ).run(Commands.STUB_COVERAGE)
 
         HardenGenerator(
+            self,
             self.config_name,
             self.config_dict,
             self.docker_client,

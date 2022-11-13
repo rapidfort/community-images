@@ -9,6 +9,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/tests/sysbench_tests.sh
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
+
 JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
@@ -21,7 +24,7 @@ MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_N
 kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${RELEASE_NAME}"-0:/tmp/test.my_sql
 
 # run script
-kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
+with_backoff kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
 # copy mysql_coverage.sh into container
 kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${RELEASE_NAME}"-0:/tmp/mysql_coverage.sh
@@ -30,7 +33,7 @@ kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.s
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "/tmp/mysql_coverage.sh"
 
 # create sbtest schema
-kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \
+with_backoff kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \
     -- /bin/bash -c \
     "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
 
@@ -69,3 +72,15 @@ kubectl run -n "${NAMESPACE}" sb-run \
     --mysql-password="${MYSQL_ROOT_PASSWORD}" \
     /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
     run
+
+# run mysql_coverage on cluster
+kubectl -n "${NAMESPACE}" delete pod "${RELEASE_NAME}"-0
+
+# wait for pod to be available again
+kubectl -n "${NAMESPACE}" wait pod "${RELEASE_NAME}"-0 --for=condition=ready --timeout=5m
+
+# copy test.sql into container
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${RELEASE_NAME}"-0:/tmp/test.my_sql
+
+# run script
+kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"

@@ -9,6 +9,7 @@ on:
       - "community_images/common/**"
       - "community_images/airflow/airflow/bitnami/**"
       - "community_images/apache/bitnami/**"
+      - "community_images/apache/official/**"
       - "community_images/consul/bitnami/**"
       - "community_images/curl/curlimages/**"
       - "community_images/envoy/bitnami/**"
@@ -23,9 +24,11 @@ on:
       - "community_images/mongodb/bitnami/**"
       - "community_images/mysql/bitnami/**"
       - "community_images/mysql/ironbank/**"
+      - "community_images/mysql/official/**"
       - "community_images/nats/bitnami/**"
       - "community_images/nginx/bitnami/**"
       - "community_images/nginx/ironbank/**"
+      - "community_images/nginx/official/**"
       - "community_images/oncall/grafana/**"
       - "community_images/postgresql/bitnami/**"
       - "community_images/postgresql/ironbank/**"
@@ -34,8 +37,11 @@ on:
       - "community_images/redis/bitnami/**"
       - "community_images/redis-cluster/bitnami/**"
       - "community_images/redis/ironbank/**"
-      - "community_images/traefik/traefik/**"
+      - "community_images/redis/official/**"
+      - "community_images/traefik/official/**"
+      - "community_images/vault/hashicorp/**"
       - "community_images/wordpress/bitnami/**"
+      - "community_images/yugabyte/yugabytedb/**"
       - "community_images/zookeeper/bitnami/**"
     branches:
     - main
@@ -128,6 +134,48 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/apache": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  apache-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        run: ./scripts/setup.sh
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/official
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/apache-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   consul:
     runs-on: ubuntu-latest
@@ -717,6 +765,48 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/mysql8-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  mysql-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        run: ./scripts/setup.sh
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/mysql-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nats:
     runs-on: ubuntu-latest
 
@@ -842,6 +932,48 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/nginx-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  nginx-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        run: ./scripts/setup.sh
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/nginx-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   oncall:
     runs-on: ubuntu-latest
@@ -1179,6 +1311,48 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/redis6-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  redis-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        run: ./scripts/setup.sh
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/official
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/redis-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   traefik:
     runs-on: ubuntu-latest
 
@@ -1209,7 +1383,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
         if: github.event_name == 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik
+        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/official
 
 
       - name: Report pulls
@@ -1219,7 +1393,49 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/traefik": 1 }' \
+           -d '{ "rapidfort/traefik-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  vault:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        run: ./scripts/setup.sh
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/vault": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   wordpress:
     runs-on: ubuntu-latest
@@ -1262,6 +1478,48 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/wordpress": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  yugabyte:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Start minikube
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        run: ./scripts/setup.sh
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name == 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run yugabyte/yugabytedb
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/yugabyte": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   zookeeper:
     runs-on: ubuntu-latest

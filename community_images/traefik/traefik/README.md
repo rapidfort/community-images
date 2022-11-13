@@ -58,8 +58,8 @@ The runtime instructions for this container are no different from the official r
 ```sh
 $ helm repo add traefik https://helm.traefik.io/traefik
 
-# install traefik, just replace repository with RapidFort registry
-$ helm install traefik traefik/traefik --set image.repository=rapidfort/traefik
+# install traefik, just replace repository with RapidFort image.name and the image.tag
+$ helm install traefik traefik/traefik --set image.name=rapidfort/traefik --set image.tag=v2.9.4
 
 ```
 
@@ -73,19 +73,19 @@ RapidFort is an industry-leading container optimization solution that minimizes 
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
-<a href="https://github.com/rapidfort/community-images/tree/main/community_images/traefik/traefik">
+<a href="https://github.com/rapidfort/community-images/tree/main/community_images/traefik/official">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
 </a>
 <br>
 <br>
 
 ## What’s the difference between the official [Traefik TRAEFIK][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/traefik][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/traefik-official][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`v2.9.1`, `2.9.1`, `2.9`, `banon`, `latest` (0f110537214ee33ecc4595e7715f2db74cf5b08e/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/0f110537214ee33ecc4595e7715f2db74cf5b08e/alpine/Dockerfile)
+* [`v2.9.4`, `2.9.4`, `2.9`, `banon`, `latest` (902a0bf463bda84f4cc2cefbcbf9b5b6f7a2cdb9/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/902a0bf463bda84f4cc2cefbcbf9b5b6f7a2cdb9/alpine/Dockerfile)
 * [`1.7.34`, `1.7`, `maroilles` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)
 * [`1.7.34-alpine`, `1.7-alpine`, `maroilles-alpine` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)
 
@@ -130,15 +130,15 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Ftraefik%2Ftraefik?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=traefik&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Ftraefik%2Ftraefik?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=traefik&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/traefik?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/traefik?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/traefik-official?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/traefik-official?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/traefik/traefik/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/traefik/traefik/assets/cve_reduction.webp
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/traefik/official/assets/metrics.webp
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/traefik/official/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://hub.docker.com/_/traefik
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/traefik
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/traefik-official

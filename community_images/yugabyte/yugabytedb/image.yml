@@ -1,0 +1,47 @@
+name: yugabyte
+official_name: Yugabyte
+official_website: https://www.yugabyte.com/
+source_image_provider: yugabyteDB
+source_image_repo: docker.io/yugabytedb/yugabyte
+source_image_repo_link: https://hub.docker.com/r/yugabytedb/yugabyte
+source_image_readme: https://github.com/yugabyte/yugabyte-db/blob/master/README.md
+rf_docker_link: rapidfort/yugabyte
+image_workflow_name: yugabyte_yugabytedb
+github_location: yugabyte/yugabytedb
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fyugabytedb%2Fyugabyte
+usage_instructions: |
+  $ helm repo add yugabytedb https://charts.yugabyte.com
+
+  # install mariadb, just replace repository with RapidFort registry
+  $ helm install yb-demo yugabytedb/yugabyte \
+      --set image.repository=rapidfort/yugabyte
+      --version 2.15.3 \
+      --set resource.master.requests.cpu=0.5,resource.master.requests.memory=0.5Gi,\
+      resource.tserver.requests.cpu=0.5,resource.tserver.requests.memory=0.5Gi,\
+      replicas.master=1,replicas.tserver=1 --namespace yb-demo
+what_is_text: |
+  YugabyteDB is a high-performance, cloud-native, distributed SQL database that aims to support all PostgreSQL features. It is best suited for cloud-native OLTP (i.e., real-time, business-critical) applications that need absolute data correctness and require at least one of the following: scalability, high tolerance to failures, or globally-distributed deployments.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2.15`, `latest` (2.15/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)"
+  - "[`2.14`, (2.14/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: yugabytedb
+repo_sets:
+  - yugabyte:
+      input_base_tag: "2.15.*"
+  - yugabyte:
+      input_base_tag: "2.14.*"
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    yugabyte:
+      ports:
+        - "0.0.0.0::7000"
+        - "0.0.0.0::9000"
+        - "0.0.0.0::5433"
+        - "0.0.0.0::15433"
+        - "0.0.0.0::9042"
+      exec_command: "bin/yugabyted start --daemon=false"

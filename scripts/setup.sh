@@ -43,18 +43,6 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 
-# Add bitnami repo
-helm repo add bitnami https://charts.bitnami.com/bitnami
-
-# add kong repo  FIXME: add this as param
-helm repo add kong https://charts.konghq.com
-# add traefik repo FIXME: like Kong Vinod, if you are paramaterizing this
-helm repo add traefik https://helm.traefik.io/traefik
-
-
-# remove file
-rm -f get_helm.sh
-
 # add cert manager
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
@@ -69,7 +57,7 @@ helm install \
 kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 
 # install some helpers
-sudo apt-get install jq parallel expect -y
+sudo apt-get install jq parallel expect httrack -y
 
 # install docker-compose latest
 DC_VERSION="$(with_backoff curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
@@ -78,7 +66,7 @@ echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSI
 with_backoff sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"
 sudo chmod 755 $DC_DESTINATION
 
-# upgrade bash, curl, openssl
+# upgrade bash, curl, openssl,
 sudo apt-get install --only-upgrade bash openssl curl -y
 bash --version
 

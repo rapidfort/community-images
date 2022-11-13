@@ -16,6 +16,7 @@
    | `usage_instructions` | usage instructions such as helm install or docker run | `""` | yes |
    | `what_is_text` | description about image, usually copied from official image What is? | `""` | yes |
    | `disclaimer` | disclaimer or any legal liability notice to be added | `""` | yes |
+   | `bitnami_excluded_branches` | bitnami tags are auto generated, this list allows specific branches to be exculded | `['""', '""']` | yes |
    | `docker_links` | array of all the different image versions build along with link to original Dockerfile | `['""', '""']` | yes |
    | `input_registry.registry` | source registry used to pull docker image, ex: docker.io | `""` | yes |
    | `input_registry.account` | accout in registry from which source image is pulled, ex: bitnami | `""` | yes |
@@ -38,7 +39,9 @@
 ### k8s runtime parameters
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
-   | `helm_repo` | helm repo to use for k8s runtime, ex: 'bitnami/nats' | `""` | yes |
+   | `helm.repo` | helm repo to use for k8s runtime, ex: 'bitnami' | `""` | yes |
+   | `helm.repo_url` | helm repo URL to use for k8s runtime, ex: 'https://charts.bitnami.com/bitnami' | `""` | yes |
+   | `helm.chart` | helm chart to use for k8s runtime, ex: 'nats' | `""` | yes |
    | `readiness_wait_pod_name_suffix` | only valid for wait_type: pod, defaults to 0 | `["0"]` | False |
    | `readiness_wait_deployments_suffix` | wait for list of deployment suffix, {release_name}-suffix | `[""]` | False |
    | `tls_certs.generate` | if tls certs generation is needed true/false | `false` | False |
@@ -75,3 +78,4 @@
    | `<repo>.exec_command` | exec_command for container | `""` | yes |
    | `<repo>.daemon` | if use daemon or interactive container flag -i or -d | `True` | yes |
    | `<repo>.entrypoint` | entrypoint for container | `""` | yes |
+   | `<repo>.ports` | list of ports to expose | `["", ""]` | yes |

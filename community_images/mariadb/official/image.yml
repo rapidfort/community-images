@@ -20,13 +20,17 @@ docker_links:
   - "[`10.10.1-rc-jammy`, `10.10-rc-jammy`, `10.10.1-rc`, `10.10-rc`](https://github.com/MariaDB/mariadb-docker/blob/ee8996e7fd507cfbef594c0369af092e5cf9078a/10.10/Dockerfile)"
 input_registry:
   registry: docker.io
-  account: # need review
+  account: library
 repo_sets:
   - mariadb:
       input_base_tag: "10.10.*"
       output_repo: mariadb
 runtimes:
   - type: docker
-    mariadb:
+    script: docker_coverage.sh
+    wait_time_sec: 60
+    mariadb-ib:
+      exec_command: --default-authentication-plugin=mysql_native_password
       environment:
         MARIADB_ROOT_PASSWORD: my-secret-pw
+        MARIADB_ROOT_HOST: "%"

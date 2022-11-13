@@ -5,9 +5,9 @@ source_image_provider: Traefik
 source_image_repo: docker.io/library/traefik
 source_image_repo_link: https://hub.docker.com/_/traefik
 source_image_readme: https://github.com/traefik/traefik-library-image/blob/master/README.md
-rf_docker_link: rapidfort/traefik-official
-image_workflow_name: traefik_official
-github_location: traefik/official
+rf_docker_link: rapidfort/traefik
+image_workflow_name: traefik_traefik
+github_location: traefik/traefik
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Ftraefik%2Ftraefik
 usage_instructions: |
   $ helm repo add traefik https://helm.traefik.io/traefik

@@ -1343,7 +1343,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/official --publish
+        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik --publish
 
 
       - name: Report pulls
@@ -1353,7 +1353,7 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/traefik-official": 1 }' \
+           -d '{ "rapidfort/traefik": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   vault:
     runs-on: ubuntu-latest

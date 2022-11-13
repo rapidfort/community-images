@@ -43,6 +43,9 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 
+# remove file
+rm -f get_helm.sh
+
 # add cert manager
 helm repo add jetstack https://charts.jetstack.io
 helm repo update

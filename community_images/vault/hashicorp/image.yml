@@ -39,6 +39,7 @@ runtimes:
     helm_additional_params:
       persistence.enabled: false
       securityContext.container.allowPrivilegeEscalation: true
+      securityContext.container.capabilities.add: ["SYS_PTRACE"]
     image_keys:
       vault:
         repository: "server.image.repository"

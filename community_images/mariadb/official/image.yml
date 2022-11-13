@@ -33,4 +33,4 @@ runtimes:
       exec_command: --default-authentication-plugin=mysql_native_password
       environment:
         MARIADB_ROOT_PASSWORD: my-secret-pw
-        MARIADB_ROOT_HOST: "%"
+  #      MARIADB_ROOT_HOST: "%"

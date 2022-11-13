@@ -1,13 +1,14 @@
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
-containerSecurityContext:
-  enabled: true
-  runAsUser: 1001
-  allowPrivilegeEscalation: true
-  capabilities:
-    add: ["SYS_PTRACE"]
-extraEnvVars:
+securityContext:
+  container:
+    enabled: true
+    runAsUser: 1001
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+extraEnvironmentVars:
   - name: "RF_VERBOSE"
     value: "0"
 livenessProbe:

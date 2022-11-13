@@ -17,7 +17,8 @@ while [ "$(kubectl get pods "${POD_NAME}" -n "${NAMESPACE}" -o 'jsonpath={..stat
 done
 
 for((i=0;i<10;i++)); do
-  kubectl logs "${POD_NAME}" -n "${NAMESPACE}"
+  out=$(kubectl logs "${POD_NAME}" -n "${NAMESPACE}")
+  echo "output is $out"
   sleep 5
 done
 

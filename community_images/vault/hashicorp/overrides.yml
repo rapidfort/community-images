@@ -5,7 +5,6 @@ server:
   statefulSet:
     securityContext:
       container:
-        enabled: true
         runAsUser: 1001
         allowPrivilegeEscalation: true
         capabilities:

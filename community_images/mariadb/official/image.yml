@@ -11,7 +11,7 @@ github_location: mariadb/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb   #review needed
 usage_instructions: |
   #Using docker run:
-  $ docker run --detach --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
+  $ docker run --detach --name mariadb-official --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
 what_is_text: |
   MariaDB Server is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
 disclaimer: |

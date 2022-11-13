@@ -1,14 +1,14 @@
-name: mariadb
-official_name: MariaDB
+name: mariadb-official
+official_name: MariaDB Official
 official_website: https://www.mariadb.com/
 source_image_provider: MariaDB Developer Community
 source_image_repo: docker.io/library/mariadb # need review
 source_image_repo_link: https://hub.docker.com/_/mariadb
 source_image_readme: https://github.com/MariaDB/mariadb-docker/tree/ee8996e7fd507cfbef594c0369af092e5cf9078a#readme
-rf_docker_link: rapidfort/mariadb
+rf_docker_link: rapidfort/mariadb-official
 image_workflow_name: mariadb_official
 github_location: mariadb/official
-report_url: #review needed
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb   #review needed
 usage_instructions: |
   #Using docker run:
   $ docker run --detach --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest

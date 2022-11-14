@@ -21,7 +21,7 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 # wait for the zookeeper ensemble to come online
 sleep 60
 
-CONTAINER_NAME="${RELEASE_NAME}-0"
+CONTAINER_NAME="${RELEASE_NAME}"
 # copy over the script to the pod
 kubectl cp "${SCRIPTPATH}"/scripts/zookeeper_coverage_script.sh "${CONTAINER_NAME}":/opt/bitnami/scripts/coverage_script.sh -n "${NAMESPACE}"
 

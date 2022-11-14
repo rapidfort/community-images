@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py airflow output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -71,6 +73,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py apache output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -122,6 +126,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py apache-official output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -173,6 +179,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py consul output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -224,6 +232,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py curl output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -275,6 +285,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py envoy output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -326,6 +338,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py etcd output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -377,6 +391,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py fluentd output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -428,6 +444,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py haproxy output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -479,6 +497,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py influxdb output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -530,6 +550,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py kong output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -581,6 +603,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py mariadb output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -632,6 +656,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py mariadb-ib output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -683,6 +709,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py memcached output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -734,6 +762,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py mongodb output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -785,6 +815,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py mysql output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -836,6 +868,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py mysql-ib output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -887,6 +921,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py mysql-official output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -938,6 +974,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py nats output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -989,6 +1027,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py nginx output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1040,6 +1080,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py nginx-ib output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1091,6 +1133,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py nginx-official output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1142,6 +1186,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py oncall output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1193,6 +1239,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py postgresql output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1244,6 +1292,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py postgresql-ib output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1295,6 +1345,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py postgresql-official output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1346,6 +1398,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py prometheus output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1397,6 +1451,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py rabbitmq output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1448,6 +1504,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py redis output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1499,6 +1557,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py redis-cluster output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1550,6 +1610,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py redis-ib output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1601,6 +1663,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py redis-official output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1652,6 +1716,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py traefik output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1703,6 +1769,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py vault output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1754,6 +1822,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py wordpress output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1805,6 +1875,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py yugabyte output.txt
           cat output.txt >> $GITHUB_OUTPUT
@@ -1856,6 +1928,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check if test required
         id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/tests_required.py zookeeper output.txt
           cat output.txt >> $GITHUB_OUTPUT

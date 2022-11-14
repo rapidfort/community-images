@@ -5,18 +5,39 @@ import sys
 import logging
 
 
-def check_if_tests_required(image_name):
-    """ Check if tests required """
+def get_pull_number():
     github_ref = os.environ.get('GITHUB_REF')
     logging.info(f"{github_ref}")
 
     ref_part = github_ref.split('/')
     if len(ref_part) != 4:
-        return True
+        return -1
 
     pull_number = ref_part[2]
     logging.info(f"Pull number={pull_number}")
+    return pull_number
+
+def get_list_of_files(pull_number):
+    """ Get list of files in PR """
+    github_token = os.environ.get(GITHUB_TOKEN)
+    endpoint = "https://api.github.com"
+    url = f"{endpoint}/repos/rapidfort/community-images"
+    url += f"/pulls/{pull_number}/files"
+
+    headers = f"Authorization: Bearer {github_token}"
+    resp = requests.get(url, headers=headers)
+    if resp.status_code == 200:
+        logging.info(resp.text)
+    else:
+        logging.error(resp.text)
+
+def check_if_tests_required(image_name):
+    """ Check if tests required """
+    pull_number = get_pull_number()
+    logging.info(f"Pull number={pull_number}")
     logging.info(f"Image name={image_name}")
+
+    list_of_files = get_list_of_files(pull_number)
 
     return False
 

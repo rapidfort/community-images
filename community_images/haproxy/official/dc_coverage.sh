@@ -62,17 +62,17 @@ do
     curl http://localhost:"${PORT}"
 done
 
-# # Changing load balancing mode from leastconn to source mode
-# docker exec -i "${CONTAINER_NAME}" cp /usr/local/etc/haproxy/haproxy.cfg /usr/local/etc/haproxy.cfg
-# docker exec -i "${CONTAINER_NAME}" sed -i 's/leastconn/source/g' /usr/local/etc/haproxy.cfg
-# docker exec -i "${CONTAINER_NAME}" cp /usr/local/etc/haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
-# # reloading
-# docker kill -s HUP haproxy
-# sleep 5
-# # Checking source mode
-# # run curl in loop
-# for i in {1..10};
-# do 
-#     echo "Attempt $i"
-#     curl http://localhost:"${PORT}"
-# done
+# Changing load balancing mode from leastconn to source mode
+docker exec -i "${CONTAINER_NAME}" cp /usr/local/etc/haproxy/haproxy.cfg /usr/local/etc/haproxy.cfg
+docker exec -i "${CONTAINER_NAME}" sed -i 's/leastconn/source/g' /usr/local/etc/haproxy.cfg
+docker exec -i "${CONTAINER_NAME}" cp /usr/local/etc/haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
+# reloading
+docker kill -s HUP haproxy
+sleep 5
+# Checking source mode
+# run curl in loop
+for i in {1..10};
+do 
+    echo "Attempt $i"
+    curl http://localhost:"${PORT}"
+done

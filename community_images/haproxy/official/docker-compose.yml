@@ -74,7 +74,7 @@ services:
         python3 app/app.py
 
   haproxy:
-    image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
+    image: haproxy:2.7-dev8-bullseye
     user: root
     volumes:
       - ./configs/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg

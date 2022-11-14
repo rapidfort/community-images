@@ -19,7 +19,7 @@ def get_pull_number():
 
 def get_list_of_files(pull_number):
     """ Get list of files in PR """
-    github_token = os.environ.get(GITHUB_TOKEN)
+    github_token = os.environ.get("GITHUB_TOKEN")
     endpoint = "https://api.github.com"
     url = f"{endpoint}/repos/rapidfort/community-images"
     url += f"/pulls/{pull_number}/files"

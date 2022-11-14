@@ -1,10 +1,12 @@
 """ Script to check if github actions test is required """
+import os
 import sys
 import logging
 
 
 def check_if_tests_required(image_name):
     """ Check if tests required """
+    logging.info(f"{os.environ.get('GITHUB_REF')}")
     logging.info(image_name)
     return False
 

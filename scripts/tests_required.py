@@ -28,7 +28,6 @@ def get_list_of_files(pull_number):
     resp = requests.get(url, headers=headers)
     list_of_files = []
     if resp.status_code == 200:
-        logging.debug(resp.text)
         list_of_files = map(lambda x:x.get("filename"), resp.json())
     else:
         logging.error(resp.text)
@@ -43,7 +42,7 @@ def check_if_tests_required(image_name):
     logging.info(f"Pull number={pull_number}")
 
     list_of_files = get_list_of_files(pull_number)
-    logging.info(f"List of files={list_of_files}")
+    logging.info(f"List of files={list(list_of_files)}")
 
     return False
 

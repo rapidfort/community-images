@@ -1,0 +1,61 @@
+name: postgresql-official
+official_name: PostgreSQL Official
+official_website: https://www.postgresql.org
+source_image_provider: Postgres
+source_image_repo: docker.io/library/postgres
+source_image_repo_link: https://hub.docker.com/_/postgres
+source_image_readme: https://github.com/docker-library/postgres/blob/master/README.md
+rf_docker_link: rapidfort/postgresql-official
+image_workflow_name: postgresql_official
+github_location: postgresql/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fofficial%2Fpostgresql
+usage_instructions: |
+ 1. Define your app's environment with a Dockerfile so it can be reproduced anywhere.
+ 2. Define the services that make up your app in docker-compose.yml so they can be run together in an isolated environment.
+ 3. Lastly, run docker compose up and Compose will start and run your entire app.
+
+what_is_text: |
+  PostgreSQL, often simply "Postgres", is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`15`, `15.0`, `latest`, `15.0-bullseye`, `15-bullseye`, `bullseye` (Dockerfile)](https://github.com/docker-library/postgres/blob/648e5c7dc31db0e34d8dc11891ccc50641ba6e42/15/bullseye/Dockerfile)"
+  - "['14' '14.6', '14.6-bullseye', '14-bullseye' (Dockerfile)](https://github.com/docker-library/postgres/blob/e8ba287990e5e312278fc59131f8a796953dc6c4/14/bullseye/Dockerfile)"
+  - "[`13`, `13.9`, `13.9-bullseye`, `13-bullseye` (DockerFile)](https://github.com/docker-library/postgres/blob/883b1c3f7b485153ec5d841271801ee436ec3314/13/bullseye/Dockerfile)"
+  - "[`12`, `12.13`, `12.13-bullseye`, `12-bullseye` (DockerFile)](https://github.com/docker-library/postgres/blob/5ca94d535d75308b16125d132048bf93172521db/12/bullseye/Dockerfile)"
+  - "[`11.18-bullseye`, `11-bullseye` (DockerFile)](https://github.com/docker-library/postgres/blob/14022440352a9e24d86cae450600ea56969d234b/11/bullseye/Dockerfile)"
+  - "[`10.23-bullseye`, `10-bullseye` (DockerFile)](DockerFile)](https://github.com/docker-library/postgres/blob/c3a0b48216491953f25344c3fef1b02ed157ff3e/10/bullseye/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - postgres:
+      input_base_tag: "15[0-9.]*$"
+      output_repo: postgresql-official
+  - postgres:
+      input_base_tag: "14[0-9.]*$"
+      output_repo: postgresql-official
+  - postgres:
+      input_base_tag: "13[0-9.]*$"
+      output_repo: postgresql-official
+  - postgres:
+      input_base_tag: "12[0-9.]*$"
+      output_repo: postgresql-official
+  - postgres:
+      input_base_tag: "11[0-9.]*$|11.*bullseye"
+      output_repo: postgresql-official
+  - postgres:
+      input_base_tag: "10[0-9.]*$|10.*bullseye"
+      output_repo: postgresql-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      postgresql-official:
+        repository: "PG_IMAGE_REPOSITORY"
+        tag: "PG_IMAGE_TAG"
+  - type: docker
+    postgresql-official:
+      environment:
+        POSTGRES_PASSWORD: PgPwd

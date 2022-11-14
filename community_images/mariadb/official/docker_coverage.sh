@@ -9,9 +9,9 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-CONTAINER_NAME=$(jq -r '.container_details."mariadb-ib".name' < "$JSON_PARAMS")
+CONTAINER_NAME=$(jq -r '.container_details."mariadb-official".name' < "$JSON_PARAMS")
 NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
-MYSQL_HOST=$(jq -r '.container_details."mariadb-ib".ip_address' < "$JSON_PARAMS")
+MYSQL_HOST=$(jq -r '.container_details."mariadb-official".ip_address' < "$JSON_PARAMS")
 
 SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
 

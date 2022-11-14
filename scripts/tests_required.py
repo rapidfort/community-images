@@ -9,7 +9,7 @@ def main():
 
     output_file = sys.argv(2)
     with open(output_file, "w", encoding="utf8") as fp:
-        fp.write("TEST_REQUIRED=yes")
+        fp.write("TEST_REQUIRED=no")
 
 if __name__ == "__main__":
     main()

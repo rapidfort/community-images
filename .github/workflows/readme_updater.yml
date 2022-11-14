@@ -258,6 +258,14 @@ jobs:
           repository: rapidfort/postgresql12-ib
           readme-filepath: ./community_images/postgresql/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PostgreSQL IronBank
+      - name: Docker Hub Description PostgreSQL Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/postgresql-official
+          readme-filepath: ./community_images/postgresql/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for PostgreSQL Official
       - name: Docker Hub Description Prometheus
         uses: peter-evans/dockerhub-description@v3
         with:

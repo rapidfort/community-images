@@ -28,7 +28,7 @@ runtimes:
   - type: docker
     script: docker_coverage.sh
     wait_time_sec: 60
-    mariadb-ib:
+    mariadb-official:
       exec_command: --default-authentication-plugin=mysql_native_password
       environment:
         MARIADB_ROOT_PASSWORD: my_root_password

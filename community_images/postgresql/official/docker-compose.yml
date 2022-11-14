@@ -6,7 +6,7 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - '5432:5432'
+      - '::5432'
     volumes:
       - 'postgresql_data:/var/lib/postgresql/data'
       - ../../common/tests/test.psql:/tmp/test.psql

@@ -16,6 +16,8 @@ POSTGRESQL_PASSWORD=my_password
 
 # pg container
 PG_CONTAINER="${PROJECT_NAME}"-postgresql-1
+# Get Port
+#PG_PORT=$(docker inspect "${PG_CONTAINER}" | jq -r ".[].NetworkSettings.Ports.\"5432/tcp\"[0].HostPort")
 
 # run pg tests
 docker exec -i "${PG_CONTAINER}" bash -c "PGPASSWORD=${POSTGRESQL_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
@@ -24,4 +26,4 @@ docker exec -i "${PG_CONTAINER}" bash -c "PGPASSWORD=${POSTGRESQL_PASSWORD} psql
 docker exec -i "${PG_CONTAINER}" bash -c "/tmp/postgres_coverage.sh"
 
 # run pgbench
-docker exec -i "${PG_CONTAINER}" pgbench --host localhost -U postgres -d postgres -i -s 50
+docker exec -i "${PG_CONTAINER}" pgbench --host localhost -U postgres -d postgres -p 5432 -i -s 50

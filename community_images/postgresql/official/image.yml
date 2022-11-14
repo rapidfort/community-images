@@ -24,7 +24,7 @@ input_registry:
   registry: docker.io
   account: library
 repo_sets:
-  - postgresql:
+  - postgres:
       input_base_tag: "15[0-9.]*$"
       output_repo: postgresql-official
 runtimes:

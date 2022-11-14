@@ -24,4 +24,4 @@ docker exec -i "${PG_CONTAINER}" bash -c "PGPASSWORD=${POSTGRESQL_PASSWORD} psql
 docker exec -i "${PG_CONTAINER}" bash -c "/tmp/postgres_coverage.sh"
 
 # run pgbench
-docker exec -i "${PG_CONTAINER}" pgbench -i -s 50
+docker exec -i "${PG_CONTAINER}" pgbench --host localhost -U postgres -d postgres -i -s 50

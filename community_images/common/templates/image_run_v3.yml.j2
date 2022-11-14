@@ -47,6 +47,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
           RF_PLATFORM_HOST: ${{ '{{' }} secrets.RF_PLATFORM_HOST {{ '}}' }}
+        if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
         run: ./scripts/setup.sh
 {% if  output == "main_build" %}
       - name: Create images and publish to dockerhub

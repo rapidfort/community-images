@@ -11,7 +11,7 @@ def check_if_tests_required(image_name):
     logging.info(f"{github_ref}")
 
     ref_part = github_ref.split('/')
-    if len(github_ref) != 4:
+    if len(ref_part) != 4:
         return True
 
     pull_number = ref_part[2]

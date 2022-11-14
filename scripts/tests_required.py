@@ -24,7 +24,7 @@ def get_list_of_files(pull_number):
     url = f"{endpoint}/repos/rapidfort/community-images"
     url += f"/pulls/{pull_number}/files"
 
-    headers = f"Authorization: Bearer {github_token}"
+    headers = {"Authorization" : f"Bearer {github_token}"}
     resp = requests.get(url, headers=headers)
     if resp.status_code == 200:
         logging.info(resp.text)

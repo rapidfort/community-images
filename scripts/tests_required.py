@@ -26,18 +26,24 @@ def get_list_of_files(pull_number):
 
     headers = {"Authorization" : f"Bearer {github_token}"}
     resp = requests.get(url, headers=headers)
+    list_of_files = []
     if resp.status_code == 200:
-        logging.info(resp.text)
+        logging.debug(resp.text)
+        list_of_files = map(lambda x:x.get("filename"), resp.json())
     else:
         logging.error(resp.text)
+    return list_of_files
+
 
 def check_if_tests_required(image_name):
     """ Check if tests required """
-    pull_number = get_pull_number()
-    logging.info(f"Pull number={pull_number}")
     logging.info(f"Image name={image_name}")
 
+    pull_number = get_pull_number()
+    logging.info(f"Pull number={pull_number}")
+
     list_of_files = get_list_of_files(pull_number)
+    logging.info(f"List of files={list_of_files}")
 
     return False
 

@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  zookeeper1:
+    image: ${ZOOKEEPER_IMAGE_REPOSITORY}:${ZOOKEEPER_IMAGE_TAG}
+    restart: always
+    user: root
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - 2181
+    volumes:
+      - $ZOOKEEPER_HOME:/bitnami/zookeeper
+      - ./scripts/zookeeper_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes

@@ -41,14 +41,14 @@ def check_if_tests_required(image_name, image_github_location):
     pull_number = get_pull_number()
     logging.info(f"Pull number={pull_number}")
 
-    list_of_files = get_list_of_files(pull_number)
-    logging.info(f"List of files={list(list_of_files)}")
+    list_of_files = list(get_list_of_files(pull_number))
+    logging.info(f"List of files={list_of_files}")
 
     path_of_image = f"community_images/{image_github_location}/"
 
     logging.info(f"Path of image {path_of_image}")
 
-    for updated_file in list(list_of_files):
+    for updated_file in list_of_files:
         logging.info(f"Testing {updated_file}")
         if updated_file.startswith(path_of_image):
             logging.info(f"Found file with changes {updated_file}")

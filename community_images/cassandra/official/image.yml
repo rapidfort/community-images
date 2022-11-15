@@ -21,7 +21,7 @@ input_registry:
   registry: docker.io
   account: library
 repo_sets:
-  - mariadb:
+  - cassandra:
       input_base_tag: "latest"
       output_repo: casssandra-official
 runtimes:

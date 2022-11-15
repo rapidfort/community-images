@@ -23,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py airflow output.txt
+          python3 scripts/tests_required.py airflow airflow/airflow/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -76,7 +76,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py apache output.txt
+          python3 scripts/tests_required.py apache apache/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -129,7 +129,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py apache-official output.txt
+          python3 scripts/tests_required.py apache-official apache/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -182,7 +182,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py consul output.txt
+          python3 scripts/tests_required.py consul consul/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -235,7 +235,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py curl output.txt
+          python3 scripts/tests_required.py curl curl/curlimages output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -288,7 +288,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py envoy output.txt
+          python3 scripts/tests_required.py envoy envoy/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -341,7 +341,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py etcd output.txt
+          python3 scripts/tests_required.py etcd etcd/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -394,7 +394,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py fluentd output.txt
+          python3 scripts/tests_required.py fluentd fluentd/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -447,7 +447,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py haproxy output.txt
+          python3 scripts/tests_required.py haproxy haproxy/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -500,7 +500,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py influxdb output.txt
+          python3 scripts/tests_required.py influxdb influxdb/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -553,7 +553,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py kong output.txt
+          python3 scripts/tests_required.py kong kong/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -606,7 +606,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py mariadb output.txt
+          python3 scripts/tests_required.py mariadb mariadb/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -659,7 +659,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py mariadb-ib output.txt
+          python3 scripts/tests_required.py mariadb-ib mariadb/ironbank output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -712,7 +712,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py memcached output.txt
+          python3 scripts/tests_required.py memcached memcached/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -765,7 +765,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py mongodb output.txt
+          python3 scripts/tests_required.py mongodb mongodb/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -818,7 +818,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py mysql output.txt
+          python3 scripts/tests_required.py mysql mysql/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -871,7 +871,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py mysql-ib output.txt
+          python3 scripts/tests_required.py mysql-ib mysql/ironbank output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -924,7 +924,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py mysql-official output.txt
+          python3 scripts/tests_required.py mysql-official mysql/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -977,7 +977,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py nats output.txt
+          python3 scripts/tests_required.py nats nats/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1030,7 +1030,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py nginx output.txt
+          python3 scripts/tests_required.py nginx nginx/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1083,7 +1083,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py nginx-ib output.txt
+          python3 scripts/tests_required.py nginx-ib nginx/ironbank output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1136,7 +1136,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py nginx-official output.txt
+          python3 scripts/tests_required.py nginx-official nginx/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1189,7 +1189,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py oncall output.txt
+          python3 scripts/tests_required.py oncall oncall/grafana output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1242,7 +1242,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py postgresql output.txt
+          python3 scripts/tests_required.py postgresql postgresql/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1295,7 +1295,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py postgresql-ib output.txt
+          python3 scripts/tests_required.py postgresql-ib postgresql/ironbank output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1348,7 +1348,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py postgresql-official output.txt
+          python3 scripts/tests_required.py postgresql-official postgresql/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1401,7 +1401,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py prometheus output.txt
+          python3 scripts/tests_required.py prometheus prometheus/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1454,7 +1454,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py rabbitmq output.txt
+          python3 scripts/tests_required.py rabbitmq rabbitmq/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1507,7 +1507,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py redis output.txt
+          python3 scripts/tests_required.py redis redis/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1560,7 +1560,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py redis-cluster output.txt
+          python3 scripts/tests_required.py redis-cluster redis-cluster/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1613,7 +1613,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py redis-ib output.txt
+          python3 scripts/tests_required.py redis-ib redis/ironbank output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1666,7 +1666,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py redis-official output.txt
+          python3 scripts/tests_required.py redis-official redis/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1719,7 +1719,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py traefik output.txt
+          python3 scripts/tests_required.py traefik traefik/traefik output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1772,7 +1772,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py vault output.txt
+          python3 scripts/tests_required.py vault vault/hashicorp output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1825,7 +1825,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py wordpress output.txt
+          python3 scripts/tests_required.py wordpress wordpress/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1878,7 +1878,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py yugabyte output.txt
+          python3 scripts/tests_required.py yugabyte yugabyte/yugabytedb output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
@@ -1931,7 +1931,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py zookeeper output.txt
+          python3 scripts/tests_required.py zookeeper zookeeper/bitnami output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}

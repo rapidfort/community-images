@@ -32,7 +32,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ '{{' }} secrets.GITHUB_TOKEN {{ '}}' }}
         run: |
-          python3 scripts/tests_required.py {{ image.name }} output.txt
+          python3 scripts/tests_required.py {{ image.name }} {{ image.github_location }} output.txt
           cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
         if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}

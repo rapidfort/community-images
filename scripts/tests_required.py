@@ -6,6 +6,7 @@ import logging
 
 
 def get_pull_number():
+    """ Get pull number """
     github_ref = os.environ.get('GITHUB_REF')
     logging.info(f"{github_ref}")
 
@@ -14,7 +15,6 @@ def get_pull_number():
         return -1
 
     pull_number = ref_part[2]
-    logging.info(f"Pull number={pull_number}")
     return pull_number
 
 def get_list_of_files(pull_number):
@@ -34,7 +34,7 @@ def get_list_of_files(pull_number):
     return list_of_files
 
 
-def check_if_tests_required(image_name):
+def check_if_tests_required(image_name, image_github_location):
     """ Check if tests required """
     logging.info(f"Image name={image_name}")
 
@@ -43,6 +43,14 @@ def check_if_tests_required(image_name):
 
     list_of_files = get_list_of_files(pull_number)
     logging.info(f"List of files={list(list_of_files)}")
+
+    path_of_image = f"community_images/{image_github_location}/"
+    for file in list_of_files:
+        if file.startswith(path_of_image):
+            return True
+        if file.startswith(f"community_images/common/orchestrator/"):
+            if image_name in ["curl", "nginx-ib", "redis", "apache", "mysql"]:
+                return True
 
     return False
 
@@ -59,12 +67,14 @@ def main():
     logging.basicConfig(level=logging.DEBUG)
 
     logging.info(sys.argv)
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
+        logging.error(f"Usage: python3 scripts/tests_required.py <image.name> <image.github_location> <output.txt>")
         sys.exit(1)
 
     image_name = sys.argv[1]
-    output_file = sys.argv[2]
-    tests_required = check_if_tests_required(image_name)
+    image_github_location = sys.argv[2]
+    output_file = sys.argv[3]
+    tests_required = check_if_tests_required(image_name, image_github_location)
     output_test_required(output_file, tests_required)
 
 

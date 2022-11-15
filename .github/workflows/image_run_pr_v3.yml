@@ -4,46 +4,6 @@ name: Image Creation PR Run
 on:
 
   pull_request:
-    paths:
-      - ".github/workflows/**"
-      - "community_images/common/**"
-      - "community_images/airflow/airflow/bitnami/**"
-      - "community_images/apache/bitnami/**"
-      - "community_images/apache/official/**"
-      - "community_images/consul/bitnami/**"
-      - "community_images/curl/curlimages/**"
-      - "community_images/envoy/bitnami/**"
-      - "community_images/etcd/bitnami/**"
-      - "community_images/fluentd/bitnami/**"
-      - "community_images/haproxy/bitnami/**"
-      - "community_images/influxdb/bitnami/**"
-      - "community_images/kong/official/**"
-      - "community_images/mariadb/bitnami/**"
-      - "community_images/mariadb/ironbank/**"
-      - "community_images/memcached/bitnami/**"
-      - "community_images/mongodb/bitnami/**"
-      - "community_images/mysql/bitnami/**"
-      - "community_images/mysql/ironbank/**"
-      - "community_images/mysql/official/**"
-      - "community_images/nats/bitnami/**"
-      - "community_images/nginx/bitnami/**"
-      - "community_images/nginx/ironbank/**"
-      - "community_images/nginx/official/**"
-      - "community_images/oncall/grafana/**"
-      - "community_images/postgresql/bitnami/**"
-      - "community_images/postgresql/ironbank/**"
-      - "community_images/postgresql/official/**"
-      - "community_images/prometheus/bitnami/**"
-      - "community_images/rabbitmq/bitnami/**"
-      - "community_images/redis/bitnami/**"
-      - "community_images/redis-cluster/bitnami/**"
-      - "community_images/redis/ironbank/**"
-      - "community_images/redis/official/**"
-      - "community_images/traefik/traefik/**"
-      - "community_images/vault/hashicorp/**"
-      - "community_images/wordpress/bitnami/**"
-      - "community_images/yugabyte/yugabytedb/**"
-      - "community_images/zookeeper/bitnami/**"
     branches:
     - main
 
@@ -59,11 +19,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py airflow airflow/airflow/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -72,6 +41,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -81,13 +51,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -101,11 +72,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py apache apache/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -114,6 +94,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -123,13 +104,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -143,11 +125,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py apache-official apache/official output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -156,6 +147,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -165,13 +157,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/official
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -185,11 +178,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py consul consul/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -198,6 +200,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -207,13 +210,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -227,11 +231,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py curl curl/curlimages output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -240,6 +253,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -249,13 +263,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -269,11 +284,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py envoy envoy/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -282,6 +306,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -291,13 +316,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -311,11 +337,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py etcd etcd/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -324,6 +359,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -333,13 +369,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -353,11 +390,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py fluentd fluentd/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -366,6 +412,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -375,13 +422,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -395,11 +443,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py haproxy haproxy/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -408,6 +465,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -417,13 +475,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -437,11 +496,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py influxdb influxdb/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -450,6 +518,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -459,13 +528,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -479,11 +549,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py kong kong/official output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -492,6 +571,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -501,13 +581,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run kong/official
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -521,11 +602,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py mariadb mariadb/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -534,6 +624,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -543,13 +634,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -563,11 +655,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py mariadb-ib mariadb/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -576,6 +677,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -585,13 +687,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -605,11 +708,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py memcached memcached/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -618,6 +730,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -627,13 +740,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -647,11 +761,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py mongodb mongodb/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -660,6 +783,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -669,13 +793,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -689,11 +814,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py mysql mysql/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -702,6 +836,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -711,13 +846,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -731,11 +867,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py mysql-ib mysql/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -744,6 +889,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -753,13 +899,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -773,11 +920,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py mysql-official mysql/official output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -786,6 +942,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -795,13 +952,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -815,11 +973,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py nats nats/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -828,6 +995,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -837,13 +1005,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -857,11 +1026,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py nginx nginx/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -870,6 +1048,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -879,13 +1058,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -899,11 +1079,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py nginx-ib nginx/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -912,6 +1101,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -921,13 +1111,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -941,11 +1132,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py nginx-official nginx/official output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -954,6 +1154,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -963,13 +1164,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -983,11 +1185,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py oncall oncall/grafana output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -996,6 +1207,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1005,13 +1217,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1025,11 +1238,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py postgresql postgresql/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1038,6 +1260,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1047,13 +1270,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1067,11 +1291,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py postgresql-ib postgresql/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1080,6 +1313,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1089,13 +1323,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1109,11 +1344,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py postgresql-official postgresql/official output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1122,6 +1366,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1131,13 +1376,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1151,11 +1397,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py prometheus prometheus/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1164,6 +1419,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1173,13 +1429,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1193,11 +1450,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py rabbitmq rabbitmq/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1206,6 +1472,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1215,13 +1482,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1235,11 +1503,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py redis redis/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1248,6 +1525,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1257,13 +1535,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1277,11 +1556,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py redis-cluster redis-cluster/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1290,6 +1578,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1299,13 +1588,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1319,11 +1609,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py redis-ib redis/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1332,6 +1631,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1341,13 +1641,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1361,11 +1662,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py redis-official redis/official output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1374,6 +1684,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1383,13 +1694,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/official
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1403,11 +1715,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py traefik traefik/traefik output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1416,6 +1737,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1425,13 +1747,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1445,11 +1768,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py vault vault/hashicorp output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1458,6 +1790,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1467,13 +1800,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1487,11 +1821,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py wordpress wordpress/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1500,6 +1843,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1509,13 +1853,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1529,11 +1874,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py yugabyte yugabyte/yugabytedb output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1542,6 +1896,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1551,13 +1906,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run yugabyte/yugabytedb
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1571,11 +1927,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py zookeeper zookeeper/bitnami output.txt
+          cat output.txt >> $GITHUB_OUTPUT
       - name: Start minikube
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1584,6 +1949,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: ./scripts/setup.sh
 
       - name: Create images for testing PR
@@ -1593,13 +1959,14 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name == 'pull_request'
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami
 
 
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: |
           curl -X POST \
            -H "Accept: application/json" \

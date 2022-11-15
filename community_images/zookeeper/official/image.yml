@@ -36,15 +36,8 @@ runtimes:
     override_file: "overrides.yml"
     readiness_wait_pod_name_suffix:
       - ""
-  # - type: docker_compose
-  #   script: dc_coverage.sh
-  #   compose_file: docker-compose.yml
-  #   image_keys:
-  #     zookeeper:
-  #       repository: "ZOOKEEPER_IMAGE_REPOSITORY"
-  #       tag: "ZOOKEEPER_IMAGE_TAG"
-  # - type: docker
-  #   script: docker_coverage.sh
-  #   zookeeper:
-  #     environment:
-  #       ALLOW_ANONYMOUS_LOGIN: yes
+  - type: docker
+    script: docker_coverage.sh
+    zookeeper:
+      environment:
+        ALLOW_ANONYMOUS_LOGIN: yes

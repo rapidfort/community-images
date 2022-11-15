@@ -23,6 +23,6 @@ sleep 60
 
 CONTAINER_NAME="${RELEASE_NAME}"
 # copy over the script to the pod
-kubectl cp "${SCRIPTPATH}"/scripts/zookeeper_coverage_script.sh "${CONTAINER_NAME}":/opt/bitnami/scripts/coverage_script.sh -n "${NAMESPACE}"
+kubectl cp "${SCRIPTPATH}"/scripts/zookeeper_coverage_script.sh "${CONTAINER_NAME}":/tmp/coverage_script.sh -n "${NAMESPACE}"
 
 test_zookeeper "${CONTAINER_NAME}" "${NAMESPACE}" "yes"

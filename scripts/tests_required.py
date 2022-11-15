@@ -49,6 +49,7 @@ def check_if_tests_required(image_name, image_github_location):
     logging.info(f"Path of image {path_of_image}")
 
     for updated_file in list(list_of_files):
+        logging.info(f"Testing {updated_file}")
         if updated_file.startswith(path_of_image):
             logging.info(f"Found file with changes {updated_file}")
             return True
@@ -59,6 +60,7 @@ def check_if_tests_required(image_name, image_github_location):
                 logging.info("Picking tests for orchestrator")
                 return True
 
+    logging.info("Not found match, returning False")
     return False
 
 

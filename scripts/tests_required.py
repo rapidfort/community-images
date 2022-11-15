@@ -1,8 +1,8 @@
 """ Script to check if github actions test is required """
 import os
-import requests
 import sys
 import logging
+import requests
 
 
 def get_pull_number():
@@ -25,7 +25,7 @@ def get_list_of_files(pull_number):
     url += f"/pulls/{pull_number}/files"
 
     headers = {"Authorization" : f"Bearer {github_token}"}
-    resp = requests.get(url, headers=headers)
+    resp = requests.get(url, headers=headers, timeout=60)
     list_of_files = []
     if resp.status_code == 200:
         list_of_files = map(lambda x:x.get("filename"), resp.json())
@@ -50,14 +50,24 @@ def check_if_tests_required(image_name, image_github_location):
 
     for updated_file in list_of_files:
         logging.info(f"Testing {updated_file}")
+
+        # Test for files in the folder
         if updated_file.startswith(path_of_image):
             logging.info(f"Found file with changes {updated_file}")
             return True
-        else:
-            logging.info(f"Not found match {path_of_image} {updated_file}")
-        if updated_file.startswith(f"community_images/common/orchestrator/"):
-            if image_name in ["curl", "nginx-ib", "redis", "apache", "mysql"]:
-                logging.info("Picking tests for orchestrator")
+
+        # Test for orchestrator changes with few random tests
+        if (updated_file.startswith("community_images/common/orchestrator/") or
+                updated_file.startswith("community_images/common/tests/")):
+            if image_name in ["curl", "nginx-ib", "redis", "postgresql-ib", "mongodb", "mysql"]:
+                logging.info(f"Picking tests for orchestrator and tests {updated_file}")
+                return True
+
+        # Test for changes in scripts folder
+        if (updated_file.startswith("scripts/") or
+                updated_file.startswith("community_images/common/templates")):
+            if image_name in ["curl"]:
+                logging.info(f"Picking curl test for script changes {updated_file}")
                 return True
 
     logging.info("Not found match, returning False")
@@ -77,7 +87,7 @@ def main():
 
     logging.info(sys.argv)
     if len(sys.argv) != 4:
-        logging.error(f"Usage: python3 scripts/tests_required.py <image.name> <image.github_location> <output.txt>")
+        logging.error("Usage: python3 scripts/tests_required.py <image.name> <image.github_location> <output.txt>")
         sys.exit(1)
 
     image_name = sys.argv[1]

@@ -50,8 +50,10 @@ def check_if_tests_required(image_name, image_github_location):
 
     for updated_file in list_of_files:
         if updated_file.startswith(path_of_image):
-            logging.info("Found file with changes {updated_file}")
+            logging.info(f"Found file with changes {updated_file}")
             return True
+        else:
+            logging.info(f"Not found match {path_of_image} {updated_file}")
         if updated_file.startswith(f"community_images/common/orchestrator/"):
             if image_name in ["curl", "nginx-ib", "redis", "apache", "mysql"]:
                 logging.info("Picking tests for orchestrator")

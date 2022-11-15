@@ -28,13 +28,13 @@ RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-frontrow.rapidfort.io}
 
 if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
-  curl  https://"$RF_PLATFORM_HOST"/cli/ | bash
+  with_backoff curl  https://"$RF_PLATFORM_HOST"/cli/ | bash
   rflogin
 
   # do docker login
   docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
 else
-  curl -k https://127.0.0.1/cli/ | bash
+  with_backoff curl -k https://127.0.0.1/cli/ | bash
   rflogin
 fi
 

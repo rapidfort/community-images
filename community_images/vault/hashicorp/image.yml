@@ -38,22 +38,10 @@ runtimes:
     # disabling persistence otherwise PVC creation fails for data dir
     helm_additional_params:
       persistence.enabled: false
-      # server.dev.enabled: true
+      # server.statefulSet.securityContext.container.allowPrivilegeEscalation: true
+      # server.statefulSet.securityContext.container.capabilities.add: ["SYS_PTRACE"]
     image_keys:
       vault:
-        repository: "image.repository"
-        tag: "image.tag"
+        repository: "server.image.repository"
+        tag: "server.image.tag"
     override_file: "overrides.yml"
-  # - type: docker_compose
-  #   script: dc_coverage.sh
-  #   compose_file: docker-compose.yml
-  #   image_keys:
-  #     vault:
-  #       repository: "VAULT_IMAGE_REPOSITORY"
-  #       tag: "VAULT_IMAGE_TAG"
-  # - type: docker
-  #   script: docker_coverage.sh
-  #   redis:
-  #     env_file: docker.env
-  #     environment:
-  #       KEY_FOO: VAL_BAR

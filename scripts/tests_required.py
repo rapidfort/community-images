@@ -48,7 +48,7 @@ def check_if_tests_required(image_name, image_github_location):
 
     logging.info(f"Path of image {path_of_image}")
 
-    for updated_file in list_of_files:
+    for updated_file in list(list_of_files):
         if updated_file.startswith(path_of_image):
             logging.info(f"Found file with changes {updated_file}")
             return True

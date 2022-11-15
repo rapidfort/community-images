@@ -1,14 +1,14 @@
 name: zookeeper
-official_name: Zookeeper
+official_name: Zookeeper Official
 official_website: https://zookeeper.apache.org/
 source_image_provider: Bitnami
 source_image_repo: docker.io/official/zookeeper
 source_image_repo_link: https://hub.docker.com/_/zookeeper
 source_image_readme: https://github.com/31z4/zookeeper-docker/blob/master/README.md
-rf_docker_link: rapidfort/zookeeper
+rf_docker_link: rapidfort/zookeeper-official
 image_workflow_name: zookeeper_official
 github_location: zookeeper/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fofficial%2Fzookeeper
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fzookeeper
 usage_instructions: |
   docker pull rapidfort/zookeeper-official:latest
 what_is_text: |
@@ -33,7 +33,7 @@ runtimes:
     script: k8s_coverage.sh
     use_helm: False
     image_keys:
-      zookeeper:
+      zookeeper-official:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
@@ -41,6 +41,6 @@ runtimes:
       - ""
   - type: docker
     script: docker_coverage.sh
-    zookeeper:
+    zookeeper-official:
       environment:
         ALLOW_ANONYMOUS_LOGIN: yes

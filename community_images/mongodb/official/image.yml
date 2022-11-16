@@ -1,0 +1,34 @@
+name: mongodb-official
+official_name: MongoDB® Official
+official_website: https://www.mongodb.com/
+source_image_provider: MongoDB
+source_image_repo: docker.io/library/mongo
+source_image_repo_link: https://hub.docker.com/_/mongo
+source_image_readme: https://github.com/docker-library/docs/blob/master/mongo/README.md
+rf_docker_link: rapidfort/mongodb-official
+image_workflow_name: mongodb_official
+github_location: mongodb/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmongodb
+usage_instructions: |
+what_is_text: |
+  MongoDB® is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata. MongoDB is developed by MongoDB Inc., and is published under a combination of the Server Side Public License and the Apache License.
+disclaimer: |
+  Disclaimer: The respective trademarks mentioned in the offering are owned by the respective companies. We do not provide a commercial license for any of these products. This listing has an open-source license. MongoDB(R) is run and maintained by MongoDB, which is a completely separate project from RapidFort.
+
+docker_links:
+  - "[`6.0.2-focal`, `6.0-focal`, `6-focal`, `focal` (Dockerfile)](https://github.com/docker-library/mongo/blob/d68a62060cd2261be2196f9c796a770efb9df8fd/6.0/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - mongo:
+      input_base_tag: "6.*focal"
+      output_repo: mongodb-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      mongodb-official:
+        repository: "MONGODB_IMAGE_REPOSITORY"
+        tag: "MONGODB_IMAGE_TAG"

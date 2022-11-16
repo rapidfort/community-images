@@ -1,0 +1,35 @@
+name: mariadb-official
+official_name: MariaDB Official
+official_website: https://www.mariadb.com/
+source_image_provider: MariaDB Developer Community
+source_image_repo: docker.io/library/mariadb
+source_image_repo_link: https://hub.docker.com/_/mariadb
+source_image_readme: https://github.com/MariaDB/mariadb-docker/tree/ee8996e7fd507cfbef594c0369af092e5cf9078a#readme
+rf_docker_link: rapidfort/mariadb-official
+image_workflow_name: mariadb_official
+github_location: mariadb/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmariadb%2Fmariadb
+usage_instructions: |
+  $ docker run --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  rapidfort/mariadb-ib:latest
+what_is_text: |
+  MariaDB Server is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`10.10.1-rc-jammy`, `10.10-rc-jammy`, `10.10.1-rc`, `10.10-rc`](https://github.com/MariaDB/mariadb-docker/blob/ee8996e7fd507cfbef594c0369af092e5cf9078a/10.10/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - mariadb:
+      input_base_tag: "10.10.*"
+      output_repo: mariadb-official
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    wait_time_sec: 60
+    mariadb-official:
+      exec_command: --default-authentication-plugin=mysql_native_password
+      environment:
+        MARIADB_ROOT_PASSWORD: my_root_password
+        MARIADB_ROOT_HOST: "%"

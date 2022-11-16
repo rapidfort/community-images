@@ -73,12 +73,48 @@ services:
         pip install flask==1.0.2
         python3 app/app.py
 
-  haproxy:
+  haproxy-1:
     image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
-      - ./configs/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
-    container_name: haproxy
+      - ./configs/haproxy1.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    container_name: haproxy-1
+    networks:
+      - haproxy
+    cap_add:
+      - SYS_PTRACE
+    ports: 
+      - '0.0.0.0::80'
+    depends_on: 
+      - python-flask-1
+      - python-flask-2
+      - python-flask-3
+      - python-flask-4
+  
+  haproxy-2:
+    image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
+    user: root
+    volumes:
+      - ./configs/haproxy2.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    container_name: haproxy-2
+    networks:
+      - haproxy
+    cap_add:
+      - SYS_PTRACE
+    ports: 
+      - '0.0.0.0::80'
+    depends_on: 
+      - python-flask-1
+      - python-flask-2
+      - python-flask-3
+      - python-flask-4
+  
+  haproxy-3:
+    image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
+    user: root
+    volumes:
+      - ./configs/haproxy3.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    container_name: haproxy-3
     networks:
       - haproxy
     cap_add:

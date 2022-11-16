@@ -130,6 +130,14 @@ jobs:
           repository: rapidfort/haproxy
           readme-filepath: ./community_images/haproxy/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for HAProxy
+      - name: Docker Hub Description HAProxy Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/haproxy-official
+          readme-filepath: ./community_images/haproxy/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for HAProxy Official
       - name: Docker Hub Description InfluxDB™
         uses: peter-evans/dockerhub-description@v3
         with:

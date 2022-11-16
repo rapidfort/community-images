@@ -77,7 +77,7 @@ services:
     image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
-      - ./configs/haproxy1.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./configs/http-mode/haproxy1.cfg:/usr/local/etc/haproxy/haproxy.cfg
     container_name: haproxy-1
     networks:
       - haproxy
@@ -95,7 +95,7 @@ services:
     image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
-      - ./configs/haproxy2.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./configs/http-mode/haproxy2.cfg:/usr/local/etc/haproxy/haproxy.cfg
     container_name: haproxy-2
     networks:
       - haproxy
@@ -113,7 +113,7 @@ services:
     image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
-      - ./configs/haproxy3.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./configs/http-mode/haproxy3.cfg:/usr/local/etc/haproxy/haproxy.cfg
     container_name: haproxy-3
     networks:
       - haproxy

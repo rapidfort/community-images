@@ -162,6 +162,14 @@ jobs:
           repository: rapidfort/mariadb-ib
           readme-filepath: ./community_images/mariadb/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MariaDB IronBank
+      - name: Docker Hub Description MariaDB Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/mariadb-official
+          readme-filepath: ./community_images/mariadb/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for MariaDB Official
       - name: Docker Hub Description Memcached
         uses: peter-evans/dockerhub-description@v3
         with:

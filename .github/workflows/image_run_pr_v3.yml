@@ -2406,7 +2406,7 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/zookeeper": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  zookeeper:
+  zookeeper-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd-pr
@@ -2419,7 +2419,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py zookeeper zookeeper/official output.txt
+          python3 scripts/tests_required.py zookeeper-official zookeeper/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
 
       - name: Start minikube

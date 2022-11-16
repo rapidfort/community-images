@@ -23,7 +23,9 @@ CONTAINER3_NAME=haproxy-3
 
 
 # log for debugging
-docker inspect "${CONTAINER_NAME}"
+docker inspect "${CONTAINER1_NAME}"
+docker inspect "${CONTAINER2_NAME}"
+docker inspect "${CONTAINER3_NAME}"
 
 # finding ports
 docker inspect "${CONTAINER1_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort"

@@ -37,7 +37,10 @@ runtimes:
         tag: "CONSUL_IMAGE_TAG"
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/consul
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: consul
     tls_certs:
       generate: true
       secret_name: localhost-server-tls

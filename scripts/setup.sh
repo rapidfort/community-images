@@ -28,13 +28,13 @@ RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-frontrow.rapidfort.io}
 
 if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
-  curl  https://"$RF_PLATFORM_HOST"/cli/ | bash
+  with_backoff curl  https://"$RF_PLATFORM_HOST"/cli/ | bash
   rflogin
 
   # do docker login
   docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
 else
-  curl -k https://127.0.0.1/cli/ | bash
+  with_backoff curl -k https://127.0.0.1/cli/ | bash
   rflogin
 fi
 
@@ -42,12 +42,6 @@ fi
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
-
-# Add bitnami repo
-helm repo add bitnami https://charts.bitnami.com/bitnami
-
-# add kong repo  FIXME: add this as param
-helm repo add kong https://charts.konghq.com
 
 # remove file
 rm -f get_helm.sh
@@ -66,7 +60,7 @@ helm install \
 kubectl apply -f "${SCRIPTPATH}"/cert_manager.yml
 
 # install some helpers
-sudo apt-get install jq parallel expect -y
+sudo apt-get install jq parallel expect httrack -y
 
 # install docker-compose latest
 DC_VERSION="$(with_backoff curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
@@ -75,7 +69,7 @@ echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSI
 with_backoff sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"
 sudo chmod 755 $DC_DESTINATION
 
-# upgrade bash, curl, openssl
+# upgrade bash, curl, openssl,
 sudo apt-get install --only-upgrade bash openssl curl -y
 bash --version
 

@@ -5,7 +5,7 @@ source_image_provider: The Docker Community
 source_image_repo: docker.io/library/mysql
 source_image_repo_link: https://hub.docker.com/_/mysql
 source_image_readme: https://github.com/docker-library/docs/blob/master/mysql/README.md
-rf_docker_link: rapidfort/mysql8-official
+rf_docker_link: rapidfort/mysql-official
 image_workflow_name: mysql_official
 github_location: mysql/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmysql
@@ -16,10 +16,8 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`8.0.31`, `8.0`, `8`, `latest` (Dockerfile)]()"
-  - "[`8.0.31-debian`, `8.0-debian`, `8-debian`,` debian` (Dockerfile)]()"
-  - "[`5.7.40`, `5.7`, `5` (Dockerfile)]()"
-  - "[`5.7.40-debian`, `5.7-debian`, `5-debian` (Dockerfile)]()"
+  - "[`8.0-debian`, `8-debian` (Dockerfile)](https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian)"
+  - "[`5.7-debian`, `5-debian` (Dockerfile)](https://github.com/docker-library/mysql/blob/master/5.7/Dockerfile.debian)"
 input_registry:
   registry: docker.io
   account: library

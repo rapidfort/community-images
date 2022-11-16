@@ -2,7 +2,7 @@
 
 set -x
 set -e
-
+export TERM=xterm
 # Add common commands here which should be present in all hardened images
 
 run_commands()

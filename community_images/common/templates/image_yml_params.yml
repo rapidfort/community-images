@@ -77,8 +77,14 @@ runtime_params:
     value : '""'
     required: no
 k8s_runtime_params:
-  - name: helm_repo
-    description: "helm repo to use for k8s runtime, ex: 'bitnami/nats'"
+  - name: helm.repo
+    description: "helm repo to use for k8s runtime, ex: 'bitnami'"
+    value : '""'
+  - name: helm.repo_url
+    description: "helm repo URL to use for k8s runtime, ex: 'https://charts.bitnami.com/bitnami'"
+    value : '""'
+  - name: helm.chart
+    description: "helm chart to use for k8s runtime, ex: 'nats'"
     value : '""'
   - name: readiness_wait_pod_name_suffix
     description: "only valid for wait_type: pod, defaults to 0"
@@ -182,3 +188,6 @@ docker_runtime_params:
   - name: <repo>.entrypoint
     description: entrypoint for container
     value : '""'
+  - name: <repo>.ports
+    description: list of ports to expose
+    value : '["", ""]'

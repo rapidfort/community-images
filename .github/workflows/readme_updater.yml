@@ -362,6 +362,14 @@ jobs:
           repository: rapidfort/zookeeper
           readme-filepath: ./community_images/zookeeper/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Zookeeper
+      - name: Docker Hub Description Zookeeper Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/zookeeper-official
+          readme-filepath: ./community_images/zookeeper/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Zookeeper Official
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

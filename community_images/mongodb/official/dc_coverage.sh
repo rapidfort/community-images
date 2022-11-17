@@ -10,7 +10,9 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for docker compose coverage = $JSON"
 
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
-CONTAINER="${PROJECT_NAME}"-mongo-1
-# Get Port
-#PORT=$(docker inspect "${PG_CONTAINER}" | jq -r ".[].NetworkSettings.Ports.\"5432/tcp\"[0].HostPort")
+CONTAINER="${PROJECT_NAME}"-mongodb-1
+# Run common mongo commands
+docker exec -i "${CONTAINER}" bash -c "/tmp/mongodb_coverage.sh"
+# Use MongoDB
+docker exec -i "${CONTAINER}" bash -c "mongosh -u root -p rootpassword < /tmp/use_mongodb.js"
 

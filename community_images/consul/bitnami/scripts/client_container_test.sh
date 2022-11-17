@@ -12,5 +12,14 @@ ls /opt/bitnami/scripts
 apt-get update
 apt-get install dnsutils -y
 
+# Installing curl
+apt-get install curl
+
+# Query our service using HTTP Api
+curl http://localhost:8500/v1/catalog/service/web
+
+# Checking for the healthy instances
+curl 'http://localhost:8500/v1/health/service/web?passing'
+
 # Query our service using DNS API on consul-node-1
 dig consul-node1/8600 rails.web.service.consul SRV

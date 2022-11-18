@@ -5,6 +5,7 @@ services:
   consul1:
     image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul1"
+    user: root
     networks:
       - consul
     cap_add:
@@ -25,6 +26,7 @@ services:
   consul2:
     image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul2"
+    user: root
     networks:
       - consul
     cap_add:
@@ -38,6 +40,7 @@ services:
   consul3:
     image: consul:latest
     hostname: "consul3"
+    user: root
     networks:
       - consul
     cap_add:
@@ -52,6 +55,7 @@ services:
   consul4:
     image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul4"
+    user: root
     networks:
       - consul
     cap_add:

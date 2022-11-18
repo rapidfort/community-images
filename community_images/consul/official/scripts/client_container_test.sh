@@ -9,8 +9,7 @@ set -e
 ls /opt/scripts
 
 # Installing dnsutils
-apk update
-apk add dnsutils 
+apk add --update bind-tools
 
 # Query our service using HTTP Api
 curl http://localhost:8500/v1/catalog/service/web

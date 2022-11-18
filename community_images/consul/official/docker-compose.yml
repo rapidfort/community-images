@@ -6,8 +6,6 @@ services:
     image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul1"
     user: root
-    networks:
-      - consul
     cap_add:
       - SYS_PTRACE
     ports:
@@ -27,13 +25,11 @@ services:
     image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul2"
     user: root
-    networks:
-      - consul
     cap_add:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/consul/data'
-    command: "agent -server -retry-join consul1"
+    command: "agent -server -join consul1"
     depends_on: 
       - consul1
   
@@ -41,14 +37,12 @@ services:
     image: consul:latest
     hostname: "consul3"
     user: root
-    networks:
-      - consul
     cap_add:
       - SYS_PTRACE
     volumes:
       - 'consul-node3_data:/consul/data'
       - ./scripts/client_container_test.sh:/opt/scripts/coverage_script.sh
-    command: "agent -server -retry-join consul1"
+    command: "agent -server -join consul1"
     depends_on:
       - consul1
   
@@ -56,8 +50,6 @@ services:
     image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul4"
     user: root
-    networks:
-      - consul
     cap_add:
       - SYS_PTRACE
     volumes:
@@ -69,9 +61,6 @@ services:
       - consul2
       - consul3
 
-networks:
-  consul:
-    driver: bridge
 volumes:
   consul-node1_data:
     driver: local

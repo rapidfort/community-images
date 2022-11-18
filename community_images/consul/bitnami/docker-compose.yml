@@ -69,20 +69,16 @@ services:
     image: bitnami/consul
     user: root
     restart: always
-    environment:
-      - CONSUL_AGENT_MODE=client
-      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
     networks:
       - consul
     cap_add:
       - SYS_PTRACE
-    depends_on:
-      - consul-node1
     volumes:
       - 'consul-node4_data:/bitnami'
       - ./scripts/client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
     depends_on:
       - consul-node1
+    command: "consul agent -data-dir=/opt/bitnami/consul -join=consul-node1"
     
 networks:
   consul:

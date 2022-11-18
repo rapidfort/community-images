@@ -13,7 +13,7 @@ apt-get update
 apt-get install dnsutils -y
 
 # Installing curl
-apt-get install curl
+apt-get install curl -y
 
 # Query our service using HTTP Api
 curl http://localhost:8500/v1/catalog/service/web

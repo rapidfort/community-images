@@ -20,7 +20,7 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-consul-node1-1
 
 # Wait for all the member nodes to get in sync
-sleep 60
+sleep 20
 
 # Exec into consul server(node1) and run coverage scrip(Additional: This script also has instructions to register a sample service)
 docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh
@@ -41,8 +41,13 @@ docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul members
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul members
 docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul members
 
+# Reloading consul config on all containers
+docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul reload
+
 # Wait for all the member nodes to get in sync
-sleep 10
+sleep 30
 
 # exec into consul client(node4) and run coverage script
 docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/bitnami/scripts/coverage_script.sh

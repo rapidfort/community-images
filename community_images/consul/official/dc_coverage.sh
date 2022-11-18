@@ -20,12 +20,15 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-consul1-1
 
 # Wait for all the member nodes to get in sync
+docker exec -i "${PROJECT_NAME}"-consul1-1 consul reload
 sleep 10
-
 # Reloading consul config on all containers
 docker exec -i "${PROJECT_NAME}"-consul2-1 consul reload
+sleep 10
 docker exec -i "${PROJECT_NAME}"-consul3-1 consul reload
+sleep 10
 docker exec -i "${PROJECT_NAME}"-consul4-1 consul reload
+sleep 10
 
 # Wait for all the member nodes to get in sync
 sleep 30

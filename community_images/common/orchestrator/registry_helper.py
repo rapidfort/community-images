@@ -92,7 +92,6 @@ class DockerHubHelper(RegistryHelper):
         if account == "_":
             # Handle official repository here
             url = f"{self.BASE_URL}/v2/repositories/{repo}/tags?page_size=25"
-
         while url:
             resp = requests.get(url, timeout=60)
             logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
@@ -103,8 +102,8 @@ class DockerHubHelper(RegistryHelper):
             else:
                 break
 
-            # break after tags array is 100 size
-            if len(tags) > 100:
+            # break after tags array is 200 size
+            if len(tags) > 200:
                 break
         return tags
 
@@ -152,7 +151,6 @@ class IronBankHelper(RegistryHelper):
         Find latest tags using search_str"
         """
         tags = self._fetch_tags(account, repo)
-
         tags = filter(lambda tag: search_str in tag["name"], tags)
         tags = list(filter(
             lambda tag: "sha" not in tag["name"],

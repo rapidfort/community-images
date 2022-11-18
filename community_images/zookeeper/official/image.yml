@@ -1,0 +1,46 @@
+name: zookeeper-official
+official_name: Zookeeper Official
+official_website: https://zookeeper.apache.org/
+source_image_provider: Bitnami
+source_image_repo: docker.io/library/zookeeper
+source_image_repo_link: https://hub.docker.com/_/zookeeper
+source_image_readme: https://github.com/31z4/zookeeper-docker/blob/master/README.md
+rf_docker_link: rapidfort/zookeeper-official
+image_workflow_name: zookeeper_official
+github_location: zookeeper/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fzookeeper
+usage_instructions: |
+  docker pull rapidfort/zookeeper-official:latest
+what_is_text: |
+  Apache ZooKeeper provides a reliable, centralized register of configuration data and services for distributed applications.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - zookeeper:
+      input_base_tag: "3.8.0"
+      output_repo: zookeeper-official
+  - zookeeper:
+      input_base_tag: "3.7.1"
+      output_repo: zookeeper-official
+  - zookeeper:
+      input_base_tag: "3.6.3"
+      output_repo: zookeeper-official
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    use_helm: False
+    image_keys:
+      zookeeper-official:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""
+  - type: docker
+    script: docker_coverage.sh
+    zookeeper-official:
+      environment:
+        ALLOW_ANONYMOUS_LOGIN: yes

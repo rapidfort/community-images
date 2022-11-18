@@ -4,7 +4,7 @@ set -x
 set -e
 
 # Available Scripts
-ls /opt/bitnami/scripts
+ls /opt/scripts
 
 # Checking version
 consul version -format=json

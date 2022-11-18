@@ -3,7 +3,7 @@ version: '2'
 services:
   
   consul-server1:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: consul:latest
     user: root
     container_name: consul-server1
     restart: always
@@ -11,7 +11,7 @@ services:
      - CONSUL_RETRY_JOIN_ADDRESS=consul-server1
     volumes:
      - ./configs/server.json:/server.json
-     - ./configs/acls/:/opt/bitnami/consul/conf/acls/
+     - ./configs/acls/:/consul/dataconf/acls/
     networks:
       - consul
     cap_add:

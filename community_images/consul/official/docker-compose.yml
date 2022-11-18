@@ -3,7 +3,7 @@ version: '2.0'
 services:
   
   consul1:
-    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
+    image: consul:latest
     hostname: "consul1"
     user: root
     cap_add:
@@ -22,7 +22,7 @@ services:
     command: "agent -server -bootstrap-expect 3 -ui -client 0.0.0.0"
   
   consul2:
-    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
+    image: consul:latest
     hostname: "consul2"
     user: root
     cap_add:
@@ -47,7 +47,7 @@ services:
       - consul1
   
   consul4:
-    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
+    image: consul:latest
     hostname: "consul4"
     user: root
     cap_add:

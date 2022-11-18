@@ -34,7 +34,7 @@ sleep 10
 sleep 30
 
 # Exec into consul server(node1) and run coverage scrip(Additional: This script also has instructions to register a sample service)
-docker exec -i "${CONTAINER_NAME}" bash -c /opt/scripts/coverage_script.sh
+docker exec -i "${CONTAINER_NAME}" ./opt/scripts/coverage_script.sh
 
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
@@ -67,7 +67,7 @@ docker exec -i "${PROJECT_NAME}"-consul4-1 bash -c /opt/scripts/coverage_script.
 docker exec -i "${PROJECT_NAME}"-consul3-1 bash -c /opt/scripts/coverage_script.sh
 
 # Deregistering/removing sample service in consul-node1
-docker exec -i "${CONTAINER_NAME}" consul services deregister /consul.d/sample_service.json   
+docker exec -i "${CONTAINER_NAME}" consul services deregister /consul.d/sample_service.json
 
 # Shutting down consul
 docker exec -i "${PROJECT_NAME}"-consul2-1 consul leave

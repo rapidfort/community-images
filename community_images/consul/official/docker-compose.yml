@@ -29,7 +29,7 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/consul/data'
-    command: "agent -server -join consul1 -disable-host-node-id"
+    command: "agent -server -join consul1"
     depends_on: 
       - consul1
   
@@ -42,7 +42,7 @@ services:
     volumes:
       - 'consul-node3_data:/consul/data'
       - ./scripts/client_container_test.sh:/opt/scripts/coverage_script.sh
-    command: "agent -server -join consul1 -disable-host-node-id"
+    command: "agent -server -join consul1"
     depends_on:
       - consul1
   
@@ -55,7 +55,7 @@ services:
     volumes:
       - 'consul-node4_data:/consul/data'
       - ./scripts/client_coverage_script.sh:/opt/scripts/coverage_script.sh
-    command: "agent -join consul1 -disable-host-node-id"
+    command: "agent -join consul1"
     depends_on:
       - consul1
       - consul2

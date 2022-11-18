@@ -1,46 +1,77 @@
 version: '2.0'
+
 services:
+  
   consul1:
     image: consul:latest
     hostname: "consul1"
+    networks:
+      - consul
+    cap_add:
+      - SYS_PTRACE
     ports:
-      - "8400:8400"
-      - "8500:8500"
-      - "8600:8600"
+      - '0.0.0.0::8300'
+      - '0.0.0.0::8301'
+      - '0.0.0.0::8301/udp'
+      - '0.0.0.0::8500'
+      - '0.0.0.0::8600'
+      - '0.0.0.0::8600/udp'
+    volumes:
+      - 'consul-node1_data:/consul/data'
+      - ./scripts/server_coverage_script.sh:/opt/scripts/coverage_script.sh
+      - ./configs/sample_service.json:/consul.d/sample_service.json
     command: "agent -server -bootstrap-expect 3 -ui -disable-host-node-id -client 0.0.0.0"
+  
   consul2:
     image: consul:latest
     hostname: "consul2"
+    networks:
+      - consul
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node2_data:/consul/data'
     command: "agent -server -join consul1 -disable-host-node-id"
     depends_on: 
       - consul1
+  
   consul3:
     image: consul:latest
     hostname: "consul3"
+    networks:
+      - consul
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node3_data:/consul/data'
+      - ./scripts/client_container_test.sh:/opt/scripts/coverage_script.sh
     command: "agent -server -join consul1 -disable-host-node-id"
     depends_on:
       - consul1
+  
   consul4:
     image: consul:latest
     hostname: "consul4"
+    networks:
+      - consul
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node4_data:/consul/data'
+      - ./scripts/client_coverage_script.sh:/opt/scripts/coverage_script.sh
     command: "agent -join consul1 -disable-host-node-id"
     depends_on:
       - consul1
-  consul5:
-    image: consul:latest
-    hostname: "consul5"
-    command: "agent -server -join consul1 -disable-host-node-id"
-    depends_on:
-      - consul1
-  consul6:
-    image: consul:latest
-    hostname: "consul6"
-    command: "agent -join consul1 -disable-host-node-id"
-    depends_on:
-      - consul1
-  consul7:
-    image: consul:latest
-    hostname: "consul7"
-    command: "agent -join consul1 -disable-host-node-id"
-    depends_on:
-      - consul1
+
+networks:
+  consul:
+    driver: bridge
+volumes:
+  consul-node1_data:
+    driver: local
+  consul-node2_data:
+    driver: local
+  consul-node3_data:
+    driver: local
+  consul-node4_data:
+    driver: local

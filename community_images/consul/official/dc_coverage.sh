@@ -20,7 +20,15 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-consul1-1
 
 # Wait for all the member nodes to get in sync
-sleep 20
+sleep 10
+
+# Reloading consul config on all containers
+docker exec -i "${PROJECT_NAME}"-consul2-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul3-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul4-1 consul reload
+
+# Wait for all the member nodes to get in sync
+sleep 30
 
 # Exec into consul server(node1) and run coverage scrip(Additional: This script also has instructions to register a sample service)
 docker exec -i "${CONTAINER_NAME}" bash -c /opt/scripts/coverage_script.sh

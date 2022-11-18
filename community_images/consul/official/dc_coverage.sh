@@ -17,7 +17,7 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 # Container name for consul-node1
-CONTAINER_NAME="${PROJECT_NAME}"-consul-node1-1
+CONTAINER_NAME="${PROJECT_NAME}"-consul1-1
 
 # Wait for all the member nodes to get in sync
 sleep 20
@@ -37,26 +37,26 @@ docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/tcp
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8600/udp\"[0].HostPort"
 
 # Checking Consul members list in all server and client nodes
-docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul members
-docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul members
-docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul members
+docker exec -i "${PROJECT_NAME}"-consul2-1 consul members
+docker exec -i "${PROJECT_NAME}"-consul3-1 consul members
+docker exec -i "${PROJECT_NAME}"-consul4-1 consul members
 
 # Reloading consul config on all containers
-docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul reload
-docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul reload
-docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul2-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul3-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul4-1 consul reload
 
 # Wait for all the member nodes to get in sync
 sleep 30
 
 # exec into consul client(node4) and run coverage script
-docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/scripts/coverage_script.sh
+docker exec -i "${PROJECT_NAME}"-consul4-1 bash -c /opt/scripts/coverage_script.sh
 
 # Query our service using DNS API and HTTP API on consul-node1 via consul-node3
-docker exec -i "${PROJECT_NAME}"-consul-node3-1 bash -c /opt/scripts/coverage_script.sh
+docker exec -i "${PROJECT_NAME}"-consul3-1 bash -c /opt/scripts/coverage_script.sh
 
 # Deregistering/removing sample service in consul-node1
 docker exec -i "${CONTAINER_NAME}" consul services deregister /consul.d/sample_service.json   
 
 # Shutting down consul
-docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul leave
+docker exec -i "${PROJECT_NAME}"-consul2-1 consul leave

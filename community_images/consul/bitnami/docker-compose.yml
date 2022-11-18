@@ -2,7 +2,7 @@ version: '2'
 
 services:
   consul-node1:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     restart: always
     environment:
@@ -27,7 +27,7 @@ services:
       - ./configs/sample_service.json:/consul.d/sample_service.json
 
   consul-node2:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     restart: always
     environment:
@@ -66,19 +66,23 @@ services:
       - ./scripts/client_container_test.sh:/opt/bitnami/scripts/coverage_script.sh
 
   consul-node4:
-    image: ${CONSUL_IMAGE_REPOSITORY}:${CONSUL_IMAGE_TAG}
+    image: bitnami/consul
     user: root
     restart: always
+    environment:
+      - CONSUL_AGENT_MODE=client
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
     networks:
       - consul
     cap_add:
       - SYS_PTRACE
+    depends_on:
+      - consul-node1
     volumes:
       - 'consul-node4_data:/bitnami'
       - ./scripts/client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
     depends_on:
       - consul-node1
-    command: "consul agent -data-dir=/opt/bitnami/consul -join=consul-node1"
     
 networks:
   consul:

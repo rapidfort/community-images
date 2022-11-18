@@ -54,6 +54,6 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      consul:
+      consul-official:
         repository: "CONSUL_OFFICIAL_IMAGE_REPOSITORY"
         tag: "CONSUL_OFFICIAL_IMAGE_TAG"

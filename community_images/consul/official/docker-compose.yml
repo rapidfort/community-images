@@ -23,7 +23,7 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node1_data:/bitnami'
-      - ./scripts/server_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+      - ./scripts/server_coverage_script.sh:/opt/scripts/coverage_script.sh
       - ./configs/sample_service.json:/consul.d/sample_service.json
 
   consul-node2:
@@ -43,7 +43,7 @@ services:
     depends_on:
       - consul-node1
     volumes:
-      - 'consul-node2_data:/bitnami'
+      - 'consul-node2_data:/consul/data'
 
   consul-node3:
     image: consul
@@ -62,8 +62,8 @@ services:
     depends_on:
       - consul-node1
     volumes:
-      - 'consul-node3_data:/bitnami'
-      - ./scripts/client_container_test.sh:/opt/bitnami/scripts/coverage_script.sh
+      - 'consul-node3_data:/consul/data'
+      - ./scripts/client_container_test.sh:/opt/scripts/coverage_script.sh
 
   consul-node4:
     image: consul
@@ -74,8 +74,8 @@ services:
     cap_add:
       - SYS_PTRACE
     volumes:
-      - 'consul-node4_data:/bitnami'
-      - ./scripts/client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+      - 'consul-node4_data:/consul/data'
+      - ./scripts/client_coverage_script.sh:/opt/scripts/coverage_script.sh
     depends_on:
       - consul-node1
       - consul-node2

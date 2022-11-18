@@ -1,0 +1,96 @@
+version: '2'
+
+services:
+  consul-node1:
+    image: consul
+    user: root
+    restart: always
+    environment:
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+    networks:
+      - consul
+    ports:
+      - '0.0.0.0::8300'
+      - '0.0.0.0::8301'
+      - '0.0.0.0::8301/udp'
+      - '0.0.0.0::8500'
+      - '0.0.0.0::8600'
+      - '0.0.0.0::8600/udp'
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node1_data:/bitnami'
+      - ./scripts/server_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+      - ./configs/sample_service.json:/consul.d/sample_service.json
+
+  consul-node2:
+    image: consul
+    user: root
+    restart: always
+    environment:
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_ENABLE_UI=true
+    networks:
+      - consul
+    cap_add:
+      - SYS_PTRACE
+    depends_on:
+      - consul-node1
+    volumes:
+      - 'consul-node2_data:/bitnami'
+
+  consul-node3:
+    image: consul
+    user: root
+    restart: always
+    environment:
+      - CONSUL_BOOTSTRAP_EXPECT=3
+      - CONSUL_CLIENT_LAN_ADDRESS=0.0.0.0
+      - CONSUL_DISABLE_KEYRING_FILE=true
+      - CONSUL_RETRY_JOIN_ADDRESS=consul-node1
+      - CONSUL_ENABLE_UI=false
+    networks:
+      - consul
+    cap_add:
+      - SYS_PTRACE
+    depends_on:
+      - consul-node1
+    volumes:
+      - 'consul-node3_data:/bitnami'
+      - ./scripts/client_container_test.sh:/opt/bitnami/scripts/coverage_script.sh
+
+  consul-node4:
+    image: consul
+    user: root
+    restart: always
+    networks:
+      - consul
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - 'consul-node4_data:/bitnami'
+      - ./scripts/client_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+    depends_on:
+      - consul-node1
+      - consul-node2
+      - consul-node3
+    command: "consul agent -data-dir=/opt/bitnami/consul -join=consul-node1"
+    
+networks:
+  consul:
+    driver: bridge
+volumes:
+  consul-node1_data:
+    driver: local
+  consul-node2_data:
+    driver: local
+  consul-node3_data:
+    driver: local
+  consul-node4_data:
+    driver: local

@@ -1,0 +1,39 @@
+name: memcache-official
+official_name: Memcached
+official_website: http://memcached.org/
+source_image_provider: 
+source_image_repo: docker.io/library/memcached
+source_image_repo_link: https://hub.docker.com/_/memcached 
+source_image_readme: https://github.com/docker-library/memcached#readme
+rf_docker_link: rapidfort/memcached-official
+image_workflow_name: memcached_official
+github_location: memcached/memcached
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fofficial%2Fmemcached
+usage_instructions: |
+  # Docker
+  $ docker run --name memcached rapidfort/memcached:latest
+what_is_text: |
+  Memcached is an high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:  
+  - "[`1.6.17`, `1.6`, `1`, `latest`, `1.6.17-bullseye`, `1.6-bullseye`, `1-bullseye`, `bullseye` (Dockerfile)](https://github.com/docker-library/memcached/blob/1c39f318e3a5c1b06e4c9b0d4b870c9223b26428/debian/Dockerfile)"
+  - "[`1.6.17-alpine`, `1.6-alpine`, `1-alpine`, `alpine`, `1.6.17-alpine3.16`, `1.6-alpine3.16`, `1-alpine3.16`, `alpine3.16` (Dockerfile)](https://github.com/docker-library/memcached/blob/1c39f318e3a5c1b06e4c9b0d4b870c9223b26428/alpine/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - memcached:
+      input_base_tag: "1.6*bullseye"
+      output_repo: memcached-official
+  - memcached:
+      input_base_tag: "1.6*alpine"
+      output_repo: memcached-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      memcached-official:
+        repository: "MEMCACHED_IMAGE_REPOSITORY"
+        tag: "MEMCACHED_IMAGE_TAG"

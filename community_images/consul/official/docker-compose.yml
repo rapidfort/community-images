@@ -3,7 +3,7 @@ version: '2.0'
 services:
   
   consul1:
-    image: consul:latest
+    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul1"
     networks:
       - consul
@@ -23,7 +23,7 @@ services:
     command: "agent -server -bootstrap-expect 3 -ui -disable-host-node-id -client 0.0.0.0"
   
   consul2:
-    image: consul:latest
+    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul2"
     networks:
       - consul
@@ -50,7 +50,7 @@ services:
       - consul1
   
   consul4:
-    image: consul:latest
+    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul4"
     networks:
       - consul

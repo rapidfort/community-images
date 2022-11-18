@@ -1,5 +1,5 @@
 name: consul-official
-official_name: Consul Oifficial
+official_name: Consul Official
 official_website: https://www.consul.io/
 source_image_provider: HashiCorp
 source_image_repo: docker.io/library/consul
@@ -20,14 +20,22 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`2.4.54`, `2.4`, `2`, `latest`, `2.4.54-bullseye`, `2.4-bullseye`, `2-bullseye`, `bullseye`](https://github.com/docker-library/httpd/blob/f3b7fd9c8ef59d1ad46c8b2a27df3e02d822834f/2.4/Dockerfile)"
-  - "[`2.4.54-alpine`, `2.4-alpine`, `2-alpine`, `alpine`, `2.4.54-alpine3.16`, `2.4-alpine3.16`, `2-alpine3.16`, `alpine3.16`](https://github.com/docker-library/httpd/blob/f3b7fd9c8ef59d1ad46c8b2a27df3e02d822834f/2.4/alpine/Dockerfile)"
+  - "[`1.14.0`, `1.14`, `latest`](https://github.com/hashicorp/docker-consul/blob/da19183e0617a285e3dbc42ad5ebfdb4e61caa31/0.X/Dockerfile)"
+  - "[`1.13.3`, `1.13`](https://github.com/hashicorp/docker-consul/blob/f4f43d2534abcfc12f8aebf3c20e5339fdec384f/0.X/Dockerfile)"
+  - "[`1.12.6`, `1.12`](https://github.com/hashicorp/docker-consul/blob/dfb2da6631adfc68ce9a930bfd90b543c7ef69c9/0.X/Dockerfile)"
 input_registry:
   registry: docker.io
-  account: bitnami
+  account: library
 repo_sets:
   - consul:
-      input_base_tag: "1.14.0-debian-11-r"
+      input_base_tag: "1.14.*"
+      output_repo: consul-official
+  - consul:
+      input_base_tag: "1.13.*"
+      output_repo: consul-official
+  - consul:
+      input_base_tag: "1.12.*"
+      output_repo: consul-official
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
@@ -36,9 +44,9 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      consul:
-        repository: "CONSUL_IMAGE_REPOSITORY"
-        tag: "CONSUL_IMAGE_TAG"
+      consul-official:
+        repository: "CONSUL_OFFICIAL_IMAGE_REPOSITORY"
+        tag: "CONSUL_OFFICIAL_IMAGE_TAG"
   - type: docker_compose
     script: dc_acl_coverage.sh
     compose_file: docker-compose-acl.yml
@@ -47,5 +55,5 @@ runtimes:
       out_dir: certs
     image_keys:
       consul:
-        repository: "CONSUL_IMAGE_REPOSITORY"
-        tag: "CONSUL_IMAGE_TAG"
+        repository: "CONSUL_OFFICIAL_IMAGE_REPOSITORY"
+        tag: "CONSUL_OFFICIAL_IMAGE_TAG"

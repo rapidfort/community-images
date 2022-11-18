@@ -4,7 +4,7 @@ set -x
 set -e
 
 # Available Scripts
-ls /opt/bitnami/scripts
+ls /opt/scripts
 
 # General commands
 consul members | tee -a members

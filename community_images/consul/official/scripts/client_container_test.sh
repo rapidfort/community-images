@@ -6,7 +6,7 @@ set -e
 # The purpose of this script is to Query our service using DNS API through a client container(This doesn't run on the stubbed image)
 
 # Available Scripts
-ls /opt/bitnami/scripts
+ls /opt/scripts
 
 # Installing dnsutils
 apt-get update

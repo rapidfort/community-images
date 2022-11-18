@@ -3,7 +3,7 @@ version: '2'
 services:
   
   consul-server1:
-    image: consul:latest
+    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     user: root
     container_name: consul-server1
     restart: always

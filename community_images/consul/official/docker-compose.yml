@@ -80,7 +80,7 @@ services:
       - consul-node1
       - consul-node2
       - consul-node3
-    command: "consul agent -data-dir=/opt/consul -join=consul-node1"
+    command: "consul agent -data-dir=/consul/data -join=consul-node1"
     
 networks:
   consul:

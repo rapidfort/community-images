@@ -9,11 +9,8 @@ set -e
 ls /opt/scripts
 
 # Installing dnsutils
-apt-get update
-apt-get install dnsutils -y
-
-# Installing curl
-apt-get install curl -y
+apk update
+apk add dnsutils -y
 
 # Query our service using HTTP Api
 curl http://localhost:8500/v1/catalog/service/web

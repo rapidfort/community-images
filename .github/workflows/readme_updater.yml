@@ -183,16 +183,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/memcached-official
-          readme-filepath: ./community_images/memcached/memcached/README.md.dockerhub
+          repository: rapidfort/memcached
+          readme-filepath: ./community_images/memcached/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached
       - name: Docker Hub Description Memcached
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/memcached
-          readme-filepath: ./community_images/memcached/bitnami/README.md.dockerhub
+          repository: rapidfort/memcached-official
+          readme-filepath: ./community_images/memcached/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached
       - name: Docker Hub Description MongoDB®
         uses: peter-evans/dockerhub-description@v3

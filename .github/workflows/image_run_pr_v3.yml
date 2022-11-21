@@ -1033,7 +1033,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py memcached-official memcached/memcached output.txt
+          python3 scripts/tests_required.py memcached-official memcached/official output.txt
           cat output.txt >> $GITHUB_OUTPUT
 
       - name: Start minikube
@@ -1068,7 +1068,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/memcached
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official
 
 
       - name: Report pulls

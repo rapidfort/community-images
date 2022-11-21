@@ -137,5 +137,6 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/memcached/official/assets/metrics.webp
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/memcached/official/assets/cve_reduction.webp
 
+
 [source-image-repo-link]: https://hub.docker.com/_/memcached
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/memcached-official

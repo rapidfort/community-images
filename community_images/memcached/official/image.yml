@@ -1,13 +1,14 @@
 name: memcached-official
 official_name: Memcached
 official_website: http://memcached.org/
-source_image_provider:
+source_image_provider: 
 source_image_repo: docker.io/library/memcached
-source_image_repo_link: https://hub.docker.com/_/memcached
+source_image_repo_link: https://hub.docker.com/_/memcached 
 source_image_readme: https://github.com/docker-library/memcached#readme
 rf_docker_link: rapidfort/memcached-official
 image_workflow_name: memcached_official
-github_location: memcached/memcached
+github_location: memcached/official
+
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmemcached
 usage_instructions: |
   # Docker

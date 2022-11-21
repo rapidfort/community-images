@@ -25,24 +25,24 @@ repo_sets:
   - couchdb:
       input_base_tag: "3.2.2-debian-11-r"
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    helm:
-      repo: bitnami
-      repo_url: https://charts.bitnami.com/bitnami
-      chart: couchdb
-    image_keys:
-      couchdb:
-        repository: "image.repository"
-        tag: "image.tag"
-    override_file: "overrides.yml"
-  # - type: docker_compose
-  #   script: dc_coverage.sh
-  #   compose_file: docker-compose.yml
+  # - type: k8s
+  #   script: k8s_coverage.sh
+  #   helm:
+  #     repo: bitnami
+  #     repo_url: https://charts.bitnami.com/bitnami
+  #     chart: couchdb
   #   image_keys:
   #     couchdb:
-  #       repository: "COUCHDB_IMAGE_REPOSITORY"
-  #       tag: "COUCHDB_IMAGE_TAG"
+  #       repository: "image.repository"
+  #       tag: "image.tag"
+  #   override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      couchdb:
+        repository: "COUCHDB_IMAGE_REPOSITORY"
+        tag: "COUCHDB_IMAGE_TAG"
   # - type: docker
   #   script: docker_coverage.sh
   #   couchdb:

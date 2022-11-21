@@ -6,14 +6,10 @@ set -e
 # The purpose of this script is to Query our service using DNS API through a client container(This doesn't run on the stubbed image)
 
 # Available Scripts
-ls /opt/bitnami/scripts
+ls /opt/scripts
 
 # Installing dnsutils
-apt-get update
-apt-get install dnsutils -y
-
-# Installing curl
-apt-get install curl -y
+apk add --update bind-tools
 
 # Query our service using HTTP Api
 curl http://localhost:8500/v1/catalog/service/web

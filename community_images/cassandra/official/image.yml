@@ -1,4 +1,4 @@
-name: Cassandra-Official
+name: cassandra-official
 official_name: Cassandra Official
 official_website: https://cassandra.apache.org/
 source_image_provider: Apache Cassandra
@@ -10,7 +10,8 @@ image_workflow_name: cassandra_official
 github_location: cassandra/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fcassandra
 usage_instructions: |
-  $ $ docker run --name some-cassandra --network some-network -d cassandra:latest
+ # $ docker run --name some-cassandra --network some-network -d cassandra:latest
+  $ docker-compose up
 what_is_text: |
   Apache Cassandra is an open source distributed database management system designed to handle large amounts of data across many commodity servers, providing high availability with no single point of failure. Cassandra offers robust support for clusters spanning multiple datacenters, with asynchronous masterless replication allowing low latency operations for all clients.
 disclaimer: |
@@ -23,7 +24,13 @@ input_registry:
 repo_sets:
   - cassandra:
       input_base_tag: "latest"
-      output_repo: casssandra-official
+      output_repo: cassandra-official
 runtimes:
-  - type: docker
-    
+  - type: docker_compose
+    wait_time_sec: 60
+    compose_file: docker-compose.yml
+    image_keys:
+      cassandra-official:
+        repository: "CASSANDRA_IMAGE_REPOSITORY"
+        tag: "CASSANDRA_IMAGE_TAG"
+

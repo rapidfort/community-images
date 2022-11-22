@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+
+  db:
+    image: rapidfort/mysql
+    expose:
+    - 3306
+    volumes:
+    - ${MYSQL_VOLUME:-mysql-volume}:/var/lib/mysql:Z
+    environment:
+    - MYSQL_ROOT_PASSWORD=coolpassword
+    - MYSQL_DATABASE=yourls
+
+  yourls:
+    image: yourls
+    restart: always
+    depends_on:
+    - db
+    links:
+    - db:mysql
+    ports:
+    - "80:80"
+    environment:
+    - YOURLS_USER=rapidfortbot
+    - YOURLS_PASS=rapidpassword
+    - YOURLS_DB_USER=root
+    - YOURLS_DB_PASS=coolpassword
+    - YOURLS_DB_NAME=yourls
+    - YOURLS_DEBUG=false
+    - YOURLS_USERS=default:default
+    - YOURLS_SITE=http://localhost
+    - YOURLS_INDEX_WEBSITE=https://yourls.org
+    - YOURLS_ADMIN_SSL=false
+    - YOURLS_UNIQUE_URLS=false
+
+volumes:
+  mysql-volume:

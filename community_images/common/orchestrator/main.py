@@ -55,6 +55,7 @@ class Orchestrator:
                          Commands.HARDEN_COVERAGE,
                          Commands.LATEST_COVERAGE]:
             CoverageRunner(
+                self,
                 self.config_name,
                 self.config_dict,
                 tag_manager.repo_set_mappings
@@ -82,6 +83,7 @@ class Orchestrator:
         ).generate()
 
         CoverageRunner(
+            self,
             self.config_name,
             self.config_dict,
             tag_manager.repo_set_mappings
@@ -97,12 +99,14 @@ class Orchestrator:
 
         if publish:
             CoverageRunner(
+                self,
                 self.config_name,
                 self.config_dict,
                 tag_manager.repo_set_mappings
             ).run(Commands.HARDEN_COVERAGE)
 
             CoverageRunner(
+                self,
                 self.config_name,
                 self.config_dict,
                 tag_manager.repo_set_mappings

@@ -107,7 +107,7 @@ class DockerHubHelper(RegistryHelper):
             return None
 
         rolling_tag_digest = found_rolling_tag.get("digest")
-        tags = list(filter(lambda tag: rolling_tag_digest == tag["digest"], tags))
+        tags = list(filter(lambda tag: rolling_tag_digest == tag["digest"] and tag["name"] == rolling_tag, tags))
 
         tags.sort(key=lambda tag: len(tag["name"]), reverse = True)
 

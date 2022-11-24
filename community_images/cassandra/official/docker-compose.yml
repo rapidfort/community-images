@@ -6,9 +6,10 @@ services:
       - ::7000
       - ::9042
     volumes:
-      - cassandra_data:/official
+      - 'cassandra_data:/official'
+      - './test.cql:/tmp/test.cql'
     environment:
-      - CASSANDRA_SEEDS=cassandra,cassandra2
+      - CASSANDRA_SEEDS=cassandra
       - CASSANDRA_CLUSTER_NAME=cassandra-cluster
       - CASSANDRA_PASSWORD_SEEDER=yes
       - CASSANDRA_PASSWORD=cassandra

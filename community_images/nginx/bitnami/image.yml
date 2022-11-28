@@ -29,7 +29,10 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/nginx
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: nginx
     tls_certs:
       generate: true
       secret_name: localhost-server-tls

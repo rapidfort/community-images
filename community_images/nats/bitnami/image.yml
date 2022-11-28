@@ -23,11 +23,14 @@ input_registry:
   account: bitnami
 repo_sets:
   - nats:
-      input_base_tag: "2.9.6-debian-11-r"
+      input_base_tag: "2.9.8-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/nats
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: nats
     image_keys:
       nats:
         repository: "image.repository"

@@ -23,11 +23,14 @@ input_registry:
   account: bitnami
 repo_sets:
   - wordpress:
-      input_base_tag: "6.1.0-debian-11-r"
+      input_base_tag: "6.1.1-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/wordpress
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: wordpress
     image_keys:
       wordpress:
         repository: "image.repository"

@@ -1,0 +1,65 @@
+name: haproxy-official
+official_name: HAProxy Official
+official_website: http://www.haproxy.org/
+source_image_provider: The Docker Community
+source_image_repo: docker.io/library/haproxy
+source_image_repo_link: https://hub.docker.com/_/haproxy
+source_image_readme: https://github.com/docker-library/docs/blob/master/haproxy/README.md
+rf_docker_link: rapidfort/haproxy-official
+image_workflow_name: haproxy_official
+github_location: haproxy/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fhaproxy
+usage_instructions: |
+  # Using docker run via bind mount:
+  $ docker run -d --name my-haproxy -v /path/to/etc/haproxy:/usr/local/etc/haproxy:ro --sysctl net.ipv4.ip_unprivileged_port_start=0 rapidfort:haproxy-official
+what_is_text: |
+  HAProxy is a TCP proxy and a HTTP reverse proxy. It supports SSL termination and offloading, TCP and HTTP normalization, traffic regulation, caching and protection against DDoS attacks.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`2.7-dev8`, `2.7-dev`, `2.7-dev8-bullseye`, `2.7-dev-bullseye`](https://github.com/docker-library/haproxy/blob/cd1c198fc46e312fccf9818c5388494eb4a70f83/2.7/Dockerfile)"
+  - "[`2.6.6`, `2.6`, `lts`, `latest`, `2.6.6-bullseye`, `2.6-bullseye`, `lts-bullseye`, `bullseye`](https://github.com/docker-library/haproxy/blob/bfdb47e3bb0de8315bf08876d7720ab3f46ccc28/2.6/Dockerfile)"
+  - "[`2.5.9`, `2.5`, `2.5.9-bullseye`, `2.5-bullseye`](https://github.com/docker-library/haproxy/blob/18c82fca3a11dc33c652328275a13155de6b054b/2.5/Dockerfile)"
+  - "[`2.4.19`, `2.4`, `2.4.19-bullseye`, `2.4-bullseye`](https://github.com/docker-library/haproxy/blob/b07fcf19b4ee54ef37ffbf7241372961ddc97b8c/2.4/Dockerfile)"
+  - "[`2.2.25`, `2.2`, `2.2.25-bullseye`, `2.2-bullseye`](https://github.com/docker-library/haproxy/blob/241d8833cfd3498f40cbd733c4fa7bc53d46f5c7/2.2/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - haproxy:
+      input_base_tag: "2.*-dev8-bullseye"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "2.6.*-bullseye"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "2.5.*-bullseye"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "2.4.*-bullseye"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "2.2.*-bullseye"
+      output_repo: haproxy-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      haproxy-official:
+        repository: "HAPROXY_OFFICIAL_IMAGE_REPOSITORY"
+        tag: "HAPROXY_OFFICIAL_IMAGE_TAG"
+  - type: docker_compose
+    script: dc_coverage_tcp.sh
+    compose_file: docker-compose-tcp.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      haproxy-official:
+        repository: "HAPROXY_OFFICIAL_IMAGE_REPOSITORY"
+        tag: "HAPROXY_OFFICIAL_IMAGE_TAG"
+

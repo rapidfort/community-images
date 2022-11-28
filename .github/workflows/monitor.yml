@@ -50,7 +50,7 @@ jobs:
         run: docker pull rapidfort/mariadb-official
       - name: Pull Memcached
         run: docker pull rapidfort/memcached
-      - name: Pull Memcached
+      - name: Pull Memcached Official
         run: docker pull rapidfort/memcached-official
       - name: Pull MongoDB®
         run: docker pull rapidfort/mongodb

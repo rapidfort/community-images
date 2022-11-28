@@ -1,0 +1,47 @@
+name: vault
+official_name: Vault
+official_website: https://www.vaultproject.io/
+source_image_provider: Hashicorp
+source_image_repo: docker.io/library/vault
+source_image_repo_link: https://hub.docker.com/_/vault
+source_image_readme: https://github.com/hashicorp/docker-vault/blob/master/README.md
+rf_docker_link: rapidfort/vault
+image_workflow_name: vault_hashicorp
+github_location: vault/hashicorp
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fvault
+usage_instructions: |
+  $ helm repo add hashicorp https://helm.releases.hashicorp.com
+
+  # install vault, just replace repository with RapidFort registry
+  $ helm install vault hashicorp/vault
+what_is_text: |
+  Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1.12.0`, `latest` (latest/Dockerfile)](https://github.com/hashicorp/docker-vault/blob/11a5dff987176c6ab24f76cee14f6dd820f42d96/0.X/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - vault:
+      input_base_tag: "1.12.0"
+needs_common_commands: False
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: hashicorp
+      repo_url: https://helm.releases.hashicorp.com
+      chart: vault
+    readiness_check_script: vault_health_check.sh
+    # disabling persistence otherwise PVC creation fails for data dir
+    helm_additional_params:
+      persistence.enabled: false
+      # server.statefulSet.securityContext.container.allowPrivilegeEscalation: true
+      # server.statefulSet.securityContext.container.capabilities.add: ["SYS_PTRACE"]
+    image_keys:
+      vault:
+        repository: "server.image.repository"
+        tag: "server.image.tag"
+    override_file: "overrides.yml"

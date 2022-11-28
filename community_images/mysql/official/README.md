@@ -77,15 +77,13 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 
 ## What’s the difference between the official [The Docker Community MySQL Official][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/mysql8-official][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/mysql-official][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`8.0.31`, `8.0`, `8`, `latest` (Dockerfile)]()
-* [`8.0.31-debian`, `8.0-debian`, `8-debian`,` debian` (Dockerfile)]()
-* [`5.7.40`, `5.7`, `5` (Dockerfile)]()
-* [`5.7.40-debian`, `5.7-debian`, `5-debian` (Dockerfile)]()
+* [`8.0-debian`, `8-debian` (Dockerfile)](https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian)
+* [`5.7-debian`, `5-debian` (Dockerfile)](https://github.com/docker-library/mysql/blob/master/5.7/Dockerfile.debian)
 
 ## Need support
 
@@ -128,8 +126,8 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmysql?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mysql-official&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmysql?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mysql-official&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/mysql8-official?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mysql8-official?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/mysql-official?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mysql-official?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
@@ -139,4 +137,4 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/mysql/official/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://hub.docker.com/_/mysql
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mysql8-official
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mysql-official

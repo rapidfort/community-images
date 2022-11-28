@@ -23,15 +23,18 @@ input_registry:
   account: bitnami
 repo_sets:
   - rabbitmq:
-      input_base_tag: "3.11.2-debian-11-r"
+      input_base_tag: "3.11.3-debian-11-r"
   - rabbitmq:
-      input_base_tag: "3.10.10-debian-11-r"
+      input_base_tag: "3.10.12-debian-11-r"
   - rabbitmq:
-      input_base_tag: "3.9.24-debian-11-r"
+      input_base_tag: "3.9.26-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/rabbitmq
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: rabbitmq
     image_keys:
       rabbitmq:
         repository: "image.repository"

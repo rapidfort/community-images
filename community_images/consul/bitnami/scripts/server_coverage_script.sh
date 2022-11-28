@@ -25,12 +25,6 @@ consul services register /consul.d/sample_service.json
 consul reload
 sleep 10
 
-# Query our service using HTTP Api
-curl http://localhost:8500/v1/catalog/service/web
-
-# Checking for the healthy instances
-curl http://localhost:8500/v1/health/service/web?passing
-
 # Consul kv
 consul kv put redis/config/connections 5
 consul kv get -detailed redis/config/connections | tee -a file

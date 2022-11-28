@@ -27,9 +27,17 @@ class RegistryHelper:
     # pylint: disable=unused-argument
     def get_latest_tag(self, account, repo, search_str):
         """
-        Find latest tags using search_str"
+        Find latest tags using search_str
         """
         return Consts.LATEST
+
+    def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):
+        """
+        Search version tag for a rolling tag
+        For example: given rolling_tag latest, this function should return v3.x.x
+        This is achieved by fetching tags, finding all the tags which have
+        same digest as the rolling_tag and then returning the longest string
+        """
 
     @backoff.on_exception(backoff.expo, BaseException, max_time=300)
     def auth(self):
@@ -80,6 +88,35 @@ class DockerHubHelper(RegistryHelper):
             return tags[-1]["name"]
         return None
 
+    def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):
+        """
+        Search version tag for a rolling tag
+        For example: given rolling_tag latest, this function should return v3.x.x
+        This is achieved by fetching tags, finding all the tags which have
+        same digest as the rolling_tag and then returning the longest string
+        """
+        tags = self._fetch_tags(account, repo)
+
+        found_rolling_tag = None
+        for tag in tags:
+            if rolling_tag == tag.get("name"):
+                found_rolling_tag = tag
+                break
+
+        if not found_rolling_tag:
+            return None
+
+        rolling_tag_digest = found_rolling_tag.get("digest")
+        tags = list(filter(
+            lambda tag: rolling_tag_digest == tag["digest"] and tag["name"] != rolling_tag,
+            tags))
+
+        tags.sort(key=lambda tag: len(tag["name"]), reverse = True)
+
+        if tags:
+            return tags[0]["name"]
+        return None
+
 
     def _fetch_tags(self, account, repo):
         """
@@ -92,7 +129,6 @@ class DockerHubHelper(RegistryHelper):
         if account == "_":
             # Handle official repository here
             url = f"{self.BASE_URL}/v2/repositories/{repo}/tags?page_size=25"
-
         while url:
             resp = requests.get(url, timeout=60)
             logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
@@ -103,8 +139,8 @@ class DockerHubHelper(RegistryHelper):
             else:
                 break
 
-            # break after tags array is 100 size
-            if len(tags) > 100:
+            # break after tags array is 200 size
+            if len(tags) > 200:
                 break
         return tags
 
@@ -152,7 +188,6 @@ class IronBankHelper(RegistryHelper):
         Find latest tags using search_str"
         """
         tags = self._fetch_tags(account, repo)
-
         tags = filter(lambda tag: search_str in tag["name"], tags)
         tags = list(filter(
             lambda tag: "sha" not in tag["name"],

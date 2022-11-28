@@ -23,13 +23,16 @@ input_registry:
   account: bitnami
 repo_sets:
   - mongodb:
-      input_base_tag: "6.0.2-debian-11-r"
+      input_base_tag: "6.0.3-debian-11-r"
   - mongodb:
-      input_base_tag: "5.0.13-debian-11-r"
+      input_base_tag: "5.0.14-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/mongodb
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: mongodb
     image_keys:
       mongodb:
         repository: "image.repository"

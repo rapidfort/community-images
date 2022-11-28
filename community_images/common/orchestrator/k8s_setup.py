@@ -143,8 +143,10 @@ class K8sSetup:
         # Install helm
         override_file = f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
 
+        helm_repo = self.runtime_props.get('helm', {}).get('repo')
+        helm_chart = self.runtime_props.get('helm', {}).get('chart')
         cmd = f"helm install {self.release_name}"
-        cmd += f" {self.runtime_props.get('helm_repo')}"
+        cmd += f" {helm_repo}/{helm_chart}"
         cmd += f" --namespace {self.namespace_name}"
 
         image_keys = self.runtime_props.get("image_keys", {})
@@ -174,6 +176,12 @@ class K8sSetup:
         use_helm = self.runtime_props.get(
             "use_helm", True)
         if use_helm:
+            # add helm repo
+            repo = self.runtime_props.get("helm", {}).get("repo")
+            repo_url = self.runtime_props.get("helm", {}).get("repo_url")
+            cmd = f"helm repo add {repo} {repo_url}"
+            Utils.run_cmd(cmd.split())
+
             # upgrade helm
             cmd = "helm repo update"
             Utils.run_cmd(cmd.split())

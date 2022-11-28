@@ -41,10 +41,18 @@ docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul members
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul members
 docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul members
 
+# Reloading consul config on all containers
+docker exec -i "${PROJECT_NAME}"-consul-node2-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul-node3-1 consul reload
+docker exec -i "${PROJECT_NAME}"-consul-node4-1 consul reload
+
+# Wait for all the member nodes to get in sync
+sleep 30
+
 # exec into consul client(node4) and run coverage script
 docker exec -i "${PROJECT_NAME}"-consul-node4-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
-# Query our service using DNS API on consul-node1 via consul-node3
+# Query our service using DNS API and HTTP API on consul-node1 via consul-node3
 docker exec -i "${PROJECT_NAME}"-consul-node3-1 bash -c /opt/bitnami/scripts/coverage_script.sh
 
 # Deregistering/removing sample service in consul-node1

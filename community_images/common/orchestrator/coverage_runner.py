@@ -19,7 +19,8 @@ class CoverageRunner:
     RUNTIME_TYPE_DOCKER_COMPOSE = "docker_compose"
     RUNTIME_TYPE_DOCKER = "docker"
 
-    def __init__(self, config_name, config_dict, repo_set_mappings):
+    def __init__(self, orchestrator, config_name, config_dict, repo_set_mappings):
+        self.orchestrator = orchestrator
         self.config_name = config_name
         self.config_dict = config_dict
         self.repo_set_mappings = repo_set_mappings
@@ -131,7 +132,13 @@ class CoverageRunner:
                     # we only push original tag to registry
                     image_tag_value = tag_details.tag
                 elif command == Commands.LATEST_COVERAGE:
-                    image_tag_value = "latest"
+                    version_tag_for_latest = (self.orchestrator.
+                                                output_registry_helper.
+                                                find_version_tag_for_rolling_tag(
+                                                    tag_details.account,
+                                                    tag_details.repo,
+                                                    "latest"))
+                    image_tag_value = version_tag_for_latest or "latest"
 
                 image_tag_details[tag_details.repo]["tag"] = image_tag_value
 

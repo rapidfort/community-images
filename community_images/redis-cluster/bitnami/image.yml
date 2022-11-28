@@ -28,13 +28,19 @@ repo_sets:
       input_base_tag: "7.0.5-debian-11-r"
 runtimes:
   - type: k8s
-    helm_repo: bitnami/redis-cluster
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: redis-cluster
     image_keys:
       redis-cluster: {}
     override_file: "overrides.yml"
   - type: k8s
     script: k8s_tls_coverage.sh
-    helm_repo: bitnami/redis-cluster
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: redis-cluster
     tls_certs:
       generate: true
       secret_name: rf-redis-cluster-tls

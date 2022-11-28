@@ -92,6 +92,11 @@ class DockerSetup:
             for key, val in environment.items():
                 cmd += f" -e {key}={val}"
 
+            ports = image_runtime_props.get("ports", [])
+
+            for port in ports:
+                cmd += f" -p {port}"
+
             volumes = image_runtime_props.get("volumes", {})
             volumes.update(common_volumes)
 

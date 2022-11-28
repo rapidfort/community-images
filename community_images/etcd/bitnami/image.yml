@@ -25,13 +25,16 @@ input_registry:
   account: bitnami
 repo_sets:
   - etcd:
-      input_base_tag: "3.5.5-debian-11-r"
+      input_base_tag: "3.5.6-debian-11-r"
   - etcd:
       input_base_tag: "3.4.22-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    helm_repo: bitnami/etcd
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: etcd
     image_keys:
       etcd:
         repository: "image.repository"

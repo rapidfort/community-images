@@ -12,10 +12,12 @@ class HardenGenerator:
 
     def __init__(
             self,
+            orchestrator,
             config_name,
             config_dict,
             docker_client,
             repo_set_mappings):
+        self.orchestrator = orchestrator
         self.config_name = config_name
         self.config_dict = config_dict
         self.docker_client = docker_client
@@ -49,6 +51,12 @@ class HardenGenerator:
                 continue
 
             output_tag_details = tag_mapping.output_tag_details
+
+            # delete the tag
+            self.orchestrator.output_registry_helper.delete_tag(
+                output_tag_details.account,
+                output_tag_details.repo,
+                output_tag_details.stub_tag)
 
             rfharden_cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta"
             if rfignore_exists:

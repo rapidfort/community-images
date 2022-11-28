@@ -82,6 +82,14 @@ jobs:
           repository: rapidfort/apache-official
           readme-filepath: ./community_images/apache/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Official
+      - name: Docker Hub Description Cassandra Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/cassandra-official
+          readme-filepath: ./community_images/cassandra/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Cassandra Official
       - name: Docker Hub Description Consul
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -90,6 +98,14 @@ jobs:
           repository: rapidfort/consul
           readme-filepath: ./community_images/consul/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Consul
+      - name: Docker Hub Description Consul Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/consul-official
+          readme-filepath: ./community_images/consul/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Consul Official
       - name: Docker Hub Description Curl
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -130,6 +146,14 @@ jobs:
           repository: rapidfort/haproxy
           readme-filepath: ./community_images/haproxy/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for HAProxy
+      - name: Docker Hub Description HAProxy Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/haproxy-official
+          readme-filepath: ./community_images/haproxy/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for HAProxy Official
       - name: Docker Hub Description InfluxDB™
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -162,14 +186,6 @@ jobs:
           repository: rapidfort/mariadb-ib
           readme-filepath: ./community_images/mariadb/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MariaDB IronBank
-      - name: Docker Hub Description MariaDB Official
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/mariadb-official
-          readme-filepath: ./community_images/mariadb/official/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for MariaDB Official
       - name: Docker Hub Description Memcached
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -178,6 +194,14 @@ jobs:
           repository: rapidfort/memcached
           readme-filepath: ./community_images/memcached/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached
+      - name: Docker Hub Description Memcached Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/memcached-official
+          readme-filepath: ./community_images/memcached/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Memcached Official
       - name: Docker Hub Description MongoDB®
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -186,6 +210,14 @@ jobs:
           repository: rapidfort/mongodb
           readme-filepath: ./community_images/mongodb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MongoDB®
+      - name: Docker Hub Description MongoDB® Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/mongodb-official
+          readme-filepath: ./community_images/mongodb/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for MongoDB® Official
       - name: Docker Hub Description MySQL
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -207,7 +239,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/mysql8-official
+          repository: rapidfort/mysql-official
           readme-filepath: ./community_images/mysql/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MySQL Official
       - name: Docker Hub Description NATS
@@ -234,6 +266,14 @@ jobs:
           repository: rapidfort/nginx-ib
           readme-filepath: ./community_images/nginx/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for NGINX IronBank
+      - name: Docker Hub Description NGINX Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/nginx-official
+          readme-filepath: ./community_images/nginx/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for NGINX Official
       - name: Docker Hub Description Grafana Oncall
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -258,6 +298,14 @@ jobs:
           repository: rapidfort/postgresql12-ib
           readme-filepath: ./community_images/postgresql/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PostgreSQL IronBank
+      - name: Docker Hub Description PostgreSQL Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/postgresql-official
+          readme-filepath: ./community_images/postgresql/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for PostgreSQL Official
       - name: Docker Hub Description Prometheus
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -298,6 +346,30 @@ jobs:
           repository: rapidfort/redis6-ib
           readme-filepath: ./community_images/redis/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ IronBank
+      - name: Docker Hub Description Redis™ Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis-official
+          readme-filepath: ./community_images/redis/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Redis™ Official
+      - name: Docker Hub Description TRAEFIK
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/traefik
+          readme-filepath: ./community_images/traefik/traefik/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for TRAEFIK
+      - name: Docker Hub Description Vault
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/vault
+          readme-filepath: ./community_images/vault/hashicorp/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Vault
       - name: Docker Hub Description Wordpress
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -306,6 +378,14 @@ jobs:
           repository: rapidfort/wordpress
           readme-filepath: ./community_images/wordpress/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Wordpress
+      - name: Docker Hub Description Yugabyte
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/yugabyte
+          readme-filepath: ./community_images/yugabyte/yugabytedb/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Yugabyte
       - name: Docker Hub Description Zookeeper
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -314,6 +394,14 @@ jobs:
           repository: rapidfort/zookeeper
           readme-filepath: ./community_images/zookeeper/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Zookeeper
+      - name: Docker Hub Description Zookeeper Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/zookeeper-official
+          readme-filepath: ./community_images/zookeeper/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Zookeeper Official
 
       - name: Cleanup readme for dockerhub
         run: ./scripts/cleanup_readme_dh.sh

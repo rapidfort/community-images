@@ -18,11 +18,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -31,6 +34,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -47,6 +51,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -60,11 +65,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -73,6 +81,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -89,6 +98,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -102,11 +112,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -115,6 +128,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -131,24 +145,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/apache-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  consul:
+  cassandra-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -157,6 +175,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/cassandra-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  consul:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -173,24 +239,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/consul": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  curl:
+  consul-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -199,6 +269,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/consul-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  curl:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -215,6 +333,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -228,11 +347,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -241,6 +363,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -257,6 +380,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -270,11 +394,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -283,6 +410,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -299,6 +427,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -312,11 +441,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -325,6 +457,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -341,6 +474,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -354,11 +488,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -367,6 +504,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -383,24 +521,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/haproxy": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  influxdb:
+  haproxy-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -409,6 +551,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/haproxy-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  influxdb:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -425,6 +615,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -438,11 +629,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -451,6 +645,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -467,6 +662,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -480,11 +676,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -493,6 +692,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -509,6 +709,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -522,11 +723,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -535,6 +739,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -551,53 +756,12 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/mariadb-ib": 1 }' \
-           https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  mariadb-official:
-    runs-on: ubuntu-latest
-
-    environment: actions-cicd
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Start minikube
-        with:
-          memory: 6g
-        uses: medyagh/setup-minikube@master
-      - name: Check k8s cluster !
-        run: kubectl get pods -A
-      - name: Setup ubuntu
-        env:
-          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
-          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
-        run: ./scripts/setup.sh
-
-      - name: Create images and publish to dockerhub
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
-          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
-          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official --publish
-
-
-      - name: Report pulls
-        env:
-          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-        run: |
-          curl -X POST \
-           -H "Accept: application/json" \
-           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/mariadb-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   memcached:
     runs-on: ubuntu-latest
@@ -606,11 +770,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -619,6 +786,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -635,24 +803,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/memcached": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  mongodb:
+  memcached-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -661,6 +833,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/memcached-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  mongodb:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -677,24 +897,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/mongodb": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  mysql:
+  mongodb-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -703,6 +927,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/mongodb-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  mysql:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -719,6 +991,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -732,11 +1005,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -745,6 +1021,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -761,6 +1038,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -774,11 +1052,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -787,6 +1068,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -803,11 +1085,12 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/mysql8-official": 1 }' \
+           -d '{ "rapidfort/mysql-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nats:
     runs-on: ubuntu-latest
@@ -816,11 +1099,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -829,6 +1115,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -845,6 +1132,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -858,11 +1146,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -871,6 +1162,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -887,6 +1179,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -900,11 +1193,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -913,6 +1209,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -929,24 +1226,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/nginx-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  oncall:
+  nginx-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -955,6 +1256,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/nginx-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  oncall:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -971,6 +1320,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -984,11 +1334,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -997,6 +1350,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1013,6 +1367,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1026,11 +1381,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1039,6 +1397,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1055,24 +1414,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/postgresql12-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  prometheus:
+  postgresql-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1081,6 +1444,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/postgresql-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  prometheus:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1097,6 +1508,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1110,11 +1522,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1123,6 +1538,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1139,6 +1555,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1152,11 +1569,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1165,6 +1585,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1181,6 +1602,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1194,11 +1616,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1207,6 +1632,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1223,6 +1649,7 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
@@ -1236,11 +1663,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1249,6 +1679,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1265,24 +1696,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/redis6-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  wordpress:
+  redis-official:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1291,6 +1726,148 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/redis-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  traefik:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/traefik": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  vault:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/vault": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  wordpress:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1307,24 +1884,28 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/wordpress": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  zookeeper:
+  yugabyte:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Start minikube
+
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
+
         run: kubectl get pods -A
       - name: Setup ubuntu
         env:
@@ -1333,6 +1914,54 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run yugabyte/yugabytedb --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/yugabyte": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  zookeeper:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
         run: ./scripts/setup.sh
 
       - name: Create images and publish to dockerhub
@@ -1349,9 +1978,57 @@ jobs:
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
         run: |
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/zookeeper": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  zookeeper-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/zookeeper-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls

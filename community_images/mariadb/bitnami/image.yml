@@ -23,6 +23,8 @@ input_registry:
   account: bitnami
 repo_sets:
   - mariadb:
+      input_base_tag: "10.10.2-debian-11-r"
+  - mariadb:
       input_base_tag: "10.9.4-debian-11-r"
   - mariadb:
       input_base_tag: "10.8.6-debian-11-r"

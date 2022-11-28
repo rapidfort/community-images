@@ -17,12 +17,20 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`4.0.7`, `4.0`, `4`, `latest`](https://github.com/docker-library/cassandra/blob/08fa5553ad2dde684ca5337c7fedd173cbc41f39/4.0/Dockerfile)"
+  - "[`3.11.14`, `3.11`, `3`](https://github.com/docker-library/cassandra/blob/13e3d6ca1ff1b6c9d780e5f018887c1d28318d50/3.11/Dockerfile)"
+  - "[`3.0.28`, `3.0`](https://github.com/docker-library/cassandra/blob/e92196fdba778656678a9bc9bcb724b8a3584149/3.0/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - cassandra:
       input_base_tag: "latest"
+      output_repo: cassandra-official
+  - cassandra:
+      input_base_tag: "3.11.*"
+      output_repo: cassandra-official
+  - cassandra:
+      input_base_tag: "3.0*"
       output_repo: cassandra-official
 runtimes:
   - type: docker_compose

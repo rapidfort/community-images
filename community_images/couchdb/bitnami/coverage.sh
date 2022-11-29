@@ -32,4 +32,8 @@ function test_couchdb () {
 
     # delete the db record
     curl -X DELETE http://127.0.0.1:5984/reviews/01?rev=$rev --user admin:couchdb --fail 2>&1 || echo "Failed to delete the record"
+
+    # read the record again, it should be deleted
+    out=$(curl -X GET http://127.0.0.1:5984/reviews/01 --user admin:couchdb --fail 2>&1) || echo "record did not get deleted"
+    echo "${out}" | grep 'deleted' || echo "Failed to delete the record"
 }

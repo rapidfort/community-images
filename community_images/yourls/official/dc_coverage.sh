@@ -32,4 +32,4 @@ docker inspect "${CONTAINER_NAME}"
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort"
 PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
 
-"${SCRIPTPATH}"/../../../common/selenium_tests/runner.sh "${AIRFLOW_SERVER}" "${PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1
+"${SCRIPTPATH}"/../../../common/selenium_tests/runner-dc.sh "${PROJECT_NAME}" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1

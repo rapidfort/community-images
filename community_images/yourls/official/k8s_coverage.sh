@@ -15,4 +15,3 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 YOURLS_SERVER="${RELEASE_NAME}"."${NAMESPACE}".svc.cluster.local
 YOURLS_PORT='8080'
-

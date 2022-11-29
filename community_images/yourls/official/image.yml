@@ -29,18 +29,6 @@ repo_sets:
   - yourls:
       input_base_tag: "1.9.*-apache"
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    helm_repo: yourls/yourls
-    tls_certs:
-      generate: true
-      secret_name: localhost-server-tls
-      common_name: localhost
-    image_keys:
-      yourls:
-        repository: "image.repository"
-        tag: "image.tag"
-    override_file: "overrides.yml"
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml

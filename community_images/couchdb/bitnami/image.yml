@@ -36,14 +36,14 @@ runtimes:
   #       repository: "image.repository"
   #       tag: "image.tag"
   #   override_file: "overrides.yml"
-  - type: docker_compose
-    script: dc_coverage.sh
-    compose_file: docker-compose.yml
-    image_keys:
-      couchdb:
-        repository: "COUCHDB_IMAGE_REPOSITORY"
-        tag: "COUCHDB_IMAGE_TAG"
-  # - type: docker
-  #   script: docker_coverage.sh
-  #   couchdb:
-  #     env_file: docker.env
+  # - type: docker_compose
+  #   script: dc_coverage.sh
+  #   compose_file: docker-compose.yml
+  #   image_keys:
+  #     couchdb:
+  #       repository: "COUCHDB_IMAGE_REPOSITORY"
+  #       tag: "COUCHDB_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    couchdb:
+      env_file: docker.env

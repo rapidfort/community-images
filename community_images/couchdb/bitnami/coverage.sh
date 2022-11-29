@@ -42,5 +42,5 @@ function test_couchdb () {
 
     # read the record again, it should be deleted
     echo "read the record again, it should throw error"
-    curl -X GET http://127.0.0.1:5984/reviews/01 --user admin:couchdb --fail 2>&1
+    curl -X GET http://127.0.0.1:5984/reviews/01 --user admin:couchdb --fail 2>&1 || echo "record got deleted"
 }

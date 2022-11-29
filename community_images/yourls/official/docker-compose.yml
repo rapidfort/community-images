@@ -20,7 +20,7 @@ services:
     links:
     - db:mysql
     ports:
-    - "80:80"
+    - "0.0.0.0::80"
     environment:
     - YOURLS_USER=rapidfortbot
     - YOURLS_PASS=rapidpassword

@@ -3,8 +3,9 @@
 set -e
 set -x
 
-couchjs -V
+couchjs -V || echo "couchjs didn't run properly"
 
-remsh --version
+remsh -h || echo "couldn't run remsh"
 
-couchdb --version
+couchdb --version || echo "couldn't get couchdb version"
+

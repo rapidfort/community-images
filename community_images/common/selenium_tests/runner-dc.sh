@@ -16,6 +16,6 @@ export SERVER="$1"
 export PORT="$2"
 SELENIUM_TEST_DIRECTORY="$3"
 
-docker-compose up -d
+docker-compose -f "$SCRIPTPATH"/docker-compose.yml up -d
 docker cp "$SELENIUM_TEST_DIRECTORY"/ python-chromedriver:/usr/workspace/
 docker exec -i python-chromedriver bash -c "/usr/workspace/entrypoint.sh"

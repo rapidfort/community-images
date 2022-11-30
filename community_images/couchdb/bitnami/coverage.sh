@@ -10,6 +10,9 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 . "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 
 function test_couchdb () {
+    CONTAINER_NAME=$1
+    docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/host_coverage_script.sh
+
     # verify that CouchDB is available and installed correctly
     echo "verify that CouchDB is available and installed correctly"
     curl -X GET http://127.0.0.1:5984/ --user admin:couchdb --fail 2>&1 || echo "CouchDB didn't start properly"

@@ -22,11 +22,14 @@ CONTAINER_NAME="${PROJECT_NAME}"-yourls-1
 # Wait for all mysql server to set up
 sleep 60
 
+# exec into container and run coverage script
+docker exec -i "${CONTAINER_NAME}" ./opt/bitnami/scripts/coverage_script.sh
+
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
 
 # find non-tls and tls port
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort"
-PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort")
+PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
 
 "${SCRIPTPATH}"/../../../common/selenium_tests/runner-dc.sh "${PROJECT_NAME}" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1

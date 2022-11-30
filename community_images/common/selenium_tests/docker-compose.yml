@@ -10,3 +10,9 @@ services:
     - PORT=$PORT
     cap_add:
     - SYS_PTRACE
+    command: /bin/bash -c sleep infinity
+    command:
+    - /bin/bash
+    - -c
+    - |
+      sleep infinity

@@ -2,13 +2,11 @@ version: '2'
 
 services:
   python-chromedriver:
-    name: python-chromedriver
+    container_name: python-chromedriver
     image: rapidfort/python-chromedriver:latest
     user: root
-    env:
-    - name: SERVER
-      value: "$SERVER"
-    - name: PORT
-      value: "$PORT"
+    environment:
+    - SERVER=$SERVER
+    - PORT=$PORT
     cap_add:
-      - SYS_PTRACE
+    - SYS_PTRACE

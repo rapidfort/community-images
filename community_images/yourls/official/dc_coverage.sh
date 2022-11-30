@@ -20,10 +20,10 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-yourls-1
 
 # Wait for all mysql server to set up
-sleep 120
+sleep 60
 
 # exec into container and run coverage script
-docker exec -i "${CONTAINER_NAME}" bash -c /opt/bitnami/scripts/coverage_script.sh
+docker exec -i "${CONTAINER_NAME}" ./opt/bitnami/scripts/coverage_script.sh
 
 # log for debugging
 docker inspect "${CONTAINER_NAME}"

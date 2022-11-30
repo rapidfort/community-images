@@ -22,9 +22,6 @@ CONTAINER_NAME="${PROJECT_NAME}"-yourls-1
 # Wait for all mysql server to set up
 sleep 60
 
-# exec into container and run coverage script
-docker exec -i "${CONTAINER_NAME}" ./opt/bitnami/scripts/coverage_script.sh
-
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
 

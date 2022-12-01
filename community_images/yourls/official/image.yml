@@ -2,13 +2,13 @@ name: yourls
 official_name: YOURLS
 official_website: https://yourls.org/
 source_image_provider: YOURLS
-source_image_repo: docker.io/_/yourls
+source_image_repo: docker.io/library/yourls
 source_image_repo_link: https://hub.docker.com/_/yourls
 source_image_readme: https://github.com/docker-library/docs/blob/master/yourls/README.md
 rf_docker_link: rapidfort/yourls
 image_workflow_name: yourls_official
 github_location: yourls/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fyourls
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fyourls
 usage_instructions: |
   # Using docker run:
   $ docker run --name some-yourls --link some-mysql:mysql -p 8080:80 -d rapidfort/yourls

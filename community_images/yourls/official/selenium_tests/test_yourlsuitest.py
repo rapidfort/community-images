@@ -32,7 +32,7 @@ class TestYourlsuitest():
         """teardown method."""
         self.driver.quit()
   
-    def test_yourlsuitest(self):
+    def test_yourlsuitest(self, params):
       self.driver.get("http://localhost:{}/admin/install.php".format(params["port"]))
     #   self.driver.get("http://localhost/admin/install.php")
       self.driver.set_window_size(533, 876)

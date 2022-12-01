@@ -23,6 +23,11 @@ consul:
   - '[`1`, `1-debian-11`, `1.14.1`, `1.14.1-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/consul/1/debian-11/Dockerfile)'
   search_tags:
   - 1.14.1-debian-11-r
+couchdb:
+  docker_links:
+  - '[`3`, `3-debian-11`, `3.2.2`, `3.2.2-debian-11-r` (3/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/couchdb/3/debian-11/Dockerfile)'
+  search_tags:
+  - 3.2.2-debian-11-r
 envoy:
   docker_links:
   - '[`1.24`, `1.24-debian-11`, `1.24.0`, `1.24.0-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'

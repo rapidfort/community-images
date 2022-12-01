@@ -25,9 +25,9 @@ input_registry:
   account: library
 repo_sets:
   - yourls:
-      input_base_tag: "1.9.*-apache"
+      input_base_tag: "1.9.x-apache"
   - yourls:
-      input_base_tag: "1.9.*-fpm"
+      input_base_tag: "1.9.x-fpm"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

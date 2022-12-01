@@ -9,11 +9,11 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-# RapidFort hardened image for Memcached
+# RapidFort hardened image for Memcached Official
 
-RapidFort’s container optimization process hardened this Memcached container. This container is free to use and has no license limitations.
+RapidFort’s container optimization process hardened this Memcached Official container. This container is free to use and has no license limitations.
 
-It is the same as the [None Memcached][source-image-repo-link] image but more secure.
+It is the same as the [The Docker Community Memcached Official][source-image-repo-link] image but more secure.
 
 Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
 <br>
@@ -35,17 +35,17 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 <br>
 
 
-## What is Memcached?
+## What is Memcached Official?
 
 > Memcached is an high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.
 
 
-[Overview of Memcached](http://memcached.org/)
+[Overview of Memcached Official](http://memcached.org/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened Memcached image?
+## How do I use this hardened Memcached Official image?
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -65,7 +65,7 @@ $ docker run --name memcached rapidfort/memcached:latest
 
 A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
 
-This image is a hardened version of the official [None Memcached][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [The Docker Community Memcached Official][source-image-repo-link] image on Docker Hub.
 
 RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
 
@@ -77,7 +77,7 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 <br>
 
-## What’s the difference between the official [None Memcached][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [The Docker Community Memcached Official][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/memcached-official][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.

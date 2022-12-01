@@ -15,10 +15,5 @@ services:
     - -c
     - |
       sleep infinity
-    networks:
-    - default
 
-networks:
-  default:
-    name: host
-    external: true
+network-mode: host

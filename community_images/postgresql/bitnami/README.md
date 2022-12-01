@@ -90,7 +90,6 @@ We are making secure copies of the images we use every day and the most popular 
 * [`13`, `13-debian-11`, `13.9.0`, `13.9.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)
 * [`12`, `12-debian-11`, `12.13.0`, `12.13.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)
 * [`11`, `11-debian-11`, `11.18.0`, `11.18.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)
-* [`10`, `10-debian-11`, `10.23.0`, `10.23.0-debian-11-r` (10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/10/debian-11/Dockerfile)
 
 ## Need support
 

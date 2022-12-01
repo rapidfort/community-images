@@ -1,4 +1,4 @@
-version: '2'
+version: '3.4'
 
 services:
   python-chromedriver:
@@ -16,4 +16,4 @@ services:
     - |
       sleep infinity
 
-network-mode: host
+network_mode: "host"

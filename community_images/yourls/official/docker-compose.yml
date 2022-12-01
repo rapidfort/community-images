@@ -13,7 +13,7 @@ services:
     - MYSQL_DATABASE=yourls
 
   yourls:
-    image: yourls
+    image: ${YOURLS_IMAGE_REPOSITORY}:${YOURLS_IMAGE_TAG}
     restart: always
     depends_on:
     - db

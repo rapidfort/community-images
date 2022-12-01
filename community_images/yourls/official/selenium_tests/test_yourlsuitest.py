@@ -38,6 +38,7 @@ class TestYourlsuitest():
       self.driver.set_window_size(533, 876)
       self.driver.find_element(By.NAME, "install").click()
       self.driver.find_element(By.LINK_TEXT, "YOURLS Administration Page").click()
+      self.driver.get("http://localhost:{}/admin/".format(params["port"]))
       self.driver.find_element(By.ID, "username").send_keys("rapidfortbot")
       self.driver.find_element(By.ID, "password").send_keys("rapidpassword")
       self.driver.find_element(By.ID, "submit").click()

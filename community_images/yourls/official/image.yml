@@ -10,10 +10,9 @@ image_workflow_name: yourls_official
 github_location: yourls/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fyourls
 usage_instructions: |
-  $ helm repo add bitnami https://charts.bitnami.com/apache
-
-  # install apache, just replace repository with RapidFort registry
-  $ helm install my-apache bitnami/apache --set image.repository=rapidfort/apache
+  # Using docker run:
+  $ docker run --name some-yourls --link some-mysql:mysql -p 8080:80 -d rapidfort/yourls
+  # Then, access it via http://localhost:8080/admin/ or http://<host-ip>:8080/admin/ in a browser.
 what_is_text: |
   YOURLS is a set of PHP scripts that will allow you to run Your Own URL Shortener. You'll have full control over your data, detailed stats, analytics, plugins, and more. It's free.
 disclaimer: |

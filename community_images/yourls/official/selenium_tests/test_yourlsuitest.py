@@ -33,29 +33,37 @@ class TestYourlsuitest():
         self.driver.quit()
   
     def test_yourlsuitest(self, params):
-      self.driver.get("http://localhost:{}/admin/install.php".format(params["port"]))
-    #   self.driver.get("http://localhost/admin/install.php")
-      self.driver.set_window_size(533, 876)
-      self.driver.find_element(By.NAME, "install").click()
-      self.driver.find_element(By.LINK_TEXT, "YOURLS Administration Page").click()
-      self.driver.get("http://localhost:{}/admin/".format(params["port"]))
-      self.driver.find_element(By.ID, "username").send_keys("rapidfortbot")
-      self.driver.find_element(By.ID, "password").send_keys("rapidpassword")
-      self.driver.find_element(By.ID, "submit").click()
-      self.driver.find_element(By.ID, "add-url").send_keys("https://www.rapidfort.com")
-      self.driver.find_element(By.ID, "add-button").click()
-      self.driver.find_element(By.LINK_TEXT, "Manage Plugins").click()
-      self.driver.get("http://localhost:{}/admin/plugins.php".format(params["port"]))
-      element = self.driver.find_element(By.CSS_SELECTOR, ".plugin:nth-child(2) > .plugin_author > a")
-      actions = ActionChains(self.driver)
-      actions.move_to_element(element).perform()
-      self.driver.find_element(By.LINK_TEXT, "Activate").click()
-      self.driver.get("http://localhost:{}/admin/tools.php".format(params["port"]))
-      self.driver.get("http://localhost:{}/admin/".format(params["port"]))
-      element = self.driver.find_element(By.ID, "clicks-yid1")
-      actions = ActionChains(self.driver)
-      actions.move_to_element(element).perform()
-      self.driver.find_element(By.ID, "statlink-yid1").click()
-      self.driver.get("http://localhost:{}/admin/tools.php".format(params["port"]))
-      self.driver.find_element(By.LINK_TEXT, "Logout").click()
-  
+        # Navigating to Initial Installation Page
+        self.driver.get("http://localhost:{}/admin/install.php".format(params["port"]))
+        # Setting Window Size
+        self.driver.set_window_size(533, 876)
+        self.driver.find_element(By.NAME, "install").click()
+        # Navigating to Admin Page
+        self.driver.find_element(By.LINK_TEXT, "YOURLS Administration Page").click()
+        self.driver.get("http://localhost:{}/admin/".format(params["port"]))
+        # Logging in
+        self.driver.find_element(By.ID, "username").send_keys("rapidfortbot")
+        self.driver.find_element(By.ID, "password").send_keys("rapidpassword")
+        self.driver.find_element(By.ID, "submit").click()
+        # Adding test url
+        self.driver.find_element(By.ID, "add-url").send_keys("https://www.rapidfort.com")
+        self.driver.find_element(By.ID, "add-button").click()
+        # Enabling Plugins
+        self.driver.find_element(By.LINK_TEXT, "Manage Plugins").click()
+        self.driver.get("http://localhost:{}/admin/plugins.php".format(params["port"]))
+        element = self.driver.find_element(By.CSS_SELECTOR, ".plugin:nth-child(2) > .plugin_author > a")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
+        self.driver.find_element(By.LINK_TEXT, "Activate").click()
+        # Navigating to Tools page
+        self.driver.get("http://localhost:{}/admin/tools.php".format(params["port"]))
+        # Navigating to Admin Page
+        self.driver.get("http://localhost:{}/admin/".format(params["port"]))
+        element = self.driver.find_element(By.ID, "clicks-yid1")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
+        # Viewing Stats
+        self.driver.find_element(By.ID, "statlink-yid1").click()
+        # Logging out
+        self.driver.get("http://localhost:{}/admin/tools.php".format(params["port"]))
+        self.driver.find_element(By.LINK_TEXT, "Logout").click()

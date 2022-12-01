@@ -6,7 +6,6 @@ services:
     image: rapidfort/python-chromedriver:latest
     user: root
     environment:
-    - SERVER=$SERVER
     - PORT=$PORT
     cap_add:
     - SYS_PTRACE

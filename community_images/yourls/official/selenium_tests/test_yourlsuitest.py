@@ -45,7 +45,7 @@ class TestYourlsuitest():
       self.driver.find_element(By.ID, "add-url").send_keys("https://www.rapidfort.com")
       self.driver.find_element(By.ID, "add-button").click()
       self.driver.find_element(By.LINK_TEXT, "Manage Plugins").click()
-      self.driver.get("http://localhost:{}/admin/pulgins.php".format(params["port"]))
+      self.driver.get("http://localhost:{}/admin/plugins.php".format(params["port"]))
       element = self.driver.find_element(By.CSS_SELECTOR, ".plugin:nth-child(2) > .plugin_author > a")
       actions = ActionChains(self.driver)
       actions.move_to_element(element).perform()

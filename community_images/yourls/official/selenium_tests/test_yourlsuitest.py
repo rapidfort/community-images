@@ -33,7 +33,8 @@ class TestYourlsuitest():
         self.driver.quit()
   
     def test_yourlsuitest(self):
-      self.driver.get("http://localhost/admin/install.php")
+      self.driver.get("http://localhost:{}/admin/install.php".format(params["port"]))
+    #   self.driver.get("http://localhost/admin/install.php")
       self.driver.set_window_size(533, 876)
       self.driver.find_element(By.NAME, "install").click()
       self.driver.find_element(By.LINK_TEXT, "YOURLS Administration Page").click()

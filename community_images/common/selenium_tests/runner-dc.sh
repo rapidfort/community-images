@@ -21,3 +21,4 @@ docker-compose -f "$SCRIPTPATH"/docker-compose.yml up -d
 docker cp "$SELENIUM_TEST_DIRECTORY"/ python-chromedriver:/usr/workspace/
 # Running selenium script
 docker exec -i python-chromedriver bash -c "/usr/workspace/entrypoint.sh"
+docker-compose -f "$SCRIPTPATH"/docker-compose.yml down

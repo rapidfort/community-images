@@ -11,6 +11,8 @@ services:
     environment:
     - MYSQL_ROOT_PASSWORD=coolpassword
     - MYSQL_DATABASE=yourls
+    cap_add:
+      - SYS_PTRACE
 
   yourls:
     image: ${YOURLS_IMAGE_REPOSITORY}:${YOURLS_IMAGE_TAG}
@@ -33,6 +35,8 @@ services:
     - YOURLS_INDEX_WEBSITE=https://yourls.org
     - YOURLS_ADMIN_SSL=false
     - YOURLS_UNIQUE_URLS=false
+    cap_add:
+      - SYS_PTRACE
 
 volumes:
   mysql-volume:

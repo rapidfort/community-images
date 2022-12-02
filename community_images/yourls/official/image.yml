@@ -1,0 +1,39 @@
+name: yourls
+official_name: YOURLS
+official_website: https://yourls.org/
+source_image_provider: YOURLS
+source_image_repo: docker.io/library/yourls
+source_image_repo_link: https://hub.docker.com/_/yourls
+source_image_readme: https://github.com/docker-library/docs/blob/master/yourls/README.md
+rf_docker_link: rapidfort/yourls
+image_workflow_name: yourls_official
+github_location: yourls/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fyourls
+usage_instructions: |
+  # Using docker run:
+  $ docker run --name some-yourls --link some-mysql:mysql -p 8080:80 -d rapidfort/yourls
+  # Then, access it via http://localhost:8080/admin/ or http://<host-ip>:8080/admin/ in a browser.
+what_is_text: |
+  YOURLS is a set of PHP scripts that will allow you to run Your Own URL Shortener. You'll have full control over your data, detailed stats, analytics, plugins, and more. It's free.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`1.9.1-apache`, `1.9-apache`, `1-apache`, `apache`, `1.9.1`, `1.9`, `1`, `latest`](https://github.com/YOURLS/docker/blob/38f550a34a4eb96419d9d3ebabe802c439103218/apache/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - yourls:
+      input_base_tag: "1.9.*-apache"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      yourls:
+        repository: "YOURLS_IMAGE_REPOSITORY"
+        tag: "YOURLS_IMAGE_TAG"
+

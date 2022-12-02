@@ -77,5 +77,6 @@ bash --version
 minikube addons enable ingress
 
 # add common python modules
+python3 -V
 pip install --upgrade pip
 pip install backoff python-dateutil

@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  python-chromedriver:
+    container_name: python-chromedriver
+    image: rapidfort/python-chromedriver:latest
+    user: root
+    environment:
+    - SERVER=$SERVER
+    - PORT=$PORT
+    cap_add:
+    - SYS_PTRACE
+    command:
+    - /bin/bash
+    - -c
+    - |
+      sleep infinity
+    network_mode: host

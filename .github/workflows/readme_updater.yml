@@ -106,6 +106,14 @@ jobs:
           repository: rapidfort/couchdb
           readme-filepath: ./community_images/couchdb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Couchdb Database Server
+      - name: Docker Hub Description Couchdb Database Server Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/couchdb-official
+          readme-filepath: ./community_images/couchdb/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Couchdb Database Server Official
       - name: Docker Hub Description Curl
         uses: peter-evans/dockerhub-description@v3
         with:

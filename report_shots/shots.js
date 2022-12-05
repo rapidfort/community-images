@@ -66,9 +66,10 @@ async function main() {
 
       let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
       let imageYml = await yaml.load(imageYmlContents);
-      console.log("image url=", imageYml.report_url);
+      let report_url = imageYml.report_url + "?story_off=true"
+      console.log("image url=", report_url);
 
-      await takeShots(browser, imageSavePath, imageYml.report_url, firstShot);
+      await takeShots(browser, imageSavePath, report_url, firstShot);
       firstShot=false;
 
     } catch (err) {

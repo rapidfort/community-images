@@ -2,7 +2,7 @@ version: '2'
 
 services:
   elasticsearch:
-    image: ${IMAGE}:${TAG}
+    image: ${ELASTICSEARCH_IMAGE_REPOSITORY}:${ELASTICSEARCH_IMAGE_TAG}
     user: root
     cap_add:
       - SYS_PTRACE

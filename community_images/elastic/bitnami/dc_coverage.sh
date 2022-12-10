@@ -20,4 +20,4 @@ echo "Json params for docker compose coverage = $JSON"
 
 ES_SERVER="127.0.0.1"
 # run coverage script
-test_elasticsearch "${ES_SERVER}" "no"
+test_elasticsearch "${ES_SERVER}"

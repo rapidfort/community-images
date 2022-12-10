@@ -4,7 +4,7 @@ import getopt
 import sys
 
 from datetime import datetime
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch # pylint: disable=import-error
 
 server = 'localhost'  # pylint: disable=invalid-name
 try:
@@ -35,9 +35,9 @@ es.indices.refresh(index="test-index")
 
 # search within the doc
 resp = es.search(index="test-index", query={"match_all": {}})
-print("Got %d Hits:" % resp['hits']['total']['value'])
+print("Got %d Hits:" % resp['hits']['total']['value']) # pylint: disable=consider-using-f-string
 for hit in resp['hits']['hits']:
-    print("%(timestamp)s %(author)s: %(text)s" % hit["_source"])
+    print("%(timestamp)s %(author)s: %(text)s" % hit["_source"]) # pylint: disable=consider-using-f-string
 
 # updating the document
 doc = {

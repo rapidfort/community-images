@@ -1,3 +1,4 @@
+"""The test for elasticsearch."""
 #!/usr/bin/env python3
 import getopt
 import sys

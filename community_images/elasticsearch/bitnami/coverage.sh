@@ -39,6 +39,7 @@ function test_elasticsearch() {
     ESCLIENT_POD_NAME="elasticsearch-client"
     docker run --rm --net host --name "${ESCLIENT_POD_NAME}" -d bitnami/python bash -c 'sleep infinity'
     # wait for publisher pod to come up
+    # shellcheck disable=SC1083
     until [ "$(docker inspect -f {{.State.Running}} elasticsearch-client)" == "true" ]; do sleep 1; done
     echo "#!/bin/bash
     python -m pip install elasticsearch

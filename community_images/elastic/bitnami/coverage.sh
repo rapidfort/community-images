@@ -5,6 +5,9 @@ set -x
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
+
 function test_elasticsearch_using_kubectl() {
     local NAMESPACE=$1
     local ES_SERVER=$2
@@ -45,7 +48,7 @@ function test_elasticsearch() {
     chmod +x "$SCRIPTPATH"/es_commands.sh
     docker cp "${SCRIPTPATH}"/es_commands.sh "${ESCLIENT_POD_NAME}":/tmp/es_commands.sh
 
-    docker exec -it "${ESCLIENT_POD_NAME}" bash /tmp/es_commands.sh
+    with_backoff docker exec -t "${ESCLIENT_POD_NAME}" bash /tmp/es_commands.sh
 
     # delete the client containers
     docker rm -f "${ESCLIENT_POD_NAME}" || echo "couldn't delete the client container ${ESCLIENT_POD_NAME}"

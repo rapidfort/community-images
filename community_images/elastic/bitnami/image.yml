@@ -38,15 +38,16 @@ runtimes:
   #       repository: "image.repository"
   #       tag: "image.tag"
   #   override_file: "overrides.yml"
-  - type: docker_compose
-    script: dc_coverage.sh
-    compose_file: docker-compose.yml
-    image_keys:
-      elasticsearch:
-        repository: "ELASTICSEARCH_IMAGE_REPOSITORY"
-        tag: "ELASTICSEARCH_IMAGE_TAG"
-  # - type: docker
-  #   script: docker_coverage.sh
-  #   elasticsearch:
-  #     environment:
-  #       ALLOW_NONE_AUTHENTICATION: yes
+  # - type: docker_compose
+  #   script: dc_coverage.sh
+  #   compose_file: docker-compose.yml
+  #   image_keys:
+  #     elasticsearch:
+  #       repository: "ELASTICSEARCH_IMAGE_REPOSITORY"
+  #       tag: "ELASTICSEARCH_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    elasticsearch:
+      ports: ["9200:9200", "9300:9300"]
+      environment:
+        ALLOW_NONE_AUTHENTICATION: yes

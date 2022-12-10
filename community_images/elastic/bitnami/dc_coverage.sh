@@ -17,8 +17,7 @@ JSON_PARAMS="$1"
 JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
-NAMESPACE=$(jq -r '.namespace_name' <"$JSON_PARAMS")
 
-ES_SERVER="localhost"
+ES_SERVER="127.0.0.1"
 # run coverage script
-test_elasticsearch "${NAMESPACE}" "${ES_SERVER}"
+test_elasticsearch "${ES_SERVER}"

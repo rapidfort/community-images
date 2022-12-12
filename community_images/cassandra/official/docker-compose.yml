@@ -1,0 +1,20 @@
+version: '2'
+services:
+  cassandra:
+    image: ${CASSANDRA_IMAGE_REPOSITORY}:${CASSANDRA_IMAGE_TAG}
+    ports:
+      - ::7000
+      - ::9042
+    volumes:
+      - './test.cql:/opt/test.cql'
+    environment:
+      - CASSANDRA_SEEDS=cassandra
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=cassandra
+      # By default, Cassandra autodetects the available host memory and takes as much as it can.
+      # Therefore, memory options are mandatory if multiple Cassandras are launched in the same node.
+      - MAX_HEAP_SIZE=1G
+      - HEAP_NEWSIZE=200M
+    cap_add:
+      - SYS_PTRACE

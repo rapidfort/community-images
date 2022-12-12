@@ -1,0 +1,42 @@
+name: elasticsearch
+official_name: ElasticSearch
+official_website: https://www.elastic.co/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/elasticsearch
+source_image_repo_link: https://hub.docker.com/r/bitnami/elasticsearch
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/elasticsearch/README.md
+rf_docker_link: rapidfort/elasticsearch
+image_workflow_name: elasticsearch_bitnami
+github_location: elasticsearch/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Felasticsearch
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install elasticsearch, just replace repository with RapidFort registry
+  $ helm install my-elasticsearch bitnami/elasticsearch --set image.repository=rapidfort/elasticsearch
+what_is_text: |
+  Elasticsearch is a distributed search and analytics engine. It is used for web search, log monitoring, and real-time analytics. Ideal for Big Data applications.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: bitnami
+repo_sets:
+  - elasticsearch:
+      input_base_tag: "7.17.7-debian-11-r"
+  - elasticsearch:
+      input_base_tag: "8.5.2-debian-11-r"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      elasticsearch:
+        repository: "ELASTICSEARCH_IMAGE_REPOSITORY"
+        tag: "ELASTICSEARCH_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    elasticsearch:
+      ports: ["9200:9200", "9300:9300"]
+      environment:
+        ALLOW_NONE_AUTHENTICATION: yes

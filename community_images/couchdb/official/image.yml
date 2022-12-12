@@ -1,0 +1,38 @@
+name: couchdb-official
+official_name: Couchdb Database Server Official
+official_website: https://couchdb.apache.org/
+source_image_provider: The Docker Community
+source_image_repo: docker.io/library/couchdb
+source_image_repo_link: https://hub.docker.com/_/couchdb
+source_image_readme: https://github.com/apache/couchdb-docker/blob/main/README.md
+rf_docker_link: rapidfort/couchdb-official
+image_workflow_name: couchdb_official
+github_location: couchdb/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fcouchdb
+usage_instructions: |
+  $ docker run -d --name my-couchdb rapidfort/couchdb:tag
+what_is_text: |
+  CouchDB is a database that uses JSON for documents, an HTTP API, & JavaScript/declarative indexing.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - couchdb:
+      input_base_tag: "3.2."
+      output_repo: couchdb-official
+  - couchdb:
+      input_base_tag: "3.1."
+      output_repo: couchdb-official
+  - couchdb:
+      input_base_tag: "2.3."
+      output_repo: couchdb-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      couchdb-official:
+        repository: "COUCHDB_IMAGE_REPOSITORY"
+        tag: "COUCHDB_IMAGE_TAG"

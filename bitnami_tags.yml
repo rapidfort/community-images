@@ -1,18 +1,18 @@
 airflow:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.4.3`, `2.4.3-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.5.0`, `2.5.0-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.4.3-debian-11-r
+  - 2.5.0-debian-11-r
 airflow-scheduler:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.4.3`, `2.4.3-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-scheduler/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.5.0`, `2.5.0-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-scheduler/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.4.3-debian-11-r
+  - 2.5.0-debian-11-r
 airflow-worker:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.4.3`, `2.4.3-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-worker/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.5.0`, `2.5.0-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-worker/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.4.3-debian-11-r
+  - 2.5.0-debian-11-r
 apache:
   docker_links:
   - '[`2.4`, `2.4-debian-11`, `2.4.54`, `2.4.54-debian-11-r` (2.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/apache/2.4/debian-11/Dockerfile)'
@@ -30,12 +30,12 @@ couchdb:
   - 3.2.2-debian-11-r
 envoy:
   docker_links:
-  - '[`1.24`, `1.24-debian-11`, `1.24.0`, `1.24.0-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'
-  - '[`1.23`, `1.23-debian-11`, `1.23.2`, `1.23.2-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)'
+  - '[`1.24`, `1.24-debian-11`, `1.24.1`, `1.24.1-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'
+  - '[`1.23`, `1.23-debian-11`, `1.23.3`, `1.23.3-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)'
   - '[`1.22`, `1.22-debian-11`, `1.22.6`, `1.22.6-debian-11-r` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.22/debian-11/Dockerfile)'
   search_tags:
-  - 1.24.0-debian-11-r
-  - 1.23.2-debian-11-r
+  - 1.24.1-debian-11-r
+  - 1.23.3-debian-11-r
   - 1.22.6-debian-11-r
 etcd:
   docker_links:
@@ -99,9 +99,9 @@ mysql:
   - 5.7.40-debian-11-r
 nats:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.9.8`, `2.9.8-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.9.9`, `2.9.9-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.9.8-debian-11-r
+  - 2.9.9-debian-11-r
 nginx:
   docker_links:
   - '[`1.23`, `1.23-debian-11`, `1.23.2`, `1.23.2-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.23/debian-11/Dockerfile)'
@@ -124,9 +124,9 @@ postgresql:
   - 11.18.0-debian-11-r
 prometheus:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.40.5`, `2.40.5-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.40.6`, `2.40.6-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.40.5-debian-11-r
+  - 2.40.6-debian-11-r
 rabbitmq:
   docker_links:
   - '[`3.11`, `3.11-debian-11`, `3.11.4`, `3.11.4-debian-11-r` (3.11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.11/debian-11/Dockerfile)'

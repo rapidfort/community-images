@@ -24,7 +24,7 @@ input_registry:
   account: library
 repo_sets:
   - cassandra:
-      input_base_tag: "latest"
+      input_base_tag: "4.0.*"
       output_repo: cassandra-official
   - cassandra:
       input_base_tag: "3.11.*"

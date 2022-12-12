@@ -1,0 +1,47 @@
+name: envoy-official
+official_name: Envoy Official
+official_website: https://www.envoyproxy.io/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/envoy
+source_image_repo_link: https://hub.docker.com/r/bitnami/envoy
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/envoy/README.md
+rf_docker_link: rapidfort/envoy
+image_workflow_name: envoy_bitnami
+github_location: envoy/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fenvoy
+usage_instructions: |
+  $ docker run --name envoy rapidfort/envoy:latest
+what_is_text: |
+  Envoy is a distributed, high-performance proxy for cloud-native applications. It features a small memory footprint, universal application language compatibility, and supports http/2 and gRPC.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+bitnami_excluded_branches:
+  - "1.21"
+  - "1.20"
+input_registry:
+  registry: docker.io
+  account: bitnami
+repo_sets:
+  - envoy:
+      input_base_tag: "1.24.0-debian-11-r"
+  - envoy:
+      input_base_tag: "1.23.3-debian-11-r"
+  - envoy:
+      input_base_tag: "1.22.6-debian-11-r"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      envoy:
+        repository: "ENVOY_IMAGE_REPOSITORY"
+        tag: "ENVOY_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    envoy:
+      volumes:
+        configs/dynamic/bootstrap.yaml: /opt/bitnami/envoy/conf/envoy.yaml
+        configs/dynamic: /etc/envoy

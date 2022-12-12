@@ -11,13 +11,12 @@ echo "Json params for docker compose coverage = $JSON"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 
-cp -v ./test.cql /tmp/
+#cp -v ./test.cql /tmp/
 
 sleep 60
 
-docker exec -i "$(docker ps | grep "$NAMESPACE"-cassandra-1 | cut -f1 -d' ')" bash -c 'cqlsh' < "/tmp/test.cql"
+docker exec -i "$(docker ps | grep "$NAMESPACE"-cassandra-1 | cut -f1 -d' ')" bash -c 'cqlsh -u cassandra -p cassandra < /opt/test.cql'
 
 sleep 10
 
-docker rm --force "$(sudo docker ps -a | grep "$NAMESPACE" |cut -f1 -d' ')"
 

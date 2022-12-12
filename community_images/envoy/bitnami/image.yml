@@ -25,9 +25,9 @@ repo_sets:
   - envoy:
       input_base_tag: "1.24.0-debian-11-r"
   - envoy:
-      input_base_tag: "1.23.2-debian-11-r"
+      input_base_tag: "1.23.3-debian-11-r"
   - envoy:
-      input_base_tag: "1.22.5-debian-11-r"
+      input_base_tag: "1.22.6-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

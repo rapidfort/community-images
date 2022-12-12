@@ -8,11 +8,7 @@ source_image_readme: https://github.com/MariaDB/mariadb-docker/tree/ee8996e7fd50
 rf_docker_link: rapidfort/mariadb-official
 image_workflow_name: mariadb_official
 github_location: mariadb/official
-<<<<<<< HEAD
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmariadb%2Fmariadb
-=======
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb
->>>>>>> main
 usage_instructions: |
   $ docker run --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  rapidfort/mariadb-ib:latest
 what_is_text: |

@@ -8,15 +8,15 @@ JSON_PARAMS="$1"
 JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
-NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
-
-#cp -v ./test.cql /tmp/
-
+# Sleep
 sleep 60
 
-docker exec -i "$(docker ps | grep "$NAMESPACE"-cassandra-1 | cut -f1 -d' ')" bash -c 'cqlsh -u cassandra -p cassandra < /opt/test.cql'
+# Fetching container Name
+PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
+CONTAINER_NAME="${PROJECT_NAME}"-cassandra-1
+
+# executing tests in the container
+docker exec -i "${CONTAINER_NAME}" bash -c 'cqlsh -u cassandra -p cassandra < /opt/test.cql'
 
 sleep 10
-
-

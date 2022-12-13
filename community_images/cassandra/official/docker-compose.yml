@@ -6,7 +6,7 @@ services:
       - "0.0.0.0::7000"
       - "0.0.0.0::9042"
     volumes:
-      - './test.cql:/opt/test.cql'
+      - './tests/test.cql:/opt/test.cql'
     environment:
       - CASSANDRA_SEEDS=cassandra
       - CASSANDRA_CLUSTER_NAME=cassandra-cluster

@@ -54,6 +54,8 @@ jobs:
         run: docker pull rapidfort/mariadb
       - name: Pull MariaDB IronBank
         run: docker pull rapidfort/mariadb-ib
+      - name: Pull MariaDB Official
+        run: docker pull rapidfort/mariadb-official
       - name: Pull Memcached
         run: docker pull rapidfort/memcached
       - name: Pull Memcached Official

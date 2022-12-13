@@ -3,8 +3,8 @@ services:
   cassandra:
     image: ${CASSANDRA_OFFICIAL_IMAGE_REPOSITORY}:${CASSANDRA_OFFICIAL_IMAGE_TAG}
     ports:
-      - "0.0.0.0::7000"
-      - "0.0.0.0::9042"
+      - '0.0.0.0::7000'
+      - '0.0.0.0::9042'
     volumes:
       - './tests/test.cql:/opt/test.cql'
     environment:

@@ -56,6 +56,7 @@ The runtime instructions for this container are no different from the official r
 <br>
 
 ```sh
+# Using docker run:
 $ docker run --name some-cassandra -d cassandra:latest
 
 ```

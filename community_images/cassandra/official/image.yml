@@ -37,6 +37,7 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
+    wait_time_sec: 60
     image_keys:
       cassandra-official:
         repository: "CASSANDRA_OFFICIAL_IMAGE_REPOSITORY"

@@ -37,7 +37,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 ## What is MariaDB Official?
 
-> MariaDB Server is one of the most popular database servers in the world. It's made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
+> MariaDB Server is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, DBS Bank, and ServiceNow.
 
 
 [Overview of MariaDB Official](https://www.mariadb.com/)

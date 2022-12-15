@@ -20,9 +20,9 @@ apache:
   - 2.4.54-debian-11-r
 consul:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.14.2`, `1.14.2-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/consul/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.14.3`, `1.14.3-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/consul/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.14.2-debian-11-r
+  - 1.14.3-debian-11-r
 couchdb:
   docker_links:
   - '[`3`, `3-debian-11`, `3.2.2`, `3.2.2-debian-11-r` (3/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/couchdb/3/debian-11/Dockerfile)'

@@ -63,9 +63,9 @@ haproxy:
   - 2.7.0-debian-11-r
 influxdb:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.5.1`, `2.5.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.6.0`, `2.6.0-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.5.1-debian-11-r
+  - 2.6.0-debian-11-r
 mariadb:
   docker_links:
   - '[`10.10`, `10.10-debian-11`, `10.10.2`, `10.10.2-debian-11-r` (10.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.10/debian-11/Dockerfile)'

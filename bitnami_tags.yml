@@ -145,10 +145,10 @@ rabbitmq:
   - 3.9.27-debian-11-r
 redis:
   docker_links:
-  - '[`7.0`, `7.0-debian-11`, `7.0.6`, `7.0.6-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)'
+  - '[`7.0`, `7.0-debian-11`, `7.0.7`, `7.0.7-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)'
   - '[`6.2`, `6.2-debian-11`, `6.2.8`, `6.2.8-debian-11-r` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-11/Dockerfile)'
   search_tags:
-  - 7.0.6-debian-11-r
+  - 7.0.7-debian-11-r
   - 6.2.8-debian-11-r
 redis-cluster:
   docker_links:

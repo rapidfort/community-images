@@ -86,7 +86,7 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`3.5`, `3.5-debian-11`, `3.5.6`, `3.5.6-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)
-* [`3.4`, `3.4-debian-11`, `3.4.22`, `3.4.22-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)
+* [`3.4`, `3.4-debian-11`, `3.4.23`, `3.4.23-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)
 
 ## Need support
 

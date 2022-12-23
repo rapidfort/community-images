@@ -64,6 +64,11 @@ sudo apt-get install jq parallel expect httrack -y
 
 # install docker-compose latest
 DC_VERSION="$(with_backoff curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
+# hardcode the docker compose version if fetch fails
+if [[ $DC_VERSION == 'null' ]]; then
+   DC_VERSION='v2.14.2'
+fi
+
 DC_DESTINATION=/usr/local/bin/docker-compose
 echo "Downloding  https://github.com/docker/compose/releases/download/${DC_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 with_backoff sudo curl -L https://github.com/docker/compose/releases/download/"${DC_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)" -o "$DC_DESTINATION"

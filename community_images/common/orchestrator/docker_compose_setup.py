@@ -75,6 +75,7 @@ class DockerComposeSetup:
 
         # dump logs
         cmd = "docker-compose"
+        cmd += f" --env-file {self.temp_env_file}"
         cmd += f" -f {self.docker_file} -p {self.namespace_name}"
         cmd += " logs"
         logging.info(f"cmd: {cmd}")

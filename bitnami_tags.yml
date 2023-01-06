@@ -136,11 +136,11 @@ prometheus:
   - 2.41.0-debian-11-r
 rabbitmq:
   docker_links:
-  - '[`3.11`, `3.11-debian-11`, `3.11.5`, `3.11.5-debian-11-r` (3.11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.11/debian-11/Dockerfile)'
+  - '[`3.11`, `3.11-debian-11`, `3.11.6`, `3.11.6-debian-11-r` (3.11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.11/debian-11/Dockerfile)'
   - '[`3.10`, `3.10-debian-11`, `3.10.13`, `3.10.13-debian-11-r` (3.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.10/debian-11/Dockerfile)'
   - '[`3.9`, `3.9-debian-11`, `3.9.27`, `3.9.27-debian-11-r` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.9/debian-11/Dockerfile)'
   search_tags:
-  - 3.11.5-debian-11-r
+  - 3.11.6-debian-11-r
   - 3.10.13-debian-11-r
   - 3.9.27-debian-11-r
 redis:

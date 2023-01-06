@@ -94,13 +94,13 @@ class DockerComposeSetup:
     def __exit__(self, type, value, traceback):
         """ delete docker compose namespace """
         # logs for tracking
-        cmd = f"docker-compose -f {self.docker_file}"
+        cmd = f"docker-compose --env-file {self.temp_env_file} -f {self.docker_file}"
         cmd += f" -p {self.namespace_name} logs"
         Utils.run_cmd(cmd.split())
 
         # kill docker-compose setup container
         try:
-            cmd = f"docker-compose -f {self.docker_file}"
+            cmd = f"docker-compose --env-file {self.temp_env_file} -f {self.docker_file}"
             cmd += f" -p {self.namespace_name} down --remove-orphans --timeout 60"
             Utils.run_cmd(cmd.split())
         except subprocess.CalledProcessError as excp:

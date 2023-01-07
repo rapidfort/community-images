@@ -12,12 +12,12 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 # get postgresql passwordk
 POSTGRES_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}" -o jsonpath="{.data.postgres-password}" | base64 --decode)
 
-# copy test.psql into container
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.psql "${RELEASE_NAME}"-0:/tmp/test.psql
+# copy test.psqlbi into container
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.psqlbi "${RELEASE_NAME}"-0:/tmp/test.psqlbi
 
 # run script
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \
-    -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
+    -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psqlbi"
 
 # copy postgres_coverage.sh into container
 kubectl -n "${NAMESPACE}" cp \

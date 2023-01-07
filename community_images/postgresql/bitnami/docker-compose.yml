@@ -2,7 +2,7 @@ version: '2'
 
 services:
   postgresql-master:
-    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
+    image: rapidfort/postgresql:latest
     ports:
       - '5432'
     volumes:
@@ -15,13 +15,13 @@ services:
       - POSTGRESQL_PASSWORD=my_password
       - POSTGRESQL_DATABASE=my_database
       - ALLOW_EMPTY_PASSWORD=yes
-      - POSTGRESQL_TIMEZONE=UTC+6:00
+      - POSTGRESQL_TIMEZONE=UTC
       - PGPASSWORD=my_password
     cap_add:
       - SYS_PTRACE
 
   postgresql-slave1:
-    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
+    image: rapidfort/postgresql:latest
     ports:
       - '5432'
     depends_on:
@@ -39,7 +39,7 @@ services:
       - SYS_PTRACE
 
   postgresql-slave2:
-    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
+    image: rapidfort/postgresql:latest
     ports:
       - '5432'
     depends_on:
@@ -52,7 +52,7 @@ services:
       - POSTGRESQL_PASSWORD=my_password
       - POSTGRESQL_MASTER_PORT_NUMBER=5432
       - ALLOW_EMPTY_PASSWORD=yes
-      - POSTGRESQL_TIMEZONE=UTC
+      - POSTGRESQL_TIMEZONE=UTC+11:00
     cap_add:
       - SYS_PTRACE
 

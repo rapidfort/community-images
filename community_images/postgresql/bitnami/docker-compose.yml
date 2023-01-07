@@ -15,7 +15,8 @@ services:
       - POSTGRESQL_PASSWORD=my_password
       - POSTGRESQL_DATABASE=my_database
       - ALLOW_EMPTY_PASSWORD=yes
-      - POSTGRESQL_TIMEZONE=Asia/Almaty
+      - POSTGRESQL_TIMEZONE=UTC+6:00
+      - PGPASSWORD=$POSTGRES_PASSWORD
     cap_add:
       - SYS_PTRACE
 

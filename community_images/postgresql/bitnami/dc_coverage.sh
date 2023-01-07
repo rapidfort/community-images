@@ -9,13 +9,19 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
+PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 # password
 POSTGRESQL_PASSWORD=my_password
 
-# run pg benchmark container
-docker run --rm -i --network="${NETWORK_NAME}" \
-    --env="PGPASSWORD=${POSTGRESQL_PASSWORD}" \
-    rapidfort/postgresql:latest \
-    -- pgbench --host postgresql-master -U postgres -d postgres -p 5432 -i -s 50
+# pg container
+PG_CONTAINER="${PROJECT_NAME}"-postgresql-master-1
+
+# password
+POSTGRESQL_PASSWORD=my_password
+
+# Get Port
+#PG_PORT=$(docker inspect "${PG_CONTAINER}" | jq -r ".[].NetworkSettings.Ports.\"5432/tcp\"[0].HostPort")
+
+# run pgbench test
+docker exec -i "${PG_CONTAINER}" pgbench --host localhost -U postgres -d postgres -p 5432 -i -s 50

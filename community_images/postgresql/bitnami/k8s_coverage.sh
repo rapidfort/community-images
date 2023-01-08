@@ -12,12 +12,12 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 # get postgresql passwordk
 POSTGRES_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}" -o jsonpath="{.data.postgres-password}" | base64 --decode)
 
-# copy test.psqlbi into container
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.psqlbi "${RELEASE_NAME}"-0:/tmp/test.psqlbi
+# copy test.psql into container
+kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.psql "${RELEASE_NAME}"-0:/tmp/test.psql
 
 # run script
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \
-    -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psqlbi"
+    -- /bin/bash -c "PGPASSWORD=${POSTGRES_PASSWORD} psql --host localhost -U postgres -d postgres -p 5432 -f /tmp/test.psql"
 
 # copy postgres_coverage.sh into container
 kubectl -n "${NAMESPACE}" cp \
@@ -33,4 +33,4 @@ kubectl run "${RELEASE_NAME}"-client --rm -i \
     --restart='Never' --namespace "${NAMESPACE}" \
     --image rapidfort/postgresql:latest \
     --env="PGPASSWORD=$POSTGRES_PASSWORD" --command \
-    -- pgbench --host "${RELEASE_NAME}" -U postgres -d postgres -p 5432 -i -s 50
+    --pgbench --host "${RELEASE_NAME}" -U postgres -d postgres -p 5432 -i -s 50

@@ -27,10 +27,3 @@ kubectl -n "${NAMESPACE}" cp \
 # run postgres_coverage on cluster
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 \
     -- /bin/bash -c "/tmp/postgres_coverage.sh"
-
-# run postgres benchmark
-kubectl run "${RELEASE_NAME}"-client --rm -i \
-    --restart='Never' --namespace "${NAMESPACE}" \
-    --image rapidfort/postgresql:latest \
-    --env="PGPASSWORD=$POSTGRES_PASSWORD" --command \
-    --pgbench --host "${RELEASE_NAME}" -U postgres -d postgres -p 5432 -i -s 50

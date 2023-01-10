@@ -3,7 +3,7 @@ version: '2'
 services:
   fluentd:
     image: ${FLUENTD_IMAGE_REPOSITORY}:${FLUENTD_IMAGE_TAG}
-    user: root
+    # user: root
     cap_add:
       - SYS_PTRACE
     ports:

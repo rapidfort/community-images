@@ -59,8 +59,7 @@ def check_if_tests_required(image_name, image_github_location):
         # Test for orchestrator changes with few random tests
         if (updated_file.startswith("community_images/common/orchestrator/") or
                 updated_file.startswith("community_images/common/tests/")):
-            # if image_name in ["curl", "nginx-ib", "redis", "postgresql-ib", "mongodb", "mysql"]:
-            if image_name in ["fluentd"]:
+            if image_name in ["curl", "nginx-ib", "redis", "postgresql-ib", "mongodb", "mysql"]:
                 logging.info(f"Picking tests for orchestrator and tests {updated_file}")
                 return True
 

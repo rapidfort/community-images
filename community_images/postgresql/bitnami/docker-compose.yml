@@ -15,11 +15,12 @@ services:
       - POSTGRESQL_PASSWORD=my_password
       - POSTGRESQL_DATABASE=my_database
       - ALLOW_EMPTY_PASSWORD=yes
-      - POSTGRESQL_TIMEZONE=Asia/Almaty
+      - POSTGRESQL_TIMEZONE=UTC
+      - PGPASSWORD=my_password
     cap_add:
       - SYS_PTRACE
 
-  postgresql-slave:
+  postgresql-slave1:
     image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
     ports:
       - '5432'
@@ -34,6 +35,24 @@ services:
       - POSTGRESQL_MASTER_PORT_NUMBER=5432
       - ALLOW_EMPTY_PASSWORD=yes
       - POSTGRESQL_TIMEZONE=Asia/Almaty
+    cap_add:
+      - SYS_PTRACE
+
+  postgresql-slave2:
+    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
+    ports:
+      - '5432'
+    depends_on:
+      - postgresql-master
+    environment:
+      - POSTGRESQL_REPLICATION_MODE=slave
+      - POSTGRESQL_REPLICATION_USER=repl_user
+      - POSTGRESQL_REPLICATION_PASSWORD=repl_password
+      - POSTGRESQL_MASTER_HOST=postgresql-master
+      - POSTGRESQL_PASSWORD=my_password
+      - POSTGRESQL_MASTER_PORT_NUMBER=5432
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_TIMEZONE=UTC+11:00
     cap_add:
       - SYS_PTRACE
 

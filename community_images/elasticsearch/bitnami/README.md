@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/elasticsearch][rf-dh-image-link] image has bee
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`8`, `8-debian-11`, `8.5.3`, `8.5.3-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)
+* [`8`, `8-debian-11`, `8.6.0`, `8.6.0-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)
 * [`7`, `7-debian-11`, `7.17.8`, `7.17.8-debian-11-r` (7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-11/Dockerfile)
 
 ## Need support

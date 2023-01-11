@@ -47,7 +47,7 @@ class TagDetail:
         """ Full Hardened tag """
         return f"{self.full_repo_path}:{self.hardened_tag}"
 
-
+# pylint: disable=too-few-public-methods
 class TagMapping:
     """ Tag mapping class """
 
@@ -63,9 +63,11 @@ class TagMapping:
         self.is_latest = is_latest
 
     def set_needs_generation(self, needs_generation):
+        """set the needs generation."""
         self.needs_generation = needs_generation
 
 
+# pylint: disable=logging-fstring-interpolation
 class TagManager:
     """ Tag Manager main class """
 
@@ -83,6 +85,7 @@ class TagManager:
         account = registry_dict.get("account")
         return registry, account
 
+    # pylint: disable=too-many-arguments
     def _get_tag_detail(self, registry, account, registry_helper, repo, base_tag):
         """Generate tag details object"""
         latest_tag = None
@@ -147,7 +150,9 @@ class TagManager:
                 needs_generation = (
                     not self.orchestrator.publish or self.orchestrator.force_publish or (
                         input_tag_detail.tag != output_tag_detail.tag))
-                is_image_generation_required_for_any_container = needs_generation or is_image_generation_required_for_any_container
+                is_image_generation_required_for_any_container =(
+                    needs_generation or is_image_generation_required_for_any_container
+                )
                 logging.info(
                     f"decision for needs generation={needs_generation}")
 

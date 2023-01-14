@@ -2,7 +2,7 @@ version: '2'
 
 services:
   postgresql-master:
-    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
+    image: bitnami/postgresql:latest-rfstub
     ports:
       - '5432'
     volumes:
@@ -21,7 +21,7 @@ services:
       - SYS_PTRACE
 
   postgresql-slave1:
-    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
+    image: bitnami/postgresql:latest-rfstub
     ports:
       - '5432'
     depends_on:
@@ -40,7 +40,7 @@ services:
       - SYS_PTRACE
 
   postgresql-slave2:
-    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
+    image: bitnami/postgresql:latest-rfstub
     ports:
       - '5432'
     depends_on:

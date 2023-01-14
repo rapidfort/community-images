@@ -35,6 +35,7 @@ services:
       - POSTGRESQL_MASTER_PORT_NUMBER=5432
       - ALLOW_EMPTY_PASSWORD=yes
       - POSTGRESQL_TIMEZONE=Asia/Almaty
+      - POSTGRESQL_SHARED_PRELOAD_LIBRARIES=pgaudit,pg_stat_statements,pg_trgm,unaccent
     cap_add:
       - SYS_PTRACE
 

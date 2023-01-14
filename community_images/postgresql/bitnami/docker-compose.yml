@@ -2,7 +2,7 @@ version: '2'
 
 services:
   postgresql-master:
-    image: anmolvirdi/postgresql:latest
+    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
     ports:
       - '5432'
     volumes:
@@ -22,7 +22,7 @@ services:
       - SYS_PTRACE
 
   postgresql-slave1:
-    image: anmolvirdi/postgresql:latest
+    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
     ports:
       - '5432'
     depends_on:
@@ -41,7 +41,7 @@ services:
       - SYS_PTRACE
 
   postgresql-slave2:
-    image: anmolvirdi/postgresql:latest
+    image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
     ports:
       - '5432'
     depends_on:

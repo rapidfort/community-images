@@ -2,7 +2,7 @@ version: '2'
 
 services:
   postgresql-master:
-    image: bitnami/postgresql:latest-rfstub
+    image: anmolvirdi/postgresql:latest
     ports:
       - '5432'
     volumes:
@@ -22,7 +22,7 @@ services:
       - SYS_PTRACE
 
   postgresql-slave1:
-    image: bitnami/postgresql:latest-rfstub
+    image: anmolvirdi/postgresql:latest
     ports:
       - '5432'
     depends_on:
@@ -41,7 +41,7 @@ services:
       - SYS_PTRACE
 
   postgresql-slave2:
-    image: bitnami/postgresql:latest-rfstub
+    image: anmolvirdi/postgresql:latest
     ports:
       - '5432'
     depends_on:

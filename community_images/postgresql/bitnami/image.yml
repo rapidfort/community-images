@@ -24,14 +24,6 @@ input_registry:
 repo_sets:
   - postgresql:
       input_base_tag: "15.1.0-debian-11-r"
-  - postgresql:
-      input_base_tag: "14.6.0-debian-11-r"
-  - postgresql:
-      input_base_tag: "13.9.0-debian-11-r"
-  - postgresql:
-      input_base_tag: "12.13.0-debian-11-r"
-  - postgresql:
-      input_base_tag: "11.18.0-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

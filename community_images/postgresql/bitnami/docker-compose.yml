@@ -4,7 +4,7 @@ services:
   postgresql-master:
     image: ${PG_IMAGE_REPOSITORY}:${PG_IMAGE_TAG}
     ports:
-      - '5432'
+      - '::5432'
     volumes:
       - 'postgresql_master_data:/bitnami/postgresql'
     environment:
@@ -17,7 +17,7 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       - POSTGRESQL_TIMEZONE=UTC
       - PGPASSWORD=my_password
-      - POSTGRESQL_SHARED_PRELOAD_LIBRARIES=auto_explain,orafce,pgaudit,pg_stat_statements,pg_trgm,unaccent
+      - POSTGRESQL_SHARED_PRELOAD_LIBRARIES=pgcrypto,pg_walinspect,hstore,pg_visibility,cube,fuzzystrmatch,pg_trgm,auto_explain,orafce,pgaudit,pg_stat_statements,pg_trgm,unaccent
     cap_add:
       - SYS_PTRACE
 
@@ -36,7 +36,7 @@ services:
       - POSTGRESQL_MASTER_PORT_NUMBER=5432
       - ALLOW_EMPTY_PASSWORD=yes
       - POSTGRESQL_TIMEZONE=Asia/Almaty
-      - POSTGRESQL_SHARED_PRELOAD_LIBRARIES=auto_explain,orafce,pgaudit,pg_stat_statements,pg_trgm,unaccent,
+      - POSTGRESQL_SHARED_PRELOAD_LIBRARIES=auto_explain,pg_cron,orafce,pgaudit,pg_stat_statements,pg_trgm,unaccent
     cap_add:
       - SYS_PTRACE
 

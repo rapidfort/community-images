@@ -86,7 +86,7 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`7.0`, `7.0-debian-11`, `7.0.8`, `7.0.8-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)
-* [`6.2`, `6.2-debian-11`, `6.2.9`, `6.2.9-debian-11-r` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-11/Dockerfile)
+* [`6.2`, `6.2-debian-11`, `6.2.10`, `6.2.10-debian-11-r` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-11/Dockerfile)
 
 ## Need support
 

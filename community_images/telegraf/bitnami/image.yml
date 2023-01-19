@@ -1,0 +1,49 @@
+name: telegraf
+official_name: Telegraf
+official_website: https://www.influxdata.com/time-series-platform/telegraf
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/telegraf
+source_image_repo_link: https://hub.docker.com/r/bitnami/telegraf
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/telegraf/README.md
+rf_docker_link: rapidfort/telegraf
+image_workflow_name: telegraf_bitnami
+github_location: telegraf/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Ftelegraf
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install telegraf, just replace repository with RapidFort registry
+  $ helm install my-telegraf bitnami/telegraf --set image.repository=rapidfort/telegraf
+what_is_text: |
+  Telegraf is a server-based agent for collecting and sending all metrics and events from databases, systems, and IoT sensors. Telegraf is written in Go and compiles into a single binary with no external dependencies, and requires a very minimal memory footprint.
+disclaimer: |
+  Telegraf(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
+input_registry:
+  registry: docker.io
+  account: bitnami
+repo_sets:
+  - telegraf:
+      input_base_tag: "1.25.0-debian-11-r"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: telegraf
+    image_keys:
+      telegraf:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      telegraf:
+        repository: "TELEGRAF_IMAGE_REPOSITORY"
+        tag: "TELEGRAF_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    telegraf:
+      env_file: docker.env

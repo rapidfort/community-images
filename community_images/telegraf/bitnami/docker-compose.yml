@@ -1,7 +1,7 @@
 version: '2'
 services:
   telegraf:
-    image: bitnami/telegraf
+    image: ${TELEGRAF_IMAGE_REPOSITORY}:${TELEGRAF_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     depends_on:

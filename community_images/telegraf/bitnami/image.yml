@@ -25,17 +25,6 @@ repo_sets:
   - telegraf:
       input_base_tag: "1.25.0-debian-11-r"
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    helm:
-      repo: bitnami
-      repo_url: https://charts.bitnami.com/bitnami
-      chart: telegraf
-    image_keys:
-      telegraf:
-        repository: "image.repository"
-        tag: "image.tag"
-    override_file: "overrides.yml"
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml

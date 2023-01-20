@@ -12,7 +12,7 @@ function test_telegraf() {
     local ORG=$1
     local TOKEN=$2
     wget https://dl.influxdata.com/influxdb/releases/influxdb2-client-2.6.1-linux-amd64.tar.gz
-    tar xvzf path/to/influxdb2-client-2.6.1-linux-amd64.tar.gz
+    tar xvzf influxdb2-client-2.6.1-linux-amd64.tar.gz
     sudo cp influxdb2-client-2.6.1-linux-amd64/influx /usr/local/bin/
     # bring up a client influxdb instance
     influx query 'from(bucket:"example_bucket") |> range(start:-1m)' --org "${ORG}" -t "${TOKEN}"

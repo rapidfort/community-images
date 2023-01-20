@@ -1,0 +1,44 @@
+version: '2'
+services:
+  telegraf:
+    image: ${TELEGRAF_IMAGE_REPOSITORY}:${TELEGRAF_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    depends_on:
+      - init-influxdb
+    links:
+      - influxdb
+    # this seems to start the telegraf container correctly
+    command: telegraf --version
+    ports:
+      - "8092:8092/udp"
+      - 8094:8094
+      - "8125:8125/udp"
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  init-influxdb:
+    image: rapidfort/influxdb
+    command: /init_influxdb.sh
+    volumes:
+      - ./init_influxdb.sh:/init_influxdb.sh
+    depends_on:
+      influxdb:
+        condition: service_healthy
+  influxdb:
+    image: rapidfort/influxdb
+    ports:
+      - 8086:8086
+      - 8088:8088
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8086"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    environment:
+      - INFLUXDB_ADMIN_USER_PASSWORD=bitnami123
+      - INFLUXDB_ADMIN_USER_TOKEN=admintoken123
+      - INFLUXDB_USER=my_user
+      - INFLUXDB_USER_PASSWORD=my_password
+      - INFLUXDB_DB=my_database
+      - INFLUXDB_USER_BUCKET=my_bucket
+      - INFLUXDB_ORG=my_org

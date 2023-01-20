@@ -58,9 +58,9 @@ fluentd:
   - 1.15.3-debian-11-r
 haproxy:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.7.1`, `2.7.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.7.2`, `2.7.2-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.7.1-debian-11-r
+  - 2.7.2-debian-11-r
 influxdb:
   docker_links:
   - '[`2`, `2-debian-11`, `2.6.1`, `2.6.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)'
@@ -155,6 +155,11 @@ redis-cluster:
   - '[`7.0`, `7.0-debian-11`, `7.0.8`, `7.0.8-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis-cluster/7.0/debian-11/Dockerfile)'
   search_tags:
   - 7.0.8-debian-11-r
+telegraf:
+  docker_links:
+  - '[`1`, `1-debian-11`, `1.25.0`, `1.25.0-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-11/Dockerfile)'
+  search_tags:
+  - 1.25.0-debian-11-r
 wordpress:
   docker_links:
   - '[`6`, `6-debian-11`, `6.1.1`, `6.1.1-debian-11-r` (6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-11/Dockerfile)'

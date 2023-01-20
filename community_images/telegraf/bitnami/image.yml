@@ -32,7 +32,3 @@ runtimes:
       telegraf:
         repository: "TELEGRAF_IMAGE_REPOSITORY"
         tag: "TELEGRAF_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    telegraf:
-      env_file: docker.env

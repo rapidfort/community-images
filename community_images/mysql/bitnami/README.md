@@ -85,8 +85,8 @@ RapidFort’s hardened [rapidfort/mysql][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`8.0`, `8.0-debian-11`, `8.0.31`, `8.0.31-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)
-* [`5.7`, `5.7-debian-11`, `5.7.40`, `5.7.40-debian-11-r` (5.7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/5.7/debian-11/Dockerfile)
+* [`8.0`, `8.0-debian-11`, `8.0.32`, `8.0.32-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)
+* [`5.7`, `5.7-debian-11`, `5.7.41`, `5.7.41-debian-11-r` (5.7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/5.7/debian-11/Dockerfile)
 
 ## Need support
 

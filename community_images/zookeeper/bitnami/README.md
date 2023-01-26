@@ -87,7 +87,6 @@ We are making secure copies of the images we use every day and the most popular 
 ## Supported tags and respective `Dockerfile` links
 * [`3.8`, `3.8-debian-11`, `3.8.0`, `3.8.0-debian-11-r` (3.8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper/3.8/debian-11/Dockerfile)
 * [`3.7`, `3.7-debian-11`, `3.7.1`, `3.7.1-debian-11-r` (3.7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper/3.7/debian-11/Dockerfile)
-* [`3.6`, `3.6-debian-11`, `3.6.4`, `3.6.4-debian-11-r` (3.6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper/3.6/debian-11/Dockerfile)
 
 ## Need support
 

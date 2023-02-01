@@ -51,4 +51,6 @@ runtimes:
       ghost:
         repository: "GHOST_IMAGE_REPOSITORY"
         tag: "GHOST_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
 

@@ -12,11 +12,8 @@ services:
     image: docker.io/bitnami/ghost:5
     restart: always
     ports:
-      - '::8080'
-      - '::8443'
       - '8080:2368'
     volumes:
-      - 'configs/config.production.json:/opt/bitnami/ghost/config.production.json'
       - 'ghost_data:/bitnami/ghost'
     depends_on:
       - mysql
@@ -28,11 +25,6 @@ services:
       - GHOST_DATABASE_USER=bn_ghost
       - GHOST_DATABASE_NAME=bitnami_ghost
       - GHOST_DATABASE_ENABLE_SSL=yes
-      - GHOST_SMTP_HOST=smtp.gmail.com
-      - GHOST_SMTP_PORT=587
-      - GHOST_SMTP_USER=anmolvirdi2000@gmail.com
-      - GHOST_SMTP_PASSWORD=abhiashu
-      - GHOST_SMTP_FROM_ADDRESS=ghost@blog.com
 volumes:
   mysql_data:
     driver: local

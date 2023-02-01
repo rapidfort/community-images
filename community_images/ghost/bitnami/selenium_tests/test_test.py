@@ -32,7 +32,7 @@ class TestTest():
     self.driver.set_window_size(1062, 811)
     self.driver.find_element(By.LINK_TEXT, "Home").click()
     self.driver.find_element(By.LINK_TEXT, "About").click()
-    self.driver.get("http://localhost/ghost/")
+    self.driver.get("http://localhost/ghost/") #port add
     self.driver.find_element(By.ID, "identification").send_keys("user@example.com")
     self.driver.find_element(By.ID, "password").click()
     self.driver.find_element(By.ID, "password").send_keys("bitnami123")

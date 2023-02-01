@@ -1,0 +1,41 @@
+{
+    "database": {
+      "client": "mysql",
+      "connection": {
+        "host": "mysql",
+        "port": 3306,
+        "database": "bitnami_ghost",
+        "user": "bn_ghost",
+        "password": "",
+        "ssl": false
+      }
+    },
+    "url": "http://localhost",
+    "server": {
+      "port": 2368,
+      "host": "0.0.0.0"
+    },
+    "mail": {
+        "from": "anmolvirdi2000@gmail.com",
+        "transport": "SMTP",
+        "options": {
+          "host": "smtp.gmail.com",
+          "service": "Gmail",
+          "port": "465",
+          "secure": true,
+          "auth": {
+            "user": "anmolvirdi2000@gmail.com",
+            "pass": "abhiashu"
+          }
+        }
+      },
+    "logging": {
+      "transports": [
+        "file"
+      ]
+    },
+    "process": "local",
+    "paths": {
+      "contentPath": "/opt/bitnami/ghost/content"
+    }
+  }

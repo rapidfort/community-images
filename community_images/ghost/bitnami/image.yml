@@ -9,6 +9,7 @@ rf_docker_link: rapidfort/ghost
 image_workflow_name: ghost_bitnami
 github_location: ghost/bitnami
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fghost
+usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/ghost
 
   # install ghost, just replace repository with RapidFort registry

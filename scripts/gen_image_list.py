@@ -72,6 +72,7 @@ def merge_yaml_files(image_list_file, needs_dh_data=False):
 def main():
     """ main function """
     image_list_file = "image.lst"
+    needs_dh_data = False
     if len(sys.argv) == 3:
         image_list_file = sys.argv[1]
         needs_dh_data = sys.argv[2]=="yes"

@@ -159,7 +159,7 @@ class TagManager:
                 # output tag needs to be same as input tag
                 output_tag_detail.tag = input_tag_detail.tag
 
-                is_latest = (index == 0)
+                is_latest = index == 0
                 tag_mapping = TagMapping(
                     input_tag_detail,
                     output_tag_detail,

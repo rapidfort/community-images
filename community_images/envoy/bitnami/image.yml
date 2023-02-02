@@ -23,6 +23,8 @@ input_registry:
   account: bitnami
 repo_sets:
   - envoy:
+      input_base_tag: "1.25.0-debian-11-r"
+  - envoy:
       input_base_tag: "1.24.1-debian-11-r"
   - envoy:
       input_base_tag: "1.23.3-debian-11-r"

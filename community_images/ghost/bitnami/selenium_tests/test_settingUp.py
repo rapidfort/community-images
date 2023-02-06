@@ -22,17 +22,17 @@ class TestSettingUp():
      chrome_options.add_argument("--no-sandbox")
      self.driver = webdriver.Chrome(options=chrome_options)  # pylint: disable=attribute-defined-outside-init
      self.driver.implicitly_wait(10)
-  
+
   def teardown_method(self, method):
     self.driver.quit()
-  
+
   def test_settingUp(self):
-    self.driver.get("http://localhost:8080/")
+    self.driver.get("http://localhost:8085/")
     self.driver.set_window_size(1552, 832)
     self.driver.find_element(By.LINK_TEXT, "About").click()
     self.driver.find_element(By.LINK_TEXT, "Home").click()
     self.driver.find_element(By.CSS_SELECTOR, ".gh-search:nth-child(1) > svg").click()
-    self.driver.get("http://localhost:8080/ghost/")
+    self.driver.get("http://localhost:8085/ghost/")
     self.driver.find_element(By.ID, "identification").click()
     self.driver.find_element(By.ID, "identification").send_keys("user@example.com")
     self.driver.find_element(By.ID, "password").click()
@@ -91,4 +91,4 @@ class TestSettingUp():
     self.driver.find_element(By.ID, "ember250").click()
     self.driver.find_element(By.CSS_SELECTOR, ".flex-auto").click()
     self.driver.find_element(By.ID, "ember332").click()
-  
+

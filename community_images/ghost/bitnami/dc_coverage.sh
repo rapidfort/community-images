@@ -17,6 +17,7 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 PORT=8080
 CONTAINER_NAME="${PROJECT_NAME}"-ghost-1
+sleep 200
 
 # exec into container and run coverage script
 docker exec -i "${CONTAINER_NAME}" cat /opt/bitnami/ghost/config.production.json

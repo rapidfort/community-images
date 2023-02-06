@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql:
-    image: docker.io/bitnami/mysql:8.0
+    image: rapidfort/mysql
     volumes:
       - 'mysql_data:/bitnami/mysql'
     environment:
@@ -9,18 +9,20 @@ services:
       - MYSQL_USER=bn_ghost
       - MYSQL_DATABASE=bitnami_ghost
   ghost:
-    image: docker.io/bitnami/ghost:5
+    image: ${GHOST_IMAGE_REPOSITORY}:${GHOST_IMAGE_TAG}
     restart: always
     ports:
       - '8080:2368'
     volumes:
       - 'ghost_data:/bitnami/ghost'
+    cap_add:
+      - SYS_PTRACE
     depends_on:
       - mysql
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - GHOST_DATABASE_HOST=mysql
-      - url=http://localhost:8080/
+      - url=http://localhost:8085/
       - GHOST_DATABASE_PORT_NUMBER=3306
       - GHOST_DATABASE_USER=bn_ghost
       - GHOST_DATABASE_NAME=bitnami_ghost

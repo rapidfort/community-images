@@ -25,7 +25,7 @@ class RegistryHelper:
         """ Interface method to specify registry url"""
 
     # pylint: disable=unused-argument
-    def get_latest_tag(self, account, repo, search_str):
+    def get_latest_tag_with_digest(self, account, repo, search_str):
         """
         Find latest tags using search_str
         """
@@ -67,26 +67,27 @@ class DockerHubHelper(RegistryHelper):
     def registry_url():
         return "docker.io"
 
-    def get_latest_tag(self, account, repo, search_str):
+    def get_latest_tag_with_digest(self, account, repo, search_str):
         """
         Find latest tags using search_str"
         """
+        import pdb; pdb.set_trace()
         tags = self._fetch_tags(account, repo)
 
         search_str = re.compile(search_str)
         tags = filter(lambda tag: search_str.search(tag["name"]), tags)
         tags = list(filter(
-            lambda tag: "rfstub" not in tag["name"],
+            lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"],
             tags))
 
         if len(tags) == 0:
-            return None
+            return None, None
 
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["tag_last_pushed"]))
         if tags:
-            return tags[-1]["name"]
-        return None
+            return tags[-1]["name"], tags[-1]["digest"]
+        return None, None
 
     def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):
         """
@@ -183,7 +184,7 @@ class IronBankHelper(RegistryHelper):
     def registry_url():
         return "registry1.dso.mil"
 
-    def get_latest_tag(self, account, repo, search_str):
+    def get_latest_tag_with_digest(self, account, repo, search_str):
         """
         Find latest tags using search_str"
         """
@@ -194,13 +195,14 @@ class IronBankHelper(RegistryHelper):
             tags))
 
         if len(tags) == 0:
-            return None
+            return None, None
 
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["push_time"]))
         if tags:
-            return tags[-1]["name"]
-        return None
+            # TODO: fix this. the key may not be digest for ironbank repo
+            return tags[-1]["name"], tags[-1]["digest"]
+        return None, None
 
 
     def _fetch_tags(self, account, repo):

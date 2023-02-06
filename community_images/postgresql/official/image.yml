@@ -32,21 +32,21 @@ repo_sets:
   - postgres:
       input_base_tag: "15[0-9.]*$"
       output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "14[0-9.]*$"
-      output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "13[0-9.]*$"
-      output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "12[0-9.]*$"
-      output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "11[0-9.]*$|11.*bullseye"
-      output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "10[0-9.]*$|10.*bullseye"
-      output_repo: postgresql-official
+  # - postgres:
+  #     input_base_tag: "14[0-9.]*$"
+  #     output_repo: postgresql-official
+  # - postgres:
+  #     input_base_tag: "13[0-9.]*$"
+  #     output_repo: postgresql-official
+  # - postgres:
+  #     input_base_tag: "12[0-9.]*$"
+  #     output_repo: postgresql-official
+  # - postgres:
+  #     input_base_tag: "11[0-9.]*$|11.*bullseye"
+  #     output_repo: postgresql-official
+  # - postgres:
+  #     input_base_tag: "10[0-9.]*$|10.*bullseye"
+  #     output_repo: postgresql-official
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

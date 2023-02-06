@@ -2,15 +2,17 @@
 
 import logging
 import os
+import random
 
 class TagDetail:
     """ Tag Details class """
 
-    def __init__(self, registry, account, repo, tag):
+    def __init__(self, registry, account, repo, tag, sha_digest):
         self.registry = registry
         self.account = account
         self.repo = repo
         self.tag = tag
+        self.sha_digest = sha_digest
 
     @property
     def repo_path(self):
@@ -46,6 +48,11 @@ class TagDetail:
     def full_hardened_tag(self):
         """ Full Hardened tag """
         return f"{self.full_repo_path}:{self.hardened_tag}"
+
+    @property
+    def tag_with_digest(self):
+        """ Tag:Digest """
+        return f"{self.tag}:{self.sha_digest}"
 
 # pylint: disable=too-few-public-methods
 class TagMapping:
@@ -90,15 +97,17 @@ class TagManager:
         """Generate tag details object"""
         latest_tag = None
 
+        import pdb; pdb.set_trace()
         if base_tag != "latest":
-            latest_tag = registry_helper.get_latest_tag(
+            latest_tag, latest_digest = registry_helper.get_latest_tag_with_digest(
                 account, repo, base_tag)
 
         latest_tag = latest_tag or "latest"
+        latest_digest = latest_digest or "%032x" % random.getrandbits(256)
 
         logging.info(
             f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")
-        return TagDetail(registry, account, repo, latest_tag)
+        return TagDetail(registry, account, repo, latest_tag, latest_digest)
 
     def _prepare_repo_set_mappings(self): # pylint:disable=too-many-locals
         """
@@ -108,6 +117,7 @@ class TagManager:
             input_base_tag: "2.8.4-debian-11-r"
             output_repo: nats
         """
+        import pdb; pdb.set_trace()
         repo_set_mappings = []
         repo_sets = self.config_dict.get("repo_sets", [])
         is_image_generation_required_for_any_container = False
@@ -149,7 +159,7 @@ class TagManager:
 
                 needs_generation = (
                     not self.orchestrator.publish or self.orchestrator.force_publish or (
-                        input_tag_detail.tag != output_tag_detail.tag))
+                        input_tag_detail.tag_with_digest != output_tag_detail.tag_with_digest))
                 is_image_generation_required_for_any_container =(
                     needs_generation or is_image_generation_required_for_any_container
                 )
@@ -158,6 +168,7 @@ class TagManager:
 
                 # output tag needs to be same as input tag
                 output_tag_detail.tag = input_tag_detail.tag
+                output_tag_detail.sha_digest = input_tag_detail.sha_digest
 
                 is_latest = (index == 0)
                 tag_mapping = TagMapping(

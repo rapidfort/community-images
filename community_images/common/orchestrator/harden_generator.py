@@ -69,6 +69,13 @@ class HardenGenerator:
                 hardened_image = self.docker_client.images.get(
                     output_tag_details.full_hardened_tag)
                 result = hardened_image.tag(output_tag_details.full_tag)
+                # TODO: need to find out how can this label be extracted during
+                # fetch tag. for output tag details, we want to look at this label
+                # instead of tags["digest"] since tags["digest"] will be having the
+                # digest of hardened image and we don't want that
+                result = hardened_image.labels({
+                    "orig_image_digest": output_tag_details.sha_digest
+                })
                 logging.info(
                     f"image tag:[{output_tag_details.full_tag}] success={result}")
 
@@ -81,7 +88,7 @@ class HardenGenerator:
                 if tag_mapping.is_latest:
                     self._tag_util(
                         output_tag_details.full_repo_path,
-                        output_tag_details.tag, Consts.LATEST)
+                        output_tag_details.tag, output_tag_details.sha_digest, Consts.LATEST)
 
                 if tag_mapping.input_tag_details.account == Consts.BITNAMI:
                     self._roll_over_bitnami_tags(output_tag_details)
@@ -91,7 +98,7 @@ class HardenGenerator:
         """ Run harden command with backoff """
         Utils.run_cmd(rfharden_cmd.split())
 
-    def _tag_util(self, full_repo_path, current_tag, new_tag):
+    def _tag_util(self, full_repo_path, current_tag, sha_digest, new_tag):
         """ add new tag to existing image """
         # tag input stubbed image to output stubbed image
         src_image = self.docker_client.images.get(
@@ -99,6 +106,9 @@ class HardenGenerator:
 
         new_full_tag = f"{full_repo_path}:{new_tag}"
         result = src_image.tag(new_full_tag)
+        result = src_image.labels({
+                    "orig_image_digest": sha_digest
+        })
         logging.info(f"image tag:[{new_full_tag}] success={result}")
 
         # push stubbed image to output repo
@@ -121,7 +131,7 @@ class HardenGenerator:
         os_ver = input_tag_array[2]
 
         # add version tag - 10.6.8
-        self._tag_util(tag_details.full_repo_path, input_tag, version)
+        self._tag_util(tag_details.full_repo_path, input_tag, tag_details.sha_digest, version)
 
         version_array = version.split(".")
         if len(version_array) < 2:
@@ -138,9 +148,9 @@ class HardenGenerator:
         # add version os tag
         self._tag_util(
             tag_details.full_repo_path,
-            input_tag, version_os_tag)
+            input_tag, tag_details.sha_digest, version_os_tag)
 
         # add major minor tag
         self._tag_util(
             tag_details.full_repo_path,
-            input_tag, major_minor_tag)
+            input_tag, tag_details.sha_digest, major_minor_tag)

@@ -10,7 +10,7 @@ import backoff
 from requests.auth import HTTPBasicAuth
 import requests
 from consts import Consts
-from docker.errors import ImageNotFound
+from docker.errors import ImageNotFound, NotFound
 
 
 class RegistryHelper:
@@ -39,7 +39,7 @@ class RegistryHelper:
             self.docker_client.images.pull(image_path)
             image = self.docker_client.images.get(image_path)
             return image.labels.get('orig_image_digest', '')
-        except ImageNotFound:
+        except (ImageNotFound, NotFound):
             digest = "%032x" % random.getrandbits(256)
             logging.info('Image {} not found, returning digest: {}'.format(image_path, digest))
             return digest

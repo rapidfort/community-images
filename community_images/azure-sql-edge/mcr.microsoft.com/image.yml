@@ -1,0 +1,32 @@
+name: azure-sql-edge
+official_name: Azure SQL Edge
+official_website: https://azure.microsoft.com/en-us/products/azure-sql/edge
+source_image_provider: Microsoft
+source_image_repo: docker.io/mcr.microsoft.com/azure-sql-edge
+source_image_repo_link: https://hub.docker.com/_/microsoft-azure-sql-edge
+source_image_readme: https://learn.microsoft.com/en-us/azure/azure-sql-edge/
+rf_docker_link: rapidfort/azure-sql-image
+image_workflow_name: azuresqlimage_microsoft
+github_location: azure-sql-edge/mcr.microsoft.com
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fmcr.microsoft.com%2Fazure-sql-edge
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install azure-sql-edge, just replace repository with RapidFort registry
+  $ helm install my-azure-sql-edge mcr.microsoft.com/azure-sql-edge --set image.repository=rapidfort/azure-sql-image
+what_is_text: |
+  Azure SQL Edge is an optimized relational database engine geared for IoT and edge deployments.
+disclaimer: |
+  Azure SQL Edge(TM) is a trademark owned by Microsoft, which is not affiliated with, and does not endorse, this site.
+input_registry:
+  registry: docker.io
+  account: mcr.microsoft.com
+repo_sets:
+  - azure-sql-edge:
+      input_base_tag: "1.0.6"
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    azure-sql-edge:
+      ports:
+        - "57000:1433"

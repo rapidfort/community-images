@@ -1,7 +1,7 @@
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
-telegraf:
+azure-sql-edge:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
@@ -17,12 +17,3 @@ telegraf:
   readinessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
-auth:
-  admin:
-    username: admin
-    password: bitnami123
-    token: admintoken123
-auth:
-  user:
-    username: my_user
-    password: my_password

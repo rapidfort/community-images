@@ -1,4 +1,4 @@
-source_image_repo,github_location,rf_docker_link
+source_image_repo,github_location,rf_docker_link,pull_count,star_count,last_updated
 {%- for image in image_list %}
-{{ image.source_image_repo }},https://github.com/rapidfort/community-images/tree/main/community_images/{{- image.github_location }},https://hub.docker.com/r/{{- image.rf_docker_link }}
+{{ image.source_image_repo }},https://github.com/rapidfort/community-images/tree/main/community_images/{{- image.github_location }},https://hub.docker.com/r/{{- image.rf_docker_link }},{{ image.pull_count }},{{ image.star_count }},{{ image.last_updated }}
 {%- endfor %}

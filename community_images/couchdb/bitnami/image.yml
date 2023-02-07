@@ -23,7 +23,7 @@ input_registry:
   account: bitnami
 repo_sets:
   - couchdb:
-      input_base_tag: "3.2.2-debian-11-r"
+      input_base_tag: "3.3.1-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

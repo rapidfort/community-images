@@ -154,8 +154,8 @@ class TagManager:
                 # 1. We are not publishing and just doing a ci/cd test
                 # 2. We are force publishing
                 # 3. Input and output tag dont match
-                logging.info(f"input tag details={input_tag_detail.tag}")
-                logging.info(f"output tag details={output_tag_detail.tag}")
+                logging.info(f"input tag with digest details={input_tag_detail.tag_with_digest}")
+                logging.info(f"output tag with digest details={output_tag_detail.tag_with_digest}")
                 logging.info(f"publish flag={self.orchestrator.publish}")
                 logging.info(
                     f"force publish flag={self.orchestrator.force_publish}")

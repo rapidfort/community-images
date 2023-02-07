@@ -146,6 +146,7 @@ class TagManager:
                     output_registry, output_account,
                     self.orchestrator.output_registry_helper,
                     output_repo, base_tag)
+                import pdb; pdb.set_trace()
                 output_tag_detail.sha_digest = self.orchestrator.output_registry_helper.get_digest_from_label(
                     output_tag_detail.full_hardened_tag)
 

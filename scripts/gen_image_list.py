@@ -60,9 +60,9 @@ def merge_yaml_files(image_list_file, needs_dh_data=False):
     image_list=sorted(image_list, key=lambda i: i["name"])
     if needs_dh_data:
         image_list_sorted = sorted(image_list, key=lambda i: i["pull_count"],reverse=True)
-        image_list_dict = dict(image_list=image_list,image_list_sorted=image_list_sorted)
+        image_list_dict = {"image_list": image_list, "image_list_sorted": image_list_sorted}
     else:
-        image_list_dict = dict(image_list=image_list)
+        image_list_dict = {"image_list": image_list}
 
     out_yml_path = os.path.join(script_path, "..", "image_list.yml")
     with open(out_yml_path, "w", encoding="utf8") as outfile:
@@ -72,6 +72,7 @@ def merge_yaml_files(image_list_file, needs_dh_data=False):
 def main():
     """ main function """
     image_list_file = "image.lst"
+    needs_dh_data = False
     if len(sys.argv) == 3:
         image_list_file = sys.argv[1]
         needs_dh_data = sys.argv[2]=="yes"

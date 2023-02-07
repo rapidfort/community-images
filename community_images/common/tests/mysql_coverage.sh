@@ -11,6 +11,11 @@ mysqladmin --version
 mysqlcheck --version
 mysqldump --version
 mysqlimport --version
-# mysqlpump --version # not present on mariadb
+
+# exclude mariadb
+mariadb --version || (	mysqlpump --version && \
+						mysql_ssl_rsa_setup --version && \
+						mysqlsh --version )
+
 mysqlshow --version
 # mysqlslap --version # doesnt work on mariadb due to char set issue

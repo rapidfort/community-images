@@ -23,11 +23,9 @@ input_registry:
   account: bitnami
 repo_sets:
   - zookeeper:
-      input_base_tag: "3.8.0-debian-11-r"
+      input_base_tag: "3.8.1-debian-11-r"
   - zookeeper:
       input_base_tag: "3.7.1-debian-11-r"
-  - zookeeper:
-      input_base_tag: "3.6.4-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

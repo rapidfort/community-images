@@ -2,6 +2,7 @@
 
 import logging
 import os
+import random
 import urllib.parse
 import re
 import dateutil.parser
@@ -9,6 +10,7 @@ import backoff
 from requests.auth import HTTPBasicAuth
 import requests
 from consts import Consts
+from docker.errors import ImageNotFound
 
 
 class RegistryHelper:
@@ -30,6 +32,17 @@ class RegistryHelper:
         Find latest tags using search_str
         """
         return Consts.LATEST
+
+    def get_digest_from_label(self, image_path):
+        # pull the image first
+        try:
+            self.docker_client.images.pull(image_path)
+            image = self.docker_client.images.get(image_path)
+            return image.labels.get('orig_image_digest', '')
+        except ImageNotFound:
+            digest = "%032x" % random.getrandbits(256)
+            logging.info('Image {} not found, returning digest: {}'.format(image_path, digest))
+            return digest
 
     def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):
         """

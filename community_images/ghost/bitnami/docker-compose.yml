@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql:
-    image: rapidfort/mysql
+    image: rapidfort/mysql:latest
     volumes:
       - 'mysql_data:/bitnami/mysql'
     environment:
@@ -9,7 +9,7 @@ services:
       - MYSQL_USER=bn_ghost
       - MYSQL_DATABASE=bitnami_ghost
   ghost:
-    image: ${GHOST_IMAGE_REPOSITORY}:${GHOST_IMAGE_TAG}
+    image: bitnami/ghost:latest
     restart: always
     ports:
       - '8080:2368'
@@ -22,11 +22,10 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - GHOST_DATABASE_HOST=mysql
-      - url=http://localhost:8085/
+      - url=http://localhost:8080/
       - GHOST_DATABASE_PORT_NUMBER=3306
       - GHOST_DATABASE_USER=bn_ghost
       - GHOST_DATABASE_NAME=bitnami_ghost
-      - GHOST_DATABASE_ENABLE_SSL=yes
 volumes:
   mysql_data:
     driver: local

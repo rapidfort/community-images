@@ -97,7 +97,6 @@ class TagManager:
         """Generate tag details object"""
         latest_tag = None
 
-        import pdb; pdb.set_trace()
         if base_tag != "latest":
             latest_tag, latest_digest = registry_helper.get_latest_tag_with_digest(
                 account, repo, base_tag)
@@ -117,7 +116,6 @@ class TagManager:
             input_base_tag: "2.8.4-debian-11-r"
             output_repo: nats
         """
-        import pdb; pdb.set_trace()
         repo_set_mappings = []
         repo_sets = self.config_dict.get("repo_sets", [])
         is_image_generation_required_for_any_container = False
@@ -146,7 +144,6 @@ class TagManager:
                     output_registry, output_account,
                     self.orchestrator.output_registry_helper,
                     output_repo, base_tag)
-                import pdb; pdb.set_trace()
                 output_tag_detail.sha_digest = self.orchestrator.output_registry_helper.get_digest_from_label(
                     output_tag_detail.full_tag)
 

@@ -62,7 +62,6 @@ class StubGenerator:
                 )
 
             self._run_stub_command(input_tag_details.full_tag)
-            import pdb; pdb.set_trace()
             # tag input stubbed image to output stubbed image
             stub_image = self.docker_client.images.get(
                 input_tag_details.full_stub_tag)

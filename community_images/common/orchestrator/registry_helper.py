@@ -84,7 +84,6 @@ class DockerHubHelper(RegistryHelper):
         """
         Find latest tags using search_str"
         """
-        import pdb; pdb.set_trace()
         tags = self._fetch_tags(account, repo)
 
         search_str = re.compile(search_str)

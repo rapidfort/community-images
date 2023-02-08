@@ -73,9 +73,7 @@ class HardenGenerator:
                 # fetch tag. for output tag details, we want to look at this label
                 # instead of tags["digest"] since tags["digest"] will be having the
                 # digest of hardened image and we don't want that
-                result = hardened_image.labels({
-                    "orig_image_digest": output_tag_details.sha_digest
-                })
+                hardened_image.labels["orig_image_digest"] = output_tag_details.sha_digest
                 logging.info(
                     f"image tag:[{output_tag_details.full_tag}] success={result}")
 

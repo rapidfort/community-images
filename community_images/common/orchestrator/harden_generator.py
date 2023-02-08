@@ -74,6 +74,7 @@ class HardenGenerator:
                 labels = {
                     "orig_image_digest": output_tag_details.sha_digest
                 }
+                import pdb; pdb.set_trace()
                 self._add_labels_to_image(
                     output_tag_details.full_tag,
                     labels=labels

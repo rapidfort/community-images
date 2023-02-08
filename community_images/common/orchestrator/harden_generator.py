@@ -104,10 +104,8 @@ class HardenGenerator:
 
         new_full_tag = f"{full_repo_path}:{new_tag}"
         result = src_image.tag(new_full_tag)
-        result = src_image.labels({
-                    "orig_image_digest": sha_digest
-        })
         logging.info(f"image tag:[{new_full_tag}] success={result}")
+        src_image.labels["orig_image_digest"] = sha_digest
 
         # push stubbed image to output repo
         result = self.docker_client.api.push(

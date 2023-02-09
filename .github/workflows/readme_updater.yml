@@ -162,6 +162,14 @@ jobs:
           repository: rapidfort/fluentd
           readme-filepath: ./community_images/fluentd/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluentd
+      - name: Docker Hub Description Ghost
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ghost
+          readme-filepath: ./community_images/ghost/bitnami/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ghost
       - name: Docker Hub Description HAProxy
         uses: peter-evans/dockerhub-description@v3
         with:

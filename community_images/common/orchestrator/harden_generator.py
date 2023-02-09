@@ -2,6 +2,7 @@
 
 import os
 import logging
+import tempfile
 import backoff
 from consts import Consts
 from utils import Utils
@@ -69,6 +70,14 @@ class HardenGenerator:
                 hardened_image = self.docker_client.images.get(
                     output_tag_details.full_hardened_tag)
                 result = hardened_image.tag(output_tag_details.full_tag)
+                # build a new image to add an extra label
+                labels = {
+                    "orig_image_digest": output_tag_details.sha_digest
+                }
+                self._add_labels_to_image(
+                    output_tag_details.full_tag,
+                    labels=labels
+                )
                 logging.info(
                     f"image tag:[{output_tag_details.full_tag}] success={result}")
 
@@ -81,17 +90,36 @@ class HardenGenerator:
                 if tag_mapping.is_latest:
                     self._tag_util(
                         output_tag_details.full_repo_path,
-                        output_tag_details.tag, Consts.LATEST)
+                        output_tag_details.tag, output_tag_details.sha_digest, Consts.LATEST)
 
                 if tag_mapping.input_tag_details.account == Consts.BITNAMI:
                     self._roll_over_bitnami_tags(output_tag_details)
+
+    def _add_labels_to_image(self, full_tag, labels=None):
+        if not labels:
+            return
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            dockerfile = open(tmp_dir + '/' + 'Dockerfile', "w") # pylint: disable=unspecified-encoding, consider-using-with
+            dockerfile.write(f'FROM {full_tag}')
+            dockerfile.write('\n')
+            for key, value in labels.items():
+                dockerfile.write(f'LABEL {key}={value}')
+                dockerfile.write('\n')
+            dockerfile.close()
+            result = self.docker_client.images.build(
+                path=tmp_dir,
+                dockerfile='Dockerfile',
+                tag=full_tag,
+                rm=True
+            )
+            logging.info(f"image built with tag:[{full_tag}] success={result}")
 
     @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
     def _run_harden_command(self, rfharden_cmd): # pylint: disable=unused-argument
         """ Run harden command with backoff """
         Utils.run_cmd(rfharden_cmd.split())
 
-    def _tag_util(self, full_repo_path, current_tag, new_tag):
+    def _tag_util(self, full_repo_path, current_tag, sha_digest, new_tag):
         """ add new tag to existing image """
         # tag input stubbed image to output stubbed image
         src_image = self.docker_client.images.get(
@@ -100,6 +128,10 @@ class HardenGenerator:
         new_full_tag = f"{full_repo_path}:{new_tag}"
         result = src_image.tag(new_full_tag)
         logging.info(f"image tag:[{new_full_tag}] success={result}")
+        labels = {
+            "orig_image_digest": sha_digest
+        }
+        self._add_labels_to_image(new_full_tag, labels)
 
         # push stubbed image to output repo
         result = self.docker_client.api.push(
@@ -121,7 +153,7 @@ class HardenGenerator:
         os_ver = input_tag_array[2]
 
         # add version tag - 10.6.8
-        self._tag_util(tag_details.full_repo_path, input_tag, version)
+        self._tag_util(tag_details.full_repo_path, input_tag, tag_details.sha_digest, version)
 
         version_array = version.split(".")
         if len(version_array) < 2:
@@ -138,9 +170,9 @@ class HardenGenerator:
         # add version os tag
         self._tag_util(
             tag_details.full_repo_path,
-            input_tag, version_os_tag)
+            input_tag, tag_details.sha_digest, version_os_tag)
 
         # add major minor tag
         self._tag_util(
             tag_details.full_repo_path,
-            input_tag, major_minor_tag)
+            input_tag, tag_details.sha_digest, major_minor_tag)

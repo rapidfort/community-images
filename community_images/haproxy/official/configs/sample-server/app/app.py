@@ -1,6 +1,6 @@
 """ Sample flask app for testing """
 import socket
-from flask import Flask,render_template
+from flask import Flask,render_template # pylint: disable=import-error
 
 app = Flask(__name__)
 

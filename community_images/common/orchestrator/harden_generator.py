@@ -78,11 +78,6 @@ class HardenGenerator:
                     output_tag_details.full_tag,
                     labels=labels
                 )
-                # TODO: need to find out how can this label be extracted during
-                # fetch tag. for output tag details, we want to look at this label
-                # instead of tags["digest"] since tags["digest"] will be having the
-                # digest of hardened image and we don't want that
-                # hardened_image.labels["orig_image_digest"] = output_tag_details.sha_digest
                 logging.info(
                     f"image tag:[{output_tag_details.full_tag}] success={result}")
 
@@ -100,13 +95,15 @@ class HardenGenerator:
                 if tag_mapping.input_tag_details.account == Consts.BITNAMI:
                     self._roll_over_bitnami_tags(output_tag_details)
 
-    def _add_labels_to_image(self, full_tag, labels={}):
+    def _add_labels_to_image(self, full_tag, labels=None):
+        if not labels:
+            return
         with tempfile.TemporaryDirectory() as tmp_dir:
-            dockerfile = open(tmp_dir + '/' + 'Dockerfile', "w")
-            dockerfile.write('FROM {}'.format(full_tag))
+            dockerfile = open(tmp_dir + '/' + 'Dockerfile', "w") # pylint: disable=unspecified-encoding, consider-using-with
+            dockerfile.write(f'FROM {full_tag}')
             dockerfile.write('\n')
             for key, value in labels.items():
-                dockerfile.write("LABEL {}={}".format(key, value))
+                dockerfile.write(f'LABEL {key}={value}')
                 dockerfile.write('\n')
             dockerfile.close()
             result = self.docker_client.images.build(

@@ -102,7 +102,7 @@ class TagManager:
                 account, repo, base_tag)
 
         latest_tag = latest_tag or "latest"
-        latest_digest = latest_digest or "%032x" % random.getrandbits(256)
+        latest_digest = latest_digest or "%032x" % random.getrandbits(256) # pylint: disable=consider-using-f-string
 
         logging.info(
             f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")

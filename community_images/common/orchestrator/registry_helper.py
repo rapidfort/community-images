@@ -34,14 +34,17 @@ class RegistryHelper:
         return Consts.LATEST
 
     def get_digest_from_label(self, image_path):
+        """
+        Find the digest using image label
+        """
         # pull the image first
         try:
             self.docker_client.images.pull(image_path)
             image = self.docker_client.images.get(image_path)
             return image.labels.get('orig_image_digest', '')
         except (ImageNotFound, NotFound):
-            digest = "%032x" % random.getrandbits(256)
-            logging.info('Image {} not found, returning digest: {}'.format(image_path, digest))
+            digest = "%032x" % random.getrandbits(256) # pylint: disable=consider-using-f-string
+            logging.info(f'Image {image_path} not found, returning digest: {digest}')
             return digest
 
     def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):
@@ -212,7 +215,6 @@ class IronBankHelper(RegistryHelper):
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["push_time"]))
         if tags:
-            # TODO: fix this. the key may not be digest for ironbank repo
             return tags[-1]["name"], tags[-1]["digest"]
         return None, None
 
@@ -236,7 +238,6 @@ class IronBankHelper(RegistryHelper):
                     break
 
                 for artifact in artifacts:
-                    import pdb; pdb.set_trace()
                     local_tag_list = artifact.get("tags")
                     logging.debug(f"artifact={artifact}")
                     if local_tag_list:

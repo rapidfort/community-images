@@ -1,7 +1,6 @@
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
-ghostHost: "localhost"
 containerSecurityContext:
   enabled: true
   runAsUser: 1001

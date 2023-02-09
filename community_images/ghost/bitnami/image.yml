@@ -24,8 +24,6 @@ input_registry:
 repo_sets:
   - ghost:
       input_base_tag: "5-debian-1*"
-  - ghost:
-      input_base_tag: "4-debian-1*"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
@@ -33,6 +31,8 @@ runtimes:
       repo: bitnami
       repo_url: https://charts.bitnami.com/bitnami
       chart: ghost
+    helm_additional_params:
+      ghostHost: "localhost"
     tls_certs:
       generate: true
       secret_name: localhost-server-tls

@@ -1,0 +1,55 @@
+name: ghost
+official_name: Ghost
+official_website: https://ghost.org/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/ghost
+source_image_repo_link: https://hub.docker.com/r/bitnami/ghost
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/ghost/README.md
+rf_docker_link: rapidfort/ghost
+image_workflow_name: ghost_bitnami
+github_location: ghost/bitnami
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fghost
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/ghost
+
+  # install ghost, just replace repository with RapidFort registry
+  $ helm install my-ghost bitnami/ghost --set image.repository=rapidfort/ghost
+what_is_text: |
+  Ghost is an open source publishing platform designed to create blogs, magazines, and news sites. It includes a simple markdown editor with preview, theming, and SEO built-in to simplify editing.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: bitnami
+repo_sets:
+  - ghost:
+      input_base_tag: "5-debian-1*"
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: ghost
+    helm_additional_params:
+      ghostHost: "localhost"
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      ghost:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 200
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      ghost:
+        repository: "GHOST_IMAGE_REPOSITORY"
+        tag: "GHOST_IMAGE_TAG"

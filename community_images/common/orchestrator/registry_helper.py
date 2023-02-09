@@ -236,9 +236,14 @@ class IronBankHelper(RegistryHelper):
                     break
 
                 for artifact in artifacts:
+                    import pdb; pdb.set_trace()
                     local_tag_list = artifact.get("tags")
                     logging.debug(f"artifact={artifact}")
                     if local_tag_list:
+                        # ingest the digest into all the tags
+                        sha_digest = artifact.get("digest")
+                        for local_tag in local_tag_list:
+                            local_tag["digest"] = sha_digest
                         tags += local_tag_list
             else:
                 break

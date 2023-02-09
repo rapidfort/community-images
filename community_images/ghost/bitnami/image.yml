@@ -25,10 +25,25 @@ repo_sets:
   - ghost:
       input_base_tag: "5-debian-1*"
 runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: ghost
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      ghost:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    wait_time_sec: 120
+    wait_time_sec: 200
     tls_certs:
       generate: true
       out_dir: certs
@@ -36,6 +51,3 @@ runtimes:
       ghost:
         repository: "GHOST_IMAGE_REPOSITORY"
         tag: "GHOST_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-

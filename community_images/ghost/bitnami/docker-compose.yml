@@ -9,7 +9,7 @@ services:
       - MYSQL_USER=bn_ghost
       - MYSQL_DATABASE=bitnami_ghost
   ghost:
-    image: bitnami/ghost:latest
+    image: ${GHOST_IMAGE_REPOSITORY}:${GHOST_IMAGE_TAG}
     restart: always
     ports:
       - '8080:2368'

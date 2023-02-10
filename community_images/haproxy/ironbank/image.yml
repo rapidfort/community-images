@@ -5,7 +5,7 @@ source_image_provider: Platform One
 source_image_repo: registry1.dso.mil/ironbank/opensource/haproxy/haproxy24
 source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fhaproxy%2Fhaproxy24
 source_image_readme: 
-rf_docker_link: rapidfort/haproxy-ib
+rf_docker_link: rapidfort/haproxy24-ib
 image_workflow_name: haproxy_ironbank
 github_location: haproxy/ironbank
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fhaproxy%2Fhaproxy24
@@ -21,8 +21,8 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/haproxy/haproxy24:
-      input_base_tag: ""
-      output_repo: haproxy-ib
+      input_base_tag: "2.4."
+      output_repo: haproxy24-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
@@ -31,7 +31,7 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      haproxy-ib:
+      haproxy24-ib:
         repository: "HAPROXY_IMAGE_REPOSITORY"
         tag: "HAPROXY_IMAGE_TAG"
   - type: docker_compose
@@ -41,7 +41,7 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
-      haproxy-ib:
+      haproxy24-ib:
         repository: "HAPROXY_IMAGE_REPOSITORY"
         tag: "HAPROXY_IMAGE_TAG"
 

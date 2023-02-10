@@ -38,7 +38,7 @@ services:
         python3 app/app.py
 
   haproxy-1:
-    image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
+    image: ${HAPROXY_IMAGE_REPOSITORY}:${HAPROXY_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/tcp-mode/haproxy-tcp1.cfg:/usr/local/etc/haproxy/haproxy.cfg
@@ -54,7 +54,7 @@ services:
       - python-flask-2
   
   haproxy-2:
-    image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
+    image: ${HAPROXY_IMAGE_REPOSITORY}:${HAPROXY_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/tcp-mode/haproxy-tcp2.cfg:/usr/local/etc/haproxy/haproxy.cfg
@@ -70,7 +70,7 @@ services:
       - python-flask-2
 
   haproxy-3:
-    image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
+    image: ${HAPROXY_IMAGE_REPOSITORY}:${HAPROXY_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/tcp-mode/haproxy-tcp3.cfg:/usr/local/etc/haproxy/haproxy.cfg

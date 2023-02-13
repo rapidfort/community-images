@@ -48,7 +48,7 @@ runtimes:
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      zookeeper:
+      zookeeper-ib:
         repository: "ZOOKEEPER_IMAGE_REPOSITORY"
         tag: "ZOOKEEPER_IMAGE_TAG"
   # - type: docker

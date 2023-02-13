@@ -10,10 +10,7 @@ image_workflow_name: zookeeper_ironbank
 github_location: zookeeper/ironbank
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fzookeeper
 usage_instructions: |
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-  # install zookeeper, just replace repository with RapidFort registry
-  $ helm install my-zookeeper bitnami/zookeeper --set image.repository=rapidfort/zookeeper
+  $ docker run --name some-zk -d rapidfort/zookeeper-ib:latest
 what_is_text: |
   Apache ZooKeeper provides a reliable, centralized register of configuration data and services for distributed applications.
 disclaimer: |
@@ -28,23 +25,6 @@ repo_sets:
   # - opensource/apache/zookeeper:
   #     input_base_tag: "3.7."
 runtimes:
-  # - type: k8s
-  #   script: k8s_coverage.sh
-  #   helm:
-  #     repo: bitnami
-  #     repo_url: https://charts.bitnami.com/bitnami
-  #     chart: zookeeper
-  #   # disabling persistence otherwise PVC creation fails for data dir
-  #   helm_additional_params:
-  #     persistence.enabled: false
-  #     replicaCount: 3
-  #     auth.enabled: false
-  #     allowAnonymousLogin: true
-  #   image_keys:
-  #     zookeeper:
-  #       repository: "image.repository"
-  #       tag: "image.tag"
-  #   override_file: "overrides.yml"
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
@@ -52,8 +32,4 @@ runtimes:
       zookeeper-ib:
         repository: "ZOOKEEPER_IMAGE_REPOSITORY"
         tag: "ZOOKEEPER_IMAGE_TAG"
-  # - type: docker
-  #   script: docker_coverage.sh
-  #   zookeeper:
-  #     environment:
-  #       ALLOW_ANONYMOUS_LOGIN: yes
+

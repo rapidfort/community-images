@@ -10,7 +10,7 @@ services:
     ports:
       - 2181
     volumes:
-      - $ZOOKEEPER_HOME:/bitnami/zookeeper
-      - ./scripts/zookeeper_coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+      - $ZOOKEEPER_HOME:/tmp/zookeeper
+      - ./scripts/zookeeper_coverage_script.sh:/tmp/coverage_script.sh
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes

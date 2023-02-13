@@ -22,10 +22,10 @@ input_registry:
   registry: registry1.dso.mil
   account: ironbank
 repo_sets:
-  - opensource/zookeeper/zookeeper:
-      input_base_tag: "3.8.1-debian-11-r"
-  - opensource/zookeeper/zookeeper:
-      input_base_tag: "3.7.1-debian-11-r"
+  - opensource/apache/zookeeper:
+      input_base_tag: "3.8."
+  # - opensource/apache/zookeeper:
+  #     input_base_tag: "3.7."
 runtimes:
   # - type: k8s
   #   script: k8s_coverage.sh

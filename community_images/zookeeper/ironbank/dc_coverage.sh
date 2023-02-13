@@ -15,9 +15,8 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 # Container name for consul-node1
 CONTAINER_NAME="${PROJECT_NAME}"-zookeeper1-1
 
-test_zookeeper "${CONTAINER_NAME}" "${NAMESPACE}" "no"
+test_zookeeper "${CONTAINER_NAME}"

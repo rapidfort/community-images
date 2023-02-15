@@ -1,6 +1,6 @@
 #!/usr/bin/env expect
+# shellcheck disable=SC1071
 
-# shellcheck disable=SC1091
 set env(HOME) /usr/local/bin
 set env(SHELL) /bin/bash
 set env(TERM) xterm

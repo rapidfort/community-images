@@ -242,6 +242,14 @@ jobs:
           repository: rapidfort/memcached
           readme-filepath: ./community_images/memcached/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached
+      - name: Docker Hub Description Memcached IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/memcached-ironbank
+          readme-filepath: ./community_images/memcached/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Memcached IronBank
       - name: Docker Hub Description Memcached Official
         uses: peter-evans/dockerhub-description@v3
         with:

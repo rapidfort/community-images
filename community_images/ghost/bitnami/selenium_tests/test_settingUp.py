@@ -31,11 +31,10 @@ class TestSettingUp():
 
   def test_settingUp(self, params):
     self.driver.get("http://localhost:{}/".format(params["port"]))
-    self.driver.set_window_size(908, 1033)
+    self.driver.set_window_size(1280, 1024)
     self.driver.find_element(By.LINK_TEXT, "About").click()
     time.sleep(4)
     self.driver.find_element(By.LINK_TEXT, "Home").click()
-    self.driver.find_element(By.CSS_SELECTOR, ".gh-search:nth-child(1) > svg").click()
     self.driver.get("http://localhost:{}/ghost/".format(params["port"]))
     time.sleep(3)
     self.driver.find_element(By.ID, "identification").click()

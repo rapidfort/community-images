@@ -2,6 +2,7 @@
 
 import logging
 import os
+import random
 import urllib.parse
 import re
 import dateutil.parser
@@ -9,6 +10,7 @@ import backoff
 from requests.auth import HTTPBasicAuth
 import requests
 from consts import Consts
+from docker.errors import ImageNotFound, NotFound
 
 
 class RegistryHelper:
@@ -25,11 +27,25 @@ class RegistryHelper:
         """ Interface method to specify registry url"""
 
     # pylint: disable=unused-argument
-    def get_latest_tag(self, account, repo, search_str):
+    def get_latest_tag_with_digest(self, account, repo, search_str):
         """
         Find latest tags using search_str
         """
         return Consts.LATEST
+
+    def get_digest_from_label(self, image_path):
+        """
+        Find the digest using image label
+        """
+        # pull the image first
+        try:
+            self.docker_client.images.pull(image_path)
+            image = self.docker_client.images.get(image_path)
+            return image.labels.get('orig_image_digest', '')
+        except (ImageNotFound, NotFound):
+            digest = "%032x" % random.getrandbits(256) # pylint: disable=consider-using-f-string
+            logging.info(f'Image {image_path} not found, returning digest: {digest}')
+            return digest
 
     def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):
         """
@@ -67,7 +83,7 @@ class DockerHubHelper(RegistryHelper):
     def registry_url():
         return "docker.io"
 
-    def get_latest_tag(self, account, repo, search_str):
+    def get_latest_tag_with_digest(self, account, repo, search_str):
         """
         Find latest tags using search_str"
         """
@@ -76,17 +92,17 @@ class DockerHubHelper(RegistryHelper):
         search_str = re.compile(search_str)
         tags = filter(lambda tag: search_str.search(tag["name"]), tags)
         tags = list(filter(
-            lambda tag: "rfstub" not in tag["name"],
+            lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"],
             tags))
 
         if len(tags) == 0:
-            return None
+            return None, None
 
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["tag_last_pushed"]))
         if tags:
-            return tags[-1]["name"]
-        return None
+            return tags[-1]["name"], tags[-1]["digest"]
+        return None, None
 
     def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):
         """
@@ -183,7 +199,7 @@ class IronBankHelper(RegistryHelper):
     def registry_url():
         return "registry1.dso.mil"
 
-    def get_latest_tag(self, account, repo, search_str):
+    def get_latest_tag_with_digest(self, account, repo, search_str):
         """
         Find latest tags using search_str"
         """
@@ -194,13 +210,13 @@ class IronBankHelper(RegistryHelper):
             tags))
 
         if len(tags) == 0:
-            return None
+            return None, None
 
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["push_time"]))
         if tags:
-            return tags[-1]["name"]
-        return None
+            return tags[-1]["name"], tags[-1]["digest"]
+        return None, None
 
 
     def _fetch_tags(self, account, repo):
@@ -225,6 +241,10 @@ class IronBankHelper(RegistryHelper):
                     local_tag_list = artifact.get("tags")
                     logging.debug(f"artifact={artifact}")
                     if local_tag_list:
+                        # ingest the digest into all the tags
+                        sha_digest = artifact.get("digest")
+                        for local_tag in local_tag_list:
+                            local_tag["digest"] = sha_digest
                         tags += local_tag_list
             else:
                 break

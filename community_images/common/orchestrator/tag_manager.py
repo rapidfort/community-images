@@ -2,15 +2,17 @@
 
 import logging
 import os
+import random
 
 class TagDetail:
     """ Tag Details class """
 
-    def __init__(self, registry, account, repo, tag):
+    def __init__(self, registry, account, repo, tag, sha_digest):
         self.registry = registry
         self.account = account
         self.repo = repo
         self.tag = tag
+        self.sha_digest = sha_digest
 
     @property
     def repo_path(self):
@@ -46,6 +48,11 @@ class TagDetail:
     def full_hardened_tag(self):
         """ Full Hardened tag """
         return f"{self.full_repo_path}:{self.hardened_tag}"
+
+    @property
+    def tag_with_digest(self):
+        """ Tag:Digest """
+        return f"{self.tag}:{self.sha_digest}"
 
 # pylint: disable=too-few-public-methods
 class TagMapping:
@@ -91,14 +98,15 @@ class TagManager:
         latest_tag = None
 
         if base_tag != "latest":
-            latest_tag = registry_helper.get_latest_tag(
+            latest_tag, latest_digest = registry_helper.get_latest_tag_with_digest(
                 account, repo, base_tag)
 
         latest_tag = latest_tag or "latest"
+        latest_digest = latest_digest or "%032x" % random.getrandbits(256) # pylint: disable=consider-using-f-string
 
         logging.info(
             f"got latest tag = {account}, {repo}, {latest_tag} for base_tag = {base_tag}")
-        return TagDetail(registry, account, repo, latest_tag)
+        return TagDetail(registry, account, repo, latest_tag, latest_digest)
 
     def _prepare_repo_set_mappings(self): # pylint:disable=too-many-locals
         """
@@ -136,20 +144,22 @@ class TagManager:
                     output_registry, output_account,
                     self.orchestrator.output_registry_helper,
                     output_repo, base_tag)
+                output_tag_detail.sha_digest = self.orchestrator.output_registry_helper.get_digest_from_label(
+                    output_tag_detail.full_tag)
 
                 # we need to generate new image, if
                 # 1. We are not publishing and just doing a ci/cd test
                 # 2. We are force publishing
                 # 3. Input and output tag dont match
-                logging.info(f"input tag details={input_tag_detail.tag}")
-                logging.info(f"output tag details={output_tag_detail.tag}")
+                logging.info(f"input tag with digest details={input_tag_detail.tag_with_digest}")
+                logging.info(f"output tag with digest details={output_tag_detail.tag_with_digest}")
                 logging.info(f"publish flag={self.orchestrator.publish}")
                 logging.info(
                     f"force publish flag={self.orchestrator.force_publish}")
 
                 needs_generation = (
                     not self.orchestrator.publish or self.orchestrator.force_publish or (
-                        input_tag_detail.tag != output_tag_detail.tag))
+                        input_tag_detail.tag_with_digest != output_tag_detail.tag_with_digest))
                 is_image_generation_required_for_any_container =(
                     needs_generation or is_image_generation_required_for_any_container
                 )
@@ -158,6 +168,7 @@ class TagManager:
 
                 # output tag needs to be same as input tag
                 output_tag_detail.tag = input_tag_detail.tag
+                output_tag_detail.sha_digest = input_tag_detail.sha_digest
 
                 is_latest = index == 0
                 tag_mapping = TagMapping(

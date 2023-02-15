@@ -450,6 +450,14 @@ jobs:
           repository: rapidfort/zookeeper
           readme-filepath: ./community_images/zookeeper/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Zookeeper
+      - name: Docker Hub Description Zookeeper IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/zookeeper-ib
+          readme-filepath: ./community_images/zookeeper/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Zookeeper IronBank
       - name: Docker Hub Description Zookeeper Official
         uses: peter-evans/dockerhub-description@v3
         with:

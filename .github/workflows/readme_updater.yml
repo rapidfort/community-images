@@ -178,6 +178,14 @@ jobs:
           repository: rapidfort/haproxy
           readme-filepath: ./community_images/haproxy/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for HAProxy
+      - name: Docker Hub Description HAProxy IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/haproxy24-ib
+          readme-filepath: ./community_images/haproxy/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for HAProxy IronBank
       - name: Docker Hub Description HAProxy Official
         uses: peter-evans/dockerhub-description@v3
         with:

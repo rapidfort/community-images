@@ -57,7 +57,7 @@ The runtime instructions for this container are no different from the official r
 
 ```sh
 # Using docker run via bind mount:
-$ docker run -d --name my-haproxy -v /path/to/etc/haproxy:/usr/local/etc/haproxy:ro --sysctl net.ipv4.ip_unprivileged_port_start=0 rapidfort:haproxy-official
+$ docker run -d --name my-haproxy -v /path/to/etc/haproxy:/usr/local/etc/haproxy:ro --sysctl net.ipv4.ip_unprivileged_port_start=0 rapidfort/haproxy-official
 
 ```
 

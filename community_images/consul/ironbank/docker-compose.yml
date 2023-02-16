@@ -29,7 +29,7 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/consul/data'
-      - ./scripts/server2_container_test.sh:/opt/scripts/coverage_script.sh
+      - ./scripts/server2_coverage_test.sh:/opt/scripts/coverage_script.sh
     command: "agent -server -join consul1"
     depends_on: 
       - consul1

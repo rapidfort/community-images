@@ -56,7 +56,7 @@ The runtime instructions for this container are no different from the official r
 <br>
 
 ```sh
-$ docker run -d --name my-couchdb rapidfort/couchdb:tag
+$ docker run -d --name my-couchdb rapidfort/couchdb-official:tag
 
 ```
 

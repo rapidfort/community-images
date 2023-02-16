@@ -34,7 +34,7 @@ services:
       - consul1
   
   consul3:
-    image: consul:latest
+    image: registry1.dsop.io/ironbank/hashicorp/consul:${CONSUL_OFFICIAL_IMAGE_TAG}-
     hostname: "consul3"
     user: root
     cap_add:

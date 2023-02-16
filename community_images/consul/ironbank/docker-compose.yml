@@ -19,7 +19,7 @@ services:
       - 'consul-node1_data:/consul/data'
       - ./scripts/server_coverage_script.sh:/opt/scripts/coverage_script.sh
       - ./configs/sample_service.json:/consul.d/sample_service.json
-    command: "agent -server -bootstrap-expect 3 -ui -client 0.0.0.0"
+    command: "agent -server -bootstrap-expect 2 -ui -client 0.0.0.0"
   
   consul2:
     image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}

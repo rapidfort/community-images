@@ -1,0 +1,32 @@
+name: couchdb-ib
+official_name: Couchdb Database Server IronBank
+official_website: https://couchdb.apache.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/apache/couchdb_3
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Fcouchdb_3
+source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/couchdb_3/-/blob/development/README.md
+rf_docker_link: rapidfort/couchdb_3-ib
+image_workflow_name: couchdb_ironbank
+github_location: couchdb/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fcouchdb_3
+usage_instructions: |
+  $ docker run -d --name my-couchdb rapidfort/couchdb_3-ib:tag
+what_is_text: |
+  CouchDB is a database that uses JSON for documents, an HTTP API, & JavaScript/declarative indexing.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/apache/couchdb_3:
+      input_base_tag: "3."
+      output_repo: couchdb_3-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      couchdb_3-ib:
+        repository: "COUCHDB_IMAGE_REPOSITORY"
+        tag: "COUCHDB_IMAGE_TAG"

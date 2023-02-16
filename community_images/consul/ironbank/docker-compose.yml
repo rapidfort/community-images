@@ -29,37 +29,24 @@ services:
       - SYS_PTRACE
     volumes:
       - 'consul-node2_data:/consul/data'
+      - ./scripts/server2_container_test.sh:/opt/scripts/coverage_script.sh
     command: "agent -server -join consul1"
     depends_on: 
       - consul1
   
   consul3:
-    image: registry1.dsop.io/ironbank/hashicorp/consul:${CONSUL_OFFICIAL_IMAGE_TAG}-
+    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
     hostname: "consul3"
     user: root
     cap_add:
       - SYS_PTRACE
     volumes:
       - 'consul-node3_data:/consul/data'
-      - ./scripts/client_container_test.sh:/opt/scripts/coverage_script.sh
-    command: "agent -server -join consul1"
-    depends_on:
-      - consul1
-  
-  consul4:
-    image: ${CONSUL_OFFICIAL_IMAGE_REPOSITORY}:${CONSUL_OFFICIAL_IMAGE_TAG}
-    hostname: "consul4"
-    user: root
-    cap_add:
-      - SYS_PTRACE
-    volumes:
-      - 'consul-node4_data:/consul/data'
       - ./scripts/client_coverage_script.sh:/opt/scripts/coverage_script.sh
     command: "agent -join consul1"
     depends_on:
       - consul1
       - consul2
-      - consul3
 
 volumes:
   consul-node1_data:
@@ -67,6 +54,4 @@ volumes:
   consul-node2_data:
     driver: local
   consul-node3_data:
-    driver: local
-  consul-node4_data:
     driver: local

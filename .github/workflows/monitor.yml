@@ -30,6 +30,8 @@ jobs:
         run: docker pull rapidfort/consul-official
       - name: Pull Couchdb Database Server
         run: docker pull rapidfort/couchdb
+      - name: Pull Couchdb Database Server IronBank
+        run: docker pull rapidfort/couchdb_3-ib
       - name: Pull Couchdb Database Server Official
         run: docker pull rapidfort/couchdb-official
       - name: Pull Curl
@@ -62,6 +64,8 @@ jobs:
         run: docker pull rapidfort/mariadb-official
       - name: Pull Memcached
         run: docker pull rapidfort/memcached
+      - name: Pull Memcached IronBank
+        run: docker pull rapidfort/memcached-ironbank
       - name: Pull Memcached Official
         run: docker pull rapidfort/memcached-official
       - name: Pull MongoDB®
@@ -128,5 +132,5 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/airflow": 1 ,  "rapidfort/airflow-scheduler": 1 ,  "rapidfort/airflow-worker": 1 ,  "rapidfort/apache": 1 ,  "rapidfort/apache-official": 1 ,  "rapidfort/cassandra-official": 1 ,  "rapidfort/consul": 1 ,  "rapidfort/consul-official": 1 ,  "rapidfort/couchdb": 1 ,  "rapidfort/couchdb-official": 1 ,  "rapidfort/curl": 1 ,  "rapidfort/elasticsearch": 1 ,  "rapidfort/envoy": 1 ,  "rapidfort/etcd": 1 ,  "rapidfort/fluentd": 1 ,  "rapidfort/ghost": 1 ,  "rapidfort/haproxy": 1 ,  "rapidfort/haproxy24-ib": 1 ,  "rapidfort/haproxy-official": 1 ,  "rapidfort/influxdb": 1 ,  "rapidfort/kong": 1 ,  "rapidfort/mariadb": 1 ,  "rapidfort/mariadb-ib": 1 ,  "rapidfort/mariadb-official": 1 ,  "rapidfort/memcached": 1 ,  "rapidfort/memcached-official": 1 ,  "rapidfort/mongodb": 1 ,  "rapidfort/mongodb-official": 1 ,  "rapidfort/mysql": 1 ,  "rapidfort/mysql8-ib": 1 ,  "rapidfort/mysql-official": 1 ,  "rapidfort/nats": 1 ,  "rapidfort/nginx": 1 ,  "rapidfort/nginx-ib": 1 ,  "rapidfort/nginx-official": 1 ,  "rapidfort/oncall": 1 ,  "rapidfort/postgresql": 1 ,  "rapidfort/postgresql12-ib": 1 ,  "rapidfort/postgresql-official": 1 ,  "rapidfort/prometheus": 1 ,  "rapidfort/rabbitmq": 1 ,  "rapidfort/redis": 1 ,  "rapidfort/redis-cluster": 1 ,  "rapidfort/redis6-ib": 1 ,  "rapidfort/redis-official": 1 ,  "rapidfort/telegraf": 1 ,  "rapidfort/traefik": 1 ,  "rapidfort/vault": 1 ,  "rapidfort/wordpress": 1 ,  "rapidfort/yourls": 1 ,  "rapidfort/yugabyte": 1 ,  "rapidfort/zookeeper": 1 ,  "rapidfort/zookeeper-ib": 1 ,  "rapidfort/zookeeper-official": 1  }' \
+           -d '{ "rapidfort/airflow": 1 ,  "rapidfort/airflow-scheduler": 1 ,  "rapidfort/airflow-worker": 1 ,  "rapidfort/apache": 1 ,  "rapidfort/apache-official": 1 ,  "rapidfort/cassandra-official": 1 ,  "rapidfort/consul": 1 ,  "rapidfort/consul-official": 1 ,  "rapidfort/couchdb": 1 ,  "rapidfort/couchdb_3-ib": 1 ,  "rapidfort/couchdb-official": 1 ,  "rapidfort/curl": 1 ,  "rapidfort/elasticsearch": 1 ,  "rapidfort/envoy": 1 ,  "rapidfort/etcd": 1 ,  "rapidfort/fluentd": 1 ,  "rapidfort/ghost": 1 ,  "rapidfort/haproxy": 1 ,  "rapidfort/haproxy24-ib": 1 ,  "rapidfort/haproxy-official": 1 ,  "rapidfort/influxdb": 1 ,  "rapidfort/kong": 1 ,  "rapidfort/mariadb": 1 ,  "rapidfort/mariadb-ib": 1 ,  "rapidfort/mariadb-official": 1 ,  "rapidfort/memcached": 1 ,  "rapidfort/memcached-ironbank": 1 ,  "rapidfort/memcached-official": 1 ,  "rapidfort/mongodb": 1 ,  "rapidfort/mongodb-official": 1 ,  "rapidfort/mysql": 1 ,  "rapidfort/mysql8-ib": 1 ,  "rapidfort/mysql-official": 1 ,  "rapidfort/nats": 1 ,  "rapidfort/nginx": 1 ,  "rapidfort/nginx-ib": 1 ,  "rapidfort/nginx-official": 1 ,  "rapidfort/oncall": 1 ,  "rapidfort/postgresql": 1 ,  "rapidfort/postgresql12-ib": 1 ,  "rapidfort/postgresql-official": 1 ,  "rapidfort/prometheus": 1 ,  "rapidfort/rabbitmq": 1 ,  "rapidfort/redis": 1 ,  "rapidfort/redis-cluster": 1 ,  "rapidfort/redis6-ib": 1 ,  "rapidfort/redis-official": 1 ,  "rapidfort/telegraf": 1 ,  "rapidfort/traefik": 1 ,  "rapidfort/vault": 1 ,  "rapidfort/wordpress": 1 ,  "rapidfort/yourls": 1 ,  "rapidfort/yugabyte": 1 ,  "rapidfort/zookeeper": 1 ,  "rapidfort/zookeeper-ib": 1 ,  "rapidfort/zookeeper-official": 1  }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls

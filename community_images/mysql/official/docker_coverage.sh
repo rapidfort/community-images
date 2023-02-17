@@ -30,7 +30,7 @@ docker exec -i "${CONTAINER_NAME}" \
     /bin/bash -c "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
 # copy mysql_coverage.sh into container
-docker cp "${SCRIPTPATH}"mysql_coverage.sh "${CONTAINER_NAME}":/tmp/mysql_coverage.sh
+docker cp "${SCRIPTPATH}"/coverage_script.sh "${CONTAINER_NAME}":/tmp/mysql_coverage.sh
 
 # run mysql_coverage on cluster
 docker exec -i "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"

@@ -255,7 +255,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/memcached-ironbank
+          repository: rapidfort/memcached-ib
           readme-filepath: ./community_images/memcached/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached IronBank
       - name: Docker Hub Description Memcached Official

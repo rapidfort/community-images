@@ -78,7 +78,7 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 
 ## What’s the difference between the official [Platform One Memcached IronBank][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/memcached-ironbank][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/memcached-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
@@ -125,8 +125,8 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmemcached%2Fmemcached?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=memcached-ib&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmemcached%2Fmemcached?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=memcached-ib&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/memcached-ironbank?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/memcached-ironbank?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/memcached-ib?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/memcached-ib?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
@@ -136,4 +136,4 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/memcached/ironbank/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fmemcached%2Fmemcached
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/memcached-ironbank
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/memcached-ib

@@ -22,12 +22,12 @@ repo_sets:
   - opensource/mongodb/mongodb:
       input_base_tag: "6."
       output_repo: mongodb-ib
-  # - opensource/mongodb/mongodb:
-  #     input_base_tag: "5."
-  #     output_repo: mongodb-ib
-  # - opensource/mongodb/mongodb:
-  #     input_base_tag: "4."
-  #     output_repo: mongodb-ib
+  - opensource/mongodb/mongodb:
+      input_base_tag: "5."
+      output_repo: mongodb-ib
+  - opensource/mongodb/mongodb:
+      input_base_tag: "4."
+      output_repo: mongodb-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
@@ -36,4 +36,3 @@ runtimes:
       mongodb-ib:
         repository: "MONGODB_IMAGE_REPOSITORY"
         tag: "MONGODB_IMAGE_TAG"
-

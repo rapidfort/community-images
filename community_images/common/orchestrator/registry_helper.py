@@ -84,7 +84,7 @@ class DockerHubHelper(RegistryHelper):
         return "docker.io"
 
     def _has_linux_image(tag):
-        return any(1 for image.get('os', '') == 'linux' in tag.get('images', []))
+        return any(image.get('os', '') == 'linux' for image in tag.get('images', []))
 
     def get_latest_tag_with_digest(self, account, repo, search_str):
         """

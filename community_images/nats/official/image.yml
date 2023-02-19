@@ -10,10 +10,10 @@ image_workflow_name: nats_official
 github_location: nats/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fnats
 usage_instructions: |
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+  $ helm repo add nats https://nats-io.github.io/k8s/helm/charts/
 
   # install nats, just replace repository with RapidFort registry
-  $ helm install my-nats bitnami/nats --set image.repository=rapidfort/nats
+  $ helm install my-nats nats/nats --set image.repository=rapidfort/nats-official
 what_is_text: |
   NATS is a connective technology built for the ever increasingly hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, IoT and can be used to augment or replace traditional messaging
 disclaimer: |

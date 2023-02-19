@@ -83,6 +83,9 @@ class DockerHubHelper(RegistryHelper):
     def registry_url():
         return "docker.io"
 
+    def _has_linux_image(tag):
+        return any(1 for image.get('os', '') == 'linux' in tag.get('images', []))
+
     def get_latest_tag_with_digest(self, account, repo, search_str):
         """
         Find latest tags using search_str"
@@ -92,7 +95,7 @@ class DockerHubHelper(RegistryHelper):
         search_str = re.compile(search_str)
         tags = filter(lambda tag: search_str.search(tag["name"]), tags)
         tags = list(filter(
-            lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and tag.get("os", '') == "linux",
+            lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and _has_linux_image(tag),
             tags))
 
         if len(tags) == 0:
@@ -124,7 +127,7 @@ class DockerHubHelper(RegistryHelper):
 
         rolling_tag_digest = found_rolling_tag.get("digest")
         tags = list(filter(
-            lambda tag: tag.get("digest") and tag.get("name") and tag.get("os", '') == "linux" and rolling_tag_digest == tag["digest"] and tag["name"] != rolling_tag,
+            lambda tag: tag.get("digest") and tag.get("name") and _has_linux_image(tag) and rolling_tag_digest == tag["digest"] and tag["name"] != rolling_tag,
             tags))
 
         tags.sort(key=lambda tag: len(tag["name"]), reverse = True)

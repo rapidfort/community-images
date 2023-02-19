@@ -33,7 +33,7 @@ runtimes:
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      mongodb-official:
+      mongodb-ib:
         repository: "MONGODB_IMAGE_REPOSITORY"
         tag: "MONGODB_IMAGE_TAG"
 

@@ -25,6 +25,7 @@ repo_sets:
   - nats:
       input_base_tag: "2.9.*"
       output_repo: nats-official
+needs_common_commands: False
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
@@ -45,10 +46,10 @@ runtimes:
       auth.timeout: 1
       auth.usersCredentials: []
       auth.noAuthUser: ""
-  # - type: docker_compose
-  #   script: dc_coverage.sh
-  #   compose_file: docker-compose.yml
-  #   image_keys:
-  #     nats-official:
-  #       repository: "NATS_IMAGE_REPOSITORY"
-  #       tag: "NATS_IMAGE_TAG"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      nats-official:
+        repository: "NATS_IMAGE_REPOSITORY"
+        tag: "NATS_IMAGE_TAG"

@@ -37,6 +37,14 @@ runtimes:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
+    helm_additional_params:
+      auth.enabled: true
+      auth.user: "testuser"
+      auth.password: "testpass"
+      auth.token: ""
+      auth.timeout: 1
+      auth.usersCredentials: []
+      auth.noAuthUser: ""
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml

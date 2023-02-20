@@ -18,3 +18,11 @@ livenessProbe:
 readinessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 30
+auth:
+  enabled: true
+  systemAccount: SYS
+  basic:
+    accounts:
+      SYS:
+        - user: sys
+          pass: sys

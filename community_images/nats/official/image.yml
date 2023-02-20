@@ -33,7 +33,7 @@ runtimes:
       repo_url: https://nats-io.github.io/k8s/helm/charts/
       chart: nats
     image_keys:
-      nats:
+      nats-official:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
@@ -41,7 +41,7 @@ runtimes:
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      nats:
+      nats-official:
         repository: "NATS_IMAGE_REPOSITORY"
         tag: "NATS_IMAGE_TAG"
   - type: docker

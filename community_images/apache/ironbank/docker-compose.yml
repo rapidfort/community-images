@@ -5,7 +5,7 @@ services:
     image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
     user: root
     volumes:
-      - ./configs/index.html:/usr/local/apache2/htdocs/index.html
+      - ./configs/index.html:/var/www/html/index.html
       - ./configs/server-configs/httpd1.conf:/etc/httpd/conf/httpd.conf
       - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
       - ./certs/server.key:/etc/pki/tls/private/localhost.key
@@ -18,7 +18,7 @@ services:
     image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
     user: root
     volumes:
-      - ./configs/index.html:/usr/local/apache2/htdocs/index.html
+      - ./configs/index.html:/var/www/html/index.html
       - ./configs/server-configs/httpd2.conf:/etc/httpd/conf/httpd.conf
       - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
       - ./certs/server.key:/etc/pki/tls/private/localhost.key
@@ -31,7 +31,7 @@ services:
     image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
     user: root
     volumes:
-      - ./configs/index.html:/usr/local/apache2/htdocs/index.html
+      - ./configs/index.html:/var/www/html/index.html
       - ./configs/server-configs/httpd3.conf:/etc/httpd/conf/httpd.conf
       - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
       - ./certs/server.key:/etc/pki/tls/private/localhost.key

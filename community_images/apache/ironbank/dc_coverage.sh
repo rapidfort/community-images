@@ -42,12 +42,14 @@ do
         with_backoff curl https://localhost:"${TLS_PORT}" -k -v
 done
 # Apache Server 2 (MPM Prefork module enabled)
+NON_TLS_PORT=$(docker inspect "${PROJECT_NAME}"-apache-prefork-mpm-1 | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort")
 for i in {1..5};
 do
     echo "Attempt on Apache-server-2 $i"
         curl http://localhost:"${NON_TLS_PORT}"
 done
 # Apache Server 3 (MPM Worker module enable)
+NON_TLS_PORT=$(docker inspect "${PROJECT_NAME}"-apache-worker-mpm-1 | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort")
 for i in {1..5};
 do
     echo "Attempt on Apache-server-3 $i"

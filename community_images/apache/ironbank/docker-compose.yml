@@ -2,20 +2,20 @@ version: '2'
 
 services:
   apache:
-    image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
       - ./configs/server-configs/httpd1.conf:/usr/local/apache2/conf/httpd.conf
-      - ./certs/server.crt:/usr/local/apache2/conf/server.crt
-      - ./certs/server.key:/usr/local/apache2/conf/server.key
+      - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
+      - ./certs/server.key:/etc/pki/tls/private/localhost.key
     cap_add:
       - SYS_PTRACE    
     ports:
       - "0.0.0.0::80"
       - "0.0.0.0::443"  
   apache-prefork-mpm:
-    image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
@@ -26,7 +26,7 @@ services:
       - "0.0.0.0::80"
       - "0.0.0.0::443"
   apache-worker-mpm:
-    image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
+    image: ${APACHE_OFFICIAL_IMAGE_REPOSITORY}:${APACHE_OFFICIAL_IMAGE_TAG}
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html

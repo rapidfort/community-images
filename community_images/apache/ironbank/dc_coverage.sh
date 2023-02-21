@@ -19,7 +19,8 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-apache-1
 
 # checking all modules and config test
-docker exec -i "${CONTAINER_NAME}" ls /usr/local/apache2/include
+docker logs "${CONTAINER_NAME}"
+#docker exec -i "${CONTAINER_NAME}" ls /usr/local/apache2/include
 docker exec -i "${CONTAINER_NAME}" httpd -M
 docker exec -i "${CONTAINER_NAME}" apachectl configtest
 

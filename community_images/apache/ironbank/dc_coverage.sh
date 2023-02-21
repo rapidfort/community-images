@@ -19,7 +19,7 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-apache-1
 
 # checking all modules and config test
-docker exec -i "${CONTAINER_NAME}" ls
+docker exec -i "${CONTAINER_NAME}" ls /usr/local/apache2/include
 docker exec -i "${CONTAINER_NAME}" httpd -M
 docker exec -i "${CONTAINER_NAME}" apachectl configtest
 
@@ -40,7 +40,7 @@ do
         curl http://localhost:"${NON_TLS_PORT}"
         with_backoff curl https://localhost:"${TLS_PORT}" -k -v
 done
-# Apache Server 2 (MPM Prefork module enabled) 
+# Apache Server 2 (MPM Prefork module enabled)
 for i in {1..5};
 do
     echo "Attempt on Apache-server-2 $i"

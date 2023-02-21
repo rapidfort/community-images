@@ -1,0 +1,38 @@
+name: mongodb-ib
+official_name: MongoDB® IronBank
+official_website: https://www.mongodb.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/mongodb/mongodb
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fmongodb%2Fmongodb
+source_image_readme: https://repo1.dso.mil/dsop/opensource/mongodb/mongodb/-/blob/development/README.md
+rf_docker_link: rapidfort/mongodb-ib
+image_workflow_name: mongodb_ironbank
+github_location: mongodb/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmongodb%2Fmongodb
+usage_instructions: |
+  $ docker run --name some-mongodb -d rapidfort/mongodb-ib:latest
+what_is_text: |
+  MongoDB® is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata. MongoDB is developed by MongoDB Inc., and is published under a combination of the Server Side Public License and the Apache License.
+disclaimer: |
+  Disclaimer: The respective trademarks mentioned in the offering are owned by the respective companies. We do not provide a commercial license for any of these products. This listing has an open-source license. MongoDB(R) is run and maintained by MongoDB, which is a completely separate project from RapidFort.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/mongodb/mongodb:
+      input_base_tag: "6."
+      output_repo: mongodb-ib
+  - opensource/mongodb/mongodb:
+      input_base_tag: "5."
+      output_repo: mongodb-ib
+  - opensource/mongodb/mongodb:
+      input_base_tag: "4."
+      output_repo: mongodb-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      mongodb-ib:
+        repository: "MONGODB_IMAGE_REPOSITORY"
+        tag: "MONGODB_IMAGE_TAG"

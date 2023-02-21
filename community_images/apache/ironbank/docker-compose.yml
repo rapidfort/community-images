@@ -6,7 +6,7 @@ services:
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
-      - ./configs/server-configs/httpd1.conf:/usr/local/apache2/conf/httpd.conf
+      - ./configs/server-configs/httpd1.conf:/etc/httpd/conf/httpd.conf
       - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
       - ./certs/server.key:/etc/pki/tls/private/localhost.key
     cap_add:
@@ -19,7 +19,7 @@ services:
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
-      - ./configs/server-configs/httpd2.conf:/usr/local/apache2/conf/httpd.conf
+      - ./configs/server-configs/httpd2.conf:/etc/httpd/conf/httpd.conf
       - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
       - ./certs/server.key:/etc/pki/tls/private/localhost.key
     cap_add:
@@ -32,7 +32,7 @@ services:
     user: root
     volumes:
       - ./configs/index.html:/usr/local/apache2/htdocs/index.html
-      - ./configs/server-configs/httpd3.conf:/usr/local/apache2/conf/httpd.conf
+      - ./configs/server-configs/httpd3.conf:/etc/httpd/conf/httpd.conf
       - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
       - ./certs/server.key:/etc/pki/tls/private/localhost.key
     cap_add:

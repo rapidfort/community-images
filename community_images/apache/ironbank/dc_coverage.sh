@@ -35,6 +35,9 @@ TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports
 
 # run curl in loop for different endpoints
 # Apache Server 1 (MPM Event module enabled, ssl enabled)
+docker exec -i "${CONTAINER_NAME}" mkdir /etc/ssl/certs
+docker exec -i "${CONTAINER_NAME}" cp /etc/pki/tls/certs/localhost.crt /etc/ssl/certs/ca-certificates.crt
+docker exec -i "${CONTAINER_NAME}" cp /etc/pki/tls/private/localhost.key /etc/ssl/certs/ca-certificates.key
 for i in {1..5};
 do
     echo "Attempt on Apache-server-1 $i"

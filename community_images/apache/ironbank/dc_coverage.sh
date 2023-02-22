@@ -58,6 +58,4 @@ done
 sudo apt-get install apache2-utils -y
 sudo apt-get install apache2 -y
 
-APACHE_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks.\"IPAddress\"[0]")
-# testing using apache benchmark tool
-ab -t 100 -n 10000 -c 10 http://"${APACHE_HOST}":80/
+APACHE_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks.IPAddress")

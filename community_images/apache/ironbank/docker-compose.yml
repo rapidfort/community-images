@@ -31,7 +31,7 @@ services:
       - /bin/bash
       - -c
       - |
-        ./configure --enable-mpms-shared=all
+        ./configure --enable-mpms-shared='prefork'
 
   apache-worker-mpm:
     image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
@@ -49,4 +49,4 @@ services:
       - /bin/bash
       - -c
       - |
-        ./configure --enable-mpms-shared=all
+        ./configure --enable-mpms-shared='worker'

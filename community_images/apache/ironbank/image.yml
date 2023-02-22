@@ -40,6 +40,6 @@ runtimes:
     tls_certs:
       generate: true
       out_dir: certs
-      volumes: 
-        - "./certs/server.crt:/etc/pki/tls/certs/localhost.crt"
-        - "./certs/server.key:/etc/pki/tls/private/localhost.key"
+    volumes: 
+      - "./certs/server.crt:/etc/pki/tls/certs/localhost.crt"
+      - "./certs/server.key:/etc/pki/tls/private/localhost.key"

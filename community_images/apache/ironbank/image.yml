@@ -11,7 +11,7 @@ github_location: apache/ironbank
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fapache2
 usage_instructions: |
   # Using docker run:
-  $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ rapidfort/apache2-ib
+  $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/var/www/html/ rapidfort/apache2-ib
   # PWD can be replaced with the directory containing all your HTML.
 what_is_text: |
   The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.

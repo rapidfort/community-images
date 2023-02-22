@@ -74,6 +74,14 @@ jobs:
           repository: rapidfort/apache
           readme-filepath: ./community_images/apache/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache
+      - name: Docker Hub Description Apache IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/apache2-ib
+          readme-filepath: ./community_images/apache/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apache IronBank
       - name: Docker Hub Description Apache Official
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -98,6 +106,14 @@ jobs:
           repository: rapidfort/consul
           readme-filepath: ./community_images/consul/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Consul
+      - name: Docker Hub Description Consul IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/consul-ib
+          readme-filepath: ./community_images/consul/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Consul IronBank
       - name: Docker Hub Description Consul Official
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -274,6 +290,14 @@ jobs:
           repository: rapidfort/mongodb
           readme-filepath: ./community_images/mongodb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MongoDB®
+      - name: Docker Hub Description MongoDB® IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/mongodb-ib
+          readme-filepath: ./community_images/mongodb/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for MongoDB® IronBank
       - name: Docker Hub Description MongoDB® Official
         uses: peter-evans/dockerhub-description@v3
         with:

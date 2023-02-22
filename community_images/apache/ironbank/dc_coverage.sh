@@ -19,7 +19,6 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-apache-1
 
 # checking all modules and config test
-docker exec -i "${CONTAINER_NAME}" ls
 docker exec -i "${CONTAINER_NAME}" httpd -M
 docker exec -i "${CONTAINER_NAME}" apachectl configtest
 
@@ -28,9 +27,9 @@ docker inspect "${CONTAINER_NAME}"
 
 # find non-tls and tls port
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort"
-docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"443/tcp\"[0].HostPort"
+docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort"
 NON_TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort")
-TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"443/tcp\"[0].HostPort")
+TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
 
 # run curl in loop for different endpoints
 # Apache Server 1 (MPM Event module enabled, ssl enabled)
@@ -54,3 +53,11 @@ do
     echo "Attempt on Apache-server-3 $i"
         curl http://localhost:"${NON_TLS_PORT}"
 done
+
+# Install Apache benchmark testing tool
+sudo apt-get install apache2-utils -y
+sudo apt-get install apache2 -y
+
+APACHE_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks.\"${PROJECT_NAME}_default\".IPAddress")
+# testing using apache benchmark tool
+ab -t 100 -n 10000 -c 10 http://"${APACHE_HOST}":80/

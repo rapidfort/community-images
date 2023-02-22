@@ -14,7 +14,7 @@ services:
       - SYS_PTRACE    
     ports:
       - "0.0.0.0::80"
-      - "0.0.0.0::443"  
+      - "0.0.0.0::8443"  
   apache-prefork-mpm:
     image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
     user: root
@@ -27,7 +27,12 @@ services:
       - SYS_PTRACE    
     ports:
       - "0.0.0.0::80"
-      - "0.0.0.0::443"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        ./configure --enable-mpms-shared=all
+
   apache-worker-mpm:
     image: ${APACHE_IMAGE_REPOSITORY}:${APACHE_IMAGE_TAG}
     user: root
@@ -40,4 +45,8 @@ services:
       - SYS_PTRACE    
     ports:
       - "0.0.0.0::80"
-      - "0.0.0.0::443"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        ./configure --enable-mpms-shared=all

@@ -35,11 +35,3 @@ runtimes:
       apache2-ib:
         repository: "APACHE_IMAGE_REPOSITORY"
         tag: "APACHE_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    tls_certs:
-      generate: true
-      out_dir: certs
-    volumes: 
-      - /certs/server.crt:/etc/pki/tls/certs/localhost.crt
-      - /certs/server.key:/etc/pki/tls/private/localhost.key

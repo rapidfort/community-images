@@ -74,6 +74,14 @@ jobs:
           repository: rapidfort/apache
           readme-filepath: ./community_images/apache/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache
+      - name: Docker Hub Description Apache IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/apache2-ib
+          readme-filepath: ./community_images/apache/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apache IronBank
       - name: Docker Hub Description Apache Official
         uses: peter-evans/dockerhub-description@v3
         with:

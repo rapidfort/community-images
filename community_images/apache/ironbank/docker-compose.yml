@@ -7,7 +7,6 @@ services:
     volumes:
       - ./configs/index.html:/var/www/html/index.html
       - ./configs/server-configs/httpd1.conf:/etc/httpd/conf/httpd.conf
-      - ./configs/server-configs/ssl.conf:/etc/httpd/conf.d/ssl.conf
       - ./certs/server.crt:/etc/pki/tls/certs/localhost.crt
       - ./certs/server.key:/etc/pki/tls/private/localhost.key
     cap_add:

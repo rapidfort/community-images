@@ -58,4 +58,4 @@ done
 sudo apt-get install apache2-utils -y
 sudo apt-get install apache2 -y
 
-APACHE_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks.IPAddress")
+APACHE_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks.\""${PROJECT_NAME}"\"_default.IPAddress")

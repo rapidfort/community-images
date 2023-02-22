@@ -19,8 +19,6 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-apache-1
 
 # checking all modules and config test
-docker logs "${CONTAINER_NAME}"
-#docker exec -i "${CONTAINER_NAME}" ls /usr/local/apache2/include
 docker exec -i "${CONTAINER_NAME}" httpd -M
 docker exec -i "${CONTAINER_NAME}" apachectl configtest
 
@@ -35,9 +33,6 @@ TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports
 
 # run curl in loop for different endpoints
 # Apache Server 1 (MPM Event module enabled, ssl enabled)
-# docker exec -i "${CONTAINER_NAME}" mkdir /etc/ssl/certs
-# docker exec -i "${CONTAINER_NAME}" cp /etc/pki/tls/certs/localhost.crt /etc/ssl/certs/ca-certificates.crt
-# docker exec -i "${CONTAINER_NAME}" cp /etc/pki/tls/private/localhost.key /etc/ssl/certs/ca-certificates.key
 for i in {1..5};
 do
     echo "Attempt on Apache-server-1 $i"
@@ -58,3 +53,11 @@ do
     echo "Attempt on Apache-server-3 $i"
         curl http://localhost:"${NON_TLS_PORT}"
 done
+
+# Install Apache benchmark testing tool
+sudo apt-get install apache2-utils -y
+sudo apt-get install apache2 -y
+
+APACHE_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks.\"IPAddress\"[0]")
+# testing using apache benchmark tool
+ab -t 100 -n 10000 -c 10 http://"${APACHE_HOST}":80/

@@ -14,3 +14,5 @@ mysqlimport --version
 # mysqlpump --version # not present on mariadb
 mysqlshow --version
 # mysqlslap --version # doesnt work on mariadb due to char set issue
+mysqld_safe --help
+# mysqld_safe --syslog

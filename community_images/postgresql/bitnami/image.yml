@@ -23,15 +23,15 @@ input_registry:
   account: bitnami
 repo_sets:
   - postgresql:
-      input_base_tag: "15.1.0-debian-11-r"
+      input_base_tag: "15.2.0-debian-11-r"
   - postgresql:
-      input_base_tag: "14.6.0-debian-11-r"
+      input_base_tag: "14.7.0-debian-11-r"
   - postgresql:
-      input_base_tag: "13.9.0-debian-11-r"
+      input_base_tag: "13.10.0-debian-11-r"
   - postgresql:
-      input_base_tag: "12.13.0-debian-11-r"
+      input_base_tag: "12.14.0-debian-11-r"
   - postgresql:
-      input_base_tag: "11.18.0-debian-11-r"
+      input_base_tag: "11.19.0-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

@@ -23,19 +23,19 @@ repo_sets:
       input_base_tag: "^v1."
       output_repo: envoy-official
 runtimes:
-  - type: docker_compose
-    script: dc_coverage.sh
-    compose_file: docker-compose.yml
-    tls_certs:
-      generate: true
-      out_dir: certs
-    image_keys:
-      envoy-official:
-        repository: "ENVOY_IMAGE_REPOSITORY"
-        tag: "ENVOY_IMAGE_TAG"
-  # - type: docker
-  #   script: docker_coverage.sh
-  #   envoy:
-  #     volumes:
-  #       configs/dynamic/bootstrap.yaml: /opt/bitnami/envoy/conf/envoy.yaml
-  #       configs/dynamic: /etc/envoy
+  # - type: docker_compose
+  #   script: dc_coverage.sh
+  #   compose_file: docker-compose.yml
+  #   tls_certs:
+  #     generate: true
+  #     out_dir: certs
+  #   image_keys:
+  #     envoy-official:
+  #       repository: "ENVOY_IMAGE_REPOSITORY"
+  #       tag: "ENVOY_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    envoy:
+      volumes:
+        configs/dynamic/bootstrap.yaml: /etc/envoy/envoy.yaml
+        configs/dynamic: /etc/envoy

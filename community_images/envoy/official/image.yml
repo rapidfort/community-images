@@ -1,0 +1,32 @@
+name: envoy-official
+official_name: Envoy Official
+official_website: https://www.envoyproxy.io/
+source_image_provider: The Docker Community
+source_image_repo: docker.io/envoyproxy/envoy-dev
+source_image_repo_link: https://hub.docker.com/r/envoyproxy/envoy
+source_image_readme: https://github.com/envoyproxy/envoy/blob/main/ci/README.md
+rf_docker_link: rapidfort/envoy-official
+image_workflow_name: envoy_official
+github_location: envoy/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fenvoyproxy%2Fenvoy-dev
+usage_instructions: |
+  $ docker run --name envoy rapidfort/envoy-official:latest
+what_is_text: |
+  Envoy is a distributed, high-performance proxy for cloud-native applications. It features a small memory footprint, universal application language compatibility, and supports http/2 and gRPC.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: envoyproxy
+repo_sets:
+  - envoy:
+      input_base_tag: "^v1."
+      output_repo: envoy-official
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    envoy:
+      ports: ["9901:9901"]
+      volumes:
+        configs/dynamic/bootstrap.yaml: /etc/envoy/envoy.yaml
+        configs/dynamic: /etc/envoy

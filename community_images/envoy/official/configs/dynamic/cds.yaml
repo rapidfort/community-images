@@ -12,8 +12,8 @@ resources:
             - endpoint:
                 address:
                   socket_address:
-                    address: 127.0.0.1
-                    port_value: 8081
+                    address: httpbin.org
+                    port_value: 80
 
   # expose the admin endpoint for readiness probe
   - "@type": type.googleapis.com/envoy.config.cluster.v3.Cluster

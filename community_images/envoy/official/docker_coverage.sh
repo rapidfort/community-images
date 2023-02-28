@@ -15,4 +15,4 @@ ENVOY_HOST=$(jq -r '.container_details."envoy-official".ip_address' < "$JSON_PAR
 # run test on docker container
 docker run --rm --network="${NETWORK_NAME}" \
     -i alpine \
-    apk add curl;curl http://"${ENVOY_HOST}":8082/ip;curl http://"${ENVOY_HOST}":9901/ready
+    apk add curl;curl http://"${ENVOY_HOST}":9001/ready

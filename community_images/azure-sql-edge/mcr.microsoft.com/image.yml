@@ -10,10 +10,7 @@ image_workflow_name: azuresqlimage_microsoft
 github_location: azure-sql-edge/mcr.microsoft.com
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fmcr.microsoft.com%2Fazure-sql-edge
 usage_instructions: |
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-  # install azure-sql-edge, just replace repository with RapidFort registry
-  $ helm install my-azure-sql-edge mcr.microsoft.com/azure-sql-edge --set image.repository=rapidfort/azure-sql-image
+  $ docker run --name some-az-sql -d rapidfort/azure-sql-edge:latest
 what_is_text: |
   Azure SQL Edge is an optimized relational database engine geared for IoT and edge deployments.
 disclaimer: |

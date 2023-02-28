@@ -19,7 +19,7 @@ input_registry:
   registry: docker.io
   account: envoyproxy
 repo_sets:
-  - envoy-official:
+  - envoy:
       input_base_tag: "v1."
       output_repo: envoy-official
 runtimes:

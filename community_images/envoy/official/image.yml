@@ -36,6 +36,7 @@ runtimes:
   - type: docker
     script: docker_coverage.sh
     envoy:
+      ports: ["9001:9001"]
       volumes:
         configs/dynamic/bootstrap.yaml: /etc/envoy/envoy.yaml
         configs/dynamic: /etc/envoy

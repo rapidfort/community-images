@@ -12,7 +12,7 @@ services:
     volumes:
       - ./certs/server.crt:/etc/envoy/server.crt
       - ./certs/server.key:/etc/envoy/server.key
-      - ./configs/envoy.yaml:/etc/envoy/envoy.yaml
+      - ./configs/envoy_non_tls.yaml:/etc/envoy/envoy.yaml
       - ./coverage_script.sh:/tmp/coverage_script.sh:ro
   backend1a:
     image: nginxdemos/hello:plain-text

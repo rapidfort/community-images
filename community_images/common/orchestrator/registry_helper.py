@@ -92,7 +92,8 @@ class DockerHubHelper(RegistryHelper):
         search_str = re.compile(search_str)
         tags = filter(lambda tag: search_str.search(tag["name"]), tags)
         tags = list(filter(
-            lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"],
+            lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and\
+                any(image.get('os', '') == 'linux' for image in tag.get('images', [])),
             tags))
 
         if len(tags) == 0:
@@ -124,7 +125,9 @@ class DockerHubHelper(RegistryHelper):
 
         rolling_tag_digest = found_rolling_tag.get("digest")
         tags = list(filter(
-            lambda tag: tag.get("digest") and tag.get("name") and rolling_tag_digest == tag["digest"] and tag["name"] != rolling_tag,
+            lambda tag: tag.get("digest") and tag.get("name") and\
+                any(image.get('os', '') == 'linux' for image in tag.get('images', [])) and\
+                rolling_tag_digest == tag["digest"] and tag["name"] != rolling_tag,
             tags))
 
         tags.sort(key=lambda tag: len(tag["name"]), reverse = True)

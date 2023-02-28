@@ -46,6 +46,18 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/{{- image.rf_docker_link }}"> <img src="/contrib/view_on_dockerhub.svg" alt="View on Dockerhub" height="25" /> </a> | <b> {{ image.pull_count_formatted }} </b> |
 {%- endfor %}
 
+<h2 id="supported-iron-bank-containers">What IronBank containers are supported?</h2>
+
+We’ve optimized and hardened some of the most popular container images on IronBank and are making them available to the community.
+
+| Repository                        | View Report                                   | RapidFort Image                     | Pull Count |
+|-----------------------------------| ------------------------------------------     | ------------------------------- | ------------------------------- |
+{%- for image in image_list_sorted %}
+{%- if 'input_registry' in image and image['input_registry']['registry'] == 'registry1.dso.mil' and image['input_registry']['account'] == 'ironbank' %}
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/{{- image.rf_docker_link }}"> <img src="/contrib/view_on_dockerhub.svg" alt="View on Dockerhub" height="25" /> </a> | <b> {{ image.pull_count_formatted }} </b> |
+{%- endif %}
+{%- endfor %}
+
 ### How to use Community Images
 
 Here’s what you can do with Community Images.
@@ -79,6 +91,11 @@ You can contribute to this project by adding new images, improving coverage scri
 <a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
 <img src="/contrib/github_banner.png" alt="RapidFort Community Slack" width="600" />
 </a>
+
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/rapidfort/community-images.svg)](https://starchart.cc/rapidfort/community-images)
 
 ## 🌟 Star this project
 

@@ -1,0 +1,37 @@
+name: apache-ib
+official_name: Apache IronBank
+official_website: https://httpd.apache.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/apache/apache2
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Fapache2
+source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/apache2/-/blob/development/README.md
+rf_docker_link: rapidfort/apache2-ib
+image_workflow_name: apache_ironbank
+github_location: apache/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fapache2
+usage_instructions: |
+  # Using docker run:
+  $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/var/www/html/ rapidfort/apache2-ib
+  # PWD can be replaced with the directory containing all your HTML.
+what_is_text: |
+  The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. httpd is the Apache HyperText Transfer Protocol (HTTP) server program. It is designed to be run as a standalone daemon process. When used like this it will create a pool of child processes or threads to handle requests.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/apache/apache2:
+      input_base_tag: "2.4."
+      output_repo: apache2-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      apache2-ib:
+        repository: "APACHE_IMAGE_REPOSITORY"
+        tag: "APACHE_IMAGE_TAG"

@@ -13,7 +13,7 @@ resources:
                 address:
                   socket_address:
                     address: 127.0.0.1
-                    port_value: 8082
+                    port_value: 8081
 
   # expose the admin endpoint for readiness probe
   - "@type": type.googleapis.com/envoy.config.cluster.v3.Cluster

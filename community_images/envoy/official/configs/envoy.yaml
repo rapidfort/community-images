@@ -61,8 +61,8 @@ static_resources:
                 tls_params:
                   tls_minimum_protocol_version: TLSv1_3
                 tls_certificates:
-                - certificate_chain: {filename: "/certs/server.crt"}
-                  private_key: {filename: "/certs/server.key"}
+                - certificate_chain: {filename: "/etc/envoy/server.crt"}
+                  private_key: {filename: "/etc/envoy/server.key"}
                 validation_context:
                   trusted_ca:
                     filename: /etc/ssl/certs/ca-certificates.crt

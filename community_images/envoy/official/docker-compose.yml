@@ -10,7 +10,8 @@ services:
       - '0.0.0.0::8080'
       - '0.0.0.0::8443'
     volumes:
-      - ./certs:/certs
+      - ./certs/server.crt:/etc/envoy/server.crt
+      - ./certs/server.key:/etc/envoy/server.key
       - ./configs/envoy.yaml:/etc/envoy/envoy.yaml
       - ./coverage_script.sh:/tmp/coverage_script.sh:ro
   backend1a:

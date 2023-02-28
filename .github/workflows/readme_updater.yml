@@ -170,6 +170,14 @@ jobs:
           repository: rapidfort/envoy
           readme-filepath: ./community_images/envoy/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Envoy
+      - name: Docker Hub Description Envoy Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/envoy-official
+          readme-filepath: ./community_images/envoy/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Envoy Official
       - name: Docker Hub Description Etcd
         uses: peter-evans/dockerhub-description@v3
         with:

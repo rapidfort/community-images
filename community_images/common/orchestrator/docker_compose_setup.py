@@ -109,6 +109,6 @@ class DockerComposeSetup:
         # remove temp env file
         os.remove(self.temp_env_file)
 
-        # remove cert dir
-        if self.cert_path:
-            shutil.rmtree(self.cert_path)
+        # # remove cert dir
+        # if self.cert_path:
+        #     shutil.rmtree(self.cert_path)

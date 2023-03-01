@@ -1,0 +1,33 @@
+# bootstrap.yaml
+node:
+  cluster: test-cluster
+  id: test-id
+
+# receive a request of readiness probe via the listener
+admin:
+  address:
+    socket_address:
+      address: 127.0.0.1
+      port_value: 9901
+  access_log:
+    - name: envoy.access_loggers.stdout
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+
+dynamic_resources:
+  cds_config:
+    resource_api_version: V3
+    path_config_source:
+      path: /etc/envoy/cds.yaml
+      # only if using a ConfigMap
+      # https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/config_source.proto#envoy-v3-api-msg-config-core-v3-pathconfigsource
+      watched_directory:
+        path: /etc/envoy
+  lds_config:
+    resource_api_version: V3
+    path_config_source:
+      path: /etc/envoy/lds.yaml
+      # only if using a ConfigMap
+      # https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/config_source.proto#envoy-v3-api-msg-config-core-v3-pathconfigsource
+      watched_directory:
+        path: /etc/envoy

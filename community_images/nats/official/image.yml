@@ -1,0 +1,55 @@
+name: nats-official
+official_name: NATS Official
+official_website: https://nats.io
+source_image_provider: NATS
+source_image_repo: docker.io/library/nats
+source_image_repo_link: https://hub.docker.com/_/nats
+source_image_readme: https://github.com/nats-io/nats-docker/blob/main/README.md
+rf_docker_link: rapidfort/nats-official
+image_workflow_name: nats_official
+github_location: nats/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fnats
+usage_instructions: |
+  $ helm repo add nats https://nats-io.github.io/k8s/helm/charts/
+
+  # install nats, just replace repository with RapidFort registry
+  $ helm install my-nats nats/nats --set image.repository=rapidfort/nats-official
+what_is_text: |
+  NATS is a connective technology built for the ever increasingly hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, IoT and can be used to augment or replace traditional messaging
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - nats:
+      input_base_tag: "2.9.*"
+      output_repo: nats-official
+needs_common_commands: False
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: nats
+      repo_url: https://nats-io.github.io/k8s/helm/charts/
+      chart: nats
+    image_keys:
+      nats-official:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    helm_additional_params:
+      auth.enabled: true
+      auth.user: "testuser"
+      auth.password: "testpass"
+      auth.token: ""
+      auth.timeout: 1
+      auth.usersCredentials: []
+      auth.noAuthUser: ""
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      nats-official:
+        repository: "NATS_IMAGE_REPOSITORY"
+        tag: "NATS_IMAGE_TAG"

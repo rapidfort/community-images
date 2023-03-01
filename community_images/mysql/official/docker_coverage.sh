@@ -29,11 +29,11 @@ docker cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${CONTAINER_NAME}":/tm
 docker exec -i "${CONTAINER_NAME}" \
     /bin/bash -c "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 
-# copy mysql_coverage.sh into container
-docker cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${CONTAINER_NAME}":/tmp/mysql_coverage.sh
+# copy coverage_script.sh into container
+docker cp "${SCRIPTPATH}"/coverage_script.sh "${CONTAINER_NAME}":/tmp/coverage_script.sh
 
-# run mysql_coverage on cluster
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"
+# run coverage_script on cluster
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "/tmp/coverage_script.sh"
 
 # create sbtest schema
 docker exec -i "${CONTAINER_NAME}" \

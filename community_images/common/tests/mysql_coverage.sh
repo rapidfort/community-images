@@ -17,4 +17,4 @@ mysqlshow --version
 mysqld_safe --help || mysqld --version
 # mysqld_safe is deisgned such that it'll always give exit code status as 1
 # mysqld_safe --syslog
-
+mysqlbinlog --no-defaults --version

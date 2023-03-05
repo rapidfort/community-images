@@ -1,0 +1,86 @@
+name: influxdb-official
+official_name: InfluxDB™ Official
+official_website: https://www.influxdata.com/products/influxdb-overview
+source_image_provider: InfluxData
+source_image_repo: docker.io/library/influxdb
+source_image_repo_link: https://hub.docker.com/_/influxdb
+source_image_readme: https://github.com/docker-library/docs/blob/master/influxdb/README.md
+rf_docker_link: rapidfort/influxdb-official
+image_workflow_name: influxdb_official
+github_location: influxdb/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Finfluxdb
+usage_instructions: |
+  # Using docker run:
+  $ docker run -p 8086:8086 -v myInfluxVolume:/var/lib/influxdb2 rapidfort/influxdb-official
+
+what_is_text: |
+  InfluxDB is a time series database built from the ground up to handle high write and query loads. InfluxDB is meant to be used as a backing store for any use case involving large amounts of timestamped data, including DevOps monitoring, application metrics, IoT sensor data, and real-time analytics.
+disclaimer: |
+  InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
+docker_links:
+  - "[`1.8`, `1.8.10`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.8/Dockerfile)"
+  - "[`1.8-alpine`, `1.8.10-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.8/alpine/Dockerfile)"
+  - "[`1.8-data`, `1.8.10-data`, `data`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.8/data/Dockerfile)"
+  - "[`1.8-data-alpine`, `1.8.10-data-alpine`, `data-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.8/data/alpine/Dockerfile)"
+  - "[`1.8-meta`, `1.8.10-meta`, `meta`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.8/meta/Dockerfile)"
+  - "[`1.8-meta-alpine`, `1.8.10-meta-alpine`, `meta-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.8/meta/alpine/Dockerfile)"
+  - "[`1.9-data`, `1.9.8-data`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.9/data/Dockerfile)"
+  - "[`1.9-data-alpine`, `1.9.8-data-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.9/data/alpine/Dockerfile)"
+  - "[`1.9-meta`, `1.9.8-meta`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.9/meta/Dockerfile)"
+  - "[`1.9-meta-alpine`, `1.9.8-meta-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.9/meta/alpine/Dockerfile)"
+  - "[`1.10-data`, `1.10.0-data`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.10/data/Dockerfile)"
+  - "[`1.10-data-alpine`, `1.10.0-data-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.10/data/alpine/Dockerfile)"
+  - "[`1.10-meta`, `1.10.0-meta`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.10/meta/Dockerfile)"
+  - "[`1.10-meta-alpine`, `1.10.0-meta-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/1.10/meta/alpine/Dockerfile)"
+  - "[`2.4`, `2.4.0`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/2.4/Dockerfile)"
+  - "[`2.4-alpine`, `2.4.0-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/2.4/alpine/Dockerfile)"
+  - "[`2.5`, `2.5.1`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/2.5/Dockerfile)"
+  - "[`2.5-alpine`, `2.5.1-alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/2.5/alpine/Dockerfile)"
+  - "[`2.6`, `2.6.1`, `latest`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/2.6/Dockerfile)"
+  - "[`2.6-alpine`, `2.6.1-alpine`, `alpine`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/2.6/alpine/Dockerfile)"
+
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - influxdb:
+      input_base_tag: "2.6.*"
+      output_repo: influxdb-official
+  - influxdb:
+      input_base_tag: "2.5.*"
+      output_repo: influxdb-official
+  - influxdb:
+      input_base_tag: "2.4.*"
+      output_repo: influxdb-official
+  - influxdb:
+      input_base_tag: "1.10.*"
+      output_repo: influxdb-official
+  - influxdb:
+      input_base_tag: "1.9.*"
+      output_repo: influxdb-official
+  - influxdb:
+      input_base_tag: "1.8.*"
+      output_repo: influxdb-official
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: influxdata
+      repo_url: https://github.com/influxdata/helm-charts
+      chart: influxdb
+    image_keys:
+      influxdb-official:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      influxdb-official:
+        repository: "INFLUXDB_IMAGE_REPOSITORY"
+        tag: "INFLUXDB_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    influxdb-official:
+      env_file: docker.env

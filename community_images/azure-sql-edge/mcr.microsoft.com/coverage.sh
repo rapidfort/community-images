@@ -18,8 +18,10 @@ function test_azure_sql() {
     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
     curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list
     apt-get update
+    # install the MS ODBC driver
     ACCEPT_EULA=Y apt-get install -y msodbcsql18
     apt-get install -y unixodbc-dev
+    # install python odbc binding
     pip3 install pyodbc" > "$SCRIPTPATH"/setup_odbc_container.sh
     chmod +x "$SCRIPTPATH"/setup_odbc_container.sh
     docker cp "${SCRIPTPATH}"/setup_odbc_container.sh "${ODBC_CONTAINER_NAME}":/tmp/setup_odbc_container.sh

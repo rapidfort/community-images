@@ -1,7 +1,7 @@
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
-influxdb:
+influxdb-official:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001

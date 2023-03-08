@@ -31,5 +31,3 @@ runtimes:
       fluentd-ib:
         repository: "FLUENTD_IMAGE_REPOSITORY"
         tag: "FLUENTD_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh

@@ -9,7 +9,7 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-CONTAINER_NAME=$(jq -r '.container_details.fluentd.name' < "$JSON_PARAMS")
+CONTAINER_NAME=$(jq -r '.container_details."fluentd-ib".name' < "$JSON_PARAMS")
 
 # try installing a plugin
 docker exec -i "$CONTAINER_NAME" fluent-gem install fluent-plugin-grep

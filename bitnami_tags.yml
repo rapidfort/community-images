@@ -96,9 +96,9 @@ mariadb:
   - 10.3.38-debian-11-r
 memcached:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.6.18`, `1.6.18-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.6.19`, `1.6.19-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.6.18-debian-11-r
+  - 1.6.19-debian-11-r
 mongodb:
   docker_links:
   - '[`6.0`, `6.0-debian-11`, `6.0.4`, `6.0.4-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'

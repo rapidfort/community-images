@@ -55,6 +55,8 @@ class DockerComposeSetup:
                     tag_value = tag_details["tag"]
                     env_fp.write(f"{tag_key}={tag_value}\n")
                     logging.info(f"adding {tag_key}={tag_value}")
+        logging.info(open(self.temp_env_file).read())
+
 
     def __enter__(self):
         """ create a docker compose namespace and set it up for runner """

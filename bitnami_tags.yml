@@ -101,10 +101,10 @@ memcached:
   - 1.6.19-debian-11-r
 mongodb:
   docker_links:
-  - '[`6.0`, `6.0-debian-11`, `6.0.4`, `6.0.4-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
+  - '[`6.0`, `6.0-debian-11`, `6.0.5`, `6.0.5-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
   - '[`5.0`, `5.0-debian-11`, `5.0.15`, `5.0.15-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
   search_tags:
-  - 6.0.4-debian-11-r
+  - 6.0.5-debian-11-r
   - 5.0.15-debian-11-r
 mysql:
   docker_links:
@@ -166,9 +166,9 @@ redis-cluster:
   - 7.0.9-debian-11-r
 telegraf:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.25.3`, `1.25.3-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.26.0`, `1.26.0-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.25.3-debian-11-r
+  - 1.26.0-debian-11-r
 wordpress:
   docker_links:
   - '[`6`, `6-debian-11`, `6.1.1`, `6.1.1-debian-11-r` (6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-11/Dockerfile)'

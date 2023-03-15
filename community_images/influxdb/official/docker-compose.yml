@@ -8,9 +8,6 @@ services:
       - 8086:8086
     volumes:
       - influxdb_data:/var/lib/influxdb2:rw
-    env_file:
-      - docker.env.temp
-    entrypoint: ["./entrypoint.sh"]
 volumes:
   influxdb_data:
     driver: local

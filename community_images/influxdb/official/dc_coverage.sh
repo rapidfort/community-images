@@ -44,7 +44,7 @@ PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8
 echo "influxdb port = $PORT"
 
 # Running the influxdb setup
-docker exec -it "${CONTAINER_NAME}" /bin/bash -c "influx setup --skip-verify --bucket ${DOCKER_INFLUXDB_INIT_BUCKET} --token ${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN} --org ${DOCKER_INFLUXDB_INIT_ORG} --username ${DOCKER_INFLUXDB_INIT_USERNAME} --password ${DOCKER_INFLUXDB_INIT_PASSWORD} --force"
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx setup --skip-verify --bucket ${DOCKER_INFLUXDB_INIT_BUCKET} --token ${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN} --org ${DOCKER_INFLUXDB_INIT_ORG} --username ${DOCKER_INFLUXDB_INIT_USERNAME} --password ${DOCKER_INFLUXDB_INIT_PASSWORD} --force"
 
 echo "======================================================================"
 
@@ -53,10 +53,10 @@ docker cp ${SCRIPTPATH}/tests/example.csv "${CONTAINER_NAME}":/tmp/
 docker cp ${SCRIPTPATH}/tests/query.flux "${CONTAINER_NAME}":/tmp/
 
 # executing tests in the container, write data to influxdb
-docker exec -it "${CONTAINER_NAME}" /bin/bash -c "influx write -t $INFLUXDB_TOKEN -b $INFLUXDB_INIT_BUCKET --org-id $INFLUXDB_INIT_ORG -f /tmp/example.csv"
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx write -t $INFLUXDB_TOKEN -b $INFLUXDB_INIT_BUCKET --org-id $INFLUXDB_INIT_ORG -f /tmp/example.csv"
 
 # run query on db
-docker exec -it "${CONTAINER_NAME}" /bin/bash -c "influx query -t $INFLUXDB_TOKEN --org $INFLUXDB_INIT_ORG -f /tmp/query.flux"
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx query -t $INFLUXDB_TOKEN --org $INFLUXDB_INIT_ORG -f /tmp/query.flux"
 
 echo "Done testing the scripts, waiting for 10 seconds"
 

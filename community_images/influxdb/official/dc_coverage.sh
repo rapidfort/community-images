@@ -49,8 +49,8 @@ docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx setup --skip-verify --bu
 echo "======================================================================"
 
 # copy tests into container
-docker cp ${SCRIPTPATH}/tests/example.csv "${CONTAINER_NAME}":/tmp/
-docker cp ${SCRIPTPATH}/tests/query.flux "${CONTAINER_NAME}":/tmp/
+docker cp "${SCRIPTPATH}"/tests/example.csv "${CONTAINER_NAME}":/tmp/
+docker cp "${SCRIPTPATH}"/tests/query.flux "${CONTAINER_NAME}":/tmp/
 
 # executing tests in the container, write data to influxdb
 docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx write -t $INFLUXDB_TOKEN -b $INFLUXDB_INIT_BUCKET --org-id $INFLUXDB_INIT_ORG -f /tmp/example.csv"

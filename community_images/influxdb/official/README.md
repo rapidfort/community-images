@@ -83,7 +83,7 @@ RapidFort’s hardened [rapidfort/influxdb-official][rf-dh-image-link] image has
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2.6`, `2.6.1`, `latest`](https://github.com/influxdata/influxdata-docker/blob/64a63b05b198b6a45176462814d3f35677625415/influxdb/2.6/Dockerfile)
+* [`2.6`, `2.6.1`, `latest`](https://github.com/influxdata/influxdata-docker/blob/0dad0e063a2968dfcac43da9f2f7f2ee6b761d1b/influxdb/2.6/Dockerfile)
 
 ## Need support
 

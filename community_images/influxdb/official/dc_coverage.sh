@@ -32,7 +32,7 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-influxdb-1
 #CONTAINER_NAME=influxdb-official-ashish-influxdb-1
-
+#CONTAINER_NAME=influxdb-official-utlih1si6i-influxdb-1
 # Wait for all influxdb server to set up
 sleep 20
 
@@ -53,10 +53,10 @@ docker cp "${SCRIPTPATH}"/tests/example.csv "${CONTAINER_NAME}":/tmp/
 docker cp "${SCRIPTPATH}"/tests/query.flux "${CONTAINER_NAME}":/tmp/
 
 # executing tests in the container, write data to influxdb
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx write -t $INFLUXDB_TOKEN -b $INFLUXDB_INIT_BUCKET --org-id $INFLUXDB_INIT_ORG -f /tmp/example.csv"
+docker exec  "${CONTAINER_NAME}" /bin/bash -c "influx write -t ${INFLUXDB_TOKEN} -b ${INFLUXDB_INIT_BUCKET} --org-id ${INFLUXDB_INIT_ORG} -f /tmp/example.csv"
 
 # run query on db
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx query -t $INFLUXDB_TOKEN --org $INFLUXDB_INIT_ORG -f /tmp/query.flux"
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "influx query -t ${INFLUXDB_TOKEN} --org ${INFLUXDB_INIT_ORG} -f /tmp/query.flux"
 
 echo "Done testing the scripts, waiting for 10 seconds"
 

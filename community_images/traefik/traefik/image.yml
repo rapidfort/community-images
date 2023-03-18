@@ -40,20 +40,4 @@ runtimes:
       traefik:
         repository: "TRAEFIK_IMAGE_REPOSITORY"
         tag: "TRAEFIK_IMAGE_TAG"
-  - type: k8s
-    script: k8s_coverage.sh
-    helm:
-      repo: traefik
-      repo_url: https://helm.traefik.io/traefik
-      chart: traefik
-    wait_time_sec: 30
-    tls_certs:
-      generate: true
-      secret_name: localhost-server-tls
-      common_name: localhost
-    image_keys:
-      traefik:
-        repository: "image.name"
-        tag: "image.tag"
-    override_file: "overrides.yml"
 

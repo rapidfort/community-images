@@ -18,3 +18,8 @@ mysqld_safe --help || mysqld --version
 # mysqld_safe is deisgned such that it'll always give exit code status as 1
 # mysqld_safe --syslog
 
+# Excluding mariadb from running binaries that are not present in its
+#   official version or gives errors.
+mariadb --version || ( mysqlpump --version \
+					&& mysql_ssl_rsa_setup --version \
+					)

@@ -1,11 +1,18 @@
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
-securityContext:
+containerSecurityContext:
+  enabled: true
   runAsUser: 1001
-  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: true
   capabilities:
-    add:
-      - SYS_PTRACE
-      - SETUID
-      - SETGID
+    add: ["SYS_PTRACE"]
+extraEnvVars:
+  - name: "RF_VERBOSE"
+    value: "0"
+livenessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
+readinessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30

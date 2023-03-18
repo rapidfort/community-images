@@ -31,6 +31,7 @@ runtimes:
       repo: bitnami
       repo_url: https://charts.bitnami.com/bitnami
       chart: fluentd
+    wait_time_sec: 60
     image_keys:
       fluentd:
         repository: "image.repository"

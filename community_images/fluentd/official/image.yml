@@ -1,0 +1,41 @@
+name: fluentd-official
+official_name: Fluentd Official
+official_website: https://www.fluentd.org/
+source_image_provider: Fluentd
+source_image_repo: docker.io/library/fluentd
+source_image_repo_link: https://hub.docker.com/_/fluentd
+source_image_readme: https://github.com/fluent/fluentd-docker-image/blob/master/README.md
+rf_docker_link: rapidfort/fluentd-official
+image_workflow_name: fluentd_official
+github_location: fluentd/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Ffluentd
+usage_instructions: |
+  # Using Docker run:
+  $ docker run -p 24224:24224 -p 24224:24224/udp -u fluent -v /path/to/dir:/fluentd/log rapidfort/fluentd-official
+what_is_text: |
+  Fluentd is a streaming data collector for unified logging layer hosted by CNCF. Fluentd lets you unify the data collection and consumption for a better use and understanding of data.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "['v1.14.0-1.0', 'v1.14-1', 'latest'](https://github.com/fluent/fluentd-docker-image/blob/a9e4cee765c7aaf7876d6fe3282aa565dbcdc2a4/v1.14/alpine/Dockerfile)"
+  - "['v1.14.0-debian-1.0', 'v1.14-debian-1'](https://github.com/fluent/fluentd-docker-image/blob/a9e4cee765c7aaf7876d6fe3282aa565dbcdc2a4/v1.14/debian/Dockerfile)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - fluentd:
+      input_base_tag: "v1.14."
+      output_repo: fluentd-official
+  - fluentd:
+      input_base_tag: "v1.14.*-debian*"
+      output_repo: fluentd-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      fluentd-official:
+        repository: "FLUENTD_IMAGE_REPOSITORY"
+        tag: "FLUENTD_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh

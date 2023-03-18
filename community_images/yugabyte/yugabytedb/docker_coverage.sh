@@ -17,6 +17,9 @@ YB_CTR_NAME=$(jq -r '.container_details.yugabyte.name' < "$JSON_PARAMS")
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 
+# Waiting for container to be configured
+sleep 60
+
 # wait for container to be up
 with_backoff docker exec -i "${YB_CTR_NAME}" /bin/bash -c \
     "./bin/yugabyted status"

@@ -27,5 +27,6 @@ function test_azure_sql() {
     docker cp "${SCRIPTPATH}"/setup_odbc_container.sh "${ODBC_CONTAINER_NAME}":/tmp/setup_odbc_container.sh
     docker exec -i "${ODBC_CONTAINER_NAME}" bash -c /tmp/setup_odbc_container.sh
     docker cp "${SCRIPTPATH}"/test_azure_sql.py "${ODBC_CONTAINER_NAME}":/tmp/test_azure_sql.py
+    docker exec -i "${ODBC_CONTAINER_NAME}" mkdir /var/opt/mssql/backup
     docker exec -i "${ODBC_CONTAINER_NAME}" python /tmp/test_azure_sql.py
 }

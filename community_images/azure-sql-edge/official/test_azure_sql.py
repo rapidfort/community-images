@@ -77,6 +77,13 @@ def main():
 
     EXECUTE dbo.uspGetEmployeesTest2 N'Single', N'100$';
     """
+
+    backup_query = """
+    BACKUP DATABASE dbo
+    TO DISK = N'/var/opt/mssql/backup/yourDatabaseBackup.bak'  
+    WITH NOFORMAT, NOINIT, NAME = N'yourDatabaseName-Full Database Backup', 
+    SKIP, NOREWIND, NOUNLOAD, COMPRESSION, STATS = 10
+    """
     _execute_and_print(cursor, stored_procedure_query)
     
     get_row_count_query = "SELECT COUNT(*) FROM dbo.HotelMaster"

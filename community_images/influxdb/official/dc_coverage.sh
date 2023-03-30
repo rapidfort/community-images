@@ -11,7 +11,7 @@ echo "$SCRIPTPATH"
 . "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 
 # Source Env Variable for Variable replacement
-. "${SCRIPTPATH}"/docker.env.temp
+. "${SCRIPTPATH}"/docker.env
 #. "${SCRIPTPATH}"/docker.env.ashish
 
 INFLUXDB_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}

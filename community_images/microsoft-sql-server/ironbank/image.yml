@@ -1,0 +1,29 @@
+name: azure-sql-server-2019-ironbank
+official_name: Azure SQL Server IronBank
+official_website: https://www.microsoft.com/en-in/sql-server/sql-server-2019
+source_image_provider: IronBank
+source_image_repo: registry1.dso.mil/ironbank/microsoft/microsoft/microsoft-sql-server-2019
+source_image_repo_link: https://repo1.dso.mil/dsop/microsoft/microsoft/microsoft-sql-server-2019
+source_image_readme: https://repo1.dso.mil/dsop/microsoft/microsoft/microsoft-sql-server-2019/-/blob/development/README.md
+rf_docker_link: rapidfort/azure-sql-server-2019
+image_workflow_name: azure-sql-server-2019_ironbank
+github_location: azure-sql-server-2019/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fmicrosoft%2Fmicrosoft%2Fmicrosoft-sql-server-2019
+usage_instructions: |
+  $ docker run --name some-az-sql -d rapidfort/azure-sql-edge:latest
+what_is_text: |
+  Azure SQL Edge is an optimized relational database engine geared for IoT and edge deployments.
+disclaimer: |
+  Azure SQL Edge(TM) is a trademark owned by Microsoft, which is not affiliated with, and does not endorse, this site.
+input_registry:
+  registry: docker.io
+  account: mcr.microsoft.com
+repo_sets:
+  - azure-sql-edge:
+      input_base_tag: "1.0.6"
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    azure-sql-edge:
+      ports:
+        - "57000:1433"

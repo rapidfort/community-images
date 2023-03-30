@@ -1,0 +1,8 @@
+version: '2'
+services:
+  azure-sql-edge:
+    image: ${AZURESQLEDGE_IMAGE_REPOSITORY}:${AZURESQLEDGE_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - 57000:1433

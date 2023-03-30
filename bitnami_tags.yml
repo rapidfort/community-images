@@ -55,9 +55,9 @@ etcd:
   - 3.4.24-debian-11-r
 fluentd:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.15.3`, `1.15.3-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.16.0`, `1.16.0-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.15.3-debian-11-r
+  - 1.16.0-debian-11-r
 ghost:
   docker_links:
   - '[`5`, `5-debian-11`, `5.39.0`, `5.39.0-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
@@ -65,9 +65,9 @@ ghost:
   - 5.39.0-debian-11-r
 haproxy:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.7.5`, `2.7.5-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.7.6`, `2.7.6-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.7.5-debian-11-r
+  - 2.7.6-debian-11-r
 influxdb:
   docker_links:
   - '[`2`, `2-debian-11`, `2.6.1`, `2.6.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)'
@@ -118,10 +118,10 @@ nats:
   - 2.9.15-debian-11-r
 nginx:
   docker_links:
-  - '[`1.23`, `1.23-debian-11`, `1.23.3`, `1.23.3-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.23/debian-11/Dockerfile)'
+  - '[`1.23`, `1.23-debian-11`, `1.23.4`, `1.23.4-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.23/debian-11/Dockerfile)'
   - '[`1.22`, `1.22-debian-11`, `1.22.1`, `1.22.1-debian-11-r` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.22/debian-11/Dockerfile)'
   search_tags:
-  - 1.23.3-debian-11-r
+  - 1.23.4-debian-11-r
   - 1.22.1-debian-11-r
 postgresql:
   docker_links:

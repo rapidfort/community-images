@@ -2,13 +2,13 @@ name: envoy-official
 official_name: Envoy Official
 official_website: https://www.envoyproxy.io/
 source_image_provider: The Docker Community
-source_image_repo: docker.io/envoyproxy/envoy-dev
+source_image_repo: docker.io/envoyproxy/envoy
 source_image_repo_link: https://hub.docker.com/r/envoyproxy/envoy
 source_image_readme: https://github.com/envoyproxy/envoy/blob/main/ci/README.md
 rf_docker_link: rapidfort/envoy-official
 image_workflow_name: envoy_official
 github_location: envoy/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fenvoyproxy%2Fenvoy-dev
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fenvoyproxy%2Fenvoy
 usage_instructions: |
   $ docker run --name envoy rapidfort/envoy-official:latest
 what_is_text: |

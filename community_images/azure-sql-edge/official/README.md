@@ -70,14 +70,14 @@ RapidFort is an industry-leading container optimization solution that minimizes 
 
 Our hardened images are updated daily using the latest vulnerability information available.
 
-<a href="https://github.com/rapidfort/community-images/tree/main/community_images/azure-sql-edge/mcr.microsoft.com">
+<a href="https://github.com/rapidfort/community-images/tree/main/community_images/azure-sql-edge/official">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
 </a>
 <br>
 <br>
 
 ## What’s the difference between the official [Microsoft Azure SQL Edge][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/azure-sql-image][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/azure-sql-edge][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
@@ -124,15 +124,15 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fmcr.microsoft.com%2Fazure-sql-edge?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=azure-sql-edge&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fmcr.microsoft.com%2Fazure-sql-edge?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=azure-sql-edge&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/azure-sql-image?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/azure-sql-image?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/azure-sql-edge?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/azure-sql-edge?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/azure-sql-edge/mcr.microsoft.com/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/azure-sql-edge/mcr.microsoft.com/assets/cve_reduction.webp
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/azure-sql-edge/official/assets/metrics.webp
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/azure-sql-edge/official/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://hub.docker.com/_/microsoft-azure-sql-edge
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/azure-sql-image
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/azure-sql-edge

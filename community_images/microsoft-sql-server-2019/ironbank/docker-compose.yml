@@ -8,8 +8,6 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=rapidfortpassword
       - MSSQL_PID=Developer
-    volumes:
-      - './tests/azure_ib.ms_sql:./tmp/test.ms_sql'
     cap_add:
       - SYS_PTRACE    
     ports:

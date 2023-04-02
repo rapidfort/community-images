@@ -1,13 +1,13 @@
-name: microsoft-sql-server-ib
+name: microsoft-sql-server-2019-ib
 official_name: Microsoft SQL Server 2019
 official_website: https://www.microsoft.com/en-in/sql-server
 source_image_provider: Platform One
 source_image_repo: registry1.dso.mil/ironbank/microsoft/microsoft/microsoft-sql-server-2019-rhel8
 source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/microsoft%2Fmicrosoft%2Fmicrosoft-sql-server-2019-rhel8
 source_image_readme: https://repo1.dso.mil/dsop/microsoft/microsoft/microsoft-sql-server-2019-rhel8/-/blob/development/README.md
-rf_docker_link: rapidfort/microsoft-sql-server-ib
-image_workflow_name: microsoft-sql-server_ironbank
-github_location: microsoft-sql-serverW/ironbank
+rf_docker_link: rapidfort/microsoft-sql-server-2019-ib
+image_workflow_name: microsoft-sql-server-2019_ironbank
+github_location: microsoft-sql-server-2019/ironbank
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fmicrosoft%2Fmicrosoft%2Fmicrosoft-sql-server-2019-rhel8
 usage_instructions: |
   # Using docker run:

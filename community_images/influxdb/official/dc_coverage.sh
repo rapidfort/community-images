@@ -10,9 +10,10 @@ echo "$SCRIPTPATH"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 
-# Source Env Variable for Variable replacement
+# shellcheck disable=SC1091
 . "${SCRIPTPATH}"/docker.env
 #. "${SCRIPTPATH}"/docker.env.ashish
+# Shellcheck is unable follow non-constant source.
 
 INFLUXDB_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
 echo "INFLUXDB_TOKEN=${INFLUXDB_TOKEN}"

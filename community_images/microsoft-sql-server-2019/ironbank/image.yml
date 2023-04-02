@@ -1,0 +1,36 @@
+name: microsoft-sql-server-2019-ib
+official_name: Microsoft SQL Server 2019
+official_website: https://www.microsoft.com/en-in/sql-server
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/microsoft/microsoft/microsoft-sql-server-2019-rhel8
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/microsoft%2Fmicrosoft%2Fmicrosoft-sql-server-2019-rhel8
+source_image_readme: https://repo1.dso.mil/dsop/microsoft/microsoft/microsoft-sql-server-2019-rhel8/-/blob/development/README.md
+rf_docker_link: rapidfort/microsoft-sql-server-2019-ib
+image_workflow_name: microsoft-sql-server-2019_ironbank
+github_location: microsoft-sql-server-2019/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fmicrosoft%2Fmicrosoft%2Fmicrosoft-sql-server-2019-rhel8
+usage_instructions: |
+  # Using docker run:
+  $ docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" --name my-mssql-server -p 1433:1433 rapidfort/microsoft-sql-server-2019-ib:latest
+what_is_text: |
+  Microsoft SQL Server is a relational database management system developed by Microsoft. As a database server, it is a software product with the primary function of storing and retrieving data as requested by other software applications—which may run either on the same computer or on another computer across a network.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - microsoft/microsoft/microsoft-sql-server-2019-rhel8:
+      input_base_tag: "2019-CU*-rhel-8"
+      output_repo: microsoft-sql-server-2019-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      microsoft-sql-server-2019-ib:
+        repository: "SQL_SERVER_REPOSITORY"
+        tag: "SQL_SERVER_TAG"

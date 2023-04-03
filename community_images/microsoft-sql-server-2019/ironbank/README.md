@@ -83,6 +83,7 @@ RapidFort’s hardened [rapidfort/microsoft-sql-server-2019-ib][rf-dh-image-link
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
+* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/microsoft/microsoft/microsoft-sql-server-2019-rhel8/-/blob/development/Dockerfile)
 
 ## Need support
 

@@ -16,9 +16,8 @@ echo "Json params for docker compose coverage = $JSON"
 
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
-CONTAINER_NAME="${PROJECT_NAME}"-microsoft-sql-server-1
+CONTAINER_NAME="${PROJECT_NAME}"-microsoft-sql-server-2019-1
 
 # checking all modules and config test
-docker cp "${SCRIPTPATH}"/tests/azure_ib.ms_sql "${CONTAINER_NAME}":/test.ms_sql
-docker exec -i "${CONTAINER_NAME}" bash -c sqlcmd -S localhost -U SA -P 'rapidfortpassword' -f ./test.ms_sql
-# /opt/mssql-tools/bin/sqlcmd
+docker cp "${SCRIPTPATH}"/tests/azure_ib.ms_sql "${CONTAINER_NAME}":/tmp/test.ms_sql
+docker exec -i "${CONTAINER_NAME}" /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'DevPass123!' -i /tmp/test.ms_sql

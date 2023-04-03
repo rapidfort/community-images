@@ -4,9 +4,9 @@ services:
   microsoft-sql-server:
     image: ${SQL_SERVER_REPOSITORY}:${SQL_SERVER_TAG}
     environment:
-      - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=rapidfortpassword
-      - MSSQL_PID=Developer
+      - "ACCEPT_EULA=Y"
+      - "MSSQL_SA_PASSWORD=DevPass123!"
+      - "MSSQL_PID=Developer"
     cap_add:
       - SYS_PTRACE    
     ports:

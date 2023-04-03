@@ -3,7 +3,7 @@ version: '2'
 services:
   elasticsearch:
     image: ${ELASTICSEARCH_IMAGE_REPOSITORY}:${ELASTICSEARCH_IMAGE_TAG}
-    user: root
+    user: elasticsearch
     cap_add:
       - SYS_PTRACE
     ports:

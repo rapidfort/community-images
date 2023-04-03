@@ -147,6 +147,7 @@ BEGIN
 END;
 GO
 
+SET STATISTICS TIME ON
 -- Alter function (must be in a single query batch)
 ALTER FUNCTION get_employee_age (@hire_date DATE, @phone_number VARCHAR(20))
 RETURNS INT

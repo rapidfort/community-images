@@ -23,5 +23,5 @@ docker cp "${SCRIPTPATH}"/tests/azure_ib.ms_sql "${CONTAINER_NAME}":/tmp/test1.m
 docker exec -i "${CONTAINER_NAME}" /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'DevPass123!' -i "./tmp/test1.ms_sql"
 
 # Running backup functionality test
-docker cp "${SCRIPTPATH}"/tests/azure_ib.ms_sql "${CONTAINER_NAME}":/tmp/test2.ms_sql
+docker cp "${SCRIPTPATH}"/tests/azure_ib_bak.ms_sql "${CONTAINER_NAME}":/tmp/test2.ms_sql
 docker exec -i "${CONTAINER_NAME}" /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'DevPass123!' -i "./tmp/test2.ms_sql"

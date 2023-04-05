@@ -38,10 +38,3 @@ runtimes:
       elasticsearch-official:
         repository: "ELASTICSEARCH_IMAGE_REPOSITORY"
         tag: "ELASTICSEARCH_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    wait_time_sec: 120
-    elasticsearch-official:
-      ports: ["9200:9200", "9300:9300"]
-      environment:
-        ALLOW_NONE_AUTHENTICATION: yes

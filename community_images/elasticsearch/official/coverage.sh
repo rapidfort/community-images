@@ -37,8 +37,6 @@ function test_elasticsearch() {
     local ES_SERVER=$1
     local ES_NETWORK=$2
 
-    echo "Recieved network : $ES_NETWORK"
-
     ESCLIENT_POD_NAME="elasticsearch-client"
     docker run --rm --net $ES_NETWORK --name "${ESCLIENT_POD_NAME}" -d bitnami/python bash -c 'sleep infinity'
     # wait for publisher pod to come up

@@ -6,7 +6,7 @@ import sys
 from datetime import datetime
 from elasticsearch import Elasticsearch # pylint: disable=import-error
 
-server = 'localhost'  # pylint: disable=invalid-name
+# pylint: disable=invalid-name
 try:
     opts, args = getopt.getopt(sys.argv[1:], "s:", ["es-server="])
 except getopt.GetoptError:
@@ -16,7 +16,7 @@ for opt, arg in opts:
     if opt in ("--es-server", "--s"):
         server = arg
 
-es = Elasticsearch(f'http://{server}:9200')
+es = Elasticsearch(f'http://es-bcontainer:9200')
 
 doc = {
     'author': 'test_author',

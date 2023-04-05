@@ -35,9 +35,10 @@ function test_elasticsearch_using_kubectl() {
 
 function test_elasticsearch() {
     local ES_SERVER=$1
+    local ES_NETWORK=$2
 
     ESCLIENT_POD_NAME="elasticsearch-client"
-    docker run --rm --net host --name "${ESCLIENT_POD_NAME}" -d bitnami/python bash -c 'sleep infinity'
+    docker run --rm --net $ES_NETWORK --name "${ESCLIENT_POD_NAME}" -d bitnami/python bash -c 'sleep infinity'
     # wait for publisher pod to come up
     # shellcheck disable=SC1083
     until [ "$(docker inspect -f {{.State.Running}} elasticsearch-client)" == "true" ]; do sleep 1; done

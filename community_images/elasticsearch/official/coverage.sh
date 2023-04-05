@@ -35,10 +35,14 @@ function test_elasticsearch_using_kubectl() {
 
 function test_elasticsearch() {
     local ES_SERVER=$1
+    local ES_NETWORK=$2
+
+    echo "Recieved network : $ES_NETWORK"
 
     ESCLIENT_POD_NAME="elasticsearch-client"
-    docker run --rm --net host --name "${ESCLIENT_POD_NAME}" -d bitnami/python bash -c 'sleep infinity'
+    docker run --rm --net $ES_NETWORK --name "${ESCLIENT_POD_NAME}" -d bitnami/python bash -c 'sleep infinity'
     # wait for publisher pod to come up
+
     # shellcheck disable=SC1083
     until [ "$(docker inspect -f {{.State.Running}} elasticsearch-client)" == "true" ]; do sleep 1; done
     echo "#!/bin/bash
@@ -48,7 +52,6 @@ function test_elasticsearch() {
     docker cp "${SCRIPTPATH}"/es_test.py "${ESCLIENT_POD_NAME}":/tmp/es_test.py
     chmod +x "$SCRIPTPATH"/es_commands.sh
     docker cp "${SCRIPTPATH}"/es_commands.sh "${ESCLIENT_POD_NAME}":/tmp/es_commands.sh
-
     with_backoff docker exec -t "${ESCLIENT_POD_NAME}" bash /tmp/es_commands.sh
 
     # delete the client containers

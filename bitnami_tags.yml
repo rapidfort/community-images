@@ -15,9 +15,9 @@ airflow-worker:
   - 2.5.3-debian-11-r
 apache:
   docker_links:
-  - '[`2.4`, `2.4-debian-11`, `2.4.56`, `2.4.56-debian-11-r` (2.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/apache/2.4/debian-11/Dockerfile)'
+  - '[`2.4`, `2.4-debian-11`, `2.4.57`, `2.4.57-debian-11-r` (2.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/apache/2.4/debian-11/Dockerfile)'
   search_tags:
-  - 2.4.56-debian-11-r
+  - 2.4.57-debian-11-r
 consul:
   docker_links:
   - '[`1`, `1-debian-11`, `1.15.2`, `1.15.2-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/consul/1/debian-11/Dockerfile)'
@@ -37,13 +37,13 @@ elasticsearch:
   - 7.17.9-debian-11-r
 envoy:
   docker_links:
-  - '[`1.25`, `1.25-debian-11`, `1.25.3`, `1.25.3-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)'
-  - '[`1.24`, `1.24-debian-11`, `1.24.4`, `1.24.4-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'
+  - '[`1.25`, `1.25-debian-11`, `1.25.4`, `1.25.4-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)'
+  - '[`1.24`, `1.24-debian-11`, `1.24.5`, `1.24.5-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'
   - '[`1.23`, `1.23-debian-11`, `1.23.7`, `1.23.7-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)'
   - '[`1.22`, `1.22-debian-11`, `1.22.10`, `1.22.10-debian-11-r` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.22/debian-11/Dockerfile)'
   search_tags:
-  - 1.25.3-debian-11-r
-  - 1.24.4-debian-11-r
+  - 1.25.4-debian-11-r
+  - 1.24.5-debian-11-r
   - 1.23.7-debian-11-r
   - 1.22.10-debian-11-r
 etcd:

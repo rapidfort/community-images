@@ -1,0 +1,48 @@
+name: elasticsearch-official
+official_name: ElasticSearch Official
+official_website: https://www.elastic.co/
+source_image_provider: The Docker Community
+source_image_repo: docker.io/library/elasticsearch
+source_image_repo_link: https://hub.docker.com/_/elasticsearch
+source_image_readme: https://github.com/docker-library/docs/blob/master/elasticsearch/README.md
+rf_docker_link: rapidfort/elasticsearch-official
+image_workflow_name: elasticsearch_official
+github_location: elasticsearch/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Felasticsearch
+usage_instructions: |
+  # To start a single node cluster 
+  $ docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" rapidfort/elasticsearch-official
+
+  # To connect with other services attached to the same network (e.g. Kibana)
+  # Create a common network
+  $ docker network create commonnet
+  $ docker run -d --name elasticsearch --net commonnet -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" rapidfort/elasticsearch-official
+  
+what_is_text: |
+  Elasticsearch is a distributed search and analytics engine. It is used for web search, log monitoring, and real-time analytics. Ideal for Big Data applications.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - elasticsearch:
+      input_base_tag: "8.6.*"
+      output_repo: elasticsearch-official
+  - elasticsearch:
+      input_base_tag: "7.17.*"
+      output_repo: elasticsearch-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      elasticsearch-official:
+        repository: "ELASTICSEARCH_OFFICIAL_IMAGE_REPOSITORY"
+        tag: "ELASTICSEARCH_OFFICIAL_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    elasticsearch-official:
+      ports: ["9200:9200", "9300:9300"]
+      environment:
+        ALLOW_NONE_AUTHENTICATION: yes

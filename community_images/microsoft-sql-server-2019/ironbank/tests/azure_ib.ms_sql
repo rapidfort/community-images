@@ -1,0 +1,271 @@
+select @@VERSION
+GO
+
+CREATE DATABASE TestDB;
+SELECT Name from sys.databases;
+GO
+
+USE TestDB;
+GO
+
+-- Create
+CREATE TABLE employees (
+    name VARCHAR(50),
+    id INT PRIMARY KEY,
+    email VARCHAR(50),
+    phone_number VARCHAR(20),
+    hire_date DATE,
+    salary INT
+);
+
+CREATE TABLE employees_updates (
+    name VARCHAR(50),
+    id INT PRIMARY KEY,
+    email VARCHAR(50),
+    phone_number VARCHAR(20),
+    hire_date DATE,
+    salary INT
+);
+
+CREATE TABLE departments (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    location VARCHAR(50)
+);
+
+CREATE TABLE employee_department (
+    employee_id INT,
+    department_id INT,
+    PRIMARY KEY (employee_id, department_id),
+    FOREIGN KEY (employee_id) REFERENCES employees(id),
+    FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+GO
+
+-- Insert
+INSERT INTO employees (name, id, email, phone_number, hire_date, salary)
+VALUES ('John Doe', 1, 'john.doe@gmail.com', '555-1234', '2020-01-01', 50000),
+       ('Jane Smith', 2, 'jane.smith@gmail.com', '555-5678', '2020-02-01', 60000),
+       ('Bob Johnson', 3, 'bob.johnson@gmail.com', '555-9012', '2020-03-01', 70000);
+
+INSERT INTO employees_updates (name, id, email, phone_number, hire_date, salary)
+VALUES('Linda', 7, 'Linda.summer@gmail.com', '555-9753', '2021-02-01', 60000);
+
+-- Select
+SELECT * FROM employees;
+
+-- Update
+UPDATE employees SET salary = 55000 WHERE name = 'John Doe';
+
+-- Delete
+DELETE FROM employees WHERE name = 'Bob Johnson';
+
+-- Merge
+MERGE employees AS target
+USING employees_updates AS source
+ON (target.id = source.id)
+WHEN MATCHED THEN
+  UPDATE SET target.name = source.name,
+             target.salary = source.salary,
+             target.email = source.email
+WHEN NOT MATCHED BY TARGET THEN
+  INSERT (id, name, salary, email)
+  VALUES (source.id, source.name, source.salary, source.email);
+
+-- Select
+SELECT name, email, salary INTO new_employees FROM employees;
+SELECT TOP 2 * FROM employees ORDER BY salary DESC;
+
+-- Bulk insert
+-- BULK INSERT employees FROM 'C:\data\employees.csv' WITH (FORMAT = 'CSV');
+
+-- Group by
+SELECT hire_date, COUNT(*) AS num_employees FROM employees GROUP BY hire_date;
+
+-- Join
+SELECT e.name AS employee_name, d.name AS department_name
+FROM employees e
+INNER JOIN employee_department ed ON e.id = ed.employee_id
+INNER JOIN departments d ON ed.department_id = d.id
+
+-- Truncate
+TRUNCATE TABLE employees;
+GO
+
+-- Alter
+ALTER TABLE employees ADD address VARCHAR(100);
+
+-- Drop
+ALTER TABLE employees DROP COLUMN address;
+
+-- Create index
+CREATE INDEX idx_email ON employees (email);
+
+-- Alter index
+ALTER INDEX idx_email ON employees REBUILD;
+
+-- Drop index
+DROP INDEX idx_email ON employees;
+GO
+
+-- Create view (should be first query in batch)
+CREATE VIEW high_paid_employees AS
+SELECT name, salary FROM employees WHERE salary > 50000;
+GO
+
+-- Alter view (should be first query in batch)
+ALTER VIEW high_paid_employees AS
+SELECT name, email, salary FROM employees WHERE salary > 50000;
+
+-- Drop view
+DROP VIEW high_paid_employees;
+GO
+
+-- Create procedure
+CREATE PROCEDURE get_employee_info (@id INT)
+AS
+SELECT name, salary FROM employees WHERE id = @id;
+GO
+
+-- Alter procedure (must be in a single query batch)
+ALTER PROCEDURE get_employee_info (@id INT)
+AS
+SELECT name, email, salary FROM employees WHERE id = @id;
+GO
+
+-- Drop procedure
+DROP PROCEDURE get_employee_info;
+
+-- Create function
+CREATE FUNCTION get_employee_age (@hire_date DATE)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @age INT
+    SET @age = DATEDIFF(YEAR, @hire_date, GETDATE())
+    RETURN @age
+END;
+GO
+
+SET STATISTICS TIME ON
+-- Alter function (must be in a single query batch)
+ALTER FUNCTION get_employee_age (@hire_date DATE, @phone_number VARCHAR(20))
+RETURNS INT
+AS
+BEGIN
+    DECLARE @age INT
+    SET @age = DATEDIFF(YEAR, @hire_date, GETDATE())
+    RETURN @age
+END;
+GO
+
+-- Drop function
+DROP FUNCTION get_employee_age;
+
+-- Create trigger
+CREATE TRIGGER update_hire_date
+ON employees
+AFTER UPDATE
+AS
+BEGIN
+    IF UPDATE(name)
+    BEGIN
+        UPDATE employees SET hire_date = GETDATE() WHERE id IN (SELECT id FROM inserted)
+    END
+END;
+GO
+
+-- Alter trigger (must be in a single query batch)
+ALTER TRIGGER update_hire_date
+ON employees
+AFTER UPDATE
+AS
+BEGIN
+    IF UPDATE(name) OR UPDATE(email)
+    BEGIN
+        UPDATE employees SET hire_date = GETDATE() WHERE id IN (SELECT id FROM inserted)
+    END
+END;
+GO
+
+-- Grant permissions
+CREATE LOGIN new_user WITH PASSWORD = 'Rapidfort123!';
+CREATE USER new_user FOR LOGIN new_user;
+GRANT SELECT ON employees TO new_user;
+
+-- Revoke permission
+REVOKE SELECT ON employees FROM new_user;
+
+-- Deny permission
+DENY INSERT ON employees TO new_user;
+DROP USER new_user
+GO
+
+-- Start transaction
+BEGIN TRANSACTION;
+
+INSERT INTO employees (name, id, email, phone_number, hire_date, salary)
+VALUES ('John Snow', 1001, 'john.show@gmail.com', '555-1234', '2022-01-01', 50000);
+
+-- Save transaction
+SAVE TRANSACTION Savepoint1;
+
+UPDATE employees SET phone_number = '555-5678' WHERE id = 1001;
+
+-- Commit transaction
+COMMIT TRANSACTION;
+
+-- Start transaction
+BEGIN TRANSACTION;
+
+INSERT INTO employees (name, id, email, phone_number, hire_date, salary)
+VALUES ('Jane Smith', 1002, 'jane.smith@gmail.com', '555-9876', '2022-02-01', 60000);
+
+-- Rollback transaction
+ROLLBACK TRANSACTION Savepoint1;
+GO
+
+-- Some DQL queries
+SELECT name, salary
+FROM employees
+WHERE salary > 50000
+ORDER BY salary DESC;
+
+SELECT TOP 5 name, salary
+FROM employees
+ORDER BY salary DESC;
+
+SELECT hire_date, AVG(salary) as avg_salary
+FROM employees
+GROUP BY hire_date
+HAVING AVG(salary) > 40000;
+
+SELECT hire_date, COUNT(*) as num_employees
+FROM employees
+GROUP BY hire_date
+ORDER BY hire_date ASC;
+
+SELECT DISTINCT hire_date
+FROM employees
+WHERE hire_date IS NOT NULL;
+GO
+
+-- Some System functions
+SELECT name, hire_date, YEAR(hire_date) AS hire_year
+FROM employees;
+
+UPDATE employees
+SET salary = 75000
+WHERE YEAR(hire_date) = 2022;
+
+DELETE FROM employees
+WHERE salary > 100000;
+
+SELECT TOP 2 name, salary
+FROM employees
+ORDER BY salary DESC;
+
+SELECT 'Hello, ' + USER_NAME() + '! Today is ' + CONVERT(VARCHAR(20), CURRENT_TIMESTAMP, 101);
+SELECT OBJECT_ID('employees');
+SELECT CURRENT_TIMESTAMP, DATEPART(YEAR, CURRENT_TIMESTAMP), DATEPART(MONTH, CURRENT_TIMESTAMP);
+GO

@@ -100,10 +100,10 @@ memcached:
 mongodb:
   docker_links:
   - '[`6.0`, `6.0-debian-11`, `6.0.5`, `6.0.5-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
-  - '[`5.0`, `5.0-debian-11`, `5.0.15`, `5.0.15-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
+  - '[`5.0`, `5.0-debian-11`, `5.0.16`, `5.0.16-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
   search_tags:
   - 6.0.5-debian-11-r
-  - 5.0.15-debian-11-r
+  - 5.0.16-debian-11-r
 mysql:
   docker_links:
   - '[`8.0`, `8.0-debian-11`, `8.0.32`, `8.0.32-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)'

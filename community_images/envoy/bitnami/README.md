@@ -82,10 +82,10 @@ RapidFort’s hardened [rapidfort/envoy][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.25`, `1.25-debian-11`, `1.25.4`, `1.25.4-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)
-* [`1.24`, `1.24-debian-11`, `1.24.5`, `1.24.5-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)
-* [`1.23`, `1.23-debian-11`, `1.23.7`, `1.23.7-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)
-* [`1.22`, `1.22-debian-11`, `1.22.10`, `1.22.10-debian-11-r` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.22/debian-11/Dockerfile)
+* [`1.25`, `1.25-debian-11`, `1.25.5`, `1.25.5-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)
+* [`1.24`, `1.24-debian-11`, `1.24.6`, `1.24.6-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)
+* [`1.23`, `1.23-debian-11`, `1.23.8`, `1.23.8-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)
+* [`1.22`, `1.22-debian-11`, `1.22.11`, `1.22.11-debian-11-r` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.22/debian-11/Dockerfile)
 
 ## Need support
 

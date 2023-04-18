@@ -85,7 +85,6 @@ We are making secure copies of the images we use every day and the most popular 
 * [`1.25`, `1.25-debian-11`, `1.25.5`, `1.25.5-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)
 * [`1.24`, `1.24-debian-11`, `1.24.6`, `1.24.6-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)
 * [`1.23`, `1.23-debian-11`, `1.23.8`, `1.23.8-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)
-* [`1.22`, `1.22-debian-11`, `1.22.11`, `1.22.11-debian-11-r` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.22/debian-11/Dockerfile)
 
 ## Need support
 

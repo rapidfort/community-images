@@ -44,7 +44,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    wait_time_sec: 120
     tls_certs:
       generate: true
       out_dir: certs

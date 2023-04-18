@@ -24,7 +24,7 @@ with_backoff docker exec -i "${CONTAINER_NAME}" /bin/bash -c \
 docker cp "${SCRIPTPATH}"/../../common/tests/test.psql "${CONTAINER_NAME}":/tmp/test.psql
 
 # run script
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c ysqlsh -h ${YB_HOST} -p 5433 -U yugabyte -d yugabyte -f /tmp/test.psql
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c ysqlsh -h "${YB_HOST}" -p 5433 -U yugabyte -d yugabyte -f /tmp/test.psql
 
 # ysqlsh and ycqlsh
 docker exec -i "${CONTAINER_NAME}" /bin/bash -c ysqlsh --version

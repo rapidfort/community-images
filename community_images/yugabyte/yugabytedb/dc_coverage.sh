@@ -11,6 +11,7 @@ echo "Json params for docker compose coverage = $JSON"
 
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-yugabyte-1
+YB_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${CONTAINER_NAME}")
 
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
@@ -31,7 +32,6 @@ docker exec -i "${CONTAINER_NAME}" /bin/bash -c ycqlsh --version
 
 # exercise all webpages
 UI_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"15433/tcp\"[0].HostPort")
-YU_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${CONTAINER_NAME}")
 HTML_DIR="${SCRIPTPATH}"/html_output
 mkdir -p "${HTML_DIR}"
 httrack http://"${YB_HOST}":"${UI_PORT}" -O "${HTML_DIR}"

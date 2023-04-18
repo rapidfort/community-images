@@ -17,7 +17,7 @@ YB_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{
 docker inspect "${CONTAINER_NAME}"
 
 # wait for container to be up
-with_backoff docker exec -i "${CONTAINER_NAME}" ./bin/yugabyted status
+docker exec -i "${CONTAINER_NAME}" ./bin/yugabyted status
 
 # copy test.psql into container
 docker cp "${SCRIPTPATH}"/../../common/tests/test.psql "${CONTAINER_NAME}":/tmp/test.psql

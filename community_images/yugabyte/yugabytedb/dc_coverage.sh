@@ -17,18 +17,17 @@ YB_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{
 docker inspect "${CONTAINER_NAME}"
 
 # wait for container to be up
-with_backoff docker exec -i "${CONTAINER_NAME}" /bin/bash -c \
-    "./bin/yugabyted status"
+with_backoff docker exec -i "${CONTAINER_NAME}" ./bin/yugabyted status
 
 # copy test.psql into container
 docker cp "${SCRIPTPATH}"/../../common/tests/test.psql "${CONTAINER_NAME}":/tmp/test.psql
 
 # run script
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c ysqlsh -h "${YB_HOST}" -p 5433 -U yugabyte -d yugabyte -f /tmp/test.psql
+docker exec -i "${CONTAINER_NAME}" ysqlsh -h "${YB_HOST}" -p 5433 -U yugabyte -d yugabyte -f /tmp/test.psql
 
 # ysqlsh and ycqlsh
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c ysqlsh --version
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c ycqlsh --version
+docker exec -i "${CONTAINER_NAME}" ysqlsh --version
+docker exec -i "${CONTAINER_NAME}" ycqlsh --version
 
 # exercise all webpages
 UI_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"15433/tcp\"[0].HostPort")

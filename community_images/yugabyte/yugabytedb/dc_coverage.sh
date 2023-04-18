@@ -18,6 +18,10 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-yugabyte-1
 YB_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${CONTAINER_NAME}")
 
+
+# Sleep 
+sleep 100
+
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
 

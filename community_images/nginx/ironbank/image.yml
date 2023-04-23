@@ -36,13 +36,3 @@ runtimes:
       nginx-ib:
         repository: "NGINX_IMAGE_REPOSITORY"
         tag: "NGINX_IMAGE_TAG"
-  - type: docker
-    tls_certs:
-      generate: true
-      out_dir: certs
-    nginx-ib:
-      volumes:
-      - ./certs:/certs
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./../../common/tests/common_commands.sh:/common_commands.sh
-      command: ./common_commands.sh

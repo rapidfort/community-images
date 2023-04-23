@@ -12,7 +12,6 @@ services:
     volumes:
       - ./certs:/certs
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./../../common/tests/common_commands.sh:/common_commands.sh
   backend1a:
     image: nginxdemos/hello:plain-text
     cap_add:

@@ -37,4 +37,4 @@ do
 done
 
 # Running common commands
-docker exec -i "${CONTAINER_NAME}" bash -c /common_commands.sh
+docker exec -i "${CONTAINER_NAME}" ./common_commands.sh

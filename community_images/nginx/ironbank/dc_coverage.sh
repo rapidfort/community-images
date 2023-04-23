@@ -26,6 +26,10 @@ docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp
 NON_TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort")
 TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
 
+# Running common commands
+sleep 10
+docker exec -i "${CONTAINER_NAME}" "./common_commands.sh"
+
 # run curl in loop for different endpoints
 for i in {1..20};
 do
@@ -35,6 +39,3 @@ do
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
     with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
 done
-
-# Running common commands
-docker exec -i "${CONTAINER_NAME}" "./common_commands.sh"

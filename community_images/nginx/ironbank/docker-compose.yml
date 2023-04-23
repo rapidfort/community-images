@@ -2,7 +2,7 @@ version: '2'
 
 services:
   nginx:
-    image: ${NGINX_IMAGE_REPOSITORY}:${NGINX_IMAGE_TAG}
+    image: registry1.dso.mil/ironbank/opensource/nginx/nginx
     user: root
     cap_add:
       - SYS_PTRACE
@@ -12,7 +12,8 @@ services:
     volumes:
       - ./certs:/certs
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./../../common/tests/common_commands.sh:/common_commands.sh
+      - ./../../common/tests/common_commands.sh:/tmp/common_commands.sh
+      - ./coverage_script.sh:/coverage_script.sh
   backend1a:
     image: nginxdemos/hello:plain-text
     cap_add:

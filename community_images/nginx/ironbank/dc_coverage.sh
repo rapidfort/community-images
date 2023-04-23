@@ -35,3 +35,5 @@ do
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
     with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
 done
+
+docker exec -i "${CONTAINER_NAME}" bash -c "/coverage_script.sh"

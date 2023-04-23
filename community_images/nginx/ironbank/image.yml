@@ -43,5 +43,5 @@ runtimes:
       out_dir: certs
     nginx-ib:
       volumes:
-      - ./certs:/certs
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - "./certs:/certs"
+      - "./nginx.conf:/etc/nginx/nginx.conf:ro"

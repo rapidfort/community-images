@@ -36,3 +36,12 @@ runtimes:
       nginx-ib:
         repository: "NGINX_IMAGE_REPOSITORY"
         tag: "NGINX_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    tls_certs:
+      generate: true
+      out_dir: certs
+    nginx-ib:
+      volumes:
+      - ./certs:/certs
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro

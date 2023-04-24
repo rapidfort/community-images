@@ -41,7 +41,5 @@ TAG=$(jq -r '.image_tag_details."nginx-ib".tag' < "$JSON_PARAMS")
 
 # Run common commands
 docker run --rm -i "${REPO_PATH}":"${TAG}" \
-    -v ./certs:/certs \
-    -v ./nginx.conf:/etc/nginx/nginx.conf:ro \
     -v ./../../common/tests/common_commands.sh:/tmp/common_commands.sh \
     ./tmp/common_commnands.sh;

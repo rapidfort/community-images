@@ -17,9 +17,6 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-nginx-1
 
-# log for debugging
-docker inspect "${CONTAINER_NAME}"
-
 # find non-tls and tls port
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort"
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort"
@@ -35,11 +32,3 @@ do
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
     with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
 done
-
-REPO_PATH=$(jq -r '.image_tag_details."nginx-ib".repo_path' < "$JSON_PARAMS")
-TAG=$(jq -r '.image_tag_details."nginx-ib".tag' < "$JSON_PARAMS")
-
-# # Run common commands
-# docker run --rm -i "${REPO_PATH}":"${TAG}" \
-#     -v ./../../common/tests/common_commands.sh:/tmp/common_commands.sh \
-#     ./tmp/common_commnands.sh;

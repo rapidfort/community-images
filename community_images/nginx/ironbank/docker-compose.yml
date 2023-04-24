@@ -24,7 +24,7 @@ services:
     volumes:
       - ./certs:/certs
       - ./../../common/tests/common_commands.sh:/tmp/common_commands.sh
-    command: /bin/bash -c "/tmp/common_commands.sh"
+    command: ["/bin/bash", "/tmp/common_commands.sh"]
   backend1a:
     image: nginxdemos/hello:plain-text
     cap_add:

@@ -3,7 +3,7 @@ version: '2'
 services:
   nginx:
     image: ${NGINX_IMAGE_REPOSITORY}:${NGINX_IMAGE_TAG}
-    user: nginx
+    user: root
     cap_add:
       - SYS_PTRACE
     ports:
@@ -12,7 +12,19 @@ services:
     volumes:
       - ./certs:/certs
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  nginx2:
+    image: ${NGINX_IMAGE_REPOSITORY}:${NGINX_IMAGE_TAG}
+    user: root
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '0.0.0.0::8080'
+      - '0.0.0.0::8443'
+    volumes:
+      - ./certs:/certs
       - ./../../common/tests/common_commands.sh:/tmp/common_commands.sh
+    command: /bin/sh -c "/tmp/common_commands.sh"
   backend1a:
     image: nginxdemos/hello:plain-text
     cap_add:

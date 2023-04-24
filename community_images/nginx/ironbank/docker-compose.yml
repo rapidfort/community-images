@@ -22,7 +22,7 @@ services:
       - '0.0.0.0::8080'
       - '0.0.0.0::8443'
     volumes:
-      - ./certs:/certs
+      - ./certs:/etc/ssl/certs
       - ./../../common/tests/common_commands.sh:/tmp/common_commands.sh
     command: ["/bin/bash", "/tmp/common_commands.sh"]
   backend1a:

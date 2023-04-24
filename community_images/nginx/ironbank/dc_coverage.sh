@@ -35,3 +35,5 @@ do
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
     with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
 done
+
+docker exec -i "${PROJECT_NAME}"-nginx2-1 /bin/bash -c "/tmp/common_commands.sh"

@@ -24,7 +24,8 @@ services:
     volumes:
       - ./certs:/etc/ssl/certs
       - ./../../common/tests/common_commands.sh:/tmp/common_commands.sh
-    command: "/tmp/common_commands.sh"
+    entrypoint: /bin/bash -c
+    run: chmod +x /tmp/common_commands.sh && /tmp/common_commands.sh
   backend1a:
     image: nginxdemos/hello:plain-text
     cap_add:

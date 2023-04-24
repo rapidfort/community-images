@@ -15,6 +15,7 @@ services:
       - ./../../common/tests/common_commands.sh:/tmp/common_commands.sh
       - ./coverage_script.sh:/coverage_script.sh
     command: /bin/sh -c "/tmp/common_commands.sh"
+    restart: always
   backend1a:
     image: nginxdemos/hello:plain-text
     cap_add:

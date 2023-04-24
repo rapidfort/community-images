@@ -32,3 +32,6 @@ do
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
     with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
 done
+
+# Running common commands
+docker exec -i "${CONTAINER_NAME}" /bin/sh -c "/tmp/common_commands.sh"

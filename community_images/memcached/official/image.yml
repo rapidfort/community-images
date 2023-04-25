@@ -18,16 +18,12 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`1.6.17`, `1.6`, `1`, `latest`, `1.6.17-bullseye`, `1.6-bullseye`, `1-bullseye`, `bullseye` (Dockerfile)](https://github.com/docker-library/memcached/blob/1c39f318e3a5c1b06e4c9b0d4b870c9223b26428/debian/Dockerfile)"
-  - "[`1.6.17-alpine`, `1.6-alpine`, `1-alpine`, `alpine`, `1.6.17-alpine3.16`, `1.6-alpine3.16`, `1-alpine3.16`, `alpine3.16` (Dockerfile)](https://github.com/docker-library/memcached/blob/1c39f318e3a5c1b06e4c9b0d4b870c9223b26428/alpine/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - memcached:
       input_base_tag: "1.6*bullseye"
-      output_repo: memcached-official
-  - memcached:
-      input_base_tag: "1.6*alpine"
       output_repo: memcached-official
 runtimes:
   - type: docker_compose

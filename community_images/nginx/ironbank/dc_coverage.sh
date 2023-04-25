@@ -19,6 +19,25 @@ CONTAINER_NAME="${PROJECT_NAME}"-nginx-1
 
 # reloading nginx
 docker exec -i "${CONTAINER_NAME}" nginx -s reload
+docker exec -i "${CONTAINER_NAME}" cp -v
+docker exec -i "${CONTAINER_NAME}" mkdir -v
+docker exec -i "${CONTAINER_NAME}" chmod -v
+docker exec -i "${CONTAINER_NAME}" ls -v
+docker exec -i "${CONTAINER_NAME}" mv -v
+docker exec -i "${CONTAINER_NAME}" rm -v
+docker exec -i "${CONTAINER_NAME}" ln -v
+docker exec -i "${CONTAINER_NAME}" rmdir -v 
+docker exec -i "${CONTAINER_NAME}" chgrp -v
+docker exec -i "${CONTAINER_NAME}" chown -v
+docker exec -i "${CONTAINER_NAME}" touch -v
+docker exec -i "${CONTAINER_NAME}" cat -v
+docker exec -i "${CONTAINER_NAME}" grep -v
+docker exec -i "${CONTAINER_NAME}" sed -v
+docker exec -i "${CONTAINER_NAME}" tar -v
+docker exec -i "${CONTAINER_NAME}" sort -v
+docker exec -i "${CONTAINER_NAME}" head -v
+docker exec -i "${CONTAINER_NAME}" date -v
+docker exec -i "${CONTAINER_NAME}" clear -v
 
 # find non-tls and tls port
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort"
@@ -35,5 +54,3 @@ do
     with_backoff curl https://localhost:"${TLS_PORT}"/a -k -v
     with_backoff curl https://localhost:"${TLS_PORT}"/b -k -v
 done
-
-docker exec -i "${PROJECT_NAME}"-nginx2-1 /bin/bash -c "/tmp/common_commands.sh"

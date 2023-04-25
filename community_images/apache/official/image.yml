@@ -27,9 +27,6 @@ repo_sets:
   - httpd:
       input_base_tag: "2.4.*-bullseye"
       output_repo: apache-official
-  - httpd:
-      input_base_tag: "2.4.*-alpine"
-      output_repo: apache-official
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

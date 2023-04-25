@@ -24,6 +24,7 @@ repo_sets:
   - opensource/nginx/nginx:
       input_base_tag: "1."
       output_repo: nginx-ib
+needs_common_commands: False
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

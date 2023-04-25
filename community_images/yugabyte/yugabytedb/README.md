@@ -90,7 +90,9 @@ RapidFort’s hardened [rapidfort/yugabyte][rf-dh-image-link] image has been opt
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2.15`, `latest` (2.15/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)
+* [`2.17`, `latest` (2.17/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)
+* [`2.16`, (2.16/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)
+* [`2.15`, (2.15/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)
 * [`2.14`, (2.14/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)
 
 ## Need support

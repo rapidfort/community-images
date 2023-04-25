@@ -24,8 +24,6 @@ input_registry:
 repo_sets:
   - ghost:
       input_base_tag: "5.35.1-debian-11-r"
-  - ghost:
-      input_base_tag: "4.48.9-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

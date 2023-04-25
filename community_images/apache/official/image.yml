@@ -25,7 +25,7 @@ input_registry:
   account: library
 repo_sets:
   - httpd:
-      input_base_tag: "2.4.*-bullseye"
+      input_base_tag: "2.4.*-alpine"
       output_repo: apache-official
 runtimes:
   - type: docker_compose

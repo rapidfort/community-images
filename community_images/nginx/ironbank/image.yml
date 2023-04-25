@@ -43,6 +43,7 @@ runtimes:
       out_dir: certs
     wait_time_sec: 5
     nginx-ib:
+      user: root
       entrypoint: /tmp/sleep_script.sh
       volumes:
         certs: /etc/ssl/certs

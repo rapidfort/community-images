@@ -36,16 +36,3 @@ runtimes:
       nginx-ib:
         repository: "NGINX_IMAGE_REPOSITORY"
         tag: "NGINX_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    tls_certs:
-      generate: true
-      out_dir: certs
-    wait_time_sec: 5
-    nginx-ib:
-      user: root
-      entrypoint: "/tmp/sleep_script.sh --user root"
-      volumes:
-        certs: /etc/ssl/certs
-        sleep_script.sh: /tmp/sleep_script.sh
-    

@@ -17,8 +17,8 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-nginx-1
 
-# log for debugging
-docker inspect "${CONTAINER_NAME}"
+# reloading nginx
+docker exec -i "${CONTAINER_NAME}" nginx -s reload
 
 # find non-tls and tls port
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort"

@@ -37,32 +37,30 @@ elasticsearch:
   - 7.17.9-debian-11-r
 envoy:
   docker_links:
-  - '[`1.25`, `1.25-debian-11`, `1.25.4`, `1.25.4-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)'
-  - '[`1.24`, `1.24-debian-11`, `1.24.5`, `1.24.5-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'
-  - '[`1.23`, `1.23-debian-11`, `1.23.7`, `1.23.7-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)'
-  - '[`1.22`, `1.22-debian-11`, `1.22.10`, `1.22.10-debian-11-r` (1.22/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.22/debian-11/Dockerfile)'
+  - '[`1.25`, `1.25-debian-11`, `1.25.5`, `1.25.5-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)'
+  - '[`1.24`, `1.24-debian-11`, `1.24.6`, `1.24.6-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'
+  - '[`1.23`, `1.23-debian-11`, `1.23.8`, `1.23.8-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)'
   search_tags:
-  - 1.25.4-debian-11-r
-  - 1.24.5-debian-11-r
-  - 1.23.7-debian-11-r
-  - 1.22.10-debian-11-r
+  - 1.25.5-debian-11-r
+  - 1.24.6-debian-11-r
+  - 1.23.8-debian-11-r
 etcd:
   docker_links:
-  - '[`3.5`, `3.5-debian-11`, `3.5.7`, `3.5.7-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)'
-  - '[`3.4`, `3.4-debian-11`, `3.4.24`, `3.4.24-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)'
+  - '[`3.5`, `3.5-debian-11`, `3.5.8`, `3.5.8-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)'
+  - '[`3.4`, `3.4-debian-11`, `3.4.25`, `3.4.25-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)'
   search_tags:
-  - 3.5.7-debian-11-r
-  - 3.4.24-debian-11-r
+  - 3.5.8-debian-11-r
+  - 3.4.25-debian-11-r
 fluentd:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.16.0`, `1.16.0-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.16.1`, `1.16.1-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.16.0-debian-11-r
+  - 1.16.1-debian-11-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-11`, `5.39.0`, `5.39.0-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
+  - '[`5`, `5-debian-11`, `5.44.0`, `5.44.0-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
   search_tags:
-  - 5.39.0-debian-11-r
+  - 5.44.0-debian-11-r
 haproxy:
   docker_links:
   - '[`2`, `2-debian-11`, `2.7.6`, `2.7.6-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
@@ -70,9 +68,9 @@ haproxy:
   - 2.7.6-debian-11-r
 influxdb:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.6.1`, `2.6.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.7.0`, `2.7.0-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.6.1-debian-11-r
+  - 2.7.0-debian-11-r
 mariadb:
   docker_links:
   - '[`10.11`, `10.11-debian-11`, `10.11.2`, `10.11.2-debian-11-r` (10.11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-11/Dockerfile)'
@@ -100,10 +98,10 @@ memcached:
 mongodb:
   docker_links:
   - '[`6.0`, `6.0-debian-11`, `6.0.5`, `6.0.5-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
-  - '[`5.0`, `5.0-debian-11`, `5.0.15`, `5.0.15-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
+  - '[`5.0`, `5.0-debian-11`, `5.0.16`, `5.0.16-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
   search_tags:
   - 6.0.5-debian-11-r
-  - 5.0.15-debian-11-r
+  - 5.0.16-debian-11-r
 mysql:
   docker_links:
   - '[`8.0`, `8.0-debian-11`, `8.0.32`, `8.0.32-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)'
@@ -113,9 +111,9 @@ mysql:
   - 5.7.41-debian-11-r
 nats:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.9.15`, `2.9.15-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.9.16`, `2.9.16-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.9.15-debian-11-r
+  - 2.9.16-debian-11-r
 nginx:
   docker_links:
   - '[`1.23`, `1.23-debian-11`, `1.23.4`, `1.23.4-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.23/debian-11/Dockerfile)'
@@ -152,16 +150,16 @@ rabbitmq:
   - 3.9.29-debian-11-r
 redis:
   docker_links:
-  - '[`7.0`, `7.0-debian-11`, `7.0.10`, `7.0.10-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)'
-  - '[`6.2`, `6.2-debian-11`, `6.2.11`, `6.2.11-debian-11-r` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-11/Dockerfile)'
+  - '[`7.0`, `7.0-debian-11`, `7.0.11`, `7.0.11-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)'
+  - '[`6.2`, `6.2-debian-11`, `6.2.12`, `6.2.12-debian-11-r` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-11/Dockerfile)'
   search_tags:
-  - 7.0.10-debian-11-r
-  - 6.2.11-debian-11-r
+  - 7.0.11-debian-11-r
+  - 6.2.12-debian-11-r
 redis-cluster:
   docker_links:
-  - '[`7.0`, `7.0-debian-11`, `7.0.10`, `7.0.10-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis-cluster/7.0/debian-11/Dockerfile)'
+  - '[`7.0`, `7.0-debian-11`, `7.0.11`, `7.0.11-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis-cluster/7.0/debian-11/Dockerfile)'
   search_tags:
-  - 7.0.10-debian-11-r
+  - 7.0.11-debian-11-r
 telegraf:
   docker_links:
   - '[`1`, `1-debian-11`, `1.26.1`, `1.26.1-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-11/Dockerfile)'

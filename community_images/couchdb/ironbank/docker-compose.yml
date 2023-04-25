@@ -3,7 +3,6 @@ version: '2'
 services:
   couchdb:
     image: ${COUCHDB_IMAGE_REPOSITORY}:${COUCHDB_IMAGE_TAG}
-    user: root
     cap_add:
       - SYS_PTRACE
     environment:

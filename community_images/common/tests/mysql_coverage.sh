@@ -20,6 +20,6 @@ mysqld_safe --help || mysqld --version
 
 # Excluding mariadb from running binaries that are not present in its
 #   official version or gives errors.
-mariadb --version || ( mysqlpump --version \
+mysql --version || mariadb --version || ( mysqlpump --version \
 					&& mysql_ssl_rsa_setup --version \
 					)

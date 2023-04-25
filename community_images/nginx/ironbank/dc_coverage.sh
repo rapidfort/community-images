@@ -18,7 +18,6 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-nginx-1
 
 # reloading nginx
-docker exec -i "${CONTAINER_NAME}" nginx -s reload
 docker exec -i "${CONTAINER_NAME}" cp -v
 docker exec -i "${CONTAINER_NAME}" mkdir -v
 docker exec -i "${CONTAINER_NAME}" chmod -v
@@ -38,6 +37,7 @@ docker exec -i "${CONTAINER_NAME}" sort -v
 docker exec -i "${CONTAINER_NAME}" head -v
 docker exec -i "${CONTAINER_NAME}" date -v
 docker exec -i "${CONTAINER_NAME}" clear -v
+docker exec -i "${CONTAINER_NAME}" nginx -s reload
 
 # find non-tls and tls port
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort"

@@ -44,7 +44,7 @@ runtimes:
     wait_time_sec: 5
     nginx-ib:
       user: root
-      entrypoint: /tmp/sleep_script.sh
+      entrypoint: "/tmp/sleep_script.sh --user root"
       volumes:
         certs: /etc/ssl/certs
         sleep_script.sh: /tmp/sleep_script.sh

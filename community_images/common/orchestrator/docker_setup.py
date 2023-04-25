@@ -45,7 +45,6 @@ class DockerSetup:
         common_entrypoint = self.runtime_props.get("entrypoint")
         common_volumes = self.runtime_props.get("volumes", {})
         common_environment = self.runtime_props.get("environment", {})
-        common_user = self.runtime_props.get("user", {})
 
         # create docker container
         for repo, tag_details in self.image_tag_details.items():
@@ -76,8 +75,7 @@ class DockerSetup:
 
             if entrypoint is not None:
                 cmd += f" --entrypoint {entrypoint}"
-            if common_user is not None:
-                cmd += f" --user {common_user}"
+
             if self.command == Commands.STUB_COVERAGE:
                 cmd += " --cap-add=SYS_PTRACE"
 

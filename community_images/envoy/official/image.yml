@@ -20,7 +20,7 @@ input_registry:
   account: envoyproxy
 repo_sets:
   - envoy:
-      input_base_tag: "^v1."
+      input_base_tag: "v1.26*"
       output_repo: envoy-official
 runtimes:
   - type: docker

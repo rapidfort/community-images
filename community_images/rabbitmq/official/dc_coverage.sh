@@ -22,7 +22,11 @@ JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' <"$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' <"$JSON_PARAMS")
+PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
+
+# Container name for rabbitmq
+CONTAINER_NAME="${PROJECT_NAME}"-rabbitmq-1
 
 RABBITMQ_PASS=password
 # run coverage script
-test_rabbitmq "${NAMESPACE}" rabbitmq_server "${RABBITMQ_PASS}"
+test_rabbitmq "${NAMESPACE}" "${CONTAINER_NAME}" "${RABBITMQ_PASS}"

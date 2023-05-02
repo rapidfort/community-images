@@ -11,11 +11,11 @@ function test_rabbitmq() {
     local RABBITMQ_PASS=$3
 
     PUBLISHER_NAME="publisher"
-    docker run --name "${PUBLISHER_NAME}" \
+    docker run -d --name "${PUBLISHER_NAME}" \
            --network "${NAMESPACE}"_default \
            bitnami/python \
            sleep infinity
-    
+
     # wait for publisher pod to come up
     sleep 30
     echo "#!/bin/bash
@@ -26,11 +26,11 @@ function test_rabbitmq() {
     chmod +x "$SCRIPTPATH"/publish_commands.sh
     docker cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_NAME}":/tmp/publish_commands.sh
 
-    docker exec -i "${PUBLISHER_NAME}" -- bash -c "/tmp/publish_commands.sh"
+    docker exec -i "${PUBLISHER_NAME}" bash -c "/tmp/publish_commands.sh"
 
     # consumer specific
     CONSUMER_NAME="consumer"
-    docker run --name "${CONSUMER_NAME}" --image bitnami/python --network "${NAMESPACE}"_default --command -- sleep infinity
+    docker run -d --name "${CONSUMER_NAME}" --image bitnami/python --network "${NAMESPACE}"_default --command -- sleep infinity
     # wait for consumer pod to come up
     sleep 30
     echo "#!/bin/bash

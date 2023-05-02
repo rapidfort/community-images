@@ -14,6 +14,7 @@ function test_rabbitmq() {
     docker run --name "${PUBLISHER_NAME}" \
            --restart=none \
            --namespace "${NAMESPACE}" \
+           --network ghost-network \
            bitnami/python \
            sleep infinity
     
@@ -31,7 +32,7 @@ function test_rabbitmq() {
 
     # consumer specific
     CONSUMER_NAME="consumer"
-    docker run "${CONSUMER_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --command -- sleep infinity
+    docker run "${CONSUMER_NAME}" --restart='Never' --image bitnami/python --namespace "${NAMESPACE}" --network ghost-network --command -- sleep infinity
     # wait for consumer pod to come up
     sleep 30
     echo "#!/bin/bash

@@ -3,6 +3,7 @@ version: '2'
 services:
   rabbitmq:
     image: ${RABBITMQ_IMAGE_REPOSITORY}:${RABBITMQ_IMAGE_TAG}
+    network: rabbitmq-network
     cap_add:
       - SYS_PTRACE
     environment:

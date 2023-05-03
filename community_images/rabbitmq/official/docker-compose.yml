@@ -2,7 +2,7 @@ version: '2'
 
 services:
   rabbitmq:
-    image: ${RABBITMQ_IMAGE_REPOSITORY}:${RABBITMQ_IMAGE_TAG}
+    image: rabbitmq:latest
     cap_add:
       - SYS_PTRACE
     environment:
@@ -13,8 +13,8 @@ services:
       - ./rabbitmq/data:/var/lib/rabbitmq
       - ./rabbitmq/log:/var/log/rabbitmq
     ports:
-      - '5672'
-      - '15672'
+      - '0.0.0.0::5672'
+      - '0.0.0.0::15672'
   publisher:
     image: bitnami/python
     links:

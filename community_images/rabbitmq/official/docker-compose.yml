@@ -9,7 +9,21 @@ services:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password
     ports:
-      # AMQP protocol port
       - '5672'
-      # HTTP management UI
       - '15672'
+  publisher:
+    image: bitnami/python
+    links:
+      - rabbitmq
+    volumes:
+      - './publish.py:/tmp/commands.py'
+      - './coverage_script.sh:/coverage_script.sh'
+    command: "sleep infinity"
+  consumer:
+    image: bitnami/python
+    links:
+      - rabbitmq
+    volumes:
+      - './consume.py:/tmp/commands.py'
+      - './coverage_script.sh:/coverage_script.sh'
+    command: "sleep infinity"

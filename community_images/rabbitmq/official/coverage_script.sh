@@ -5,4 +5,4 @@ python3 /tmp/commands.py --rabbitmq-server=user --password=password" > /tmp/exec
 
 chmod +x /tmp/exec_commands.sh
 
-./tmp/exec_commands.sh
+./../../tmp/exec_commands.sh

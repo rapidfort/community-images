@@ -8,6 +8,10 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password
+      - RABBITMQ_ERLANG_COOKIE=secretcookie
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq
+      - ./rabbitmq/log:/var/log/rabbitmq
     ports:
       - '5672'
       - '15672'
@@ -27,3 +31,7 @@ services:
       - './consume.py:/tmp/commands.py'
       - './coverage_script.sh:/coverage_script.sh'
     command: "sleep infinity"
+
+networks:
+  rabbitmq-network:
+    driver: bridge

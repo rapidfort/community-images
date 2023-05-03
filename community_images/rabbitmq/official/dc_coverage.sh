@@ -20,8 +20,8 @@ PUBLISHER_NAME="${PROJECT_NAME}"-publisher-1
 CONSUMER_NAME="${PROJECT_NAME}"-consumer-1
 
 # Running publish and consume commands
-docker exec -i "${PUBLISHER_NAME}" bash -c "./tmp/coverage_script.sh"
-docker exec -i "${CONSUMER_NAME}" bash -c "./tmp/coverage_script.sh"
+docker exec -i "${PUBLISHER_NAME}" bash -c "../../tmp/coverage_script.sh"
+docker exec -i "${CONSUMER_NAME}" bash -c "../../tmp/coverage_script.sh"
 
 # Running benchmark test
 PERF_POD="perf-test"

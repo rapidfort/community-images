@@ -21,7 +21,7 @@ services:
       - rabbitmq
     volumes:
       - './publish.py:/tmp/commands.py'
-      - './coverage_script.sh:/coverage_script.sh'
+      - './coverage_script.sh:/tmp/coverage_script.sh'
     command: "sleep infinity"
   consumer:
     image: bitnami/python
@@ -29,7 +29,7 @@ services:
       - rabbitmq
     volumes:
       - './consume.py:/tmp/commands.py'
-      - './coverage_script.sh:/coverage_script.sh'
+      - './coverage_script.sh:/tmp/coverage_script.sh'
     command: "sleep infinity"
 
 networks:

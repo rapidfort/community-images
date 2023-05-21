@@ -85,11 +85,11 @@ RapidFort’s hardened [rapidfort/postgresql][rf-dh-image-link] image has been o
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`15`, `15-debian-11`, `15.2.0`, `15.2.0-debian-11-r` (15/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-11/Dockerfile)
-* [`14`, `14-debian-11`, `14.7.0`, `14.7.0-debian-11-r` (14/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-11/Dockerfile)
-* [`13`, `13-debian-11`, `13.10.0`, `13.10.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)
-* [`12`, `12-debian-11`, `12.14.0`, `12.14.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)
-* [`11`, `11-debian-11`, `11.19.0`, `11.19.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)
+* [`15`, `15-debian-11`, `15.3.0`, `15.3.0-debian-11-r` (15/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-11/Dockerfile)
+* [`14`, `14-debian-11`, `14.8.0`, `14.8.0-debian-11-r` (14/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-11/Dockerfile)
+* [`13`, `13-debian-11`, `13.11.0`, `13.11.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)
+* [`12`, `12-debian-11`, `12.15.0`, `12.15.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)
+* [`11`, `11-debian-11`, `11.20.0`, `11.20.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)
 
 ## Need support
 

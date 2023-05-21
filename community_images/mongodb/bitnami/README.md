@@ -85,8 +85,8 @@ RapidFort’s hardened [rapidfort/mongodb][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`6.0`, `6.0-debian-11`, `6.0.5`, `6.0.5-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)
-* [`5.0`, `5.0-debian-11`, `5.0.17`, `5.0.17-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)
+* [`6.0`, `6.0-debian-11`, `6.0.6`, `6.0.6-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)
+* [`5.0`, `5.0-debian-11`, `5.0.18`, `5.0.18-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)
 
 ## Need support
 

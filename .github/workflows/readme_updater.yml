@@ -162,6 +162,14 @@ jobs:
           repository: rapidfort/elasticsearch
           readme-filepath: ./community_images/elasticsearch/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for ElasticSearch
+      - name: Docker Hub Description ElasticSearch Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/elasticsearch-official
+          readme-filepath: ./community_images/elasticsearch/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for ElasticSearch Official
       - name: Docker Hub Description Envoy
         uses: peter-evans/dockerhub-description@v3
         with:

@@ -30,13 +30,8 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
+    wait_time_sec: 120
     image_keys:
       elasticsearch:
         repository: "ELASTICSEARCH_IMAGE_REPOSITORY"
         tag: "ELASTICSEARCH_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    elasticsearch:
-      ports: ["9200:9200", "9300:9300"]
-      environment:
-        ALLOW_NONE_AUTHENTICATION: yes

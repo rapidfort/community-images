@@ -6,7 +6,7 @@ import sys
 from datetime import datetime
 from elasticsearch import Elasticsearch # pylint: disable=import-error
 
-server = 'localhost'  # pylint: disable=invalid-name
+# pylint: disable=invalid-name
 try:
     opts, args = getopt.getopt(sys.argv[1:], "s:", ["es-server="])
 except getopt.GetoptError:
@@ -16,7 +16,7 @@ for opt, arg in opts:
     if opt in ("--es-server", "--s"):
         server = arg
 
-es = Elasticsearch(f'http://{server}:9200')
+es = Elasticsearch('http://es-bcontainer:9200')
 
 doc = {
     'author': 'test_author',
@@ -35,9 +35,10 @@ es.indices.refresh(index="test-index")
 
 # search within the doc
 resp = es.search(index="test-index", query={"match_all": {}})
-print("Got %d Hits:" % resp['hits']['total']['value']) # pylint: disable=consider-using-f-string
+print(f"Got {resp['hits']['total']['value']} Hits:")
 for hit in resp['hits']['hits']:
-    print("%(timestamp)s %(author)s: %(text)s" % hit["_source"]) # pylint: disable=consider-using-f-string
+    print(f"{hit['_source']['timestamp']} {hit['_source']['author']}: {hit['_source']['text']}")
+
 
 # updating the document
 doc = {

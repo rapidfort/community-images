@@ -2979,7 +2979,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
+      - name: Free Space
+        run: df -h
+      - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: true
+          
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
+      - name: Free Space Verification
+        run: df -h 
       - name: Check if test required
         id: test-required
         env:
@@ -3011,16 +3028,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
-      - name: Free Space
-        run: df -h
-      - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
-        uses: jlumbroso/free-disk-space@main
-        with:
-          # All of these default to true, but feel free to set to "false" if necessary for your workflow
-          android: false
-          dotnet: false
-      - name: Free Space Verification
-        run: df -h
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3744,7 +3751,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
+      - name: Free Space
+        run: df -h
+      - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: true
+          
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
+      - name: Free Space Verification
+        run: df -h 
       - name: Check if test required
         id: test-required
         env:
@@ -3776,16 +3800,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
-      - name: Free Space
-        run: df -h
-      - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
-        uses: jlumbroso/free-disk-space@main
-        with:
-          # All of these default to true, but feel free to set to "false" if necessary for your workflow
-          android: false
-          dotnet: false
-      - name: Free Space Verification
-        run: df -h 
+      
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}

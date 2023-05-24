@@ -78,6 +78,7 @@ class StubGenerator:
     @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
     def _run_stub_command(self, tag): # pylint: disable=unused-argument
         """ Run stub command with backoff """
+        logging.info("Running Df from python:")
         os.system("df -h")
         Utils.run_cmd(["rfstub", tag])
 

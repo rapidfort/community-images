@@ -2982,7 +2982,6 @@ jobs:
       - name: Free Space
         run: |
           df -h
-          tree /mnt 
       - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
         uses: jlumbroso/free-disk-space@main
         with:
@@ -2995,12 +2994,10 @@ jobs:
           android: true
           dotnet: true
           haskell: true
-          large-packages: true
           swap-storage: true
       - name: Free Space Verification
         run: |
           df -h
-          tree /mnt
       - name: Check if test required
         id: test-required
         env:
@@ -3758,7 +3755,6 @@ jobs:
       - name: Free Space
         run: |
           df -h
-          tree /mnt 
       - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
         uses: jlumbroso/free-disk-space@main
         with:
@@ -3771,12 +3767,10 @@ jobs:
           android: true
           dotnet: true
           haskell: true
-          large-packages: true
           swap-storage: true
       - name: Free Space Verification
         run: |
           df -h
-          tree /mnt 
       - name: Check if test required
         id: test-required
         env:

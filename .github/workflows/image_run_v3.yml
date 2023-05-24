@@ -2228,7 +2228,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Free Space
-        run: df -h
+        run: |
+          df -h
+          tree /mnt 
       - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
         uses: jlumbroso/free-disk-space@main
         with:
@@ -2244,7 +2246,9 @@ jobs:
           large-packages: true
           swap-storage: true
       - name: Free Space Verification
-        run: df -h 
+        run: |
+          df -h
+          tree /mnt
       - name: Start minikube
 
         with:
@@ -2809,7 +2813,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Free Space
-        run: df -h
+        run: |
+          df -h
+          tree /mnt 
       - name: Free Up GitHub Actions Ubuntu Runner Disk Space 🔧
         uses: jlumbroso/free-disk-space@main
         with:
@@ -2825,7 +2831,9 @@ jobs:
           large-packages: true
           swap-storage: true
       - name: Free Space Verification
-        run: df -h 
+        run: |
+          df -h
+          tree /mnt
       - name: Start minikube
 
         with:

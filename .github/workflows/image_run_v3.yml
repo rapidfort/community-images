@@ -2844,29 +2844,6 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
 
-        run: ./scripts/setup.sh
-
-      - name: Create images and publish to dockerhub
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
-          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
-          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-        if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run yugabyte/yugabytedb --publish
-
-
-      - name: Report pulls
-        env:
-          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
-
-        run: |
-          curl -X POST \
-           -H "Accept: application/json" \
-           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/yugabyte": 1 }' \
-           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   zookeeper:
     runs-on: ubuntu-latest
 

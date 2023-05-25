@@ -9,7 +9,7 @@ services:
       - MYSQL_USER=bn_ghost
       - MYSQL_DATABASE=bitnami_ghost
   ghost:
-    image: ${GHOST_IMAGE_REPOSITORY}:${GHOST_IMAGE_TAG}
+    image: bitnami/ghost:5.35.1-debian-11-r2
     restart: always
     ports:
       - '8080:2368'

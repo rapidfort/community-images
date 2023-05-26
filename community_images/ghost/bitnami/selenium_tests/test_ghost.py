@@ -12,58 +12,83 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class TestGhost():
   def setup_method(self, method):
-    self.driver = webdriver.Chrome()
-    self.vars = {}
+     """setup method."""
+     chrome_options = Options()
+     chrome_options.add_argument("--headless")
+     chrome_options.add_argument('--disable-dev-shm-usage')
+     chrome_options.add_argument("disable-infobars")
+     chrome_options.add_argument("--disable-extensions")
+     chrome_options.add_argument("--disable-gpu")
+     chrome_options.add_argument("--no-sandbox")
+     self.driver = webdriver.Chrome(options=chrome_options)  # pylint: disable=attribute-defined-outside-init
+     self.driver.implicitly_wait(10)
   
   def teardown_method(self, method):
     self.driver.quit()
   
-  def wait_for_window(self, timeout = 2):
-    time.sleep(round(timeout / 1000))
-    wh_now = self.driver.window_handles
-    wh_then = self.vars["window_handles"]
-    if len(wh_now) > len(wh_then):
-      return set(wh_now).difference(set(wh_then)).pop()
-  
-  def test_ghost(self):
-    self.driver.get("http://localhost:8080/")
+  def test_ghost(self, params):
+    self.driver.get("http://localhost:{}/".format(params["port"]))
     self.driver.set_window_size(929, 791)
     self.driver.find_element(By.LINK_TEXT, "About").click()
-    self.driver.get("http://localhost:8080/ghost")
+    self.driver.get("http://localhost:{}/ghost/".format(params["port"]))
+    time.sleep(3)
     self.driver.find_element(By.ID, "identification").send_keys("user@example.com")
     self.driver.find_element(By.ID, "password").click()
     self.driver.find_element(By.ID, "password").send_keys("bitnami123")
     self.driver.find_element(By.ID, "password").send_keys(Keys.ENTER)
+    time.sleep(3)
     element = self.driver.find_element(By.ID, "ember48")
     actions = ActionChains(self.driver)
     actions.move_to_element(element).perform()
     element = self.driver.find_element(By.CSS_SELECTOR, "body")
     actions = ActionChains(self.driver)
     actions.move_to_element(element, 0, 0).perform()
+    time.sleep(3)
     self.driver.find_element(By.ID, "ember48").click()
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, ".gh-btn-green > span").click()
+    time.sleep(3)
     element = self.driver.find_element(By.CSS_SELECTOR, ".gh-members-help-card:nth-child(1) .thumbnail")
     actions = ActionChains(self.driver)
+    time.sleep(3)
     actions.move_to_element(element).perform()
+    time.sleep(3)
     element = self.driver.find_element(By.CSS_SELECTOR, "body")
+    time.sleep(3)
     actions = ActionChains(self.driver)
     actions.move_to_element(element, 0, 0).perform()
+    time.sleep(3)
     self.driver.find_element(By.ID, "ember20").click()
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, "#ember97 > span").click()
+    time.sleep(3)
     self.driver.find_element(By.ID, "ember109").send_keys("rapidfort")
+    time.sleep(3)
     element = self.driver.find_element(By.CSS_SELECTOR, ".koenig-editor__editor")
+    time.sleep(3)
     self.driver.execute_script("if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '<p data-koenig-dnd-droppable=\"true\">hello</p>'}", element)
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, ".darkgrey > span").click()
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, ".gh-publish-setting:nth-child(1) .gh-publish-setting-trigger > span").click()
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, "span:nth-child(2) > label").click()
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, ".gh-btn-black > span").click()
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, "#ember127 > span").click()
+    time.sleep(3)
     element = self.driver.find_element(By.CSS_SELECTOR, "#ember127 > span")
     actions = ActionChains(self.driver)
     actions.move_to_element(element).perform()
+    time.sleep(3)
     self.vars["window_handles"] = self.driver.window_handles
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, "img").click()
+    time.sleep(3)
     self.vars["win742"] = self.wait_for_window(2000)
+    time.sleep(3)
     self.driver.switch_to.window(self.vars["win742"])
     self.driver.execute_script("window.scrollTo(0,0)")
+    time.sleep(3)
   

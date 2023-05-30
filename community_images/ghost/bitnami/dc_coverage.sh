@@ -38,7 +38,7 @@ docker run --rm -i --cap-add=SYS_PTRACE --name ghost-smtp -d\
   --network ghost-network \
   "${REPO_PATH}:${TAG}"
 # Waiting for container to be configured successfuly and removed.
-sleep 200
+sleep 60
 # Removing mysql container and ghost network
 docker stop mysql-check
 docker rm mysql-check

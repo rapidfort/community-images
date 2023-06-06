@@ -2,11 +2,14 @@ version: '2'
 
 services:
   etcd1:
-    image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
+    image: registry1.dso.mil/ironbank/opensource/etcd/etcd
+    user: root
     cap_add:
-      - SYS_PTRACE    
+      - SYS_PTRACE
+    volumes:
+      - ./etcd_test.sh:/tmp/coverage_script.sh   
     environment:
-      - ALLOW_NONE_AUTHENTICATION=yes
+      - ALLOW_NONE_AUTHENTICATION=no
       - ETCD_NAME=etcd1
       - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://etcd1:2380
       - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
@@ -15,8 +18,10 @@ services:
       - ETCD_INITIAL_CLUSTER_TOKEN=etcd-cluster
       - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
       - ETCD_INITIAL_CLUSTER_STATE=new
+      - ETCD_PASSWORD=password123
   etcd2:
-    image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
+    image: registry1.dso.mil/ironbank/opensource/etcd/etcd
+    user: root
     cap_add:
       - SYS_PTRACE    
     environment:
@@ -30,7 +35,8 @@ services:
       - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
       - ETCD_INITIAL_CLUSTER_STATE=new
   etcd3:
-    image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
+    image: registry1.dso.mil/ironbank/opensource/etcd/etcd
+    user: root
     cap_add:
       - SYS_PTRACE    
     environment:

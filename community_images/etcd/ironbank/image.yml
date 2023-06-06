@@ -8,7 +8,7 @@ source_image_readme: https://repo1.dso.mil/dsop/opensource/etcd/etcd/-/blob/deve
 rf_docker_link: rapidfort/etcd-ib
 image_workflow_name: etcd_ironbank
 github_location: etcd/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fetcd [Change]
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fetcd%2Fetcd
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami [Change]
 
@@ -26,8 +26,22 @@ repo_sets:
       input_base_tag: "v3.5."
       output_repo: etcd-ib
 runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      etcd-ib:
+        repository: "ETCD_IMAGE_REPOSITORY"
+        tag: "ETCD_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
     etcd-ib:
-      environment:
+      volumes:
         ALLOW_NONE_AUTHENTICATION: yes
+
+
+#CERTS IN DC_COVERAGE
+#conf FILE IN DOCKER COVERAGE

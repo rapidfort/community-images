@@ -3,17 +3,16 @@
 set -x
 set -e
 
-if [[ $# -ne 1 ]]; then
-    echo "Usage:$0 <ROOT_PASSWORD>"
-    exit 1
-fi
-
-ROOT_PASSWORD="$1"
-
 function etcd_cmd()
 {
-    etcdctl --user root:"$ROOT_PASSWORD" "$@"
+    etcdctl --user root:password123 "$@"
 }
+
+etcdctl user add root:password123
+
+etcdctl user get root | grep Roles | grep --silent root
+
+etcdctl auth enable
 
 etcd_cmd version
 

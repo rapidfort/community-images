@@ -36,12 +36,3 @@ runtimes:
       etcd-ib:
         repository: "ETCD_IMAGE_REPOSITORY"
         tag: "ETCD_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    etcd-ib:
-      volumes:
-        ALLOW_NONE_AUTHENTICATION: yes
-
-
-#CERTS IN DC_COVERAGE
-#conf FILE IN DOCKER COVERAGE

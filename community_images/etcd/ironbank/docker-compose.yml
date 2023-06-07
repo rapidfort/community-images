@@ -2,12 +2,13 @@ version: '2'
 
 services:
   etcd1:
-    image: registry1.dso.mil/ironbank/opensource/etcd/etcd
+    image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
     user: root
     cap_add:
       - SYS_PTRACE
     volumes:
-      - ./etcd_test.sh:/tmp/coverage_script.sh   
+      - ./etcd_test.sh:/tmp/coverage_script.sh
+      - ./certs:/etc/etcd/ssl/certs    
     environment:
       - ALLOW_NONE_AUTHENTICATION=no
       - ETCD_NAME=etcd1
@@ -19,9 +20,15 @@ services:
       - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
       - ETCD_INITIAL_CLUSTER_STATE=new
       - ETCD_PASSWORD=password123
+      - ETCD_CLIENT_CERT_AUTH=true
+      - ETCD_PEER_CERT_FILE=/etc/etcd/ssl/certs/server.crt
+      - ETCD_PEER_KEY_FILE=/etc/etcd/ssl/certs/server.key
+      - ETCD_PEER_CLIENT_CERT_AUTH=true
   etcd2:
-    image: registry1.dso.mil/ironbank/opensource/etcd/etcd
+    image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
     user: root
+    volumes:
+      - ./certs:/etc/etcd/ssl/certs
     cap_add:
       - SYS_PTRACE    
     environment:
@@ -34,9 +41,17 @@ services:
       - ETCD_INITIAL_CLUSTER_TOKEN=etcd-cluster
       - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
       - ETCD_INITIAL_CLUSTER_STATE=new
+      - ETCD_ENABLE_V2=true
+      - ETCD_PROXY=on
+      - ETCD_CLIENT_CERT_AUTH=true
+      - ETCD_PEER_CERT_FILE=/etc/etcd/ssl/certs/server.crt
+      - ETCD_PEER_KEY_FILE=/etc/etcd/ssl/certs/server.key
+      - ETCD_PEER_CLIENT_CERT_AUTH=true
   etcd3:
-    image: registry1.dso.mil/ironbank/opensource/etcd/etcd
+    image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
     user: root
+    volumes:
+      - ./certs:/etc/etcd/ssl/certs
     cap_add:
       - SYS_PTRACE    
     environment:
@@ -49,3 +64,7 @@ services:
       - ETCD_INITIAL_CLUSTER_TOKEN=etcd-cluster
       - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
       - ETCD_INITIAL_CLUSTER_STATE=new
+      - ETCD_CLIENT_CERT_AUTH=true
+      - ETCD_PEER_CLIENT_CERT_AUTH=true
+      - ETCD_PEER_CERT_FILE=/etc/etcd/ssl/certs/server.crt
+      - ETCD_PEER_KEY_FILE=/etc/etcd/ssl/certs/server.key

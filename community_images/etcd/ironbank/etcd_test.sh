@@ -10,7 +10,7 @@ function etcd_cmd()
 
 etcdctl user add root:password123
 
-etcdctl user get root | grep Roles | grep --silent root
+(etcdctl user get root | grep Roles | grep --silent root) && etcdctl user grant-role root root
 
 etcdctl auth enable
 

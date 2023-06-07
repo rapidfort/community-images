@@ -65,7 +65,6 @@ class StubGenerator:
             # tag input stubbed image to output stubbed image
             stub_image = self.docker_client.images.get(
                 input_tag_details.full_stub_tag)
-
             result = stub_image.tag(output_tag_details.full_stub_tag)
             logging.info(
                 f"image tag:[{output_tag_details.full_stub_tag}] success={result}")
@@ -74,6 +73,9 @@ class StubGenerator:
                 output_tag_details.full_repo_path,
                 output_tag_details.stub_tag)
             logging.info(f"docker client push result: {result}")
+            # Remove original input image to clean up space
+            logging.info(f"Removing original input image: [{input_tag_details.full_tag}]")
+            self.docker_client.images.remove(input_tag_details.full_stub_tag)
 
     @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
     def _run_stub_command(self, tag): # pylint: disable=unused-argument

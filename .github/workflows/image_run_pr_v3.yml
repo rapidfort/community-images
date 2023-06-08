@@ -19,6 +19,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -82,6 +91,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -145,6 +163,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -208,6 +235,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -271,6 +307,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -334,6 +379,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -397,6 +451,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -460,6 +523,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -523,6 +595,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -586,6 +667,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -649,6 +739,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -712,6 +811,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -775,6 +883,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -838,6 +955,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -901,6 +1027,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -964,6 +1099,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1027,6 +1171,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1090,6 +1243,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1153,6 +1315,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1216,6 +1387,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1279,6 +1459,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1342,6 +1531,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1405,6 +1603,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1468,6 +1675,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1531,6 +1747,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1594,6 +1819,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1657,6 +1891,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1720,6 +1963,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1783,6 +2035,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1846,6 +2107,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1909,6 +2179,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -1972,6 +2251,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2035,6 +2323,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2098,6 +2395,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2161,6 +2467,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2224,6 +2539,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2287,6 +2611,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2350,6 +2683,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2413,6 +2755,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2476,6 +2827,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2539,6 +2899,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2602,6 +2971,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2665,6 +3043,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2728,6 +3115,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2791,6 +3187,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2854,6 +3259,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2917,6 +3331,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -2980,6 +3403,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3043,6 +3475,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3106,6 +3547,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3169,6 +3619,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3232,6 +3691,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3295,6 +3763,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3358,6 +3835,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3421,6 +3907,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3484,6 +3979,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3547,6 +4051,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3610,6 +4123,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3673,6 +4195,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3736,6 +4267,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3799,6 +4339,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required
@@ -3862,6 +4411,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Free Up GitHub Actions Runner Disk Space 🔧
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: true
 
       - name: Check if test required
         id: test-required

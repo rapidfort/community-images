@@ -162,9 +162,9 @@ redis-cluster:
   - 7.0.11-debian-11-r
 telegraf:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.26.3`, `1.26.3-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.27.0`, `1.27.0-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.26.3-debian-11-r
+  - 1.27.0-debian-11-r
 wordpress:
   docker_links:
   - '[`6`, `6-debian-11`, `6.2.2`, `6.2.2-debian-11-r` (6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-11/Dockerfile)'

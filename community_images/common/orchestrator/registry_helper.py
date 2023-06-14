@@ -88,12 +88,12 @@ class DockerHubHelper(RegistryHelper):
         Find latest tags using search_str"
         """
         tags = self._fetch_tags(account, repo)
-        
         search_pattern = re.compile(search_str)
         tags = filter(lambda tag: search_pattern.match(tag["name"]), tags)
         tags = list(filter(lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and \
                 any(image.get('os', '') == 'linux' for image in tag.get('images', [])), tags))
         logging.info("My dictionary: %s", str(tags))
+
         if len(tags) == 0:
             tags = self._fetch_tags(account, repo, deep = True)
             tags = filter(lambda tag: search_pattern.match(tag["name"]), tags)
@@ -147,7 +147,6 @@ class DockerHubHelper(RegistryHelper):
         tags = []
         if deep:
             logging.info("Trying Deep Search")
-            
         url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags?page_size=25"
 
         if account == "_":

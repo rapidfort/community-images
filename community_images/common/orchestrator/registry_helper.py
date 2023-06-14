@@ -88,16 +88,19 @@ class DockerHubHelper(RegistryHelper):
         Find latest tags using search_str"
         """
         tags = self._fetch_tags(account, repo)
-
-        search_str = re.compile(search_str)
-        tags = filter(lambda tag: search_str.search(tag["name"]), tags)
-        tags = list(filter(
-            lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and\
-                any(image.get('os', '') == 'linux' for image in tag.get('images', [])),
-            tags))
-
+        
+        search_pattern = re.compile(search_str)
+        tags = filter(lambda tag: search_pattern.match(tag["name"]), tags)
+        tags = list(filter(lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and \
+                any(image.get('os', '') == 'linux' for image in tag.get('images', [])), tags))
+        logging.info("My dictionary: %s", str(tags))
         if len(tags) == 0:
-            return None, None
+            tags = self._fetch_tags(account, repo, deep = True)
+            tags = filter(lambda tag: search_pattern.match(tag["name"]), tags)
+            tags = list(filter(lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and \
+                    any(image.get('os', '') == 'linux' for image in tag.get('images', [])), tags))
+            if len(tags) == 0:
+                return None, None
 
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["tag_last_pushed"]))
@@ -137,12 +140,14 @@ class DockerHubHelper(RegistryHelper):
         return None
 
 
-    def _fetch_tags(self, account, repo):
+    def _fetch_tags(self, account, repo, deep = False):
         """
         Get tags from the dockerhub registry API
         """
         tags = []
-
+        if deep:
+            logging.info("Trying Deep Search")
+            
         url = f"{self.BASE_URL}/v2/repositories/{account}/{repo}/tags?page_size=25"
 
         if account == "_":
@@ -159,7 +164,9 @@ class DockerHubHelper(RegistryHelper):
                 break
 
             # break after tags array is 200 size
-            if len(tags) > 200:
+            if (not deep) and len(tags) > 200:
+                break
+            if deep and len(tags) > 5000:
                 break
         return tags
 

@@ -33,19 +33,7 @@ repo_sets:
       input_base_tag: "15.*-bullseye"
       output_repo: postgresql-official
   - postgres:
-      input_base_tag: "14.*-bullseye"
-      output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "13.*-bullseye"
-      output_repo: postgresql-official
-  - postgres:
       input_base_tag: "12.*-bullseye"
-      output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "11.*-bullseye"
-      output_repo: postgresql-official
-  - postgres:
-      input_base_tag: "10.*-bullseye"
       output_repo: postgresql-official
 runtimes:
   - type: docker_compose

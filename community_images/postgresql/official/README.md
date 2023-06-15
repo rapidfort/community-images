@@ -89,7 +89,6 @@ We are making secure copies of the images we use every day and the most popular 
 * [`13`, `13.9`, `13.9-bullseye`, `13-bullseye` (DockerFile)](https://github.com/docker-library/postgres/blob/883b1c3f7b485153ec5d841271801ee436ec3314/13/bullseye/Dockerfile)
 * [`12`, `12.13`, `12.13-bullseye`, `12-bullseye` (DockerFile)](https://github.com/docker-library/postgres/blob/5ca94d535d75308b16125d132048bf93172521db/12/bullseye/Dockerfile)
 * [`11.18-bullseye`, `11-bullseye` (DockerFile)](https://github.com/docker-library/postgres/blob/14022440352a9e24d86cae450600ea56969d234b/11/bullseye/Dockerfile)
-* [`10.23-bullseye`, `10-bullseye` (DockerFile)](DockerFile)](https://github.com/docker-library/postgres/blob/c3a0b48216491953f25344c3fef1b02ed157ff3e/10/bullseye/Dockerfile)
 
 ## Need support
 

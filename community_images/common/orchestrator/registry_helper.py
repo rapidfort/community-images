@@ -92,7 +92,6 @@ class DockerHubHelper(RegistryHelper):
         tags = filter(lambda tag: search_pattern.match(tag["name"]), tags)
         tags = list(filter(lambda tag: "rfstub" not in tag["name"] and tag["tag_last_pushed"] and \
                 any(image.get('os', '') == 'linux' for image in tag.get('images', [])), tags))
-        logging.info("My dictionary: %s", str(tags))
 
         if len(tags) == 0:
             tags = self._fetch_tags(account, repo, deep = True)

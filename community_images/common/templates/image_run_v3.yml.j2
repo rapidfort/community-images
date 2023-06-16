@@ -27,7 +27,7 @@ jobs:
 {% endif %}
     steps:
       - uses: actions/checkout@v3
-      
+
 {% if  output == "pull_request" %}
       - name: Check if test required
         id: test-required

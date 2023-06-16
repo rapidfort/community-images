@@ -103,7 +103,7 @@ class CoverageRunner:
                 release_name,
                 command
             )
-        
+
         # Clearing Docker Volumes
         logging.info("Removing unused Docker Volumes")
         os.system('docker volume prune --force')

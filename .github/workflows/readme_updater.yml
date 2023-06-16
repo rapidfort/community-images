@@ -522,6 +522,14 @@ jobs:
           repository: rapidfort/wordpress
           readme-filepath: ./community_images/wordpress/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Wordpress
+      - name: Docker Hub Description Wordpress Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/wordpress-ib
+          readme-filepath: ./community_images/wordpress/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Wordpress Ironbank
       - name: Docker Hub Description YOURLS
         uses: peter-evans/dockerhub-description@v3
         with:

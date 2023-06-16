@@ -103,6 +103,10 @@ class CoverageRunner:
                 release_name,
                 command
             )
+        
+        # Clearing Docker Volumes
+        logging.info("Removing unused Docker Volumes")
+        os.system('docker volume prune --force')
 
     @staticmethod
     def _get_namespace(image_name, random_part_len=10):

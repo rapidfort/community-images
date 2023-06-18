@@ -95,3 +95,7 @@ jobs:
            -d '{ " {{- image.rf_docker_link -}} ": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
 {%- endfor %}
+
+concurrency:
+  group: ${{ '{{' }} github.workflow{{ '}}' }}-${{ '{{' }} github.ref {{ '}}' }}
+  value: 15

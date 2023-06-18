@@ -23,7 +23,7 @@ input_registry:
   account: bitnami
 repo_sets:
   - consul:
-      input_base_tag: "1.14.4-debian-11-r"
+      input_base_tag: "1.15.3-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

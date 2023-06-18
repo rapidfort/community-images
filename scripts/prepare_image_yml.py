@@ -32,7 +32,6 @@ def prepare_yml(input_yml, output_yml):
         image_name = input_dict.get("name")
         if image_name in bitnami_tags_dict:
             input_dict["docker_links"] = bitnami_tags_dict[image_name]["docker_links"]
-            input_dict["search_tags"] = bitnami_tags_dict[image_name]["search_tags"]
 
     write_yaml(input_dict, output_yml)
 

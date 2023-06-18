@@ -23,7 +23,7 @@ input_registry:
   account: bitnami
 repo_sets:
   - telegraf:
-      input_base_tag: "1.25.2-debian-11-r"
+      input_base_tag: "1.27.0-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

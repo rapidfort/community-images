@@ -1,0 +1,37 @@
+name: wordpress-ib
+official_name: Wordpress Ironbank
+official_website: https://wordpress.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/wordpress/wordpress
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fwordpress%2Fwordpress
+source_image_readme: https://repo1.dso.mil/dsop/opensource/wordpress/wordpress/-/blob/development/README.md
+rf_docker_link: rapidfort/wordpress-ib
+github_location: wordpress/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fwordpress%2Fwordpress
+usage_instructions: |
+  # Using docker run
+  $ docker run -d  -p 8080:8080 -p 4443:8443 -e ALLOW_EMPTY_PASSWORD=yes-e WORDPRESS_DATABASE_HOST=mariadb -e WORDPRESS_DATABASE_PORT_NUMBER=3306 -e WORDPRESS_DATABASE_USER=ib_wordpress -e WORDPRESS_DATABASE_NAME=ironbank_wordpress rapidfort/wordpress-ib
+
+  # Then, access it via http://localhost:8080/ or http://<host-ip>:8080/ in a browser.
+what_is_text: |
+  WordPress gives you everything you need to start your website today. Free hosting, your own domain, a world-class support team, and so much more
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/wordpress/wordpress:
+      input_base_tag: "6.2."
+      output_repo: wordpress-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      wordpress-ib:
+        repository: "WORDPRESS_IMAGE_REPOSITORY"
+        tag: "WORDPRESS_IMAGE_TAG"

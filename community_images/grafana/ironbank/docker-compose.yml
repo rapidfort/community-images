@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.17.1
+    ports:
+     - '9090:9090'
+
+  alertmanager:
+    image: prom/alertmanager:v0.20.0
+    ports:
+      - '9093:9093'
+
+  grafana-ib:
+    image: ${WORDPRESS_IMAGE_REPOSITORY}:${WORDPRESS_IMAGE_TAG}
+  # grafana-ib-test:
+  #   image: kirandeepkhehra/grafana-ib:9.5.3-rfstub
+    cap_add:
+      - SYS_PTRACE
+    environment:
+         - GF_INSTALL_PLUGINS=grafana-clock-panel
+         - GF_SERVER_ROOT_URL=http://my.grafana.server/
+    ports:
+     - '3000:3000'
+  

@@ -9,6 +9,28 @@ on:
 permissions: read-all
 
 jobs:
+  preprod-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Generate new screenshots
+        run: ./scripts/generate_screenshots.sh preprod
+  staging-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Generate new screenshots
+        run: ./scripts/generate_screenshots.sh staging
   build:
     runs-on: ubuntu-latest
     permissions:

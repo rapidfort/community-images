@@ -18,4 +18,4 @@ sudo apt-get install -y libatk1.0-0 \
 
 cd "$SCRIPTPATH"/../report_shots || exit
 npm install
-node shots.js "${SCRIPTPATH}"/../image.lst $PHASE
+node shots.js "${SCRIPTPATH}"/../image.lst "$PHASE"

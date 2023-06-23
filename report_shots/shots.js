@@ -69,7 +69,7 @@ async function main() {
       let imageYml = await yaml.load(imageYmlContents);
       let fetched_url = imageYml.report_url
 
-      if (platform === "preprod") {
+      if (platform === "pre-prod") {
         fetched_url = fetched_url.replace("frontrow.rapidfort.com", "frontrow-dev.rapidfort.io");
       } else if (platform === "staging") {
         fetched_url = fetched_url.replace("frontrow.rapidfort.com", "frontrow.rapidfort.io");

@@ -14,12 +14,13 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-# PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
-
-# Wait for setup
-sleep 30
+PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 PORT=3000
 
 # Initiating Selenium tests
-"${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${PROJECT_NAME}" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
+"${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "dummy_arg" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
+
+echo "Grafana cli coverage"
+GRAFANA_CONTAINER=${PROJECT_NAME}-grafana-ib-1
+docker exec -it ${GRAFANA_CONTAINER} grafana cli -h

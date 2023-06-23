@@ -12,9 +12,7 @@ services:
       - '9093:9093'
 
   grafana-ib:
-    image: ${WORDPRESS_IMAGE_REPOSITORY}:${WORDPRESS_IMAGE_TAG}
-  # grafana-ib-test:
-  #   image: kirandeepkhehra/grafana-ib:9.5.3-rfstub
+    image: ${GRAFANA_IMAGE_REPOSITORY}:${GRAFANA_IMAGE_TAG}
     cap_add:
       - SYS_PTRACE
     environment:

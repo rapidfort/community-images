@@ -13,10 +13,11 @@ from selenium.webdriver.support import expected_conditions  # pylint: disable=im
 from selenium.webdriver.support.wait import WebDriverWait  # pylint: disable=import-error disable=unused-import
 from selenium.webdriver.common.keys import Keys  # pylint: disable=import-error disable=unused-import
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities  # pylint: disable=import-error disable=unused-import
+from selenium.webdriver.support import expected_conditions as EC
 
 
-class TestWordpresstest1():
-    """The test word press class for testing wordpress image."""
+class TestGrafanatest1():
+    """The test word press class for testing grafana image."""
 
     def setup_method(self, method):  # pylint: disable=unused-argument
         """setup method."""
@@ -35,178 +36,130 @@ class TestWordpresstest1():
         """teardown method."""
         self.driver.quit()
 
-    def test_initializeandsetupprometheus(self, params):
+    def test_login(self, params):
         # Test name: initialize-and-setup-prometheus
         # Step # | name | target | value |
         # 1 | open | /login |
         self.driver.get(
                 "http://localhost:{}/login".format(
                     params["port"]))  # pylint: disable=consider-using-f-string
-        # 2 | setWindowSize | 727x785 |
+        # 2 | setWindowSize | 727x785 |  | 
         self.driver.set_window_size(727, 785)
         # 3 | type | name=user | admin | 
         self.driver.find_element(By.NAME, "user").send_keys("admin")
-        # 4 | click | id=current-password |
+        # 4 | click | id=current-password |  | 
         self.driver.find_element(By.ID, "current-password").click()
         # 5 | type | id=current-password | admin | 
         self.driver.find_element(By.ID, "current-password").send_keys("admin")
-        # 6 | click | css=.css-8csoim-button |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-8csoim-button").click()
-        # 7 | mouseOver | css=.css-8csoim-button > .css-1mhnkuh |
-        element = self.driver.find_element(By.CSS_SELECTOR, ".css-8csoim-button > .css-1mhnkuh")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        # 8 | type | id=new-password | newpass | 
-        self.driver.find_element(By.ID, "new-password").send_keys("newpass")
-        # 9 | click | id=confirm-new-password |
-        self.driver.find_element(By.ID, "confirm-new-password").click()
-        # 10 | type | id=confirm-new-password | newpass | 
-        self.driver.find_element(By.ID, "confirm-new-password").send_keys("newpass")
-        # 11 | click | css=.css-8csoim-button |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-8csoim-button").click()
-        # 12 | mouseOver | css=.css-hj6vlq > path |
-        element = self.driver.find_element(By.CSS_SELECTOR, ".css-hj6vlq > path")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        # 13 | click | css=.css-hj6vlq > path |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-hj6vlq > path").click()
-        # 14 | mouseOut | css=.css-w7mcn5:nth-child(1) path |
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element, 0, 0).perform()
-        # 15 | click | css=.css-fv3lde:nth-child(7) .css-1xnfi89 |
+        # 6 | click | css=.css-8csoim-button > .css-1mhnkuh |  | 
+        self.driver.find_element(By.CSS_SELECTOR, ".css-8csoim-button > .css-1mhnkuh").click()
+        # 7 | click | css=.css-oq8fy1-button > .css-1mhnkuh |  | 
+        self.driver.find_element(By.CSS_SELECTOR, ".css-oq8fy1-button > .css-1mhnkuh").click()
+        # 8 | click | css=.css-hj6vlq |  | 
+        self.driver.find_element(By.CSS_SELECTOR, ".css-hj6vlq").click()
+        # 9 | click | css=.css-fv3lde:nth-child(7) .css-1xnfi89 |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-fv3lde:nth-child(7) .css-1xnfi89").click()
-        # 16 | click | css=.css-1mlczho-input-input |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-1mlczho-input-input").click()
-        # 17 | type | css=.css-1mlczho-input-input | prom | 
-        self.driver.find_element(By.CSS_SELECTOR, ".css-1mlczho-input-input").send_keys("prom")
-        # 18 | click | linkText=Prometheus |
-        self.driver.find_element(By.LINK_TEXT, "Prometheus").click()
-        # 19 | click | css=.css-1mhnkuh |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-1mhnkuh").click()
-        # 20 | click | css=.css-y1sxu8 |
+        # 10 | click | css=.css-1y9dsbx-button |  | 
+        self.driver.find_element(By.CSS_SELECTOR, ".css-1y9dsbx-button").click()
+        # 11 | click | linkText=Data sources |  | 
+        self.driver.find_element(By.LINK_TEXT, "Data sources").click()
+        # 12 | click | xpath=//span[contains(.,'Add data source')] |  | 
+        self.driver.find_element(By.XPATH, "//span[contains(.,\'Add data source\')]").click()
+
+        self.driver.implicitly_wait(10)
+        # 17 | click | xpath=//button[contains(.,'Prometheus')] |  | 
+        self.driver.find_element(By.XPATH, "//button[contains(.,\'Prometheus\')]").click()
+        # 18 | click | css=.css-y1sxu8 |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-y1sxu8").click()
-        # 21 | click | css=.width-20:nth-child(1) |
-        self.driver.find_element(By.CSS_SELECTOR, ".width-20:nth-child(1)").click()
-        # 22 | type | css=.width-20:nth-child(1) | http://10.10.0.165:9090 | 
-        self.driver.find_element(By.CSS_SELECTOR, ".width-20:nth-child(1)").send_keys("http://10.10.0.165:9090")
-        # 23 | click | css=.css-z53gi5-button > .css-1mhnkuh |
+        # 19 | type | css=.width-20:nth-child(1) | http://10.10.0.165:9090 | 
+        self.driver.find_element(By.CSS_SELECTOR, ".width-20:nth-child(1)").send_keys("http://localhost:9090")
+        # 20 | click | css=.css-z53gi5-button > .css-1mhnkuh |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-z53gi5-button > .css-1mhnkuh").click()
-        # 24 | click | css=details |
-        self.driver.find_element(By.CSS_SELECTOR, "details").click()
-        # 25 | click | linkText=Dashboards |
-        self.driver.find_element(By.LINK_TEXT, "Dashboards").click()
-        # 26 | click | css=tr:nth-child(1) .css-1mhnkuh |
-        self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(1) .css-1mhnkuh").click()
-        # 27 | click | css=tr:nth-child(2) .css-1mhnkuh |
+        
+        ### Dashboards setup
+        # 1 | open | /datasources/edit/<hex>/dashboards |  | 
+        self.driver.get(
+            "http://localhost:{}/datasources/edit/{}/dashboards".format(
+                params['port'],
+                self.driver.current_url[39:]))
+        # 2 | setWindowSize | 727x785 |  | 
+        self.driver.set_window_size(727, 785)
+        # 3 | click | css=tr:nth-child(2) .css-1mhnkuh |  | 
         self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) .css-1mhnkuh").click()
-        # 28 | click | css=tr:nth-child(3) .css-1mhnkuh |
-        self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) .css-1mhnkuh").click()
-        # 29 | click | linkText=Prometheus Stats |
-        self.driver.find_element(By.LINK_TEXT, "Prometheus Stats").click()
-        # 30 | runScript | window.scrollTo(0,0) |
-        self.driver.execute_script("window.scrollTo(0,0)")
-        # 31 | runScript | history.back() |
-        self.driver.execute_script("history.back()")
-        # 32 | click | linkText=Prometheus 2.0 Stats |
+        # 4 | click | linkText=Prometheus 2.0 Stats |  | 
         self.driver.find_element(By.LINK_TEXT, "Prometheus 2.0 Stats").click()
-        # 33 | runScript | window.scrollTo(0,0) |
-        self.driver.execute_script("window.scrollTo(0,0)")
-        # 34 | runScript | history.back() |
-        self.driver.execute_script("history.back()")
-        # 35 | click | linkText=Grafana metrics |
-        self.driver.find_element(By.LINK_TEXT, "Grafana metrics").click()
-        # 36 | runScript | window.scrollTo(0,0) |
+        self.driver.implicitly_wait(10)
+        # 5 | runScript | window.scrollTo(0,0) |  | 
         self.driver.execute_script("window.scrollTo(0,0)")
 
-    def test_addalertmanager(self, params):
-        # Test name: add-alertmanager
-        # Step # | name | target | value | comment
-        # 1 | open | /connections/your-connections/datasources/new |
+        ### Alert manager
+        # 1 | open | /connections/your-connections/datasources/new |  | 
         self.driver.get(
-                "http://localhost:{}/connections/your-connections/datasources/new".format(
-                    params["port"]))  # pylint: disable=consider-using-f-string
-        # 2 | setWindowSize | 727x785 |
+            "http://localhost:{}/connections/your-connections/datasources/new".format(
+                params['port']))
+        # 2 | setWindowSize | 727x785 |  | 
         self.driver.set_window_size(727, 785)
-        # 3 | click | css=.css-1mlczho-input-input |
+        # 3 | click | css=.css-1mlczho-input-input |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-1mlczho-input-input").click()
         # 4 | type | css=.css-1mlczho-input-input | alert | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-1mlczho-input-input").send_keys("alert")
-        # 5 | click | css=.css-1cqw476 |
+        # 5 | click | css=.css-1cqw476 |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-1cqw476").click()
-        # 6 | mouseDown | xpath=//div[@id='reactRoot']/div/main/div[2]/div[3]/div/div[2]/div/div/div/div[3]/form/div[3]/div/div/div/div/div/div/div[2] |
+        # 6 | mouseDown | xpath=//div[@id='reactRoot']/div/main/div[2]/div[3]/div/div[2]/div/div/div/div[3]/form/div[3]/div/div/div/div/div/div/div[2] |  | 
         element = self.driver.find_element(By.XPATH, "//div[@id=\'reactRoot\']/div/main/div[2]/div[3]/div/div[2]/div/div/div/div[3]/form/div[3]/div/div/div/div/div/div/div[2]")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).click_and_hold().perform()
-        # 7 | click | css=#react-select-2-option-2 .css-1gncicp-grafana-select-option-description |
+        # 7 | click | css=#react-select-2-option-2 .css-1gncicp-grafana-select-option-description |  | 
         self.driver.find_element(By.CSS_SELECTOR, "#react-select-2-option-2 .css-1gncicp-grafana-select-option-description").click()
-        # 8 | click | css=.css-y1sxu8 |
+        # 8 | click | css=.css-y1sxu8 |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-y1sxu8").click()
         # 9 | type | css=.gf-form-input:nth-child(1) | http://10.10.0.165:9093 | 
-        self.driver.find_element(By.CSS_SELECTOR, ".gf-form-input:nth-child(1)").send_keys("http://10.10.0.165:9093")
-        # 10 | click | css=.css-z53gi5-button > .css-1mhnkuh |
+        self.driver.find_element(By.CSS_SELECTOR, ".gf-form-input:nth-child(1)").send_keys("http://localhost:9093")
+        # 10 | click | css=.css-z53gi5-button > .css-1mhnkuh |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-z53gi5-button > .css-1mhnkuh").click()
 
-    def test_usemanagement(self):
-        # Test name: usemanagement
-        # Step # | name | target | value |
-        # 1 | open | /admin/users/create |
+        ### User management
+        # 1 | open | /admin/users/create |  | 
         self.driver.get(
-                "http://localhost:{}/admin/users/create".format(
-                    params["port"]))  # pylint: disable=consider-using-f-string
-        # 2 | setWindowSize | 727x785 |
+            "http://localhost:{}/admin/users/create".format(
+                params['port']))
+        # 2 | setWindowSize | 727x785 |  | 
         self.driver.set_window_size(727, 785)
-        # 3 | click | id=name-input |
+        # 3 | click | id=name-input |  | 
         self.driver.find_element(By.ID, "name-input").click()
         # 4 | type | id=name-input | new user | 
         self.driver.find_element(By.ID, "name-input").send_keys("new user")
-        # 5 | click | id=email-input |
+        # 5 | click | id=email-input |  | 
         self.driver.find_element(By.ID, "email-input").click()
         # 6 | type | id=email-input | new@user.com | 
         self.driver.find_element(By.ID, "email-input").send_keys("new@user.com")
-        # 7 | click | id=username-input |
+        # 7 | click | id=username-input |  | 
         self.driver.find_element(By.ID, "username-input").click()
         # 8 | type | id=username-input | new-user | 
         self.driver.find_element(By.ID, "username-input").send_keys("new-user")
-        # 9 | click | id=password-input |
+        # 9 | click | id=password-input |  | 
         self.driver.find_element(By.ID, "password-input").click()
         # 10 | type | id=password-input | newuser | 
         self.driver.find_element(By.ID, "password-input").send_keys("newuser")
-        # 11 | click | css=.css-1mhnkuh |
+        # 11 | click | css=.css-1mhnkuh |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-1mhnkuh").click()
-        # 12 | click | css=.css-1fwxvu6 |
+        # 12 | click | css=.css-1fwxvu6 |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-1fwxvu6").click()
-        # 13 | click | linkText=Sign out |
-        self.driver.find_element(By.LINK_TEXT, "Sign out").click()
-        # 14 | click | name=user |
+        self.driver.implicitly_wait(5)
+        
+        ### New User login
+        self.driver.get(
+            "http://localhost:{}/logout".format(
+                params['port']))
+        # 1 | click | name=user |  | 
         self.driver.find_element(By.NAME, "user").click()
-        # 15 | type | name=user | new-user | 
+        # 2 | type | name=user | new-user | 
         self.driver.find_element(By.NAME, "user").send_keys("new-user")
-        # 16 | click | id=current-password |
+        # 3 | click | id=current-password |  | 
         self.driver.find_element(By.ID, "current-password").click()
-        # 17 | type | id=current-password | newuser | 
+        # 4 | type | id=current-password | newuser | 
         self.driver.find_element(By.ID, "current-password").send_keys("newuser")
-        # 18 | click | css=.css-8csoim-button > .css-1mhnkuh |
+        # 5 | click | css=.css-8csoim-button > .css-1mhnkuh |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-8csoim-button > .css-1mhnkuh").click()
-        # 19 | click | css=.css-1fwxvu6 |
+        # 6 | click | css=.css-1fwxvu6 |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-1fwxvu6").click()
-        # 20 | click | linkText=Sign out |
-        self.driver.find_element(By.LINK_TEXT, "Sign out").click()
-        # 21 | type | name=user | admin | 
-        self.driver.find_element(By.NAME, "user").send_keys("admin")
-        # 22 | click | id=current-password |
-        self.driver.find_element(By.ID, "current-password").click()
-        # 23 | type | id=current-password | newpass | 
-        self.driver.find_element(By.ID, "current-password").send_keys("newpass")
-        # 24 | click | css=.css-8csoim-button |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-8csoim-button").click()
-        # 25 | open | http://10.10.0.165:3000/admin/users |
-        self.driver.get("http://10.10.0.165:3000/admin/users")
-        # 26 | click | css=tr:nth-child(2) |
-        self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2)").click()
-        # 27 | click | linkText=new user |
-        self.driver.find_element(By.LINK_TEXT, "new user").click()
-        # 28 | click | css=.css-wxwti7 > .css-1ed0qk5-button > .css-1mhnkuh |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-wxwti7 > .css-1ed0qk5-button > .css-1mhnkuh").click()
-        # 29 | click | css=.css-14c36pf-layoutChildrenWrapper > .css-1ed0qk5-button > .css-1mhnkuh |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-14c36pf-layoutChildrenWrapper > .css-1ed0qk5-button > .css-1mhnkuh").click()

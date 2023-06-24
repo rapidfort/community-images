@@ -261,7 +261,30 @@ class IronBankHelper(RegistryHelper):
 
     def get_auth_header(self):
         """ get auth header for JWT """
-        return
+        login_url = f"https://registry.hub.docker.com/v2/users/login"
+        dockerhub_username = os.environ.get("DOCKERHUB_USERNAME")
+        dockerhub_password = os.environ.get("DOCKERHUB_PASSWORD")
+        resp = requests.post(
+            login_url,
+            json={
+                "username": dockerhub_username,
+                "password": dockerhub_password
+            },
+            timeout=30
+        )
+        if resp.status_code == 200:
+            resp_json = resp.json()
+            logging.debug(resp_json)
+            token = resp_json["token"]
+            return {"Authorization": f"JWT {token}"}
+        return {}    
+    
+    def delete_tag(self, account, repo, tag):
+        del_url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags/{tag}/"
+        logging.info("Deleting from %s", del_url)
+        auth_header = self.get_auth_header()
+        resp = requests.delete(del_url, headers=auth_header, timeout=30)
+        return resp.status_code == 200
 
 
 class RegistryHelperFactory:

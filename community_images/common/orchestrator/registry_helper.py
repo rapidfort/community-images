@@ -220,8 +220,11 @@ class IronBankHelper(RegistryHelper):
         if len(tags) == 0:
             return None, None
 
-        tags.sort(key=lambda tag: dateutil.parser.parse(
-            tag["push_time"]))
+        output_account = os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort")
+        if account == output_account:
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["tag_last_pushed"]))
+        else:
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["push_time"]))
         if tags:
             return tags[-1]["name"], tags[-1]["digest"]
         return None, None
@@ -233,31 +236,49 @@ class IronBankHelper(RegistryHelper):
         """
         tags = []
         url_safe_repo = urllib.parse.quote(repo, safe='')
-        url = f"{self.BASE_URL}/api/v2.0/projects/{account}/repositories/{url_safe_repo}/artifacts?page_size=100"
-        auth = HTTPBasicAuth(self.username, self.password)
-
-        for page in range(0,100):
-            page_url = f"{url}&page={page}"
-            resp = requests.get(page_url, auth=auth, timeout=120)
-            logging.debug(f"page_url : {page_url}, {resp.status_code}, {resp.text}")
-            if 200 <= resp.status_code < 300:
-                artifacts = resp.json()
-                if len(artifacts) == 0:
+        output_account = os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort")
+        if account == output_account:
+            url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags?page_size=25"
+            while url:
+                resp = requests.get(url, timeout=60)
+                logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
+                if 200 <= resp.status_code < 300:
+                    tag_objs = resp.json()
+                    tags += tag_objs.get("results", [])
+                    url = tag_objs.get("next")
+                else:
                     break
 
-                for artifact in artifacts:
-                    local_tag_list = artifact.get("tags")
-                    logging.debug(f"artifact={artifact}")
-                    if local_tag_list:
-                        # ingest the digest into all the tags
-                        sha_digest = artifact.get("digest")
-                        for local_tag in local_tag_list:
-                            local_tag["digest"] = sha_digest
-                        tags += local_tag_list
-            else:
-                break
+                # break after tags array is 200 size
+                if len(tags) > 200:
+                    break
+            return tags
+        else:    
+            url = f"{self.BASE_URL}/api/v2.0/projects/{account}/repositories/{url_safe_repo}/artifacts?page_size=100"
+            auth = HTTPBasicAuth(self.username, self.password)
 
-        return tags
+            for page in range(0,100):
+                page_url = f"{url}&page={page}"
+                resp = requests.get(page_url, auth=auth, timeout=120)
+                logging.debug(f"page_url : {page_url}, {resp.status_code}, {resp.text}")
+                if 200 <= resp.status_code < 300:
+                    artifacts = resp.json()
+                    if len(artifacts) == 0:
+                        break
+
+                    for artifact in artifacts:
+                        local_tag_list = artifact.get("tags")
+                        logging.debug(f"artifact={artifact}")
+                        if local_tag_list:
+                            # ingest the digest into all the tags
+                            sha_digest = artifact.get("digest")
+                            for local_tag in local_tag_list:
+                                local_tag["digest"] = sha_digest
+                            tags += local_tag_list
+                else:
+                    break
+
+            return tags
 
     def get_auth_header(self):
         """ get auth header for JWT """

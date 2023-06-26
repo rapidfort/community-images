@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  prometheus1:
+    image: ${PROMETHEUS_IMAGE_REPOSITORY}:${PROMETHEUS_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '9090:9090'

@@ -220,8 +220,7 @@ class IronBankHelper(RegistryHelper):
         if len(tags) == 0:
             return None, None
 
-        output_account = os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort")
-        if account == output_account:
+        if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
             tags.sort(key=lambda tag: dateutil.parser.parse(tag["tag_last_pushed"]))
         else:
             tags.sort(key=lambda tag: dateutil.parser.parse(tag["push_time"]))
@@ -235,9 +234,7 @@ class IronBankHelper(RegistryHelper):
         Get tags from the dockerhub registry API
         """
         tags = []
-        url_safe_repo = urllib.parse.quote(repo, safe='')
-        output_account = os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort")
-        if account == output_account:
+        if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
             url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags?page_size=25"
             while url:
                 resp = requests.get(url, timeout=60)
@@ -252,8 +249,8 @@ class IronBankHelper(RegistryHelper):
                 # break after tags array is 200 size
                 if len(tags) > 200:
                     break
-            return tags
-        else:    
+        else:
+            url_safe_repo = urllib.parse.quote(repo, safe='')
             url = f"{self.BASE_URL}/api/v2.0/projects/{account}/repositories/{url_safe_repo}/artifacts?page_size=100"
             auth = HTTPBasicAuth(self.username, self.password)
 
@@ -265,7 +262,6 @@ class IronBankHelper(RegistryHelper):
                     artifacts = resp.json()
                     if len(artifacts) == 0:
                         break
-
                     for artifact in artifacts:
                         local_tag_list = artifact.get("tags")
                         logging.debug(f"artifact={artifact}")
@@ -277,8 +273,7 @@ class IronBankHelper(RegistryHelper):
                             tags += local_tag_list
                 else:
                     break
-
-            return tags
+        return tags
 
     def get_auth_header(self):
         """ get auth header for JWT """
@@ -298,8 +293,8 @@ class IronBankHelper(RegistryHelper):
             logging.debug(resp_json)
             token = resp_json["token"]
             return {"Authorization": f"JWT {token}"}
-        return {}    
-    
+        return {}
+
     def delete_tag(self, account, repo, tag):
         del_url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags/{tag}/"
         logging.info("Deleting from %s", del_url)

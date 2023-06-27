@@ -254,7 +254,7 @@ class IronBankHelper(RegistryHelper):
                 resp = requests.get(page_url, auth=auth, timeout=120)
                 logging.debug(f"page_url: {page_url}, {resp.status_code}, {resp.text}")
 
-                if not (200 <= resp.status_code < 300):
+                if not 200 <= resp.status_code < 300:
                     break
                 artifacts = resp.json()
                 if len(artifacts) == 0:

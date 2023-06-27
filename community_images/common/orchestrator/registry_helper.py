@@ -249,25 +249,26 @@ class IronBankHelper(RegistryHelper):
             url = f"{self.BASE_URL}/api/v2.0/projects/{account}/repositories/{url_safe_repo}/artifacts?page_size=100"
             auth = HTTPBasicAuth(self.username, self.password)
 
-            for page in range(0,100):
-                page_url = f"{url}&page={page}"
-                resp = requests.get(page_url, auth=auth, timeout=120)
-                logging.debug(f"page_url : {page_url}, {resp.status_code}, {resp.text}")
-                if 200 <= resp.status_code < 300:
-                    artifacts = resp.json()
-                    if len(artifacts) == 0:
-                        break
-                    for artifact in artifacts:
-                        local_tag_list = artifact.get("tags")
-                        logging.debug(f"artifact={artifact}")
-                        if local_tag_list:
-                            # ingest the digest into all the tags
-                            sha_digest = artifact.get("digest")
-                            for local_tag in local_tag_list:
-                                local_tag["digest"] = sha_digest
-                            tags += local_tag_list
-                else:
-                    break
+            for page in range(0, 100):
+            page_url = f"{url}&page={page}"
+            resp = requests.get(page_url, auth=auth, timeout=120)
+            logging.debug(f"page_url: {page_url}, {resp.status_code}, {resp.text}")
+
+            if not (200 <= resp.status_code < 300):
+                break
+            artifacts = resp.json()
+            if len(artifacts) == 0:
+                break
+
+            for artifact in artifacts:
+                local_tag_list = artifact.get("tags")
+                logging.debug(f"artifact={artifact}")
+                if local_tag_list:
+                    sha_digest = artifact.get("digest")
+                    for local_tag in local_tag_list:
+                        local_tag["digest"] = sha_digest
+                    tags += local_tag_list
+
         return tags
 
     def get_auth_header(self):

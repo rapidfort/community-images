@@ -236,18 +236,13 @@ class IronBankHelper(RegistryHelper):
         tags = []
         if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
             url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags?page_size=25"
-            while url:
+            while url and len(tags) <= 200:
                 resp = requests.get(url, timeout=60)
                 logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
                 if 200 <= resp.status_code < 300:
-                    tag_objs = resp.json()
-                    tags += tag_objs.get("results", [])
-                    url = tag_objs.get("next")
+                    tags += resp.json().get("results", [])
+                    url = resp.json().get("next")
                 else:
-                    break
-
-                # break after tags array is 200 size
-                if len(tags) > 200:
                     break
         else:
             url_safe_repo = urllib.parse.quote(repo, safe='')
@@ -277,7 +272,7 @@ class IronBankHelper(RegistryHelper):
 
     def get_auth_header(self):
         """ get auth header for JWT """
-        login_url = f"https://registry.hub.docker.com/v2/users/login"
+        login_url = "https://registry.hub.docker.com/v2/users/login"
         dockerhub_username = os.environ.get("DOCKERHUB_USERNAME")
         dockerhub_password = os.environ.get("DOCKERHUB_PASSWORD")
         resp = requests.post(

@@ -250,24 +250,24 @@ class IronBankHelper(RegistryHelper):
             auth = HTTPBasicAuth(self.username, self.password)
 
             for page in range(0, 100):
-            page_url = f"{url}&page={page}"
-            resp = requests.get(page_url, auth=auth, timeout=120)
-            logging.debug(f"page_url: {page_url}, {resp.status_code}, {resp.text}")
+                page_url = f"{url}&page={page}"
+                resp = requests.get(page_url, auth=auth, timeout=120)
+                logging.debug(f"page_url: {page_url}, {resp.status_code}, {resp.text}")
 
-            if not (200 <= resp.status_code < 300):
-                break
-            artifacts = resp.json()
-            if len(artifacts) == 0:
-                break
+                if not (200 <= resp.status_code < 300):
+                    break
+                artifacts = resp.json()
+                if len(artifacts) == 0:
+                    break
 
-            for artifact in artifacts:
-                local_tag_list = artifact.get("tags")
-                logging.debug(f"artifact={artifact}")
-                if local_tag_list:
-                    sha_digest = artifact.get("digest")
-                    for local_tag in local_tag_list:
-                        local_tag["digest"] = sha_digest
-                    tags += local_tag_list
+                for artifact in artifacts:
+                    local_tag_list = artifact.get("tags")
+                    logging.debug(f"artifact={artifact}")
+                    if local_tag_list:
+                        sha_digest = artifact.get("digest")
+                        for local_tag in local_tag_list:
+                            local_tag["digest"] = sha_digest
+                        tags += local_tag_list
 
         return tags
 

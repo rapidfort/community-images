@@ -1,4 +1,4 @@
-<a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=rapidfort_logo">
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fhashicorp%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -28,7 +28,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=get_full_report_button">
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fhashicorp%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
@@ -49,7 +49,7 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
-<a href="https://github.com/docker-library/docs/blob/master/consul/README.md">
+<a href="https://github.com/hashicorp/docker-base/blob/master/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
@@ -86,7 +86,8 @@ RapidFort’s hardened [rapidfort/consul-official][rf-dh-image-link] image has b
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.14.0`, `1.14`, `latest`](https://github.com/hashicorp/docker-consul/blob/da19183e0617a285e3dbc42ad5ebfdb4e61caa31/0.X/Dockerfile)
+* [`1.15.4`, `1.15`, `latest`](https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile)
+* [`1.14.0`, `1.14`](https://github.com/hashicorp/docker-consul/blob/da19183e0617a285e3dbc42ad5ebfdb4e61caa31/0.X/Dockerfile)
 * [`1.13.3`, `1.13`](https://github.com/hashicorp/docker-consul/blob/f4f43d2534abcfc12f8aebf3c20e5339fdec384f/0.X/Dockerfile)
 * [`1.12.6`, `1.12`](https://github.com/hashicorp/docker-consul/blob/dfb2da6631adfc68ce9a930bfd90b543c7ef69c9/0.X/Dockerfile)
 
@@ -125,11 +126,11 @@ If you'd like to learn more about RapidFort or our container optimization proces
 
 [rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=view_report_button
-[rf-view-report-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=view_report_link
-[rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fhashicorp%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fhashicorp%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=view_report_button
+[rf-view-report-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fhashicorp%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=view_report_link
+[rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fhashicorp%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fhashicorp%2Fconsul?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=consul-official&utm_content=image_cve_reduction_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/consul-official?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/consul-official?logo=docker&logoColor=white
@@ -141,5 +142,5 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/consul/official/assets/metrics.webp
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/consul/official/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://hub.docker.com/_/consul
+[source-image-repo-link]: https://hub.docker.com/r/hashicorp/consul
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/consul-official

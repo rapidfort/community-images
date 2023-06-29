@@ -24,3 +24,7 @@ PORT=3000
 echo "Grafana cli coverage"
 GRAFANA_CONTAINER=${PROJECT_NAME}-grafana-ib-1
 docker exec -it ${GRAFANA_CONTAINER} grafana cli -h
+
+# Restart to setup and load plugins installed.
+docker restart ${GRAFANA_CONTAINER}
+sleep 30

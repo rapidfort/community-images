@@ -2,7 +2,7 @@ version: '2'
 
 services:
   prometheus:
-    image: prom/prometheus:v2.17.1
+    image: rapidfort/prometheus:2.44
     ports:
      - '9090:9090'
 

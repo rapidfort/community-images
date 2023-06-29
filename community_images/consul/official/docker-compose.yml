@@ -34,7 +34,7 @@ services:
       - consul1
   
   consul3:
-    image: consul:latest
+    image: hashicorp/consul
     hostname: "consul3"
     user: root
     cap_add:

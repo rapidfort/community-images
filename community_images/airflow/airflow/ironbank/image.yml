@@ -27,7 +27,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/airflow/airflow:
-      input_base_tag: "2.6."
+      input_base_tag: "2.6." # 2.6.2 is latest but 2.6.1 didn't work either
       output_repo: airflow-ib
 runtimes:
   # - type: k8s

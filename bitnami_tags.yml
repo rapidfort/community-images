@@ -30,11 +30,11 @@ couchdb:
   - 3.3.2-debian-11-r
 elasticsearch:
   docker_links:
-  - '[`8`, `8-debian-11`, `8.8.1`, `8.8.1-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)'
-  - '[`7`, `7-debian-11`, `7.17.10`, `7.17.10-debian-11-r` (7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-11/Dockerfile)'
+  - '[`8`, `8-debian-11`, `8.8.2`, `8.8.2-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)'
+  - '[`7`, `7-debian-11`, `7.17.11`, `7.17.11-debian-11-r` (7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-11/Dockerfile)'
   search_tags:
-  - 8.8.1-debian-11-r
-  - 7.17.10-debian-11-r
+  - 8.8.2-debian-11-r
+  - 7.17.11-debian-11-r
 envoy:
   docker_links:
   - '[`1.26`, `1.26-debian-11`, `1.26.2`, `1.26.2-debian-11-r` (1.26/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.26/debian-11/Dockerfile)'
@@ -60,9 +60,9 @@ fluentd:
   - 1.16.1-debian-11-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-11`, `5.53.2`, `5.53.2-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
+  - '[`5`, `5-debian-11`, `5.53.3`, `5.53.3-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
   search_tags:
-  - 5.53.2-debian-11-r
+  - 5.53.3-debian-11-r
 haproxy:
   docker_links:
   - '[`2`, `2-debian-11`, `2.8.0`, `2.8.0-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
@@ -95,10 +95,10 @@ memcached:
   - 1.6.21-debian-11-r
 mongodb:
   docker_links:
-  - '[`6.0`, `6.0-debian-11`, `6.0.6`, `6.0.6-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
+  - '[`6.0`, `6.0-debian-11`, `6.0.7`, `6.0.7-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
   - '[`5.0`, `5.0-debian-11`, `5.0.18`, `5.0.18-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
   search_tags:
-  - 6.0.6-debian-11-r
+  - 6.0.7-debian-11-r
   - 5.0.18-debian-11-r
 mysql:
   docker_links:

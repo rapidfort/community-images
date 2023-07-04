@@ -1,0 +1,38 @@
+name: grafana-ib
+official_name: Grafana Ironbank
+official_website: https://grafana.com
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/grafana/grafana
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fgrafana%2Fgrafana
+source_image_readme: https://repo1.dso.mil/dsop/opensource/grafana/grafana/-/blob/development/README.md
+rf_docker_link: rapidfort/grafana-ib
+image_workflow_name: grafana_ironbank
+github_location: grafana/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Fgrafana
+usage_instructions: |
+  # Using docker run
+  $ docker run -d --name=grafana -p 3000:3000 rapidfort/grafana-ib
+
+  # Then, access it via http://localhost:3000/ or http://<host-ip>:3000/ in a browser.
+what_is_text: |
+  Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/grafana/grafana:
+      input_base_tag: "9.5."
+      output_repo: grafana-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      grafana-ib:
+        repository: "GRAFANA_IMAGE_REPOSITORY"
+        tag: "GRAFANA_IMAGE_TAG"

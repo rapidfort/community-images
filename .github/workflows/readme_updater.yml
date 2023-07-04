@@ -458,6 +458,14 @@ jobs:
           repository: rapidfort/prometheus
           readme-filepath: ./community_images/prometheus/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Prometheus
+      - name: Docker Hub Description Prometheus Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/prometheus-ib
+          readme-filepath: ./community_images/prometheus/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Prometheus Ironbank
       - name: Docker Hub Description RabbitMQ
         uses: peter-evans/dockerhub-description@v3
         with:

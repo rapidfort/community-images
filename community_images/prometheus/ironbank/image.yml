@@ -36,12 +36,3 @@ runtimes:
     override_file: "overrides.yml"
     readiness_wait_pod_name_suffix:
       - ""
-  - type: docker_compose
-    script: dc_coverage.sh
-    compose_file: docker-compose.yml
-    image_keys:
-      prometheus-ib:
-        repository: "PROMETHEUS_IMAGE_REPOSITORY"
-        tag: "PROMETHEUS_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh

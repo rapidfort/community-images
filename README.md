@@ -301,6 +301,10 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [ghost-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/ghost?logo=docker&logoColor=white
 [ghost-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fghost?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=ghost&utm_content=landing_view_report
 
+[grafana-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/grafana/ironbank
+[grafana-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/grafana-ib?logo=docker&logoColor=white
+[grafana-ib-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Fgrafana?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=grafana-ib&utm_content=landing_view_report
+
 [haproxy-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/haproxy/bitnami
 [haproxy-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/haproxy?logo=docker&logoColor=white
 [haproxy-rf-link]:https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fhaproxy?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=haproxy&utm_content=landing_view_report

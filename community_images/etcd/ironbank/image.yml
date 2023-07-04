@@ -10,7 +10,7 @@ github_location: etcd/ironbank
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fetcd%2Fetcd
 usage_instructions: |
   # install etcd, using docker run
-  $ docker run -it --name Etcd rapidfort/etcd
+  $ docker run -it --name Etcd rapidfort/etcd-ib
 what_is_text: |
   etcd is a distributed key-value store designed to securely store data across a cluster. etcd is widely used in production on account of its reliability, fault-tolerance and ease of use.
 disclaimer: |
@@ -30,8 +30,3 @@ runtimes:
       etcd-ib:
         repository: "ETCD_IMAGE_REPOSITORY"
         tag: "ETCD_IMAGE_TAG"
-  # - type: docker
-  #   script: docker_coverage.sh
-  #   etcd-ib:
-  #     environment:
-  #       ALLOW_NONE_AUTHENTICATION: yes

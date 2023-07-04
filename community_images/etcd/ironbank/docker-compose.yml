@@ -2,7 +2,6 @@ version: '2'
 
 services:
   etcd1:
-    # image: kirandeepkhehra/etcd-ib:v3.5.9-rfstub
     image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
     user: root
     cap_add:
@@ -23,7 +22,6 @@ services:
       - 2379
 
   etcd2:
-    # image: kirandeepkhehra/etcd-ib:v3.5.9-rfstub
     image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
     user: root
     cap_add:
@@ -44,7 +42,6 @@ services:
       - 2379
 
   etcd3:
-    # image: kirandeepkhehra/etcd-ib:v3.5.9-rfstub
     image: ${ETCD_IMAGE_REPOSITORY}:${ETCD_IMAGE_TAG}
     user: root
     cap_add:

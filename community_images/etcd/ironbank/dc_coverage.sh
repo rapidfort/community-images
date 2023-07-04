@@ -19,4 +19,4 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 docker cp "${SCRIPTPATH}"/etcd_test.sh "${CONTAINER_NAME}":/tmp/etcd_test.sh
 
 # run etcd_test on cluster
-# docker exec -it "${CONTAINER_NAME}" /bin/bash -c "/tmp/etcd_test.sh $ETCD_ROOT_PASSWORD" 
+docker exec -it "${CONTAINER_NAME}" /bin/bash -c "/tmp/etcd_test.sh etcdrootpwd" 

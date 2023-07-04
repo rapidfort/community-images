@@ -220,8 +220,10 @@ class IronBankHelper(RegistryHelper):
         if len(tags) == 0:
             return None, None
 
-        tags.sort(key=lambda tag: dateutil.parser.parse(
-            tag["push_time"]))
+        if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["tag_last_pushed"]))
+        else:
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["push_time"]))
         if tags:
             return tags[-1]["name"], tags[-1]["digest"]
         return None, None
@@ -232,15 +234,28 @@ class IronBankHelper(RegistryHelper):
         Get tags from the dockerhub registry API
         """
         tags = []
-        url_safe_repo = urllib.parse.quote(repo, safe='')
-        url = f"{self.BASE_URL}/api/v2.0/projects/{account}/repositories/{url_safe_repo}/artifacts?page_size=100"
-        auth = HTTPBasicAuth(self.username, self.password)
+        if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
+            url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags?page_size=25"
+            while url and len(tags) <= 200:
+                resp = requests.get(url, timeout=60)
+                logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
+                if 200 <= resp.status_code < 300:
+                    tags += resp.json().get("results", [])
+                    url = resp.json().get("next")
+                else:
+                    break
+        else:
+            url_safe_repo = urllib.parse.quote(repo, safe='')
+            url = f"{self.BASE_URL}/api/v2.0/projects/{account}/repositories/{url_safe_repo}/artifacts?page_size=100"
+            auth = HTTPBasicAuth(self.username, self.password)
 
-        for page in range(0,100):
-            page_url = f"{url}&page={page}"
-            resp = requests.get(page_url, auth=auth, timeout=120)
-            logging.debug(f"page_url : {page_url}, {resp.status_code}, {resp.text}")
-            if 200 <= resp.status_code < 300:
+            for page in range(0, 100):
+                page_url = f"{url}&page={page}"
+                resp = requests.get(page_url, auth=auth, timeout=120)
+                logging.debug(f"page_url: {page_url}, {resp.status_code}, {resp.text}")
+
+                if not 200 <= resp.status_code < 300:
+                    break
                 artifacts = resp.json()
                 if len(artifacts) == 0:
                     break
@@ -249,19 +264,39 @@ class IronBankHelper(RegistryHelper):
                     local_tag_list = artifact.get("tags")
                     logging.debug(f"artifact={artifact}")
                     if local_tag_list:
-                        # ingest the digest into all the tags
                         sha_digest = artifact.get("digest")
                         for local_tag in local_tag_list:
                             local_tag["digest"] = sha_digest
                         tags += local_tag_list
-            else:
-                break
 
         return tags
 
     def get_auth_header(self):
         """ get auth header for JWT """
-        return
+        login_url = "https://registry.hub.docker.com/v2/users/login"
+        dockerhub_username = os.environ.get("DOCKERHUB_USERNAME")
+        dockerhub_password = os.environ.get("DOCKERHUB_PASSWORD")
+        resp = requests.post(
+            login_url,
+            json={
+                "username": dockerhub_username,
+                "password": dockerhub_password
+            },
+            timeout=30
+        )
+        if resp.status_code == 200:
+            resp_json = resp.json()
+            logging.debug(resp_json)
+            token = resp_json["token"]
+            return {"Authorization": f"JWT {token}"}
+        return {}
+
+    def delete_tag(self, account, repo, tag):
+        del_url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags/{tag}/"
+        logging.info("Deleting from %s", del_url)
+        auth_header = self.get_auth_header()
+        resp = requests.delete(del_url, headers=auth_header, timeout=30)
+        return resp.status_code == 200
 
 
 class RegistryHelperFactory:

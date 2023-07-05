@@ -45,6 +45,7 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
 
 async function main() {
   const imgListPath = process.argv[2]
+  const platform = process.argv[3]
 
   const imgList = await fsPromise.readFile(imgListPath, { encoding: 'utf8' });
   const imgListArray = imgList.split("\n");
@@ -66,7 +67,15 @@ async function main() {
 
       let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
       let imageYml = await yaml.load(imageYmlContents);
-      let report_url = imageYml.report_url + "?story_off=true"
+      let fetched_url = imageYml.report_url
+
+      if (platform === "pre-prod") {
+        fetched_url = fetched_url.replace("frontrow.rapidfort.com", "frontrow-dev.rapidfort.io");
+      } else if (platform === "staging") {
+        fetched_url = fetched_url.replace("frontrow.rapidfort.com", "frontrow.rapidfort.io");
+      }
+
+      let report_url = fetched_url + "?story_off=true"
       console.log("image url=", report_url);
 
       await takeShots(browser, imageSavePath, report_url, firstShot);

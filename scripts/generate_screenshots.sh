@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PHASE="$1"
+
 # this script keeps track of all things which need to be installed on github actions worker VM
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
@@ -16,4 +18,4 @@ sudo apt-get install -y libatk1.0-0 \
 
 cd "$SCRIPTPATH"/../report_shots || exit
 npm install
-node shots.js "${SCRIPTPATH}"/../image.lst
+node shots.js "${SCRIPTPATH}"/../image.lst "$PHASE"

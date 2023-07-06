@@ -1,0 +1,32 @@
+name: etcd-ib
+official_name: Etcd Ironbank
+official_website: https://etcd.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/etcd/etcd
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fetcd%2Fetcd
+source_image_readme: https://repo1.dso.mil/dsop/opensource/etcd/etcd/-/blob/development/README.md
+rf_docker_link: rapidfort/etcd-ib
+github_location: etcd/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fetcd%2Fetcd
+usage_instructions: |
+  # install etcd, using docker run
+  $ docker run -it --name Etcd rapidfort/etcd-ib
+what_is_text: |
+  etcd is a distributed key-value store designed to securely store data across a cluster. etcd is widely used in production on account of its reliability, fault-tolerance and ease of use.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/etcd/etcd:
+      input_base_tag: "3.5."
+      output_repo: etcd-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      etcd-ib:
+        repository: "ETCD_IMAGE_REPOSITORY"
+        tag: "ETCD_IMAGE_TAG"

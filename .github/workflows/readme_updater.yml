@@ -194,6 +194,14 @@ jobs:
           repository: rapidfort/etcd
           readme-filepath: ./community_images/etcd/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Etcd
+      - name: Docker Hub Description Etcd Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/etcd-ib
+          readme-filepath: ./community_images/etcd/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Etcd Ironbank
       - name: Docker Hub Description Fluentd
         uses: peter-evans/dockerhub-description@v3
         with:

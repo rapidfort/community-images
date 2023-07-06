@@ -2,6 +2,8 @@ global:
   imagePullSecrets: ["rf-regcred"]
 web:
   image:
+    repository: "kirandeepkhehra/airflow-ib"
+    tag: "2.6.2-rfstub"
     pullPolicy: Always
   containerSecurityContext:
     enabled: true
@@ -43,8 +45,8 @@ worker:
     enabled: true
     runAsUser: 1001
     allowPrivilegeEscalation: true
-    capabilities:
-      add: ["SYS_PTRACE"]
+    # capabilities:
+    #   add: ["SYS_PTRACE"]
   extraEnvVars:
     - name: "RF_VERBOSE"
       value: "0"

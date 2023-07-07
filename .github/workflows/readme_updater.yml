@@ -530,6 +530,14 @@ jobs:
           repository: rapidfort/traefik
           readme-filepath: ./community_images/traefik/traefik/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for TRAEFIK
+      - name: Docker Hub Description TRAEFIK Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/traefik-ib
+          readme-filepath: ./community_images/traefik/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for TRAEFIK Ironbank
       - name: Docker Hub Description Vault
         uses: peter-evans/dockerhub-description@v3
         with:

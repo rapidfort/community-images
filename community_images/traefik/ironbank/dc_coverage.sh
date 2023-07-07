@@ -10,7 +10,6 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for docker compose coverage = $JSON"
 
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
-NETWORK_NAME="${PROJECT_NAME}"_default
 CONTAINER_NAME="${PROJECT_NAME}"-reverse-proxy-1
 
 # log for debugging

@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  prometheus:
+    image: rapidfort/prometheus:2.44
+    ports:
+     - '9090:9090'
+
+  alertmanager:
+    image: prom/alertmanager:v0.20.0
+    ports:
+      - '9093:9093'
+
+  grafana-ib:
+    image: ${GRAFANA_IMAGE_REPOSITORY}:${GRAFANA_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    environment:
+         - GF_INSTALL_PLUGINS=grafana-clock-panel
+         - GF_SERVER_ROOT_URL=http://my.grafana.server/
+    ports:
+     - '3000:3000'
+  

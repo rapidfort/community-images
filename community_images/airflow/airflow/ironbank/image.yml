@@ -13,7 +13,7 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install airflow, just replace repository with RapidFort registry
-  $ helm install my-airflow bitnami/airflow --set image.repository=rapidfort/airflow
+  $ helm install my-airflow bitnami/airflow --set image.repository=rapidfort/airflow-ib
 what_is_text: |
   Apache Airflow (or simply Airflow) is a platform to programmatically author, schedule, and monitor workflows.
 
@@ -30,38 +30,38 @@ repo_sets:
       input_base_tag: "2.6." # 2.6.2 is latest but 2.6.1 didn't work either
       output_repo: airflow-ib
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    helm:
-      repo: bitnami
-      repo_url: https://charts.bitnami.com/bitnami
-      chart: airflow
-    readiness_wait_deployments_suffix:
-      - web
-      - scheduler
-    image_keys:
-      airflow:
-        repository: "image.repository"
-        tag: "image.tag"
-      airflow-scheduler:
-        repository: "scheduler.image.repository"
-        tag: "scheduler.image.tag"
-      airflow-worker:
-        repository: "worker.image.repository"
-        tag: "worker.image.tag"
-    override_file: "overrides.yml"
-    helm_additional_params:
-      auth.username: "rf-test"
-      auth.password: "rf_password123!"
-      git.dags.enabled: true
-      git.dags.repositories[0].repository: https://github.com/rapidfort/airflow-example-dags
-      git.dags.repositories[0].name: airflow-example-dags
-      git.dags.repositories[0].branch: main
-
-  # - type: docker_compose
-  #   compose_file: docker-compose.yml
-  #   wait_time_sec: 300
+  # - type: k8s
+  #   script: k8s_coverage.sh
+  #   helm:
+  #     repo: bitnami
+  #     repo_url: https://charts.bitnami.com/bitnami
+  #     chart: airflow
+  #   readiness_wait_deployments_suffix:
+  #     - web
+  #     - scheduler
   #   image_keys:
-  #     airflow-ib:
-  #       repository: "AIRFLOW_IMAGE_REPOSITORY"
-  #       tag: "AIRFLOW_IMAGE_TAG"
+  #     airflow:
+  #       repository: "image.repository"
+  #       tag: "image.tag"
+  #     airflow-scheduler:
+  #       repository: "scheduler.image.repository"
+  #       tag: "scheduler.image.tag"
+  #     airflow-worker:
+  #       repository: "worker.image.repository"
+  #       tag: "worker.image.tag"
+  #   override_file: "overrides.yml"
+  #   helm_additional_params:
+  #     auth.username: "rf-test"
+  #     auth.password: "rf_password123!"
+  #     git.dags.enabled: true
+  #     git.dags.repositories[0].repository: https://github.com/rapidfort/airflow-example-dags
+  #     git.dags.repositories[0].name: airflow-example-dags
+  #     git.dags.repositories[0].branch: main
+
+  - type: docker_compose
+    compose_file: docker-compose.yml
+    # wait_time_sec: 300
+    image_keys:
+      airflow-ib:
+        repository: "AIRFLOW_IMAGE_REPOSITORY"
+        tag: "AIRFLOW_IMAGE_TAG"

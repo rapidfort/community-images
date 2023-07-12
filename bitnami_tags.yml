@@ -1,8 +1,8 @@
 airflow:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.6.2`, `2.6.2-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.6.3`, `2.6.3-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.6.2-debian-11-r
+  - 2.6.3-debian-11-r
 airflow-scheduler:
   docker_links:
   - '[`2`, `2-debian-11`, `2.6.3`, `2.6.3-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-scheduler/2/debian-11/Dockerfile)'
@@ -49,10 +49,10 @@ envoy:
 etcd:
   docker_links:
   - '[`3.5`, `3.5-debian-11`, `3.5.9`, `3.5.9-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)'
-  - '[`3.4`, `3.4-debian-11`, `3.4.26`, `3.4.26-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)'
+  - '[`3.4`, `3.4-debian-11`, `3.4.27`, `3.4.27-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)'
   search_tags:
   - 3.5.9-debian-11-r
-  - 3.4.26-debian-11-r
+  - 3.4.27-debian-11-r
 fluentd:
   docker_links:
   - '[`1`, `1-debian-11`, `1.16.1`, `1.16.1-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
@@ -148,10 +148,10 @@ rabbitmq:
   - 3.10.24-debian-11-r
 redis:
   docker_links:
-  - '[`7.0`, `7.0-debian-11`, `7.0.11`, `7.0.11-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)'
+  - '[`7.0`, `7.0-debian-11`, `7.0.12`, `7.0.12-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)'
   - '[`6.2`, `6.2-debian-11`, `6.2.13`, `6.2.13-debian-11-r` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-11/Dockerfile)'
   search_tags:
-  - 7.0.11-debian-11-r
+  - 7.0.12-debian-11-r
   - 6.2.13-debian-11-r
 redis-cluster:
   docker_links:

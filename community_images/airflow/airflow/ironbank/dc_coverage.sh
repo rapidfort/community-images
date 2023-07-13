@@ -21,5 +21,3 @@ docker exec ${AIRFLOW_CONTAINER} airflow users create --role Admin --username rf
 
 AIRFLOW_PORT='8080'
 "${SCRIPTPATH}"/../../../common/selenium_tests/runner-dc.sh "localhost" "${AIRFLOW_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
-
-# pytest "${SCRIPTPATH}"/selenium_tests/test_enablealldags.py --server "localhost" --port "$AIRFLOW_PORT"

@@ -24,13 +24,16 @@ services:
   #   image: kirandeepkhehra/airflow-ib:2.6.2-rfstub
   #   cap_add:
   #     - SYS_PTRACE
-  #   command: airflow scheduler
+  #   command: bash -c "airflow db init && airflow scheduler"
   #   environment:
   #     - AIRFLOW_DATABASE_NAME=bitnami_airflow
   #     - AIRFLOW_DATABASE_USERNAME=bn_airflow
   #     - AIRFLOW_DATABASE_PASSWORD=bitnami1
   #     - AIRFLOW_EXECUTOR=CeleryExecutor
-  #     - AIRFLOW_WEBSERVER_HOST=airflow
+  #     - AIRFLOW_WEBSERVER_HOST=airflow-ib
+  #     - AIRFLOW__CORE__LOAD_EXAMPLES=True
+  #   volumes:
+  #     - "airflow_ib_dags:/opt/airflow/dags"
   #   depends_on:
   #     - postgresql
   #     - redis
@@ -50,10 +53,10 @@ services:
   #   depends_on:
   #     - postgresql
   #     - redis
-  airflow:
+  airflow-ib:
     image: ${AIRFLOW_IMAGE_REPOSITORY}:${AIRFLOW_IMAGE_TAG}
     # image: kirandeepkhehra/airflow-ib:2.6.2-rfstub
-    # command: bash -c "airflow db init && airflow webserver"
+    command: bash -c "airflow db init && (airflow webserver & airflow scheduler)"
     cap_add:
       - SYS_PTRACE
     environment:
@@ -61,7 +64,7 @@ services:
       - AIRFLOW_DATABASE_USERNAME=bn_airflow
       - AIRFLOW_DATABASE_PASSWORD=bitnami1
       - AIRFLOW_EXECUTOR=CeleryExecutor
-      
+      - AIRFLOW__CORE__LOAD_EXAMPLES=true
     ports:
       - '8080:8080'
     depends_on:
@@ -71,4 +74,6 @@ volumes:
   postgresql_data:
     driver: local
   redis_data:
+    driver: local
+  airflow_ib_dags:
     driver: local

@@ -58,7 +58,7 @@ class TestViewbrowse():
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "Task Instances").click()
-        self.driver.find_element(By.LINK_TEXT, "2").click()
+        self.driver.find_element(By.LINK_TEXT, "example_branch_labels").click()
         element = self.driver.find_element(By.LINK_TEXT, "Browse")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
@@ -75,9 +75,4 @@ class TestViewbrowse():
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "DAG Dependencies").click()
-        element = self.driver.find_element(
-            By.CSS_SELECTOR, ".navbar-user-icon > span")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "exit_to_appLog Out").click()
         self.driver.close()

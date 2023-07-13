@@ -59,6 +59,7 @@ runtimes:
   #     git.dags.repositories[0].branch: main
 
   - type: docker_compose
+    script: dc_coverage.sh
     compose_file: docker-compose.yml
     # wait_time_sec: 300
     image_keys:

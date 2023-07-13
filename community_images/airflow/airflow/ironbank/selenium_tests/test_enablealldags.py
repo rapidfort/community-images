@@ -67,8 +67,6 @@ class TestEnablealldags():
             By.CSS_SELECTOR, "tr:nth-child(7) .switch").click()
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(8) .switch").click()
-        self.driver.execute_script("window.scrollTo(0,624)")
-        self.driver.execute_script("window.scrollTo(0,567)")
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(9) .switch").click()
         self.driver.find_element(
@@ -89,7 +87,6 @@ class TestEnablealldags():
             By.CSS_SELECTOR, "tr:nth-child(17) .switch").click()
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(18) .switch").click()
-        self.driver.execute_script("window.scrollTo(0,895)")
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(19) .switch").click()
         self.driver.find_element(
@@ -102,9 +99,6 @@ class TestEnablealldags():
             By.CSS_SELECTOR, "tr:nth-child(23) .switch").click()
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(24) .switch").click()
-        element = self.driver.find_element(By.LINK_TEXT, "‹")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
         self.driver.find_element(
             By.CSS_SELECTOR, "tr:nth-child(25) .switch").click()
         self.driver.find_element(

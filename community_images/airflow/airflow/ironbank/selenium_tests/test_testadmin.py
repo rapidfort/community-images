@@ -70,9 +70,4 @@ class TestTestadmin():
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "XComs").click()
-        element = self.driver.find_element(
-            By.CSS_SELECTOR, ".navbar-user-icon > span")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "exit_to_appLog Out").click()
         self.driver.close()

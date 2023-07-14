@@ -83,9 +83,9 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`1.26`, `1.26-debian-11`, `1.26.2`, `1.26.2-debian-11-r` (1.26/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.26/debian-11/Dockerfile)
-* [`1.25`, `1.25-debian-11`, `1.25.7`, `1.25.7-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)
-* [`1.24`, `1.24-debian-11`, `1.24.8`, `1.24.8-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)
-* [`1.23`, `1.23-debian-11`, `1.23.10`, `1.23.10-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)
+* [`1.25`, `1.25-debian-11`, `1.25.8`, `1.25.8-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)
+* [`1.24`, `1.24-debian-11`, `1.24.9`, `1.24.9-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)
+* [`1.23`, `1.23-debian-11`, `1.23.11`, `1.23.11-debian-11-r` (1.23/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.23/debian-11/Dockerfile)
 
 ## Need support
 

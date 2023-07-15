@@ -55,14 +55,14 @@ etcd:
   - 3.4.27-debian-11-r
 fluentd:
   docker_links:
-  - '[`1`, `1-debian-11`, `1.16.1`, `1.16.1-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
+  - '[`1`, `1-debian-11`, `1.16.2`, `1.16.2-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
   search_tags:
-  - 1.16.1-debian-11-r
+  - 1.16.2-debian-11-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-11`, `5.54.0`, `5.54.0-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
+  - '[`5`, `5-debian-11`, `5.54.2`, `5.54.2-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
   search_tags:
-  - 5.54.0-debian-11-r
+  - 5.54.2-debian-11-r
 haproxy:
   docker_links:
   - '[`2`, `2-debian-11`, `2.8.1`, `2.8.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'

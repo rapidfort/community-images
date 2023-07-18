@@ -1,0 +1,36 @@
+name: nats-ib
+official_name: NATS Ironbank
+official_website: https://nats.io
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/synadia/nats-server
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fsynadia%2Fnats-server
+source_image_readme: https://repo1.dso.mil/dsop/opensource/synadia/nats-server/-/blob/development/README.md
+rf_docker_link: rapidfort/nats-ib
+image_workflow_name: nats_ironbank
+github_location: nats/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fsynadia%2Fnats-server
+usage_instructions: |
+  # Run NATS server using docker run
+  $ docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 rapidfort/nats-ib
+what_is_text: |
+  NATS is a connective technology built for the ever increasingly hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, IoT and can be used to augment or replace traditional messaging
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/synadia/nats-server:
+      input_base_tag: "2.9."
+      output_repo: nats-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    use_helm: False
+    image_keys:
+      nats-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""

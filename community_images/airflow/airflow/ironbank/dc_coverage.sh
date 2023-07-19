@@ -17,7 +17,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 AIRFLOW_CONTAINER=${PROJECT_NAME}-airflow-ib-1
 
 # Add a user for web app
-docker exec ${AIRFLOW_CONTAINER} airflow users create --role Admin --username rf-test --password rf_password123! --email rf-test@nomail.com --firstname rf --lastname test
+docker exec "${AIRFLOW_CONTAINER}" airflow users create --role Admin --username rf-test --password rf_password123! --email rf-test@nomail.com --firstname rf --lastname test
 
 AIRFLOW_PORT='8080'
 "${SCRIPTPATH}"/../../../common/selenium_tests/runner-dc.sh "localhost" "${AIRFLOW_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1

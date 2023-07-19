@@ -1,0 +1,38 @@
+name: prometheus-ib
+official_name: Prometheus Ironbank
+official_website: https://prometheus.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/prometheus/prometheus
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fprometheus%2Fprometheus
+source_image_readme: https://repo1.dso.mil/dsop/opensource/prometheus/prometheus/-/blob/development/README.md
+rf_docker_link: rapidfort/prometheus-ib
+# image_workflow_name: prometheus_ironbank
+github_location: prometheus/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fprometheus
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install prometheus, just replace repository with RapidFort registry
+  $ helm install my-prometheus bitnami/prometheus --set image.repository=rapidfort/prometheus-ib
+what_is_text: |
+  Prometheus is a free software application used for event monitoring and alerting.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/prometheus/prometheus:
+      input_base_tag: "2.44."
+      output_repo: prometheus-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    use_helm: False
+    image_keys:
+      prometheus-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""

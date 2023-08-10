@@ -50,6 +50,14 @@ jobs:
           repository: rapidfort/airflow
           readme-filepath: ./community_images/airflow/airflow/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Airflow
+      - name: Docker Hub Description Apache Airflow Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/airflow-ib
+          readme-filepath: ./community_images/airflow/airflow/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apache Airflow Ironbank
       - name: Docker Hub Description Apache Airflow Scheduler
         uses: peter-evans/dockerhub-description@v3
         with:

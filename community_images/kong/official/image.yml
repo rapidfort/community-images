@@ -26,7 +26,7 @@ input_registry:
   account: library
 repo_sets:
   - kong:
-      input_base_tag: "3.0.0-ubuntu"
+      input_base_tag: "3.4.0-ubuntu"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

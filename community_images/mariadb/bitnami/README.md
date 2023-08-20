@@ -85,13 +85,13 @@ RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`11.0`, `11.0-debian-11`, `11.0.2`, `11.0.2-debian-11-r` (11.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.0/debian-11/Dockerfile)
-* [`10.11`, `10.11-debian-11`, `10.11.4`, `10.11.4-debian-11-r` (10.11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-11/Dockerfile)
-* [`10.10`, `10.10-debian-11`, `10.10.5`, `10.10.5-debian-11-r` (10.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.10/debian-11/Dockerfile)
-* [`10.9`, `10.9-debian-11`, `10.9.7`, `10.9.7-debian-11-r` (10.9/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.9/debian-11/Dockerfile)
-* [`10.6`, `10.6-debian-11`, `10.6.14`, `10.6.14-debian-11-r` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-11/Dockerfile)
-* [`10.5`, `10.5-debian-11`, `10.5.21`, `10.5.21-debian-11-r` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-11/Dockerfile)
-* [`10.4`, `10.4-debian-11`, `10.4.30`, `10.4.30-debian-11-r` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.4/debian-11/Dockerfile)
+* [`11.0`, `11.0-debian-11`, `11.0.3`, `11.0.3-debian-11-r` (11.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.0/debian-11/Dockerfile)
+* [`10.11`, `10.11-debian-11`, `10.11.5`, `10.11.5-debian-11-r` (10.11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-11/Dockerfile)
+* [`10.10`, `10.10-debian-11`, `10.10.6`, `10.10.6-debian-11-r` (10.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.10/debian-11/Dockerfile)
+* [`10.9`, `10.9-debian-11`, `10.9.8`, `10.9.8-debian-11-r` (10.9/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.9/debian-11/Dockerfile)
+* [`10.6`, `10.6-debian-11`, `10.6.15`, `10.6.15-debian-11-r` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-11/Dockerfile)
+* [`10.5`, `10.5-debian-11`, `10.5.22`, `10.5.22-debian-11-r` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-11/Dockerfile)
+* [`10.4`, `10.4-debian-11`, `10.4.31`, `10.4.31-debian-11-r` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.4/debian-11/Dockerfile)
 
 ## Need support
 

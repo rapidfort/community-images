@@ -37,10 +37,12 @@ elasticsearch:
   - 7.17.12-debian-11-r
 envoy:
   docker_links:
+  - '[`1.27`, `1.27-debian-11`, `1.27.0`, `1.27.0-debian-11-r` (1.27/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.27/debian-11/Dockerfile)'
   - '[`1.26`, `1.26-debian-11`, `1.26.4`, `1.26.4-debian-11-r` (1.26/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.26/debian-11/Dockerfile)'
   - '[`1.25`, `1.25-debian-11`, `1.25.9`, `1.25.9-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.25/debian-11/Dockerfile)'
   - '[`1.24`, `1.24-debian-11`, `1.24.10`, `1.24.10-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.24/debian-11/Dockerfile)'
   search_tags:
+  - 1.27.0-debian-11-r
   - 1.26.4-debian-11-r
   - 1.25.9-debian-11-r
   - 1.24.10-debian-11-r
@@ -171,9 +173,9 @@ telegraf:
   - 1.27.4-debian-11-r
 wordpress:
   docker_links:
-  - '[`6`, `6-debian-11`, `6.3.0`, `6.3.0-debian-11-r` (6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-11/Dockerfile)'
+  - '[`6`, `6-debian-11`, `6.3.1`, `6.3.1-debian-11-r` (6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-11/Dockerfile)'
   search_tags:
-  - 6.3.0-debian-11-r
+  - 6.3.1-debian-11-r
 zookeeper:
   docker_links:
   - '[`3.9`, `3.9-debian-11`, `3.9.0`, `3.9.0-debian-11-r` (3.9/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper/3.9/debian-11/Dockerfile)'

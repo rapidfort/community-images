@@ -10,7 +10,7 @@ image_workflow_name: redis_official
 github_location: redis/official
 report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis
 usage_instructions: |
-  $ docker run -it --rm -p6379:6379 rapidfort/redis-official:latest
+  $ docker run -it --rm -p 6379:6379 rapidfort/redis-official:latest
 what_is_text: |
   Redis™ is an open-source, networked, in-memory, key-value data store with optional durability. It is written in ANSI C. The development of Redis is sponsored by Redis Labs today; before that, it was sponsored by Pivotal and VMware. According to the monthly ranking by DB-Engines.com, Redis is the most popular key-value store. The name Redis means REmote DIctionary Server.
 disclaimer: |

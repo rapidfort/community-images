@@ -16,7 +16,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Generate new screenshots
         run: ./scripts/generate_screenshots.sh pre-prod
@@ -27,7 +27,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Generate new screenshots
         run: ./scripts/generate_screenshots.sh staging
@@ -38,7 +38,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Generate new screenshots
         run: ./scripts/generate_screenshots.sh prod

@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/redis/redis6:
-      input_base_tag: "6."
+      input_base_tag: "6.2."
       output_repo: redis6-ib
 runtimes:
   - type: docker_compose

@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/haproxy][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-11`, `2.8.2`, `2.8.2-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)
+* [`2`, `2-debian-11`, `2.8.3`, `2.8.3-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)
 
 ## Need support
 

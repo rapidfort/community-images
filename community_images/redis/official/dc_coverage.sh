@@ -13,7 +13,7 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${NAMESPACE}"-redis-primary-1
 
 # run redis tests
-docker exec -i "${CONTAINER_NAME}" bash -c "cat /tmp/test.redis | redis-cli"
+docker exec -i "${CONTAINER_NAME}" "cat /tmp/test.redis | redis-cli"
 
 # run redis coverage
-docker exec -i "${CONTAINER_NAME}" bash -c "/tmp/redis_coverage.sh"
+docker exec -i "${CONTAINER_NAME}" "/tmp/redis_coverage.sh"

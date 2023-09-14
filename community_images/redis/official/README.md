@@ -56,7 +56,7 @@ The runtime instructions for this container are no different from the official r
 <br>
 
 ```sh
-$ docker run -it --rm -p6379:6379 rapidfort/redis-official:latest
+$ docker run -it --rm -p 6379:6379 rapidfort/redis-official:latest
 
 ```
 
@@ -82,8 +82,14 @@ RapidFort’s hardened [rapidfort/redis-official][rf-dh-image-link] image has be
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.0-bullseye`, `7-bullseye` (Dockerfile)](https://github.com/docker-library/redis/blob/master/7.0/Dockerfile)
-* [`6.2-bullseye`, `6-bullseye` (Dockerfile)](https://github.com/docker-library/redis/blob/master/6.2/Dockerfile)
+* [`7.2.0`, `7.2`, `7`, `latest`, `7.2.0-bookworm`, `7.2-bookworm`, `7-bookworm`, `bookworm`](https://github.com/docker-library/redis/blob/9b538c33746872dcd1e8c809cbde9f21ac2ec3ac/7.2/Dockerfile)
+* [`7.2.0-alpine`, `7.2-alpine`, `7-alpine`, `alpine`, `7.2.0-alpine3.18`, `7.2-alpine3.18`, `7-alpine3.18`, `alpine3.18`](https://github.com/docker-library/redis/blob/9b538c33746872dcd1e8c809cbde9f21ac2ec3ac/7.2/alpine/Dockerfile)
+* [`7.0.12`, `7.0`, `7.0.12-bookworm`, `7.0-bookworm`](https://github.com/docker-library/redis/blob/5c8459f1bd20b7b7f92325f83898636f3c8db95f/7.0/Dockerfile)
+* [`7.0.12-alpine`,  7.0-alpine`, `7.0.12-alpine3.18`, `7.0-alpine3.18`](https://github.com/docker-library/redis/blob/5c8459f1bd20b7b7f92325f83898636f3c8db95f/7.0/alpine/Dockerfile)
+* [`6.2.13`, `6.2`, `6`, `6.2.13-bookworm`, `6.2-bookworm`, `6-bookworm`](https://github.com/docker-library/redis/blob/f2da8752a05b783eb805b67ad7a56a997a0fe91f/6.2/Dockerfile)
+* [`6.2.13-alpine`, `6.2-alpine`, `6-alpine`, `6.2.13-alpine3.18`, `6.2-alpine3.18`, `6-alpine3.18`](https://github.com/docker-library/redis/blob/f2da8752a05b783eb805b67ad7a56a997a0fe91f/6.2/alpine/Dockerfile)
+* [`6.0.20`, `6.0`, `6.0.20-bookworm`, `6.0-bookworm`](https://github.com/docker-library/redis/blob/873a7cac27da5a275d0c1e0c7d41724ae2701071/6.0/Dockerfile)
+* [`6.0.20-alpine`, `6.0-alpine`, `6.0.20-alpine3.18`, `6.0-alpine3.18`](https://github.com/docker-library/redis/blob/873a7cac27da5a275d0c1e0c7d41724ae2701071/6.0/alpine/Dockerfile)
 
 ## Need support
 

@@ -1,0 +1,37 @@
+name: keycloak-official
+official_name: Keycloak Official
+official_website: https://www.keycloak.org/
+source_image_provider: Keycloak
+source_image_repo: docker.io/keycloak/keycloak
+source_image_repo_link: https://hub.docker.com/r/keycloak/keycloak
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/keycloak/README.md
+rf_docker_link: rapidfort/keycloak
+image_workflow_name: keycloak_official
+github_location: keycloak/official
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fkeycloak%2Fkeycloak
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/keycloak
+
+  # install keycloak, just replace repository with RapidFort registry
+  $ helm install my-keycloak bitnami/keycloak --set image.repository=rapidfort/keycloak
+what_is_text: |
+  Keycloak is a high performance Java-based identity and access management solution. It lets developers add an authentication layer to their applications with minimum effort.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: keycloak
+repo_sets:
+  - keycloak:
+      input_base_tag: "22.0.1-debian-11-r"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      keycloak-official:
+        repository: "KEYCLOAK_IMAGE_REPOSITORY"
+        tag: "KEYCLOAK_IMAGE_TAG"

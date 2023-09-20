@@ -1,0 +1,37 @@
+version: '3'
+
+volumes:
+  postgres_data:
+      driver: local
+
+services:
+  postgres:
+      image: postgres
+      volumes:
+        - ./db-data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: Rf-@12357
+  keycloak:
+      image: quay.io/keycloak/keycloak:latest
+      volumes:
+       - ./themes:/opt/jboss/keycloak/themes
+       - ./spi/deployments:/opt/jboss/keycloak/standalone/deployments
+      environment:
+        #KEYCLOAK_DEFAULT_THEME: rf-theme
+        KEYCLOAK_LOGLEVEL: DEBUG
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_SCHEMA: public
+        DB_PASSWORD: Rf-@12357
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+        # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+        #JDBC_PARAMS: "ssl=true" Rf-@12357
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres

@@ -31,6 +31,7 @@ runtimes:
         repository: "KEYCLOAK_IMAGE_REPOSITORY"
         tag: "KEYCLOAK_IMAGE_TAG"
   - type: docker_compose
+    script: dc_coverage_tls.sh
     compose_file: docker-compose-tls.yml
     tls_certs:
       generate: true

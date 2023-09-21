@@ -7,7 +7,7 @@ import pytest  # pylint: disable=import-error
 
 def pytest_addoption(parser):
     """The function to add options"""
-    parser.addoption("--server", action="store", help="wordpress server")
+    parser.addoption("--server", action="store", help="Keycloak server")
     parser.addoption("--port", action="store",
                      help="port on host linked to yourls container")
 

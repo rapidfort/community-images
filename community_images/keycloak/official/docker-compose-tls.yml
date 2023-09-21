@@ -11,6 +11,8 @@ services:
       - POSTGRES_PASSWORD=password
   keycloak:
     image: ${KEYCLOAK_IMAGE_REPOSITORY}:${KEYCLOAK_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
     volumes:
      - ./themes:/opt/jboss/keycloak/themes
      - ./certs:/opt/keystore/certs

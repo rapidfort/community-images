@@ -11,6 +11,8 @@ services:
       POSTGRES_PASSWORD: Rf-@12357
   keycloak:
     image: ${KEYCLOAK_IMAGE_REPOSITORY}:${KEYCLOAK_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
     volumes:
      - ./themes:/opt/jboss/keycloak/themes
     environment:
@@ -29,7 +31,7 @@ services:
       - '0.0.0.0::8080'
     depends_on:
       - postgres
-    commands: ["start-dev"]
+    command: ["start-dev"]
 
 volumes:
   db-data:

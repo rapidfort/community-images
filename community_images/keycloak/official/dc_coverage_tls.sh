@@ -18,9 +18,5 @@ sleep 15
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort"
 TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")
 
-# run curl in loop for different endpoints
-for i in {1..5};
-do 
-    echo "Attempt $i"
-        with_backoff curl https://localhost:"${TLS_PORT}" -k -v
-done
+# run curl 
+with_backoff curl https://localhost:"${TLS_PORT}" -k -v

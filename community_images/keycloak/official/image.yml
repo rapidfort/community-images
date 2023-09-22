@@ -12,6 +12,8 @@ report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Fk
 usage_instructions: |
   # The container can be started in development mode quickly with:
   $ docker run -d -p 8080:8080 rapidfort/keycloak-official:latest start-dev
+
+  # Keycloak 17 is powered by Quarkus and to deploy it in production mode it is necessary to set up TLS.
 what_is_text: |
   Keycloak is a high performance Java-based identity and access management solution. It lets developers add an authentication layer to their applications with minimum effort.
 disclaimer: |

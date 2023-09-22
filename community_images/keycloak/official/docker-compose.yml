@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  postgres:
+    image: rapidfort/postgresql-official
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: Rf-@12357
+  keycloak:
+    image: ${KEYCLOAK_IMAGE_REPOSITORY}:${KEYCLOAK_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+     - ./themes:/opt/jboss/keycloak/themes
+    environment:
+      KEYCLOAK_LOGLEVEL: DEBUG
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: Rf-@12357
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - '0.0.0.0::8080'
+    depends_on:
+      - postgres
+    command: ["start-dev"]
+
+volumes:
+  db-data:
+    driver: local

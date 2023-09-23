@@ -14,6 +14,9 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
+PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
+CONTAINER_NAME="${PROJECT_NAME}"-keycloak-1
+
 sleep 15
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort"
 TLS_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8443/tcp\"[0].HostPort")

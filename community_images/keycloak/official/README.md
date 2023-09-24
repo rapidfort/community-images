@@ -59,6 +59,8 @@ The runtime instructions for this container are no different from the official r
 # The container can be started in development mode quickly with:
 $ docker run -d -p 8080:8080 rapidfort/keycloak-official:latest start-dev
 
+# Keycloak 17 is powered by Quarkus and to deploy it in production mode it is necessary to set up TLS.
+
 ```
 
 ## What is a hardened image?

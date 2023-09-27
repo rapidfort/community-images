@@ -24,7 +24,7 @@ docker exec -i "${CONTAINER_NAME}" nginx -t
 
 # Condition to handle distroless container
 TAG_NAME=$(jq -r '.runtime_props.image_keys.nginx-ib.tag' < "$JSON_PARAMS")
-if [[ $TAG_NAME != *distroless* ]]; then
+if [[ "$TAG_NAME" != *distroless* ]]; then
   docker exec -i "${CONTAINER_NAME}" /tmp/common_commands.sh
 fi
 

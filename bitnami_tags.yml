@@ -60,9 +60,9 @@ fluentd:
   - 1.16.2-debian-11-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-11`, `5.65.0`, `5.65.0-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
+  - '[`5`, `5-debian-11`, `5.65.1`, `5.65.1-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
   search_tags:
-  - 5.65.0-debian-11-r
+  - 5.65.1-debian-11-r
 haproxy:
   docker_links:
   - '[`2`, `2-debian-11`, `2.8.3`, `2.8.3-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
@@ -125,12 +125,14 @@ nginx:
   - 1.24.0-debian-11-r
 postgresql:
   docker_links:
+  - '[`16`, `16-debian-11`, `16.0.0`, `16.0.0-debian-11-r` (16/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-11/Dockerfile)'
   - '[`15`, `15-debian-11`, `15.4.0`, `15.4.0-debian-11-r` (15/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-11/Dockerfile)'
   - '[`14`, `14-debian-11`, `14.9.0`, `14.9.0-debian-11-r` (14/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-11/Dockerfile)'
   - '[`13`, `13-debian-11`, `13.12.0`, `13.12.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)'
   - '[`12`, `12-debian-11`, `12.16.0`, `12.16.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)'
   - '[`11`, `11-debian-11`, `11.21.0`, `11.21.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)'
   search_tags:
+  - 16.0.0-debian-11-r
   - 15.4.0-debian-11-r
   - 14.9.0-debian-11-r
   - 13.12.0-debian-11-r

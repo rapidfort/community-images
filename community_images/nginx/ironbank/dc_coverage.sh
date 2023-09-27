@@ -21,7 +21,12 @@ CONTAINER_NAME="${PROJECT_NAME}"-nginx-1
 docker exec -i "${CONTAINER_NAME}" nginx -s reload
 sleep 10
 docker exec -i "${CONTAINER_NAME}" nginx -t
-docker exec -i "${CONTAINER_NAME}" /tmp/common_commands.sh
+
+# Condition to handle distroless container
+TAG_NAME=$(jq -r '.runtime_props.image_keys.nginx-ib.tag' < "$JSON_PARAMS")
+if [[ "$TAG_NAME" != *distroless* ]]; then
+  docker exec -i "${CONTAINER_NAME}" /tmp/common_commands.sh
+fi
 
 # find non-tls and tls port
 docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"8080/tcp\"[0].HostPort"

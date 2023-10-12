@@ -27,7 +27,7 @@ repo_sets:
   - etcd:
       input_base_tag: "3.5.9-debian-11-r"
   - etcd:
-      input_base_tag: "3.4.26-debian-11-r"
+      input_base_tag: "3.4.27-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

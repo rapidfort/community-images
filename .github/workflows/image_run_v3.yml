@@ -23,7 +23,7 @@ jobs:
       - name: Start minikube
 
         with:
-          memory: 6g
+          memory: 8g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 

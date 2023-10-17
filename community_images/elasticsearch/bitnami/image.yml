@@ -23,9 +23,9 @@ input_registry:
   account: bitnami
 repo_sets:
   - elasticsearch:
-      input_base_tag: "8.8.1-debian-11-r"
+      input_base_tag: "8.10.3-debian-11-r"
   - elasticsearch:
-      input_base_tag: "7.17.10-debian-11-r"
+      input_base_tag: "7.17.14-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

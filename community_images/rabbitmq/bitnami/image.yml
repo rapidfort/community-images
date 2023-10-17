@@ -23,13 +23,11 @@ input_registry:
   account: bitnami
 repo_sets:
   - rabbitmq:
-      input_base_tag: "3.12.0-debian-11-r"
+      input_base_tag: "3.12.6-debian-11-r"
   - rabbitmq:
-      input_base_tag: "3.11.18-debian-11-r"
+      input_base_tag: "3.11.23-debian-11-r"
   - rabbitmq:
-      input_base_tag: "3.10.24-debian-11-r"
-  - rabbitmq:
-      input_base_tag: "3.9.29-debian-11-r"
+      input_base_tag: "3.10.25-debian-11-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

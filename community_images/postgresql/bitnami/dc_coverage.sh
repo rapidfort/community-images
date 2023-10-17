@@ -18,4 +18,4 @@ PG_CONTAINER="${PROJECT_NAME}"-postgresql-master-1
 #PG_PORT=$(docker inspect "${PG_CONTAINER}" | jq -r ".[].NetworkSettings.Ports.\"5432/tcp\"[0].HostPort")
 
 # run pgbench test
-docker exec -i "${PG_CONTAINER}" pgbench --host localhost -U postgres -d postgres -p 5432 -i -s 50
+docker exec -i "${PG_CONTAINER}" pgbench --host localhost -U postgres -d postgres -p 5432 -i -s 25

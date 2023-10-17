@@ -101,7 +101,7 @@ class DockerComposeSetup:
         # kill docker-compose setup container
         try:
             cmd = f"docker-compose --env-file {self.temp_env_file} -f {self.docker_file}"
-            cmd += f" -p {self.namespace_name} down --timeout 60"
+            cmd += f" -p {self.namespace_name} down -v --timeout 60"
             Utils.run_cmd(cmd.split())
         except subprocess.CalledProcessError as excp:
             logging.info(f"docker-compose down failed due to {excp}")

@@ -27,6 +27,7 @@ function test_nats() {
    set -x
    set -e
    GO111MODULE=off go get github.com/nats-io/nats.go
+   go env -w GOPROXY=http://${NATS_SERVER}:8222,direct
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go install && cd || exit
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-echo && go install && cd || exit
    nats-echo -s nats://$NATS_USER:$NATS_PASS@${NATS_SERVER}:4222 SomeSubject &

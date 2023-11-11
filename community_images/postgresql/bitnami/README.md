@@ -85,12 +85,12 @@ RapidFort’s hardened [rapidfort/postgresql][rf-dh-image-link] image has been o
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`16`, `16-debian-11`, `16.0.0`, `16.0.0-debian-11-r` (16/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-11/Dockerfile)
-* [`15`, `15-debian-11`, `15.4.0`, `15.4.0-debian-11-r` (15/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-11/Dockerfile)
-* [`14`, `14-debian-11`, `14.9.0`, `14.9.0-debian-11-r` (14/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-11/Dockerfile)
-* [`13`, `13-debian-11`, `13.12.0`, `13.12.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)
-* [`12`, `12-debian-11`, `12.16.0`, `12.16.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)
-* [`11`, `11-debian-11`, `11.21.0`, `11.21.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)
+* [`16`, `16-debian-11`, `16.1.0`, `16.1.0-debian-11-r` (16/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-11/Dockerfile)
+* [`15`, `15-debian-11`, `15.5.0`, `15.5.0-debian-11-r` (15/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-11/Dockerfile)
+* [`14`, `14-debian-11`, `14.10.0`, `14.10.0-debian-11-r` (14/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-11/Dockerfile)
+* [`13`, `13-debian-11`, `13.13.0`, `13.13.0-debian-11-r` (13/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-11/Dockerfile)
+* [`12`, `12-debian-11`, `12.17.0`, `12.17.0-debian-11-r` (12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-11/Dockerfile)
+* [`11`, `11-debian-11`, `11.22.0`, `11.22.0-debian-11-r` (11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/11/debian-11/Dockerfile)
 
 ## Need support
 

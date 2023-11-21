@@ -22,4 +22,4 @@ curl "${URL}"
 MINIKUBE_IP=$(minikube ip)
 
 # curl to https url
-curl http://"${MINIKUBE_IP}" -k
+curl https://"${MINIKUBE_IP}" -k

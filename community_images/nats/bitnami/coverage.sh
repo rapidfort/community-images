@@ -25,6 +25,8 @@ function test_nats() {
    set -x
    GO111MODULE=off go get github.com/nats-io/nats.go
    go env -w GOPROXY=http://${NATS_SERVER}:8222,direct
+   go get golang.org/x/crypto/blake2b@v0.14.0
+   go mod tidy
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go install && cd || exit
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-echo && go install && cd || exit
    nats-echo -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 SomeSubject &

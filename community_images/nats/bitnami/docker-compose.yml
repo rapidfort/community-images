@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  nats1:
+    image: ${NATS_IMAGE_REPOSITORY}:${NATS_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '4222:4222'
+      - '6222:6222'
+      - '8222:8222'

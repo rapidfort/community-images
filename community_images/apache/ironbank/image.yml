@@ -8,7 +8,7 @@ source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/apache2/-/blob
 rf_docker_link: rapidfort/apache2-ib
 image_workflow_name: apache_ironbank
 github_location: apache/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fapache2
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fapache2
 usage_instructions: |
   # Using docker run:
   $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/var/www/html/ rapidfort/apache2-ib

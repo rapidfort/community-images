@@ -8,7 +8,7 @@ source_image_readme: https://github.com/docker-library/docs/blob/master/nginx/RE
 rf_docker_link: rapidfort/nginx-official
 image_workflow_name: nginx_official
 github_location: nginx/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fnginx
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fnginx
 usage_instructions: |
   $ Using docker run:
   $ docker run --name my-nginx-app -p 8080:80 -v /some/content:/usr/share/nginx/html:ro -d rapidfort/nginx-official

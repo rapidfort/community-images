@@ -8,7 +8,7 @@ source_image_readme: https://github.com/docker-library/docs/blob/master/haproxy/
 rf_docker_link: rapidfort/haproxy-official
 image_workflow_name: haproxy_official
 github_location: haproxy/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fhaproxy
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fhaproxy
 usage_instructions: |
   # Using docker run via bind mount:
   $ docker run -d --name my-haproxy -v /path/to/etc/haproxy:/usr/local/etc/haproxy:ro --sysctl net.ipv4.ip_unprivileged_port_start=0 rapidfort/haproxy-official

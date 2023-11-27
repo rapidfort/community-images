@@ -8,7 +8,7 @@ source_image_readme: https://github.com/docker-library/docs/blob/master/httpd/RE
 rf_docker_link: rapidfort/apache-official
 image_workflow_name: apache_official
 github_location: apache/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fhttpd
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fhttpd
 usage_instructions: |
   # Using docker run:
   $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ rapidfort/apache-official

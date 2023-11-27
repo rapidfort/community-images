@@ -8,7 +8,7 @@ source_image_readme: https://repo1.dso.mil/dsop/opensource/fluentd/fluentd/-/blo
 rf_docker_link: rapidfort/fluentd-ib
 image_workflow_name: fluentd_ironbank
 github_location: fluentd/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Ffluentd%2Ffluentd
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Ffluentd%2Ffluentd
 usage_instructions: |
   # Using docker run:
   $ docker run -d -p 24224:24224 -p 24224:24224/udp -v /data:/fluentd/log rapidfort/fluentd-ib

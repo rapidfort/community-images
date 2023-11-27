@@ -8,7 +8,7 @@ source_image_readme: https://repo1.dso.mil/dsop/opensource/mariadb/mariadb106/-/
 rf_docker_link: rapidfort/mariadb-ib
 image_workflow_name: mariadb_ironbank
 github_location: mariadb/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmariadb%2Fmariadb
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmariadb%2Fmariadb
 usage_instructions: |
   $ docker run --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  rapidfort/mariadb-ib:latest
 what_is_text: |

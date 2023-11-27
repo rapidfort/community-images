@@ -7,7 +7,7 @@ source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories
 source_image_readme: https://repo1.dso.mil/dsop/opensource/wordpress/wordpress/-/blob/development/README.md
 rf_docker_link: rapidfort/wordpress-ib
 github_location: wordpress/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fwordpress%2Fwordpress
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fwordpress%2Fwordpress
 usage_instructions: |
   # Using docker run
   $ docker run -d  -p 8080:8080 -p 4443:8443 -e ALLOW_EMPTY_PASSWORD=yes-e WORDPRESS_DATABASE_HOST=mariadb -e WORDPRESS_DATABASE_PORT_NUMBER=3306 -e WORDPRESS_DATABASE_USER=ib_wordpress -e WORDPRESS_DATABASE_NAME=ironbank_wordpress rapidfort/wordpress-ib

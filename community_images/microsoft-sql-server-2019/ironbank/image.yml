@@ -8,7 +8,7 @@ source_image_readme: https://repo1.dso.mil/dsop/microsoft/microsoft/microsoft-sq
 rf_docker_link: rapidfort/microsoft-sql-server-2019-ib
 image_workflow_name: microsoft-sql-server-2019_ironbank
 github_location: microsoft-sql-server-2019/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fmicrosoft%2Fmicrosoft%2Fmicrosoft-sql-server-2019-rhel8
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fmicrosoft%2Fmicrosoft%2Fmicrosoft-sql-server-2019-rhel8
 usage_instructions: |
   # Using docker run:
   $ docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" --name my-mssql-server -p 1433:1433 rapidfort/microsoft-sql-server-2019-ib:latest

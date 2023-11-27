@@ -8,7 +8,7 @@ source_image_readme: https://repo1.dso.mil/dsop/opensource/mysql/mysql8/-/blob/d
 rf_docker_link: rapidfort/mysql8-ib
 image_workflow_name: mysql_ironbank
 github_location: mysql/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmysql%2Fmysql8
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmysql%2Fmysql8
 usage_instructions: |
   $ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d rapidfort/mysql8-ib:latest
 what_is_text: |

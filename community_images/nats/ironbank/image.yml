@@ -8,7 +8,7 @@ source_image_readme: https://repo1.dso.mil/dsop/opensource/synadia/nats-server/-
 rf_docker_link: rapidfort/nats-ib
 image_workflow_name: nats_ironbank
 github_location: nats/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fsynadia%2Fnats-server
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fsynadia%2Fnats-server
 usage_instructions: |
   # Run NATS server using docker run
   $ docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 rapidfort/nats-ib

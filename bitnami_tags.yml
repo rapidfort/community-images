@@ -60,9 +60,9 @@ fluentd:
   - 1.16.3-debian-11-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-11`, `5.74.3`, `5.74.3-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
+  - '[`5`, `5-debian-11`, `5.74.4`, `5.74.4-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
   search_tags:
-  - 5.74.3-debian-11-r
+  - 5.74.4-debian-11-r
 haproxy:
   docker_links:
   - '[`2`, `2-debian-11`, `2.8.4`, `2.8.4-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
@@ -97,13 +97,13 @@ memcached:
   - 1.6.22-debian-11-r
 mongodb:
   docker_links:
-  - '[`7.0`, `7.0-debian-11`, `7.0.3`, `7.0.3-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-11/Dockerfile)'
-  - '[`6.0`, `6.0-debian-11`, `6.0.11`, `6.0.11-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
-  - '[`5.0`, `5.0-debian-11`, `5.0.22`, `5.0.22-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
+  - '[`7.0`, `7.0-debian-11`, `7.0.4`, `7.0.4-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-11/Dockerfile)'
+  - '[`6.0`, `6.0-debian-11`, `6.0.12`, `6.0.12-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)'
+  - '[`5.0`, `5.0-debian-11`, `5.0.23`, `5.0.23-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)'
   search_tags:
-  - 7.0.3-debian-11-r
-  - 6.0.11-debian-11-r
-  - 5.0.22-debian-11-r
+  - 7.0.4-debian-11-r
+  - 6.0.12-debian-11-r
+  - 5.0.23-debian-11-r
 mysql:
   docker_links:
   - '[`8.2`, `8.2-debian-11`, `8.2.0`, `8.2.0-debian-11-r` (8.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.2/debian-11/Dockerfile)'

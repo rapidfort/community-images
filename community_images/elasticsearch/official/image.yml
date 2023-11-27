@@ -8,7 +8,7 @@ source_image_readme: https://github.com/docker-library/docs/blob/master/elastics
 rf_docker_link: rapidfort/elasticsearch-official
 image_workflow_name: elasticsearch_official
 github_location: elasticsearch/official
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Felasticsearch
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Felasticsearch
 usage_instructions: |
   # Using docker run:
   $ docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" rapidfort/elasticsearch-official

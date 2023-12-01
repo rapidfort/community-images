@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/ghost][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`5`, `5-debian-11`, `5.74.4`, `5.74.4-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)
+* [`5`, `5-debian-11`, `5.74.5`, `5.74.5-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)
 
 ## Need support
 

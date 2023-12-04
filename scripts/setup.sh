@@ -24,7 +24,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 # shellcheck disable=SC1091
 . "${SCRIPTPATH}"/../community_images/common/scripts/bash_helper.sh
 
-RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-frontrow.rapidfort.io}
+RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-us01.rapidfort.com}
 
 if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf

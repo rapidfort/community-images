@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/couchdb][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3`, `3-debian-11`, `3.3.2`, `3.3.2-debian-11-r` (3/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/couchdb/3/debian-11/Dockerfile)
+* [`3`, `3-debian-11`, `3.3.3`, `3.3.3-debian-11-r` (3/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/couchdb/3/debian-11/Dockerfile)
 
 ## Need support
 

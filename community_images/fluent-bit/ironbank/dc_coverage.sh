@@ -23,4 +23,5 @@ sleep 10
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
 docker cp "${SCRIPTPATH}"/scripts/fluent-bit_coverage_script.sh "${CONTAINER_NAME}":/tmp/fluent-bit_coverage_script.sh
+sleep 10
 docker exec -i "${CONTAINER_NAME}" bash -c "bash /tmp/fluent-bit_coverage_script.sh"

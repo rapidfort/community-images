@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Start Fluent Bit with the specified configuration file
-/opt/bitnami/fluent-bit/bin/fluent-bit -c /opt/bitnami/fluent-bit/conf/fluent-bit.conf &
+/opt/bitnami/fluent-bit/bin/fluent-bit -c /tmp/fluent-bit.conf &
 
 # Add a delay to allow Fluent Bit to run (you can adjust this as needed)
 # Capture the PID of the last background process

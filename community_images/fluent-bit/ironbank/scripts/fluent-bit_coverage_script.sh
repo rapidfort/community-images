@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Start Fluent Bit with the specified configuration file
-/fluent-bit/bin/fluent-bit -c /fluent-bit/etc/fluent-bit.conf &
+/fluent-bit/bin/fluent-bit -c /tmp/fluent-bit.conf &
 
 
 # Capture the PID of the last background process

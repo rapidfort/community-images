@@ -17,7 +17,8 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 sleep 60
 CONTAINER_NAME="${RELEASE_NAME}-0"
-
+kubectl cp "${SCRIPTPATH}"/config/fluent-bit.config "${CONTAINER_NAME}":/tmp/fluent-bit.config -n "${NAMESPACE}"
+sleep 10
 # copy over the script to the pod
 kubectl cp "${SCRIPTPATH}"/scripts/fluent-bit_coverage_script.sh "${CONTAINER_NAME}":/tmp/cvoverage_script.sh -n "${NAMESPACE}"
 

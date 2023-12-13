@@ -5,3 +5,4 @@ function test_fluent-bit() {
 
     CMD="docker exec -i ${CONTAINER_NAME} bash -c /tmp/fluent-bit_coverage_script.sh"
     $CMD
+}

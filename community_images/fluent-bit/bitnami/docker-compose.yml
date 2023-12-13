@@ -6,7 +6,7 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - '8020:8020'
+      - '2020:2020'
 
   prometheus:
     image: docker.io/rapidfort/prometheus

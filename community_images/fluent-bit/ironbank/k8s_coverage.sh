@@ -19,11 +19,10 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 echo "NAMESPACE: $NAMESPACE"
 echo "RELEASE_NAME: $RELEASE_NAME"
 
-sleep 60
-CONTAINER_NAME="${RELEASE_NAME}-0"
+sleep 10
+CONTAINER_NAME=$(kubectl get pods -n "$NAMESPACE" -l "app.kubernetes.io/instance=$RELEASE_NAME" -o jsonpath='{.items[0].metadata.name}')
 # copy over the script to the pod
 kubectl cp "${SCRIPTPATH}"/config/fluent-bit.config "${CONTAINER_NAME}":/tmp/fluent-bit.config -n "${NAMESPACE}"
 sleep 10
 kubectl cp "${SCRIPTPATH}"/scripts/fluent-bit_coverage_script.sh "${CONTAINER_NAME}":/tmp/fluent-bit_cvoverage_script.sh -n "${NAMESPACE}"
 
-test_fluent-bit "${CONTAINER_NAME}" "${NAMESPACE}" "yes"

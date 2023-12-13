@@ -19,6 +19,8 @@ sleep 10
 
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
+docker cp "${SCRIPTPATH}"/config/plugins.config "${CONTAINER_NAME}":/opt/bitnami/fluent-bit/conf/plugins.conf
+sleep 5
 docker cp "${SCRIPTPATH}"/config/fluent-bit.config "${CONTAINER_NAME}":/tmp/fluent-bit.config
 sleep 10
 docker cp "${SCRIPTPATH}"/scripts/fluent-bit_coverage_script.sh "${CONTAINER_NAME}":/tmp/fluent-bit_coverage_script.sh

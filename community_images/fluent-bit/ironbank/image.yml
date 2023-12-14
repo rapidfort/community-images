@@ -1,0 +1,44 @@
+name: fluent-bit-ib
+official_name: Fluent-Bit Ironbank
+official_website: https://fluentbit.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Ffluent%2fluent-bit
+source_image_readme: https://repo1.dso.mil/dsop/opensource/fluent/fluent-bit/-/blob/development/README.md
+rf_docker_link: rapidfort/fluent-bit-ib
+image_workflow_name: fluent-bit_ironbank
+github_location: fluent-bit/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Ffluent%2Ffluent-bit
+usage_instructions: |
+  # install fluent-bit, using docker run
+  $ docker run -it --name Fluent-Bit rapidfort/fluent-bit-ib
+what_is_text: |
+  Fluent Bit is a Fast and Lightweight Log Processor and Forwarder. It has been made with a strong focus on performance to allow the collection of events from different sources without complexity.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/fluent/fluent-bit:
+      input_base_tag: "2.2."
+      output_repo: fluent-bit-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      fluent-bit-ib:
+        repository: "FLUENT_BIT_IMAGE_REPOSITORY"
+        tag: "FLUENT_BIT_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: fluent
+      repo_url: https://fluent.github.io/helm-charts
+      chart: fluent-bit
+    image_keys:
+      fluent-bit-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

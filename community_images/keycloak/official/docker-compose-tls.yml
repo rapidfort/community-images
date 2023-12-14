@@ -43,7 +43,7 @@ services:
       - '0.0.0.0::8443'
     depends_on:
       - postgres
-    command: ["start --optimized --proxy=reencrypt --hostname=localhost --https-certificate-file=/opt/keystore/certs/server.crt --https-certificate-key-file=/opt/keystore/certs/server.key --https-port=8443"]
+    command: ["start --proxy=reencrypt --hostname=localhost --https-certificate-file=/opt/keystore/certs/server.crt --https-certificate-key-file=/opt/keystore/certs/server.key --https-port=8443"]
 
 volumes:
   postgres_data:

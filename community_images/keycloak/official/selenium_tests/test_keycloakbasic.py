@@ -60,7 +60,7 @@ class TestYourlsuitest():
             self.driver.find_element(By.CSS_SELECTOR, ".nav-category:nth-child(3) li:nth-child(1) > .ng-binding").click()
             self.driver.execute_script("window.scrollTo(0,14)")
             self.driver.find_element(By.LINK_TEXT, "Sessions").click()
-            self.driver.find_element(By.LINK_TEXT, "Events").click()
+            self.driver.get("http://localhost:{}/admin/master/console/#/realms/master/events".format(params["port"]))
             self.driver.get("http://localhost:{}/admin/master/console/#/realms/master".format(params["port"]))
             self.driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(7) .onoffswitch-inactive").click()
             self.driver.find_element(By.LINK_TEXT, "User Federation").click()

@@ -104,7 +104,7 @@ class DockerHubHelper(RegistryHelper):
         tags.sort(key=lambda tag: dateutil.parser.parse(
             tag["tag_last_pushed"]))
         if tags:
-            return tags[-1]["name"], tags[-1]["digest"]
+            return tags[-1]["name"], tags[-1]["digest"] if tags[-1].__contains__("digest") else None
         return None, None
 
     def find_version_tag_for_rolling_tag(self, account, repo, rolling_tag):

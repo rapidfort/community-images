@@ -31,8 +31,6 @@ runtimes:
       fluent-bit-ib:
         repository: "FLUENT_BIT_IMAGE_REPOSITORY"
         tag: "FLUENT_BIT_IMAGE_TAG"
-
-
   - type: k8s
     script: k8s_coverage.sh
     helm:

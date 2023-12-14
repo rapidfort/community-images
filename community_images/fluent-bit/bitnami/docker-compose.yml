@@ -10,5 +10,6 @@ services:
     volumes:
       - ./config/fluent-bit.config:/tmp/fluent-bit.config
       - ./config/plugin.config:/opt/bitnami/fluent-bit/conf/plugin.config
+      - ./config/fluent-bit2.config:/tmp/fluent-bit2.config
   prometheus:
     image: docker.io/rapidfort/prometheus

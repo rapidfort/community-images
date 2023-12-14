@@ -20,7 +20,7 @@ CONTAINER_NAME="${PROJECT_NAME}"-fluent-bit-1
 sleep 10
 # log for debugging
 docker inspect "${CONTAINER_NAME}"
-docker exec -d "${CONTAINER_NAME}" /bin/bash -c "nohup /fluent-bit/bin/fluent-bit -c /tmp/fluent-bit.conf" &
+docker exec -d "${CONTAINER_NAME}" /bin/bash -c "nohup /fluent-bit/bin/fluent-bit -c /tmp/fluent-bit2.config" &
 
 sleep 10
 # Get the PID of the last background process

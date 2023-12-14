@@ -12,5 +12,3 @@ services:
       - ./config/plugin.config:/opt/bitnami/fluent-bit/conf/plugin.config
   prometheus:
     image: docker.io/rapidfort/prometheus
-    cap_add:
-      - SYS_PTRACE

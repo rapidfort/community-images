@@ -23,7 +23,6 @@ input_registry:
 repo_sets:
   - fluent-bit:
       input_base_tag: "2.2."
-
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
@@ -32,8 +31,6 @@ runtimes:
       fluent-bit:
         repository: "FLUENT_BIT_IMAGE_REPOSITORY"
         tag: "FLUENT_BIT_IMAGE_TAG"
-
-
   - type: k8s
     script: k8s_coverage.sh
     helm:

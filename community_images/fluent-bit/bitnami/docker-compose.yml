@@ -6,8 +6,10 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - '2020:2020'
-
+      - '0.0.0.0::8080'
+    volumes:
+      - ./config/fluent-bit.config:/tmp/fluent-bit.config
+      - ./config/plugin.config:/opt/bitnami/fluent-bit/conf/plugin.config
   prometheus:
     image: docker.io/rapidfort/prometheus
     cap_add:

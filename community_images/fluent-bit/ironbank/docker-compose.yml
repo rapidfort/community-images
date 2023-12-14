@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  fluent-bit:
+    image: ${FLUENT_BIT_IMAGE_REPOSITORY}:${FLUENT_BIT_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '0.0.0.0::2020'
+    volumes:
+      - ./config/fluent-bit.config:/tmp/fluent-bit.config
+      - ./config/plugin.config:/fluent-bit/etc/plugin.config
+      - ./config/fluent-bit2.config:/tmp/fluent-bit2.config
+  prometheus:
+    image: docker.io/rapidfort/prometheus

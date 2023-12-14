@@ -25,9 +25,6 @@ repo_sets:
   - keycloak:
       input_base_tag: "18.0."
       output_repo: keycloak-official
-  - keycloak:
-      input_base_tag: "22.0."
-      output_repo: keycloak-official
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

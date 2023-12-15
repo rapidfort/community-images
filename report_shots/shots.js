@@ -70,9 +70,9 @@ async function main() {
       let fetched_url = imageYml.report_url
 
       if (platform === "pre-prod") {
-        fetched_url = fetched_url.replace("frontrow.rapidfort.com", "frontrow-dev.rapidfort.io");
+        fetched_url = fetched_url.replace("us01.rapidfort.com", "frontrow-dev.rapidfort.io");
       } else if (platform === "staging") {
-        fetched_url = fetched_url.replace("frontrow.rapidfort.com", "frontrow.rapidfort.io");
+        fetched_url = fetched_url.replace("us01.rapidfort.com", "frontrow.rapidfort.io");
       }
 
       let report_url = fetched_url + "?story_off=true"

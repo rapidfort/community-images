@@ -6,7 +6,7 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - '5432:5432'
+      - '::5432'
     volumes:
       - 'postgresql_data:/var/lib/postgresql/data'
       - ../../common/tests/test.psql:/tmp/test.psql
@@ -17,7 +17,7 @@ services:
       - POSTGRES_PASSWORD=my_password
       - POSTGRES_DB=my_database
       - PGDATA=/var/lib/postgresql/data
-
+      - POSTGRES_TIMEZONE=UTC
 volumes:
   postgresql_data:
     driver: local

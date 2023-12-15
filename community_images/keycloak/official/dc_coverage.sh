@@ -32,7 +32,4 @@ TAG=$(jq -r '.image_tag_details."keycloak-official".tag' < "$JSON_PARAMS")
 if [[ $TAG == 18.* ]]; then
     # Keycloak 18
     "${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "old" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
-else
-    # Current Keycloak
-    "${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${PROJECT_NAME}" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
 fi

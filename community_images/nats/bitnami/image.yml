@@ -43,5 +43,3 @@ runtimes:
       nats:
         repository: "NATS_IMAGE_REPOSITORY"
         tag: "NATS_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh

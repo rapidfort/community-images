@@ -33,12 +33,12 @@ runtimes:
         tag: "FLUENT_BIT_IMAGE_TAG"
   - type: k8s
     script: k8s_coverage.sh
-    helm:
-      repo: fluent
-      repo_url: https://fluent.github.io/helm-charts
-      chart: fluent-bit
+    use_helm: False
+    wait_time_sec: 120
     image_keys:
       fluent-bit-ib:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""

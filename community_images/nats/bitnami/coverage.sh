@@ -24,10 +24,11 @@ function test_nats() {
    set -e
    set -x
    GO111MODULE=off go get github.com/nats-io/nats.go
-   go env -w GOPROXY=http://${NATS_SERVER}:8222,direct
-   go install golang.org/x/crypto/blake2b@v0.14.0
-   go mod tidy
-   cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go install && cd || exit
+   go env -w GOPROXY=direct
+   go env -w GOSUMDB=off
+   # go install golang.org/x/crypto/blake2b/my.go
+   # go install golang.org/x/crypto/blake2b@v0.14.0
+   cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go get golang.org/x/crypto/blake2b@v0.14.0 && go install && cd || exit
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-echo && go install && cd || exit
    nats-echo -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 SomeSubject &
    nats-pub -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 -reply Hi SomeSubject 'Hi everyone'" > "$SCRIPTPATH"/commands.sh

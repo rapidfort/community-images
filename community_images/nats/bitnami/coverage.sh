@@ -9,8 +9,6 @@ function test_nats() {
    local NAMESPACE=$1
    local HELM_RELEASE=$2
 
-   NATS_SERVER=${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local
-
    NATS_USER=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 user | awk '{print $2}' | tr -d '"')
    NATS_PASS=$(kubectl get secret --namespace "${NAMESPACE}" "${HELM_RELEASE}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 password | awk '{print $2}' | tr -d '"')
    echo -e "Client credentials:\n\tUser: $NATS_USER\n\tPassword: $NATS_PASS"
@@ -26,8 +24,6 @@ function test_nats() {
    GO111MODULE=off go get github.com/nats-io/nats.go
    go env -w GOPROXY=direct
    go env -w GOSUMDB=off
-   # go install golang.org/x/crypto/blake2b/my.go
-   # go install golang.org/x/crypto/blake2b@v0.14.0
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go get golang.org/x/crypto/blake2b@v0.14.0 && go install && cd || exit
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-echo && go install && cd || exit
    nats-echo -s nats://$NATS_USER:$NATS_PASS@${HELM_RELEASE}.${NAMESPACE}.svc.cluster.local:4222 SomeSubject &

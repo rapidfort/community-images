@@ -22,7 +22,7 @@ function test_nats() {
    kubectl wait pods nats-release-client -n "${NAMESPACE}" --for=condition=ready --timeout=10m
    echo "#!/bin/bash
    GO111MODULE=off go get github.com/nats-io/nats.go
-   go env -w GOPROXY=http://${NATS_SERVER}:8222,direct
+   go env -w GOPROXY=direct
    go install golang.org/x/crypto/blake2b@v0.14.0
    go mod tidy
    cd \"\$GOPATH\"/src/github.com/nats-io/nats.go/examples/nats-pub && go install && cd || exit

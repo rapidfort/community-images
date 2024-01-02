@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.0">
+    <description>Basic NiFi Template</description>
+    <groupId>basic-group</groupId>
+    <name>Basic Template</name>
+    <snippet>
+        <processors>
+            <!-- Example: GenerateFlowFile -->
+            <processor>
+                <id>generate-flow-file</id>
+                <class>org.apache.nifi.processors.standard.GenerateFlowFile</class>
+                <name>GenerateFlowFile</name>
+                <position>
+                    <x>100.0</x>
+                    <y>100.0</y>
+                </position>
+            </processor>
+
+            <!-- Example: LogAttribute -->
+            <processor>
+                <id>log-attribute</id>
+                <class>org.apache.nifi.processors.standard.LogAttribute</class>
+                <name>LogAttribute</name>
+                <position>
+                    <x>300.0</x>
+                    <y>100.0</y>
+                </position>
+            </processor>
+        </processors>
+
+        <connections>
+            <!-- Connection between GenerateFlowFile and LogAttribute -->
+            <connection>
+                <id>generate-log-connection</id>
+                <name>Generate to Log</name>
+                <source>
+                    <id>generate-flow-file</id>
+                    <relationship>success</relationship>
+                </source>
+                <destination>
+                    <id>log-attribute</id>
+                    <relationship>success</relationship>
+                </destination>
+            </connection>
+        </connections>
+    </snippet>
+</template>

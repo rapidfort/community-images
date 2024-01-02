@@ -1,0 +1,44 @@
+name: nifi-ib
+official_name: Apache Nifi IronBank
+official_website: https://nifi.apache.org
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/apache/nifi
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Fnifi
+source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/nifi/-/blob/development/README.md
+rf_docker_link: rapidfort/nifi-ib
+image_workflow_name: nifi_ironbank
+github_location: nifi/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fnifi
+usage_instructions: |
+  # Using docker run:
+  $ docker run -it --name my-nifi -p 8080:80 rapidfort/nifi-ib
+  # PWD can be replaced with the directory containing all your HTML.
+what_is_text: |
+  NiFi is an easy to use, powerful, and reliable system to process and distribute data.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/apache/nifi:
+      input_base_tag: "1.24."
+      output_repo: nifi-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      nifi-ib:
+        repository: "NIFI_IMAGE_REPOSITORY"
+        tag: "NIFI_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    use_helm: False
+    image_keys:
+      nifi-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""

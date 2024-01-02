@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  nifi:
+    image: ${NIFI_IMAGE_REPOSITORY}:${NIFI_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - "0.0.0.0::8080" 
+    volumes:
+      - ./test-template.xml:/tmp/test-template.xml

@@ -8,8 +8,6 @@ containerSecurityContext:
   # allowPrivilegeEscalation: true
   capabilities:
     add: ["SYS_PTRACE"]
-# resourceType: deployment
-# replicaCount: 1
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"

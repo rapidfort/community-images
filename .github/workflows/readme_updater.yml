@@ -24,7 +24,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Generate new readme and image files
         run: |
@@ -466,6 +466,14 @@ jobs:
           repository: rapidfort/nginx-official
           readme-filepath: ./community_images/nginx/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for NGINX Official
+      - name: Docker Hub Description Apache Nifi IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/nifi-ib
+          readme-filepath: ./community_images/nifi/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apache Nifi IronBank
       - name: Docker Hub Description Grafana Oncall
         uses: peter-evans/dockerhub-description@v3
         with:

@@ -3,7 +3,8 @@ image:
   pullPolicy: Always
 containerSecurityContext:
   enabled: true
-  runAsUser: 1001
+  runAsNonRoot: false
+  runAsUser: 0
   capabilities:
     add: ["SYS_PTRACE"]
 extraEnvVars:

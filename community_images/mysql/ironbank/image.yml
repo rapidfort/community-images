@@ -33,3 +33,5 @@ runtimes:
       environment:
         MYSQL_ROOT_PASSWORD: my_root_password
         MYSQL_ROOT_HOST: "%"
+      volumes:
+        assets: /usr/share/zoneinfo

@@ -13,7 +13,7 @@ rm -f URLS
 URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
 
 # sleep 5 after minikube service (Required)
-sleep 5
+sleep 20
 
 # curl to http url
 curl "${URL}"

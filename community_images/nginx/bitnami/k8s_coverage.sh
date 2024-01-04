@@ -20,9 +20,9 @@ kubectl -n "${NAMESPACE}" get configmap server-block-map -o yaml
 kubectl -n "${NAMESPACE}" describe configmap server-block-map
  # Describe the service
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
-#export IP
+#IP
 CLUSTER_IP=$(kubectl get service "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.clusterIP}')
 # Checking HTTP connection
-curl https://${CLUSTER_IP} -k
+with_backoff curl "https://${CLUSTER_IP}/ui" -k -v
 
 

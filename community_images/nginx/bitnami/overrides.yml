@@ -23,12 +23,10 @@ cloneStaticSiteFromGit:
   branch: master
   interval: 3600
 service:
-  type: ClusterIP
+  type: LoadBalancer
 ingress:
   enabled: true
   pathType: Prefix
   hostname: localhost
-  path: /
-  annotations:
-    kubernetes.io/ingress.class: rf-nginx
+  
 

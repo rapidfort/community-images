@@ -2,24 +2,21 @@
 
 set -x
 set -e
+# shellcheck disable=SC1091
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 
 JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
-# fetch service url and store the urls in URLS file
-rm -f URLS
-URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
+# Create ConfigMap for server block
+kubectl -n "${NAMESPACE}" create configmap server-block-map --from-file=my_server_block.conf="${SCRIPTPATH}"/configs/nginx.conf
 
-# sleep 5 after minikube service (Required)
-sleep 5
+# Fetch pod name
+POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/instance="${RELEASE_NAME}" -o jsonpath='{.items[0].metadata.name}')
 
-# curl to http url
-curl "${URL}"
-
-# fetch minikube ip
-MINIKUBE_IP=$(minikube ip)
-
-# curl to https url
-curl https://"${MINIKUBE_IP}" -k
+curl http://localhost:8443/my-endpoint 

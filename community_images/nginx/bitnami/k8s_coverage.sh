@@ -16,7 +16,4 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 # Create ConfigMap for server block
 kubectl -n "${NAMESPACE}" create configmap server-block-map --from-file=my_server_block.conf="${SCRIPTPATH}"/configs/nginx.conf
 
-# Fetch pod name
-POD_NAME=$(kubectl -n "${NAMESPACE}" get pods -l app.kubernetes.io/instance="${RELEASE_NAME}" -o jsonpath='{.items[0].metadata.name}')
-
 curl http://localhost:8443/my-endpoint 

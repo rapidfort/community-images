@@ -12,8 +12,14 @@ JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-
+echo "NAMESPACE: $NAMESPACE"
+echo "RELEASE_NAME: $RELEASE_NAME"
 # Create ConfigMap for server block
 kubectl -n "${NAMESPACE}" create configmap server-block-map --from-file=my_server_block.conf="${SCRIPTPATH}"/configs/nginx.conf
 
-curl http://localhost:8443/my-endpoint 
+curl https://localhost:8443/my-endpoint -k
+# Get the ConfigMap details
+kubectl -n "${NAMESPACE}" get configmap server-block-map -o yaml
+
+# Describe the ConfigMap
+kubectl -n "${NAMESPACE}" describe configmap server-block-map

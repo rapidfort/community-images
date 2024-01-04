@@ -20,8 +20,9 @@ kubectl -n "${NAMESPACE}" get configmap server-block-map -o yaml
 kubectl -n "${NAMESPACE}" describe configmap server-block-map
  # Describe the service
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
-#export external IP
-export CLUSTER_IP=$(minikube ip) 
-PORT=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.ports[0].Port}')
+#export IP
+CLUSTER_IP=$(kubectl get service "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.clusterIP}')
 # Checking HTTP connection
-curl http://${CLUSTER_IP}:"${PORT}" || true
+curl https://${CLUSTER_IP} -k
+
+

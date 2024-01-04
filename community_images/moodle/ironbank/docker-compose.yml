@@ -1,0 +1,68 @@
+version: "3"
+
+services:
+  db:
+    image: rapidfort/postgresql13-ib:latest
+    environment:
+      POSTGRES_USER: "moodle"
+      POSTGRES_PASSWORD: "db-passwd-123"
+      POSTGRES_DB: "moodle"
+    networks:
+      - internal
+    volumes:
+      - moodle_db:/var/lib/postgresql/data
+
+  moodle:
+    # image: ${MOODLE_IMAGE_REPOSITORY}:${MOODLE_IMAGE_TAG}
+    image: kirandeepkhehra/moodle-ib:4.3.1-rfstub
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      MOODLE_DATABASE_HOST: "db"
+      MOODLE_DATABASE_NAME: "moodle"
+      MOODLE_DATABASE_USER: "moodle"
+      MOODLE_DATABASE_PASSWORD: "db-passwd-123"
+      MOODLE_DBPORT: 5432
+      MOODLE_DB_TYPE: "pgsql"
+      MOODLE_SITE_LONG_NAME: "My Moodle Long Name"
+      MOODLE_SITE_SHORT_NAME: "My Moodle Short Name"
+      MOODLE_ADMIN_USERNAME: "admin"
+      MOODLE_ADMIN_PASSWORD: "admin"
+      MOODLE_ADMIN_EMAIL: "admin@nomail.com"
+    networks:
+      - internal
+    volumes:
+      - moodle_www:/var/www/html
+      - moodle_data:/var/www/moodledata
+    depends_on:
+      - db
+
+  webserver:
+    image: rapidfort/nginx-ib:1.25.2
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.25'
+          memory: 64M
+    depends_on:
+      - moodle
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - ./nginx-conf:/etc/nginx/conf.d
+      - moodle_www:/var/www/html
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  moodle_www:
+  moodle_data:
+  moodle_db:

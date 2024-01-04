@@ -24,9 +24,12 @@ cloneStaticSiteFromGit:
   interval: 3600
 service:
   type: LoadBalancer
+  loadBalancerIP: "127.0.0.1"
 ingress:
   enabled: true
   pathType: Prefix
   hostname: localhost
+  annotation:
+    nginx.ingress.kubernetes.io/proxy-ssl-secret: secretName
   
 

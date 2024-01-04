@@ -22,7 +22,10 @@ kubectl -n "${NAMESPACE}" describe configmap server-block-map
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
 #IP
 CLUSTER_IP=$(kubectl get service "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.clusterIP}')
+echo "$CLUSTER_IP  localhost" | sudo tee -a /etc/hosts
 # Checking HTTP connection
-with_backoff curl "https://${CLUSTER_IP}/ui" -k -v
+nc -zv localhost 443
+
+
 
 

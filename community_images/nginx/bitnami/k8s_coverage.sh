@@ -16,10 +16,7 @@ echo "NAMESPACE: $NAMESPACE"
 echo "RELEASE_NAME: $RELEASE_NAME"
 # Create ConfigMap for server block
 kubectl -n "${NAMESPACE}" create configmap server-block-map --from-file=my_server_block.conf="${SCRIPTPATH}"/configs/nginx.conf
-
-curl https://localhost:8443/my-endpoint -k
 # Get the ConfigMap details
 kubectl -n "${NAMESPACE}" get configmap server-block-map -o yaml
-
 # Describe the ConfigMap
 kubectl -n "${NAMESPACE}" describe configmap server-block-map

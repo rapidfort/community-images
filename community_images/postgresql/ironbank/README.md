@@ -49,14 +49,14 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
-<a href="https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/README.md">
+<a href="https://repo1.dso.mil/dsop/opensource/postgres/postgresql15/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>
 
 ```sh
-$ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql12-ib:latest
+$ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql-ib:latest
 
 ```
 
@@ -77,12 +77,12 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 
 ## What’s the difference between the official [Platform One PostgreSQL IronBank][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/postgresql12-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/postgresql-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/Dockerfile)
+* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/postgres/postgresql15/-/blob/development/Dockerfile)
 
 ## Need support
 
@@ -125,8 +125,8 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgresql-ib&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgresql-ib&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/postgresql12-ib?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql12-ib?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/postgresql-ib?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql-ib?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
@@ -135,5 +135,5 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/postgresql/ironbank/assets/metrics.webp
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/postgresql/ironbank/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fpostgres%2Fpostgresql12
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql12-ib
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fpostgres%2Fpostgresql
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql-ib

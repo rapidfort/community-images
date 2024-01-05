@@ -26,8 +26,9 @@ URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
 TUNNEL_PORT=$(echo "${URL}" | awk -F: '{print $NF}')
 echo "${TUNNEL_PORT}"
 sleep 10
-IP_ADDRESS=$(ps -ef | pgrep "docker.*${TUNNEL_PORT}" | pgrep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' | head -n1)
+IP_ADDRESS=$(ps -ef | pgrep -f "docker.*${TUNNEL_PORT}" | awk '{match($0, /\b([0-9]{1,3}\.){3}[0-9]{1,3}\b/); print substr($0, RSTART, RLENGTH)}' | head -n1)
 ps -ef | pgrep docker"${IP_ADDRESS}"
+curl "${IP_ADDRESS}":"${TUNNEL_PORT}"
 
 
 

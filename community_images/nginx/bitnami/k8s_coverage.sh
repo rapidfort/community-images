@@ -22,7 +22,7 @@ kubectl -n "${NAMESPACE}" describe configmap server-block-map
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
 
 rm -f URLS
-URL=minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url
+URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
 with_backoff curl "${URL}"
 
 

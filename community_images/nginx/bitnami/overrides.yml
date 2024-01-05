@@ -8,6 +8,8 @@ containerSecurityContext:
   allowPrivilegeEscalation: true
   capabilities:
     add: ["SYS_PTRACE"]
+resourceType: deployment
+replicaCount: 1
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"
@@ -19,5 +21,12 @@ cloneStaticSiteFromGit:
   enabled: true
   repository: https://github.com/mdn/beginner-html-site-styled.git
   branch: master
+  interval: 3600
+service:
+  type: NodePort
 ingress:
   enabled: true
+  pathType: Prefix
+  hostname: localhost
+  annotation:
+    nginx.ingress.kubernetes.io/proxy-ssl-secret: secretName

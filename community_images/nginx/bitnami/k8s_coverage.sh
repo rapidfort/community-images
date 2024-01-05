@@ -11,15 +11,10 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 # fetch service url and store the urls in URLS file
 rm -f URLS
 URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
+sleep 20
+TUNNEL_PORT=$(echo "${URL}" | awk -F: '{print $NF}')
+echo "${TUNNEL_PORT}"
+curl http://127.0.0.1:"${TUNNEL_PORT}"
 
-# sleep 5 after minikube service (Required)
-sleep 5
 
-# curl to http url
-curl "${URL}"
 
-# fetch minikube ip
-MINIKUBE_IP=$(minikube ip)
-
-# curl to https url
-curl https://"${MINIKUBE_IP}" -k

@@ -26,7 +26,6 @@ service:
   type: NodePort
 ingress:
   enabled: true
-  pathType: Prefix
-  hostname: localhost
+  pathType: Prefix 
   annotation:
-    nginx.ingress.kubernetes.io/proxy-ssl-secret: secretName
+    kubernetes.io/ingress.class: "nginx"

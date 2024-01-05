@@ -12,7 +12,7 @@ JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-# Create ConfigMap for server block
+Create ConfigMap for server block
 kubectl -n "${NAMESPACE}" create configmap server-block-map --from-file=my_server_block.conf="${SCRIPTPATH}"/configs/nginx.conf
 # Get the ConfigMap details
 kubectl -n "${NAMESPACE}" get configmap server-block-map -o yaml
@@ -20,10 +20,9 @@ kubectl -n "${NAMESPACE}" get configmap server-block-map -o yaml
 kubectl -n "${NAMESPACE}" describe configmap server-block-map
  # Describe the service
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
-# Checking HTTP connection
-nc -zv -4 localhost 443 || nc -zv -6 localhost 443
 
-
-
+rm -f URLS
+minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url
+with_backoff curl "${URL}"
 
 

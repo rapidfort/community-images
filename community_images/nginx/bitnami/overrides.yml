@@ -23,8 +23,7 @@ cloneStaticSiteFromGit:
   branch: master
   interval: 3600
 service:
-  type: LoadBalancer
-  loadBalancerIP: "127.0.0.1"
+  type: NodePort
 ingress:
   enabled: true
   pathType: Prefix

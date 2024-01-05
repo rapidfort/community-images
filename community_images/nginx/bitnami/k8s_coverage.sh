@@ -23,7 +23,8 @@ kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
 
 rm -f URLS
 URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
-echo "${URL}"
+TUNNEL_PORT=$(echo "${URL}" | awk -F: '{print $NF}')
+echo "${TUNNEL_PORT}"
 sleep 10
 IP_ADDRESS=$(ps -ef | pgrep "docker.*${TUNNEL_PORT}" | pgrep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' | head -n1)
 ps -ef | grep docker"${IP_ADDRESS}"

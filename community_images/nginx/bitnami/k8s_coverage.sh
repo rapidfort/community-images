@@ -3,20 +3,24 @@
 set -x
 set -e
 
+# shellcheck disable=SC1091
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+# shellcheck disable=SC1091
+. "${SCRIPTPATH}"/../../common/scripts/bash_helper.sh
 JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
- # Describe the service
+
+minikube tunnel
+kubectl get svc
+EXTERNAL_IP=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.externalIP}')
+PORT=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.ports[0].port}')
+curl http://"${EXTERNAL_IP}":"${PORT}"
+
+# Describe the service
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
-# # fetch service url and store the urls in URLS file
-rm -f URLS
-URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
-sleep 20
-echo "${URL}"
-TUNNEL_PORT=$(echo "${URL}" | awk -F: '{print $NF}')
-IP=$(curl ipinfo.io/ip)
-curl http://"${IP}":"${TUNNEL_PORT}"
 
 
 #Create ConfigMap for server block

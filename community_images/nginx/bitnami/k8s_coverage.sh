@@ -15,8 +15,8 @@ URL=$(minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url)
 sleep 20
 echo "${URL}"
 TUNNEL_PORT=$(echo "${URL}" | awk -F: '{print $NF}')
-MINIKUBE_IP=$(minikube ip)
-curl http://"${MINIKUBE_IP}":"${TUNNEL_PORT}"
+IP=$(curl ipinfo.io/ip)
+curl http://"${IP}":"${TUNNEL_PORT}"
 
 
 #Create ConfigMap for server block

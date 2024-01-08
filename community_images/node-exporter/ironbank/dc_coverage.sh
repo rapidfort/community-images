@@ -19,7 +19,7 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-node-exporter-1
 
 docker inspect "${CONTAINER_NAME}"
-sleep 10
+sleep 5
 # Check the metrics using cURL for node-exporter
 curl http://localhost:9100/metrics
 curl http://localhost:9100/metrics/cpu

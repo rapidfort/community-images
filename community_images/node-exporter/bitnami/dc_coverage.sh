@@ -17,16 +17,14 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${PROJECT_NAME}"-node-exporter-1
-
 docker inspect "${CONTAINER_NAME}"
-sleep 10
+sleep 5
 docker exec "${CONTAINER_NAME}" /opt/bitnami/node-exporter/bin/node_exporter --version
 
 # Check the metrics using cURL for node-exporter
 curl http://localhost:9100/metrics
 curl http://localhost:9100/metrics/cpu
 curl http://localhost:9100/metrics | grep "node_"
-
 # checking for prometheus instance 
 curl -L http://localhost:9090/graph
 curl http://localhost:9090/targets

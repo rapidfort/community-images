@@ -18,4 +18,4 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${RELEASE_NAME}"
-kubectl exec -i "${CONTAINER_NAME}" -n "${NAMESPACE}" -- /opt/bitnami/node-exporter/bin/node_exporter --web.listen-address=:9100 
+kubectl logs -n "${NAMESPACE}" "${CONTAINER_NAME}"

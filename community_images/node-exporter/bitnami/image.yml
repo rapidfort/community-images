@@ -34,12 +34,12 @@ runtimes:
         tag: "NODE_EXPORTER_IMAGE_TAG"
   - type: k8s                                 
     script: k8s_coverage.sh
-    helm:
-      repo: bitnami
-      repo_url: https://charts.bitnami.com/bitnami
-      chart: node-exporter
+    use_helm: False
+    wait_time_sec: 120
     image_keys:
       node-exporter:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""

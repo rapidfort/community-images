@@ -1,0 +1,27 @@
+image:
+  pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
+containerSecurityContext:
+  enabled: true
+  runAsUser: 1001
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    add: ["SYS_PTRACE"]
+resourceType: deployment
+replicaCount: 2
+extraEnvVars:
+  - name: "RF_VERBOSE"
+    value: "0"
+service:
+  type: ClusterIP
+  port: 9100
+  targetPort: 9100
+  annotations:
+    prometheus.io/scrape: "true"
+livenessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
+readinessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 30

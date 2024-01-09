@@ -58,7 +58,7 @@ The runtime instructions for this container are no different from the official r
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-# install prometheus, just replace repository with RapidFort registry
+# install node-exporter, just replace repository with RapidFort registry
 $ helm install my-node-exporter bitnami/node-exporter --set image.repository=rapidfort/node-exporter
 
 ```

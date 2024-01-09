@@ -1,7 +1,6 @@
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
-clusterDomain: cluster.local
 containerSecurityContext:
   enabled: true
   runAsUser: 1001
@@ -10,7 +9,7 @@ containerSecurityContext:
   capabilities:
     add: ["SYS_PTRACE"]
 resourceType: deployment
-replicaCount: 1
+replicaCount: 2
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"
@@ -18,8 +17,6 @@ service:
   type: ClusterIP
   port: 9100
   targetPort: 9100
-  nodePort:
-  listenOnAllInterfaces: true
   annotations:
     prometheus.io/scrape: "true"
 livenessProbe:

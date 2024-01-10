@@ -17,5 +17,4 @@ echo "Json params for k8s coverage = $JSON"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 echo "${RELEASE_NAME}"
-CONTAINER_NAME="${RELEASE_NAME}"
-kubectl logs -n "${NAMESPACE}" "${CONTAINER_NAME}"
+echo "${NAMESPACE}"

@@ -20,10 +20,12 @@ CONTAINER_NAME="${PROJECT_NAME}"-node-exporter-1
 
 docker inspect "${CONTAINER_NAME}"
 sleep 5
+# find port
+PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"9100/tcp\"[0].HostPort")
 # Check the metrics using cURL for node-exporter
-curl http://localhost:9100/metrics
-curl http://localhost:9100/metrics/cpu
-curl http://localhost:9100/metrics | grep "node_"
+curl http://localhost:"${PORT}"/metrics
+curl http://localhost:"${PORT}"/metrics/cpu
+curl http://localhost:"${PORT}"/metrics | grep "node_"
 
 # checking for prometheus instance 
 curl -L http://localhost:9090/graph

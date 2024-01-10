@@ -6,7 +6,7 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - '9100:9100'
+      - '0.0.0.0::9100'
   prometheus:
     image: rapidfort/prometheus
     ports:

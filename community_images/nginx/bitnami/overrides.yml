@@ -3,25 +3,16 @@ image:
   pullPolicy: Always
 containerSecurityContext:
   enabled: true
-  runAsUser: 0
-  runAsNonRoot: false
+  runAsUser: 1001
   allowPrivilegeEscalation: true
   capabilities:
     add: ["SYS_PTRACE"]
-resourceType: deployment
-replicaCount: 2
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"
-service:
-  type: NodePort
 livenessProbe:
-  enabled: false
+  initialDelaySeconds: 30
+  timeoutSeconds: 30
 readinessProbe:
-  enabled: false
-cloneStaticSiteFromGit:
-  enabled: true
-  repository: https://github.com/mdn/beginner-html-site-styled.git
-  branch: master
-ingress:
-  enabled: true
+  initialDelaySeconds: 30
+  timeoutSeconds: 30

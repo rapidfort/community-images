@@ -12,13 +12,23 @@ JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-# sleep 30
-kubectl get pods -n "${NAMESPACE}" --show-labels
-# POD_NAME=$(kubectl get pods -n ${NAMESPACE} -o jsonpath='{.items[0].metadata.name}')
-PORT=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.ports[0].nodePort}')
+# fetch service url and store the urls in URLS file
+rm -f URLS
+minikube service "${RELEASE_NAME}" -n "${NAMESPACE}" --url | tee -a URLS
+# Changing "http" to "https" in the urls file
+sed -i '2,2s/http/https/' URLS
+cat URLS
+# curl to urls
+while read -r p;
+do
+    curl -k "${p}"
+done <URLS
+#Removing urls file
+rm URLS
+# fetch minikube ip
 MINIKUBE_IP=$(minikube ip)
-URL=$(minikube service ${RELEASE_NAME} -n ${NAMESPACE} --url)
-curl http://"${MINIKUBE_IP}":"${PORT}"
+# curl to https url
+curl https://"${MINIKUBE_IP}" -k
 # Describe the service
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
 #Create ConfigMap for server block

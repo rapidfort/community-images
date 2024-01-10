@@ -17,12 +17,10 @@ kubectl get pods -n "${NAMESPACE}" --show-labels
 # POD_NAME=$(kubectl get pods -n ${NAMESPACE} -o jsonpath='{.items[0].metadata.name}')
 PORT=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.ports[0].nodePort}')
 MINIKUBE_IP=$(minikube ip)
-URL=$(minikube service ${RELEASE_NAME} --url)
+URL=$(minikube service ${RELEASE_NAME} -n ${NAMESPACE} --url)
 curl http://"${MINIKUBE_IP}":"${PORT}"
 # Describe the service
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
-
-
 #Create ConfigMap for server block
 kubectl -n "${NAMESPACE}" create configmap server-block-map --from-file=my_server_block.conf="${SCRIPTPATH}"/configs/nginx.conf
 # Get the ConfigMap details

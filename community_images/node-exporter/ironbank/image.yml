@@ -1,0 +1,46 @@
+name: node-exporter-ib
+official_name: Node-Exporter IronBank
+official_website: https://prometheus.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/prometheus/node-exporter
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fprometheus%2Fnode-exporter
+source_image_readme: https://repo1.dso.mil/dsop/opensource/prometheus/node-exporter/-/blob/development/README.md
+rf_docker_link: rapidfort/node-exporter-ib
+image_workflow_name: node-exporter_ironbank
+github_location: node-exporter/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fnode-exporter
+usage_instructions: |
+  # Using docker run:
+  $ docker run -it --name my-node-exporter -p 9100:9100 rapidfort/node-exporter-ib
+what_is_text: |
+  Prometheus exporter for hardware and OS metrics exposed by UNIX kernels, with pluggable metric collectors.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/prometheus/node-exporter:
+      input_base_tag: "1.7."
+      output_repo: node-exporter-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      node-exporter-ib:
+        repository: "NODE_EXPORTER_IMAGE_REPOSITORY"
+        tag: "NODE_EXPORTER_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    use_helm: False
+    image_keys:
+      node-exporter-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""

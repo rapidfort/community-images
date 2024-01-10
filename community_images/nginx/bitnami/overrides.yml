@@ -9,10 +9,12 @@ containerSecurityContext:
   capabilities:
     add: ["SYS_PTRACE"]
 resourceType: deployment
-replicaCount: 1
+replicaCount: 2
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"
+service:
+  type: NodePort
 livenessProbe:
   enabled: false
 readinessProbe:
@@ -21,11 +23,5 @@ cloneStaticSiteFromGit:
   enabled: true
   repository: https://github.com/mdn/beginner-html-site-styled.git
   branch: master
-  interval: 3600
-service:
-  type: LoadBalancer
 ingress:
   enabled: true
-  pathType: Prefix 
-  annotation:
-    kubernetes.io/ingress.class: "nginx"

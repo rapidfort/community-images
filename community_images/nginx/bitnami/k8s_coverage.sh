@@ -12,13 +12,13 @@ JSON_PARAMS="$1"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-
-minikube tunnel
-kubectl get svc
-EXTERNAL_IP=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.externalIP}')
-PORT=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.ports[0].port}')
-curl http://"${EXTERNAL_IP}":"${PORT}"
-
+# sleep 30
+kubectl get pods -n ${NAMESPACE} --show-labels
+# POD_NAME=$(kubectl get pods -n ${NAMESPACE} -o jsonpath='{.items[0].metadata.name}')
+PORT=$(kubectl get svc "${RELEASE_NAME}" -n "${NAMESPACE}" -o jsonpath='{.spec.ports[0].nodePort}')
+MINIKUBE_IP=$(minikube ip)
+URL=$(minikube service list ${RELEASE_NAME} --url)
+curl http://${MINIKUBE_IP}:${PORT}
 # Describe the service
 kubectl describe svc "${RELEASE_NAME}" -n "${NAMESPACE}"
 

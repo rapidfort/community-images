@@ -23,6 +23,7 @@ class Orchestrator:
         self.config_dict = self._load_config()
         self.docker_client = docker.from_env()
         self.publish = args.publish
+        self.namespace_name = args.namespace_name
         self.force_publish = args.force_publish
         self.config_name = self.args.config.strip("/")
         self.input_registry_helper, self.output_registry_helper = self._auth_registries()
@@ -41,7 +42,7 @@ class Orchestrator:
         """run commands for orchestrator"""
         command = self.args.command
         publish = self.args.publish
-
+        namespace_name = self.namespace_name
         tag_manager = TagManager(self)
 
         if command == Commands.STUB:
@@ -74,6 +75,7 @@ class Orchestrator:
     def _hourly_run(self, tag_manager):
 
         publish = self.args.publish
+        namespace_name = self.args.namespace_name
 
         StubGenerator(
             self.config_name,
@@ -152,6 +154,8 @@ def main():
     parser.add_argument("--force-publish", dest="force_publish",
                         action="store_true", help="force publish image")
     parser.set_defaults(force_publish=False)
+    parser.add_argument("--namespace", dest="namespace_name",
+                        type=str, default="< n u l l >", help="name of namespace to use")
     parser.add_argument("--loglevel", type=str, default="info",
                         help="debug, info, warning, error")
     args = parser.parse_args()

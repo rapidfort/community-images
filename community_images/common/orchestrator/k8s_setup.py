@@ -43,7 +43,7 @@ class K8sSetup:
 
         logging.info(f"Is namespace preserved = {self.preserve_namespace}")
 
-    def __enter__(self):
+    def __enter__(self):  # pylint: disable=too-many-branches
         """ create a k8s namespace and set it up for runner """
 
         if not self.preserve_namespace:
@@ -65,7 +65,7 @@ class K8sSetup:
                 f"{self.script_dir}/../cert_managet_ns.yml")
             cmd = f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
             Utils.run_cmd(cmd.split())
-        except subprocess.CalledProcessError as e:
+        except subprocess.CalledProcessError as _:
             logging.info("`cert_managet_ns.yml` already present")
 
         # create tls certs for app

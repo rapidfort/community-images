@@ -42,7 +42,6 @@ class Orchestrator:
         """run commands for orchestrator"""
         command = self.args.command
         publish = self.args.publish
-        namespace_name = self.namespace_name
         tag_manager = TagManager(self)
 
         if command == Commands.STUB:
@@ -75,7 +74,6 @@ class Orchestrator:
     def _hourly_run(self, tag_manager):
 
         publish = self.args.publish
-        namespace_name = self.args.namespace_name
 
         StubGenerator(
             self.config_name,

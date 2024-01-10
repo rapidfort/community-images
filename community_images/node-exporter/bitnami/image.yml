@@ -1,0 +1,44 @@
+name: node-exporter
+official_name: Node Exporter
+official_website: https://prometheus.io/
+source_image_provider: Bitnami
+source_image_repo: docker.io/bitnami/node-exporter
+source_image_repo_link: https://hub.docker.com/r/bitnami/node-exporter
+source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/node-exporter/README.md
+rf_docker_link: rapidfort/node-exporter
+image_workflow_name: node-exporter_bitnami
+github_location: node-exporter/bitnami
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fnode-exporter
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+  # install node-exporter, just replace repository with RapidFort registry
+  $ helm install my-node-exporter bitnami/node-exporter --set image.repository=rapidfort/node-exporter
+what_is_text: |
+  Prometheus exporter for hardware and OS metrics exposed by UNIX kernels, with pluggable metric collectors.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: bitnami
+repo_sets:
+  - node-exporter:
+      input_base_tag: "1.7.0-debian-11-r"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      node-exporter:
+        repository: "NODE_EXPORTER_IMAGE_REPOSITORY"
+        tag: "NODE_EXPORTER_IMAGE_TAG"
+  - type: k8s                                 
+    script: k8s_coverage.sh
+    use_helm: False
+    wait_time_sec: 120
+    image_keys:
+      node-exporter:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""

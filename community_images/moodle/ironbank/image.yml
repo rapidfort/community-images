@@ -10,11 +10,12 @@ github_location: moodle/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmoodle
 usage_instructions: |
   # Using docker run
-  $ docker run -d  -p 8080:8080 -p 4443:8443 -e ALLOW_EMPTY_PASSWORD=yes-e WORDPRESS_DATABASE_HOST=mariadb -e WORDPRESS_DATABASE_PORT_NUMBER=3306 -e WORDPRESS_DATABASE_USER=ib_wordpress -e WORDPRESS_DATABASE_NAME=ironbank_wordpress rapidfort/wordpress-ib
+  $ docker run -d  -p 9000:9000 -v moodle_www:/var/www/html rapidfort/moodle-ib
 
-  # Then, access it via http://localhost:8080/ or http://<host-ip>:8080/ in a browser.
+  # Add a proxy server like nginx or httpd and mount moodle_www to host the volume to web.
+  # Then, access it via http://localhost:<port>/ or http://<host-ip>:<port>/ in a browser.
 what_is_text: |
-  WordPress gives you everything you need to start your website today. Free hosting, your own domain, a world-class support team, and so much more
+  Moodle is a free and open-source learning management system written in PHP and distributed under the GNU General Public License. Moodle is used for blended learning, distance education, flipped classroom and other online learning projects in schools, universities, workplaces and other sectors.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 input_registry:
@@ -28,9 +29,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    tls_certs:
-      generate: true
-      out_dir: certs
     image_keys:
       moodle-ib:
         repository: "MOODLE_IMAGE_REPOSITORY"

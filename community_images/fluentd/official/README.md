@@ -83,8 +83,8 @@ RapidFort’s hardened [rapidfort/fluentd-official][rf-dh-image-link] image has 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* ['v1.14.0-1.0', 'v1.14-1', 'latest'](https://github.com/fluent/fluentd-docker-image/blob/a9e4cee765c7aaf7876d6fe3282aa565dbcdc2a4/v1.14/alpine/Dockerfile)
-* ['v1.14.0-debian-1.0', 'v1.14-debian-1'](https://github.com/fluent/fluentd-docker-image/blob/a9e4cee765c7aaf7876d6fe3282aa565dbcdc2a4/v1.14/debian/Dockerfile)
+* ['v1.16.0-1.0', 'v1.16-1', 'latest'](https://github.com/fluent/fluentd-docker-image/blob/master/v1.16/alpine/Dockerfile)
+* ['v1.16.0-debian-1.0', 'v1.16-debian-1'](https://github.com/fluent/fluentd-docker-image/blob/master/v1.16/debian/Dockerfile)
 
 ## Need support
 

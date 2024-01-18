@@ -86,7 +86,7 @@ RapidFort’s hardened [rapidfort/memcached][rf-dh-image-link] image has been op
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1`, `1-debian-11`, `1.6.22`, `1.6.22-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-11/Dockerfile)
+* [`1`, `1-debian-11`, `1.6.23`, `1.6.23-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-11/Dockerfile)
 
 ## Need support
 

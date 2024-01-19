@@ -57,7 +57,7 @@ class CoverageRunner:
         }
 
         image_name = self.config_dict.get("name")
-        namespace_name = self._get_namespace(image_name)
+        namespace_name = self._get_namespace(image_name) if self.orchestrator.namespace_name == "< n u l l >" else self.orchestrator.namespace_name
         release_name = f"rf-{image_name}"
 
         image_tag_details = self._prepare_image_tag_details(
@@ -118,7 +118,6 @@ class CoverageRunner:
 
     def _prepare_image_tag_details(self, command, tag_mappings):
         """ Prepare image tag details for runner objects """
-
         image_tag_details = {}
         for tag_mapping in tag_mappings:
             if (tag_mapping.needs_generation

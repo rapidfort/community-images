@@ -1,0 +1,35 @@
+name: moodle-ib
+official_name: Moodle Ironbank
+official_website: https://moodle.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/moodle
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fmoodle
+source_image_readme: https://repo1.dso.mil/dsop/opensource/moodle/-/blob/development/README.md
+rf_docker_link: rapidfort/moodle-ib
+github_location: moodle/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmoodle
+usage_instructions: |
+  # Using docker run
+  $ docker run -d  -p 9000:9000 -v moodle_www:/var/www/html rapidfort/moodle-ib
+
+  # Add a proxy server like nginx or httpd and mount moodle_www to host the volume to web.
+  # Then, access it via http://localhost:<port>/ or http://<host-ip>:<port>/ in a browser.
+what_is_text: |
+  Moodle is a free and open-source learning management system written in PHP and distributed under the GNU General Public License. Moodle is used for blended learning, distance education, flipped classroom and other online learning projects in schools, universities, workplaces and other sectors.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/moodle:
+      input_base_tag: "4.3."
+      output_repo: moodle-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      moodle-ib:
+        repository: "MOODLE_IMAGE_REPOSITORY"
+        tag: "MOODLE_IMAGE_TAG"

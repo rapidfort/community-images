@@ -86,7 +86,7 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`8.2`, `8.2-debian-11`, `8.2.0`, `8.2.0-debian-11-r` (8.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.2/debian-11/Dockerfile)
-* [`8.0`, `8.0-debian-11`, `8.0.35`, `8.0.35-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)
+* [`8.0`, `8.0-debian-11`, `8.0.36`, `8.0.36-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)
 
 ## Need support
 

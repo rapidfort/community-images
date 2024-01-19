@@ -25,28 +25,48 @@ class K8sSetup:
         self.runtime_props = runtime_props or {}
         self.image_script_dir = image_script_dir
         self.command = command
+        self.preserve_namespace = False
         self.script_dir = os.path.abspath(os.path.dirname(__file__))
 
-    def __enter__(self):
+        try:
+            cmd = f"kubectl get namespace {self.namespace_name}"
+            Utils.run_cmd(cmd.split())
+            logging.info(f"Namespace '{namespace_name}' exists.")
+            self.preserve_namespace = True
+        except subprocess.CalledProcessError as e:
+            if b"NotFound" in e.output:
+                logging.info(f"Namespace '{namespace_name}' does not exist.")
+                self.preserve_namespace = False
+            else:
+                logging.info(f"Error checking namespace: {e}")
+                self.preserve_namespace = False
+
+        logging.info(f"Is namespace preserved = {self.preserve_namespace}")
+
+    def __enter__(self):  # pylint: disable=too-many-branches
         """ create a k8s namespace and set it up for runner """
 
-        # create namespace
-        cmd = f"kubectl create namespace {self.namespace_name}"
-        Utils.run_cmd(cmd.split())
+        if not self.preserve_namespace:
+            # create namespace
+            cmd = f"kubectl create namespace {self.namespace_name}"
+            Utils.run_cmd(cmd.split())
 
-        # add rapidfortbot credentials
-        docker_config_json_path = f"{os.environ.get('HOME')}/.docker/config.json"
-        cmd = f"kubectl --namespace {self.namespace_name}"
-        cmd += " create secret generic rf-regcred"
-        cmd += f" --from-file=.dockerconfigjson={docker_config_json_path}"
-        cmd += " --type=kubernetes.io/dockerconfigjson"
-        Utils.run_cmd(cmd.split())
+        try:
+            # add rapidfortbot credentials
+            docker_config_json_path = f"{os.environ.get('HOME')}/.docker/config.json"
+            cmd = f"kubectl --namespace {self.namespace_name}"
+            cmd += " create secret generic rf-regcred"
+            cmd += f" --from-file=.dockerconfigjson={docker_config_json_path}"
+            cmd += " --type=kubernetes.io/dockerconfigjson"
+            Utils.run_cmd(cmd.split())
 
-        # add tls certs
-        cert_mgr_path = os.path.abspath(
-            f"{self.script_dir}/../cert_managet_ns.yml")
-        cmd = f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
-        Utils.run_cmd(cmd.split())
+            # add tls certs
+            cert_mgr_path = os.path.abspath(
+                f"{self.script_dir}/../cert_managet_ns.yml")
+            cmd = f"kubectl apply -f {cert_mgr_path} --namespace {self.namespace_name}"
+            Utils.run_cmd(cmd.split())
+        except subprocess.CalledProcessError as _:
+            logging.info("`cert_managet_ns.yml` already present")
 
         # create tls certs for app
         Utils.generate_k8s_ssl_certs(
@@ -245,13 +265,14 @@ class K8sSetup:
             cmd = f"kubectl delete pod {self.release_name} --namespace {self.namespace_name}"
             Utils.run_cmd(cmd.split())
 
-        # delete the PVC associated
-        cmd = "kubectl -n {self.namespace_name} delete pvc --all"
-        Utils.run_cmd(cmd.split())
+        if not self.preserve_namespace:
+            # delete the PVC associated
+            cmd = "kubectl -n {self.namespace_name} delete pvc --all"
+            Utils.run_cmd(cmd.split())
 
-        # delete namespace
-        cmd = f"kubectl delete namespace {self.namespace_name}"
-        Utils.run_cmd(cmd.split())
+            # delete namespace
+            cmd = f"kubectl delete namespace {self.namespace_name}"
+            Utils.run_cmd(cmd.split())
 
     def __exit__(self, type, value, traceback):
         self.cleanup()

@@ -30,10 +30,10 @@ couchdb:
   - 3.3.3-debian-11-r
 elasticsearch:
   docker_links:
-  - '[`8`, `8-debian-11`, `8.11.3`, `8.11.3-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)'
+  - '[`8`, `8-debian-11`, `8.12.0`, `8.12.0-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)'
   - '[`7`, `7-debian-11`, `7.17.16`, `7.17.16-debian-11-r` (7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-11/Dockerfile)'
   search_tags:
-  - 8.11.3-debian-11-r
+  - 8.12.0-debian-11-r
   - 7.17.16-debian-11-r
 envoy:
   docker_links:
@@ -55,9 +55,9 @@ etcd:
   - 3.4.29-debian-11-r
 fluent-bit:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.2.1`, `2.2.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluent-bit/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.2.2`, `2.2.2-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluent-bit/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.2.1-debian-11-r
+  - 2.2.2-debian-11-r
 fluentd:
   docker_links:
   - '[`1`, `1-debian-11`, `1.16.3`, `1.16.3-debian-11-r` (1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-11/Dockerfile)'
@@ -65,14 +65,14 @@ fluentd:
   - 1.16.3-debian-11-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-11`, `5.75.3`, `5.75.3-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
+  - '[`5`, `5-debian-11`, `5.76.0`, `5.76.0-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)'
   search_tags:
-  - 5.75.3-debian-11-r
+  - 5.76.0-debian-11-r
 haproxy:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.9.1`, `2.9.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.9.2`, `2.9.2-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.9.1-debian-11-r
+  - 2.9.2-debian-11-r
 influxdb:
   docker_links:
   - '[`2`, `2-debian-11`, `2.7.5`, `2.7.5-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)'
@@ -114,10 +114,10 @@ mongodb:
 mysql:
   docker_links:
   - '[`8.2`, `8.2-debian-11`, `8.2.0`, `8.2.0-debian-11-r` (8.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.2/debian-11/Dockerfile)'
-  - '[`8.0`, `8.0-debian-11`, `8.0.35`, `8.0.35-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)'
+  - '[`8.0`, `8.0-debian-11`, `8.0.36`, `8.0.36-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)'
   search_tags:
   - 8.2.0-debian-11-r
-  - 8.0.35-debian-11-r
+  - 8.0.36-debian-11-r
 nats:
   docker_links:
   - '[`2`, `2-debian-11`, `2.10.9`, `2.10.9-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-11/Dockerfile)'
@@ -150,9 +150,9 @@ postgresql:
   - 12.17.0-debian-11-r
 prometheus:
   docker_links:
-  - '[`2`, `2-debian-11`, `2.48.1`, `2.48.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-11/Dockerfile)'
+  - '[`2`, `2-debian-11`, `2.49.1`, `2.49.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-11/Dockerfile)'
   search_tags:
-  - 2.48.1-debian-11-r
+  - 2.49.1-debian-11-r
 rabbitmq:
   docker_links:
   - '[`3.12`, `3.12-debian-11`, `3.12.12`, `3.12.12-debian-11-r` (3.12/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.12/debian-11/Dockerfile)'

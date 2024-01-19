@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+  postgres:
+    image: rapidfort/postgresql-official
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=password
+  keycloak:
+    image: ${KEYCLOAK_IMAGE_REPOSITORY}:${KEYCLOAK_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    user: root
+    volumes:
+     - ./themes:/opt/jboss/keycloak/themes
+     - ./certs:/opt/keystore/certs
+    environment:
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=postgres
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_SCHEMA=public
+      - DB_PASSWORD=password
+      - KEYCLOAK_CREATE_ADMIN_USER="true"
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=rapidpassword
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=password
+      - KEYCLOAK_ENABLE_STATISTICS=true
+      - KEYCLOAK_ENABLE_HEALTH_ENDPOINTS=true
+      - KEYCLOAK_PRODUCTION=true
+      - KEYCLOAK_JDBC_PARAMS=sslmode=disable&connectTimeout=40000
+      - KEYCLOAK_EXTRA_ARGS=-Dkeycloak.profile.feature.scripts=enabled"
+      - KC_HEALTH_ENABLED=true
+      - KEYCLOAK_ENABLE_HTTPS=true
+      - KEYCLOAK_HTTPS_USE_PEM=true
+      - KEYCLOAK_HTTPS_CERTIFICATE_FILE=/opt/keystore/certs/server.crt
+      - KEYCLOAK_HTTPS_CERTIFICATE_KEY_FILE=/opt/keystore/certs/server.key
+    ports:
+      - '0.0.0.0::8443'
+    depends_on:
+      - postgres
+    command: ["start --optimized --proxy=reencrypt --hostname=localhost --https-certificate-file=/opt/keystore/certs/server.crt --https-certificate-key-file=/opt/keystore/certs/server.key --https-port=8443"]
+
+volumes:
+  postgres_data:
+      driver: local

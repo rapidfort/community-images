@@ -1,0 +1,44 @@
+name: keycloak-ib
+official_name: Keycloak Ironbank
+official_website: https://www.keycloak.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/keycloak/keycloak
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fkeycloak%2Fkeycloak
+source_image_readme: https://repo1.dso.mil/dsop/opensource/keycloak/keycloak/-/blob/development/README.md
+rf_docker_link: rapidfort/keycloak-ib
+github_location: Keycloak/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkeycloak%2Fkeycloak
+usage_instructions: |
+  # The container can be started in development mode quickly with:
+  $ docker run -d -p 8080:8080 rapidfort/keycloak-ib:latest start-dev
+
+  # Keycloak 17 is powered by Quarkus and to deploy it in production mode it is necessary to set up TLS.
+what_is_text: |
+  Keycloak is a high performance Java-based identity and access management solution. It lets developers add an authentication layer to their applications with minimum effort.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/keycloak/keycloak:
+      input_base_tag: "22.0."
+      output_repo: keycloak-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      keycloak-ib:
+        repository: "KEYCLOAK_IMAGE_REPOSITORY"
+        tag: "KEYCLOAK_IMAGE_TAG"
+  - type: docker_compose
+    script: dc_coverage_tls.sh
+    compose_file: docker-compose-tls.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      keycloak-ib:
+        repository: "KEYCLOAK_IMAGE_REPOSITORY"
+        tag: "KEYCLOAK_IMAGE_TAG"

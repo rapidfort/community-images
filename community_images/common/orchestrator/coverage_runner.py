@@ -75,7 +75,20 @@ class CoverageRunner:
             runtime_runner = runtime_runner_map[runtime_type]
 
             script = runtime_props.get("script")
+            before_script = runtime_props.get("before_script")
+
             script_path = None
+            before_script_path = None
+
+            if before_script:
+                logging.info(
+                    f"Running before runtime script for {runtime_type}: {before_script}")
+                before_script_path = os.path.join(image_script_dir, before_script)
+                logging.info(f"Before script abs path to execute: {before_script_path}")
+
+            if before_script_path and os.path.exists(before_script_path):
+                Utils.run_cmd([before_script_path])
+
             if script:
                 logging.info(
                     f"Running runtime script for {runtime_type}: {script}")

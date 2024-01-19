@@ -394,6 +394,14 @@ jobs:
           repository: rapidfort/mongodb-official
           readme-filepath: ./community_images/mongodb/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MongoDB® Official
+      - name: Docker Hub Description Moodle Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/moodle-ib
+          readme-filepath: ./community_images/moodle/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Moodle Ironbank
       - name: Docker Hub Description MySQL
         uses: peter-evans/dockerhub-description@v3
         with:

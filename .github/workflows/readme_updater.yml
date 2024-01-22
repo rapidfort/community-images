@@ -312,7 +312,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/keycloak-ib
-          readme-filepath: ./community_images/Keycloak/ironbank/README.md.dockerhub
+          readme-filepath: ./community_images/keycloak/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Keycloak Ironbank
       - name: Docker Hub Description Keycloak Official
         uses: peter-evans/dockerhub-description@v3

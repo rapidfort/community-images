@@ -98,6 +98,14 @@ jobs:
           repository: rapidfort/apache-official
           readme-filepath: ./community_images/apache/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Official
+      - name: Docker Hub Description Cassandra Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/cassandra-ib
+          readme-filepath: ./community_images/cassandra/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Cassandra Ironbank
       - name: Docker Hub Description Cassandra Official
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -298,6 +306,14 @@ jobs:
           repository: rapidfort/influxdb
           readme-filepath: ./community_images/influxdb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for InfluxDB™
+      - name: Docker Hub Description Keycloak Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/keycloak-ib
+          readme-filepath: ./community_images/Keycloak/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Keycloak Ironbank
       - name: Docker Hub Description Keycloak Official
         uses: peter-evans/dockerhub-description@v3
         with:

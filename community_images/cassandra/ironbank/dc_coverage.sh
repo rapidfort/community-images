@@ -20,6 +20,5 @@ CONTAINER_NAME="${PROJECT_NAME}"-cassandra-1
 docker exec -i "${CONTAINER_NAME}" bash -c 'cqlsh -u cassandra -p cassandra < /opt/test.cql'
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-rm ${SCRIPTPATH}/logs/*
 
 sleep 10

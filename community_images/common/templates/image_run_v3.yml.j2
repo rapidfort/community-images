@@ -26,7 +26,7 @@ jobs:
     environment: actions-cicd
 {% endif %}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
 {% if  output == "pull_request" %}
       - name: Check if test required
@@ -56,6 +56,7 @@ jobs:
           DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
           DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
           RF_PLATFORM_HOST: ${{ '{{' }} secrets.RF_PLATFORM_HOST {{ '}}' }}
+          RF_APP_HOST: ${{ '{{' }} secrets.RF_APP_HOST {{ '}}' }}
 {% if  output == "pull_request" %}
         if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
 {% endif %}

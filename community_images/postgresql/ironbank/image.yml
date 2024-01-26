@@ -2,37 +2,43 @@ name: postgresql-ib
 official_name: PostgreSQL IronBank
 official_website: https://www.postgresql.com/
 source_image_provider: Platform One
-source_image_repo: registry1.dso.mil/ironbank/opensource/postgres/postgresql12
-source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fpostgres%2Fpostgresql12
-source_image_readme: https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/README.md
-rf_docker_link: rapidfort/postgresql12-ib
+source_image_repo: registry1.dso.mil/ironbank/opensource/postgres/postgresql
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fpostgres%2Fpostgresql
+source_image_readme: https://repo1.dso.mil/dsop/opensource/postgres/postgresql15/-/blob/development/README.md
+rf_docker_link: rapidfort/postgresql-ib
 image_workflow_name: postgresql_ironbank
 github_location: postgresql/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpostgres%2Fpostgresql12
 usage_instructions: |
-  $ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql12-ib:latest
+  $ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql-ib:latest
 what_is_text: |
   PostgreSQL, often simply "Postgres", is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/postgres/postgresql12/-/blob/development/Dockerfile)"
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/postgres/postgresql15/-/blob/development/Dockerfile)"
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
 repo_sets:
-  - opensource/postgres/postgresql12:
-      input_base_tag: "12."
-      output_repo: postgresql12-ib
+  - opensource/postgres/postgresql:
+      input_base_tag: "13"
+      output_repo: postgresql-ib
+  - opensource/postgres/postgresql:
+      input_base_tag: "14"
+      output_repo: postgresql-ib
+  - opensource/postgres/postgresql:
+      input_base_tag: "15"
+      output_repo: postgresql-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      postgresql12-ib:
+      postgresql-ib:
         repository: "PG_IMAGE_REPOSITORY"
         tag: "PG_IMAGE_TAG"
   - type: docker
-    postgresql12-ib:
+    postgresql-ib:
       environment:
         POSTGRES_PASSWORD: PgPwd

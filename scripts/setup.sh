@@ -28,9 +28,9 @@ RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-us01.rapidfort.com}
 
 if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
-  with_backoff curl  https://"$RF_PLATFORM_HOST"/cli/ > /tmp/rapidfort.cli.install.sh
-  sudo bash /tmp/rapidfort.cli.install.sh
-  export PATH=$PATH:/usr/rapidfort_cli
+  with_backoff curl  https://"$RF_PLATFORM_HOST"/cli/ > rapidfort.cli.install.sh
+  sudo bash rapidfort.cli.install.sh
+  export PATH=$PATH:$(pwd)/rapidfort_cli
   rflogin
 
   # do docker login

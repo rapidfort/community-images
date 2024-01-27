@@ -54,6 +54,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -118,6 +122,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -184,6 +192,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -248,6 +260,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -314,6 +330,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -378,6 +398,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -444,6 +468,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -508,6 +536,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -574,6 +606,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -638,6 +674,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -704,6 +744,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -768,6 +812,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -834,6 +882,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -898,6 +950,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -964,6 +1020,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1028,6 +1088,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -1094,6 +1158,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1158,6 +1226,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -1224,6 +1296,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1288,6 +1364,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -1354,6 +1434,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1418,6 +1502,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -1484,6 +1572,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1548,6 +1640,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -1614,6 +1710,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1678,6 +1778,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -1744,6 +1848,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1808,6 +1916,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -1874,6 +1986,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1938,6 +2054,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2004,6 +2124,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2068,6 +2192,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2134,6 +2262,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2198,6 +2330,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2264,6 +2400,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2328,6 +2468,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2394,6 +2538,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2458,6 +2606,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2524,6 +2676,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2588,6 +2744,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2654,6 +2814,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2718,6 +2882,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2784,6 +2952,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2848,6 +3020,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -2914,6 +3090,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2978,6 +3158,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3044,6 +3228,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3108,6 +3296,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3174,6 +3366,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3238,6 +3434,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3304,6 +3504,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3368,6 +3572,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3434,6 +3642,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3498,6 +3710,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3564,6 +3780,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3628,6 +3848,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3694,6 +3918,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3758,6 +3986,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3824,6 +4056,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3888,6 +4124,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -3954,6 +4194,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4018,6 +4262,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -4084,6 +4332,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4148,6 +4400,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -4214,6 +4470,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4278,6 +4538,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -4344,6 +4608,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4408,6 +4676,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -4474,6 +4746,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4538,6 +4814,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -4604,6 +4884,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4668,6 +4952,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -4734,6 +5022,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4798,6 +5090,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:
@@ -4864,6 +5160,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images for testing PR
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -4928,6 +5228,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images for testing PR
         env:

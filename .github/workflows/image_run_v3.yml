@@ -39,6 +39,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -87,6 +91,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -137,6 +145,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -185,6 +197,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -235,6 +251,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -283,6 +303,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -333,6 +357,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -381,6 +409,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -431,6 +463,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -479,6 +515,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -529,6 +569,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -577,6 +621,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -627,6 +675,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -675,6 +727,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -725,6 +781,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -773,6 +833,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -823,6 +887,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -871,6 +939,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -921,6 +993,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -969,6 +1045,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1019,6 +1099,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1067,6 +1151,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1117,6 +1205,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1165,6 +1257,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1215,6 +1311,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1263,6 +1363,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1313,6 +1417,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1361,6 +1469,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1411,6 +1523,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1459,6 +1575,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1509,6 +1629,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1557,6 +1681,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1607,6 +1735,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1655,6 +1787,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1705,6 +1841,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1753,6 +1893,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1803,6 +1947,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1851,6 +1999,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1901,6 +2053,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -1949,6 +2105,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -1999,6 +2159,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2047,6 +2211,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2097,6 +2265,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2145,6 +2317,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2195,6 +2371,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2243,6 +2423,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2293,6 +2477,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2341,6 +2529,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2391,6 +2583,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2439,6 +2635,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2489,6 +2689,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2537,6 +2741,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2587,6 +2795,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2635,6 +2847,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2685,6 +2901,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2733,6 +2953,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2783,6 +3007,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2831,6 +3059,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2881,6 +3113,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -2929,6 +3165,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -2979,6 +3219,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3027,6 +3271,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -3077,6 +3325,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3125,6 +3377,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -3175,6 +3431,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3223,6 +3483,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -3273,6 +3537,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3321,6 +3589,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -3371,6 +3643,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3419,6 +3695,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -3469,6 +3749,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3517,6 +3801,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -3567,6 +3855,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3615,6 +3907,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:
@@ -3665,6 +3961,10 @@ jobs:
 
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
       - name: Create images and publish to dockerhub
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -3713,6 +4013,10 @@ jobs:
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 
       - name: Create images and publish to dockerhub
         env:

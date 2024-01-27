@@ -29,6 +29,7 @@ RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-us01.rapidfort.com}
 if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
   with_backoff curl  https://"$RF_PLATFORM_HOST"/cli/ > rapidfort.cli.install.sh
+  cat rapidfort.cli.install.sh
   sudo bash rapidfort.cli.install.sh
   export PATH=$PATH:$(pwd)/rapidfort_cli
   rflogin

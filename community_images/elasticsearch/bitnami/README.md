@@ -86,7 +86,7 @@ We are making secure copies of the images we use every day and the most popular 
 
 ## Supported tags and respective `Dockerfile` links
 * [`8`, `8-debian-11`, `8.12.0`, `8.12.0-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)
-* [`7`, `7-debian-11`, `7.17.16`, `7.17.16-debian-11-r` (7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-11/Dockerfile)
+* [`7`, `7-debian-11`, `7.17.17`, `7.17.17-debian-11-r` (7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-11/Dockerfile)
 
 ## Need support
 

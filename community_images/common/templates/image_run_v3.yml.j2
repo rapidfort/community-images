@@ -61,6 +61,10 @@ jobs:
         if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
 {% endif %}
         run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
 {% if  output == "main_build" %}
       - name: Create images and publish to dockerhub
         env:

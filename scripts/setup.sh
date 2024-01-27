@@ -86,4 +86,4 @@ minikube addons enable ingress
 
 # add common python modules
 pip install --upgrade pip
-pip install backoff python-dateutil
+pip install backoff python-dateutil docker

@@ -34,7 +34,8 @@ if [[ "${EPH_SETUP}" = "no" ]]; then
   sudo bash /usr/local/rapidfort.cli.install.sh
   export PATH=$PATH:/usr/local/rapidfort_cli
   cat ~/.rapidfort/credentials
-  rflogin
+  which -a rflogin
+  rflogin -v
 
   # do docker login
   docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"

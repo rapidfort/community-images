@@ -48,7 +48,7 @@ def check_if_tests_required(image_name, image_github_location):
 
     logging.info(f"Path of image {path_of_image}")
 
-    list_of_files = ["community_images/curl/curlimages/"]
+    list_of_files = ['.github/workflows/image_run_pr_v3.yml', '.github/workflows/image_run_v3.yml', 'README.md', 'community_images/common/templates/image_run_v3.yml.j2', 'frontrow.csv', 'scripts/setup.sh']
     for updated_file in list_of_files:
         logging.info(f"Testing {updated_file}")
 

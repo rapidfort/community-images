@@ -48,7 +48,7 @@ def check_if_tests_required(image_name, image_github_location):
 
     logging.info(f"Path of image {path_of_image}")
 
-    list_of_files = ["curl"]
+    list_of_files = ["community_images/curl/curlimages/"]
     for updated_file in list_of_files:
         logging.info(f"Testing {updated_file}")
 

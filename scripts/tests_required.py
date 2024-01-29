@@ -42,13 +42,14 @@ def check_if_tests_required(image_name, image_github_location):
     logging.info(f"Pull number={pull_number}")
 
     list_of_files = list(get_list_of_files(pull_number))
+    list_of_files = ['.github/workflows/image_run_pr_v3.yml', '.github/workflows/image_run_v3.yml', 'README.md', 'community_images/common/templates/image_run_v3.yml.j2', 'frontrow.csv', 'scripts/setup.sh']
+
     logging.info(f"List of files={list_of_files}")
 
     path_of_image = f"community_images/{image_github_location}/"
 
     logging.info(f"Path of image {path_of_image}")
 
-    list_of_files = ['.github/workflows/image_run_pr_v3.yml', '.github/workflows/image_run_v3.yml', 'README.md', 'community_images/common/templates/image_run_v3.yml.j2', 'frontrow.csv', 'scripts/setup.sh']
     for updated_file in list_of_files:
         logging.info(f"Testing {updated_file}")
 
@@ -58,11 +59,11 @@ def check_if_tests_required(image_name, image_github_location):
             return True
 
         # Test for orchestrator changes with few random tests
-        # if (updated_file.startswith("community_images/common/orchestrator/") or
-        #         updated_file.startswith("community_images/common/tests/")):
-        if image_name in ["curl", "nginx-ib", "redis", "postgresql-ib", "mongodb", "mysql"]:
-            logging.info(f"Picking tests for orchestrator and tests {updated_file}")
-            return True
+        if (updated_file.startswith("community_images/common/orchestrator/") or
+                updated_file.startswith("community_images/common/tests/")):
+            if image_name in ["curl", "nginx-ib", "redis", "postgresql-ib", "mongodb", "mysql"]:
+                logging.info(f"Picking tests for orchestrator and tests {updated_file}")
+                return True
 
         # Test for changes in scripts folder
         if (updated_file.startswith("scripts/") or
@@ -95,6 +96,7 @@ def main():
     image_github_location = sys.argv[2]
     output_file = sys.argv[3]
     tests_required = check_if_tests_required(image_name, image_github_location)
+    print(f"Tests Required? {tests_required}")
     output_test_required(output_file, tests_required)
 
 

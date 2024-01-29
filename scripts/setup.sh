@@ -33,6 +33,9 @@ if [[ "${EPH_SETUP}" = "no" ]]; then
   sudo cp rapidfort.cli.install.sh /usr/local/rapidfort.cli.install.sh
   sudo bash /usr/local/rapidfort.cli.install.sh
   export PATH=$PATH:/usr/local/rapidfort_cli
+  echo $RF_PLATFORM_HOST | md5sum
+  echo $RF_ACCESS_ID | md5sum
+  echo $RF_SECRET_ACCESS_KEY | md5sum
   rflogin
 
   # do docker login

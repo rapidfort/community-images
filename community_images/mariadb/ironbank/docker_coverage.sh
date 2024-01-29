@@ -75,3 +75,5 @@ docker run --network="${NETWORK_NAME}" \
     --mysql-password="${MYSQL_ROOT_PASSWORD}" \
     /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
     run
+
+

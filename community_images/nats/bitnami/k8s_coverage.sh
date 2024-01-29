@@ -15,3 +15,5 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 test_nats "${NAMESPACE}" "${RELEASE_NAME}"
+
+

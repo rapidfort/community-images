@@ -20,6 +20,8 @@ MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE
 # copy test.sql into container
 kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/../../common/tests/test.my_sql "${RELEASE_NAME}"-0:/tmp/test.my_sql
 
+
+
 # run script
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}"-0 -- /bin/bash -c "mysql -h localhost -uroot -p\"$MARIADB_ROOT_PASSWORD\" mysql < /tmp/test.my_sql"
 

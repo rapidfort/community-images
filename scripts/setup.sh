@@ -35,6 +35,7 @@ if [[ "${EPH_SETUP}" = "no" ]]; then
   export PATH=$PATH:/usr/local/rapidfort_cli
   cat ~/.rapidfort/credentials
   which -a rflogin
+  env | sort
   rflogin -v
 
   # do docker login

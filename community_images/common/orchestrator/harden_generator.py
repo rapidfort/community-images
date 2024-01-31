@@ -59,7 +59,7 @@ class HardenGenerator:
                 output_tag_details.repo,
                 output_tag_details.stub_tag)
 
-            rfharden_cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta"
+            rfharden_cmd = f"rfharden {output_tag_details.full_stub_tag} --put-meta -o {output_tag_details.full_hardened_tag}"
             if rfignore_exists:
                 rfharden_cmd += f" --profile {rfignore_path}"
 

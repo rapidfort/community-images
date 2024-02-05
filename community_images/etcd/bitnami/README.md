@@ -85,8 +85,8 @@ RapidFort’s hardened [rapidfort/etcd][rf-dh-image-link] image has been optimiz
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.5`, `3.5-debian-11`, `3.5.11`, `3.5.11-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)
-* [`3.4`, `3.4-debian-11`, `3.4.29`, `3.4.29-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)
+* [`3.5`, `3.5-debian-11`, `3.5.12`, `3.5.12-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)
+* [`3.4`, `3.4-debian-11`, `3.4.30`, `3.4.30-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)
 
 ## Need support
 

@@ -82,6 +82,7 @@ RapidFort’s hardened [rapidfort/envoy][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
+* [`1.29`, `1.29-debian-11`, `1.29.0`, `1.29.0-debian-11-r` (1.29/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.29/debian-11/Dockerfile)
 * [`1.28`, `1.28-debian-11`, `1.28.0`, `1.28.0-debian-11-r` (1.28/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.28/debian-11/Dockerfile)
 * [`1.27`, `1.27-debian-11`, `1.27.2`, `1.27.2-debian-11-r` (1.27/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.27/debian-11/Dockerfile)
 * [`1.26`, `1.26-debian-11`, `1.26.6`, `1.26.6-debian-11-r` (1.26/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.26/debian-11/Dockerfile)

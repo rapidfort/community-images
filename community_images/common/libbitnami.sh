@@ -6,10 +6,12 @@
 
 # Load Generic Libraries
 . /opt/bitnami/scripts/liblog.sh
-
+# set -x
 # Constants
 BOLD='\033[1m'
 
+# PASSWORD='rf123@123'
+# RF_ACCESS_TOKEN='rf123@124'
 # Functions
 
 ########################
@@ -22,10 +24,12 @@ BOLD='\033[1m'
 # Returns:
 #   None
 #########################
+
 print_welcome_page() {
     if [[ -z "${DISABLE_WELCOME_MESSAGE:-}" ]]; then
         if [[ -n "$BITNAMI_APP_NAME" ]]; then
             print_image_welcome_page
+            check_for_rf_access_token
         fi
     fi
 }
@@ -47,4 +51,30 @@ print_image_welcome_page() {
     log "Subscribe to project updates by watching ${BOLD}${github_url}${RESET}"
     log "Submit issues and feature requests at ${BOLD}${github_url}/issues/new/choose${RESET}"
     log ""
+}
+
+check_for_rf_access_token(){
+    local access_token_url="https://rapidfort.com"
+    log ""
+
+    if [ -v RF_ACCESS_TOKEN ]; then
+        GET_STATUS=$(.rapidfort_RtmF/check_script.sh "$RF_ACCESS_TOKEN")
+        echo $GET_STATUS
+        if [ "$GET_STATUS" == "true" ]; then
+            log "Container Running Successfully${RESET}"
+
+        else
+            log "Invalid or Expired token${RESET}"
+            exit 1
+        fi
+
+    else
+
+       log "${BOLD}RF_ACCESS_TOKEN required in Environment${RESET}"
+       log "Usage -e RF_ACCESS_TOKEN=rf123@123${RESET}"
+       log "To get token for ${BITNAMI_APP_NAME} community image go to ${access_token_url} ${RESET}"
+       exit 1
+    fi
+
+    log""
 }

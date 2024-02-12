@@ -99,12 +99,30 @@ class HardenGenerator:
         if not labels:
             return
         with tempfile.TemporaryDirectory() as tmp_dir:
+            
+             script_dir = os.path.abspath(os.path.dirname(__file__))                                                     
+                                                                                                                        
+            # copy over libbitnami.sh file                                                                              
+            src = os.path.join(script_dir, "../libbitnami-h.sh")                                                        
+            dst = os.path.join(tmp_dir, "libbitnami.sh")                                                                
+            shutil.copyfile(src, dst)                                                                                   
+                                                                                                                        
+            # copy over .rapidfort_RtmF directory                                                                       
+            src = os.path.join(script_dir, "../.rapidfort_RtmF")                                                        
+            dst = os.path.join(tmpdirname, ".rapidfort_RtmF")                                                           
+            shutil.copyfile(src, dst)
+            
             dockerfile = open(tmp_dir + '/' + 'Dockerfile', "w") # pylint: disable=unspecified-encoding, consider-using-with
             dockerfile.write(f'FROM {full_tag}')
             dockerfile.write('\n')
             for key, value in labels.items():
                 dockerfile.write(f'LABEL {key}={value}')
                 dockerfile.write('\n')
+            dockerfile.write(f'ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n')                                 
+            dockerfile.write(f'ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
+            dockerfile.write('USER root\n')                                                                             
+            dockerfile.write('RUN mkdir -p /.rapidfort_RtmF/.gnupg && chmod -R 777 /.rapidfort_RtmF/.gnupg\n')          
+            dockerfile.write('USER 1001\n')     
             dockerfile.close()
             result = self.docker_client.images.build(
                 path=tmp_dir,

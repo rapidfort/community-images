@@ -2,6 +2,7 @@
 
 import os
 import logging
+import shutil
 import tempfile
 import backoff
 from consts import Consts
@@ -109,8 +110,8 @@ class HardenGenerator:
                                                                                                                         
             # copy over .rapidfort_RtmF directory                                                                       
             src = os.path.join(script_dir, "../.rapidfort_RtmF")                                                        
-            dst = os.path.join(tmpdirname, ".rapidfort_RtmF")                                                           
-            shutil.copyfile(src, dst)
+            dst = os.path.join(tmp_dir, ".rapidfort_RtmF")                                                           
+            shutil.copytree(src, dst)
             
             dockerfile = open(tmp_dir + '/' + 'Dockerfile', "w") # pylint: disable=unspecified-encoding, consider-using-with
             dockerfile.write(f'FROM {full_tag}')
@@ -118,10 +119,11 @@ class HardenGenerator:
             for key, value in labels.items():
                 dockerfile.write(f'LABEL {key}={value}')
                 dockerfile.write('\n')
-            dockerfile.write(f'ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n')                                 
-            dockerfile.write(f'ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
+            dockerfile.write('ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n')                                 
+            dockerfile.write('ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
             dockerfile.write('USER root\n')                                                                             
-            dockerfile.write('RUN mkdir -p /.rapidfort_RtmF/.gnupg && chmod -R 777 /.rapidfort_RtmF/.gnupg\n')          
+            dockerfile.write('RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')          
+            dockerfile.write('RUN chmod -R 777 /.rapidfort_RtmF\n')          
             dockerfile.write('USER 1001\n')     
             dockerfile.close()
             result = self.docker_client.images.build(

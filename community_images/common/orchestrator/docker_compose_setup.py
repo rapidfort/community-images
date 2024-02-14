@@ -65,6 +65,8 @@ class DockerComposeSetup:
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         cmd = "docker-compose"
+        rf_access_token = os.getenv("RF_ACCESS_TOKEN")
+        cmd += f" -e RF_ACCESS_TOKEN={rf_access_token}"
         cmd += f" --env-file {self.temp_env_file}"
         cmd += f" -f {self.docker_file} -p {self.namespace_name}"
         cmd += " up --build -d"

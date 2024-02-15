@@ -119,12 +119,26 @@ class HardenGenerator:
             for key, value in labels.items():
                 dockerfile.write(f'LABEL {key}={value}')
                 dockerfile.write('\n')
-            dockerfile.write('ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n')                                 
-            dockerfile.write('ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
-            dockerfile.write('USER root\n')                                                                             
-            dockerfile.write('RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')          
-            dockerfile.write('RUN chmod -R 777 /.rapidfort_RtmF\n')          
-            dockerfile.write('USER 1001\n')     
+                
+            file_path =os.path.join(script_dir ,"../../../image-api.lst" )
+
+            if os.path.isfile(file_path) and os.access(file_path, os.R_OK):
+                
+                with open(file_path, 'r') as file:
+                    file_content = file.read()
+
+                    if self.config_name in file_content:
+                        dockerfile.write('ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n')                                 
+                        dockerfile.write('ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
+                        dockerfile.write('USER root\n')                                                                             
+                        dockerfile.write('RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')          
+                        dockerfile.write('RUN chmod -R 777 /.rapidfort_RtmF\n')          
+                        dockerfile.write('USER 1001\n')
+                        
+            else:
+                logging.info("File not found or not readable.")
+
+                     
             dockerfile.close()
             result = self.docker_client.images.build(
                 path=tmp_dir,

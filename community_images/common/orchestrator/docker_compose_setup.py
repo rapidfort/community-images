@@ -54,6 +54,10 @@ class DockerComposeSetup:
                     tag_key = image_keys[repo_key]["tag"]
                     tag_value = tag_details["tag"]
                     env_fp.write(f"{tag_key}={tag_value}\n")
+
+                    rf_access_token = os.getenv("RF_ACCESS_TOKEN")
+                    env_fp.write(f"RF_ACCESS_TOKEN={rf_access_token}\n")
+                    
                     logging.info(f"adding {tag_key}={tag_value}")
 
     def __enter__(self):
@@ -65,8 +69,6 @@ class DockerComposeSetup:
             self.image_script_dir, self.runtime_props.get("tls_certs", {}))
 
         cmd = "docker-compose"
-        rf_access_token = os.getenv("RF_ACCESS_TOKEN")
-        cmd += f" -e RF_ACCESS_TOKEN={rf_access_token}"
         cmd += f" --env-file {self.temp_env_file}"
         cmd += f" -f {self.docker_file} -p {self.namespace_name}"
         cmd += " up --build -d"

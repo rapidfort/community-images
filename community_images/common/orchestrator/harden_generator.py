@@ -100,45 +100,45 @@ class HardenGenerator:
         if not labels:
             return
         with tempfile.TemporaryDirectory() as tmp_dir:
-            
-            script_dir = os.path.abspath(os.path.dirname(__file__))                                                     
-                                                                                                                        
-            # copy over libbitnami.sh file                                                                              
-            src = os.path.join(script_dir, "../libbitnami-h.sh")                                                        
-            dst = os.path.join(tmp_dir, "libbitnami.sh")                                                                
-            shutil.copyfile(src, dst)                                                                                   
-                                                                                                                        
-            # copy over .rapidfort_RtmF directory                                                                       
-            src = os.path.join(script_dir, "../.rapidfort_RtmF")                                                        
-            dst = os.path.join(tmp_dir, ".rapidfort_RtmF")                                                           
+
+            script_dir = os.path.abspath(os.path.dirname(__file__))
+
+            # copy over libbitnami.sh file
+            src = os.path.join(script_dir, "../libbitnami-h.sh")
+            dst = os.path.join(tmp_dir, "libbitnami.sh")
+            shutil.copyfile(src, dst)
+
+            # copy over .rapidfort_RtmF directory
+            src = os.path.join(script_dir, "../.rapidfort_RtmF")
+            dst = os.path.join(tmp_dir, ".rapidfort_RtmF")
             shutil.copytree(src, dst)
-            
+
             dockerfile = open(tmp_dir + '/' + 'Dockerfile', "w") # pylint: disable=unspecified-encoding, consider-using-with
             dockerfile.write(f'FROM {full_tag}')
             dockerfile.write('\n')
             for key, value in labels.items():
                 dockerfile.write(f'LABEL {key}={value}')
                 dockerfile.write('\n')
-                
+
             file_path =os.path.join(script_dir ,"../../../image-api.lst" )
 
             if os.path.isfile(file_path) and os.access(file_path, os.R_OK):
-                
-                with open(file_path, 'r') as file:
+
+                with open(file_path, 'r', encoding='utf-8') as file:
                     file_content = file.read()
 
                     if self.config_name in file_content:
-                        dockerfile.write('ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n')                                 
-                        dockerfile.write('ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
-                        dockerfile.write('USER root\n')                                                                             
-                        dockerfile.write('RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')          
-                        dockerfile.write('RUN chmod -R 777 /.rapidfort_RtmF\n')          
+                        dockerfile.write('ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n')
+                        dockerfile.write('ADD .rapidfort_RtmF /.rapidfort_RtmF\n')
+                        dockerfile.write('USER root\n')
+                        dockerfile.write('RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')
+                        dockerfile.write('RUN chmod -R 777 /.rapidfort_RtmF\n')
                         dockerfile.write('USER 1001\n')
-                        
+
             else:
                 logging.info("File not found or not readable.")
 
-                     
+
             dockerfile.close()
             result = self.docker_client.images.build(
                 path=tmp_dir,

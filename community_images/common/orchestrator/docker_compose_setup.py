@@ -57,7 +57,7 @@ class DockerComposeSetup:
 
                     rf_access_token = os.getenv("RF_ACCESS_TOKEN")
                     env_fp.write(f"RF_ACCESS_TOKEN={rf_access_token}\n")
-                    
+
                     logging.info(f"adding {tag_key}={tag_value}")
 
     def __enter__(self):

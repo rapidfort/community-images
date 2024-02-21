@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for Ghost
 
+
 RapidFort’s container optimization process hardened this Ghost container. This container is free to use and has no license limitations.
+
 
 It is the same as the [Bitnami Ghost][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 
 ## How do I use this hardened Ghost image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,7 +89,7 @@ RapidFort’s hardened [rapidfort/ghost][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`5`, `5-debian-11`, `5.79.0`, `5.79.0-debian-11-r` (5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-11/Dockerfile)
+* [`5`, `5-debian-12`, `5.79.4`, `5.79.4-debian-12-r` (5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-12/Dockerfile)
 
 ## Need support
 

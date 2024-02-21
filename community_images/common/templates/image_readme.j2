@@ -11,7 +11,11 @@
 
 # RapidFort hardened image for {{ official_name }}
 
+{% if is_locked == "True" %}
+RapidFort’s container optimization process hardened this {{ official_name }} container. You can utilize it for free by signing up on [RapidFort.com](www.rapidfort.com) to obtain an access token. Remember to provide your access token as an environment variable named `RF_ACCESS_TOKEN` when running the image.
+{% else %}
 RapidFort’s container optimization process hardened this {{ official_name }} container. This container is free to use and has no license limitations.
+{% endif %}
 
 It is the same as the [{{- source_image_provider }} {{ official_name -}}][source-image-repo-link] image but more secure.
 
@@ -44,6 +48,18 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 {{ disclaimer }}
 
 ## How do I use this hardened {{ official_name }} image?
+
+{% if is_locked == "True" %}
+<ol>
+    <li>Register on <a href="www.rapidfort.com">RapidFort.com</a> to receive your complimentary access token.</li>
+    <li>When running the image, ensure to pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
+</ol>
+
+For instance, when using Docker, execute the following command:
+```sh
+docker run -e RF_ACCESS_TOKEN="your_access_token" image_name
+```
+{% endif %}
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 

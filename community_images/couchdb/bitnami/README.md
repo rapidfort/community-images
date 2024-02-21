@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for Couchdb Database Server
 
+
 RapidFort’s container optimization process hardened this Couchdb Database Server container. This container is free to use and has no license limitations.
+
 
 It is the same as the [Bitnami Couchdb Database Server][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 
 ## How do I use this hardened Couchdb Database Server image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,7 +89,7 @@ RapidFort’s hardened [rapidfort/couchdb][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3`, `3-debian-11`, `3.3.3`, `3.3.3-debian-11-r` (3/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/couchdb/3/debian-11/Dockerfile)
+* [`3`, `3-debian-12`, `3.3.3`, `3.3.3-debian-12-r` (3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/couchdb/3/debian-12/Dockerfile)
 
 ## Need support
 

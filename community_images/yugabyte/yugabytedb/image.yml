@@ -23,6 +23,7 @@ what_is_text: |
   YugabyteDB is a high-performance, cloud-native, distributed SQL database that aims to support all PostgreSQL features. It is best suited for cloud-native OLTP (i.e., real-time, business-critical) applications that need absolute data correctness and require at least one of the following: scalability, high tolerance to failures, or globally-distributed deployments.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
 docker_links:
   - "[`2.17`, `latest` (2.17/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)"
   - "[`2.16`, (2.16/centos/Dockerfile)](https://github.com/yugabyte/build-infra/blob/master/docker_images/centos7/Dockerfile)"

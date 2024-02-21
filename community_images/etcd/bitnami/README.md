@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for Etcd
 
+
 RapidFort’s container optimization process hardened this Etcd container. This container is free to use and has no license limitations.
+
 
 It is the same as the [Bitnami Etcd][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 
 ## How do I use this hardened Etcd image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,8 +89,8 @@ RapidFort’s hardened [rapidfort/etcd][rf-dh-image-link] image has been optimiz
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.5`, `3.5-debian-11`, `3.5.12`, `3.5.12-debian-11-r` (3.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-11/Dockerfile)
-* [`3.4`, `3.4-debian-11`, `3.4.30`, `3.4.30-debian-11-r` (3.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-11/Dockerfile)
+* [`3.5`, `3.5-debian-12`, `3.5.12`, `3.5.12-debian-12-r` (3.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-12/Dockerfile)
+* [`3.4`, `3.4-debian-12`, `3.4.30`, `3.4.30-debian-12-r` (3.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-12/Dockerfile)
 
 ## Need support
 

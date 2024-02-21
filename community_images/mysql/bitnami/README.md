@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for MySQL
 
-RapidFort’s container optimization process hardened this MySQL container. This container is free to use and has no license limitations.
+
+RapidFort’s container optimization process hardened this MySQL container. You can utilize it for free by signing up on [RapidFort.com](www.rapidfort.com) to obtain an access token. Remember to provide your access token as an environment variable named `RF_ACCESS_TOKEN` when running the image.
+
 
 It is the same as the [Bitnami MySQL][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,18 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 
 ## How do I use this hardened MySQL image?
+
+
+<ol>
+    <li>Register on <a href="www.rapidfort.com">RapidFort.com</a> to receive your complimentary access token.</li>
+    <li>When running the image, ensure to pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
+</ol>
+
+For instance, when using Docker, execute the following command:
+```sh
+docker run -e RF_ACCESS_TOKEN="your_access_token" image_name
+```
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,9 +99,8 @@ RapidFort’s hardened [rapidfort/mysql][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`8.3`, `8.3-debian-11`, `8.3.0`, `8.3.0-debian-11-r` (8.3/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.3/debian-11/Dockerfile)
-* [`8.2`, `8.2-debian-11`, `8.2.0`, `8.2.0-debian-11-r` (8.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.2/debian-11/Dockerfile)
-* [`8.0`, `8.0-debian-11`, `8.0.36`, `8.0.36-debian-11-r` (8.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-11/Dockerfile)
+* [`8.3`, `8.3-debian-12`, `8.3.0`, `8.3.0-debian-12-r` (8.3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.3/debian-12/Dockerfile)
+* [`8.0`, `8.0-debian-12`, `8.0.36`, `8.0.36-debian-12-r` (8.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-12/Dockerfile)
 
 ## Need support
 

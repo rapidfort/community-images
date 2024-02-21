@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for Apache Airflow Scheduler
 
+
 RapidFort’s container optimization process hardened this Apache Airflow Scheduler container. This container is free to use and has no license limitations.
+
 
 It is the same as the [Bitnami Apache Airflow Scheduler][source-image-repo-link] image but more secure.
 
@@ -51,6 +53,8 @@ Disclaimer: This software listing is packaged by RapidFort. The respective trade
 
 ## How do I use this hardened Apache Airflow Scheduler image?
 
+
+
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
 <a href="https://github.com/bitnami/containers/blob/main/bitnami/airflow-scheduler/README.md">
@@ -89,7 +93,7 @@ RapidFort’s hardened [rapidfort/airflow-scheduler][rf-dh-image-link] image has
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-11`, `2.8.1`, `2.8.1-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-scheduler/2/debian-11/Dockerfile)
+* [`2`, `2-debian-12`, `2.8.1`, `2.8.1-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-scheduler/2/debian-12/Dockerfile)
 
 ## Need support
 

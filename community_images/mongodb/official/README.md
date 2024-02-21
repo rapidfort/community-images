@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for MongoDB® Official
 
+
 RapidFort’s container optimization process hardened this MongoDB® Official container. This container is free to use and has no license limitations.
+
 
 It is the same as the [MongoDB MongoDB® Official][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Disclaimer: The respective trademarks mentioned in the offering are owned by the
 
 
 ## How do I use this hardened MongoDB® Official image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 

@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for Redis™
 
-RapidFort’s container optimization process hardened this Redis™ container. This container is free to use and has no license limitations.
+
+RapidFort’s container optimization process hardened this Redis™ container. You can utilize it for free by signing up on [RapidFort.com](www.rapidfort.com) to obtain an access token. Remember to provide your access token as an environment variable named `RF_ACCESS_TOKEN` when running the image.
+
 
 It is the same as the [Bitnami Redis™][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,18 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 
 ## How do I use this hardened Redis™ image?
+
+
+<ol>
+    <li>Register on <a href="www.rapidfort.com">RapidFort.com</a> to receive your complimentary access token.</li>
+    <li>When running the image, ensure to pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
+</ol>
+
+For instance, when using Docker, execute the following command:
+```sh
+docker run -e RF_ACCESS_TOKEN="your_access_token" image_name
+```
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,9 +99,9 @@ RapidFort’s hardened [rapidfort/redis][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.2`, `7.2-debian-11`, `7.2.4`, `7.2.4-debian-11-r` (7.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.2/debian-11/Dockerfile)
-* [`7.0`, `7.0-debian-11`, `7.0.15`, `7.0.15-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-11/Dockerfile)
-* [`6.2`, `6.2-debian-11`, `6.2.14`, `6.2.14-debian-11-r` (6.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-11/Dockerfile)
+* [`7.2`, `7.2-debian-12`, `7.2.4`, `7.2.4-debian-12-r` (7.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.2/debian-12/Dockerfile)
+* [`7.0`, `7.0-debian-12`, `7.0.15`, `7.0.15-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.0/debian-12/Dockerfile)
+* [`6.2`, `6.2-debian-12`, `6.2.14`, `6.2.14-debian-12-r` (6.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-12/Dockerfile)
 
 ## Need support
 

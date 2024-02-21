@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for MongoDB®
 
-RapidFort’s container optimization process hardened this MongoDB® container. This container is free to use and has no license limitations.
+
+RapidFort’s container optimization process hardened this MongoDB® container. You can utilize it for free by signing up on [RapidFort.com](www.rapidfort.com) to obtain an access token. Remember to provide your access token as an environment variable named `RF_ACCESS_TOKEN` when running the image.
+
 
 It is the same as the [Bitnami MongoDB®][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,18 @@ Disclaimer: The respective trademarks mentioned in the offering are owned by the
 
 
 ## How do I use this hardened MongoDB® image?
+
+
+<ol>
+    <li>Register on <a href="www.rapidfort.com">RapidFort.com</a> to receive your complimentary access token.</li>
+    <li>When running the image, ensure to pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
+</ol>
+
+For instance, when using Docker, execute the following command:
+```sh
+docker run -e RF_ACCESS_TOKEN="your_access_token" image_name
+```
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,9 +99,7 @@ RapidFort’s hardened [rapidfort/mongodb][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.0`, `7.0-debian-11`, `7.0.5`, `7.0.5-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-11/Dockerfile)
-* [`6.0`, `6.0-debian-11`, `6.0.13`, `6.0.13-debian-11-r` (6.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/6.0/debian-11/Dockerfile)
-* [`5.0`, `5.0-debian-11`, `5.0.24`, `5.0.24-debian-11-r` (5.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/5.0/debian-11/Dockerfile)
+* [`7.0`, `7.0-debian-12`, `7.0.5`, `7.0.5-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-12/Dockerfile)
 
 ## Need support
 

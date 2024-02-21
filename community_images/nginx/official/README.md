@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for NGINX Official
 
+
 RapidFort’s container optimization process hardened this NGINX Official container. This container is free to use and has no license limitations.
+
 
 It is the same as the [The NGINX Docker Maintainers NGINX Official][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 
 ## How do I use this hardened NGINX Official image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 

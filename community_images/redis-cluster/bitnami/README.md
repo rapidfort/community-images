@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for Redis™ Cluster
 
+
 RapidFort’s container optimization process hardened this Redis™ Cluster container. This container is free to use and has no license limitations.
+
 
 It is the same as the [Bitnami Redis™ Cluster][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 
 ## How do I use this hardened Redis™ Cluster image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,8 +89,8 @@ RapidFort’s hardened [rapidfort/redis-cluster][rf-dh-image-link] image has bee
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.2`, `7.2-debian-11`, `7.2.4`, `7.2.4-debian-11-r` (7.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis-cluster/7.2/debian-11/Dockerfile)
-* [`7.0`, `7.0-debian-11`, `7.0.15`, `7.0.15-debian-11-r` (7.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis-cluster/7.0/debian-11/Dockerfile)
+* [`7.2`, `7.2-debian-12`, `7.2.4`, `7.2.4-debian-12-r` (7.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis-cluster/7.2/debian-12/Dockerfile)
+* [`7.0`, `7.0-debian-12`, `7.0.15`, `7.0.15-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis-cluster/7.0/debian-12/Dockerfile)
 
 ## Need support
 

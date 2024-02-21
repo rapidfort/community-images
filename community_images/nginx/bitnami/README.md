@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for NGINX
 
-RapidFort’s container optimization process hardened this NGINX container. This container is free to use and has no license limitations.
+
+RapidFort’s container optimization process hardened this NGINX container. You can utilize it for free by signing up on [RapidFort.com](www.rapidfort.com) to obtain an access token. Remember to provide your access token as an environment variable named `RF_ACCESS_TOKEN` when running the image.
+
 
 It is the same as the [Bitnami NGINX][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,18 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 
 ## How do I use this hardened NGINX image?
+
+
+<ol>
+    <li>Register on <a href="www.rapidfort.com">RapidFort.com</a> to receive your complimentary access token.</li>
+    <li>When running the image, ensure to pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
+</ol>
+
+For instance, when using Docker, execute the following command:
+```sh
+docker run -e RF_ACCESS_TOKEN="your_access_token" image_name
+```
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,8 +99,8 @@ RapidFort’s hardened [rapidfort/nginx][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.25`, `1.25-debian-11`, `1.25.3`, `1.25.3-debian-11-r` (1.25/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.25/debian-11/Dockerfile)
-* [`1.24`, `1.24-debian-11`, `1.24.0`, `1.24.0-debian-11-r` (1.24/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.24/debian-11/Dockerfile)
+* [`1.25`, `1.25-debian-12`, `1.25.4`, `1.25.4-debian-12-r` (1.25/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.25/debian-12/Dockerfile)
+* [`1.24`, `1.24-debian-12`, `1.24.0`, `1.24.0-debian-12-r` (1.24/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.24/debian-12/Dockerfile)
 
 ## Need support
 

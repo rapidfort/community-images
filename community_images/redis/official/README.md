@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for Redis™ Official
 
+
 RapidFort’s container optimization process hardened this Redis™ Official container. This container is free to use and has no license limitations.
+
 
 It is the same as the [The Docker Community Redis™ Official][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 
 ## How do I use this hardened Redis™ Official image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 

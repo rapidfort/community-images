@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for InfluxDB™
 
+
 RapidFort’s container optimization process hardened this InfluxDB™ container. This container is free to use and has no license limitations.
+
 
 It is the same as the [Bitnami InfluxDB™][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, a
 
 
 ## How do I use this hardened InfluxDB™ image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,7 +89,7 @@ RapidFort’s hardened [rapidfort/influxdb][rf-dh-image-link] image has been opt
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-11`, `2.7.5`, `2.7.5-debian-11-r` (2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-11/Dockerfile)
+* [`2`, `2-debian-12`, `2.7.5`, `2.7.5-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-12/Dockerfile)
 
 ## Need support
 

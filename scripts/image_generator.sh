@@ -29,25 +29,6 @@ gen_image_readme()
   done < "${SCRIPTPATH}"/../image.lst
 }
 
-gen_locked_image_readme()
-{
-  while IFS="" read -r p || [ -n "$p" ]
-  do
-    rm -f community_images/"${p}"/image.tmp.yml
-
-    # this allows us to merge bitnami tags file into image.yml
-    python3 "${SCRIPTPATH}"/prepare_image_yml.py \
-      "${SCRIPTPATH}"/../community_images/"${p}"/image.yml \
-      "${SCRIPTPATH}"/../community_images/"${p}"/image.tmp.yml
-
-    jinja -d community_images/"${p}"/image.tmp.yml \
-      -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme_locked.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
-
-    rm -f community_images/"${p}"/image.tmp.yml
-
-  done < "${SCRIPTPATH}"/../image-api.lst
-}
-
 gen_main_readme()
 {
   echo "Generating main readme"
@@ -101,7 +82,6 @@ main()
   python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
   gen_main_readme
   gen_image_readme
-  gen_locked_image_readme
   gen_new_image_actions
   del_image_variants
 }

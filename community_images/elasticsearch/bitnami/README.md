@@ -11,7 +11,9 @@
 
 # RapidFort hardened image for ElasticSearch
 
+
 RapidFort’s container optimization process hardened this ElasticSearch container. This container is free to use and has no license limitations.
+
 
 It is the same as the [Bitnami ElasticSearch][source-image-repo-link] image but more secure.
 
@@ -46,6 +48,8 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 
 ## How do I use this hardened ElasticSearch image?
+
+
 
 The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
 
@@ -85,8 +89,8 @@ RapidFort’s hardened [rapidfort/elasticsearch][rf-dh-image-link] image has bee
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`8`, `8-debian-11`, `8.12.0`, `8.12.0-debian-11-r` (8/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-11/Dockerfile)
-* [`7`, `7-debian-11`, `7.17.17`, `7.17.17-debian-11-r` (7/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-11/Dockerfile)
+* [`8`, `8-debian-12`, `8.12.1`, `8.12.1-debian-12-r` (8/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-12/Dockerfile)
+* [`7`, `7-debian-12`, `7.17.18`, `7.17.18-debian-12-r` (7/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-12/Dockerfile)
 
 ## Need support
 

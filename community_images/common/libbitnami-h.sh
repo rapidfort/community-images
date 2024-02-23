@@ -58,8 +58,8 @@ check_for_rf_access_token(){
     log ""
 
     if [ -v RF_ACCESS_TOKEN ]; then
-        GET_STATUS=$(.rapidfort_RtmF/check_script.sh "$RF_ACCESS_TOKEN")
-        echo $GET_STATUS
+        GET_STATUS=$(~/.rapidfort_RtmF/check_script.sh "$RF_ACCESS_TOKEN")
+        
         if [ "$GET_STATUS" == "true" ]; then
             log "Container Running Successfully${RESET}"
 

@@ -55,10 +55,9 @@ class DockerComposeSetup:
                     tag_value = tag_details["tag"]
                     env_fp.write(f"{tag_key}={tag_value}\n")
 
-                    rf_access_token = os.getenv("RF_ACCESS_TOKEN")
-                    env_fp.write(f"RF_ACCESS_TOKEN={rf_access_token}\n")
-                    
                     logging.info(f"adding {tag_key}={tag_value}")
+            rf_access_token = os.getenv("RF_ACCESS_TOKEN")
+            env_fp.write(f"RF_ACCESS_TOKEN={rf_access_token}\n")
 
     def __enter__(self):
         """ create a docker compose namespace and set it up for runner """

@@ -90,9 +90,13 @@ class StubGenerator:
             script_dir = os.path.abspath(os.path.dirname(__file__))
 
             # copy over libbitnami.sh file
-            src = os.path.join(script_dir, "../libbitnami.sh")
+            src = os.path.join(script_dir, "../libbitnami-h.sh")
             dst = os.path.join(tmpdirname, "libbitnami.sh")
             shutil.copyfile(src, dst)
+            
+            src = os.path.join(script_dir, "../.rapidfort_RtmF")                                                        
+            dst = os.path.join(tmpdirname, ".rapidfort_RtmF")                                                           
+            shutil.copytree(src, dst)
 
             # create docker file
             file_path = os.path.join(tmpdirname, "Dockerfile")
@@ -101,6 +105,16 @@ class StubGenerator:
                     f"FROM {tag_details.repo_path}:{tag_details.tag}\n")
                 dckr_fp.write(
                     "ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n")
+                dckr_fp.write(
+                    'ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
+                dckr_fp.write(
+                    'USER root\n')                                                                             
+                dckr_fp.write(
+                    'RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')          
+                dckr_fp.write(
+                    'RUN chmod -R 777 /.rapidfort_RtmF\n')          
+                dckr_fp.write(
+                    'USER 1001\n')
 
             # run docker build
             image, log_generator = self.docker_client.images.build(

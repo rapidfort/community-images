@@ -23,13 +23,15 @@ input_registry:
   account: bitnami
 repo_sets:
   - envoy:
-      input_base_tag: "1.27.1-debian-11-r"
+      input_base_tag: "1.29.0-debian-11-r"
   - envoy:
-      input_base_tag: "1.26.5-debian-11-r"
+      input_base_tag: "1.28.0-debian-11-r"
   - envoy:
-      input_base_tag: "1.25.10-debian-11-r"
+      input_base_tag: "1.27.2-debian-11-r"
   - envoy:
-      input_base_tag: "1.24.11-debian-11-r"
+      input_base_tag: "1.26.6-debian-11-r"
+  - envoy:
+      input_base_tag: "1.25.11-debian-11-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

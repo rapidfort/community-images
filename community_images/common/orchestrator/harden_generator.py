@@ -2,7 +2,6 @@
 
 import os
 import logging
-import shutil
 import tempfile
 import backoff
 from consts import Consts

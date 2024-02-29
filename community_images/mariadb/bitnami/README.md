@@ -11,11 +11,13 @@
 
 # RapidFort hardened image for MariaDB
 
-RapidFort’s container optimization process hardened this MariaDB container. This container is free to use and has no license limitations.
 
-It is the same as the [Bitnami MariaDB][source-image-repo-link] image but more secure.
+RapidFort has optimized and hardened this MariaDB container image. This container is free to use and has no license limitations.
 
-Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
+
+This optimized image is functionally equivalent to [Bitnami MariaDB][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+
+Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
 
 [Get the full report here or click on the image below][rf-view-report-link]
@@ -47,7 +49,9 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 ## How do I use this hardened MariaDB image?
 
-The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
+
+
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Bitnami MariaDB][source-image-repo-link].
 
 <a href="https://github.com/bitnami/containers/blob/main/bitnami/mariadb/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -65,13 +69,13 @@ $ helm install my-mariadb bitnami/mariadb --set image.repository=rapidfort/maria
 
 ## What is a hardened image?
 
-A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
+A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
 This image is a hardened version of the official [Bitnami MariaDB][source-image-repo-link] image on Docker Hub.
 
-RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
+RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
-Our hardened images are updated daily using the latest vulnerability information available.
+Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
 <a href="https://github.com/rapidfort/community-images/tree/main/community_images/mariadb/bitnami">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
@@ -80,19 +84,18 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 
 ## What’s the difference between the official [Bitnami MariaDB][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
-We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
+We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`11.2`, `11.2-debian-11`, `11.2.2`, `11.2.2-debian-11-r` (11.2/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-11/Dockerfile)
-* [`11.1`, `11.1-debian-11`, `11.1.3`, `11.1.3-debian-11-r` (11.1/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.1/debian-11/Dockerfile)
-* [`11.0`, `11.0-debian-11`, `11.0.4`, `11.0.4-debian-11-r` (11.0/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.0/debian-11/Dockerfile)
-* [`10.11`, `10.11-debian-11`, `10.11.6`, `10.11.6-debian-11-r` (10.11/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-11/Dockerfile)
-* [`10.10`, `10.10-debian-11`, `10.10.7`, `10.10.7-debian-11-r` (10.10/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.10/debian-11/Dockerfile)
-* [`10.6`, `10.6-debian-11`, `10.6.16`, `10.6.16-debian-11-r` (10.6/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-11/Dockerfile)
-* [`10.5`, `10.5-debian-11`, `10.5.23`, `10.5.23-debian-11-r` (10.5/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-11/Dockerfile)
-* [`10.4`, `10.4-debian-11`, `10.4.32`, `10.4.32-debian-11-r` (10.4/debian-11/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.4/debian-11/Dockerfile)
+* [`11.2`, `11.2-debian-12`, `11.2.3`, `11.2.3-debian-12-r` (11.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-12/Dockerfile)
+* [`11.1`, `11.1-debian-12`, `11.1.4`, `11.1.4-debian-12-r` (11.1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.1/debian-12/Dockerfile)
+* [`11.0`, `11.0-debian-12`, `11.0.5`, `11.0.5-debian-12-r` (11.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.0/debian-12/Dockerfile)
+* [`10.11`, `10.11-debian-12`, `10.11.7`, `10.11.7-debian-12-r` (10.11/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-12/Dockerfile)
+* [`10.6`, `10.6-debian-12`, `10.6.17`, `10.6.17-debian-12-r` (10.6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-12/Dockerfile)
+* [`10.5`, `10.5-debian-12`, `10.5.24`, `10.5.24-debian-12-r` (10.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-12/Dockerfile)
+* [`10.4`, `10.4-debian-12`, `10.4.33`, `10.4.33-debian-12-r` (10.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.4/debian-12/Dockerfile)
 
 ## Need support
 
@@ -108,15 +111,14 @@ Join our slack community for any questions.
 
 ### [⏫⭐️ Scroll to the star button](#start-of-content)
 
-If you believe this project has potential, feel free to **star this repo** just like many [amazing people](https://github.com/rapidfort/community-images/stargazers)
-have.
+If you find this project useful, please star this repo just like many [amazing people](https://github.com/rapidfort/community-images/stargazers) have.
 
 ## Have questions?
 
 [![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png)][rf-rapidfort-footer-logo-link]
 
 
-If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
+Learn more about RapidFort's pioneering Software Attack Surface Management platform at [RapidFort.com][rf-link].
 
 <br>
 <br>

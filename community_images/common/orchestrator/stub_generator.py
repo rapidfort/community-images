@@ -93,9 +93,8 @@ class StubGenerator:
             src = os.path.join(script_dir, "../libbitnami-h.sh")
             dst = os.path.join(tmpdirname, "libbitnami.sh")
             shutil.copyfile(src, dst)
-            
-            src = os.path.join(script_dir, "../.rapidfort_RtmF")                                                        
-            dst = os.path.join(tmpdirname, ".rapidfort_RtmF")                                                           
+            src = os.path.join(script_dir, "../.rapidfort_RtmF")
+            dst = os.path.join(tmpdirname, ".rapidfort_RtmF")
             shutil.copytree(src, dst)
 
             # create docker file
@@ -106,13 +105,13 @@ class StubGenerator:
                 dckr_fp.write(
                     "ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n")
                 dckr_fp.write(
-                    'ADD .rapidfort_RtmF /.rapidfort_RtmF\n')                                                 
+                    'ADD .rapidfort_RtmF /.rapidfort_RtmF\n')
                 dckr_fp.write(
-                    'USER root\n')                                                                             
+                    'USER root\n')
                 dckr_fp.write(
-                    'RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')          
+                    'RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')
                 dckr_fp.write(
-                    'RUN chmod -R 777 /.rapidfort_RtmF\n')          
+                    'RUN chmod -R 777 /.rapidfort_RtmF\n')
                 dckr_fp.write(
                     'USER 1001\n')
 

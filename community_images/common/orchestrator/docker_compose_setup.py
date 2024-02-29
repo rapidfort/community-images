@@ -54,7 +54,6 @@ class DockerComposeSetup:
                     tag_key = image_keys[repo_key]["tag"]
                     tag_value = tag_details["tag"]
                     env_fp.write(f"{tag_key}={tag_value}\n")
-
                     logging.info(f"adding {tag_key}={tag_value}")
             rf_access_token = os.getenv("RF_ACCESS_TOKEN")
             env_fp.write(f"RF_ACCESS_TOKEN={rf_access_token}\n")

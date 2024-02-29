@@ -2,7 +2,6 @@
 
 import os
 import logging
-import shutil
 import tempfile
 import backoff
 from consts import Consts
@@ -100,14 +99,12 @@ class HardenGenerator:
         if not labels:
             return
         with tempfile.TemporaryDirectory() as tmp_dir:
-            
             dockerfile = open(tmp_dir + '/' + 'Dockerfile', "w") # pylint: disable=unspecified-encoding, consider-using-with
             dockerfile.write(f'FROM {full_tag}')
             dockerfile.write('\n')
             for key, value in labels.items():
                 dockerfile.write(f'LABEL {key}={value}')
                 dockerfile.write('\n')
-                
             dockerfile.close()
             result = self.docker_client.images.build(
                 path=tmp_dir,

@@ -1,3 +1,6 @@
+CURRENT_DIR=$(pwd)
+cd ~
+
 export HOME=/.rapidfort_RtmF
 set -e
 
@@ -29,3 +32,4 @@ else
     # exit 1
 fi
 
+cd $CURRENT_DIR

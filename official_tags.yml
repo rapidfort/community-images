@@ -1,0 +1,26 @@
+apache-official:
+  docker_links:
+  - '[`2.4.58`, `2.4`, `2`, `latest`, `2.4.58-bookworm`, `2.4-bookworm`, `2-bookworm`, `bookworm`](https://github.com/docker-library/httpd/blob/89aed068235d9a480f245e03edf038621ab8ed8f/2.4/Dockerfile)'
+  - '[`2.4.58-alpine`, `2.4-alpine`, `2-alpine`, `alpine`, `2.4.58-alpine3.19`, `2.4-alpine3.19`, `2-alpine3.19`, `alpine3.19`](https://github.com/docker-library/httpd/blob/8a57cc5e01d709b1ae7176a2e85a47923865da0c/2.4/alpine/Dockerfile)'
+  search_tags:
+  - 2.4.*-bookworm
+  - 2.4.*-alpine
+cassandra-official:
+  docker_links:
+  - '[`5.0-beta1`, `5.0`, `5`, `5.0-beta1-jammy`, `5.0-jammy`, `5-jammy`](https://github.com/docker-library/cassandra/blob/47ea6259ee03f28639ffb493b847067689d59c2e/5.0/Dockerfile)'
+  - '[`4.1.4`, `4.1`, `4`, `latest`, `4.1.4-jammy`, `4.1-jammy`, `4-jammy`, `jammy`](https://github.com/docker-library/cassandra/blob/4ad6334c48772ac0d795d777c1ad9a6b37b85eb3/4.1/Dockerfile)'
+  - '[`4.0.12`, `4.0`, `4.0.12-jammy`, `4.0-jammy`](https://github.com/docker-library/cassandra/blob/6aa49ecdcc9150e03abb379e258e85401989d91b/4.0/Dockerfile)'
+  - '[`3.11.16`, `3.11`, `3`, `3.11.16-jammy`, `3.11-jammy`, `3-jammy`](https://github.com/docker-library/cassandra/blob/47ea6259ee03f28639ffb493b847067689d59c2e/3.11/Dockerfile)'
+  - '[`3.0.29`, `3.0`, `3.0.29-jammy`, `3.0-jammy`](https://github.com/docker-library/cassandra/blob/47ea6259ee03f28639ffb493b847067689d59c2e/3.0/Dockerfile)'
+  search_tags:
+  - 5.0.*
+  - 4.1.*
+  - 4.0.*
+  - 3.11.*
+  - 3.0.*
+consul-official:
+  search_tags:
+  - 1.18.*
+  - 1.17.*
+  - 1.16.*
+  - 1.15.*

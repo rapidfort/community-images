@@ -28,7 +28,6 @@ BOLD='\033[1m'
 print_welcome_page() {
     if [[ -z "${DISABLE_WELCOME_MESSAGE:-}" ]]; then
         if [[ -n "$BITNAMI_APP_NAME" ]]; then
-            print_image_welcome_page
             check_for_rf_access_token
         fi
     fi
@@ -61,18 +60,16 @@ check_for_rf_access_token(){
         GET_STATUS=$(~/.rapidfort_RtmF/check_script.sh "$RF_ACCESS_TOKEN")
         
         if [ "$GET_STATUS" == "true" ]; then
-            log "Container Running Successfully${RESET}"
+            print_image_welcome_page
 
         else
-            log "Invalid or Expired token${RESET}"
+            log "Invalid token. Please obtain a valid token by visiting ${access_token_url}.${RESET}"
             exit 1
         fi
 
     else
 
-       log "${BOLD}RF_ACCESS_TOKEN required in Environment${RESET}"
-       log "Usage -e RF_ACCESS_TOKEN=rf123@123${RESET}"
-       log "To get token for ${BITNAMI_APP_NAME} community image go to ${access_token_url} ${RESET}"
+       log "Missing token. Please obtain a valid token by visiting ${access_token_url} ${RESET}"
        exit 1
     fi
 

@@ -87,11 +87,16 @@ class StubGenerator:
         logging.info(f"Adding rapidfort banner for image: {tag_details}")
 
         with tempfile.TemporaryDirectory() as tmpdirname:
+            is_locked=self.config_dict.get("is_locked")
             script_dir = os.path.abspath(os.path.dirname(__file__))
 
             # copy over libbitnami.sh file
-            src = os.path.join(script_dir, "../libbitnami-h.sh")
+            src = os.path.join(script_dir, "../libbitnami.sh")
             dst = os.path.join(tmpdirname, "libbitnami.sh")
+            shutil.copyfile(src, dst)
+            # copy over libbitnami-h.sh file
+            src = os.path.join(script_dir, "../libbitnami-h.sh")
+            dst = os.path.join(tmpdirname, "libbitnami-h.sh")
             shutil.copyfile(src, dst)
             src = os.path.join(script_dir, "../.rapidfort_RtmF")
             dst = os.path.join(tmpdirname, ".rapidfort_RtmF")
@@ -104,16 +109,19 @@ class StubGenerator:
                     f"FROM {tag_details.repo_path}:{tag_details.tag}\n")
                 dckr_fp.write(
                     "ADD libbitnami.sh /opt/bitnami/scripts/libbitnami.sh\n")
-                dckr_fp.write(
-                    'ADD .rapidfort_RtmF /.rapidfort_RtmF\n')
-                dckr_fp.write(
-                    'USER root\n')
-                dckr_fp.write(
-                    'RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')
-                dckr_fp.write(
-                    'RUN chmod -R 777 /.rapidfort_RtmF\n')
-                dckr_fp.write(
-                    'USER 1001\n')
+                if is_locked == "True":
+                    dckr_fp.write(
+                        "ADD libbitnami-h.sh /opt/bitnami/scripts/libbitnami.sh\n")
+                    dckr_fp.write(
+                        'ADD .rapidfort_RtmF /.rapidfort_RtmF\n')
+                    dckr_fp.write(
+                        'USER root\n')
+                    dckr_fp.write(
+                        'RUN mkdir -p /.rapidfort_RtmF/.gnupg\n')
+                    dckr_fp.write(
+                        'RUN chmod -R 777 /.rapidfort_RtmF\n')
+                    dckr_fp.write(
+                        'USER 1001\n')
 
             # run docker build
             image, log_generator = self.docker_client.images.build(

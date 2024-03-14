@@ -22,7 +22,7 @@ input_registry:
   account: bitnami
 repo_sets:
   - fluent-bit:
-      input_base_tag: "2.2."
+      input_base_tag: "2.2.2-debian-12-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

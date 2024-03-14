@@ -24,7 +24,7 @@ input_registry:
   account: bitnami
 repo_sets:
   - memcached:
-      input_base_tag: "1.6.21-debian-11-r"
+      input_base_tag: "1.6.24-debian-12-r"
 runtimes:
   - type: k8s
     helm:

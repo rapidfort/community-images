@@ -210,7 +210,7 @@ class BitnamiTagsHelper:
                             print("x  Collide: ", new_tag)
 
                     with open(f'{self.script_path}/../community_images/{image_path}/image.yml', 'w', encoding="utf8") as f1:
-                        image_data['repo_sets'] = sorted(image_data['repo_sets'], key=lambda x: tuple(map(int, x[repo_set_name]['input_base_tag'].replace("\"", "").split('-')[0].split('.'))))
+                        image_data['repo_sets'] = sorted(image_data['repo_sets'], key=lambda x: tuple(map(int, x[repo_set_name]['input_base_tag'].replace("\"", "").split('-')[0].split('.')))) # pylint: disable=cell-var-from-loop
                         ru_yaml.dump(image_data, f1)
                     print("<  Dumped : ", image_path)
 

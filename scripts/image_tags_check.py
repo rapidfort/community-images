@@ -1,4 +1,3 @@
-import logging
 import os
 import sys
 
@@ -7,13 +6,13 @@ import yaml
 
 class ImageTagsCheckHelper:
     def __init__(self) -> None:
-        self.docherhub_username = "phull.kanav@gmail.com"
-        self.dockerhub_password = "----"
+        self.docherhub_username = os.environ.get("DOCKERHUB_USERNAME")
+        self.dockerhub_password = os.environ.get("DOCKERHUB_PASSWORD")
         self.image_list_file = "image.lst"
         self.script_path = os.path.dirname(os.path.abspath(__file__))
-        self._dockerhub_auth_token = self._get_dockerhub_auth_token()
+        self._dockerhub_auth_token = self._get_auth_token()
 
-    def _get_dockerhub_auth_token(self):
+    def _get_auth_token(self):
         url = "https://hub.docker.com//v2/users/login"
         data = {
             "username": self.docherhub_username,
@@ -27,21 +26,25 @@ class ImageTagsCheckHelper:
             raise Exception("Failed to authenticate with Docker Hub API")
 
     @staticmethod
-    def parse_tags_from_dockerhub_api_response(response):
+    def parse_tags_from_api_response(response):
         tags = []
-        for tag in response.json()['results']:
-            # omitting the latest tag
-            if tag['name'] != "latest":
-                tags.append(tag['name'])
-        return tags
+        try:
+            for tag in response.json()['results']:
+                # omitting the latest tag
+                if tag['name'] != "latest":
+                    tags.append(tag['name'])
+            return tags
+        except KeyError:
+            print("！Failed to parse tags from API response ！")
+            return []
     
-    def _fetch_dockerhub_image_tags(self, image_name, repo, image_path):
+    def _fetch_image_tags(self, image_name, repo, image_path):
         url = f"https://hub.docker.com/v2/repositories/{repo}/{image_name}/tags?page=1&page_size=11"
         headers = {"Authorization": f"Bearer {self._dockerhub_auth_token}"}
 
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
-            source_image_tags = self.parse_tags_from_dockerhub_api_response(response)
+            source_image_tags = self.parse_tags_from_api_response(response)
             return source_image_tags
         else:
             print(f"Failed to fetch tags for {image_path}. Status code: {response.status_code}")
@@ -54,15 +57,9 @@ class ImageTagsCheckHelper:
             for image_path in stream.readlines():
                 image_path = image_path.strip()
                 image_path_arr = image_path.strip().split("/")
+                # all images except ironbank ones are supported
                 if image_path_arr[-1] != "ironbank":
-                    # image is on dockerhub
                     print("\nStarting Tag Check for Image: ", image_path)
-                    if len(image_path_arr) != 2:
-                        # TODO: Handle airflow images separately
-                        print()
-                        print("Invalid image path !!! ->", image_path)
-                        print()
-                        continue
                     
                     # reading image.yml for image name and repo
                     image_yml_path = os.path.join(self.script_path, "..", "community_images", image_path, "image.yml")
@@ -72,7 +69,7 @@ class ImageTagsCheckHelper:
                             image_dict = yaml.safe_load(yml_stream)
                     except yaml.YAMLError as exc:
                         print("Cannot fetch image_dict from image.yml")
-                        logging.error(exc)
+                        print(exc)
 
                     source_image_repo_link = image_dict.get("source_image_repo_link")
                     if "/_/" in source_image_repo_link:
@@ -82,7 +79,7 @@ class ImageTagsCheckHelper:
                         source_image_repo, source_image_name = source_image_repo_link.split("/")[-2:]
                     
                     print(f"Fetching tags for image: '{source_image_name}' from repo: '{source_image_repo}'")
-                    source_image_tags = self._fetch_dockerhub_image_tags(source_image_name, source_image_repo, image_path)
+                    source_image_tags = self._fetch_image_tags(source_image_name, source_image_repo, image_path)
                     
                     # now fetching tags for hardened image
                     hardened_image_repo = "rapidfort"
@@ -91,7 +88,7 @@ class ImageTagsCheckHelper:
                     hardened_image_name = rf_docker_link.split("/")[-1]
                     
                     print(f"Fetching tags for hardened image: '{hardened_image_name}' from repo: '{hardened_image_repo}'")
-                    hardened_image_tags = self._fetch_dockerhub_image_tags(hardened_image_name, hardened_image_repo, image_path)
+                    hardened_image_tags = self._fetch_image_tags(hardened_image_name, hardened_image_repo, image_path)
 
                     # tag matching logic checks if we have atleast two tag matching for source and hardened image
                     print("Matching Tags ...")
@@ -113,11 +110,14 @@ class ImageTagsCheckHelper:
             print("🚨🚨🚨 No common tags found between the source and hardened image for the following images: 🚨🚨🚨")
             for image in failed_images:
                 print(image)
-            sys.exit("Error: No common tags found between the images")
+            sys.exit("Error: Some Images are not supported")
+        else:
+            print("✅✅ Script Executed Successfully! All images are supported! ✅✅")
 
 def main():
     """ main function """
-    print("\n### This workflow script fetches top 10 tags for source image and hardened image and checks if atleast two tags match ###\n")
+    print("\n### This workflow script fetches top 10 tags for source image and hardened image and checks if atleast two tags match ###")
+    print("### It performs checks for all the images except Ironbank ones. ###\n")
     itch = ImageTagsCheckHelper()
     itch.run_tags_check()
 

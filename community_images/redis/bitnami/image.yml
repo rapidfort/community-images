@@ -53,11 +53,11 @@ runtimes:
       secret_name: localhost-server-tls
       common_name: localhost
     helm_additional_params:
-       tls.enabled: true
-       tls.existingSecret: localhost-server-tls
-       tls.certCAFilename: ca.crt
-       tls.certFilename: tls.crt
-       tls.certKeyFilename: tls.key
+      tls.enabled: true
+      tls.existingSecret: localhost-server-tls
+      tls.certCAFilename: ca.crt
+      tls.certFilename: tls.crt
+      tls.certKeyFilename: tls.key
     image_keys:
       redis: {}
     override_file: "overrides.yml"

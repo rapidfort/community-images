@@ -25,6 +25,9 @@ repo_sets:
   - opensource/prometheus/prometheus:
       input_base_tag: "2.44."
       output_repo: prometheus-ib
+  - opensource/prometheus/prometheus:
+      input_base_tag: "v2.50."
+      output_repo: prometheus-ib
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

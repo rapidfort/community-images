@@ -27,7 +27,7 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    use_helm: False
+    use_helm: false
     image_keys:
       prometheus:
         repository: "image.repository"

@@ -24,6 +24,8 @@ input_registry:
 repo_sets:
   - fluentd:
       input_base_tag: "1.16.3-debian-12-r"
+  - fluentd:
+      input_base_tag: "1.16.4-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

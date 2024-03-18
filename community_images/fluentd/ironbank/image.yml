@@ -23,6 +23,9 @@ repo_sets:
   - opensource/fluentd/fluentd:
       input_base_tag: "1.15."
       output_repo: fluentd-ib
+  - opensource/fluentd/fluentd:
+      input_base_tag: "1.16."
+      output_repo: fluentd-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

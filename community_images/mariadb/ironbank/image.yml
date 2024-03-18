@@ -24,6 +24,9 @@ repo_sets:
   - opensource/mariadb/mariadb:
       input_base_tag: "10.5."
       output_repo: mariadb-ib
+  - opensource/mariadb/mariadb:
+      input_base_tag: "10.6."
+      output_repo: mariadb-ib
 runtimes:
   - type: docker
     script: docker_coverage.sh

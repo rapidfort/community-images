@@ -81,6 +81,7 @@ del_image_variants()
 main()
 {
   python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
+  "${SCRIPTPATH}"/prepare_ironbank_tags.sh
   gen_main_readme
   gen_image_readme
   gen_new_image_actions

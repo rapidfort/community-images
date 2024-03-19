@@ -6,6 +6,7 @@ influxdb:
     enabled: true
     runAsUser: 1001
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:

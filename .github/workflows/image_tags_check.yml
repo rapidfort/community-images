@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: pip install requests yaml
+        run: pip install requests pyyaml
 
       - name: Check Image Tags
         env: 

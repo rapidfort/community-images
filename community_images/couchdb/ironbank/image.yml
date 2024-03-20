@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/couchdb_3:
-      input_base_tag: "3."
+      input_base_tag: "3.3."
       output_repo: couchdb_3-ib
 runtimes:
   - type: docker_compose

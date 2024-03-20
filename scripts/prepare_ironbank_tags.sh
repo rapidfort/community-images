@@ -35,32 +35,10 @@ while read img_dir; do
 	if [[ ${tag} == "" ]]; then
 		continue
 	fi
-	
+
 	yq -i ".${image_name}.search_tags = [\"${tag}\"]" "${REPO_SET_FILE}"
 
-	## Populate image.yml(s) ##
-	prev_tags=$(yq '.repo_sets[].*.input_base_tag' <<< "${image_yml}")
-	
-	is_matched=0
-	for prev_tag in ${prev_tags}; do
-		prev_tag_reg=${prev_tag//./\\.}
-		prev_tag_reg=${prev_tag_reg//\*/\.*}
-		tag_reg=${tag//./\\.}
-		tag_reg=${tag_reg//\*/\.*}
-		
-		echo -e "\033[32mMatching [${prev_tag}] [${tag}] \033[0m"
-		if [[ ${prev_tag} =~ ${tag_reg} || ${tag} =~ ${prev_tag_reg} ]]; then
-			echo -e "\033[31mTag matched [${prev_tag//\n/,}] [${tag}] \033[0m"
-			is_matched=1
-			break
-		fi
-	done
-
-	if [[ ${is_matched} == 0 ]]; then
-		echo -e "\033[31mNo tag matched [${prev_tags}] [${tag}] \033[0m"
-		repo_set=$(yq '.repo_sets[0]' <<< "${image_yml}" |  yq ".*.input_base_tag = \"${tag}\"" )
-		REPO_SET="${repo_set}" yq -i eval '.repo_sets = env(REPO_SET)' "${ROOT_PATH}"/community_images/"${img_dir}"/image.yml
-	fi
+	new_set=$(yq ".repo_sets[0]" "${ROOT_PATH}/community_images/${img_dir}/image.yml" | yq ".*.input_base_tag = \"${tag}\"") yq -i eval ".repo_sets = [ env(new_set) ]" "${ROOT_PATH}/community_images/${img_dir}/image.yml"
 
 done < "${IMAGE_TEMP_LST}"
 

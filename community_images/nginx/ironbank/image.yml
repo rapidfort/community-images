@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/nginx/nginx:
-      input_base_tag: "1."
+      input_base_tag: "1.25."
       output_repo: nginx-ib
 needs_common_commands: False
 runtimes:

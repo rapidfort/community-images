@@ -27,9 +27,6 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/airflow/airflow:
-      input_base_tag: "2.6."
-      output_repo: airflow-ib
-  - opensource/apache/airflow/airflow:
       input_base_tag: "2.8."
       output_repo: airflow-ib
 runtimes:

@@ -22,9 +22,6 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/wordpress/wordpress:
-      input_base_tag: "6.2."
-      output_repo: wordpress-ib
-  - opensource/wordpress/wordpress:
       input_base_tag: "6.4."
       output_repo: wordpress-ib
 runtimes:

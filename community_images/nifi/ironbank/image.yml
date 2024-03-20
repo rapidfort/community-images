@@ -22,9 +22,6 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/nifi:
-      input_base_tag: "1.24."
-      output_repo: nifi-ib
-  - opensource/apache/nifi:
       input_base_tag: "1.25."
       output_repo: nifi-ib
 runtimes:

@@ -13,8 +13,6 @@ jobs:
     name: Image Tags Check
     runs-on: ubuntu-latest
     environment: actions-cicd
-    permissions:
-      contents: read
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it

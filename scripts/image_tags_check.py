@@ -116,6 +116,28 @@ class ImageTagsCheckHelper:
             logging.error(f"Failed to fetch tags for {image_path}: {e}")
             return None
 
+    @staticmethod
+    def _match_tags(source_image_tags, hardened_image_tags, image_path):
+        """
+        Checks if there are common tags between the source image tags and the hardened image tags.
+
+        Args:
+            source_image_tags (list): The tags of the source image.
+            hardened_image_tags (list): The tags of the hardened image.
+
+        Returns:
+            bool: True if there are at least 2 common tags, False otherwise.
+        """
+        common_count = 0
+        hardened_image_tags_set = set(hardened_image_tags)
+        for tag in source_image_tags:
+            if tag in hardened_image_tags_set:
+                logging.info(f"Tag '{tag}' matches for image {image_path}")
+                common_count += 1
+
+        # The value set to 2 can be changed according to the strictness required for tag matching.
+        return common_count >= 2
+
     def run_tags_check(self):
         """
         Runs the tag check for all images in the image list file.
@@ -160,24 +182,14 @@ class ImageTagsCheckHelper:
 
                     # tag matching logic checks if we have atleast two tag matching for source and hardened image
                     logging.info("Matching Tags ...")
-                    common_count = 0
-                    hardened_image_tags_set = set(hardened_image_tags)
-                    for tag in source_image_tags:
-                        if tag in hardened_image_tags_set:
-                            logging.info(f"Tag '{tag}' matches for image {image_path}")
-                            common_count += 1
-                            if common_count >= 2:
-                                break
-
-                    # this value set to 2 can be changed according to the strictness required
-                    if common_count < 2:
-                        logging.warning(f"🚨 No tags match for image {image_path} 🚨\n")
+                    if self._match_tags(source_image_tags, hardened_image_tags, image_path) is False:
+                        logging.warning(f"🚨 {image_path} image is not supported 🚨\n")
                         failed_images.append(image_path)
                     else:
                         logging.info(f"{image_path} is supported ✅\n\n")
 
         if failed_images:
-            logging.warning("🚨🚨🚨 No common tags found between the source and hardened image for the following images: 🚨🚨🚨")
+            logging.warning("🚨🚨🚨 The following images are not supported: 🚨🚨🚨")
             for image in failed_images:
                 logging.info(image)
             logging.warning("Error: Some Images are not supported")

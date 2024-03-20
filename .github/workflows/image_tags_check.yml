@@ -26,4 +26,4 @@ jobs:
         env: 
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: python3 community-images/scripts/image_tags_check.py
+        run: python3 scripts/image_tags_check.py

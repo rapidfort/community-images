@@ -1,8 +1,11 @@
+import logging
 import os
 import sys
 
 import requests
 import yaml
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class ImageTagsCheckHelper:
     def __init__(self) -> None:
@@ -20,7 +23,7 @@ class ImageTagsCheckHelper:
         }
         response = requests.post(url, json=data)
         if response.status_code == 200:
-            print("Fetched Auth Token from Dockerhub API 🗝️")
+            logging.info("Fetched Auth Token from Dockerhub API 🗝️")
             return response.json()["token"]
         else:
             raise Exception("Failed to authenticate with Docker Hub API")
@@ -35,7 +38,7 @@ class ImageTagsCheckHelper:
                     tags.append(tag['name'])
             return tags
         except KeyError:
-            print("！Failed to parse tags from API response ！")
+            logging.error("！Failed to parse tags from API response ！")
             return []
     
     def _fetch_image_tags(self, image_name, repo, image_path):
@@ -47,7 +50,7 @@ class ImageTagsCheckHelper:
             source_image_tags = self.parse_tags_from_api_response(response)
             return source_image_tags
         else:
-            print(f"Failed to fetch tags for {image_path}. Status code: {response.status_code}")
+            logging.error(f"Failed to fetch tags for {image_path}. Status code: {response.status_code}")
             return None
             
     def run_tags_check(self):
@@ -59,7 +62,7 @@ class ImageTagsCheckHelper:
                 image_path_arr = image_path.strip().split("/")
                 # all images except ironbank ones are supported
                 if image_path_arr[-1] != "ironbank":
-                    print("\nStarting Tag Check for Image: ", image_path)
+                    logging.info(f"Starting Tag Check for Image: {image_path}")
                     
                     # reading image.yml for image name and repo
                     image_yml_path = os.path.join(self.script_path, "..", "community_images", image_path, "image.yml")
@@ -68,8 +71,8 @@ class ImageTagsCheckHelper:
                             # this image_dict is later used to extract image name and repo for both source and hardened image
                             image_dict = yaml.safe_load(yml_stream)
                     except yaml.YAMLError as exc:
-                        print("Cannot fetch image_dict from image.yml")
-                        print(exc)
+                        logging.error("Cannot fetch image_dict from image.yml")
+                        logging.error(exc)
 
                     source_image_repo_link = image_dict.get("source_image_repo_link")
                     if "/_/" in source_image_repo_link:
@@ -78,7 +81,7 @@ class ImageTagsCheckHelper:
                     elif "/r/" in source_image_repo_link:
                         source_image_repo, source_image_name = source_image_repo_link.split("/")[-2:]
                     
-                    print(f"Fetching tags for image: '{source_image_name}' from repo: '{source_image_repo}'")
+                    logging.info(f"Fetching tags for image: '{source_image_name}' from repo: '{source_image_repo}'")
                     source_image_tags = self._fetch_image_tags(source_image_name, source_image_repo, image_path)
                     
                     # now fetching tags for hardened image
@@ -87,37 +90,38 @@ class ImageTagsCheckHelper:
                     rf_docker_link = image_dict.get("rf_docker_link")
                     hardened_image_name = rf_docker_link.split("/")[-1]
                     
-                    print(f"Fetching tags for hardened image: '{hardened_image_name}' from repo: '{hardened_image_repo}'")
+                    logging.info(f"Fetching tags for hardened image: '{hardened_image_name}' from repo: '{hardened_image_repo}'")
                     hardened_image_tags = self._fetch_image_tags(hardened_image_name, hardened_image_repo, image_path)
 
                     # tag matching logic checks if we have atleast two tag matching for source and hardened image
-                    print("Matching Tags ...")
+                    logging.info("Matching Tags ...")
                     common_count = 0
                     hardened_image_tags_set = set(hardened_image_tags)
                     for tag in source_image_tags:
                         if tag in hardened_image_tags_set:
-                            print(f"Tag '{tag}' matches for image {image_path}")
+                            logging.info(f"Tag '{tag}' matches for image {image_path}")
                             common_count += 1
                             if common_count >= 2:
                                 break
                     if common_count < 2:
-                        print(f"\n🚨 No tags match for image {image_path} 🚨\n")
+                        logging.warning(f"🚨 No tags match for image {image_path} 🚨\n")
                         failed_images.append(image_path)
                     else:
-                        print(f"{image_path} is supported ✅", end="\n\n")
+                        logging.info(f"{image_path} is supported ✅\n\n")
 
         if failed_images:
-            print("🚨🚨🚨 No common tags found between the source and hardened image for the following images: 🚨🚨🚨")
+            logging.warning("🚨🚨🚨 No common tags found between the source and hardened image for the following images: 🚨🚨🚨")
             for image in failed_images:
-                print(image)
-            sys.exit("Error: Some Images are not supported")
+                logging.info(image)
+            logging.warning("Error: Some Images are not supported")
+            sys.exit(1)
         else:
-            print("✅✅ Script Executed Successfully! All images are supported! ✅✅")
+            logging.info("✅✅ Script Executed Successfully! All images are supported! ✅✅")
 
 def main():
     """ main function """
-    print("\n### This workflow script fetches top 10 tags for source image and hardened image and checks if atleast two tags match ###")
-    print("### It performs checks for all the images except Ironbank ones. ###\n")
+    logging.info("### This workflow script fetches top 10 tags for source image and hardened image and checks if atleast two tags match ###")
+    logging.info("### It performs checks for all the images except Ironbank ones. ###\n")
     itch = ImageTagsCheckHelper()
     itch.run_tags_check()
 

@@ -196,18 +196,17 @@ class BitnamiTagsHelper:
 
                 if repo_set:
 
+                    if len(tags_data[repo_set_name]['search_tags']) == 0:
+                        return
+
+                    image_data['repo_sets'] = []
                     for new_tag in tags_data[repo_set_name]['search_tags']:
 
                         new_tag_entry = {repo_set_name: {'input_base_tag': None}}
                         new_tag_entry[repo_set_name]['input_base_tag'] = f"\"{new_tag}\""
 
-                        existing_tags = [item[repo_set_name]["input_base_tag"] for item in image_data["repo_sets"]]
-
-                        if not new_tag in existing_tags:
-                            print("+  Added  : ", new_tag_entry)
-                            image_data['repo_sets'].append(new_tag_entry)
-                        else:
-                            print("x  Collide: ", new_tag)
+                        print("+  Added  : ", new_tag_entry)
+                        image_data['repo_sets'].append(new_tag_entry)
 
                     with open(f'{self.script_path}/../community_images/{image_path}/image.yml', 'w', encoding="utf8") as f1:
                         image_data['repo_sets'] = sorted(image_data['repo_sets'], key=lambda x: tuple(map(int, x[repo_set_name]['input_base_tag'].replace("\"", "").split('-')[0].split('.')))) # pylint: disable=cell-var-from-loop
@@ -245,6 +244,7 @@ class BitnamiTagsHelper:
                 }
             }
 
+            image_data['repo_sets'] = []
             image_data['repo_sets'].append(airflow_repo_set)
             with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'w', encoding="utf8") as f1:
                 ru_yaml.dump(image_data, f1)

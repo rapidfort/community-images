@@ -31,7 +31,12 @@ while read img_dir; do
 
 	tag=$(wget -O - -q "${gitlab_uri}" | yq '.tags[]' | grep -v '^latest$' | sed -e 's/\"//g' -e 's/\.[^.]*$/./g' | sort -V | tail -n 1)
 	echo -e "\033[34mtag > ${tag}\033[0m"
-	yq -i ".${image_name}.search_tags += [\"${tag}\"]" "${REPO_SET_FILE}"
+
+	if [[ ${tag} == "" ]]; then
+		continue
+	fi
+	
+	yq -i ".${image_name}.search_tags = [\"${tag}\"]" "${REPO_SET_FILE}"
 
 	## Populate image.yml(s) ##
 	prev_tags=$(yq '.repo_sets[].*.input_base_tag' <<< "${image_yml}")
@@ -54,7 +59,7 @@ while read img_dir; do
 	if [[ ${is_matched} == 0 ]]; then
 		echo -e "\033[31mNo tag matched [${prev_tags}] [${tag}] \033[0m"
 		repo_set=$(yq '.repo_sets[0]' <<< "${image_yml}" |  yq ".*.input_base_tag = \"${tag}\"" )
-		REPO_SET="${repo_set}" yq -i eval '.repo_sets += env(REPO_SET)' "${ROOT_PATH}"/community_images/"${img_dir}"/image.yml
+		REPO_SET="${repo_set}" yq -i eval '.repo_sets = env(REPO_SET)' "${ROOT_PATH}"/community_images/"${img_dir}"/image.yml
 	fi
 
 done < "${IMAGE_TEMP_LST}"

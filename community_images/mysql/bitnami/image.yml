@@ -23,9 +23,9 @@ input_registry:
   account: bitnami
 repo_sets:
   - mysql:
-      input_base_tag: "8.3.0-debian-12-r"
-  - mysql:
       input_base_tag: "8.0.36-debian-12-r"
+  - mysql:
+      input_base_tag: "8.3.0-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

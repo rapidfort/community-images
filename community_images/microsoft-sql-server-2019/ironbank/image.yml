@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - microsoft/microsoft/microsoft-sql-server-2019-rhel8:
-      input_base_tag: "2019-CU*-rhel-8"
+      input_base_tag: "2019-CU15-rhel-8"
       output_repo: microsoft-sql-server-2019-ib
 runtimes:
   - type: docker_compose

@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/etcd/etcd:
-      input_base_tag: "3.5."
+      input_base_tag: "v3.5."
       output_repo: etcd-ib
 runtimes:
   - type: docker_compose

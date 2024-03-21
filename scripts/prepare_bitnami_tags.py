@@ -7,11 +7,14 @@ we can also generate docker_links array for documentation
 
 import logging
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
+import ruamel.yaml  # pylint: disable=import-error
 import yaml
+
 
 class BitnamiTagsHelper:
     """ Bitnami tags helper """
@@ -167,6 +170,97 @@ class BitnamiTagsHelper:
         with open(out_yml_path, "w", encoding="utf8") as outfile:
             yaml.dump(tags_dict, outfile, default_flow_style=False)
 
+    def add_tags_to_image_yml(self,):
+        """ add the tags to image.yml of each file """
+
+        with open(f'{self.script_path}/../bitnami_tags.yml', 'r', encoding="utf8") as f2:
+            ru_yaml = ruamel.yaml.YAML()
+            ru_yaml.preserve_quotes = True
+            ru_yaml.indent(mapping=2, sequence=4, offset=2)
+            tags_data = ru_yaml.load(f2)
+
+        with open(f"{self.script_path}/../image.lst", 'r', encoding="utf8") as file:
+            lines = file.readlines()
+
+        image_paths = [line.strip() for line in lines]
+
+        for image_path in image_paths:
+            if image_path.endswith("/bitnami") and not image_path.startswith("airflow"):
+                print(">  Picked : ", image_path)
+
+                with open(f'{self.script_path}/../community_images/{image_path}/image.yml', 'r', encoding="utf8") as f1:
+                    image_data = ru_yaml.load(f1)
+
+                repo_set_name = image_data["name"]
+                repo_set = next((rs for rs in image_data['repo_sets'] if repo_set_name in rs), None)
+
+                if repo_set:
+
+                    if len(tags_data[repo_set_name]['search_tags']) == 0:
+                        return
+
+                    image_data['repo_sets'] = []
+                    for new_tag in tags_data[repo_set_name]['search_tags']:
+
+                        new_tag_entry = {repo_set_name: {'input_base_tag': None}}
+                        new_tag_entry[repo_set_name]['input_base_tag'] = f"\"{new_tag}\""
+
+                        print("+  Added  : ", new_tag_entry)
+                        image_data['repo_sets'].append(new_tag_entry)
+
+                    with open(f'{self.script_path}/../community_images/{image_path}/image.yml', 'w', encoding="utf8") as f1:
+                        image_data['repo_sets'] = sorted(image_data['repo_sets'], key=lambda x: tuple(map(int, x[repo_set_name]['input_base_tag'].replace("\"", "").split('-')[0].split('.')))) # pylint: disable=cell-var-from-loop
+                        ru_yaml.dump(image_data, f1)
+                    print("<  Dumped : ", image_path)
+
+                    with open(f'{self.script_path}/../community_images/{image_path}/image.yml', 'r', encoding="utf8") as file:
+                        content = file.read()
+
+                    modified_content = re.sub(r'(\'\")|(\"\')', '"', content, flags=re.MULTILINE)
+                    modified_content = re.sub(r'report_url:.[\t\s]*\n[\t\s]*', 'report_url: ', modified_content, flags=re.MULTILINE)
+
+                    with open(f'{self.script_path}/../community_images/{image_path}/image.yml', 'w', encoding="utf8") as file:
+                        file.write(modified_content)
+                else:
+                    print(f"Repo set '{repo_set_name}' not found in image.yml.")
+
+        # Add repo set to airflow by replacing
+        print('>  Picked :  airflow/airflow/bitnami')
+        with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'r', encoding="utf8") as f1:
+            image_data = ru_yaml.load(f1)
+
+        all_airflow_tags = [item['airflow']["input_base_tag"] for item in image_data["repo_sets"]]
+
+        if not tags_data['airflow']['search_tags'][0] in all_airflow_tags:
+            airflow_repo_set = {
+                "airflow": {
+                    "input_base_tag": f"\"{tags_data['airflow']['search_tags'][0]}\""
+                 },
+                "airflow-worker": {
+                    "input_base_tag": f"\"{tags_data['airflow-worker']['search_tags'][0]}\""
+                },
+                "airflow-scheduler": {
+                    "input_base_tag": f"\"{tags_data['airflow-scheduler']['search_tags'][0]}\""
+                }
+            }
+
+            image_data['repo_sets'] = []
+            image_data['repo_sets'].append(airflow_repo_set)
+            with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'w', encoding="utf8") as f1:
+                ru_yaml.dump(image_data, f1)
+
+            with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'r', encoding="utf8") as file:
+                content = file.read()
+
+            modified_content = re.sub(r'(\'\")|(\"\')', '"', content, flags=re.MULTILINE)
+            modified_content = re.sub(r'report_url:.[\t\s]*\n[\t\s]*', 'report_url: ', modified_content, flags=re.MULTILINE)
+
+            with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'w', encoding="utf8") as file:
+                file.write(modified_content)
+            print("<  Dumped :  airflow/airflow/bitnami")
+        else:
+            print("x  Collide: ", tags_data['airflow']['search_tags'][0])
+
 
 def main():
     """ main function """
@@ -184,6 +278,8 @@ def main():
 
     shutil.rmtree(clone_path)
     bth.dump_bitnami_tags(tags_dict)
+
+    bth.add_tags_to_image_yml()
 
 if __name__ == "__main__":
     main()

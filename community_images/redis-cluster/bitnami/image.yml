@@ -48,11 +48,11 @@ runtimes:
       secret_name: rf-redis-cluster-tls
       common_name: rf-redis-cluster
     helm_additional_params:
-       tls.enabled: true
-       tls.existingSecret: rf-redis-cluster-tls
-       tls.certCAFilename: ca.crt
-       tls.certFilename: tls.crt
-       tls.certKeyFilename: tls.key
+      tls.enabled: true
+      tls.existingSecret: rf-redis-cluster-tls
+      tls.certCAFilename: ca.crt
+      tls.certFilename: tls.crt
+      tls.certKeyFilename: tls.key
     image_keys:
       redis-cluster: {}
     override_file: "overrides.yml"

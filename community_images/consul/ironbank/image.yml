@@ -24,13 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - hashicorp/consul:
-      input_base_tag: "1.14."
-      output_repo: consul-ib
-  - hashicorp/consul:
-      input_base_tag: "1.13."
-      output_repo: consul-ib
-  - hashicorp/consul:
-      input_base_tag: "1.12."
+      input_base_tag: "1.17."
       output_repo: consul-ib
 runtimes:
   - type: docker_compose

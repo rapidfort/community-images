@@ -32,13 +32,13 @@ class ImageTagsCheckHelper:
         _fetch_image_tags(image_name, repo, image_path): Fetches the tags for a specific image.
         run_tags_check(): Runs the tag check for all images in the image list file.
     """
-    # pylint: disable=all
 
     def __init__(self) -> None:
         self.docherhub_username = os.environ.get("DOCKERHUB_USERNAME")
         self.dockerhub_password = os.environ.get("DOCKERHUB_PASSWORD")
         self.image_list_file = "image.lst"
         self.script_path = os.path.dirname(os.path.abspath(__file__))
+        self.image_list_file_path = os.path.join(self.script_path, "..", self.image_list_file)
         self._dockerhub_auth_token = self._get_auth_token()
 
     def _get_auth_token(self):
@@ -64,8 +64,6 @@ class ImageTagsCheckHelper:
             return token
         except requests.RequestException as e:
             raise requests.RequestException(f"Failed to make request to Docker Hub API: {e}")
-        except Exception as e:
-            raise Exception(f"Failed to authenticate with Docker Hub API: {e}")
 
     @staticmethod
     def parse_tags_from_api_response(response):
@@ -110,19 +108,60 @@ class ImageTagsCheckHelper:
             if response.status_code == 200:
                 source_image_tags = self.parse_tags_from_api_response(response)
                 return source_image_tags
-            logging.error(f"Failed to fetch tags for {image_path}. Status code: {response.status_code}")
+            logging.error("Failed to fetch tags for %s. Status code: %d", image_path, response.status_code)
             return None
         except requests.RequestException as e:
             logging.error(f"Failed to fetch tags for {image_path}: {e}")
             return None
+
+    @staticmethod
+    def match_tags(source_image_tags, hardened_image_tags, image_path):
+        """
+        Checks if there are common tags between the source image tags and the hardened image tags.
+
+        Args:
+            source_image_tags (list): The tags of the source image.
+            hardened_image_tags (list): The tags of the hardened image.
+
+        Returns:
+            bool: True if there are at least 2 common tags, False otherwise.
+        """
+        common_count = 0
+        hardened_image_tags_set = set(hardened_image_tags)
+        for tag in source_image_tags:
+            if tag in hardened_image_tags_set:
+                logging.info(f"Tag '{tag}' matches for image {image_path}")
+                common_count += 1
+
+        # The value set to 2 can be changed according to the strictness required for tag matching.
+        return common_count >= 2
+
+    @staticmethod
+    def read_yml_from_path(yml_file_path):
+        """
+        Reads a YAML file from the given file path and returns the parsed YAML data as a dictionary.
+
+        Args:
+            yml_file_path (str): The path to the YAML file.
+
+        Returns:
+            dict: A dictionary containing the parsed YAML data.
+        """
+        try:
+            with open(yml_file_path, "r", encoding="utf8") as yml_stream:
+                yml_dict = yaml.safe_load(yml_stream)
+                return yml_dict
+        except yaml.YAMLError as exc:
+            logging.error("Cannot fetch image_dict from image.yml")
+            logging.error(exc)
+            return {}
 
     def run_tags_check(self):
         """
         Runs the tag check for all images in the image list file.
         """
         failed_images = []
-        image_list_file_path = os.path.join(self.script_path, "..", self.image_list_file)
-        with open(image_list_file_path, "r", encoding="utf8") as stream:
+        with open(self.image_list_file_path, "r", encoding="utf8") as stream:
             for image_path in stream.readlines():
                 image_path = image_path.strip()
                 # all images except ironbank ones are supported
@@ -130,14 +169,9 @@ class ImageTagsCheckHelper:
                     logging.info(f"Starting Tag Check for Image: {image_path}")
 
                     # reading image.yml for image name and repo
-                    image_yml_path = os.path.join(self.script_path, "..", "community_images", image_path, "image.yml")
-                    try:
-                        with open(image_yml_path, "r", encoding="utf8") as yml_stream:
-                            # this image_dict is later used to extract image name and repo for both source and hardened image
-                            image_dict = yaml.safe_load(yml_stream)
-                    except yaml.YAMLError as exc:
-                        logging.error("Cannot fetch image_dict from image.yml")
-                        logging.error(exc)
+                    image_yml_path = os.path.join(self.script_path, "..",
+                                                   "community_images", image_path, "image.yml")
+                    image_dict = self.read_yml_from_path(image_yml_path)
 
                     source_image_repo_link = image_dict.get("source_image_repo_link")
                     if "/_/" in source_image_repo_link:
@@ -160,30 +194,19 @@ class ImageTagsCheckHelper:
 
                     # tag matching logic checks if we have atleast two tag matching for source and hardened image
                     logging.info("Matching Tags ...")
-                    common_count = 0
-                    hardened_image_tags_set = set(hardened_image_tags)
-                    for tag in source_image_tags:
-                        if tag in hardened_image_tags_set:
-                            logging.info(f"Tag '{tag}' matches for image {image_path}")
-                            common_count += 1
-                            if common_count >= 2:
-                                break
-
-                    # this value set to 2 can be changed according to the strictness required
-                    if common_count < 2:
-                        logging.warning(f"🚨 No tags match for image {image_path} 🚨\n")
+                    if self.match_tags(source_image_tags, hardened_image_tags, image_path) is False:
+                        logging.warning(f"🚨 {image_path} image is not supported 🚨\n")
                         failed_images.append(image_path)
                     else:
                         logging.info(f"{image_path} is supported ✅\n\n")
 
         if failed_images:
-            logging.warning("🚨🚨🚨 No common tags found between the source and hardened image for the following images: 🚨🚨🚨")
+            logging.warning("🚨🚨🚨 The following images are not supported: 🚨🚨🚨")
             for image in failed_images:
                 logging.info(image)
             logging.warning("Error: Some Images are not supported")
             sys.exit(1)
-        else:
-            logging.info("✅✅ Script Executed Successfully! All images are supported! ✅✅")
+        logging.info("✅✅ Script Executed Successfully! All images are supported! ✅✅")
 
 def main():
     """ main function """

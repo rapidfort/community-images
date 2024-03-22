@@ -69,13 +69,15 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-# install redis, just replace repository with RapidFort registry
-$ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
-
+  # install nginx, just replace repository with RapidFort registry
+  $ helm install my-nginx bitnami/nginx --set image.repository=rapidfort/nginx --set RF_ACCESS_TOKEN="your_access_token"
 ```
+
 
 ## What is a hardened image?
 

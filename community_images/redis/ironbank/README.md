@@ -59,10 +59,13 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ docker run -it --rm -p6379:6379 rapidfort/redis6-ib:latest
 
 ```
+
 
 ## What is a hardened image?
 

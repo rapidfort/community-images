@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 #1. Download docker-compose.yaml:
 curl -fsSL https://raw.githubusercontent.com/grafana/oncall/dev/docker-compose.yml -o docker-compose.yml
@@ -87,6 +89,7 @@ Grafana Url: http://grafana:3000
 #6. Enjoy! Check our [OSS docs](https://grafana.com/docs/grafana-cloud/oncall/open-source/) if you want to set up Slack, Telegram, Twilio or SMS/calls through Grafana Cloud.
 
 ```
+
 
 ## What is a hardened image?
 

@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run
 $ docker run -d  -p 8080:8080 -p 4443:8443 -e ALLOW_EMPTY_PASSWORD=yes-e WORDPRESS_DATABASE_HOST=mariadb -e WORDPRESS_DATABASE_PORT_NUMBER=3306 -e WORDPRESS_DATABASE_USER=ib_wordpress -e WORDPRESS_DATABASE_NAME=ironbank_wordpress rapidfort/wordpress-ib
@@ -66,6 +68,7 @@ $ docker run -d  -p 8080:8080 -p 4443:8443 -e ALLOW_EMPTY_PASSWORD=yes-e WORDPRE
 # Then, access it via http://localhost:8080/ or http://<host-ip>:8080/ in a browser.
 
 ```
+
 
 ## What is a hardened image?
 

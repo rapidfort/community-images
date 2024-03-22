@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Running Consul in Server Mode
 $ docker run -d --net=host -e 'CONSUL_LOCAL_CONFIG={"skip_leave_on_interrupt": true}' rapidfort/consul-official agent -server -bind=<external ip> -retry-join=<root agent ip> -bootstrap-expect=<number of server agents>
@@ -67,6 +69,7 @@ $ docker run -d --net=host -e 'CONSUL_LOCAL_CONFIG={"skip_leave_on_interrupt": t
 $ docker run -d --net=host -e 'CONSUL_LOCAL_CONFIG={"leave_on_terminate": true}' rapidfort/consul-official agent -bind=<external ip> -retry-join=<root agent ip>
 
 ```
+
 
 ## What is a hardened image?
 

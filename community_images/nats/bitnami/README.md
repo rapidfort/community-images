@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
@@ -66,6 +68,7 @@ $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install my-nats bitnami/nats --set image.repository=rapidfort/nats
 
 ```
+
 
 ## What is a hardened image?
 
@@ -89,9 +92,7 @@ RapidFort’s hardened [rapidfort/nats][rf-dh-image-link] image has been optimiz
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-
 * [`2`, `2-debian-12`, `2.10.12`, `2.10.12-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-12/Dockerfile)
-
 
 ## Need support
 

@@ -59,10 +59,13 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ docker run -d --name my-couchdb rapidfort/couchdb-official:tag
 
 ```
+
 
 ## What is a hardened image?
 

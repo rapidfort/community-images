@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run
 $ docker run -d --name=grafana -p 3000:3000 rapidfort/grafana-ib
@@ -66,6 +68,7 @@ $ docker run -d --name=grafana -p 3000:3000 rapidfort/grafana-ib
 # Then, access it via http://localhost:3000/ or http://<host-ip>:3000/ in a browser.
 
 ```
+
 
 ## What is a hardened image?
 

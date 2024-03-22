@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Run NATS server using docker run
 $ docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 rapidfort/nats-ib
 
 ```
+
 
 ## What is a hardened image?
 

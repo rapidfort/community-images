@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ Using docker run:
 $ docker run --name my-nginx-app -p 8080:80 -v /some/content:/usr/share/nginx/html:ro -d rapidfort/nginx-official
@@ -67,6 +69,7 @@ $ docker run --name my-nginx-app -p 8080:80 -v /some/content:/usr/share/nginx/ht
 $ docker run --name my-nginx-app -p 8080:80 -v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d rapidfort/nginx-official
 
 ```
+
 
 ## What is a hardened image?
 

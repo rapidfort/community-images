@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add nats https://nats-io.github.io/k8s/helm/charts/
 
@@ -66,6 +68,7 @@ $ helm repo add nats https://nats-io.github.io/k8s/helm/charts/
 $ helm install my-nats nats/nats --set image.repository=rapidfort/nats-official
 
 ```
+
 
 ## What is a hardened image?
 

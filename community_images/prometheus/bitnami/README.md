@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
@@ -66,6 +68,7 @@ $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install my-prometheus bitnami/prometheus --set image.repository=rapidfort/prometheus
 
 ```
+
 
 ## What is a hardened image?
 
@@ -89,9 +92,7 @@ RapidFort’s hardened [rapidfort/prometheus][rf-dh-image-link] image has been o
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-
-* [`2`, `2-debian-12`, `2.50.1`, `2.50.1-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)
-
+* [`2`, `2-debian-12`, `2.51.0`, `2.51.0-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)
 
 ## Need support
 

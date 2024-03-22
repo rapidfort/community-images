@@ -59,12 +59,15 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run:
 $ docker run --name some-yourls --link some-mysql:mysql -p 8080:80 -d rapidfort/yourls
 # Then, access it via http://localhost:8080/admin/ or http://<host-ip>:8080/admin/ in a browser.
 
 ```
+
 
 ## What is a hardened image?
 

@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/apache
 
@@ -66,6 +68,7 @@ $ helm repo add bitnami https://charts.bitnami.com/apache
 $ helm install my-apache bitnami/apache --set image.repository=rapidfort/apache
 
 ```
+
 
 ## What is a hardened image?
 

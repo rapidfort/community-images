@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add hashicorp https://helm.releases.hashicorp.com
 
@@ -66,6 +68,7 @@ $ helm repo add hashicorp https://helm.releases.hashicorp.com
 $ helm install vault hashicorp/vault
 
 ```
+
 
 ## What is a hardened image?
 

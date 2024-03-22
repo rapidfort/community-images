@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using Docker run:
 $ docker run -p 24224:24224 -p 24224:24224/udp -u fluent -v /path/to/dir:/fluentd/log rapidfort/fluentd-official
 
 ```
+
 
 ## What is a hardened image?
 

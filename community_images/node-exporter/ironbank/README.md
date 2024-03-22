@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run:
 $ docker run -it --name my-node-exporter -p 9100:9100 rapidfort/node-exporter-ib
 
 ```
+
 
 ## What is a hardened image?
 

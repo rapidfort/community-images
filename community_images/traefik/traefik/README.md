@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add traefik https://helm.traefik.io/traefik
 
@@ -66,6 +68,7 @@ $ helm repo add traefik https://helm.traefik.io/traefik
 $ helm install traefik traefik/traefik --set image.name=rapidfort/traefik --set image.tag=v2.9.4
 
 ```
+
 
 ## What is a hardened image?
 

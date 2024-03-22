@@ -59,12 +59,15 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run:
 $ docker run -it --name my-nifi -p 8080:80 rapidfort/nifi-ib
 # PWD can be replaced with the directory containing all your HTML.
 
 ```
+
 
 ## What is a hardened image?
 

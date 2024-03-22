@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Docker
 $ docker run --name memcached rapidfort/memcached-ib:latest
 
 ```
+
 
 ## What is a hardened image?
 

@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
@@ -66,6 +68,7 @@ $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install my-redis-cluster bitnami/redis-cluster --set image.repository=rapidfort/redis-cluster
 
 ```
+
 
 ## What is a hardened image?
 

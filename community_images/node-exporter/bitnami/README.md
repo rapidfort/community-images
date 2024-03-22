@@ -59,12 +59,15 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 # install node-exporter, just replace repository with RapidFort registry
 $ helm install my-node-exporter bitnami/node-exporter --set image.repository=rapidfort/node-exporter
 
 ```
+
 
 ## What is a hardened image?
 

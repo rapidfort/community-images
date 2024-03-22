@@ -63,6 +63,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Check everything works properly by running:
 
@@ -77,6 +79,7 @@ $ docker run --rm rapidfort/curl:latest -L -v https://curl.haxx.se
 $ docker run --rm -it -v "$PWD:/work" rapidfort/curl -d@/work/test.txt https://httpbin.org/post
 
 ```
+
 
 ## What is a hardened image?
 

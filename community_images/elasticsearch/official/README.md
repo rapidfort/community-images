@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run:
 $ docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" rapidfort/elasticsearch-official
 
 ```
+
 
 ## What is a hardened image?
 

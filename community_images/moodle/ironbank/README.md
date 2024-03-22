@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run
 $ docker run -d  -p 9000:9000 -v moodle_www:/var/www/html rapidfort/moodle-ib
@@ -67,6 +69,7 @@ $ docker run -d  -p 9000:9000 -v moodle_www:/var/www/html rapidfort/moodle-ib
 # Then, access it via http://localhost:<port>/ or http://<host-ip>:<port>/ in a browser.
 
 ```
+
 
 ## What is a hardened image?
 

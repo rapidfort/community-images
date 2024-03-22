@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
@@ -66,6 +68,7 @@ $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install my-elasticsearch bitnami/elasticsearch --set image.repository=rapidfort/elasticsearch
 
 ```
+
 
 ## What is a hardened image?
 
@@ -89,9 +92,7 @@ RapidFort’s hardened [rapidfort/elasticsearch][rf-dh-image-link] image has bee
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-
 * [`8`, `8-debian-12`, `8.12.2`, `8.12.2-debian-12-r` (8/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-12/Dockerfile)
-
 * [`7`, `7-debian-12`, `7.17.18`, `7.17.18-debian-12-r` (7/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-12/Dockerfile)
 
 ## Need support

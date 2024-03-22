@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # install etcd, using docker run
 $ docker run -it --name Etcd rapidfort/etcd-ib
 
 ```
+
 
 ## What is a hardened image?
 

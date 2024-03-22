@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run:
 $ docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" --name my-mssql-server -p 1433:1433 rapidfort/microsoft-sql-server-2019-ib:latest
 
 ```
+
 
 ## What is a hardened image?
 

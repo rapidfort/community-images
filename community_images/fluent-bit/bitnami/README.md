@@ -59,12 +59,15 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 # install fluent-bit, just replace repository with RapidFort registry
 $ helm install my-fluent-bit bitnami/fluent-bit --set image.repository=rapidfort/fluent-bit
 
 ```
+
 
 ## What is a hardened image?
 

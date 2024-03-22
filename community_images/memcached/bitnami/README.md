@@ -59,6 +59,8 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Docker
 $ docker run --name memcached rapidfort/memcached:latest
@@ -67,6 +69,7 @@ $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install my-release rapidfort/memcached
 
 ```
+
 
 ## What is a hardened image?
 
@@ -90,9 +93,7 @@ RapidFort’s hardened [rapidfort/memcached][rf-dh-image-link] image has been op
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-
-* [`1`, `1-debian-12`, `1.6.24`, `1.6.24-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-12/Dockerfile)
-
+* [`1`, `1-debian-12`, `1.6.25`, `1.6.25-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-12/Dockerfile)
 
 ## Need support
 

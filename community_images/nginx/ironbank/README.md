@@ -59,10 +59,13 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 $ docker run -v /some/content:/usr/share/nginx/html:ro -d rapidfort/nginx-ib:latest
 
 ```
+
 
 ## What is a hardened image?
 

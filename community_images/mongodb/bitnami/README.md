@@ -69,13 +69,15 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-# install mongodb, just replace repository with RapidFort registry
-$ helm install my-mongodb bitnami/mongodb --set image.repository=rapidfort/mongodb
-
+  # install nginx, just replace repository with RapidFort registry
+  $ helm install my-nginx bitnami/nginx --set image.repository=rapidfort/nginx --set RF_ACCESS_TOKEN="your_access_token"
 ```
+
 
 ## What is a hardened image?
 
@@ -99,9 +101,7 @@ RapidFort’s hardened [rapidfort/mongodb][rf-dh-image-link] image has been opti
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-
-* [`7.0`, `7.0-debian-12`, `7.0.6`, `7.0.6-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-12/Dockerfile)
-
+* [`7.0`, `7.0-debian-12`, `7.0.7`, `7.0.7-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-12/Dockerfile)
 
 ## Need support
 

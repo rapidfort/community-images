@@ -59,11 +59,14 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 <br>
 
+
+
 ```sh
 # Using docker run:
 $ docker run --name some-cassandra -d cassandra:latest
 
 ```
+
 
 ## What is a hardened image?
 

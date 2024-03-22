@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/prometheus][rf-dh-image-link] image has been o
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-12`, `2.50.1`, `2.50.1-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)
+* [`2`, `2-debian-12`, `2.51.0`, `2.51.0-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)
 
 ## Need support
 

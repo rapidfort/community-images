@@ -13,6 +13,8 @@ services:
       - ./configs/server_block_backends.conf:/opt/bitnami/nginx/conf/server_blocks/server_block_backends.conf:ro
       - ./configs/server_include_backends.conf:/opt/bitnami/nginx/conf/bitnami/server_include_backends.conf:ro
       - ./coverage_script.sh:/opt/bitnami/scripts/coverage_script.sh
+    environment:
+      - RF_ACCESS_TOKEN=${RF_ACCESS_TOKEN}  
   backend1a:
     image: nginxdemos/hello:plain-text
     cap_add:

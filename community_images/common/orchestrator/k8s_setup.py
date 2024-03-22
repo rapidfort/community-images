@@ -140,9 +140,11 @@ class K8sSetup:
 
     def prepare_kubectl_cmd(self):
         """ Prepare kubectl command """
+        rf_access_token = os.getenv("RF_ACCESS_TOKEN")
         cmd = f"kubectl run {self.release_name}"
         cmd += " --restart=Never --privileged"
         cmd += f" --namespace {self.namespace_name}"
+        cmd += f" --env=RF_ACCESS_TOKEN={rf_access_token}"
 
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():
@@ -162,12 +164,13 @@ class K8sSetup:
         """ Prepare helm chart command """
         # Install helm
         override_file = f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
-
+        rf_access_token = os.getenv("RF_ACCESS_TOKEN")
         helm_repo = self.runtime_props.get('helm', {}).get('repo')
         helm_chart = self.runtime_props.get('helm', {}).get('chart')
         cmd = f"helm install {self.release_name}"
         cmd += f" {helm_repo}/{helm_chart}"
         cmd += f" --namespace {self.namespace_name}"
+        cmd += f" --set env.MY_ENV_VAR={rf_access_token}"
 
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():

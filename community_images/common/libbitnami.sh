@@ -6,10 +6,12 @@
 
 # Load Generic Libraries
 . /opt/bitnami/scripts/liblog.sh
-
+# set -x
 # Constants
 BOLD='\033[1m'
 
+# PASSWORD='rf123@123'
+# RF_ACCESS_TOKEN='rf123@124'
 # Functions
 
 ########################
@@ -22,10 +24,12 @@ BOLD='\033[1m'
 # Returns:
 #   None
 #########################
+
 print_welcome_page() {
     if [[ -z "${DISABLE_WELCOME_MESSAGE:-}" ]]; then
         if [[ -n "$BITNAMI_APP_NAME" ]]; then
             print_image_welcome_page
+            
         fi
     fi
 }

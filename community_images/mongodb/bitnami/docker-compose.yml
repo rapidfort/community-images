@@ -8,6 +8,7 @@ services:
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - RF_ACCESS_TOKEN=${RF_ACCESS_TOKEN}
     volumes:
       - 'mongodb_master_data:/bitnami/mongodb'
     cap_add:
@@ -23,6 +24,7 @@ services:
       - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
       - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - RF_ACCESS_TOKEN=${RF_ACCESS_TOKEN}
     cap_add:
       - SYS_PTRACE
 
@@ -36,6 +38,7 @@ services:
       - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
       - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      - RF_ACCESS_TOKEN=${RF_ACCESS_TOKEN}
     cap_add:
       - SYS_PTRACE
 

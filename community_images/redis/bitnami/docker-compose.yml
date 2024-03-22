@@ -9,6 +9,7 @@ services:
       - REDIS_REPLICATION_MODE=master
       - REDIS_PASSWORD=my_password
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+      - RF_ACCESS_TOKEN=${RF_ACCESS_TOKEN}
     volumes:
       - 'redis_data:/bitnami/redis/data'
     cap_add:
@@ -27,6 +28,8 @@ services:
       - REDIS_MASTER_PASSWORD=my_password
       - REDIS_PASSWORD=my_password
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+      - RF_ACCESS_TOKEN=${RF_ACCESS_TOKEN}
+
     cap_add:
       - SYS_PTRACE
 

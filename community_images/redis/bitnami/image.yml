@@ -13,7 +13,7 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install redis, just replace repository with RapidFort registry
-  $ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
+  $ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis --set RF_ACCESS_TOKEN="your_access_token"
 what_is_text: |
   Redis™ is an open-source, networked, in-memory, key-value data store with optional durability. It is written in ANSI C. The development of Redis is sponsored by Redis Labs today; before that, it was sponsored by Pivotal and VMware. According to the monthly ranking by DB-Engines.com, Redis is the most popular key-value store. The name Redis means REmote DIctionary Server.
 disclaimer: |

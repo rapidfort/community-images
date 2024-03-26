@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  labels:
+    run: python-chromedriver
+  name: python-chromedriver
+spec:
+  containers:
+  - name: python-chromedriver
+    image: rapidfort/python-chromedriver:latest
+    env:
+    - name: SERVER
+      value: "10.96.130.119"
+    - name: PORT
+      value: "443"
+    command:
+    - /bin/bash
+    - -c
+    - sleep infinity

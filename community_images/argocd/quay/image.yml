@@ -35,7 +35,7 @@ runtimes:
     helm_additional_params:
       "configs.params.application.namespaces": "argocd"
       # bcrypt hash of pass_123
-      "configs.secret.argocdServerAdminPassword": "$2a$10$nnV6mId5gD4ewYM1f7TQUO/3EusbXks1mHHFv2prZfonnvGN4.oSO"
+      "configs.secret.argocdServerAdminPassword": "$2y$10$jOMpTcqFvE/WMxxfgD4obu.ZBBAlYvMdMiXdQ16dUHCVCMIgSqyhC"
     image_keys:
       argocd-quay:
         repository: "image.repository"

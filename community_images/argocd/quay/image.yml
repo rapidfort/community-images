@@ -42,4 +42,4 @@ runtimes:
         tag: "image.tag"
     override_file: "overrides.yml"
     readiness_wait_pod_name_suffix:
-      - "argocd-server"
+      - "application-controller-0"

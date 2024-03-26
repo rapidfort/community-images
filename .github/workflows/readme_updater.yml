@@ -98,6 +98,14 @@ jobs:
           repository: rapidfort/apache-official
           readme-filepath: ./community_images/apache/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Official
+      - name: Docker Hub Description Argo CD Quay
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/argocd-quay
+          readme-filepath: ./community_images/argocd/quay/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Argo CD Quay
       - name: Docker Hub Description Cassandra Official
         uses: peter-evans/dockerhub-description@v3
         with:

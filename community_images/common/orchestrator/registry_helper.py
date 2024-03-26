@@ -349,13 +349,11 @@ class QuayHelper(RegistryHelper):
         else:
             url_safe_repo = urllib.parse.quote(f'{account}/{repo}', safe='')
             url = f"{self.BASE_URL}repository/{url_safe_repo}/tag/"
-            headers = self.get_auth_header()
-
             page = 1
             has_next_page = True
             while has_next_page:
-                page_url = f"{url}?page={page}&limit=100"  # Assuming Quay.io uses 'page' and 'limit' parameters for pagination
-                resp = requests.get(page_url, headers=headers, timeout=120)
+                page_url = f"{url}?page={page}&limit=100"
+                resp = requests.get(page_url, timeout=120)
                 logging.debug(f"page_url: {page_url}, {resp.status_code}, {resp.text}")
 
                 if not 200 <= resp.status_code < 300:
@@ -366,21 +364,35 @@ class QuayHelper(RegistryHelper):
                     break
 
                 for tag in page_tags:
-                    # Assuming each tag object in Quay.io's response has 'name' and possibly 'image_id' or 'manifest_digest' fields
+                    # Assuming each tag object in Quay.io's response has 'name' 'manifest_digest' fields
                     name = tag.get('name')
-                    manifest_digest = tag.get('manifest_digest')  # This field name might differ, adjust accordingly
+                    manifest_digest = tag.get('manifest_digest')
+                    last_modified = tag.get('last_modified')
                     if name and manifest_digest:
-                        tags.append({'name': name, 'digest': manifest_digest})
-        
-        page += 1
-        has_next_page = 'next' in data  # Adjust based on how Quay.io indicates more pages
+                        tags.append({'name': name, 'digest': manifest_digest, 'last_modified': last_modified})
+                page += 1
+                has_next_page = 'has_additional' in data  
 
         return tags
 
     def get_latest_tag_with_digest(self, account, repo, search_str):
         """ Find the latest tag using search_str """
-        # Implement similar logic to the DockerHubHelper but adjust for Quay's API response format.
-        pass
+        tags = self._fetch_tags(account, repo)
+        tags = filter(lambda tag: search_str in tag["name"], tags)
+        tags = list(filter(lambda tag: "sha" not in tag["name"], tags))
+
+        if not tags:
+            return None, None
+
+        # Example sorting, adjust if Quay.io's tag object structure differs
+        if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["tag_last_pushed"]))
+        else:
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["last_modified"]))
+        if tags:
+            latest_tag = tags[-1]
+            return latest_tag["name"], latest_tag.get("manifest_digest", None)
+        return None, None
 
     def delete_tag(self, account, repo, tag):
         del_url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags/{tag}/"

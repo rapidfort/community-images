@@ -298,12 +298,115 @@ class IronBankHelper(RegistryHelper):
         resp = requests.delete(del_url, headers=auth_header, timeout=30)
         return resp.status_code == 200
 
+class QuayHelper(RegistryHelper):
+    """ Implement Quay.io helper """
+    BASE_URL = "https://quay.io/api/v1/"
+
+    def __init__(self, docker_client, registry):
+        username = os.environ.get("QUAY_USERNAME")
+        password = os.environ.get("QUAY_PASSWORD")
+        super().__init__(docker_client, registry, username, password)
+
+    @staticmethod
+    def registry_url():
+        return "quay.io"
+
+    def get_auth_header(self):
+        """ get auth header for JWT """
+        login_url = "https://registry.hub.docker.com/v2/users/login"
+        dockerhub_username = os.environ.get("DOCKERHUB_USERNAME")
+        dockerhub_password = os.environ.get("DOCKERHUB_PASSWORD")
+        resp = requests.post(
+            login_url,
+            json={
+                "username": dockerhub_username,
+                "password": dockerhub_password
+            },
+            timeout=30
+        )
+        if resp.status_code == 200:
+            resp_json = resp.json()
+            logging.debug(resp_json)
+            token = resp_json["token"]
+            return {"Authorization": f"JWT {token}"}
+        return {}
+
+    def _fetch_tags(self, account, repo):
+        """ Fetch tags from Quay.io """
+        # Implement fetching tags from Quay.io
+        # Adjust the URL and parameters according to Quay's API documentation.
+        tags = []
+        if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
+            url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags?page_size=25"
+            while url and len(tags) <= 200:
+                resp = requests.get(url, timeout=60)
+                logging.debug(f"url : {url}, {resp.status_code}, {resp.text}")
+                if 200 <= resp.status_code < 300:
+                    tags += resp.json().get("results", [])
+                    url = resp.json().get("next")
+                else:
+                    break
+        else:
+            url_safe_repo = urllib.parse.quote(f'{account}/{repo}', safe='')
+            url = f"{self.BASE_URL}repository/{url_safe_repo}/tag/"
+            page = 1
+            has_next_page = True
+            while has_next_page:
+                page_url = f"{url}?page={page}&limit=100"
+                resp = requests.get(page_url, timeout=120)
+                logging.debug(f"page_url: {page_url}, {resp.status_code}, {resp.text}")
+
+                if not 200 <= resp.status_code < 300:
+                    break
+                data = resp.json()
+                page_tags = data.get('tags', [])
+                if not page_tags:
+                    break
+
+                for tag in page_tags:
+                    # Assuming each tag object in Quay.io's response has 'name' 'manifest_digest' fields
+                    name = tag.get('name')
+                    manifest_digest = tag.get('manifest_digest')
+                    last_modified = tag.get('last_modified')
+                    if name and manifest_digest:
+                        tags.append({'name': name, 'digest': manifest_digest, 'last_modified': last_modified})
+                page += 1
+                has_next_page = 'has_additional' in data  
+
+        return tags
+
+    def get_latest_tag_with_digest(self, account, repo, search_str):
+        """ Find the latest tag using search_str """
+        tags = self._fetch_tags(account, repo)
+        tags = filter(lambda tag: search_str in tag["name"], tags)
+        tags = list(filter(lambda tag: "sha" not in tag["name"], tags))
+
+        if not tags:
+            return None, None
+
+        # Example sorting, adjust if Quay.io's tag object structure differs
+        if account == os.environ.get("RAPIDFORT_ACCOUNT", "rapidfort"):
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["tag_last_pushed"]))
+        else:
+            tags.sort(key=lambda tag: dateutil.parser.parse(tag["last_modified"]))
+        if tags:
+            latest_tag = tags[-1]
+            return latest_tag["name"], latest_tag.get("manifest_digest", None)
+        return None, None
+
+    def delete_tag(self, account, repo, tag):
+        del_url = f"https://registry.hub.docker.com/v2/repositories/{account}/{repo}/tags/{tag}/"
+        logging.info("Deleting from %s", del_url)
+        auth_header = self.get_auth_header()
+        resp = requests.delete(del_url, headers=auth_header, timeout=30)
+        return resp.status_code == 200
 
 class RegistryHelperFactory:
     """ Registry factory to get Registry helper objects """
     REGISTRY_HELPER_CLS_LIST = [
         DockerHubHelper,
-        IronBankHelper
+        IronBankHelper,
+        QuayHelper
     ]
 
     @classmethod

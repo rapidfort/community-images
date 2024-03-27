@@ -19,6 +19,9 @@ POD_NAME=$(kubectl get pod -n ${NAMESPACE} | grep "${RELEASE_NAME}-server[a-z0-9
 ARGOCD_SERVER=$(kubectl get svc -n ${NAMESPACE} ${RELEASE_NAME}-server -o json | jq '.spec.clusterIP')
 ARGOCD_PORT='443'
 
+# Create testing namespace
+kubectl create namespace argocd
+
 kubectl cp "${SCRIPTPATH}"/coverage.sh "${POD_NAME}":/home/argocd/coverage.sh -n "${NAMESPACE}"
 
 kubectl exec -it ${POD_NAME} -n ${NAMESPACE} -- bash -c "./coverage.sh pass_123" 

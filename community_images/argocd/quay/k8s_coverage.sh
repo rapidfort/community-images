@@ -22,6 +22,8 @@ ARGOCD_PORT='443'
 # Create testing namespace
 kubectl create namespace argocd
 
+sleep 20
+
 kubectl cp "${SCRIPTPATH}"/coverage.sh "${POD_NAME}":/home/argocd/coverage.sh -n "${NAMESPACE}"
 
 kubectl exec -i ${POD_NAME} -n ${NAMESPACE} -- bash -c "./coverage.sh pass_123" 

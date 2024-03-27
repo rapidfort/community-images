@@ -23,7 +23,7 @@ input_registry:
 repo_sets:
   - argocd:
       input_base_tag: "v2.10."
-      output_repo: argocd-quay
+      output_repo: argocd
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
@@ -36,7 +36,7 @@ runtimes:
       # bcrypt hash of pass_123
       "configs.secret.argocdServerAdminPassword": "$2y$10$jOMpTcqFvE/WMxxfgD4obu.ZBBAlYvMdMiXdQ16dUHCVCMIgSqyhC"
     image_keys:
-      argocd-quay:
+      argocd:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"

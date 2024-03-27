@@ -29,3 +29,12 @@ kubectl cp "${SCRIPTPATH}"/coverage.sh "${POD_NAME}":/home/argocd/coverage.sh -n
 kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./coverage.sh pass_123" 
 
 "${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${ARGOCD_SERVER}" "${ARGOCD_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1
+
+# Delete CRDs
+kubectl delete crd applications.argoproj.io applicationsets.argoproj.io appprojects.argoproj.io &
+PID_CRD=$!
+
+sleep 5
+kill "${PID_CRD}"
+
+kubectl patch crd/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge

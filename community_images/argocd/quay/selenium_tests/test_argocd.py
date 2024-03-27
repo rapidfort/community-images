@@ -88,7 +88,17 @@ class TestYourlsuitest():
         self.driver.find_element(By.XPATH, "//span[contains(.,'guestbook')]").click()
         self.driver.implicitly_wait(10)
         self.driver.save_screenshot("scrsht.png")
-        self.driver.find_element(By.XPATH, "//button/span").click()
+
+        mflag = 10
+        while mflag >= 0:
+            time.sleep(10)
+            try:
+                mflag = mflag - 1
+                self.driver.find_element(By.XPATH, "//button/span").click()
+                mflag = -1
+            except Exception as e:
+                print("Switching repo failed")
+
         self.driver.find_element(By.LINK_TEXT, "PARAMETERS").click()
         self.driver.find_element(By.LINK_TEXT, "MANIFEST").click()
         self.driver.find_element(By.LINK_TEXT, "EVENTS").click()
@@ -179,7 +189,21 @@ class TestYourlsuitest():
         # self.driver.find_element(By.CSS_SELECTOR, ".qe-applications-list-argocd_helm-guestbook .applications-list__title").click()
         self.driver.implicitly_wait(10)
         time.sleep(10)
-        self.driver.find_element(By.XPATH, "//span[contains(.,'helm-guestbook')]").click()
+        
+        mflag = 10
+        while mflag >= 0:
+            try:
+                mflag = mflag - 1
+                self.driver.find_element(By.XPATH, "//span[contains(.,'helm-guestbook')]").click()
+                mflag = -1
+            except Exception as e:
+                print("Helm guestbook not created yet loading applications")
+                self.driver.get("https://{}:{}/applications"
+                    .format(
+                        params["server"],
+                        params["port"]))
+                time.sleep(10)
+
         self.driver.find_element(By.CSS_SELECTOR, ".sidebar__nav-item--active > div").click()
         self.driver.find_element(By.CSS_SELECTOR, ".argo-button:nth-child(1) > .show-for-large").click()
         self.driver.implicitly_wait(10)
@@ -305,6 +329,7 @@ class TestYourlsuitest():
                 self.driver.find_element(By.XPATH, "//li[contains(.,'VIA HTTPS')]").click()
                 mflag = -1
             except Exception as e:
+                time.sleep(10)
                 print("Switching repo failed")
 
         self.driver.save_screenshot("scrsht.png")

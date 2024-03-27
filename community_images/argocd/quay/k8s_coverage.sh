@@ -35,6 +35,6 @@ kubectl delete crd applications.argoproj.io applicationsets.argoproj.io appproje
 PID_CRD=$!
 
 sleep 5
-kill "${PID_CRD}"
+kill "${PID_CRD}" || true
 
-kubectl patch crd/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge
+kubectl patch crd/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge || true

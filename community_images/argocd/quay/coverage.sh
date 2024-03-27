@@ -62,8 +62,11 @@ DEST_SERVER="https://kubernetes.default.svc" # Kubernetes API server URL
 DEST_NAMESPACE="default"
 
 argocd_create_app "${APP_NAME}" "${REPO_URL}" "${APP_PATH}" "${DEST_SERVER}" "${DEST_NAMESPACE}"
+sleep 10
 argocd_list_apps
+sleep 10
 argocd_sync_app "${APP_NAME}"
+sleep 10
 argocd_delete_app "${APP_NAME}"
 
 echo "Argo CD coverage operations completed successfully."

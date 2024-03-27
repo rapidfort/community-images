@@ -294,15 +294,16 @@ class TestYourlsuitest():
         self.driver.find_element(By.XPATH, "//div[@id=\'app\']/div[2]/div/div[2]/div/div/div/div/div[2]/div/div/button").click()
         self.driver.implicitly_wait(10)
 
-        mflag = True
-        while mflag:
+        mflag = 10
+        while mflag >= 0:
             try:
+                mflag = mflag - 1
                 self.driver.save_screenshot("scrsht.png")
                 # self.driver.find_element(By.XPATH, "//div[@id='app']/div[2]/div/div[2]/div/div/div/div/div[2]/div/div/button").click()
                 self.driver.find_element(By.XPATH, "//p[contains(.,\'VIA SSH \')]").click()
                 self.driver.save_screenshot("scrsht.png")
                 self.driver.find_element(By.XPATH, "//li[contains(.,'VIA HTTPS')]").click()
-                mflag = False
+                mflag = -1
             except Exception as e:
                 print("Switching repo failed")
 

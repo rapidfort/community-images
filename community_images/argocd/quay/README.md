@@ -56,10 +56,9 @@ The runtime instructions for this container are no different from the official r
 <br>
 
 ```sh
-# The container can be started in development mode quickly with:
-$ docker run -d -p 8080:8080 rapidfort/keycloak-official:latest start-dev
-
-# Keycloak 17 is powered by Quarkus and to deploy it in production mode it is necessary to set up TLS.
+# Argocd can be deployed with:
+$ helm repo add argo https://argoproj.github.io/argo-helm
+$ helm install rf-argocd argo/argo-cd --set image.repository=rapidfort/argocd-quay --set image.tag=v2.10.4
 
 ```
 

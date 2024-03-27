@@ -76,8 +76,18 @@ class TestYourlsuitest():
         self.driver.find_element(By.XPATH, "//a[contains(text(),'Sync')]").click()
         self.driver.implicitly_wait(10)
         self.driver.save_screenshot("scrsht.png")
-        self.driver.find_element(By.LINK_TEXT, "all").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".sliding-panel__header:nth-child(2) .argo-button--base").click()
+
+        mflag = 2
+        while mflag >= 0:
+            try:
+                mflag = mflag - 1
+                self.driver.find_element(By.LINK_TEXT, "all").click()
+                self.driver.find_element(By.CSS_SELECTOR, ".sliding-panel__header:nth-child(2) .argo-button--base").click()
+                mflag = -1
+            except Exception as e:
+                print("Refreshing failed")
+                time.sleep(10)
+
         element = self.driver.find_element(By.CSS_SELECTOR, ".flex-top-bar__actions > .argo-button:nth-child(2)")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()

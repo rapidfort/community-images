@@ -20,7 +20,7 @@ ARGOCD_SERVER=$(kubectl get svc -n "${NAMESPACE}" "${RELEASE_NAME}-server" -o js
 ARGOCD_PORT='443'
 
 # Create testing namespace
-kubectl create namespace argocd
+kubectl create namespace argocd 
 
 sleep 20
 
@@ -38,3 +38,5 @@ sleep 5
 kill "${PID_CRD}" || true
 
 kubectl patch crd/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge || true
+
+kubectl delete namespace argocd

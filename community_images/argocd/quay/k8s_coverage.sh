@@ -24,8 +24,8 @@ kubectl create namespace argocd
 
 sleep 40
 
-kubectl cp "${SCRIPTPATH}"/coverage.sh "${POD_NAME}":/home/argocd/coverage.sh -n "${NAMESPACE}"
-
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "cat > ./coverage.sh" < ${SCRIPTPATH}/coverage.sh 
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "chmod u+x ./coverage.sh" 
 kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./coverage.sh pass_123" 
 
 "${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${ARGOCD_SERVER}" "${ARGOCD_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1

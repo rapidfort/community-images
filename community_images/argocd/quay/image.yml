@@ -5,18 +5,19 @@ source_image_provider: Quay
 source_image_repo: quay.io/argoproj/argocd
 source_image_repo_link: https://quay.io/repository/argoproj/argocd
 source_image_readme: https://github.com/argoproj/argo-cd/blob/master/README.md
-rf_docker_link: rapidfort/argocd-quay
+rf_docker_link: rapidfort/argocd
 image_workflow_name: argocd_quay
 github_location: argocd/quay
 report_url: https://us01.rapidfort.com/app/community/imageinfo/quay.io%2Fargoproj%2Fargocd
 usage_instructions: |
   # Argocd can be deployed with:
   $ helm repo add argo https://argoproj.github.io/argo-helm
-  $ helm install rf-argocd argo/argo-cd --set image.repository=rapidfort/argocd-quay --set image.tag=v2.10.4
+  $ helm install rf-argocd argo/argo-cd --set image.repository=rapidfort/argocd --set image.tag=v2.10.4
 what_is_text: |
   Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. Argo CD follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+use_rapid_stub: true
 input_registry:
   registry: quay.io
   account: argoproj
@@ -37,8 +38,8 @@ runtimes:
       "configs.secret.argocdServerAdminPassword": "$2y$10$jOMpTcqFvE/WMxxfgD4obu.ZBBAlYvMdMiXdQ16dUHCVCMIgSqyhC"
     image_keys:
       argocd:
-        repository: "image.repository"
-        tag: "image.tag"
+        repository: "global.image.repository"
+        tag: "global.image.tag"
     override_file: "overrides.yml"
     readiness_wait_pod_name_suffix:
       - "application-controller-0"

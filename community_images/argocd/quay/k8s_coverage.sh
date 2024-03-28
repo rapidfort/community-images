@@ -20,13 +20,13 @@ ARGOCD_SERVER=$(kubectl get svc -n "${NAMESPACE}" "${RELEASE_NAME}-server" -o js
 ARGOCD_PORT='443'
 
 # Create testing namespace
-kubectl create namespace argocd 
+kubectl create namespace argocd
 
 sleep 40
 
-kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "cat > ./coverage.sh" < ${SCRIPTPATH}/coverage.sh 
-kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "chmod u+x ./coverage.sh" 
-kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./coverage.sh pass_123" 
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "cat > ./coverage.sh" < "${SCRIPTPATH}/coverage.sh"
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "chmod u+x ./coverage.sh"
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./coverage.sh pass_123"
 
 "${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${ARGOCD_SERVER}" "${ARGOCD_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1
 

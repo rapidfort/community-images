@@ -22,11 +22,11 @@ ARGOCD_PORT='443'
 # Create testing namespace
 kubectl create namespace argocd
 
-sleep 20
+sleep 40
 
-kubectl cp "${SCRIPTPATH}"/coverage.sh "${POD_NAME}":/home/argocd/coverage.sh -n "${NAMESPACE}"
-
-kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./coverage.sh pass_123" 
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "cat > ./coverage.sh" < "${SCRIPTPATH}/coverage.sh"
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "chmod u+x ./coverage.sh"
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./coverage.sh pass_123"
 
 "${SCRIPTPATH}"/../../common/selenium_tests/runner.sh "${ARGOCD_SERVER}" "${ARGOCD_PORT}" "${SCRIPTPATH}"/selenium_tests "${NAMESPACE}" 2>&1
 
@@ -38,3 +38,5 @@ sleep 5
 kill "${PID_CRD}" || true
 
 kubectl patch crd/applications.argoproj.io -p '{"metadata":{"finalizers":[]}}' --type=merge || true
+
+kubectl delete namespace argocd

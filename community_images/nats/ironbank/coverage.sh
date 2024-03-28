@@ -30,8 +30,11 @@ function test_nats() {
    go env -w GOSUMDB=off
    go mod init github.com/nats-io
    go get github.com/nats-io/nats.go
-   cd \"\$GOPATH\"/pkg/mod/github.com/nats-io/nats.go@v1.33.1/examples/nats-pub && go get golang.org/x/crypto/blake2b@v0.14.0 && go install && cd || exit
-   cd \"\$GOPATH\"/pkg/mod/github.com/nats-io/nats.go@v1.33.1/examples/nats-echo && go install && cd || exit
+   cd \$GOPATH
+   NATS_GO_VERSION=\$(cat go.mod | grep nats.go | cut -d ' '  -f2)
+   cd ..
+   cd \"\$GOPATH\"/pkg/mod/github.com/nats-io/nats.go@\$NATS_GO_VERSION/examples/nats-pub && go get golang.org/x/crypto/blake2b@v0.14.0 && go install && cd || exit
+   cd \"\$GOPATH\"/pkg/mod/github.com/nats-io/nats.go@\$NATS_GO_VERSION/examples/nats-echo && go install && cd || exit
    timeout 10s nats-echo -s nats://$NATS_USER:$NATS_PASS@${NATS_SERVER}:4222 SomeSubject &
    nats-pub -s nats://$NATS_USER:$NATS_PASS@${NATS_SERVER}:4222 -reply Hi SomeSubject 'Hi everyone'" > "$SCRIPTPATH"/commands.sh
 

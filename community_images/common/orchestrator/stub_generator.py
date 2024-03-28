@@ -80,7 +80,11 @@ class StubGenerator:
     @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
     def _run_stub_command(self, tag): # pylint: disable=unused-argument
         """ Run stub command with backoff """
-        Utils.run_cmd(["rfstub", "-s", "rapid", tag])
+        cmd = "rfstub"
+        if self.config_dict.get("use_rapid_stub", False):
+            cmd += " -s rapid "
+        cmd += tag
+        Utils.run_cmd(cmd.split())
 
     def _add_rf_banner(self, tag_details):
         """ Add RapidFort banner in bitnami images """

@@ -146,9 +146,9 @@ postgresql:
   - 12.18.0-debian-12-r
 prometheus:
   docker_links:
-  - '[`2`, `2-debian-12`, `2.51.0`, `2.51.0-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)'
+  - '[`2`, `2-debian-12`, `2.51.1`, `2.51.1-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)'
   search_tags:
-  - 2.51.0-debian-12-r
+  - 2.51.1-debian-12-r
 rabbitmq:
   docker_links:
   - '[`3.12`, `3.12-debian-12`, `3.12.13`, `3.12.13-debian-12-r` (3.12/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.12/debian-12/Dockerfile)'

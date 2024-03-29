@@ -424,7 +424,7 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/argocd-quay": 1 }' \
+           -d '{ "rapidfort/argocd": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   cassandra-official:
     runs-on: ubuntu-latest

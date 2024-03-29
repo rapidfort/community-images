@@ -31,8 +31,8 @@ async function takeShots(browser, imageSavePath, imageUrl, firstShot) {
     type: 'webp'
     });
 
-  await page.waitForSelector('#card-statistics-histogram');
-  const cve_details = await page.$('#card-statistics-histogram');
+  await page.waitForSelector('#card-severity-histogram.card-severity-histogram');
+  const cve_details = await page.$('#card-severity-histogram.card-severity-histogram');
   await cve_details.screenshot({
     path: util.format('%s/cve_reduction.webp', imageSavePath),
     type: 'webp'

@@ -58,7 +58,7 @@ The runtime instructions for this container are no different from the official r
 ```sh
 # Argocd can be deployed with:
 $ helm repo add argo https://argoproj.github.io/argo-helm
-$ helm install rf-argocd argo/argo-cd --set image.repository=rapidfort/argocd-quay --set image.tag=v2.10.4
+$ helm install rf-argocd argo/argo-cd --set image.repository=rapidfort/argocd --set image.tag=v2.10.4
 
 ```
 
@@ -79,7 +79,7 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 
 ## What’s the difference between the official [Quay Argo CD Quay][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/argocd-quay][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/argocd][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
@@ -126,8 +126,8 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/quay.io%2Fargoproj%2Fargocd?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=argocd&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/quay.io%2Fargoproj%2Fargocd?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=argocd&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/argocd-quay?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/argocd-quay?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/argocd?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/argocd?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
@@ -137,4 +137,4 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/argocd/quay/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://quay.io/repository/argoproj/argocd
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/argocd-quay
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/argocd

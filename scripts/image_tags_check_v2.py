@@ -20,8 +20,8 @@ class ImageTagsCheckHelper:
     """ A helper class for checking image tags """
 
     def __init__(self) -> None:
-        self.docherhub_username = "phull.kanav@gmail.com"
-        self.dockerhub_password = "rapidfort_1234"
+        self.docherhub_username = os.environ.get("DOCKERHUB_USERNAME")
+        self.dockerhub_password = os.environ.get("DOCKERHUB_PASSWORD")
         self.image_list_file = "image.lst"
         self.script_path = os.path.dirname(os.path.abspath(__file__))
         self.image_list_file_path = os.path.join(self.script_path, "..", self.image_list_file)
@@ -93,7 +93,7 @@ class ImageTagsCheckHelper:
         if deep:
             logging.info("Trying Deep Search")
 
-        url = f"https://hub.docker.com/v2/repositories/{account}/{repo}/tags?page_size=100"   
+        url = f"https://hub.docker.com/v2/repositories/{account}/{repo}/tags?page_size=100"
         while url:
             headers = {"Authorization": f"Bearer {self._dockerhub_auth_token}"}
             resp = requests.get(url, headers=headers, timeout=60)
@@ -112,6 +112,7 @@ class ImageTagsCheckHelper:
                 break
         return tags
 
+    # pylint: disable=too-many-locals, too-many-branches
     def run_tags_check(self):
         """
         Runs the tag check for the images.
@@ -133,71 +134,77 @@ class ImageTagsCheckHelper:
                 payload_for_db_request = []
 
                 # all images except ironbank ones are supported
-                if image_path.strip().split("/")[-1] != "ironbank":
-                    logging.info(f"🏁 Starting Tag Check for Image: {image_path} 🏁")
+                if image_path.strip().split("/")[-1] == "ironbank":
+                    continue
 
-                    # reading image.yml for image name and account
-                    image_yml_path = os.path.join(self.script_path, "..",
-                                                   "community_images", image_path, "image.yml")
-                    image_dict = self.read_yml_from_path(image_yml_path)
+                logging.info(f"🏁 Starting Tag Check for Image: {image_path} 🏁")
 
-                    # getting source image account and name 
-                    source_image_repo_link = image_dict.get("source_image_repo_link")
-                    if "/_/" in source_image_repo_link:
-                        source_image_name = source_image_repo_link.split("/")[-1]
-                        source_image_account = "library"
-                    elif "/r/" in source_image_repo_link:
-                        source_image_account, source_image_name = source_image_repo_link.split("/")[-2:]
+                # reading image.yml for image name and account
+                image_yml_path = os.path.join(self.script_path, "..",
+                                                "community_images", image_path, "image.yml")
+                image_dict = self.read_yml_from_path(image_yml_path)
 
-                    # getting hardened image account and name 
-                    hardened_image_account = "rapidfort"
-                    hardened_image_name = image_dict.get("rf_docker_link").split("/")[-1]
+                # getting source image account and name
+                source_image_repo_link = image_dict.get("source_image_repo_link")
+                if "/_/" in source_image_repo_link:
+                    source_image_name = source_image_repo_link.split("/")[-1]
+                    source_image_account = "library"
+                elif "/r/" in source_image_repo_link:
+                    source_image_account, source_image_name = source_image_repo_link.split("/")[-2:]
 
-                    # searching and comparing tags for every base tag
-                    if "repo_sets" not in image_dict:
-                        logging.warning("！ Missing 'repo_sets' key in image_dict ！\n")
-                        continue
+                # getting hardened image account and name
+                hardened_image_account = "rapidfort"
+                hardened_image_name = image_dict.get("rf_docker_link").split("/")[-1]
 
-                    input_base_tags = [item[source_image_name]["input_base_tag"] for item in image_dict["repo_sets"]]
-                    for base_tag in input_base_tags:
-                        logging.info(f"🏷️  Checking for base tag: '{base_tag}'")
-                        latest_source_tag, source_release_timestamp = self.get_latest_tag_from_base_tag(source_image_account, source_image_name, base_tag)
-                        latest_hardened_tag, _ = self.get_latest_tag_from_base_tag(hardened_image_account, hardened_image_name, base_tag)
+                # searching and comparing tags for every base tag
+                if "repo_sets" not in image_dict:
+                    logging.warning("！ Missing 'repo_sets' key in image_dict ！\n")
+                    continue
 
-                        logging.info(f"Latest Source Tag: {latest_source_tag}")
-                        logging.info(f"Latest Hardened Tag: {latest_hardened_tag}")
+                input_base_tags = [item[source_image_name]["input_base_tag"] for item in image_dict["repo_sets"]]
+                for base_tag in input_base_tags:
+                    logging.info(f"🏷️  Checking for base tag: '{base_tag}'")
+                    latest_source_tag, source_release_timestamp = self.get_latest_tag_from_base_tag(source_image_account, source_image_name, base_tag)
+                    latest_hardened_tag, _ = self.get_latest_tag_from_base_tag(hardened_image_account, hardened_image_name, base_tag)
 
-                        days_since_release = 0  # Defaults to 0 for supported tags
-                        if latest_source_tag != latest_hardened_tag:
-                            logging.warning("Not Matched ❌")
-                            if source_release_timestamp:
-                                release_timestamp = datetime.strptime(source_release_timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
-                                current_timestamp = datetime.now()
-                                days_since_release = (current_timestamp - release_timestamp).days
-                            unsupported_tags.append((latest_source_tag, days_since_release))
-                        else:
-                            logging.info("Matched ✅")
-                        logging.info(f"Unsupported Since: {days_since_release} days")
+                    logging.info(f"Latest Source Tag: {latest_source_tag}")
+                    logging.info(f"Latest Hardened Tag: {latest_hardened_tag}")
 
-                        payload_for_db_request.append({
-                            "image_repo": image_path,
-                            "base_tag": base_tag,
-                            "latest_source_tag": latest_source_tag,
-                            "release_timestamp": source_release_timestamp,
-                            "unsupported_since_days": days_since_release
-                        })
+                    days_since_release = 0  # Defaults to 0 for supported tags
+                    if latest_source_tag != latest_hardened_tag:
+                        logging.warning("Not Matched ❌")
+                        if not source_release_timestamp:
+                            logging.error(f"Source Release Timestamp is missing for base tag: {base_tag}")
+                            continue
 
-                    # sending data to database for every image_path/image_repo    
-                    url = "https://data-receiver.rapidfort.com/unsupported_image_tags"
-                    try:
-                        headers = {
-                            "Authorization": f"Bearer {os.environ.get('PULL_COUNTER_MAGIC_TOKEN')}"
-                        }
-                        response = requests.post(url, json=payload_for_db_request, headers=headers, timeout=10)
-                        response.raise_for_status()  # Raise HTTPError for non-2xx status codes
-                        logging.info(f"Successfully sent data for {image_path} to database\n")
-                    except requests.RequestException as e:
-                        logging.error(f"Failed to send data for {image_path} to the database: {e}\n")
+                        release_timestamp = datetime.strptime(source_release_timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+                        current_timestamp = datetime.now()
+                        days_since_release = (current_timestamp - release_timestamp).days
+
+                        unsupported_tags.append((latest_source_tag, days_since_release))
+                    else:
+                        logging.info("Matched ✅")
+                    logging.info(f"Unsupported Since: {days_since_release} days")
+
+                    payload_for_db_request.append({
+                        "image_repo": image_path,
+                        "base_tag": base_tag,
+                        "latest_source_tag": latest_source_tag,
+                        "release_timestamp": source_release_timestamp,
+                        "unsupported_since_days": days_since_release
+                    })
+
+                # sending data to database for every image_path/image_repo
+                url = "https://data-receiver.rapidfort.com/unsupported_image_tags"
+                try:
+                    headers = {
+                        "Authorization": f"Bearer {os.environ.get('PULL_COUNTER_MAGIC_TOKEN')}"
+                    }
+                    response = requests.post(url, json=payload_for_db_request, headers=headers, timeout=10)
+                    response.raise_for_status()  # Raise HTTPError for non-2xx status codes
+                    logging.info(f"Successfully sent data for {image_path} to database\n")
+                except requests.RequestException as e:
+                    logging.error(f"Failed to send data for {image_path} to the database: {e}\n")
 
                 # if there are unsupported tags for a particular image, we add that to list of unsupported images
                 if unsupported_tags:

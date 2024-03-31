@@ -365,13 +365,10 @@ class QuayHelper(RegistryHelper):
 
                 for tag in page_tags:
                     # Assuming each tag object in Quay.io's response has 'name' 'manifest_digest' fields
-                    name = tag.get('name')
-                    manifest_digest = tag.get('manifest_digest')
-                    last_modified = tag.get('last_modified')
-                    if name and manifest_digest:
-                        tags.append({'name': name, 'digest': manifest_digest, 'last_modified': last_modified})
+                    if 'name' in tag and 'manifest_digest' in tag:
+                        tags.append({'name': tag['name'], 'digest': tag['manifest_digest'], 'last_modified': tag.get('last_modified')})
                 page += 1
-                has_next_page = 'has_additional' in data  
+                has_next_page = 'has_additional' in data
 
         return tags
 

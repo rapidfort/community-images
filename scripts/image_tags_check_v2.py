@@ -1,7 +1,7 @@
 """
 This workflow script gets the repo_sets/base_tags/search_expressions for every image in image.lst 
 and fetches the latest tag corresponding to that base_tag in both image and source repos. 
-The results are compared and sent to a DB for analysis. It works for all images except Ironbank ones.
+The results are compared and sent to a DB for analysis. It works for all images except Ironbank and quay.
 """
 
 from datetime import datetime
@@ -133,8 +133,8 @@ class ImageTagsCheckHelper:
                 unsupported_tags = []
                 payload_for_db_request = []
 
-                # all images except ironbank ones are supported
-                if image_path.strip().split("/")[-1] == "ironbank":
+                # all images except ironbank and quay are supported
+                if image_path.strip().split("/")[-1] in {"ironbank", "quay"}:
                     continue
 
                 logging.info(f"🏁 Starting Tag Check for Image: {image_path} 🏁")
@@ -224,7 +224,7 @@ class ImageTagsCheckHelper:
 def main():
     """ main function """
     logging.info("### This script fetches the latest tags for each image in image.lst and compares them between the image and source repositories. The results are sent to a database for analysis. ###")
-    logging.info("### It performs checks for all the images except Ironbank ones. ###\n")
+    logging.info("### It performs checks for all the images except Ironbank and quay. ###\n")
     itch = ImageTagsCheckHelper()
     itch.run_tags_check()
 

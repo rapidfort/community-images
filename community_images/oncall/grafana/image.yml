@@ -40,13 +40,13 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`v1.0.0`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)"
+  - "[`v1.3.1`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)"
 input_registry:
   registry: docker.io
   account: grafana
 repo_sets:
   - oncall:
-      input_base_tag: "v1.0."
+      input_base_tag: "v1.3."
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

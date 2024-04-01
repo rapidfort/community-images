@@ -12,6 +12,7 @@ class RegistryHelper:
         self.username = username
         self.password = password
         self.docker_client = docker_client
+        
 
 
 class DockerHubHelper(RegistryHelper):

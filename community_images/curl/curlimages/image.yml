@@ -32,13 +32,13 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
-  - "[`7.xx.x`, `latest` (latest/Dockerfile)](https://github.com/curl/curl-docker/blob/master/alpine/latest/Dockerfile)"
+  - "[`8.7.1`, `latest` (latest/Dockerfile)](https://github.com/curl/curl-container/releases/tag/8.7.1)"
 input_registry:
   registry: docker.io
   account: curlimages
 repo_sets:
   - curl:
-      input_base_tag: "7."
+      input_base_tag: "8.*"
 needs_common_commands: false
 runtimes:
   - type: docker

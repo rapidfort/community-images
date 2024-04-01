@@ -18,14 +18,16 @@ what_is_text: |
   Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-docker_links:
-  - "[`1.12.0`, `latest` (latest/Dockerfile)](https://github.com/hashicorp/docker-vault/blob/11a5dff987176c6ab24f76cee14f6dd820f42d96/0.X/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - vault:
-      input_base_tag: "1.12.0"
+      input_base_tag: "1.16."
+  - vault:
+      input_base_tag: "1.15."
+  - vault:
+      input_base_tag: "1.14."
 needs_common_commands: False
 runtimes:
   - type: k8s

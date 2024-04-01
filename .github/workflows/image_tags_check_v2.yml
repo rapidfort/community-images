@@ -1,0 +1,30 @@
+name: Image Tags Check v2
+
+on:
+  schedule:
+  - cron: '0 0 * * *'
+
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  tag_check:
+    name: Image Tags Check
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install requests pyyaml python-dateutil
+
+      - name: Check Image Tags
+        env: 
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+        run: python3 scripts/image_tags_check_v2.py

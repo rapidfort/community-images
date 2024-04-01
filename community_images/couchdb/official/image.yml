@@ -15,18 +15,26 @@ what_is_text: |
   CouchDB is a database that uses JSON for documents, an HTTP API, & JavaScript/declarative indexing.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest`, `3.3.3`, `3.3`, `3`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.3.3/Dockerfile)"
+  - "[`3.2.3`, `3.2`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.2.3/Dockerfile)"
+  - "[`3.1.2`, `3.1`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.1.2/Dockerfile)"
+  - "[`2.3.1`, `2.3`, `2`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/2.3.1/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - couchdb:
-      input_base_tag: "3.2."
+      input_base_tag: "2.3."
       output_repo: couchdb-official
   - couchdb:
       input_base_tag: "3.1."
       output_repo: couchdb-official
   - couchdb:
-      input_base_tag: "2.3."
+      input_base_tag: "3.2."
+      output_repo: couchdb-official
+  - couchdb:
+      input_base_tag: "3.3."
       output_repo: couchdb-official
 runtimes:
   - type: docker_compose

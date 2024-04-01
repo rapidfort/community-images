@@ -31,9 +31,9 @@ runtimes:
       node-exporter:
         repository: "NODE_EXPORTER_IMAGE_REPOSITORY"
         tag: "NODE_EXPORTER_IMAGE_TAG"
-  - type: k8s                                 
+  - type: k8s
     script: k8s_coverage.sh
-    use_helm: False
+    use_helm: false
     wait_time_sec: 120
     image_keys:
       node-exporter:

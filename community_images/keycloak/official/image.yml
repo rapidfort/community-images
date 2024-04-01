@@ -23,7 +23,7 @@ input_registry:
   account: keycloak
 repo_sets:
   - keycloak:
-      input_base_tag: "22.0."
+      input_base_tag: "24.0."
       output_repo: keycloak-official
 runtimes:
   - type: docker_compose

@@ -331,7 +331,7 @@ class QuayHelper(RegistryHelper):
             return {"Authorization": f"JWT {token}"}
         return {}
 
-    def _fetch_tags(self, account, repo):
+    def _fetch_tags(self, account, repo): # pylint: disable=too-many-locals
         """ Fetch tags from Quay.io """
         # Implement fetching tags from Quay.io
         # Adjust the URL and parameters according to Quay's API documentation.
@@ -371,7 +371,7 @@ class QuayHelper(RegistryHelper):
                     if name and manifest_digest:
                         tags.append({'name': name, 'digest': manifest_digest, 'last_modified': last_modified})
                 page += 1
-                has_next_page = 'has_additional' in data  
+                has_next_page = 'has_additional' in data
 
         return tags
 

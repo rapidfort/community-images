@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/synadia/nats-server:
-      input_base_tag: "2.9."
+      input_base_tag: "v2.10."
       output_repo: nats-ib
 runtimes:
   - type: k8s

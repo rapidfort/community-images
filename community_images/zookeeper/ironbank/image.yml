@@ -20,10 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/zookeeper:
-      input_base_tag: "3.8."
-      output_repo: zookeeper-ib
-  - opensource/apache/zookeeper:
-      input_base_tag: "3.7."
+      input_base_tag: "3.9."
       output_repo: zookeeper-ib
 runtimes:
   - type: docker_compose
@@ -33,4 +30,3 @@ runtimes:
       zookeeper-ib:
         repository: "ZOOKEEPER_IMAGE_REPOSITORY"
         tag: "ZOOKEEPER_IMAGE_TAG"
-

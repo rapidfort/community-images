@@ -132,9 +132,9 @@ class Orchestrator:
             self.docker_client, output_registry_url)
 
         # authenticate to input and output registries
-        input_registry_helper.auth()
+        if not input_registry_url == "quay.io":
+            input_registry_helper.auth()
         output_registry_helper.auth()
-
         return input_registry_helper, input_registry_helper
 
 

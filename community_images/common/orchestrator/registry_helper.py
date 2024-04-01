@@ -388,7 +388,7 @@ class QuayHelper(RegistryHelper):
             tags.sort(key=lambda tag: dateutil.parser.parse(tag["last_modified"]))
         if tags:
             latest_tag = tags[-1]
-            return latest_tag["name"], latest_tag.get("manifest_digest", None)
+            return latest_tag["name"], latest_tag.get("digest", None)
         return None, None
 
     def delete_tag(self, account, repo, tag):

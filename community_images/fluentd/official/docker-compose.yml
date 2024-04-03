@@ -11,6 +11,8 @@ services:
       - '5140:5140'
     volumes:
       - fluentd_data:/fluentd/log
+    networks:
+      - fluentd_network
   backend1a:
     image: nginxdemos/hello:plain-text
     ports:
@@ -55,6 +57,9 @@ services:
       options:
         fluentd-address: localhost:24224
         tag: backend2b
+networks:
+  fluentd_network:  
+    driver: bridge
 volumes:
   fluentd_data:
     driver: local

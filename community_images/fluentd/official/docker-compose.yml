@@ -12,6 +12,7 @@ services:
     volumes:
       - fluentd_data:/fluentd/log
       - ./conf:/fluentd/etc
+      - ./scripts/entrypoint.sh:/bin/entrypoint.sh
     networks:
       - fluentd_network
     stdin_open: true

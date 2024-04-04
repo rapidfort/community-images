@@ -2,8 +2,8 @@ name: vault
 official_name: Vault
 official_website: https://www.vaultproject.io/
 source_image_provider: Hashicorp
-source_image_repo: docker.io/library/vault
-source_image_repo_link: https://hub.docker.com/_/vault
+source_image_repo: docker.io/hashicorp/vault
+source_image_repo_link: https://hub.docker.com/hashicorp/vault
 source_image_readme: https://github.com/hashicorp/docker-vault/blob/master/README.md
 rf_docker_link: rapidfort/vault
 image_workflow_name: vault_hashicorp
@@ -20,7 +20,7 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 input_registry:
   registry: docker.io
-  account: library
+  account: hashicorp
 repo_sets:
   - vault:
       input_base_tag: "1.16."

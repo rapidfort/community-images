@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   fluentd:
@@ -7,10 +7,11 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - '24224:24224'
-      - '5140:5140'
+      - "24224:24224"
+      - "24224:24224/udp"
     volumes:
       - fluentd_data:/fluentd/log
+      - ./conf:/fluentd/etc
     networks:
       - fluentd_network
     stdin_open: true

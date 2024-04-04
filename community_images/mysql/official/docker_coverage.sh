@@ -34,7 +34,7 @@ docker exec -i "${CONTAINER_NAME}" \
 docker cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${CONTAINER_NAME}":/tmp/mysql_coverage.sh
 
 # run mysql_coverage on cluster
-docker exec -i -e MYSQL_TAG=${MYSQL_TAG} "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"
+docker exec -i -e MYSQL_TAG="${MYSQL_TAG}" "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"
 
 # create sbtest schema
 docker exec -i "${CONTAINER_NAME}" \

@@ -3,9 +3,9 @@
 #source vars if file exists
 DEFAULT=/etc/default/fluentd
 
-if [ -r $DEFAULT ]; then
+if [ -r "$DEFAULT" ]; then
     set -o allexport
-    . $DEFAULT
+    . "$DEFAULT"
     set +o allexport
 fi
 
@@ -17,7 +17,7 @@ fi
 # If user does not supply config file or plugins, use the default
 if [ "$1" = "fluentd" ]; then
     if ! echo $@ | grep -e ' \-c' -e ' \-\-config' ; then
-       set -- "$@" --config /fluentd/etc/${FLUENTD_CONF}
+       set -- "$@" --config /fluentd/etc/"${FLUENTD_CONF}"
     fi
 
     if ! echo $@ | grep -e ' \-p' -e ' \-\-plugin' ; then

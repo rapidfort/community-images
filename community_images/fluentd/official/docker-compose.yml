@@ -14,7 +14,7 @@ services:
       - ./conf:/fluentd/etc
     networks:
       - fluentd_network
-    entrypoint: sh
+    entrypoint: bin/sh
     stdin_open: true
     tty: true
   backend1a:

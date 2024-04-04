@@ -8,7 +8,7 @@ set -e
 mysql --version
 mysqladmin --version
 mysqldump --version
-if [[ "${MYSQL_TAG}" =~ "bookworm" ]]; then
+if [[ "${MYSQL_TAG}" != *"oracle"* ]]; then
 	mysqlimport --version
 	mysqlcheck --version
 	mysqlshow --version

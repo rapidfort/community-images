@@ -85,9 +85,8 @@ RapidFort’s hardened [rapidfort/traefik][rf-dh-image-link] image has been opti
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`v2.9.4`, `2.9.4`, `2.9`, `banon`, `latest` (902a0bf463bda84f4cc2cefbcbf9b5b6f7a2cdb9/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/902a0bf463bda84f4cc2cefbcbf9b5b6f7a2cdb9/alpine/Dockerfile)
-* [`1.7.34`, `1.7`, `maroilles` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/scratch/Dockerfile)
-* [`1.7.34-alpine`, `1.7-alpine`, `maroilles-alpine` (4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)](https://github.com/traefik/traefik-library-image/blob/4434758cf14bbd1ec9511b3f2a37b0a6ce846db6/alpine/Dockerfile)
+* [`v3.0.0-rc3`, `3.0.0-rc3`, `v3.0`, `3.0`, `beaufort`](https://github.com/traefik/traefik-library-image/blob/912cc37ab2fb33dffbe653d3b98a224cdc833c48/alpine/Dockerfile)
+* [`v2.11.0`, `2.11.0`, `v2.11`, `2.11`, `mimolette`, `latest`](https://github.com/traefik/traefik-library-image/blob/fccb66b9845fc4266154377b774ac95127d38078/alpine/Dockerfile)
 
 ## Need support
 

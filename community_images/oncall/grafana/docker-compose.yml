@@ -101,7 +101,7 @@ services:
         condition: service_healthy
 
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.32
     platform: linux/x86_64
     mem_limit: 500m
     cpus: 0.5
@@ -146,7 +146,7 @@ services:
       retries: 3
 
   mysql_to_create_grafana_db:
-    image: mysql:5.7
+    image: mysql:8.0.32
     platform: linux/x86_64
     command: bash -c "mysql -h ${MYSQL_HOST:-mysql} -uroot -p${MYSQL_PASSWORD} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
     environment:

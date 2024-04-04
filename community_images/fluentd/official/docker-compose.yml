@@ -7,14 +7,14 @@ services:
     cap_add:
       - SYS_PTRACE
     ports:
-      - "24224:24224"
-      - "24224:24224/udp"
+      - '24224:24224'
+      - '5140:5140'
     volumes:
       - fluentd_data:/fluentd/log
       - ./conf:/fluentd/etc
-      - ./scripts/entrypoint.sh:/bin/entrypoint.sh
     networks:
       - fluentd_network
+    entrypoint: sh
     stdin_open: true
     tty: true
   backend1a:

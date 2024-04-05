@@ -34,7 +34,7 @@ kubectl exec -it \
 sleep 30
 
 
-SERVER=""
+SERVER="${RELEASE_NAME}-public.${NAMESPACE}.svc.cluster.local"
 PORT=3000
 
 # Initiating Selenium tests

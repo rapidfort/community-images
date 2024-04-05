@@ -28,6 +28,7 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
+    readiness_check_script: readiness_check.sh
     helm:
       repo: cockroachdb
       repo_url: https://charts.cockroachdb.com/

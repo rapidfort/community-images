@@ -25,6 +25,7 @@ services:
       DJANGO_SETTINGS_MODULE: settings.hobby
       OSS: "True"
       CELERY_WORKER_QUEUE: "default,critical,long,slack,telegram,webhook,retry,celery"
+      GRAFANA_API_URL: http://grafana:3000
     depends_on:
       mysql:
         condition: service_healthy
@@ -34,6 +35,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_started
+    volumes:
+      - oncall_data:/var/lib/oncall    
 
   celery:
     image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
@@ -185,3 +188,4 @@ services:
 volumes:
   dbdata:
   rabbitmqdata:
+  oncall_data:

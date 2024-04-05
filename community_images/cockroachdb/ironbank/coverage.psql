@@ -1,0 +1,42 @@
+-- Run pg coverage
+
+-- Create a table for users with a timezone column
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) UNIQUE,
+  timezone VARCHAR(50),  -- Store user's preferred timezone
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Function to convert UTC timestamp to user's local time
+CREATE FUNCTION convert_to_local_time(utc_ts TIMESTAMP, user_tz VARCHAR(50))
+RETURNS TIMESTAMP AS $$
+  SELECT utc_ts AT TIME ZONE user_tz;
+$$ LANGUAGE sql IMMUTABLE STRICT;
+
+-- User with specific timezone
+INSERT INTO users (id, name, email, timezone) VALUES (1, 'John Doe', 'john.doe@example.com', 'America/Los_Angeles');
+INSERT INTO users (id, name, email, timezone) VALUES (2, 'Jane Smith', 'jane.smith@example.com', 'Asia/Kolkata');
+
+-- Get all users with local times based on their timezone preference
+SELECT id, name, email, convert_to_local_time(created_at, timezone) AS local_created_at FROM users;
+
+-- User Management (basic example)
+CREATE ROLE manager;  -- Create a manager role
+
+GRANT CREATE, DELETE, UPDATE ON users TO manager;  -- Grant specific permissions to the manager role
+
+-- User with manager role
+CREATE USER rfuname WITH PASSWORD 'password';
+GRANT manager TO rfuname;
+GRANT admin TO rfuname;
+
+-- Login as the admin user (assuming your client supports role switching)
+SET ROLE admin;
+
+-- Now the admin can perform privileged actions like creating new users
+INSERT INTO users (id, name, email, timezone) VALUES (3, 'New User', 'new.user@example.com', 'Europe/Paris');
+
+-- DROP TABLE users;
+DROP FUNCTION convert_to_local_time;

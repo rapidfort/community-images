@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  pause:
+    image: darkcoder347/pause-ib:3.9-rfstub  
+    cap_add:
+      - SYS_PTRACE
+ # Service named 'infinite' to run the Alpine image indefinitely
+  alpine:
+    image: alpine:latest
+    command: ["sleep", "infinity"]  # Ensures the container process runs forever

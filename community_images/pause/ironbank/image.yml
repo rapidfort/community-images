@@ -27,13 +27,17 @@ repo_sets:
       output_repo: pause-ib
 needs_common_commands: False
 runtimes:
-  - type: docker_compose
-    script: dc_coverage.sh
-    compose_file: docker-compose.yml
-    tls_certs:
-      generate: true
-      out_dir: certs
-    image_keys:
-      nginx-ib:
-        repository: "NGINX_IMAGE_REPOSITORY"
-        tag: "NGINX_IMAGE_TAG"
+  # - type: docker_compose
+  #   script: dc_coverage.sh
+  #   compose_file: docker-compose.yml
+  #   tls_certs:
+  #     generate: true
+  #     out_dir: certs
+  #   image_keys:
+  #     nginx-ib:
+  #       repository: "NGINX_IMAGE_REPOSITORY"
+  #       tag: "NGINX_IMAGE_TAG"
+
+  - type: docker
+    script: docker_coverage.sh
+    

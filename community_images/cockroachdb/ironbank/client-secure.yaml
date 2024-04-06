@@ -15,15 +15,31 @@
 # Generated, do not edit. Please edit this file instead: config/templates/client-secure-operator.yaml.in
 #
 
-apiVersion: v1
+apiVersion: v2
 kind: Pod
 metadata:
   name: cockroachdb-client-secure
 spec:
   serviceAccountName: rf-cockroachdb-ib # Change to {release}
+  containerSecurityContext:
+    runAsNonRoot: false
+    runAsUser: 0
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
   containers:
   - name: cockroachdb-client-secure
-    image: cockroachdb/cockroach:v21.1.11 # Change to cockroachdb/cockroach:{version}
+    image: kirandeepkhehra/cockroachdb-ib:v23.1.17 # Change to cockroachdb/cockroach:{version}
     imagePullPolicy: IfNotPresent
     volumeMounts:
     - name: client-certs

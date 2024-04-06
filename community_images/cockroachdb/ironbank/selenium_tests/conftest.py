@@ -7,9 +7,9 @@ import pytest  # pylint: disable=import-error
 
 def pytest_addoption(parser):
     """The function to add options"""
-    parser.addoption("--server", action="store", help="grafana server")
+    parser.addoption("--server", action="store", help="cockroachdb server")
     parser.addoption("--port", action="store",
-                     help="port for grafana container")
+                     help="port for cockroachdb container")
 
 
 @pytest.fixture

@@ -11,12 +11,13 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 curl -OOOOOOOOO https://raw.githubusercontent.com/cockroachdb/helm-charts/master/examples/client-secure.yaml
 
+## REPLACE IMAGE NAME IN YAML FILE ##
+## REPLACE IMAGE NAME IN YAML FILE ##
 kubectl create -f ${SCRIPTPATH}/client-secure.yaml -n ${NAMESPACE}
 
 kubectl exec -it \

@@ -17,6 +17,21 @@ livenessProbe:
 readinessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 30
+terminationGracePeriodSeconds: 30
+volumeMounts:
+  - name: client-certs
+    projected:
+        sources:
+          - secret:
+              name: rf-cockroachdb-ib-client-secret # Change to {release}-client-secret
+              items:
+                - key: ca.crt
+                  path: ca.crt
+                - key: tls.crt
+                  path: client.root.crt
+                - key: tls.key
+                  path: client.root.key
+        defaultMode: 256
 # Persistent volume configuration
 # persistence:
 #   enabled: true  # Enable persistent volume usage

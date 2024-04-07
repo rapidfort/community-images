@@ -10,7 +10,7 @@ image_workflow_name: pause_ironbank
 github_location: pause/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpause%2Fpause
 usage_instructions: |
-  $ docker load -i *tarball.tar.gz* -t pause:*tag*
+  $ docker run  --name some-pause -d rapidfort/pause-ib
 what_is_text: |
   The pause container contains the network namespace for the pod and is used to obtain its IP address. As a result, other network namespaces can be joined for the containers that are added to the pod. It allows the container in a pod to die and upon rejoin, the network information is still present.
 

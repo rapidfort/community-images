@@ -14,7 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-class TestYourlsuitest():
+class TestKibanatest():
     def setup_method(self, method):  # pylint: disable=unused-argument
         """setup method."""
         chrome_options = Options()
@@ -34,8 +34,9 @@ class TestYourlsuitest():
         """teardown method."""
         self.driver.quit()
   
-    def test_kibanatest(self, params):
+    def test_kibana(self, params):
         # Navigating to Initial Installation Page
+        # testing dashboard, discover, canvas, maps, logs, observability, analytics, ml, stack monitoring of sample data, dev tools and management
         self.driver.get("http://{}:{}/".format(params["server"], params["port"]))
         self.driver.set_window_size(1296, 688)
         self.driver.find_element(By.XPATH, "//a/span/span").click()

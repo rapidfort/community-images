@@ -25,6 +25,7 @@ services:
       DJANGO_SETTINGS_MODULE: settings.hobby
       OSS: "True"
       CELERY_WORKER_QUEUE: "default,critical,long,slack,telegram,webhook,retry,celery"
+      GRAFANA_API_URL: http://grafana:3000
     depends_on:
       mysql:
         condition: service_healthy
@@ -34,6 +35,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_started
+    volumes:
+      - oncall_data:/var/lib/oncall    
 
   celery:
     image: ${ONCALL_IMAGE_REPOSITORY}:${ONCALL_IMAGE_TAG}
@@ -101,7 +104,7 @@ services:
         condition: service_healthy
 
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.32
     platform: linux/x86_64
     mem_limit: 500m
     cpus: 0.5
@@ -146,7 +149,7 @@ services:
       retries: 3
 
   mysql_to_create_grafana_db:
-    image: mysql:5.7
+    image: mysql:8.0.32
     platform: linux/x86_64
     command: bash -c "mysql -h ${MYSQL_HOST:-mysql} -uroot -p${MYSQL_PASSWORD} -e 'CREATE DATABASE IF NOT EXISTS grafana CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
     environment:
@@ -185,3 +188,4 @@ services:
 volumes:
   dbdata:
   rabbitmqdata:
+  oncall_data:

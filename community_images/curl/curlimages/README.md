@@ -96,7 +96,7 @@ RapidFort’s hardened [rapidfort/curl][rf-dh-image-link] image has been optimiz
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.xx.x`, `latest` (latest/Dockerfile)](https://github.com/curl/curl-docker/blob/master/alpine/latest/Dockerfile)
+* [`8.7.1`, `latest` (latest/Dockerfile)](https://github.com/curl/curl-container/releases/tag/8.7.1)
 
 ## Need support
 

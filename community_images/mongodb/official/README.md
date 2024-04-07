@@ -81,11 +81,11 @@ RapidFort’s hardened [rapidfort/mongodb-official][rf-dh-image-link] image has 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`6.0.2-focal`, `6.0-focal`, `6-focal`, `focal` (Dockerfile)](https://github.com/docker-library/mongo/blob/d68a62060cd2261be2196f9c796a770efb9df8fd/6.0/Dockerfile)
-* [`5.0.13-focal`, `5.0-focal`, `5-focal` (Dockerfile)](https://github.com/docker-library/mongo/blob/b20fe71024b06ccaf366ef4c01161627114ce688/5.0/Dockerfile)
-* [`4.4.18-focal`, `4.4-focal`, `4-focal` (Dockerfile)](https://github.com/docker-library/mongo/blob/37cfb713ddf069510524aebb03b82f385e891f7d/4.4/Dockerfile)
-* [`4.2.23-bionic`, `4.2-bionic` (Dockerfile)](https://github.com/docker-library/mongo/blob/c830e47022955d24bad50f1237ef7b713792bf9e/4.2/Dockerfile)
-* [`4.0.28-xenial`, `4.0-xenial` (Dockerfile)](https://github.com/docker-library/mongo/blob/9631e54a2885018f440e8da2840c21793c156f94/4.0/Dockerfile)
+* [`7.0.8-rc0-jammy`, `7.0-rc-jammy`](https://github.com/docker-library/mongo/blob/f8a378ac3249bb74529b88ad084f6c547f2b4b19/7.0-rc/Dockerfile)
+* [`7.0.7-jammy`, `7.0-jammy`, `7-jammy`, `jammy`](https://github.com/docker-library/mongo/blob/5804874481efd46f58691cbcae0f7187517be316/7.0/Dockerfile)
+* [`6.0.14-jammy`, `6.0-jammy`, `6-jammy`](https://github.com/docker-library/mongo/blob/39c6083702fb2ff810e7a6a916b1eadf54825acd/6.0/Dockerfile)
+* [`5.0.26-focal`, `5.0-focal`, `5-focal`](https://github.com/docker-library/mongo/blob/3def65b71cf51011d6da264f2a6b6d701c9d3e8d/5.0/Dockerfile)
+* [`4.4.29-focal`, `4.4-focal`, `4-focal`](https://github.com/docker-library/mongo/blob/2ce02fe52826bae7c03f3f20817370396052c925/4.4/Dockerfile)
 
 ## Need support
 

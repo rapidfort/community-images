@@ -82,6 +82,10 @@ RapidFort’s hardened [rapidfort/couchdb-official][rf-dh-image-link] image has 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
+* [`latest`, `3.3.3`, `3.3`, `3`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.3.3/Dockerfile)
+* [`3.2.3`, `3.2`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.2.3/Dockerfile)
+* [`3.1.2`, `3.1`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.1.2/Dockerfile)
+* [`2.3.1`, `2.3`, `2`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/2.3.1/Dockerfile)
 
 ## Need support
 

@@ -16,8 +16,9 @@ docker run -d --name "$NGINX_CONTAINER" --net=container:"$PAUSE_CONTAINER" --pid
 #checking if both pause and nginx share the same namespace or not 
 
 function get_container_interfaces() {
-  CONTAINER_PID=$(docker inspect --format '{{ .State.Pid }}' "$1")
-  if [[ $? -ne 0 ]]; then
+
+  if ! CONTAINER_PID=$(docker inspect --format '{{ .State.Pid }}' "$1")
+  then
     echo "Error: Failed to inspect container '$1'"
     exit 1
   fi

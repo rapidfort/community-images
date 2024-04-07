@@ -26,5 +26,13 @@ repo_sets:
       output_repo: pause-ib
 needs_common_commands: False
 runtimes:
+  - type: k8s
+    use_helm: False
+    image_keys:
+      pause-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    readiness_wait_pod_name_suffix:
+      - ""
   - type: docker
     script: docker_coverage.sh

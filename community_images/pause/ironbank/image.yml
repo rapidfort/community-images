@@ -13,7 +13,6 @@ usage_instructions: |
   $ docker run  --name some-pause -d rapidfort/pause-ib
 what_is_text: |
   The pause container contains the network namespace for the pod and is used to obtain its IP address. As a result, other network namespaces can be joined for the containers that are added to the pod. It allows the container in a pod to die and upon rejoin, the network information is still present.
-
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
@@ -27,17 +26,5 @@ repo_sets:
       output_repo: pause-ib
 needs_common_commands: False
 runtimes:
-  # - type: docker_compose
-  #   script: dc_coverage.sh
-  #   compose_file: docker-compose.yml
-  #   tls_certs:
-  #     generate: true
-  #     out_dir: certs
-  #   image_keys:
-  #     nginx-ib:
-  #       repository: "NGINX_IMAGE_REPOSITORY"
-  #       tag: "NGINX_IMAGE_TAG"
-
   - type: docker
     script: docker_coverage.sh
-    

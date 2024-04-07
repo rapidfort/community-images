@@ -9,34 +9,34 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
-CONTAINER1_NAME=$(jq -r '.container_details."pause-ib".name' < "$JSON_PARAMS")
-CONTAINER2_NAME="nginx-ironbank"
-docker run -d --name "$CONTAINER2_NAME" --net=container:"$CONTAINER1_NAME" --pid=container:"$CONTAINER1_NAME" registry1.dso.mil/ironbank/opensource/nginx/nginx
+PAUSE_CONTAINER=$(jq -r '.container_details."pause-ib".name' < "$JSON_PARAMS")
+NGINX_CONTAINER="nginx-ironbank"
+docker run -d --name "$NGINX_CONTAINER" --net=container:"$PAUSE_CONTAINER" --pid=container:"$PAUSE_CONTAINER" registry1.dso.mil/ironbank/opensource/nginx/nginx
 
 #checking if both pause and nginx share the same namespace or not 
 
 function get_container_interfaces() {
-  container_pid=$(docker inspect --format '{{ .State.Pid }}' "$1")
+  CONTAINER_PID=$(docker inspect --format '{{ .State.Pid }}' "$1")
   if [[ $? -ne 0 ]]; then
     echo "Error: Failed to inspect container '$1'"
     exit 1
   fi
-  sudo nsenter -n -t "$container_pid" ip addr show scope global
+  sudo nsenter -n -t "$CONTAINER_PID" ip addr show scope global
 }
 
-CONTAINER1_INTERFACE=$(get_container_interfaces "$CONTAINER1_NAME") #Getting network namespace for pause
-CONTAINER2_INTERFACE=$(get_container_interfaces "$CONTAINER2_NAME") #Getting network namespace for nginx-ironbank
-if [[ "$CONTAINER1_INTERFACE" == "$CONTAINER2_INTERFACE" ]]; then
-  echo "Both containers ($CONTAINER1_NAME and $CONTAINER2_NAME) share the same network namespace."
+PAUSE_NETWORK_INTERFACE=$(get_container_interfaces "$PAUSE_CONTAINER") #Getting network namespace for pause
+NGINX_NETWORK_INTERFACE=$(get_container_interfaces "$NGINX_CONTAINER") #Getting network namespace for nginx-ironbank
+if [[ "$PAUSE_NETWORK_INTERFACE" == "$NGINX_NETWORK_INTERFACE" ]]; then
+  echo "Both containers ($PAUSE_CONTAINER and $NGINX_CONTAINER) share the same network namespace."
 else
   echo "The containers have different network namespaces:"
-  echo "  - $CONTAINER1_NAME:"
-  echo "$CONTAINER1_INTERFACE"
-  echo "  - $CONTAINER2_NAME:"
-  echo "$CONTAINER2_INTERFACE"
+  echo "  - $PAUSE_CONTAINER:"
+  echo "$PAUSE_NETWORK_INTERFACE"
+  echo "  - $NGINX_CONTAINER:"
+  echo "$NGINX_NETWORK_INTERFACE"
   exit 1
 fi
 
-docker stop "$CONTAINER2_NAME"
-docker remove "$CONTAINER2_NAME"
+docker stop "$NGINX_CONTAINER"
+docker remove "$NGINX_CONTAINER"
 

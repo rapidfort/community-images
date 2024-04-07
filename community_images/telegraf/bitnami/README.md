@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/telegraf][rf-dh-image-link] image has been opt
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1`, `1-debian-12`, `1.30.0`, `1.30.0-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-12/Dockerfile)
+* [`1`, `1-debian-12`, `1.30.1`, `1.30.1-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-12/Dockerfile)
 
 ## Need support
 

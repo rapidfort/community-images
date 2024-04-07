@@ -85,7 +85,12 @@ RapidFort’s hardened [rapidfort/kong][rf-dh-image-link] image has been optimiz
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.x.x-ubuntu`, `3.x-ubuntu`, `ubuntu`, (latest/Dockerfile)](https://github.com/Kong/docker-kong/blob/5a2610d900717a4a6c8ee98bc421d0d4599b126f/ubuntu/Dockerfile)
+* [`3.6.1-ubuntu`, `3.6-ubuntu`, `3.6.1`, `3.6`, `3`, `latest`, `ubuntu`](https://github.com/Kong/docker-kong/blob/4dec46ee7e14ddd3a10692814728ff85adb77f25/ubuntu/Dockerfile)
+* [`3.5.0-ubuntu`, `3.5-ubuntu`, `3.5.0`, `3.5`](https://github.com/Kong/docker-kong/blob/e4ba2e351f3da34727fd016409a2669004b3fce0/ubuntu/Dockerfile)
+* [`3.4.2-ubuntu`, `3.4-ubuntu`, `3.4.2`, `3.4`](https://github.com/Kong/docker-kong/blob/2ccc1a4cc237f2cbe85e9226c8d0fa1e70f1d612/ubuntu/Dockerfile)
+* [`3.3.1-alpine`, `alpine`](https://github.com/Kong/docker-kong/blob/2207aa20530f8a04290c82c9c2258717f7795080/Dockerfile.apk)
+* [`3.3.1-ubuntu`, `3.3-ubuntu`, `3.3.1`, `3.3`](https://github.com/Kong/docker-kong/blob/2207aa20530f8a04290c82c9c2258717f7795080/ubuntu/Dockerfile)
+* [`2.8.4-ubuntu`, `2.8-ubuntu`](https://github.com/Kong/docker-kong/blob/1c31704cdc9bbd2c0a20e5479eb307140339582b/ubuntu/Dockerfile)
 
 ## Need support
 

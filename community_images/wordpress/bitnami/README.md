@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/wordpress][rf-dh-image-link] image has been op
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`6`, `6-debian-12`, `6.4.3`, `6.4.3-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)
+* [`6`, `6-debian-12`, `6.5.0`, `6.5.0-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)
 
 ## Need support
 

@@ -8,11 +8,11 @@ set -e
 mysql --version
 mysqladmin --version
 mysqldump --version
-if [[ "${MYSQL_TAG}" != *"oracle"* ]]; then
-	mysqlimport --version
-	mysqlcheck --version
-	mysqlshow --version
-fi	
+#Below binaries may or may not be present in some versions 
+mysqlimport --version || echo 0
+mysqlcheck --version || echo 0
+mysqlshow --version || echo 0
+	
 # mysqlpump --version # not present on mariadb
 # mysqlslap --version # doesnt work on mariadb due to char set issue
 mysqld_safe --help || mysqld --version

@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/haproxy/haproxy24:
-      input_base_tag: "v2.4."
+      input_base_tag: "2.4."
       output_repo: haproxy24-ib
 runtimes:
   - type: docker_compose

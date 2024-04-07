@@ -84,7 +84,7 @@ RapidFort’s hardened [rapidfort/yourls][rf-dh-image-link] image has been optim
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.9.1-apache`, `1.9-apache`, `1-apache`, `apache`, `1.9.1`, `1.9`, `1`, `latest`](https://github.com/YOURLS/docker/blob/38f550a34a4eb96419d9d3ebabe802c439103218/apache/Dockerfile)
+* [`1.9.2-apache`, `1.9-apache`, `1-apache`, `apache`, `1.9.2`, `1.9`, `1`, `latest`](https://github.com/YOURLS/docker/blob/2ef3b5fe2539efd8dd876727376ddee2c22079b5/apache/Dockerfile)
 
 ## Need support
 

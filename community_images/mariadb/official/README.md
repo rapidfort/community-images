@@ -82,7 +82,12 @@ RapidFort’s hardened [rapidfort/mariadb-official][rf-dh-image-link] image has 
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`10.10.1-rc-jammy`, `10.10-rc-jammy`, `10.10.1-rc`, `10.10-rc`](https://github.com/MariaDB/mariadb-docker/blob/ee8996e7fd507cfbef594c0369af092e5cf9078a/10.10/Dockerfile)
+* [`11.4.1-rc-jammy`, `11.4-rc-jammy`, `11.4.1-rc`, `11.4-rc`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.4/Dockerfile)
+* [`11.3.2-jammy`, `11.3-jammy`, `11-jammy`, `jammy`, `11.3.2`, `11.3`, `11`, `latest`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.3/Dockerfile)
+* [`11.2.3-jammy`, `11.2-jammy`, `11.2.3`, `11.2`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.2/Dockerfile)
+* [`11.1.4-jammy`, `11.1-jammy`, `11.1.4`, `11.1`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.1/Dockerfile)
+* [`11.0.5-jammy`, `11.0-jammy`, `11.0.5`, `11.0`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.0/Dockerfile)
+* [`10.11.7-jammy`, `10.11-jammy`, `10-jammy`, `lts-jammy`, `10.11.7`, `10.11`, `10`, `lts`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/10.11/Dockerfile)
 
 ## Need support
 

@@ -1,0 +1,34 @@
+version: '3'
+services:
+  elasticsearch:
+    image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch
+    ports:
+      - 9200:9200
+    volumes:
+      - 'elasticsearch_data:/tmp/elasticsearch'
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elastic
+
+  kibana:
+    image: ${KIBANA_IMAGE_REPOSITORY}:${KIBANA_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - 5601:5601
+    networks:
+      - elastic
+         
+volumes:
+  elasticsearch_data:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge

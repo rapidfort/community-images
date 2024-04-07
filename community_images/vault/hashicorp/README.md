@@ -85,7 +85,6 @@ RapidFort’s hardened [rapidfort/vault][rf-dh-image-link] image has been optimi
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.12.0`, `latest` (latest/Dockerfile)](https://github.com/hashicorp/docker-vault/blob/11a5dff987176c6ab24f76cee14f6dd820f42d96/0.X/Dockerfile)
 
 ## Need support
 

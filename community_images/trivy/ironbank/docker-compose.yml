@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  trivy:
+    image: ${TRIVY_IMAGE_REPOSITORY}:${TRIVY_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    entrypoint:
+      - "sleep"
+    command:
+      - "infinity"

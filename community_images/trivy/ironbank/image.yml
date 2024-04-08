@@ -1,0 +1,34 @@
+name: trivy-ib
+official_name: TRIVY IronBank
+official_website: https://trivy.dev/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/aquasec/trivy
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Faquasec%2Ftrivy
+source_image_readme: https://repo1.dso.mil/dsop/opensource/aquasecurity/trivy/-/blob/development/README.md
+rf_docker_link: rapidfort/trivy-ib
+image_workflow_name: trivy_ironbank
+github_location: trivy/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Faquasec%2Ftrivy
+usage_instructions: |
+  $ docker run -it --rm  rapidfort/trivy-ib:latest
+what_is_text: |
+  Trivy is the most popular open source security scanner, reliable, fast, and easy to use. Use Trivy to find vulnerabilities & IaC misconfigurations, SBOM discovery, Cloud scanning, Kubernetes security risks,and more.
+disclaimer: |
+  Disclaimer: Trivy is a registered trademark of Aquasec. Any rights therein are reserved to Aquasec. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Aquasec.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/aquasecurity/trivy/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/aquasec/trivy:
+      input_base_tag: "0.50."
+      output_repo: trivy-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      trivy-ib:
+        repository: "TRIVY_IMAGE_REPOSITORY"
+        tag: "TRIVY_IMAGE_TAG"

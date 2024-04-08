@@ -82,8 +82,9 @@ RapidFort’s hardened [rapidfort/mysql-official][rf-dh-image-link] image has be
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`8.0-debian`, `8-debian` (Dockerfile)](https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian)
-* [`5.7-debian`, `5-debian` (Dockerfile)](https://github.com/docker-library/mysql/blob/master/5.7/Dockerfile.debian)
+* [`8.3.0`, `8.3`, `8`, `innovation`, `latest`, `8.3.0-oraclelinux8`, `8.3-oraclelinux8`, `8-oraclelinux8`, `innovation-oraclelinux8`, `oraclelinux8`, `8.3.0-oracle`, `8.3-oracle`, `8-oracle`, `innovation-oracle`, `oracle`](https://github.com/docker-library/mysql/blob/831e58702aa316b69cdfaa115fc134bfede4c418/innovation/Dockerfile.oracle)
+* [`8.0.36`, `8.0`, `8.0.36-oraclelinux8`, `8.0-oraclelinux8`, `8.0.36-oracle`, `8.0-oracle`](https://github.com/docker-library/mysql/blob/831e58702aa316b69cdfaa115fc134bfede4c418/8.0/Dockerfile.oracle)
+* [`8.0.36-bookworm`, `8.0-bookworm`, `8.0.36-debian`, `8.0-debian`](https://github.com/docker-library/mysql/blob/831e58702aa316b69cdfaa115fc134bfede4c418/8.0/Dockerfile.debian)
 
 ## Need support
 

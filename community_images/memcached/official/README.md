@@ -83,8 +83,8 @@ RapidFort’s hardened [rapidfort/memcached-official][rf-dh-image-link] image ha
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.6.17`, `1.6`, `1`, `latest`, `1.6.17-bullseye`, `1.6-bullseye`, `1-bullseye`, `bullseye` (Dockerfile)](https://github.com/docker-library/memcached/blob/1c39f318e3a5c1b06e4c9b0d4b870c9223b26428/debian/Dockerfile)
-* [`1.6.17-alpine`, `1.6-alpine`, `1-alpine`, `alpine`, `1.6.17-alpine3.16`, `1.6-alpine3.16`, `1-alpine3.16`, `alpine3.16` (Dockerfile)](https://github.com/docker-library/memcached/blob/1c39f318e3a5c1b06e4c9b0d4b870c9223b26428/alpine/Dockerfile)
+* [`1.6.26`, `1.6`, `1`, `latest`, `1.6.26-bookworm`, `1.6-bookworm`, `1-bookworm`, `bookworm`](https://github.com/docker-library/memcached/blob/5699d909d4f9d7f733a79d4793b323d3ad63453a/1/debian/Dockerfile)
+* [`1.6.26-alpine`, `1.6-alpine`, `1-alpine`, `alpine`, `1.6.26-alpine3.19`, `1.6-alpine3.19`, `1-alpine3.19`, `alpine3.19`](https://github.com/docker-library/memcached/blob/5699d909d4f9d7f733a79d4793b323d3ad63453a/1/alpine/Dockerfile)
 
 ## Need support
 

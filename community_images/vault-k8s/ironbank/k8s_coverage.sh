@@ -140,4 +140,6 @@ kubectl delete -n "${NAMESPACE}" --filename deployment-orgchart.yaml
 
 kubectl delete namespace offsite
 
+rm -r learn-vault-kubernetes-sidecar
+
 popd

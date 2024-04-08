@@ -16,10 +16,4 @@ while [ "$(kubectl get pods "${POD_NAME}" -n "${NAMESPACE}" -o 'jsonpath={..stat
  echo "waiting for pod" && sleep 1;
 done
 
-# for((i=0;i<10;i++)); do
-#   out=$(kubectl logs "${POD_NAME}" -n "${NAMESPACE}")
-#   echo "output is $out"
-#   sleep 5
-# done
-
 sleep 10

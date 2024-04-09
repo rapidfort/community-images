@@ -1,0 +1,38 @@
+name: pause-ib
+official_name: PAUSE IronBank
+official_website: https://github.com/kubernetes/kubernetes/tree/master/build/pause
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/pause/pause
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fpause%2Fpause
+source_image_readme: https://repo1.dso.mil/dsop/opensource/pause/pause/-/blob/development/README.md
+rf_docker_link: rapidfort/pause-ib
+image_workflow_name: pause_ironbank
+github_location: pause/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fpause%2Fpause
+usage_instructions: |
+  $ docker run  --name some-pause -d rapidfort/pause-ib
+what_is_text: |
+  The pause container contains the network namespace for the pod and is used to obtain its IP address. As a result, other network namespaces can be joined for the containers that are added to the pod. It allows the container in a pod to die and upon rejoin, the network information is still present.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/pause/pause/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/pause/pause:
+      input_base_tag: "3."
+      output_repo: pause-ib
+needs_common_commands: False
+runtimes:
+  - type: k8s
+    use_helm: False
+    image_keys:
+      pause-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    readiness_wait_pod_name_suffix:
+      - ""
+  - type: docker
+    script: docker_coverage.sh

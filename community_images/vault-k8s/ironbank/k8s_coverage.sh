@@ -18,33 +18,33 @@ pushd learn-vault-kubernetes-sidecar
 
 kubectl exec \
   -n "${NAMESPACE}" \
-  -it "${RELEASE_NAME}-0" \
+  -i "${RELEASE_NAME}-0" \
   -- /bin/sh -c 'vault secrets enable -path=internal kv-v2'
 
 kubectl exec \
   -n "${NAMESPACE}" \
-  -it "${RELEASE_NAME}-0" \
+  -i "${RELEASE_NAME}-0" \
   -- /bin/sh -c 'vault kv put internal/database/config username="db-readonly-username" password="db-secret-password"'
 
 kubectl exec \
   -n "${NAMESPACE}" \
-  -it "${RELEASE_NAME}-0" \
+  -i "${RELEASE_NAME}-0" \
   -- /bin/sh -c 'vault kv get internal/database/config'
 
 kubectl exec \
   -n "${NAMESPACE}" \
-  -it "${RELEASE_NAME}-0" \
+  -i "${RELEASE_NAME}-0" \
   -- /bin/sh -c 'vault auth enable kubernetes'
 
 # shellcheck disable=SC2016
 kubectl exec \
   -n "${NAMESPACE}" \
-  -it "${RELEASE_NAME}-0" \
+  -i "${RELEASE_NAME}-0" \
   -- /bin/sh -c 'vault write auth/kubernetes/config kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"'
 
 kubectl exec \
   -n "${NAMESPACE}" \
-  -it "${RELEASE_NAME}-0" \
+  -i "${RELEASE_NAME}-0" \
   -- /bin/sh -c 'vault policy write internal-app - <<EOF
 path "internal/data/database/config" {
    capabilities = ["read"]
@@ -54,7 +54,7 @@ EOF
 
 kubectl exec \
   -n "${NAMESPACE}" \
-  -it "${RELEASE_NAME}-0" \
+  -i "${RELEASE_NAME}-0" \
   -- /bin/sh -c "vault write auth/kubernetes/role/internal-app \
       bound_service_account_names=internal-app \
       bound_service_account_namespaces=${NAMESPACE} \
@@ -116,7 +116,7 @@ kubectl create -n offsite sa internal-app
 kubectl apply -n offsite --filename deployment-issues.yaml
 sleep 10
 
-kubectl exec --namespace "${NAMESPACE}" -it "${RELEASE_NAME}-0" -- /bin/sh -c 'vault write auth/kubernetes/role/offsite-app \
+kubectl exec --namespace "${NAMESPACE}" -i "${RELEASE_NAME}-0" -- /bin/sh -c 'vault write auth/kubernetes/role/offsite-app \
    bound_service_account_names=internal-app \
    bound_service_account_namespaces=offsite \
    policies=internal-app \
@@ -138,6 +138,6 @@ kubectl delete -n "${NAMESPACE}" --filename deployment-orgchart.yaml
 
 kubectl delete namespace offsite
 
-rm -r learn-vault-kubernetes-sidecar
-
 popd
+
+rm -r learn-vault-kubernetes-sidecar

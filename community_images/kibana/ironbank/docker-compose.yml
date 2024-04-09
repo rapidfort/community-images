@@ -1,7 +1,7 @@
 version: '3'
 services:
   elasticsearch:
-    image: docker.io/elasticsearch:8.13.0
+    image: rapidfort/elasticsearch:8.13
     ports:
       - 9200:9200
     volumes:

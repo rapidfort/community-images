@@ -634,6 +634,14 @@ jobs:
           repository: rapidfort/vault
           readme-filepath: ./community_images/vault/hashicorp/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Vault
+      - name: Docker Hub Description Vault Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/vault-k8s-ib
+          readme-filepath: ./community_images/vault-k8s/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Vault Ironbank
       - name: Docker Hub Description Wordpress
         uses: peter-evans/dockerhub-description@v3
         with:

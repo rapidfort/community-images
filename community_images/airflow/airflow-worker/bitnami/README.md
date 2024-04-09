@@ -89,7 +89,7 @@ RapidFort’s hardened [rapidfort/airflow-worker][rf-dh-image-link] image has be
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-12`, `2.8.4`, `2.8.4-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-worker/2/debian-12/Dockerfile)
+* [`2`, `2-debian-12`, `2.9.0`, `2.9.0-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-worker/2/debian-12/Dockerfile)
 
 ## Need support
 

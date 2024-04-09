@@ -3,9 +3,6 @@
 set -x
 set -e
 
-# shellcheck disable=SC1091
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
 JSON_PARAMS="$1"
 
 JSON=$(cat "$JSON_PARAMS")
@@ -39,6 +36,7 @@ kubectl exec \
   -it "${RELEASE_NAME}-0" \
   -- /bin/sh -c 'vault auth enable kubernetes'
 
+# shellcheck disable=SC2016
 kubectl exec \
   -n "${NAMESPACE}" \
   -it "${RELEASE_NAME}-0" \
@@ -75,7 +73,7 @@ sleep 10
 
 
 kubectl exec -n "${NAMESPACE}" \
-      $(kubectl get pod -n "${NAMESPACE}" -l app=orgchart -o jsonpath="{.items[0].metadata.name}") \
+      "$(kubectl get pod -n "${NAMESPACE}" -l app=orgchart -o jsonpath="{.items[0].metadata.name}")" \
       --container orgchart -- cat /vault/secrets/database-config.txt
 
 ## Apply a template to the injected secrets
@@ -84,7 +82,7 @@ kubectl patch deployment -n "${NAMESPACE}" orgchart --patch "$(cat patch-inject-
 sleep 10
 
 kubectl exec -n "${NAMESPACE}" \
-      $(kubectl get pod -n "${NAMESPACE}" -l app=orgchart -o jsonpath="{.items[0].metadata.name}") \
+      "$(kubectl get pod -n "${NAMESPACE}" -l app=orgchart -o jsonpath="{.items[0].metadata.name}")" \
       -c orgchart -- cat /vault/secrets/database-config.txt
 
 
@@ -105,7 +103,7 @@ kubectl patch -n "${NAMESPACE}" deployment website --patch "$(cat patch-website.
 sleep 10
 
 kubectl exec -n "${NAMESPACE}" \
-      $(kubectl get pod -n "${NAMESPACE}" -l app=website -o jsonpath="{.items[0].metadata.name}") \
+      "$(kubectl get pod -n "${NAMESPACE}" -l app=website -o jsonpath="{.items[0].metadata.name}")" \
       --container website -- cat /vault/secrets/database-config.txt
 
 
@@ -129,7 +127,7 @@ kubectl patch -n offsite deployment issues --patch "$(cat patch-issues.yaml)"
 sleep 10
 
 kubectl exec -n offsite \
-   $(kubectl get pod -n offsite -l app=issues -o jsonpath="{.items[0].metadata.name}") \
+   "$(kubectl get pod -n offsite -l app=issues -o jsonpath="{.items[0].metadata.name}")" \
    --container issues -- cat /vault/secrets/database-config.txt
 
 

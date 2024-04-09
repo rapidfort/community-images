@@ -86,10 +86,9 @@ RapidFort’s hardened [rapidfort/consul-official][rf-dh-image-link] image has b
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.15.4`, `1.15`, `latest`](https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile)
-* [`1.14.0`, `1.14`](https://github.com/hashicorp/docker-consul/blob/da19183e0617a285e3dbc42ad5ebfdb4e61caa31/0.X/Dockerfile)
-* [`1.13.3`, `1.13`](https://github.com/hashicorp/docker-consul/blob/f4f43d2534abcfc12f8aebf3c20e5339fdec384f/0.X/Dockerfile)
-* [`1.12.6`, `1.12`](https://github.com/hashicorp/docker-consul/blob/dfb2da6631adfc68ce9a930bfd90b543c7ef69c9/0.X/Dockerfile)
+* [`1.15.4`, `1.15`](https://github.com/hashicorp/docker-consul/blob/aedd0844f06e9eac9c4e130206219b1ff044a8c4/0.X/Dockerfile)
+* [`1.14.8`, `1.14`](https://github.com/hashicorp/docker-consul/blob/7c095b8e988517c239526c0137caeb837c490807/0.X/Dockerfile)
+* [`1.13.9`, `1.13`](https://github.com/hashicorp/docker-consul/blob/ae00ef4e7ff1cf68afd391838993bc53234cf5e6/0.X/Dockerfile)
 
 ## Need support
 

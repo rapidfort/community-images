@@ -24,7 +24,7 @@ grafana-ib:
     - 10.4.
 haproxy-ib:
   search_tags:
-    - v2.4.
+    - 2.4.
 kibana-ib:
   search_tags:
     - 8.13.
@@ -58,6 +58,9 @@ nifi-ib:
 node-exporter-ib:
   search_tags:
     - v1.7.
+pause-ib:
+  search_tags:
+    - "3."
 postgresql-ib:
   search_tags:
     - "12."
@@ -72,7 +75,7 @@ traefik-ib:
     - v2.11.
 wordpress-ib:
   search_tags:
-    - 6.4.
+    - 6.5.
 zookeeper-ib:
   search_tags:
     - 3.9.

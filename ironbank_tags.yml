@@ -24,7 +24,7 @@ grafana-ib:
     - 10.4.
 haproxy-ib:
   search_tags:
-    - v2.4.
+    - 2.4.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -67,9 +67,12 @@ redis-ib:
 traefik-ib:
   search_tags:
     - v2.11.
+vault-k8s-ib:
+  search_tags:
+    - v1.4.
 wordpress-ib:
   search_tags:
-    - 6.4.
+    - 6.5.
 zookeeper-ib:
   search_tags:
     - 3.9.

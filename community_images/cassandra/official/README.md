@@ -83,9 +83,11 @@ RapidFort’s hardened [rapidfort/cassandra-official][rf-dh-image-link] image ha
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`4.0.7`, `4.0`, `4`, `latest`](https://github.com/docker-library/cassandra/blob/08fa5553ad2dde684ca5337c7fedd173cbc41f39/4.0/Dockerfile)
-* [`3.11.14`, `3.11`, `3`](https://github.com/docker-library/cassandra/blob/13e3d6ca1ff1b6c9d780e5f018887c1d28318d50/3.11/Dockerfile)
-* [`3.0.28`, `3.0`](https://github.com/docker-library/cassandra/blob/e92196fdba778656678a9bc9bcb724b8a3584149/3.0/Dockerfile)
+* [`5.0-beta1`, `5.0`, `5`, `5.0-beta1-jammy`, `5.0-jammy`, `5-jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/5.0/Dockerfile)
+* [`4.1.4`, `4.1`, `4`, `latest`, `4.1.4-jammy`, `4.1-jammy`, `4-jammy`, `jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/4.1/Dockerfile)
+* [`4.0.12`, `4.0`, `4.0.12-jammy`, `4.0-jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/4.0/Dockerfile)
+* [`3.11.16`, `3.11`, `3`, `3.11.16-jammy`, `3.11-jammy`, `3-jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/3.11/Dockerfile)
+* [`3.0.29`, `3.0`, `3.0.29-jammy`, `3.0-jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/3.0/Dockerfile)
 
 ## Need support
 

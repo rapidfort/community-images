@@ -85,7 +85,7 @@ RapidFort’s hardened [rapidfort/apache][rf-dh-image-link] image has been optim
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2.4`, `2.4-debian-12`, `2.4.58`, `2.4.58-debian-12-r` (2.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/apache/2.4/debian-12/Dockerfile)
+* [`2.4`, `2.4-debian-12`, `2.4.59`, `2.4.59-debian-12-r` (2.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/apache/2.4/debian-12/Dockerfile)
 
 ## Need support
 

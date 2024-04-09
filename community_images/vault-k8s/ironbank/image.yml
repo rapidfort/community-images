@@ -1,19 +1,19 @@
-name: vault-k8s-ib # changeit
+name: vault-k8s-ib
 official_name: Vault Ironbank
 official_website: https://www.vaultproject.io/
 source_image_provider: Platform One
-source_image_repo: registry1.dso.mil/ironbank/hashicorp/vault/1.14
-source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fvault%2F1.14
-source_image_readme: https://repo1.dso.mil/dsop/hashicorp/vault/1.14/-/blob/development/README.md
+source_image_repo: registry1.dso.mil/ironbank/hashicorp/vault/vault-k8s
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fvault%2Fvault-k8s
+source_image_readme: https://repo1.dso.mil/dsop/hashicorp/vault/vault-k8s/-/blob/development/README.md
 rf_docker_link: rapidfort/vault-k8s-ib
 image_workflow_name: vault_k8s_ironbank
 github_location: vault-k8s/ironbank
-report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2Fvault-k8s
 usage_instructions: |
   $ helm repo add hashicorp https://helm.releases.hashicorp.com
 
   # install vault, just replace repository with RapidFort registry
-  $ helm install vault hashicorp/vault
+  $ helm install vault hashicorp/vault --set injector.image.repository=rapidfort/vault-k8s-ib
 what_is_text: |
   Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
 disclaimer: |
@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - hashicorp/vault/vault-k8s:
-      input_base_tag: "1.4."
+      input_base_tag: "v1.4."
       output_repo: vault-k8s-ib
 needs_common_commands: False
 runtimes:

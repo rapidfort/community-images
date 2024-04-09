@@ -83,8 +83,8 @@ RapidFort’s hardened [rapidfort/elasticsearch-official][rf-dh-image-link] imag
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`8.6.2`](https://github.com/docker-library/elasticsearch/blob/90e34ca306d9800d3c0ab1c59387b93e89c69796/8/Dockerfile)
-* [`7.17.9`](https://github.com/docker-library/elasticsearch/blob/584687331345cc631249925517b78b2f1058914c/7/Dockerfile)
+* [`8.13.0`](https://github.com/elastic/dockerfiles/blob/4269a02cf8a56844db30e5e74b23087840ee6fcb/elasticsearch/Dockerfile)
+* [`7.17.19`](https://github.com/elastic/dockerfiles/blob/e6eabbb45f3729cefacf138e418aaa12a541741b/elasticsearch/Dockerfile)
 
 ## Need support
 

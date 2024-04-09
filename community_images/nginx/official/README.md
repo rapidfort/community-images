@@ -86,8 +86,18 @@ RapidFort’s hardened [rapidfort/nginx-official][rf-dh-image-link] image has be
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.23.2-perl`, `mainline-perl`, `1-perl`, `1.23-perl`, `perl`](https://github.com/nginxinc/docker-nginx/blob/fef51235521d1cdf8b05d8cb1378a526d2abf421/mainline/debian-perl/Dockerfile)
-* [`1.22.1-perl`, `stable-perl`, `1.22-perl`](https://github.com/nginxinc/docker-nginx/blob/fef51235521d1cdf8b05d8cb1378a526d2abf421/stable/debian-perl/Dockerfile)
+* [`1.25.4`, `mainline`, `1`, `1.25`, `latest`, `1.25.4-bookworm`, `mainline-bookworm`, `1-bookworm`, `1.25-bookworm`, `bookworm`](https://github.com/nginxinc/docker-nginx/blob/1f227619c1f1baa0bed8bed844ea614437ff14fb/mainline/debian/Dockerfile)
+* [`1.25.4-perl`, `mainline-perl`, `1-perl`, `1.25-perl`, `perl`, `1.25.4-bookworm-perl`, `mainline-bookworm-perl`, `1-bookworm-perl`, `1.25-bookworm-perl`, `bookworm-perl`](https://github.com/nginxinc/docker-nginx/blob/1f227619c1f1baa0bed8bed844ea614437ff14fb/mainline/debian-perl/Dockerfile)
+* [`1.25.4-otel`, `mainline-otel`, `1-otel`, `1.25-otel`, `otel`, `1.25.4-bookworm-otel`, `mainline-bookworm-otel`, `1-bookworm-otel`, `1.25-bookworm-otel`, `bookworm-otel`](https://github.com/nginxinc/docker-nginx/blob/9cb278860bdcea48abc0bc770a29ead3fc9a1fe6/mainline/debian-otel/Dockerfile)
+* [`1.25.4-alpine`, `mainline-alpine`, `1-alpine`, `1.25-alpine`, `alpine`, `1.25.4-alpine3.18`, `mainline-alpine3.18`, `1-alpine3.18`, `1.25-alpine3.18`, `alpine3.18`](https://github.com/nginxinc/docker-nginx/blob/1f227619c1f1baa0bed8bed844ea614437ff14fb/mainline/alpine/Dockerfile)
+* [`1.25.4-alpine-perl`, `mainline-alpine-perl`, `1-alpine-perl`, `1.25-alpine-perl`, `alpine-perl`, `1.25.4-alpine3.18-perl`, `mainline-alpine3.18-perl`, `1-alpine3.18-perl`, `1.25-alpine3.18-perl`, `alpine3.18-perl`](https://github.com/nginxinc/docker-nginx/blob/1f227619c1f1baa0bed8bed844ea614437ff14fb/mainline/alpine-perl/Dockerfile)
+* [`1.25.4-alpine-slim`, `mainline-alpine-slim`, `1-alpine-slim`, `1.25-alpine-slim`, `alpine-slim`, `1.25.4-alpine3.18-slim`, `mainline-alpine3.18-slim`, `1-alpine3.18-slim`, `1.25-alpine3.18-slim`, `alpine3.18-slim`](https://github.com/nginxinc/docker-nginx/blob/1f227619c1f1baa0bed8bed844ea614437ff14fb/mainline/alpine-slim/Dockerfile)
+* [`1.25.4-alpine-otel`, `mainline-alpine-otel`, `1-alpine-otel`, `1.25-alpine-otel`, `alpine-otel`, `1.25.4-alpine3.18-otel`, `mainline-alpine3.18-otel`, `1-alpine3.18-otel`, `1.25-alpine3.18-otel`, `alpine3.18-otel`](https://github.com/nginxinc/docker-nginx/blob/9cb278860bdcea48abc0bc770a29ead3fc9a1fe6/mainline/alpine-otel/Dockerfile)
+* [`1.24.0`, `stable`, `1.24`, `1.24.0-bullseye`, `stable-bullseye`, `1.24-bullseye`](https://github.com/nginxinc/docker-nginx/blob/1a8d87b69760693a8e33cd8a9e0c2e5f0e8b0e3c/stable/debian/Dockerfile)
+* [`1.24.0-perl`, `stable-perl`, `1.24-perl`, `1.24.0-bullseye-perl`, `stable-bullseye-perl`, `1.24-bullseye-perl`](https://github.com/nginxinc/docker-nginx/blob/1a8d87b69760693a8e33cd8a9e0c2e5f0e8b0e3c/stable/debian-perl/Dockerfile)
+* [`1.24.0-alpine`, `stable-alpine`, `1.24-alpine`, `1.24.0-alpine3.17`, `stable-alpine3.17`, `1.24-alpine3.17`](https://github.com/nginxinc/docker-nginx/blob/1a8d87b69760693a8e33cd8a9e0c2e5f0e8b0e3c/stable/alpine/Dockerfile)
+* [`1.24.0-alpine-perl`, `stable-alpine-perl`, `1.24-alpine-perl`, `1.24.0-alpine3.17-perl`, `stable-alpine3.17-perl`, `1.24-alpine3.17-perl`](https://github.com/nginxinc/docker-nginx/blob/1a8d87b69760693a8e33cd8a9e0c2e5f0e8b0e3c/stable/alpine-perl/Dockerfile)
+* [`1.24.0-alpine-slim`, `stable-alpine-slim`, `1.24-alpine-slim`, `1.24.0-alpine3.17-slim`, `stable-alpine3.17-slim`, `1.24-alpine3.17-slim`](https://github.com/nginxinc/docker-nginx/blob/1a8d87b69760693a8e33cd8a9e0c2e5f0e8b0e3c/stable/alpine-slim/Dockerfile)
 
 ## Need support
 

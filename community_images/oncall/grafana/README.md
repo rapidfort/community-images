@@ -106,7 +106,7 @@ RapidFort’s hardened [rapidfort/oncall][rf-dh-image-link] image has been optim
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`v1.0.0`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)
+* [`v1.3.1`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)
 
 ## Need support
 

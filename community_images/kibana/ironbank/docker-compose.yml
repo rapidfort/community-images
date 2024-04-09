@@ -1,7 +1,7 @@
 version: '3'
 services:
   elasticsearch:
-    image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch
+    image: docker.io/elasticsearch:8.13.0
     ports:
       - 9200:9200
     volumes:

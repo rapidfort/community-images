@@ -15,7 +15,7 @@ usage_instructions: |
   # install vault, just replace repository with RapidFort registry
   $ helm install vault hashicorp/vault --set injector.image.repository=rapidfort/vault-k8s-ib
 what_is_text: |
-  Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
+  The vault-k8s binary includes first-class integrations between Vault and Kubernetes. Currently the only integration in this repository is the Vault Agent Sidecar Injector (agent-inject)
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 use_rapid_stub: true
@@ -26,7 +26,6 @@ repo_sets:
   - hashicorp/vault/vault-k8s:
       input_base_tag: "v1.4."
       output_repo: vault-k8s-ib
-needs_common_commands: False
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

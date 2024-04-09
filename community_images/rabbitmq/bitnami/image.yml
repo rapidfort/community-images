@@ -23,10 +23,6 @@ input_registry:
   account: bitnami
 repo_sets:
   - rabbitmq:
-      input_base_tag: "3.10.25-debian-12-r"
-  - rabbitmq:
-      input_base_tag: "3.11.28-debian-12-r"
-  - rabbitmq:
       input_base_tag: "3.12.13-debian-12-r"
 runtimes:
   - type: k8s

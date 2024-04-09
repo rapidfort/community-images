@@ -37,7 +37,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 ## What is Vault Ironbank?
 
-> Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
+> The vault-k8s binary includes first-class integrations between Vault and Kubernetes. Currently the only integration in this repository is the Vault Agent Sidecar Injector (agent-inject)
 
 
 [Overview of Vault Ironbank](https://www.vaultproject.io/)

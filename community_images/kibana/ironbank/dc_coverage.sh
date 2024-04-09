@@ -17,7 +17,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 KIBANA_HOST=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Networks.\"${PROJECT_NAME}_elastic\".IPAddress")
 KIBANA_PORT='5601'
-
-curl -XGET 'http://localhost:5601/api/status' | jq .
+sleep 20
+curl -XGET "http://"${KIBANA_HOST}":5601/api/status" | jq .
 
 "${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${KIBANA_HOST}" "${KIBANA_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1

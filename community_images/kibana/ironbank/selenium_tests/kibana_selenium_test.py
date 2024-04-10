@@ -41,6 +41,7 @@ class TestKibanatest():
         self.driver.get("http://{}:{}/app/home".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string
         self.driver.set_window_size(1296, 688)
         time.sleep(10)
+        self.driver.find_element(By.CSS_SELECTOR, ".homSolutionPanel--observability .euiCard__content").click()
         element = self.driver.find_element(By.CSS_SELECTOR, ".euiSideNavItem:nth-child(2) .euiSideNavItem:nth-child(1) > .euiSideNavItemButton")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()

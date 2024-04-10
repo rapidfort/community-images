@@ -1,0 +1,30 @@
+variables:
+  DOCKER_HOST: tcp://docker:2375
+
+services:
+  - docker:stable-dind
+
+stages:
+  - build
+  - test
+
+include:
+  # Trivy integration with GitLab Container Scanning
+  - remote: "https://github.com/aquasecurity/trivy/raw/main/contrib/Trivy.gitlab-ci.yml"
+
+build:
+  image: docker:stable
+  stage: build
+  variables:
+    IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  script:
+    - docker info
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $IMAGE .
+    - docker push $IMAGE
+
+# This overriding is not mandatory for GitLab Securty Scanning Report integration
+# and is mainly for a demonstration how it works on GitLab Community Edition
+Trivy_container_scanning:
+  artifacts:
+    paths: [gl-container-scanning-report.json]

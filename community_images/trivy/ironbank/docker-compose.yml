@@ -9,3 +9,8 @@ services:
       - "sleep"
     command:
       - "infinity"
+    volumes:
+      - /root/.kube/config:/tmp/.kube/config
+      - ./trivy_coverage.sh:/tmp/trivy_coverage.sh
+      - ./filesystem:/tmp/filesystem
+    network_mode: "host"

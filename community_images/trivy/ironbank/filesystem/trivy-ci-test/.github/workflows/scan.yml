@@ -1,0 +1,16 @@
+name: Scan
+on: [push, pull_request]
+jobs:
+  scan:
+    name: Scan
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Test
+      run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $PWD:/tmp/.cache/ aquasec/trivy:0.10.0 alpine:3.10.2
+    - name: Build
+      run: docker build -t trivy-ci-test:1.2.3 .
+    - name: Scan
+      uses: docker://aquasec/trivy
+      with:
+        args: --severity CRITICAL --no-progress trivy-ci-test:1.2.3

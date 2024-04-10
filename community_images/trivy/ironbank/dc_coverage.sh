@@ -13,8 +13,12 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${NAMESPACE}"-trivy-1
 
-docker exec -it "$CONTAINER_NAME" trivy image python:3.4-alpine
+# #Image Scanning
+# docker exec -it "$CONTAINER_NAME" trivy image python:3.4-alpine
 
-docker exec -it "$CONTAINER_NAME" trivy repo  -f table https://github.com/aquasecurity/trivy-ci-test
+# #Repo Scanning
+# docker exec -it "$CONTAINER_NAME" trivy repo  -f table https://github.com/aquasecurity/trivy-ci-test
 
+#k8s cluster scannig
+docker exec -i -u root "$CONTAINER_NAME" /bin/sh /../../tmp/trivy_coverage.sh
 

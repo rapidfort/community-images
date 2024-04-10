@@ -17,6 +17,7 @@ disclaimer: |
   Disclaimer: Trivy is a registered trademark of Aquasec. Any rights therein are reserved to Aquasec. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Aquasec.
 docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/aquasecurity/trivy/-/blob/development/Dockerfile)"
+use_rapid_stub: true  
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
@@ -32,3 +33,12 @@ runtimes:
       trivy-ib:
         repository: "TRIVY_IMAGE_REPOSITORY"
         tag: "TRIVY_IMAGE_TAG"
+  - type: k8s
+    use_helm: False
+    image_keys:
+      trivy-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"    
+    readiness_wait_pod_name_suffix:
+      - ""

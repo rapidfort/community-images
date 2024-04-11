@@ -4,6 +4,8 @@ services:
     image: rapidfort/elasticsearch:8.13
     environment:
       - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.monitoring.enabled=false
     ports:
       - "9200:9200"
 
@@ -15,5 +17,6 @@ services:
       - SYS_PTRACE
     volumes:
       - ./pipeline/logstash.conf:/tmp/logstash.conf:ro
+      - ./pipeline/example.log:/tmp/example.log:ro
     depends_on:
       - elasticsearch

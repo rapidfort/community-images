@@ -17,7 +17,13 @@ docker exec -i "${CONTAINER_NAME}" logstash --version
 docker exec  "${CONTAINER_NAME}" logstash -t -f /usr/share/logstash/pipeline/logstash.conf
 
 docker exec "${CONTAINER_NAME}" ps aux | grep logstash
-
-docker exec  "${CONTAINER_NAME}" logstash -t -f /tmp/logstash.conf
-
 curl -XGET http://localhost:9600/_node/plugins
+docker exec -d "${CONTAINER_NAME}" logstash -f /tmp/logstash.conf --path.data=/tmp
+sleep 30
+INDEX_NAME=$(curl -sXGET 'http://localhost:9200/_cat/indices?v' | awk '{print $3}')
+if [[ -z "$INDEX_NAME" ]]; then
+    echo "Index not found"
+    exit 1
+else
+    echo "Index found: $INDEX_NAME"
+fi

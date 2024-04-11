@@ -13,5 +13,7 @@ services:
       - "9600:9600"
     cap_add:
       - SYS_PTRACE
+    volumes:
+      - ./pipeline/logstash.conf:/tmp/logstash.conf:ro
     depends_on:
       - elasticsearch

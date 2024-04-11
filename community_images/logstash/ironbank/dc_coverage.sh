@@ -17,3 +17,7 @@ docker exec -i "${CONTAINER_NAME}" logstash --version
 docker exec  "${CONTAINER_NAME}" logstash -t -f /usr/share/logstash/pipeline/logstash.conf
 
 docker exec "${CONTAINER_NAME}" ps aux | grep logstash
+
+docker exec  "${CONTAINER_NAME}" logstash -t -f /tmp/logstash.conf
+
+curl -XGET http://localhost:9600/_node/plugins

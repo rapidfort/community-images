@@ -1760,7 +1760,7 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/kong": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  logsstash-ib:
+  logstash-ib:
     runs-on: ubuntu-latest
 
     environment: actions-cicd

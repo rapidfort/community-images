@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  chart-test:
+    # image: ${CT_IMAGE_REPOSITORY}:${CT_IMAGE_TAG}
+    image:  kirandeepkhehra/chart-testing-ib:v3.10.1-rfstub
+    cap_add:
+      - SYS_PTRACE
+    user: root
+    network_mode: "host"
+    working_dir: /data
+    entrypoint: sleep
+    command: infinity
+    volumes:
+        - /root/.kube/config:/root/.kube/config:ro
+        - ./examples:/data

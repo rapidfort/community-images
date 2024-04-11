@@ -1,0 +1,45 @@
+name: kafka-ib
+official_name: Apacha Kafka Ironbank
+official_website: https://kafka.apache.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/bitnami/kafka
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories//opensource%2Fbitnami%2Fkafka
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/kafka/-/blob/development/README.md
+rf_docker_link: rapidfort/kafka-ib
+image_workflow_name: kafka_ironbank
+github_location: kafka/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka
+# usage_instructions: |
+#   # Using docker run:
+#   $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/var/www/html/ rapidfort/apache2-ib
+#   # PWD can be replaced with the directory containing all your HTML.
+what_is_text: |
+  Apache Kafka is a distributed streaming platform designed to build real-time pipelines and can be used as a message broker or as a replacement for a log aggregation solution for big data applications.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+output_registry:
+  registry: docker.io
+  account: rapidfort
+repo_sets:
+  - bitnami/kafka:
+      input_base_tag: "3.4."
+      output_repo: kafka-ib
+needs_common_commands: False
+runtimes:
+
+  # - type: docker
+  #   script: docker_coverage.sh
+  #   wait_time_sec: 60
+  #   imagepullsecret:
+  #     create: True
+  #     name: rf-regcred
+  #   preserve_namespace: True
+  #   bitnami-mysql:
+  #     environment:
+  #       MYSQL_ROOT_PASSWORD: my_root_password
+  #       MYSQL_ROOT_HOST: "%"
+  #     volumes:
+  #       zoneinfo: /usr/share/zoneinfo

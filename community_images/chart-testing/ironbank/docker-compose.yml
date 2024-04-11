@@ -11,5 +11,5 @@ services:
     entrypoint: sleep
     command: infinity
     volumes:
-        - /root/.kube/config:/root/.kube/config:ro
+        - ~/.kube/config:/root/.kube/config:ro
         - ./examples:/data

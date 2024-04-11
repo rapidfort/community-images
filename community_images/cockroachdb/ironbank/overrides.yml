@@ -1,37 +1,110 @@
 image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
-containerSecurityContext:
-  runAsNonRoot: false
-  runAsUser: 0
-  readOnlyRootFilesystem: false
-  allowPrivilegeEscalation: true
-  capabilities:
-    add: ["SYS_PTRACE"]
-extraEnvVars:
-  - name: "RF_VERBOSE"
-    value: "0"
-livenessProbe:
-  initialDelaySeconds: 30
-  timeoutSeconds: 30
-readinessProbe:
-  initialDelaySeconds: 30
-  timeoutSeconds: 30
-terminationGracePeriodSeconds: 30
-volumeMounts:
-  - name: client-certs
-    projected:
-        sources:
-          - secret:
-              name: rf-cockroachdb-ib-client-secret # Change to {release}-client-secret
-              items:
-                - key: ca.crt
-                  path: ca.crt
-                - key: tls.crt
-                  path: client.root.crt
-                - key: tls.key
-                  path: client.root.key
-        defaultMode: 256
+securityContext:
+  container:
+    enabled: true
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+    fsGroup: 0
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    privileged: true
+    capabilities:
+      add: ["SYS_PTRACE", "SYS_ADMIN"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  terminationGracePeriodSeconds: 30
+statefulset:
+  securityContext:
+    enabled: true
+    container:
+      enabled: true
+      runAsNonRoot: false
+      runAsUser: 0
+      runAsGroup: 0
+      fsGroup: 0
+      readOnlyRootFilesystem: false
+      allowPrivilegeEscalation: true
+      privileged: true
+      capabilities:
+        add: ["SYS_PTRACE", "SYS_ADMIN"]
+    extraEnvVars:
+      - name: "RF_VERBOSE"
+        value: "0"
+    livenessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    readinessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    terminationGracePeriodSeconds: 30
+pod:
+  securityContext:
+    enabled: true
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+    fsGroup: 0
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    privileged: true
+    capabilities:
+      add: ["SYS_PTRACE", "SYS_ADMIN"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  terminationGracePeriodSeconds: 30
+init:
+  securityContext:
+    enabled: true
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+    fsGroup: 0
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    privileged: true
+    capabilities:
+      add: ["SYS_PTRACE", "SYS_ADMIN"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  terminationGracePeriodSeconds: 30
+# volumeMounts:
+#   - name: client-certs
+#     projected:
+#         sources:
+#           - secret:
+#               name: rf-cockroachdb-ib-client-secret # Change to {release}-client-secret
+#               items:
+#                 - key: ca.crt
+#                   path: ca.crt
+#                 - key: tls.crt
+#                   path: client.root.crt
+#                 - key: tls.key
+#                   path: client.root.key
+#         defaultMode: 256
 # Persistent volume configuration
 # persistence:
 #   enabled: true  # Enable persistent volume usage

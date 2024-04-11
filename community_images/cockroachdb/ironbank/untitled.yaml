@@ -1,0 +1,584 @@
+nameOverride: ""
+
+
+fullnameOverride: ""
+
+image:
+  repository: cockroachdb/cockroach
+  tag: v23.2.3
+  pullPolicy: IfNotPresent
+  credentials: {}
+    
+    
+    
+
+
+
+labels: {}
+  
+
+
+
+
+
+clusterDomain: cluster.local
+
+
+conf:
+  
+  
+  
+  
+  attrs: []
+    
+    
+
+  
+  
+  
+  cache: 25%
+
+  
+  
+  
+  
+  
+  
+  
+  cluster-name: ""
+
+  
+  
+  
+  
+  
+  
+  
+  
+  disable-cluster-name-verification: false
+
+  
+  
+  
+  
+  
+  join: []
+
+  
+  log:
+    enabled: false
+    
+    config: {}
+      
+      
+      
+      
+      
+      
+      
+
+  
+  logtostderr: INFO
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  max-sql-memory: 25%
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  locality: ""
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  single-node: false
+
+  
+  sql-audit-dir: ""
+
+  
+  port: 26257
+
+  
+  http-port: 8080
+
+  
+  path: cockroach-data
+
+  
+  
+  store:
+    enabled: false
+    
+    type:
+    
+    size:
+    
+    attrs:
+
+statefulset:
+  replicas: 3
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  budget:
+    maxUnavailable: 1
+
+  
+  
+  args: []
+    
+
+  
+  env: []
+    
+    
+
+  
+  
+  
+  secretMounts: []
+
+  
+  labels:
+    app.kubernetes.io/component: cockroachdb
+
+  
+  annotations: {}
+
+  
+  
+  nodeAffinity: {}
+  
+  
+  podAffinity: {}
+  
+  
+  
+  
+  podAntiAffinity:
+    
+    
+    topologyKey: kubernetes.io/hostname
+    
+    
+    type: soft
+    
+    
+    weight: 100
+
+  
+  
+  nodeSelector: {}
+
+  
+  
+  priorityClassName: ""
+
+  
+  
+  tolerations: []
+
+  
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: topology.kubernetes.io/zone
+    whenUnsatisfiable: ScheduleAnyway
+
+  
+  
+  
+  resources: {}
+    
+    
+    
+    
+    
+    
+
+  
+  
+  customLivenessProbe: {}
+    
+    
+    
+    
+    
+    
+
+  
+  
+  customReadinessProbe: {}
+    
+    
+    
+    
+    
+    
+
+  securityContext:
+    enabled: true
+
+  serviceAccount:
+    
+    create: true
+    
+    
+    
+    name: ""
+    
+    annotations: {}
+
+service:
+  ports:
+    
+    grpc:
+      external:
+        port: 26257
+        name: grpc
+      
+      
+      internal:
+        port: 26257
+        
+        name: grpc-internal
+    http:
+      port: 8080
+      name: http
+
+  
+  
+  
+  public:
+    type: ClusterIP
+    
+    labels:
+      app.kubernetes.io/component: cockroachdb
+    
+    annotations: {}
+
+  
+  
+  
+  
+  discovery:
+    
+    labels:
+      app.kubernetes.io/component: cockroachdb
+    
+    annotations: {}
+
+
+ingress:
+  enabled: false
+  labels: {}
+  annotations: {}
+  
+  
+  paths: [/]
+  hosts: []
+  
+  tls: []
+  
+  
+
+prometheus:
+  enabled: true
+
+securityContext:
+  enabled: true
+
+
+serviceMonitor:
+  enabled: false
+  labels: {}
+  annotations: {}
+  interval: 10s
+  
+  
+  namespaced: false
+
+  
+  
+  tlsConfig: {}
+
+
+
+
+storage:
+  
+  
+  
+  hostPath: ""
+
+  
+  
+  persistentVolume:
+    enabled: true
+
+    size: 100Gi
+
+    
+    
+    
+    
+    
+    
+    storageClass: ""
+
+    
+    labels: {}
+    
+    annotations: {}
+
+
+
+
+init:
+  
+  labels:
+    app.kubernetes.io/component: init
+
+  
+  jobAnnotations: {}
+
+  
+  annotations: {}
+
+  
+  
+  affinity: {}
+
+  
+  
+  nodeSelector: {}
+
+  
+  
+  tolerations: []
+
+  
+  
+  
+  
+  
+  resources: {}
+    
+    
+    
+    
+    
+    
+
+  securityContext:
+    enabled: true
+
+  provisioning:
+    enabled: false
+    
+    clusterSettings:
+      
+      
+    users: []
+    
+    
+    
+    
+    databases: []
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+tls:
+  enabled: true
+  copyCerts:
+    image: busybox
+  certs:
+    
+    provided: false
+    
+    clientRootSecret: cockroachdb-root
+    
+    nodeSecret: cockroachdb-node
+    
+    caSecret: cockroach-ca
+    
+    
+    tlsSecret: false
+    
+    selfSigner:
+      
+      enabled: true
+      
+      securityContext:
+        enabled: true
+      
+      caProvided: false
+      
+      caSecret: ""
+      
+      minimumCertDuration: 624h
+      
+      caCertDuration: 43800h
+      
+      caCertExpiryWindow: 648h
+      
+      clientCertDuration: 672h
+      
+      clientCertExpiryWindow: 48h
+      
+      nodeCertDuration: 8760h
+      
+      nodeCertExpiryWindow: 168h
+      
+      rotateCerts: true
+      
+      readinessWait: 30s
+      
+      podUpdateTimeout: 2m
+      
+      svcAccountAnnotations: {}
+
+    
+    certManager: false
+    
+    
+    
+    certManagerIssuer:
+      group: cert-manager.io
+      kind: Issuer
+      name: cockroachdb
+      
+      isSelfSignedIssuer: true
+      
+      clientCertDuration: 672h
+      
+      clientCertExpiryWindow: 48h
+      
+      nodeCertDuration: 8760h
+      
+      nodeCertExpiryWindow: 168h
+
+  selfSigner:
+    
+    annotations: {}
+
+    
+    
+    affinity: {}
+
+    
+    
+    nodeSelector: {}
+
+    
+    
+    tolerations: []
+
+    
+    image:
+      repository: cockroachlabs-helm-charts/cockroach-self-signer-cert
+      tag: "1.5"
+      pullPolicy: IfNotPresent
+      credentials: {}
+      registry: gcr.io
+      
+      
+
+networkPolicy:
+  enabled: false
+
+  ingress:
+    
+    
+    
+    
+    grpc: []
+      
+      
+      
+      
+
+    
+    
+    
+    http: []
+      
+      
+      
+
+
+
+iap:
+  enabled: false
+  
+  
+  # clientSecret:

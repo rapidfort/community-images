@@ -16,14 +16,14 @@ CONTAINER_NAME="$(jq -r '.project_name' < "$JSON_PARAMS")-chart-test-1"
 
 sleep 10
 
-docker exec -it "${CONTAINER_NAME}" bash -c "ct version"
+docker exec -i "${CONTAINER_NAME}" bash -c "ct version"
 
-docker exec -it "${CONTAINER_NAME}" bash -c "ct --target-branch main list-changed"
+docker exec -i "${CONTAINER_NAME}" bash -c "ct --target-branch main list-changed"
 
 # Linting issues are there in https://github.com/helm/examples.git so exit code is not 0
-docker exec -it "${CONTAINER_NAME}" bash -c "ct --target-branch main lint" || true
-docker exec -it "${CONTAINER_NAME}" bash -c "ct --target-branch main install"
+docker exec -i "${CONTAINER_NAME}" bash -c "ct --target-branch main lint" || true
+docker exec -i "${CONTAINER_NAME}" bash -c "ct --target-branch main install"
 
-docker exec -it "${CONTAINER_NAME}" bash -c "ct completion > /dev/null"
+docker exec -i "${CONTAINER_NAME}" bash -c "ct completion > /dev/null"
 
 rm -r "${SCRIPTPATH}/examples"

@@ -11,5 +11,7 @@ services:
     image: ${LOGSTASH_IMAGE_REPOSITORY}:${LOGSTASH_IMAGE_TAG}
     ports:
       - "9600:9600"
+    cap_add:
+      - SYS_PTRACE
     depends_on:
       - elasticsearch

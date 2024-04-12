@@ -26,4 +26,4 @@ docker exec -i "${CONTAINER_NAME}" bash -c "ct --target-branch main install"
 
 docker exec -i "${CONTAINER_NAME}" bash -c "ct completion > /dev/null"
 
-rm -r "${SCRIPTPATH}/examples"
+sudo rm -r "${SCRIPTPATH}/examples"

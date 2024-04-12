@@ -14,4 +14,4 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 sudo git clone https://github.com/helm/examples.git "${SCRIPTPATH}/examples"
 
-yq -i '.version="0.1.2"' "${SCRIPTPATH}/examples/charts/hello-world/Chart.yaml"
+sudo yq -i '.version="0.1.2"' "${SCRIPTPATH}/examples/charts/hello-world/Chart.yaml"

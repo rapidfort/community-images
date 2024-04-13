@@ -92,7 +92,7 @@ class CoverageRunner:
                     "image_tag_details": image_tag_details,
                     "runtime_props": runtime_props,
                     "image_script_dir": image_script_dir,
-                }));
+                }))
 
                 if os.path.exists(before_script_path):
                     Utils.run_cmd([before_script_path, json_file_path])

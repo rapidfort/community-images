@@ -18,4 +18,3 @@ sudo yq -i '.version="0.1.2"' "${SCRIPTPATH}/examples/charts/hello-world/Chart.y
 
 cat "${HOME}/.kube/config" > "${SCRIPTPATH}/kube-config"
 sudo chmod 664 "${SCRIPTPATH}/kube-config"
-# sudo chown root:root "${SCRIPTPATH}/kube-config"

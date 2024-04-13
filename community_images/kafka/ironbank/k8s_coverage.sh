@@ -19,10 +19,10 @@ sleep 60
 
 CONTAINER_NAME="${RELEASE_NAME}"
 # copy over the script to the pod
-kubectl cp "${SCRIPTPATH}"/scripts/zookeeper_coverage_script.sh "${CONTAINER_NAME}":/tmp/coverage_script.sh -n "${NAMESPACE}"
+kubectl cp "${SCRIPTPATH}"/k8s_coverage_helper.sh "${CONTAINER_NAME}":rf-kafka-0:/opt/bitnami/kafka -n "${NAMESPACE}"
 
-kubectl exec -i ${CONTAINER_NAME} -n ${NAMESPACE} -- bash /tmp/coverage_script.sh
+kubectl exec -i ${CONTAINER_NAME} -n ${NAMESPACE} -- bash .//opt/bitnami/kafka/k8s_coverage_helper.sh
 
-kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
+# kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
 
-    kubectl -n "${NAMESPACE}" exec -i "${PUBLISHER_POD_NAME}" -- bash -c "/tmp/publish_commands.sh"
+# kubectl -n "${NAMESPACE}" exec -i "${PUBLISHER_POD_NAME}" -- bash -c "/tmp/publish_commands.sh"

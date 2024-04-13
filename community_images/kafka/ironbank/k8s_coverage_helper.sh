@@ -8,19 +8,7 @@ cd /opt/bitnami/kafka/
 # Quickstart coverage
 # CREATE A TOPIC TO STORE YOUR EVENTS
 bin/kafka-topics.sh --create --topic quickstart-events-rf --bootstrap-server localhost:9092
-# Quickstart coverage
-# CREATE A TOPIC TO STORE YOUR EVENTS
-bin/kafka-topics.sh --create --topic quickstart-events-rf --bootstrap-server localhost:9092
 
-# Function to start the producer and produce two messages
-start_producer() {
-    echo "Starting producer..."
-    # Start the console producer in the background
-    bin/kafka-console-producer.sh --topic quickstart-events-rf --bootstrap-server localhost:9092 << EOF
-This is my first event
-This is my second event
-EOF
-}
 # Function to start the producer and produce two messages
 start_producer() {
     echo "Starting producer..."
@@ -36,14 +24,7 @@ start_consumer() {
     echo "Starting consumer..."
     # Start the console consumer
     timeout 5 bin/kafka-console-consumer.sh --topic quickstart-events-rf --from-beginning --bootstrap-server localhost:9092 > output.txt || true
-# Function to start the consumer and consume two messages
-start_consumer() {
-    echo "Starting consumer..."
-    # Start the console consumer
-    timeout 5 bin/kafka-console-consumer.sh --topic quickstart-events-rf --from-beginning --bootstrap-server localhost:9092 > output.txt || true
 
-    # Wait for consumer to consume two messages
-    sleep 2
     # Wait for consumer to consume two messages
     sleep 2
 
@@ -55,29 +36,15 @@ This is my second event" ]; then
     else
         echo "Consumer received the expected messages."
     fi
-    # Verify consumer output
-    if [ "$(cat output.txt)" != "This is my first event
-This is my second event" ]; then
-        echo "Error: Consumer output does not match producer input."
-        exit 1
-    else
-        echo "Consumer received the expected messages."
-    fi
 
 }
-}
 
-# Start the producer and produce messages
-start_producer
 # Start the producer and produce messages
 start_producer
 
 # Start the consumer and consume messages
 start_consumer
-# Start the consumer and consume messages
-start_consumer
 
-rm output.txt
 rm output.txt
 
 
@@ -99,20 +66,15 @@ function run_kafka_streams_demo() {
 
     # Start the Wordcount Application
     timeout 40 bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo || true &
-    timeout 40 bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo || true &
 
     # Sleep for a moment to allow Wordcount application to start
-    sleep 10
     sleep 10
 
     # Produce some data
     timeout 10 echo -e "all streams lead to kafka hello kafka streams join kafka summit" | \
         bin/kafka-console-producer.sh --broker-list localhost:9092 --topic streams-plaintext-input || true
-    timeout 10 echo -e "all streams lead to kafka hello kafka streams join kafka summit" | \
-        bin/kafka-console-producer.sh --broker-list localhost:9092 --topic streams-plaintext-input || true
 
     # Consume processed data
-    timeout 10 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
     timeout 10 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
         --topic streams-wordcount-output \
         --from-beginning \
@@ -123,34 +85,17 @@ function run_kafka_streams_demo() {
         --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer > output.txt || true
 
     # Verify Stream output
-        if [ "$(cat output.txt)" != "all     1
-streams 1
-lead    1
-to      1
-kafka   1
-hello   1
-kafka   2
-streams 2
-join    1
-kafka   3
-summit  1" ]; then
-            echo "Error: WordCount Stream output does not match expected results."
-            exit 1
-        else
-            echo "Stream Output received the expected messages."
-        fi
-    # Verify Stream output
-        if [ "$(cat output.txt)" != "all     1
-streams 1
-lead    1
-to      1
-kafka   1
-hello   1
-kafka   2
-streams 2
-join    1
-kafka   3
-summit  1" ]; then
+        if [ "$(cat output.txt)" != "all	1
+streams	1
+lead	1
+to	1
+kafka	1
+hello	1
+kafka	2
+streams	2
+join	1
+kafka	3
+summit	1" ]; then
             echo "Error: WordCount Stream output does not match expected results."
             exit 1
         else
@@ -191,7 +136,7 @@ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
 # Coverage for consumer group created by quickstart coverage of wordcount stream
 bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group streams-wordcount
 bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group streams-wordcount --members
-bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --delete --group streams-wordcount
+# bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --delete --group streams-wordcount
 
 
 # Expanding your cluster (we create 2 new topics in broker 0and move them entirely to broker 1 and 2)

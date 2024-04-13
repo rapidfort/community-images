@@ -16,5 +16,5 @@ livenessProbe:
 readinessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 30
-
+  
 replicaCount: 3

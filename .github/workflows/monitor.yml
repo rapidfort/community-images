@@ -30,7 +30,7 @@ jobs:
         run: docker pull rapidfort/argocd
       - name: Pull Cassandra Official
         run: docker pull rapidfort/cassandra-official
-      - name: Pull Helm Char Testing Ironbank
+      - name: Pull Helm Chart Testing Ironbank
         run: docker pull rapidfort/chart-testing-ib
       - name: Pull Consul
         run: docker pull rapidfort/consul

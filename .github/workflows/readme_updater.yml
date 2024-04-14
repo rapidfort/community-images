@@ -322,6 +322,14 @@ jobs:
           repository: rapidfort/kong
           readme-filepath: ./community_images/kong/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Kong
+      - name: Docker Hub Description Logstash Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/logstash-ib
+          readme-filepath: ./community_images/logstash/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Logstash Ironbank
       - name: Docker Hub Description MariaDB
         uses: peter-evans/dockerhub-description@v3
         with:

@@ -56,7 +56,7 @@ The runtime instructions for this container are no different from the official r
 <br>
 
 ```sh
-
+docker run -d -p 8080:8080 rapidfort/logstash-ib
 ```
 
 ## What is a hardened image?

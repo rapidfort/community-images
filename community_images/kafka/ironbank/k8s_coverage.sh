@@ -22,7 +22,3 @@ CONTAINER_NAME="${RELEASE_NAME}"
 kubectl cp "${SCRIPTPATH}"/k8s_coverage_helper.sh "${CONTAINER_NAME}":rf-kafka-0:/opt/bitnami/kafka -n "${NAMESPACE}"
 
 kubectl exec -i ${CONTAINER_NAME} -n ${NAMESPACE} -- bash .//opt/bitnami/kafka/k8s_coverage_helper.sh
-
-# kubectl -n "${NAMESPACE}" cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
-
-# kubectl -n "${NAMESPACE}" exec -i "${PUBLISHER_POD_NAME}" -- bash -c "/tmp/publish_commands.sh"

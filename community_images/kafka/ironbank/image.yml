@@ -9,10 +9,10 @@ rf_docker_link: rapidfort/kafka-ib
 image_workflow_name: kafka_ironbank
 github_location: kafka/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka
-# usage_instructions: |
-#   # Using docker run:
-#   $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/var/www/html/ rapidfort/apache2-ib
-#   # PWD can be replaced with the directory containing all your HTML.
+usage_instructions: |
+  # Using docker run:
+  $ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/var/www/html/ rapidfort/apache2-ib
+  # PWD can be replaced with the directory containing all your HTML.
 what_is_text: |
   Apache Kafka is a distributed streaming platform designed to build real-time pipelines and can be used as a message broker or as a replacement for a log aggregation solution for big data applications.
 disclaimer: |

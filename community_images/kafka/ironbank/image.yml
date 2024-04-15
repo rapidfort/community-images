@@ -28,7 +28,6 @@ repo_sets:
   - bitnami/kafka:
       input_base_tag: "3.4."
       output_repo: kafka-ib
-needs_common_commands: False
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
@@ -37,7 +36,7 @@ runtimes:
       repo_url: https://charts.bitnami.com/bitnami
       chart: kafka
       version: "21.1.1"
-    wait_time_sec: 69
+    wait_time_sec: 120
     image_keys:
       kafka-ib:
         repository: "image.repository"

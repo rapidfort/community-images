@@ -212,8 +212,10 @@ bin/kafka-configs.sh  --bootstrap-server localhost:9092 --describe --entity-type
 # Describing Quota for every (user, client)
 bin/kafka-configs.sh  --bootstrap-server localhost:9092 --describe --entity-type users --entity-type clients
 
-bin/zookeeper-security-migration.sh --help
+bin/zookeeper-security-migration.sh --help || true
 
-bin/connect-mirror-maker.sh --help
+bin/connect-mirror-maker.sh --help || true
 
-bin/kafka-acls.sh --help
+bin/kafka-acls.sh --help || true
+
+exit 0

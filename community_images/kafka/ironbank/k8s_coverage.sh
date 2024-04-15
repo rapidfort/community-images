@@ -13,12 +13,12 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
-RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 sleep 60
 
-CONTAINER_NAME="${RELEASE_NAME}"
 # copy over the script to the pod
-kubectl cp "${SCRIPTPATH}"/k8s_coverage_helper.sh "${CONTAINER_NAME}":rf-kafka-0:/opt/bitnami/kafka -n "${NAMESPACE}"
+kubectl cp "${SCRIPTPATH}"/k8s_coverage_helper.sh \
+  rf-kafka-ib-0:/opt/bitnami/kafka/k8s_coverage_helper.sh \
+  -n "${NAMESPACE}"
 
-kubectl exec -i ${CONTAINER_NAME} -n ${NAMESPACE} -- bash .//opt/bitnami/kafka/k8s_coverage_helper.sh
+kubectl exec -i rf-kafka-ib-0 -n ${NAMESPACE} -- bash ./opt/bitnami/kafka/k8s_coverage_helper.sh

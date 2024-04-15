@@ -21,4 +21,4 @@ kubectl cp "${SCRIPTPATH}"/k8s_coverage_helper.sh \
   rf-kafka-ib-0:/opt/bitnami/kafka/k8s_coverage_helper.sh \
   -n "${NAMESPACE}"
 
-kubectl exec -i rf-kafka-ib-0 -n ${NAMESPACE} -- bash ./opt/bitnami/kafka/k8s_coverage_helper.sh
+kubectl exec -i rf-kafka-ib-0 -n "${NAMESPACE}" -- bash ./opt/bitnami/kafka/k8s_coverage_helper.sh

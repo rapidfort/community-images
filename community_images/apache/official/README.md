@@ -84,8 +84,8 @@ RapidFort’s hardened [rapidfort/apache-official][rf-dh-image-link] image has b
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2.4.54`, `2.4`, `2`, `latest`, `2.4.54-bullseye`, `2.4-bullseye`, `2-bullseye`, `bullseye`](https://github.com/docker-library/httpd/blob/f3b7fd9c8ef59d1ad46c8b2a27df3e02d822834f/2.4/Dockerfile)
-* [`2.4.54-alpine`, `2.4-alpine`, `2-alpine`, `alpine`, `2.4.54-alpine3.16`, `2.4-alpine3.16`, `2-alpine3.16`, `alpine3.16`](https://github.com/docker-library/httpd/blob/f3b7fd9c8ef59d1ad46c8b2a27df3e02d822834f/2.4/alpine/Dockerfile)
+* [`2.4.58`, `2.4`, `2`, `latest`, `2.4.58-bookworm`, `2.4-bookworm`, `2-bookworm`, `bookworm`](https://github.com/docker-library/httpd/blob/89aed068235d9a480f245e03edf038621ab8ed8f/2.4/Dockerfile)
+* [`2.4.58-alpine`, `2.4-alpine`, `2-alpine`, `alpine`, `2.4.58-alpine3.19`, `2.4-alpine3.19`, `2-alpine3.19`, `alpine3.19`](https://github.com/docker-library/httpd/blob/8a57cc5e01d709b1ae7176a2e85a47923865da0c/2.4/alpine/Dockerfile)
 
 ## Need support
 

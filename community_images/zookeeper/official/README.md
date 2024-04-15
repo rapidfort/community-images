@@ -82,8 +82,10 @@ RapidFort’s hardened [rapidfort/zookeeper-official][rf-dh-image-link] image ha
 We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.8.1`, `3.8`, `3.8.1-temurin`, `3.8-temurin`, `latest`](https://github.com/31z4/zookeeper-docker/blob/b078affda60681e71b71760740e795328c9d1ab5/3.8.1/Dockerfile)
-* [`3.7.1-temurin`, `3.7-temurin`](https://github.com/31z4/zookeeper-docker/blob/5cf119d9c5d61024fdba66f7be707413513a8b0d/3.7.1/Dockerfile)
+* [`3.9.2`, `3.9`, `3.9.2-jre-17`, `3.9-jre-17`, `latest`](https://github.com/31z4/zookeeper-docker/blob/ec1050affd761a7886c1f1f5d18165c19d3143e8/3.9.2/Dockerfile)
+* [`3.8.4`, `3.8`, `3.8.4-jre-17`, `3.8-jre-17`](https://github.com/31z4/zookeeper-docker/blob/ec1050affd761a7886c1f1f5d18165c19d3143e8/3.8.4/Dockerfile)
+* [`3.7.2-jre-17`, `3.7-jre-17`](https://github.com/31z4/zookeeper-docker/blob/5076660820c73f3b119cbdd1267c25a1e29cbbf4/3.7.2/Dockerfile)
+* [`3.7.2`, `3.7`, `3.7.2-jre-11`, `3.7-jre-11`](https://github.com/31z4/zookeeper-docker/blob/dd520cb108da9eafe6914dce4e5dbd4877dd2411/3.7.2/Dockerfile)
 
 ## Need support
 

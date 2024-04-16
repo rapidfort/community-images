@@ -2,7 +2,7 @@ version: '2'
 
 services:
   terraform:
-    image: ${TERRAFORM_IMAGE_REPOSITORY}:${TERRAFORM_IMAGE_TAG}
+    image: registry1.dso.mil/ironbank/hashicorp/terraform:1.7
     user: root
     cap_add:
       - SYS_PTRACE
@@ -11,7 +11,6 @@ services:
     command:
       - "infinity"
     volumes:
-      - ./sample_terraform_tf/main.tf:/main.tf
+      - ./main.tf:/main.tf
       - /var/run/docker.sock:/var/run/docker.sock  
-      - ./terraform_coverage.sh:/terraform_coverage.sh
     network_mode: "host"  

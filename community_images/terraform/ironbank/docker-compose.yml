@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  terraform:
+    image: registry1.dso.mil/ironbank/hashicorp/terraform:1.7
+    user: root
+    cap_add:
+      - SYS_PTRACE
+    entrypoint:
+      - "sleep"
+    command:
+      - "infinity"
+    volumes:
+      - ./main.tf:/main.tf
+      - /var/run/docker.sock:/var/run/docker.sock  
+    network_mode: "host"  

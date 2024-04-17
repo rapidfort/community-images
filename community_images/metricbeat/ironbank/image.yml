@@ -19,7 +19,7 @@ input_registry:
   registry: registry1.dso.mil
   account: ironbank
 repo_sets:
-  - elastic/elastic/metricbeat:
+  - elastic/beats/metricbeat:
       input_base_tag: "8.13."
       output_repo: metricbeat-ib
 runtimes:

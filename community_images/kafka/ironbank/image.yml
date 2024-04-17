@@ -3,12 +3,12 @@ official_name: Apacha Kafka Ironbank
 official_website: https://kafka.apache.org/
 source_image_provider: Platform One
 source_image_repo: registry1.dso.mil/ironbank/bitnami/kafka
-source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fbitnami%2Fkafka
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fkafka
 source_image_readme: https://repo1.dso.mil/dsop/bitnami/kafka/-/blob/development/README.md
 rf_docker_link: rapidfort/kafka-ib
 image_workflow_name: kafka_ironbank
 github_location: kafka/ironbank
-report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka
 usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 

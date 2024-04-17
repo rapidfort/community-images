@@ -8,8 +8,8 @@ terraform --version
 terraform init
 terraform fmt
 terraform validate
-terraform plan || terraform destroy -auto-approve
-terraform apply -auto-approve || terraform destroy -auto-approve
+terraform plan 
+terraform apply -auto-approve
 curl -I http://localhost:8000
 terraform show -json
 terraform refresh

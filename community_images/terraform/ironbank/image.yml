@@ -22,9 +22,17 @@ input_registry:
   account: ironbank
 repo_sets:
   - hashicorp/terraform:
-      input_base_tag: "1.7"
+      input_base_tag: "1.7."
       output_repo: terraform-ib
 runtimes:
+  - type: k8s
+    use_helm: False
+    image_keys:
+      terraform-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    readiness_wait_pod_name_suffix:
+      - ""
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
@@ -32,4 +40,3 @@ runtimes:
       terraform-ib:
         repository: "TERRAFORM_IMAGE_REPOSITORY"
         tag: "TERRAFORM_IMAGE_TAG"
-

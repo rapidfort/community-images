@@ -1,0 +1,18 @@
+metricbeat.config.modules.path: /usr/share/metricbeat/modules.d/*.yml
+metricbeat.modules:
+  - module: elasticsearch
+    metricsets:
+      - node
+      - node_stats
+      - cluster_stats
+    period: 10s
+    hosts: ["http://elasticsearch:9200"]
+    # xpack.monitoring.collection.enabled: true
+
+# xpack.monitoring.collection.enabled: true
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"] ## Monitoring cluster
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  #username: "elastic"
+  #password: "changeme"

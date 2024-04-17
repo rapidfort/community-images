@@ -618,6 +618,14 @@ jobs:
           repository: rapidfort/telegraf
           readme-filepath: ./community_images/telegraf/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Telegraf
+      - name: Docker Hub Description Terraform IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/terraform-ib
+          readme-filepath: ./community_images/terraform/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Terraform IronBank
       - name: Docker Hub Description TRAEFIK
         uses: peter-evans/dockerhub-description@v3
         with:

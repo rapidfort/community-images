@@ -24,6 +24,8 @@ services:
       - ./metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
       - ./test_commands.sh:/tmp/test_commands.sh
       - metricbeat-data:/usr/share/metricbeat/data
+    cap_add:
+      - SYS_PTRACE
     networks:
       - elastic
     depends_on:

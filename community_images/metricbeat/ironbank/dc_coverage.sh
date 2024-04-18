@@ -15,7 +15,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME=${PROJECT_NAME}-metricbeat-1
 
-sleep 40
+sleep 20
 # testing commands
 docker exec "${CONTAINER_NAME}" bin/bash /tmp/test_commands.sh
 # indices present 

@@ -56,7 +56,9 @@ The runtime instructions for this container are no different from the official r
 <br>
 
 ```sh
+
 $ docker run -i -v /path/to/main.tf:/main.tf  rapidfort/terraform-ib:latest [COMMAND]
+
 
 ```
 

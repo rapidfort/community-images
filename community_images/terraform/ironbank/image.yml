@@ -25,7 +25,6 @@ repo_sets:
       input_base_tag: "1.7."
       output_repo: terraform-ib
 runtimes:
-
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml

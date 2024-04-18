@@ -21,7 +21,7 @@ services:
   metricbeat:
     image: ${METRICBEAT_IMAGE_REPOSITORY}:${METRICBEAT_IMAGE_TAG}
     volumes:
-      - ./metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
+      - ./metricbeat.yml:/usr/share/metricbeat/metricbeat.yml:ro
       - ./test_commands.sh:/tmp/test_commands.sh
       - metricbeat-data:/usr/share/metricbeat/data
     cap_add:

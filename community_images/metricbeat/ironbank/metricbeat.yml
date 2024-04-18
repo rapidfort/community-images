@@ -14,7 +14,6 @@ metricbeat.modules:
     period: 10s
     hosts: ["http://localhost:5601"]
     # xpack.monitoring.collection.enabled: true
-
 setup.kibana:
   host: "localhost:5601"
 setup.kibana.protocol: "http"

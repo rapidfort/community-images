@@ -35,13 +35,12 @@ class Testmetricui1():
         """teardown method."""
         self.driver.quit()
 
-    def test_initializatin(self):
-        self.driver.get("http://localhost:5601/app/monitoring")
+    def test_initializatin(self, params):
+        self.driver.get("http://localhost:{}/app/monitoring".format(params["port"]))
+        # self.driver.get("http://localhost:5601/app/monitoring")
         self.driver.set_window_size(1296, 688)
         time.sleep(20)
-        # self.driver.find_element(By.CSS_SELECTOR, ".euiHeaderSectionItem > .euiButtonEmpty > .euiButtonEmpty__content").click()
-        # self.driver.execute_script("window.scrollTo(0,0)")
-        # self.driver.find_element(By.LINK_TEXT, "Stack Monitoring").click()
+        # checking stack monitring in kibana ui if it has got metrices
         self.driver.find_element(By.CSS_SELECTOR, ".css-xv0fhq-euiTextColor-subdued > span").click()
         self.driver.find_element(By.CSS_SELECTOR, ".css-8utmkn-euiButtonDisplay-m-defaultMinWidth-fill-primary > .css-1bascr2-euiButtonDisplayContent > span").click()
         self.driver.execute_script("window.scrollTo(0,252.6666717529297)")
@@ -50,6 +49,7 @@ class Testmetricui1():
         self.driver.find_element(By.CSS_SELECTOR, ".euiButtonIcon").click()
         self.driver.find_element(By.CSS_SELECTOR, ".euiFlexItem:nth-child(1) .euiFlexGroup span").click()
         self.driver.find_element(By.LINK_TEXT, "elasticsearch").click()
+        # checking overview for metric
         self.driver.execute_script("window.scrollTo(0,0)")
         self.driver.find_element(By.CSS_SELECTOR, "div:nth-child(4) > .euiFlexGrid .euiPanel > .euiTitle span").click()
         self.driver.close()

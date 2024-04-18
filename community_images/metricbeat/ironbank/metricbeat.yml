@@ -1,4 +1,5 @@
 metricbeat.config.modules.path: /usr/share/metricbeat/modules.d/*.yml
+reload.enabled: true
 metricbeat.modules:
   - module: elasticsearch
     metricsets:
@@ -7,9 +8,21 @@ metricbeat.modules:
       - cluster_stats
     period: 10s
     hosts: ["http://elasticsearch:9200"]
+  - module: kibana
+    metricsets:
+      - status
+    period: 10s
+    hosts: ["http://localhost:5601"]
     # xpack.monitoring.collection.enabled: true
 
-# xpack.monitoring.collection.enabled: true
+setup.kibana:
+  host: "localhost:5601"
+setup.kibana.protocol: "http"
+setup.kibana.path: /kibana
+# setup.dashboards.enabled: true
+host: http://elasticsearch:5601
+monitoring.enabled: true
+xpack.monitoring.collection.enabled: true
 output.elasticsearch:
   hosts: ["http://elasticsearch:9200"] ## Monitoring cluster
   # Optional protocol and basic auth credentials.

@@ -25,14 +25,7 @@ repo_sets:
       input_base_tag: "1.7."
       output_repo: terraform-ib
 runtimes:
-  - type: k8s
-    use_helm: False
-    image_keys:
-      terraform-ib:
-        repository: "image.repository"
-        tag: "image.tag"
-    readiness_wait_pod_name_suffix:
-      - ""
+
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml

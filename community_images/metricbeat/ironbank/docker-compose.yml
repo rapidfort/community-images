@@ -33,7 +33,6 @@ services:
       - elasticsearch
     command: 
       - --strict.perms=false 
-      - -e
 
 volumes:
   elasticsearch_data:

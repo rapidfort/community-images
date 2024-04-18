@@ -20,8 +20,9 @@ services:
 
   metricbeat:
     image: ${METRICBEAT_IMAGE_REPOSITORY}:${METRICBEAT_IMAGE_TAG}
+    user: root
     volumes:
-      - ./metricbeat.yml:/usr/share/metricbeat/metricbeat.yml:ro
+      - ./metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
       - ./test_commands.sh:/tmp/test_commands.sh
       - metricbeat-data:/usr/share/metricbeat/data
     cap_add:
@@ -31,17 +32,9 @@ services:
     depends_on:
       - elasticsearch
     command: 
-      - run
-      - strict.perms=false
+      - --strict.perms=false 
+      - -e
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:8.12.2
-    ports:
-      - 5601:5601
-    networks:
-      - elastic
-    depends_on:
-      - elasticsearch
 volumes:
   elasticsearch_data:
     driver: local

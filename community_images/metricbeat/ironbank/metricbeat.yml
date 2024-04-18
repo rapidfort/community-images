@@ -8,17 +8,12 @@ metricbeat.modules:
       - cluster_stats
     period: 10s
     hosts: ["http://elasticsearch:9200"]
-  - module: kibana
-    metricsets:
-      - status
-    period: 10s
-    hosts: ["http://localhost:5601"]
     # xpack.monitoring.collection.enabled: true
 
-setup.kibana:
-  host: "localhost:5601"
-setup.kibana.protocol: "http"
-setup.kibana.path: /kibana
+# setup.kibana:
+#   host: "localhost:5601"
+# setup.kibana.protocol: "http"
+# setup.kibana.path: /kibana
 
 host: http://elasticsearch:5601
 monitoring.enabled: true

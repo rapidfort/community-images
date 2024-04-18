@@ -23,5 +23,3 @@ curl -XGET 'http://localhost:9200/_cat/indices?v&pretty'
 #To verify that your server’s statistics are present in Elasticsearch
 curl -XGET 'http://localhost:9200/metricbeat-*/_search?pretty'
 
-"${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "localhost" "5601" "${SCRIPTPATH}"/selenium_tests 2>&1
-

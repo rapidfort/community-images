@@ -100,7 +100,7 @@ RapidFort’s hardened [rapidfort/curl][rf-dh-image-link] image has been optimiz
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.xx.x`, `latest` (latest/Dockerfile)](https://github.com/curl/curl-docker/blob/master/alpine/latest/Dockerfile)
+* [`8.7.1`, `latest` (latest/Dockerfile)](https://github.com/curl/curl-container/releases/tag/8.7.1)
 
 ## Need support
 

@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/fluent/fluent-bit:
-      input_base_tag: "2.2."
+      input_base_tag: "3.0."
       output_repo: fluent-bit-ib
 runtimes:
   - type: docker_compose

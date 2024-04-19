@@ -20,4 +20,5 @@ docker-compose --env-file "${SCRIPTPATH}"/.env_hobby.temp -f "${SCRIPTPATH}"/doc
 set -e
 
 # issue token
-docker-compose --env-file "${SCRIPTPATH}"/.env_hobby.temp -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override
+# docker-compose --env-file "${SCRIPTPATH}"/.env_hobby.temp -f "${SCRIPTPATH}"/docker-compose.yml -p "${NAMESPACE}" run engine python manage.py issue_invite_for_the_frontend --override
+# issue_invite_for_the_frontend functionality is simplified by passing an env variable GRAFANA_API_URL

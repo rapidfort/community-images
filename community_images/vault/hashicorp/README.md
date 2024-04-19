@@ -89,7 +89,6 @@ RapidFort’s hardened [rapidfort/vault][rf-dh-image-link] image has been optimi
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.12.0`, `latest` (latest/Dockerfile)](https://github.com/hashicorp/docker-vault/blob/11a5dff987176c6ab24f76cee14f6dd820f42d96/0.X/Dockerfile)
 
 ## Need support
 

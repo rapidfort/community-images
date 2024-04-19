@@ -167,8 +167,12 @@ class K8sSetup:
         rf_access_token = os.getenv("RF_ACCESS_TOKEN")
         helm_repo = self.runtime_props.get('helm', {}).get('repo')
         helm_chart = self.runtime_props.get('helm', {}).get('chart')
+        helm_chart_version = self.runtime_props.get('helm', {}).get('version', '')
+
         cmd = f"helm install {self.release_name}"
         cmd += f" {helm_repo}/{helm_chart}"
+        if helm_chart_version != '':
+            cmd += f" --version {helm_chart_version}"
         cmd += f" --namespace {self.namespace_name}"
         cmd += f" --set env.MY_ENV_VAR={rf_access_token}"
 

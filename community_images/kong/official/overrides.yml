@@ -6,6 +6,8 @@ containerSecurityContext:
   allowPrivilegeEscalation: true
   capabilities:
     add: ["SYS_PTRACE"]
+postgresql:
+  enabled: true
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"

@@ -4,9 +4,9 @@ set -x
 set -e
 
 metricbeat version
-metricbeat export config
+metricbeat export ilm-policy
 metricbeat keystore --help
-metricbeat test config
+metricbeat test --help
 metricbeat setup --help
 metricbeat modules enable kibana-xpack
 metricbeat modules enable elasticsearch-xpack

@@ -24,7 +24,10 @@ grafana-ib:
     - 10.4.
 haproxy-ib:
   search_tags:
-    - v2.4.
+    - 2.4.
+logstash-ib:
+  search_tags:
+    - 8.13.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -55,6 +58,9 @@ nifi-ib:
 node-exporter-ib:
   search_tags:
     - v1.7.
+pause-ib:
+  search_tags:
+    - "3."
 postgresql-ib:
   search_tags:
     - "12."
@@ -64,12 +70,18 @@ prometheus-ib:
 redis-ib:
   search_tags:
     - 6.2.
+terraform-ib:
+  search_tags:
+    - 1.7.
 traefik-ib:
   search_tags:
     - v2.11.
+vault-k8s-ib:
+  search_tags:
+    - v1.4.
 wordpress-ib:
   search_tags:
-    - 6.4.
+    - 6.5.
 zookeeper-ib:
   search_tags:
     - 3.9.

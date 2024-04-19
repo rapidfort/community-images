@@ -11,7 +11,7 @@ echo "Json params for docker compose coverage = $JSON"
 
 PAUSE_CONTAINER=$(jq -r '.container_details."pause-ib".name' < "$JSON_PARAMS")
 NGINX_CONTAINER="nginx-ironbank"
-docker run -d --name "$NGINX_CONTAINER" --net=container:"$PAUSE_CONTAINER" --pid=container:"$PAUSE_CONTAINER" registry1.dso.mil/ironbank/opensource/nginx/nginx
+docker run -d --name "$NGINX_CONTAINER" --net=container:"$PAUSE_CONTAINER" --pid=container:"$PAUSE_CONTAINER" rapidfort/nginx-ib:latest
 
 #checking if both pause and nginx share the same namespace or not 
 

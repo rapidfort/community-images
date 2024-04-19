@@ -6,7 +6,7 @@ set -e
 metricbeat version
 metricbeat export config
 metricbeat keystore --help
-metricbeat test
+metricbeat test config
 metricbeat setup --help
 metricbeat modules enable kibana-xpack
 metricbeat modules enable elasticsearch-xpack

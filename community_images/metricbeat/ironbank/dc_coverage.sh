@@ -14,9 +14,9 @@ CONTAINER_NAME=${PROJECT_NAME}-metricbeat-1
 
 sleep 20
 # testing commands
-docker exec "${CONTAINER_NAME}" bin/bash /tmp/test_commands.sh
+docker exec "${CONTAINER_NAME}" /bin/bash /tmp/test_commands.sh
 # indices present 
 curl -XGET 'http://localhost:9200/_cat/indices?v&pretty'
-#To verify that your server’s statistics are present in Elasticsearch
+#To verify that statistics are present in Elasticsearch
 curl -XGET 'http://localhost:9200/metricbeat-*/_search?pretty'
 

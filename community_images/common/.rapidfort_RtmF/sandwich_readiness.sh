@@ -15,10 +15,10 @@ if [ "$RF_VERBOSE" -ne "0" ] ; then
 fi
 
 if test -e /.rapidfort_RtmF/sandwich_init."${RAPIDFORT_RTMF_POD_UID}".ready ; then
-  echo "/.rapidfort_RtmF/sandwich_init."${RAPIDFORT_RTMF_POD_UID}".ready exists"
+  echo "/.rapidfort_RtmF/sandwich_init.${RAPIDFORT_RTMF_POD_UID}.ready exists"
   exit 0
 else
-  echo "/.rapidfort_RtmF/sandwich_init."${RAPIDFORT_RTMF_POD_UID}".ready DOES NOT exist"
+  echo "/.rapidfort_RtmF/sandwich_init.${RAPIDFORT_RTMF_POD_UID}.ready DOES NOT exist"
   exit 1
 fi
 

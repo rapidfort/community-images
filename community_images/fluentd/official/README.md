@@ -87,8 +87,8 @@ RapidFort’s hardened [rapidfort/fluentd-official][rf-dh-image-link] image has 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* ['v1.16.0-1.0', 'v1.16-1', 'latest'](https://github.com/fluent/fluentd-docker-image/blob/master/v1.16/alpine/Dockerfile)
-* ['v1.16.0-debian-1.0', 'v1.16-debian-1'](https://github.com/fluent/fluentd-docker-image/blob/master/v1.16/debian/Dockerfile)
+* [`v1.16.2-1.1`, `v1.16-1`, `latest`](https://github.com/fluent/fluentd-docker-image/blob/a4dd65768ec1819574e570716955276c9089326a/v1.16/alpine/Dockerfile)
+* [`v1.16.2-debian-1.1`, `v1.16-debian-1`](https://github.com/fluent/fluentd-docker-image/blob/a4dd65768ec1819574e570716955276c9089326a/v1.16/debian/Dockerfile)
 
 ## Need support
 

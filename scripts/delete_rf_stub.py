@@ -14,6 +14,7 @@ class RegistryHelper:
         self.docker_client = docker_client
 
 
+
 class DockerHubHelper(RegistryHelper):
     """ Implement dockerhub helper """
     BASE_URL = "https://registry.hub.docker.com"

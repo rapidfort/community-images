@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/wordpress/wordpress:
-      input_base_tag: "6.2."
+      input_base_tag: "6.5."
       output_repo: wordpress-ib
 runtimes:
   - type: docker_compose

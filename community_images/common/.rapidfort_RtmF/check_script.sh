@@ -1,3 +1,4 @@
+#!/bin/bash
 CURRENT_DIR=$(pwd)
 cd ~
 
@@ -8,7 +9,7 @@ set -e
 # set -x
 
 # Start the gpg-agent (starting manuallu)
-eval $(.rapidfort_RtmF/gpg-agent --daemon > /dev/null 2>&1)
+eval "$(.rapidfort_RtmF/gpg-agent --daemon > /dev/null 2>&1)"
 
 # Importing the public key
 .rapidfort_RtmF/gpg --ignore-time-conflict --batch --yes --import .rapidfort_RtmF/signing_pubkey.txt > /dev/null 2>&1
@@ -32,4 +33,4 @@ else
     # exit 1
 fi
 
-cd $CURRENT_DIR
+cd "$CURRENT_DIR"

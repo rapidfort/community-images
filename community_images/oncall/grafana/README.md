@@ -110,7 +110,7 @@ RapidFort’s hardened [rapidfort/oncall][rf-dh-image-link] image has been optim
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`v1.0.0`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)
+* [`v1.3.1`, `latest` (engine/Dockerfile)](https://github.com/grafana/oncall/blob/dev/engine/Dockerfile)
 
 ## Need support
 

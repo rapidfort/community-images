@@ -8,7 +8,7 @@ set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-pip install jinja-cli PyYAML
+pip install jinja-cli PyYAML ruamel.yaml
 
 gen_image_readme()
 {
@@ -80,6 +80,7 @@ del_image_variants()
 main()
 {
   python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
+  "${SCRIPTPATH}"/prepare_ironbank_tags.sh
   gen_main_readme
   gen_image_readme
   gen_new_image_actions

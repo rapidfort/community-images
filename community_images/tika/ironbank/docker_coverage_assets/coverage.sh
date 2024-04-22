@@ -14,10 +14,15 @@ function test_curl_command {
     local curl_command="$1"
 
     # Execute the provided curl command and capture the HTTP status code
-    local http_status=$(eval "${curl_command} -o /dev/null -s -w \"%{http_code}\"")
+    local http_status
+    http_status=$(eval "${curl_command} -o /dev/null -s -w \"%{http_code}\"")
 
+    # Check if http_status is empty
+    if [[ -z ${http_status} ]]; then
+        echo "Error: No HTTP status received for '${curl_command}'"
+        return 1
     # Check if the HTTP status code is in the list of acceptable codes
-    if [[ ! ${ACCEPTABLE_CODES} =~ ${http_status} ]]; then
+    elif [[ ! ${ACCEPTABLE_CODES} =~ ${http_status} ]]; then
         echo "Error: Received HTTP status ${http_status} for '${curl_command}'"
         return 1
     else

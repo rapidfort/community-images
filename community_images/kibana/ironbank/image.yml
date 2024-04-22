@@ -1,0 +1,35 @@
+name: kibana-ib
+official_name: Kibana Iron-Bank
+official_website: https://www.elastic.co/kibana
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/elastic/kibana/kibana
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/elastic%2Fkibana%2Fkibana
+source_image_readme: https://repo1.dso.mil/dsop/elastic/kibana/kibana/-/blob/development/README.md
+rf_docker_link: rapidfort/kibana-ib
+image_workflow_name: kibana_ironbank
+github_location: kibana/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fkibana%2Fkibana
+usage_instructions: |
+  #Run the Kibana container:
+  $ docker run -d -p 5601:5601 --name kibana --net=kibana_network -e KIBANA_ELASTICSEARCH_URL=elasticsearch rapidfort/kibana-ib
+  #Then you can access your application at http://your-ip:5601/
+what_is_text: |
+  Kibana is an open source, browser based analytics and search dashboard for Elasticsearch. Kibana strives to be easy to get started with, while also being flexible and powerful.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - elastic/kibana/kibana:
+      input_base_tag: "8.13."
+      output_repo: kibana-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 120
+    image_keys:
+      kibana-ib:
+        repository: "KIBANA_IMAGE_REPOSITORY"
+        tag: "KIBANA_IMAGE_TAG"

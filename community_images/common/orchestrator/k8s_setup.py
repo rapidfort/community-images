@@ -164,7 +164,6 @@ class K8sSetup:
         """ Prepare helm chart command """
         # Install helm
         override_file = f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
-        rf_access_token = os.getenv("RF_ACCESS_TOKEN")
         helm_repo = self.runtime_props.get('helm', {}).get('repo')
         helm_chart = self.runtime_props.get('helm', {}).get('chart')
         helm_chart_version = self.runtime_props.get('helm', {}).get('version', '')
@@ -174,7 +173,7 @@ class K8sSetup:
         if helm_chart_version != '':
             cmd += f" --version {helm_chart_version}"
         cmd += f" --namespace {self.namespace_name}"
-        cmd += f" --set env.MY_ENV_VAR={rf_access_token}"
+        cmd += f' --set env.MY_ENV_VAR={os.getenv("RF_ACCESS_TOKEN")}'
 
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():

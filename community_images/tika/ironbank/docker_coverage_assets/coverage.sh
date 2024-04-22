@@ -18,7 +18,7 @@ function test_curl_command {
 
     # Check if the HTTP status code is in the list of acceptable codes
     if [[ ! ${ACCEPTABLE_CODES} =~ ${http_status} ]]; then
-        echo "Error: Received HTTP status ${http_status} for ${curl_command}"
+        echo "Error: Received HTTP status ${http_status} for '${curl_command}'"
         return 1
     else
         echo "Request completed successfully with HTTP status ${http_status}"
@@ -26,7 +26,8 @@ function test_curl_command {
     fi
 }
 
-test_curl_command "curl 127.0.0.1:9998"
+# All available endpoints
+test_curl_command "curl http://localhost:9998/"
 
 # Metadata Resource 1
  test_curl_command "curl -X PUT --data-ascii @zipcodes.csv http://localhost:9998/meta --header 'Content-Type: text/csv'"
@@ -51,9 +52,9 @@ test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika"
 test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika/text --header \"Accept: application/json\""
 
 # PUT Tika Resource (Skip Embedded Files/Attachments)
-test_curl_command "curl -T test_recursive_embedded.docx http://localhost:9998/tika --header \"Accept: text/plain\" --header \"X-Tika-Skip-Embedded: true\""
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/tika --header \"X-Tika-Skip-Embedded: true\""
 
-# # PUT Tika Resource (Multipart Support)
+# PUT Tika Resource (Multipart Support)
 test_curl_command "curl -F upload=@ledgers.xlsx http://localhost:9998/tika/form"
 
 # Detector Resource (RTF)
@@ -71,4 +72,49 @@ test_curl_command "curl -X PUT --data-binary @foo_fr.txt http://localhost:9998/l
 # Language Resource (PUT a string with English)
 test_curl_command "curl -X PUT --data "This is English!" http://localhost:9998/language/string"
 
-# Recursive Metadata and Content Resource 
+# Recursive Metadata and Content Resource (with default XML format for "X-TIKA:content")
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta"
+
+# Recursive Metadata and Content Resource (setting format for "X-TIKA:content" to text, html and no content)
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta/text"
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta/html"
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta/ignore"
+
+# Recursive Metadata and Content Resource (Multipart Support)
+test_curl_command "curl -F upload=@lorem_ipsum.docx http://localhost:9998/rmeta/form"
+
+# Recursive Metadata and Content Resource (skip embedded files/attachments)
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta --header \"X-Tika-Skip-Embedded: true\""
+
+# Recursive Metadata and Content Resource (specifying maxEmbeddedResources)
+test_curl_command "curl -T lorem_ipsum.docx --header "maxEmbeddedResources: 0" http://localhost:9998/rmeta"
+
+# Recursive Metadata and Content Resource (specifying write limit per handler)
+test_curl_command "curl -T lorem_ipsum.docx --header "writeLimit: 1000" http://localhost:9998/rmeta"
+
+# Unpack Resource (PUT zip file and get back met file zip)
+test_curl_command "curl -X PUT --data-binary @foo.zip http://localhost:9998/unpack --header \"Content-type: application/zip\""
+
+# Unpack Resource (Unpack Resource)
+test_curl_command "curl -T lorem_ipsum.docx -H \"Accept: application/x-tar\" http://localhost:9998/unpack"
+
+# Unpack Resource (PUT doc file and get back the content and metadata)
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/unpack/all"
+
+# Unpack Resource (PUT zip file and get back met file zip and bump max attachment size from default 100MB to custom 1GB)
+test_curl_command "curl -X PUT --data-binary @foo.zip http://localhost:9998/unpack --header \"Content-type: application/zip\" --header \"unpackMaxBytes:  1073741824\""
+
+# Defined mime types
+test_curl_command "curl http://localhost:9998/mime-types"
+
+# Available Detectors
+test_curl_command "curl http://localhost:9998/detectors"
+
+# Available Parsers
+test_curl_command "curl http://localhost:9998/parsers"
+
+# List all the available parsers, along with what mimetypes they support
+test_curl_command "curl http://localhost:9998/parsers/details"
+
+# Transfer-Layer Compression (tell tika-server  to compress the output of the parse) 
+test_curl_command "curl -T GeoSPARQL.pdf -H \"Accept-Encoding: gzip\" http://localhost:9998/rmeta"

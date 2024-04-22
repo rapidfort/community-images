@@ -15,7 +15,7 @@ etcd-ib:
     - v3.5.
 fluent-bit-ib:
   search_tags:
-    - 3.0.
+    - 2.2.
 fluentd-ib:
   search_tags:
     - 1.16.
@@ -25,6 +25,9 @@ grafana-ib:
 haproxy-ib:
   search_tags:
     - 2.4.
+kibana-ib:
+  search_tags:
+    - 8.13.
 logstash-ib:
   search_tags:
     - 8.13.

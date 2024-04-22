@@ -92,7 +92,7 @@ test_curl_command "curl -F upload=@lorem_ipsum.docx http://localhost:9998/rmeta/
 test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta --header \"X-Tika-Skip-Embedded: true\""
 
 # Recursive Metadata and Content Resource (specifying maxEmbeddedResources)
-test_curl_command "curl -T lorem_ipsum.docx --header "maxEmbeddedResources: 0" http://localhost:9998/rmeta"
+test_curl_command "curl -T lorem_ipsum.docx --header \"maxEmbeddedResources: 0\" http://localhost:9998/rmeta"
 
 # Recursive Metadata and Content Resource (specifying write limit per handler)
 test_curl_command "curl -T lorem_ipsum.docx --header "writeLimit: 1000" http://localhost:9998/rmeta"

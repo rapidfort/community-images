@@ -75,7 +75,7 @@ test_curl_command "curl -X PUT -H \"Content-Disposition: attachment; filename=zi
 test_curl_command "curl -X PUT --data-binary @foo_fr.txt http://localhost:9998/language/stream"
 
 # Language Resource (PUT a string with English)
-test_curl_command "curl -X PUT --data "This is English!" http://localhost:9998/language/string"
+test_curl_command "curl -X PUT --data \"This is English!\" http://localhost:9998/language/string"
 
 # Recursive Metadata and Content Resource (with default XML format for "X-TIKA:content")
 test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta"

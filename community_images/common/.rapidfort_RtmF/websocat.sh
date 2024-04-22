@@ -22,7 +22,7 @@ trap_term() {
 trap trap_term SIGTERM
 
 while true ; do
-  export HOSTS="$((echo "${RF_APP_HOST}" ; cat /etc/resolv.conf | grep "^nameserver" | sed "s=^nameserver==g" | awk '{print "dig +short @" $1 " RF_APP_HOST"}' | sed "s=RF_APP_HOST="${RF_APP_HOST}"=g" | bash-static | sed "s=;.*==g" | tr -d -c '[:digit:][:space:].') | sort -r | grep .. | uniq)"
+  export HOSTS="$((echo "${RF_APP_HOST}" ; cat /etc/resolv.conf | grep "^nameserver" | sed "s=^nameserver==g" | awk '{print "dig +short @" $1 " RF_APP_HOST"}' | sed "s=RF_APP_HOST=${RF_APP_HOST}=g" | bash-static | sed "s=;.*==g" | tr -d -c '[:digit:][:space:].') | sort -r | grep .. | uniq)"
   echo "websocat.sh : trying hosts: ${HOSTS}" 1>&2
   for HOST in "${HOSTS}" ; do
     export WS_HOST=wss://"${HOST}":443/rfpubsub

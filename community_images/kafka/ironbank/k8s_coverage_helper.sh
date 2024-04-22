@@ -23,10 +23,10 @@ EOF
 start_consumer() {
     echo "Starting consumer..."
     # Start the console consumer
-    timeout 5 bin/kafka-console-consumer.sh --topic quickstart-events-rf --from-beginning --bootstrap-server localhost:9092 > output.txt || true
+    timeout 7 bin/kafka-console-consumer.sh --topic quickstart-events-rf --from-beginning --bootstrap-server localhost:9092 > output.txt || true
 
     # Wait for consumer to consume two messages
-    sleep 2
+    sleep 7
 
     # Verify consumer output
     if [ "$(cat output.txt)" != "This is my first event
@@ -65,14 +65,16 @@ function run_kafka_streams_demo() {
         --config cleanup.policy=compact
 
     # Start the Wordcount Application
-    timeout 40 bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo || true &
+    timeout 50 bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo || true &
 
     # Sleep for a moment to allow Wordcount application to start
-    sleep 10
+    sleep 15
 
     # Produce some data
     timeout 10 echo -e "all streams lead to kafka hello kafka streams join kafka summit" | \
         bin/kafka-console-producer.sh --broker-list localhost:9092 --topic streams-plaintext-input || true
+
+    sleep 7
 
     # Consume processed data
     timeout 10 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
@@ -84,6 +86,8 @@ function run_kafka_streams_demo() {
         --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
         --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer > output.txt || true
 
+    sleep 7 
+    
     # Verify Stream output
         if [ "$(cat output.txt)" != "all	1
 streams	1

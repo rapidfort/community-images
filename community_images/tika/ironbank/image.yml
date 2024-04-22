@@ -29,10 +29,7 @@ runtimes:
   - type: docker
     script: docker_coverage.sh
     wait_time_sec: 60
-    tike-ib:
-      env_file: docker.env
-      environment:
-        KEY_FOO: VAL_BAR
+    tika-ib:
+      ports: ["9998:9998"]
       volumes:
-        configs/dynamic/bootstrap.yaml: /opt/bitnami/redis/conf/redis.yaml
-        configs/dynamic: /etc/redis
+        docker_coverage_assets: /opt/tika/docker_coverage_assets

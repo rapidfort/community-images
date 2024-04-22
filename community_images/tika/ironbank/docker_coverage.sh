@@ -9,8 +9,8 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker coverage = $JSON"
 
-# NETWORK_NAME=$(jq -r '.network_name' < "$JSON_PARAMS")
-# ENVOY_HOST=$(jq -r '.container_details.envoy.ip_address' < "$JSON_PARAMS")
 
+SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
+CONTAINER_NAME=$(jq -r '.container_details."tika-ib".name' < "$JSON_PARAMS")
 
-
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "./opt/tika/docker_coverage_assets/coverage.sh"

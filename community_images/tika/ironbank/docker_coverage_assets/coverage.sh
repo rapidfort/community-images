@@ -34,19 +34,10 @@ test_curl_command "curl 127.0.0.1:9998"
 # Metadata Resource 2
 test_curl_command "curl -T zipcodes.csv http://localhost:9998/meta"
 
-# # Metadata Resource 3 (Get metadata as JSON)
-# test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/meta --header \"Accept: application/json\""
+# Metadata Resource 3 (Get specific metadata key's value)
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/meta/Content-Type"
 
-# # Metadata Resource 4 (Get metadata as XMP)
-# test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/meta --header \"Accept: application/rdf+xml\""
-
-# # Metadata Resource 5 (Get specific metadata key's value as simple text string, csv, JSON, XMP)
-# test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/meta/Content-Type --header \"Accept: text/plain\""
-# test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/meta/Content-Type --header \"Accept: text/csv\""
-# test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/meta/Content-Type --header \"Accept: application/json\""
-# test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/meta/Content-Type --header \"Accept: application/rdf+xml\""
-
-# Metadata Resource 6 (Multipart Support)
+# Metadata Resource 4 (Multipart Support)
 test_curl_command "curl -F upload=@zipcodes.csv http://localhost:9998/meta/form"
 
 # GET Tika Resource
@@ -54,20 +45,13 @@ test_curl_command "curl -X GET http://localhost:9998/tika"
 
 # PUT Tika Resource 
 test_curl_command "curl -X PUT --data-binary @GeoSPARQL.pdf http://localhost:9998/tika --header \"Content-type: application/pdf\""
-# test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika --header \"Accept: text/html\""
-# test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika --header \"Accept: text/plain\""
+test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika"
 
-# # PUT Tika Resource (using the Boilerpipe handler)
-# test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika/main --header \"Accept: text/plain\""
-
-# # PUT Tika Resource (get the text and metadata of a file in json format)
-# test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika --header \"Accept: application/json\""
-
-# # PUT Tika Resource (specifying /text handler type after /tika)
-# test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika/text --header \"Accept: application/json\""
+# PUT Tika Resource (specifying /text handler type after /tika)
+test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika/text --header \"Accept: application/json\""
 
 # PUT Tika Resource (Skip Embedded Files/Attachments)
-# test_curl_command "curl -T test_recursive_embedded.docx http://localhost:9998/tika --header \"Accept: text/plain\" --header \"X-Tika-Skip-Embedded: true\""
+test_curl_command "curl -T test_recursive_embedded.docx http://localhost:9998/tika --header \"Accept: text/plain\" --header \"X-Tika-Skip-Embedded: true\""
 
 # # PUT Tika Resource (Multipart Support)
 test_curl_command "curl -F upload=@ledgers.xlsx http://localhost:9998/tika/form"

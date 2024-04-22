@@ -13,8 +13,10 @@ fi
 
 export RAPIDFORT_SANDWICH_TOKEN="${1}"
 export RAPIDFORT_SANDWICH_INFO="${2}"
-export RAPIDFORT_ORIG_UID=$(id -u)
-export RAPIDFORT_ORIG_GID=$(id -g)
+RAPIDFORT_ORIG_UID=$(id -u)
+RAPIDFORT_ORIG_GID=$(id -g)
+export RAPIDFORT_ORIG_UID
+export RAPIDFORT_ORIG_GID
 
 if [ "${RAPIDFORT_ORIG_UID}" = "0" ] ; then
   chown 0:0 /.rapidfort_RtmF/resock

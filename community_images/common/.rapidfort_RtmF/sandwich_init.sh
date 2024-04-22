@@ -1,8 +1,8 @@
 #!/.rapidfort_RtmF/bash-static --norc
 # --noprofile
 
-export RF_ORIG_LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
-export RF_ORIG_PATH=${PATH}
+export RF_ORIG_LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
+export RF_ORIG_PATH="${PATH}"
 
 export LD_LIBRARY_PATH=/.rapidfort_RtmF
 export PATH=/.rapidfort_RtmF:/.rapidfort_RtmF/_tools
@@ -11,10 +11,10 @@ if test -z "$RF_VERBOSE" ; then
   export RF_VERBOSE=0
 fi
 
-export RAPIDFORT_SANDWICH_TOKEN=${1}
-export RAPIDFORT_SANDWICH_INFO=${2}
-export RAPIDFORT_ORIG_UID=$(id -u)
-export RAPIDFORT_ORIG_GID=$(id -g)
+export RAPIDFORT_SANDWICH_TOKEN="${1}"
+export RAPIDFORT_SANDWICH_INFO="${2}"
+export RAPIDFORT_ORIG_UID="$(id -u)"
+export RAPIDFORT_ORIG_GID="$(id -g)"
 
 if [ "${RAPIDFORT_ORIG_UID}" = "0" ] ; then
   chown 0:0 /.rapidfort_RtmF/resock
@@ -28,7 +28,7 @@ fi
   ## export LSAN_OPTIONS="verbosity=1:log_threads=1"
   ## the following is useful for debugging but does not retain PID1
   if false ; then
-    if /.rapidfort_RtmF/resock --auto -v ${RF_VERBOSE} ; then
+    if /.rapidfort_RtmF/resock --auto -v "${RF_VERBOSE}" ; then
       echo "SI: success."
       exit 0
     else
@@ -50,9 +50,9 @@ else
 fi
 
 if test -s /.rapidfort/run/resock ; then
-  exec /.rapidfort/run/resock --auto -v ${RF_VERBOSE} ${RF_RESOCK_ARGS}
+  exec /.rapidfort/run/resock --auto -v "${RF_VERBOSE}" "${RF_RESOCK_ARGS}"
 else
-  exec /.rapidfort_RtmF/resock --auto -v ${RF_VERBOSE} ${RF_RESOCK_ARGS}
+  exec /.rapidfort_RtmF/resock --auto -v "${RF_VERBOSE}" "${RF_RESOCK_ARGS}"
 fi
 
 echo "SI: ERROR: exec resock failed" 1>&2

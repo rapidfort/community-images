@@ -5,12 +5,15 @@ containerSecurityContext:
   runAsUser: 1001
   allowPrivilegeEscalation: true
   capabilities:
-    add: ["SYS_PTRACE"]
-admin:
-  enabled: true
+    add: ["SYS_PTRACE", "SETUID", "SETGID"]
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"
+env:
+  prefix: /kong_prefix/
+  database: "off"
+ingressController:
+  enabled: true
 livenessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 30

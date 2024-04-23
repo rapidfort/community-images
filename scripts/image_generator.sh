@@ -29,7 +29,6 @@ gen_image_readme()
   done < "${SCRIPTPATH}"/../image.lst
 }
 
-
 gen_main_readme()
 {
   echo "Generating main readme"

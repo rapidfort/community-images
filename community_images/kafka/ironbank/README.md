@@ -1,4 +1,4 @@
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=rapidfort_logo">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -11,11 +11,13 @@
 
 # RapidFort hardened image for Apacha Kafka Ironbank
 
-RapidFort’s container optimization process hardened this Apacha Kafka Ironbank container. This container is free to use and has no license limitations.
 
-It is the same as the [Platform One Apacha Kafka Ironbank][source-image-repo-link] image but more secure.
+RapidFort has optimized and hardened this Apacha Kafka Ironbank container image. This container is free to use and has no license limitations.
 
-Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
+
+This optimized image is functionally equivalent to [Platform One Apacha Kafka Ironbank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+
+Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
 
 [Get the full report here or click on the image below][rf-view-report-link]
@@ -28,7 +30,7 @@ Every day, we optimize and harden a variety of Docker Hub’s most famous images
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=get_full_report_button">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
@@ -47,7 +49,9 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 ## How do I use this hardened Apacha Kafka Ironbank image?
 
-The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
+
+
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Apacha Kafka Ironbank][source-image-repo-link].
 
 <a href="https://repo1.dso.mil/dsop/bitnami/kafka/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -56,21 +60,22 @@ The runtime instructions for this container are no different from the official r
 <br>
 
 ```sh
-# Using docker run:
-$ docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/var/www/html/ rapidfort/apache2-ib
-# PWD can be replaced with the directory containing all your HTML.
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+# install kafka, just replace repository with RapidFort registry and use the helmn chart version 21.1.1
+$ helm install my-kafka bitnami/kafka --version 21.1.1 --set image.repository=rapidfort/kafka-ib
 
 ```
 
 ## What is a hardened image?
 
-A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
+A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
 This image is a hardened version of the official [Platform One Apacha Kafka Ironbank][source-image-repo-link] image on Docker Hub.
 
-RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
+RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
-Our hardened images are updated daily using the latest vulnerability information available.
+Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
 <a href="https://github.com/rapidfort/community-images/tree/main/community_images/kafka/ironbank">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
@@ -79,9 +84,9 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 
 ## What’s the difference between the official [Platform One Apacha Kafka Ironbank][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/kafka-ib][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/kafka-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
-We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
+We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -99,15 +104,14 @@ Join our slack community for any questions.
 
 ### [⏫⭐️ Scroll to the star button](#start-of-content)
 
-If you believe this project has potential, feel free to **star this repo** just like many [amazing people](https://github.com/rapidfort/community-images/stargazers)
-have.
+If you find this project useful, please star this repo just like many [amazing people](https://github.com/rapidfort/community-images/stargazers) have.
 
 ## Have questions?
 
 [![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png)][rf-rapidfort-footer-logo-link]
 
 
-If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
+Learn more about RapidFort's pioneering Software Attack Surface Management platform at [RapidFort.com][rf-link].
 
 <br>
 <br>
@@ -120,11 +124,11 @@ If you'd like to learn more about RapidFort or our container optimization proces
 
 [rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=view_report_button
-[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=view_report_link
-[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=view_report_button
+[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=kafka-ib&utm_content=image_cve_reduction_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/kafka-ib?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/kafka-ib?logo=docker&logoColor=white
@@ -136,5 +140,5 @@ If you'd like to learn more about RapidFort or our container optimization proces
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/kafka/ironbank/assets/metrics.webp
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/kafka/ironbank/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories//opensource%2Fbitnami%2Fkafka
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fkafka
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/kafka-ib

@@ -12,7 +12,7 @@
 # RapidFort hardened image for MongoDB®
 
 
-RapidFort has optimized and hardened this MongoDB® container image. It is free to use. To run this image, please sign up on [www.rapidfort.com](www.rapidfort.com) to obtain an access token, and provide this token as an environment variable named RF_ACCESS_TOKEN when running the image.
+RapidFort has optimized and hardened this MongoDB® container image. It is free to use. To run this image, please sign up on [www.rapidfort.com](https://www.rapidfort.com) to obtain an access token, and provide this token as an environment variable named RF_ACCESS_TOKEN when running the image.
 
 
 This optimized image is functionally equivalent to [Bitnami MongoDB®][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
@@ -51,7 +51,7 @@ Disclaimer: The respective trademarks mentioned in the offering are owned by the
 
 
 <ol>
-    <li>Register on <a href="www.rapidfort.com">www.rapidfort.com</a> to obtain your free access token.</li>
+    <li>Register on <a href="https://www.rapidfort.com">www.rapidfort.com</a> to obtain your free access token.</li>
     <li>When running the image, pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
 </ol>
 
@@ -73,7 +73,7 @@ The runtime instructions for this hardened container image are the same as the o
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # install mongodb, just replace repository with RapidFort registry
-$ helm install my-mongodb bitnami/mongodb --set image.repository=rapidfort/mongodb
+$ helm install my-mongodb bitnami/mongodb --set image.repository=rapidfort/mongodb --set RF_ACCESS_TOKEN="your_access_token"
 
 ```
 
@@ -100,7 +100,6 @@ We are big fans of open-source software and secure software development. RapidFo
 
 ## Supported tags and respective `Dockerfile` links
 * [`7.0`, `7.0-debian-12`, `7.0.8`, `7.0.8-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-12/Dockerfile)
-
 
 ## Need support
 

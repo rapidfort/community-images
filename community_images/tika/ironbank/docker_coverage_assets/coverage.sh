@@ -95,7 +95,7 @@ test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/rmeta --header
 test_curl_command "curl -T lorem_ipsum.docx --header \"maxEmbeddedResources: 0\" http://localhost:9998/rmeta"
 
 # Recursive Metadata and Content Resource (specifying write limit per handler)
-test_curl_command "curl -T lorem_ipsum.docx --header "writeLimit: 1000" http://localhost:9998/rmeta"
+test_curl_command "curl -T lorem_ipsum.docx --header \"writeLimit: 1000\" http://localhost:9998/rmeta"
 
 # Unpack Resource (PUT zip file and get back met file zip)
 test_curl_command "curl -X PUT --data-binary @foo.zip http://localhost:9998/unpack --header \"Content-type: application/zip\""

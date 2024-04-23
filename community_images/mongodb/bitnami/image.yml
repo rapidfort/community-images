@@ -13,11 +13,12 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install mongodb, just replace repository with RapidFort registry
-  $ helm install my-mongodb bitnami/mongodb --set image.repository=rapidfort/mongodb
+  $ helm install my-mongodb bitnami/mongodb --set image.repository=rapidfort/mongodb --set RF_ACCESS_TOKEN="your_access_token"
 what_is_text: |
   MongoDB® is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemata. MongoDB is developed by MongoDB Inc., and is published under a combination of the Server Side Public License and the Apache License.
 disclaimer: |
   Disclaimer: The respective trademarks mentioned in the offering are owned by the respective companies. We do not provide a commercial license for any of these products. This listing has an open-source license. MongoDB(R) is run and maintained by MongoDB, which is a completely separate project from RapidFort.
+is_locked: "True"
 input_registry:
   registry: docker.io
   account: bitnami

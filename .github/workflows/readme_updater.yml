@@ -306,6 +306,14 @@ jobs:
           repository: rapidfort/influxdb
           readme-filepath: ./community_images/influxdb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for InfluxDB™
+      - name: Docker Hub Description Apacha Kafka Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kafka-ib
+          readme-filepath: ./community_images/kafka/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apacha Kafka Ironbank
       - name: Docker Hub Description Keycloak Official
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -314,6 +322,14 @@ jobs:
           repository: rapidfort/keycloak-official
           readme-filepath: ./community_images/keycloak/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Keycloak Official
+      - name: Docker Hub Description Kibana Iron-Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kibana-ib
+          readme-filepath: ./community_images/kibana/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kibana Iron-Bank
       - name: Docker Hub Description Kong
         uses: peter-evans/dockerhub-description@v3
         with:

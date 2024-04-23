@@ -11,9 +11,20 @@ extraEnvVars:
     value: "0"
 env:
   prefix: /kong_prefix/
-  database: "off"
-ingressController:
+  database: postgres
+admin:
   enabled: true
+  http:
+    enabled: true
+    servicePort: 8001
+    containerPort: 8001
+postgresql:
+  enabled: true
+  auth:
+    username: kong
+    database: kong
+ingressController:
+  enabled: false
 livenessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 30

@@ -91,7 +91,6 @@ We are big fans of open-source software and secure software development. RapidFo
 ## Supported tags and respective `Dockerfile` links
 * [`5`, `5-debian-12`, `5.82.2`, `5.82.2-debian-12-r` (5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-12/Dockerfile)
 
-
 ## Need support
 
 Join our slack community for any questions.

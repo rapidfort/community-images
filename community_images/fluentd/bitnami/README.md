@@ -91,7 +91,6 @@ We are big fans of open-source software and secure software development. RapidFo
 ## Supported tags and respective `Dockerfile` links
 * [`1`, `1-debian-12`, `1.16.5`, `1.16.5-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-12/Dockerfile)
 
-
 ## Need support
 
 Join our slack community for any questions.

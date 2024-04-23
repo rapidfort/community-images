@@ -13,11 +13,12 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install mysql, just replace repository with RapidFort registry
-  $ helm install my-mysql bitnami/mysql --set image.repository=rapidfort/mysql
+  $ helm install my-mysql bitnami/mysql --set image.repository=rapidfort/mysql --set RF_ACCESS_TOKEN="your_access_token"
 what_is_text: |
   MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, covering the entire range from personal projects and websites, via e-commerce and information services, all the way to high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "True"
 input_registry:
   registry: docker.io
   account: bitnami

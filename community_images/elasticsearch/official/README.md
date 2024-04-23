@@ -11,11 +11,13 @@
 
 # RapidFort hardened image for ElasticSearch Official
 
-RapidFort’s container optimization process hardened this ElasticSearch Official container. This container is free to use and has no license limitations.
 
-It is the same as the [The Elastic Team ElasticSearch Official][source-image-repo-link] image but more secure.
+RapidFort has optimized and hardened this ElasticSearch Official container image. This container is free to use and has no license limitations.
 
-Every day, we optimize and harden a variety of Docker Hub’s most famous images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured containers.
+
+This optimized image is functionally equivalent to [The Elastic Team ElasticSearch Official][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+
+Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
 
 [Get the full report here or click on the image below][rf-view-report-link]
@@ -47,7 +49,9 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 ## How do I use this hardened ElasticSearch Official image?
 
-The runtime instructions for this container are no different from the official release. Follow the instructions in their readme, but use our hardened image.
+
+
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [The Elastic Team ElasticSearch Official][source-image-repo-link].
 
 <a href="https://github.com/docker-library/docs/blob/master/elasticsearch/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -63,13 +67,13 @@ $ docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300
 
 ## What is a hardened image?
 
-A hardened image is a copy of a container that has been optimized and reduced for significantly improved security. Because every container uses many open-source software components and their dependencies, there’s a lot of extra weight that can be trimmed.
+A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
 This image is a hardened version of the official [The Elastic Team ElasticSearch Official][source-image-repo-link] image on Docker Hub.
 
-RapidFort is an industry-leading container optimization solution that minimizes software attack surfaces by removing unused code. Most containers can be reduced by at least 50%, which reduces the opportunity for malicious attacks and CVE exploits. Learn more at [RapidFort.com][rf-link].
+RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
-Our hardened images are updated daily using the latest vulnerability information available.
+Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
 <a href="https://github.com/rapidfort/community-images/tree/main/community_images/elasticsearch/official">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
@@ -78,9 +82,9 @@ Our hardened images are updated daily using the latest vulnerability information
 <br>
 
 ## What’s the difference between the official [The Elastic Team ElasticSearch Official][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/elasticsearch-official][rf-dh-image-link] image has been optimized by our proprietary scanning and slimming technology. We are big fans of open-source software, containerized infrastructure, and security.
+RapidFort’s hardened [rapidfort/elasticsearch-official][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
-We are making secure copies of the images we use every day and the most popular ones on Docker Hub. We want to make the world a safer place to operate.
+We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
 * [`8.13.0`](https://github.com/elastic/dockerfiles/blob/4269a02cf8a56844db30e5e74b23087840ee6fcb/elasticsearch/Dockerfile)
@@ -100,15 +104,14 @@ Join our slack community for any questions.
 
 ### [⏫⭐️ Scroll to the star button](#start-of-content)
 
-If you believe this project has potential, feel free to **star this repo** just like many [amazing people](https://github.com/rapidfort/community-images/stargazers)
-have.
+If you find this project useful, please star this repo just like many [amazing people](https://github.com/rapidfort/community-images/stargazers) have.
 
 ## Have questions?
 
 [![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png)][rf-rapidfort-footer-logo-link]
 
 
-If you'd like to learn more about RapidFort or our container optimization process, visit [RapidFort.com][rf-link].
+Learn more about RapidFort's pioneering Software Attack Surface Management platform at [RapidFort.com][rf-link].
 
 <br>
 <br>

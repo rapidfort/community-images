@@ -11,18 +11,13 @@ extraEnvVars:
     value: "0"
 env:
   prefix: /kong_prefix/
-  database: postgres
 admin:
   enabled: true
+  type: ClusterIP
   http:
     enabled: true
     servicePort: 8001
     containerPort: 8001
-postgresql:
-  enabled: true
-  auth:
-    username: kong
-    database: kong
 ingressController:
   enabled: false
 livenessProbe:

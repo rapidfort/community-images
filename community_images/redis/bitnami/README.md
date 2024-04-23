@@ -12,7 +12,7 @@
 # RapidFort hardened image for Redis™
 
 
-RapidFort has optimized and hardened this Redis™ container image. It is free to use. To run this image, please sign up on [www.rapidfort.com](www.rapidfort.com) to obtain an access token, and provide this token as an environment variable named RF_ACCESS_TOKEN when running the image.
+RapidFort has optimized and hardened this Redis™ container image. It is free to use. To run this image, please sign up on [www.rapidfort.com](https://www.rapidfort.com) to obtain an access token, and provide this token as an environment variable named RF_ACCESS_TOKEN when running the image.
 
 
 This optimized image is functionally equivalent to [Bitnami Redis™][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
@@ -51,7 +51,7 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 
 
 <ol>
-    <li>Register on <a href="www.rapidfort.com">www.rapidfort.com</a> to obtain your free access token.</li>
+    <li>Register on <a href="https://www.rapidfort.com">www.rapidfort.com</a> to obtain your free access token.</li>
     <li>When running the image, pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
 </ol>
 
@@ -73,7 +73,7 @@ The runtime instructions for this hardened container image are the same as the o
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # install redis, just replace repository with RapidFort registry
-$ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis
+$ helm install my-redis bitnami/redis --set image.repository=rapidfort/redis --set RF_ACCESS_TOKEN="your_access_token"
 
 ```
 

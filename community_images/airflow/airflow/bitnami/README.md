@@ -95,7 +95,6 @@ We are big fans of open-source software and secure software development. RapidFo
 ## Supported tags and respective `Dockerfile` links
 * [`2`, `2-debian-12`, `2.9.0`, `2.9.0-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow/2/debian-12/Dockerfile)
 
-
 ## Need support
 
 Join our slack community for any questions.

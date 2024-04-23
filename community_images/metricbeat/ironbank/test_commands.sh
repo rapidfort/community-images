@@ -4,7 +4,7 @@ set -x
 set -e
 
 metricbeat version
-metricbeat export ilm-policy
+metricbeat export --help
 metricbeat keystore --help
 metricbeat test --help
 metricbeat setup --help

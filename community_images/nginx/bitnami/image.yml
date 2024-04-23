@@ -13,11 +13,12 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install nginx, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/nginx --set image.repository=rapidfort/nginx
+  $ helm install my-nginx bitnami/nginx --set image.repository=rapidfort/nginx --set RF_ACCESS_TOKEN="your_access_token"
 what_is_text: |
   Nginx (pronounced "engine-x") is an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server). The nginx project started with a strong focus on high concurrency, high performance and low memory usage. It is licensed under the 2-clause BSD-like license and it runs on Linux, BSD variants, Mac OS X, Solaris, AIX, HP-UX, as well as on other *nix flavors. It also has a proof of concept port for Microsoft Windows.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "True"
 input_registry:
   registry: docker.io
   account: bitnami

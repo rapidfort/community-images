@@ -1,0 +1,25 @@
+version: '3'
+services:
+  elasticsearch:
+    image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:8.13.2
+    container_name: elasticsearch
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - xpack.ml.enabled=false
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+  
+  filebeat:
+    # image: ${FILEBEAT_IMAGE_REPOSITORY}:${FILEBEAT_IMAGE_TAG}
+    image: registry1.dso.mil/ironbank/elastic/beats/filebeat:8.13.2
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - "./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
+      - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    command: -e --strict.perms=false
+    depends_on:
+      - elasticsearch

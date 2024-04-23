@@ -92,7 +92,6 @@ We are big fans of open-source software and secure software development. RapidFo
 ## Supported tags and respective `Dockerfile` links
 * [`1`, `1-debian-12`, `1.6.26`, `1.6.26-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-12/Dockerfile)
 
-
 ## Need support
 
 Join our slack community for any questions.

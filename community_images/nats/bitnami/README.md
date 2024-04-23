@@ -91,7 +91,6 @@ We are big fans of open-source software and secure software development. RapidFo
 ## Supported tags and respective `Dockerfile` links
 * [`2`, `2-debian-12`, `2.10.14`, `2.10.14-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-12/Dockerfile)
 
-
 ## Need support
 
 Join our slack community for any questions.

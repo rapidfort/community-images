@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Define the directory containing the test assets
-cd /opt/tika/docker_coverage_assets
+cd /opt/tika/configs
 
 # Define acceptable HTTP status codes
 ACCEPTABLE_CODES="200 204"

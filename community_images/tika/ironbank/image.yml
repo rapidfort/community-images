@@ -10,10 +10,10 @@ image_workflow_name: tika-ironbank
 github_location: tika/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftika
 usage_instructions: |
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+  $ docker run -d -p 127.0.0.1:9998:9998 rapidfort/tika-ib
 
-  # install mariadb, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+  # It is recommended to bind the server to localhost because Docker alters iptables and may expose your tika-server to the internet. If you are confident that your tika-server is on an isolated network you can simply run:
+  $ docker run -d -p 9998:9998 rapidfort/tika-ib
 what_is_text: |
   The Apache Tika toolkit detects and extracts metadata and text from over a thousand different file types (such as PPT, XLS, and PDF). All of these file types can be parsed through a single interface, making Tika useful for search engine indexing, content analysis, translation, and much more.
 disclaimer: |
@@ -32,4 +32,4 @@ runtimes:
     tika-ib:
       ports: ["9998:9998"]
       volumes:
-        docker_coverage_assets: /opt/tika/docker_coverage_assets
+        configs: /opt/tika/configs

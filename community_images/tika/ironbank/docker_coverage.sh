@@ -11,4 +11,4 @@ echo "Json params for docker coverage = $JSON"
 
 CONTAINER_NAME=$(jq -r '.container_details."tika-ib".name' < "$JSON_PARAMS")
 
-docker exec -i "${CONTAINER_NAME}" /bin/bash -c "./opt/tika/docker_coverage_assets/coverage.sh"
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c "./opt/tika/configs/coverage.sh"

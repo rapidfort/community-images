@@ -12,7 +12,7 @@
 # RapidFort hardened image for NGINX
 
 
-RapidFort has optimized and hardened this NGINX container image. It is free to use. To run this image, please sign up on [www.rapidfort.com](https://www.rapidfort.com) to obtain an access token, and provide this token as an environment variable named RF_ACCESS_TOKEN when running the image.
+RapidFort has optimized and hardened this NGINX container image. This container is free to use and has no license limitations.
 
 
 This optimized image is functionally equivalent to [Bitnami NGINX][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
@@ -49,16 +49,6 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 ## How do I use this hardened NGINX image?
 
-
-<ol>
-    <li>Register on <a href="https://www.rapidfort.com">www.rapidfort.com</a> to obtain your free access token.</li>
-    <li>When running the image, pass your access token as an environment variable named RF_ACCESS_TOKEN.</li>
-</ol>
-
-For example, when using Docker, execute the following command:
-```sh
-docker run -e RF_ACCESS_TOKEN="your_access_token" image_name
-```
 
 
 The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Bitnami NGINX][source-image-repo-link].

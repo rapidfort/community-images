@@ -16,7 +16,7 @@ ANSIBLE_CONTAINER_NAME="${NAMESPACE}"-ansible-1
 UBUNTU_CONTAINER_NAME="${NAMESPACE}"-ubuntu_host-1
 
 #Obtaining the IP of the remote host . In this case of ubuntu_host container which will act as a remote host for our ansible
-UBUNTU_HOST_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${UBUNTU_CONTAINER_NAME})
+UBUNTU_HOST_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "${UBUNTU_CONTAINER_NAME}")
 
 #Setting up ubuntu_host for ssh login
 docker exec -i -u root "${UBUNTU_CONTAINER_NAME}" apt-get update
@@ -28,7 +28,7 @@ docker exec -i -u root "${UBUNTU_CONTAINER_NAME}" bash -c 'mkdir -p ~/.ssh && ch
 
 #Generating ssh keys of ansible container which will be used for ssh login
 docker exec -i -u root "${ANSIBLE_CONTAINER_NAME}" ssh-keygen -q -t rsa -f /root/.ssh/id_rsa -N ""
-SSH_KEYS=$(docker exec -u root ${ANSIBLE_CONTAINER_NAME} cat /root/.ssh/id_rsa.pub)
+SSH_KEYS=$(docker exec -u root "${ANSIBLE_CONTAINER_NAME}" cat /root/.ssh/id_rsa.pub)
 
 #Copying the ssh keys into ubuntu_host
 docker exec -i -u root "${UBUNTU_CONTAINER_NAME}" sh -c 'echo "$1" >> /root/.ssh/authorized_keys' -- "$SSH_KEYS"

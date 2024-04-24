@@ -31,9 +31,8 @@ services:
       - elastic
     depends_on:
       - elasticsearch
-    command: 
-      - --strict.perms=false 
-
+    command: -e --strict.perms=false
+      
 volumes:
   elasticsearch_data:
     driver: local

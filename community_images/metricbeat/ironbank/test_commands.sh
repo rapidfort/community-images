@@ -4,8 +4,8 @@ set -x
 set -e
 
 metricbeat version
-metricbeat export --help
+metricbeat setup --pipelines
+metricbeat export ilm-policy
 metricbeat keystore --help
-metricbeat test --help
-metricbeat setup --help
+metricbeat test config
 metricbeat run --help

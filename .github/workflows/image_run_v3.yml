@@ -50,6 +50,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami --publish
 
@@ -103,6 +104,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank --publish
 
@@ -209,6 +211,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami --publish
 
@@ -262,6 +265,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank --publish
 
@@ -315,6 +319,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/official --publish
 
@@ -368,6 +373,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay --publish
 
@@ -421,6 +427,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official --publish
 
@@ -474,6 +481,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami --publish
 
@@ -527,6 +535,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank --publish
 
@@ -580,6 +589,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/official --publish
 
@@ -633,6 +643,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/bitnami --publish
 
@@ -686,6 +697,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/ironbank --publish
 
@@ -739,6 +751,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official --publish
 
@@ -792,6 +805,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages --publish
 
@@ -845,6 +859,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/bitnami --publish
 
@@ -898,6 +913,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official --publish
 
@@ -951,6 +967,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami --publish
 
@@ -1004,6 +1021,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official --publish
 
@@ -1057,6 +1075,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami --publish
 
@@ -1110,6 +1129,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank --publish
 
@@ -1163,6 +1183,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/bitnami --publish
 
@@ -1216,6 +1237,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank --publish
 
@@ -1269,6 +1291,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami --publish
 
@@ -1322,6 +1345,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank --publish
 
@@ -1375,6 +1399,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official --publish
 
@@ -1428,6 +1453,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run ghost/bitnami --publish
 
@@ -1481,6 +1507,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank --publish
 
@@ -1534,6 +1561,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami --publish
 
@@ -1587,6 +1615,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank --publish
 
@@ -1640,6 +1669,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official --publish
 
@@ -1693,6 +1723,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish
 
@@ -1706,6 +1737,60 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/influxdb": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  kafka-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run kafka/ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/kafka-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   keycloak-official:
     runs-on: ubuntu-latest
@@ -1746,6 +1831,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official --publish
 
@@ -1759,6 +1845,60 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/keycloak-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  kibana-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/kibana-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kong:
     runs-on: ubuntu-latest
@@ -1799,6 +1939,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kong/official --publish
 
@@ -1852,6 +1993,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank --publish
 
@@ -1905,6 +2047,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami --publish
 
@@ -1958,6 +2101,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank --publish
 
@@ -2011,6 +2155,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official --publish
 
@@ -2064,6 +2209,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami --publish
 
@@ -2117,6 +2263,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank --publish
 
@@ -2170,6 +2317,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official --publish
 
@@ -2223,6 +2371,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank --publish
 
@@ -2276,6 +2425,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami --publish
 
@@ -2329,6 +2479,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank --publish
 
@@ -2382,6 +2533,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official --publish
 
@@ -2435,6 +2587,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank --publish
 
@@ -2488,6 +2641,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami --publish
 
@@ -2541,6 +2695,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank --publish
 
@@ -2594,6 +2749,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official --publish
 
@@ -2647,6 +2803,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami --publish
 
@@ -2700,6 +2857,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank --publish
 
@@ -2753,6 +2911,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/official --publish
 
@@ -2806,6 +2965,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami --publish
 
@@ -2859,6 +3019,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank --publish
 
@@ -2912,6 +3073,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official --publish
 
@@ -2965,6 +3127,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank --publish
 
@@ -3018,6 +3181,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/bitnami --publish
 
@@ -3071,6 +3235,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank --publish
 
@@ -3124,6 +3289,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish
 
@@ -3177,6 +3343,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank --publish
 
@@ -3230,6 +3397,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami --publish
 
@@ -3283,6 +3451,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank --publish
 
@@ -3336,6 +3505,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official --publish
 
@@ -3389,6 +3559,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami --publish
 
@@ -3442,6 +3613,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank --publish
 
@@ -3495,6 +3667,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami --publish
 
@@ -3548,6 +3721,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami --publish
 
@@ -3601,6 +3775,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami --publish
 
@@ -3654,6 +3829,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank --publish
 
@@ -3707,6 +3883,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/official --publish
 
@@ -3760,6 +3937,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run telegraf/bitnami --publish
 
@@ -3813,6 +3991,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank --publish
 
@@ -3866,6 +4045,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik --publish
 
@@ -3919,6 +4099,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank --publish
 
@@ -3972,6 +4153,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp --publish
 
@@ -4025,6 +4207,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank --publish
 
@@ -4078,6 +4261,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami --publish
 
@@ -4131,6 +4315,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/ironbank --publish
 
@@ -4184,6 +4369,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official --publish
 
@@ -4237,6 +4423,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami --publish
 
@@ -4290,6 +4477,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank --publish
 
@@ -4343,6 +4531,7 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official --publish
 

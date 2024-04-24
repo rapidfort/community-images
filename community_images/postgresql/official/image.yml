@@ -18,6 +18,7 @@ what_is_text: |
   PostgreSQL, often simply "Postgres", is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
 docker_links:
   - "[`16.2`, `16`, `latest`, `16.2-bookworm`, `16-bookworm`, `bookworm`](https://github.com/docker-library/postgres/blob/ab6925051ca097d415816928a50c483ecc370c00/16/bookworm/Dockerfile)"
   - "[`16.2-bullseye`, `16-bullseye`, `bullseye`](https://github.com/docker-library/postgres/blob/ab6925051ca097d415816928a50c483ecc370c00/16/bullseye/Dockerfile)"

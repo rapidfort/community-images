@@ -1,4 +1,4 @@
-metricbeat.config.modules.path: /usr/share/metricbeat/modules.d/*.yml
+metricbeat.config.modules.path: ${path.config}/modules.d/*.yml
 reload.enabled: false
 metricbeat.modules:
   - module: elasticsearch

@@ -27,12 +27,14 @@ services:
       - metricbeat-data:/usr/share/metricbeat/data
     cap_add:
       - SYS_PTRACE
+      - SETUID
+      - SETGID
     networks:
       - elastic
     depends_on:
       - elasticsearch
     command: -e --strict.perms=false
-      
+
 volumes:
   elasticsearch_data:
     driver: local

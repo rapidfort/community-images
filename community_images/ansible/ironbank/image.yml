@@ -10,11 +10,11 @@ image_workflow_name: ansible_ironbank
 github_location: ansible/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fansible%2Fansible
 usage_instructions: |
-  $ docker run --rm -it docker-ansible ansible --version
+  $ docker run --rm -it rapidfort:ansible-ib:latest
 what_is_text: |
-    Ansible is a radically simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex changes like zero-downtime rolling updates with load balancers easy. disclaimer: |
-Disclaimer: 
-     Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+  Ansible is a radically simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex changes like zero-downtime rolling updates with load balancers easy. disclaimer: |
+Disclaimer:
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
   - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/ansible/ansible/-/blob/development/Dockerfile)"
 input_registry:
@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/ansible/ansible:
-      input_base_tag: "9.4."
+      input_base_tag: "9.5."
       output_repo: ansible-ib
 runtimes:
   - type: docker_compose

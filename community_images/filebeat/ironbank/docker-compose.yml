@@ -13,6 +13,7 @@ services:
   
   filebeat:
     image: ${FILEBEAT_IMAGE_REPOSITORY}:${FILEBEAT_IMAGE_TAG}
+    user: root
     cap_add:
       - SYS_PTRACE
     volumes:

@@ -1,7 +1,7 @@
 version: '3'
 services:
   elasticsearch:
-    image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:8.13.2
+    image: rapidfort/elasticsearch:8.13.2
     container_name: elasticsearch
     ports:
       - '9200:9200'

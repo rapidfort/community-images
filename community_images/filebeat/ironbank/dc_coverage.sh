@@ -12,9 +12,6 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME=${PROJECT_NAME}-filebeat-1
 
-# Get the indices on stderr
-curl -XGET 'http://localhost:9200/_cat/indices?v' >&2
-
 # Check for availibilty of index of filebeat. (Checks for connection)
 INDEX_NAME=$(curl -sXGET 'http://localhost:9200/_cat/indices' | awk '{print $3}')
 if [[ -z "$INDEX_NAME" ]]; then
@@ -34,3 +31,7 @@ curl -i -X POST \
     }
 }' \
  "http://localhost:9200/${INDEX_NAME}/_search?pretty=true"
+
+docker exec -i ${CONTAINER_NAME} filebeat version
+docker exec -i ${CONTAINER_NAME} filebeat modules enable kibana
+

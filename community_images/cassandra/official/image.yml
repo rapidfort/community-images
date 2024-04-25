@@ -53,4 +53,7 @@ runtimes:
         tag: "CASSANDRA_OFFICIAL_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
-    cassandra-official: {}
+    cassandra-official:
+      environment:
+        MAX_HEAP_SIZE: 256M
+        HEAP_NEWSIZE: 200M

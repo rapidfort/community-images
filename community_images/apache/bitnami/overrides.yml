@@ -16,3 +16,21 @@ livenessProbe:
 readinessProbe:
   initialDelaySeconds: 30
   timeoutSeconds: 30
+
+# Adding a temp mount for the init container (preserve-logs-symlinks) 
+# by adding it as env variable RF_RW_DIR
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+extraVolumes:
+  - name: rf-rw-volume
+    emptyDir: {}
+extraVolumeMounts:
+  - name: rf-rw-volume
+    mountPath: /tmp/mountDir
+initContainers:
+  - name: preserve-logs-symlinks
+    env:
+      - name: RF_RW_DIR
+        value: "/tmp/mountDir"

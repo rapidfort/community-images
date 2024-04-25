@@ -91,19 +91,38 @@ docker cp "$SCRIPTPATH"/playbook.yml "${ANSIBLE_CONTAINER_NAME}":/ansible/playbo
 touch "$SCRIPTPATH"/ansible_coverage.sh
 chmod 777 "$SCRIPTPATH"/ansible_coverage.sh
 
+VAULT_PASSWORD=$(openssl rand -base64 32)
+touch "$SCRIPTPATH"/vault_password.txt
+
+echo "$VAULT_PASSWORD" > "$SCRIPTPATH"/vault_password.txt
+
+docker cp "$SCRIPTPATH"/vault_password.txt "${ANSIBLE_CONTAINER_NAME}":/ansible/vault_password.txt
+
 echo "
+ ansible-playbook --version
  ansible-playbook -i inventory.ini playbook.yml --syntax-check
  ansible-playbook -i inventory.ini playbook.yml
  ansible-community --version
  ansible-inventory --version
+ ansible-inventory -i /ansible/inventory.ini  --graph
+ ansible-inventory -i /ansible/inventory.ini  --list
  ansible-config --version
+ ansible-config init --disabled -t all > ansible.cfg
+ ansible-config dump --format json
  ansible-connection --version
  ansible-console --version || echo 0
  ansible-doc --version
+ ansible-doc --list_files
+ ansible-doc -s copy
+ ansible-doc -t connection -F
  ansible-galaxy --version
- ansible-playbook --version
+ ansible-galaxy init myrole
+ ansible-galaxy search database
+ ansible-galaxy info mysql
  ansible-test --version
  ansible-vault --version
+ ansible-vault encrypt --vault-password-file=vault_password.txt  playbook.yml
+ ansible-vault decrypt --vault-password-file=vault_password.txt  playbook.yml
  ansible --version
  ansible-pull --version
 " > "$SCRIPTPATH"/ansible_coverage.sh
@@ -117,4 +136,4 @@ docker exec -i -u root "${ANSIBLE_CONTAINER_NAME}" bash -c ./ansible_coverage.sh
 rm "$SCRIPTPATH"/ansible_coverage.sh
 rm "$SCRIPTPATH"/playbook.yml
 rm "$SCRIPTPATH"/inventory.ini
-
+rm "$SCRIPTPATH"/vault_password.txt

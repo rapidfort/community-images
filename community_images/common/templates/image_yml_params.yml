@@ -39,6 +39,9 @@ params:
   - name: disclaimer
     description: 'disclaimer or any legal liability notice to be added'
     value : '""'
+  - name: is_locked
+    description: 'if the image needs RF_ACCESS_TOKEN to be used or not'
+    value : 'False'
   - name: bitnami_excluded_branches
     description: 'bitnami tags are auto generated, this list allows specific branches to be exculded'
     value : ['""', '""']

@@ -16,12 +16,13 @@ what_is_text: |
   Fluent Bit is a Fast and Lightweight Log Processor and Forwarder. It has been made with a strong focus on performance to allow the collection of events from different sources without complexity.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
 repo_sets:
   - opensource/fluent/fluent-bit:
-      input_base_tag: "3.0."
+      input_base_tag: "2.2."
       output_repo: fluent-bit-ib
 runtimes:
   - type: docker_compose

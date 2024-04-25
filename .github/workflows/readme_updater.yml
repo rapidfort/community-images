@@ -218,6 +218,14 @@ jobs:
           repository: rapidfort/etcd-ib
           readme-filepath: ./community_images/etcd/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Etcd Ironbank
+      - name: Docker Hub Description Filebeat Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/filebeat-ib
+          readme-filepath: ./community_images/filebeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Filebeat Ironbank
       - name: Docker Hub Description Fluent-Bit
         uses: peter-evans/dockerhub-description@v4
         with:

@@ -18,4 +18,4 @@ REPO_PATH=$(jq -r '.image_tag_details."cassandra-official".repo_path' < "$JSON_P
 TAG=$(jq -r '.image_tag_details."cassandra-official".tag' < "$JSON_PARAMS")
 
 # run docker
-docker run --rm -i --cap-add=SYS_PTRACE --name="${NAMESPACE}"-"$(date +%s)" -d "${REPO_PATH}:${TAG}"
+docker run --rm -i --cap-add=SYS_PTRACE -e MAX_HEAP_SIZE=256M -e HEAP_NEWSIZE=200M --name="${NAMESPACE}"-"$(date +%s)" -d "${REPO_PATH}:${TAG}"

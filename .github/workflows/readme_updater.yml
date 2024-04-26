@@ -219,7 +219,7 @@ jobs:
           readme-filepath: ./community_images/etcd/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Etcd Ironbank
       - name: Docker Hub Description Filebeat Ironbank
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -403,7 +403,7 @@ jobs:
           readme-filepath: ./community_images/memcached/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached Official
       - name: Docker Hub Description Metricbeat Iron-Bank
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}

@@ -1,0 +1,35 @@
+name: tika-ib
+official_name: Tika Iron Bank
+official_website: https://rapidfort.com
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/apache/tika
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Ftika
+source_image_readme: https://repo1.dso.mil/dsop/opensource/tika/tika/-/blob/development/README.md
+rf_docker_link: rapidfort/tika-ib
+image_workflow_name: tika-ironbank
+github_location: tika/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftika
+usage_instructions: |
+  $ docker run -d -p 127.0.0.1:9998:9998 rapidfort/tika-ib
+
+  # It is recommended to bind the server to localhost because Docker alters iptables and may expose your tika-server to the internet. If you are confident that your tika-server is on an isolated network you can simply run:
+  $ docker run -d -p 9998:9998 rapidfort/tika-ib
+what_is_text: |
+  The Apache Tika toolkit detects and extracts metadata and text from over a thousand different file types (such as PPT, XLS, and PDF). All of these file types can be parsed through a single interface, making Tika useful for search engine indexing, content analysis, translation, and much more.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/apache/tika:
+      input_base_tag: "2.9."
+      output_repo: tika-ib
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    wait_time_sec: 60
+    tika-ib:
+      ports: ["9998:9998"]
+      volumes:
+        configs: /opt/tika/configs

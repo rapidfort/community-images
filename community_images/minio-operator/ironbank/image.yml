@@ -34,3 +34,4 @@ runtimes:
       minio-operator-ib:
         repository: "operator.image.repository"
         tag: "operator.image.tag"
+    readiness_wait_pod_name_suffix: []

@@ -36,6 +36,11 @@ class TestMinioOperator():
         self.driver.quit()
 
     def test_minio_operator(self, params):
+        namespace = params["server"].split()[0]
+        jwt = params["server"].split()[1]
+        print("Namespace:", namespace)
+        print("JWT:", jwt)
+
         self.driver.get(
                 "http://localhost:{}/".format(
                     params["port"]))  # pylint: disable=consider-using-f-string
@@ -43,7 +48,7 @@ class TestMinioOperator():
 
         ## Login ##
         self.driver.find_element(By.ID, "jwt").click()
-        self.driver.find_element(By.ID, "jwt").send_keys(params["server"])
+        self.driver.find_element(By.ID, "jwt").send_keys(jwt)
         self.driver.find_element(By.ID, "do-login").click()
 
         ## Create tenant ##
@@ -52,7 +57,7 @@ class TestMinioOperator():
         self.driver.find_element(By.ID, "tenant-name").click()
         self.driver.find_element(By.ID, "tenant-name").send_keys("first-tenant")
         self.driver.find_element(By.ID, "namespace").click()
-        self.driver.find_element(By.ID, "namespace").send_keys("minio-operator")
+        self.driver.find_element(By.ID, "namespace").send_keys(namespace)
         self.driver.find_element(By.ID, "nodes").click()
         time.sleep(5)
         self.driver.find_element(By.ID, "nodes").send_keys("\b1")

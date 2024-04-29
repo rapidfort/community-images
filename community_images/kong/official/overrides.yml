@@ -5,7 +5,7 @@ containerSecurityContext:
   runAsUser: 1001
   allowPrivilegeEscalation: true
   capabilities:
-    add: ["SYS_PTRACE"]
+    add: ["SYS_PTRACE", "SETUID", "SETGID"]
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"

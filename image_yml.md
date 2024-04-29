@@ -16,6 +16,7 @@
    | `usage_instructions` | usage instructions such as helm install or docker run | `""` | yes |
    | `what_is_text` | description about image, usually copied from official image What is? | `""` | yes |
    | `disclaimer` | disclaimer or any legal liability notice to be added | `""` | yes |
+   | `is_locked` | if the image needs RF_ACCESS_TOKEN to be used or not | `False` | yes |
    | `bitnami_excluded_branches` | bitnami tags are auto generated, this list allows specific branches to be exculded | `['""', '""']` | yes |
    | `docker_links` | array of all the different image versions build along with link to original Dockerfile | `['""', '""']` | yes |
    | `input_registry.registry` | source registry used to pull docker image, ex: docker.io | `""` | yes |

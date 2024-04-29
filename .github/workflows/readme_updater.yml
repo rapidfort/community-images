@@ -98,6 +98,14 @@ jobs:
           repository: rapidfort/airflow-worker-ib-bitnami
           readme-filepath: ./community_images/airflow/airflow-worker/bitnami-ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Airflow Worker Ironbank (Bitnami)
+      - name: Docker Hub Description Ansible IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ansible-ib
+          readme-filepath: ./community_images/ansible/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ansible IronBank
       - name: Docker Hub Description Apache
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -138,6 +146,14 @@ jobs:
           repository: rapidfort/cassandra-official
           readme-filepath: ./community_images/cassandra/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Cassandra Official
+      - name: Docker Hub Description Helm Chart Testing Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/chart-testing-ib
+          readme-filepath: ./community_images/chart-testing/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Helm Chart Testing Ironbank
       - name: Docker Hub Description Consul
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -242,6 +258,14 @@ jobs:
           repository: rapidfort/etcd-ib
           readme-filepath: ./community_images/etcd/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Etcd Ironbank
+      - name: Docker Hub Description Filebeat Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/filebeat-ib
+          readme-filepath: ./community_images/filebeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Filebeat Ironbank
       - name: Docker Hub Description Fluent-Bit
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -418,6 +442,14 @@ jobs:
           repository: rapidfort/memcached-official
           readme-filepath: ./community_images/memcached/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached Official
+      - name: Docker Hub Description Metricbeat Iron-Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/metricbeat-ib
+          readme-filepath: ./community_images/metricbeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Metricbeat Iron-Bank
       - name: Docker Hub Description Microsoft SQL Server 2019
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -666,6 +698,14 @@ jobs:
           repository: rapidfort/terraform-ib
           readme-filepath: ./community_images/terraform/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Terraform IronBank
+      - name: Docker Hub Description Tika Iron Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/tika-ib
+          readme-filepath: ./community_images/tika/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Tika Iron Bank
       - name: Docker Hub Description TRAEFIK
         uses: peter-evans/dockerhub-description@v3
         with:

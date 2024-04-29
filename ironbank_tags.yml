@@ -10,9 +10,15 @@ airflow-ib-bitnami:
 airflow-ib:
   search_tags:
     - 2.8.
+ansible-ib:
+  search_tags:
+    - 9.5.
 apache-ib:
   search_tags:
     - 2.4.
+chart-testing-ib:
+  search_tags:
+    - v3.10.
 consul-ib:
   search_tags:
     - 1.17.
@@ -22,6 +28,9 @@ couchdb-ib:
 etcd-ib:
   search_tags:
     - v3.5.
+filebeat-ib:
+  search_tags:
+    - 8.13.
 fluent-bit-ib:
   search_tags:
     - 2.2.
@@ -49,6 +58,9 @@ mariadb-ib:
 memcached-ib:
   search_tags:
     - 1.6.
+metricbeat-ib:
+  search_tags:
+    - 8.13.
 microsoft-sql-server-2019-ib:
   search_tags:
     - 2019-CU15-rhel-8
@@ -88,6 +100,9 @@ redis-ib:
 terraform-ib:
   search_tags:
     - 1.7.
+tika-ib:
+  search_tags:
+    - 2.9.
 traefik-ib:
   search_tags:
     - v2.11.

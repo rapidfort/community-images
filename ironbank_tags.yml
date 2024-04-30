@@ -1,9 +1,15 @@
 airflow-ib:
   search_tags:
     - 2.8.
+ansible-ib:
+  search_tags:
+    - 9.5.
 apache-ib:
   search_tags:
     - 2.4.
+chart-testing-ib:
+  search_tags:
+    - v3.10.
 consul-ib:
   search_tags:
     - 1.17.
@@ -13,24 +19,39 @@ couchdb-ib:
 etcd-ib:
   search_tags:
     - v3.5.
+filebeat-ib:
+  search_tags:
+    - 8.13.
 fluent-bit-ib:
   search_tags:
-    - 3.0.
+    - 2.2.
 fluentd-ib:
   search_tags:
-    - 1.16.
+    - 1.17.
 grafana-ib:
   search_tags:
     - 10.4.
 haproxy-ib:
   search_tags:
     - 2.4.
+kafka-ib:
+  search_tags:
+    - 3.4.
+kibana-ib:
+  search_tags:
+    - 8.13.
+logstash-ib:
+  search_tags:
+    - 8.13.
 mariadb-ib:
   search_tags:
     - 10.6.
 memcached-ib:
   search_tags:
     - 1.6.
+metricbeat-ib:
+  search_tags:
+    - 8.13.
 microsoft-sql-server-2019-ib:
   search_tags:
     - 2019-CU15-rhel-8
@@ -55,6 +76,9 @@ nifi-ib:
 node-exporter-ib:
   search_tags:
     - v1.7.
+pause-ib:
+  search_tags:
+    - "3."
 postgresql-ib:
   search_tags:
     - "12."
@@ -64,9 +88,18 @@ prometheus-ib:
 redis-ib:
   search_tags:
     - 6.2.
+terraform-ib:
+  search_tags:
+    - 1.7.
+tika-ib:
+  search_tags:
+    - 2.9.
 traefik-ib:
   search_tags:
-    - v2.11.
+    - v3.0.
+vault-k8s-ib:
+  search_tags:
+    - v1.4.
 wordpress-ib:
   search_tags:
     - 6.5.

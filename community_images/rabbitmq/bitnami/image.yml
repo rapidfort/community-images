@@ -18,16 +18,15 @@ what_is_text: |
   RabbitMQ is an open source general-purpose message broker that is designed for consistent, highly-available messaging scenarios (both synchronous and asynchronous).
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - rabbitmq:
-      input_base_tag: "3.10.25-debian-12-r"
-  - rabbitmq:
-      input_base_tag: "3.11.28-debian-12-r"
-  - rabbitmq:
       input_base_tag: "3.12.13-debian-12-r"
+  - rabbitmq:
+      input_base_tag: "3.13.1-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

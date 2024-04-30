@@ -1,0 +1,47 @@
+name: vault-k8s-ib
+official_name: Vault Ironbank
+official_website: https://www.vaultproject.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/hashicorp/vault/vault-k8s
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fvault%2Fvault-k8s
+source_image_readme: https://repo1.dso.mil/dsop/hashicorp/vault/vault-k8s/-/blob/development/README.md
+rf_docker_link: rapidfort/vault-k8s-ib
+image_workflow_name: vault-k8s_ironbank
+github_location: vault-k8s/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2Fvault-k8s
+usage_instructions: |
+  $ helm repo add hashicorp https://helm.releases.hashicorp.com
+
+  # install vault, just replace repository with RapidFort registry
+  $ helm install vault hashicorp/vault --set injector.image.repository=rapidfort/vault-k8s-ib
+what_is_text: |
+  The vault-k8s binary includes first-class integrations between Vault and Kubernetes. Currently the only integration in this repository is the Vault Agent Sidecar Injector (agent-inject)
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+use_rapid_stub: true
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - hashicorp/vault/vault-k8s:
+      input_base_tag: "v1.4."
+      output_repo: vault-k8s-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: hashicorp
+      repo_url: https://helm.releases.hashicorp.com
+      chart: vault
+    readiness_check_script: vault_health_check.sh
+    # disabling persistence otherwise PVC creation fails for data dir
+    helm_additional_params:
+      persistence.enabled: false
+      server.dev.enabled: true
+      injector.enabled: true
+      injector.image.pullPolicy: Always
+    image_keys:
+      vault-k8s-ib:
+        repository: "injector.image.repository"
+        tag: "injector.image.tag"
+    override_file: "overrides.yml"

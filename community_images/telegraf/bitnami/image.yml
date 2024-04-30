@@ -18,12 +18,13 @@ what_is_text: |
   Telegraf is a server-based agent for collecting and sending all metrics and events from databases, systems, and IoT sensors. Telegraf is written in Go and compiles into a single binary with no external dependencies, and requires a very minimal memory footprint.
 disclaimer: |
   Telegraf(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
+is_locked: "False"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - telegraf:
-      input_base_tag: "1.30.1-debian-12-r"
+      input_base_tag: "1.30.2-debian-12-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

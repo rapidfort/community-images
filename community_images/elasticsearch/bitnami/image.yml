@@ -18,14 +18,15 @@ what_is_text: |
   Elasticsearch is a distributed search and analytics engine. It is used for web search, log monitoring, and real-time analytics. Ideal for Big Data applications.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - elasticsearch:
-      input_base_tag: "7.17.19-debian-12-r"
+      input_base_tag: "7.17.20-debian-12-r"
   - elasticsearch:
-      input_base_tag: "8.13.1-debian-12-r"
+      input_base_tag: "8.13.2-debian-12-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

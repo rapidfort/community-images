@@ -39,4 +39,4 @@ docker exec \
 # test brotli compression
 docker exec \
     -i "$CONTAINER_NAME" \
-    curl --compressed https://httpbin.org/brotli
+    curl --compressed https://httpbin.org/brotli | sed -e ''

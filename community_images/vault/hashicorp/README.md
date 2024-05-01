@@ -140,5 +140,5 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/vault/hashicorp/assets/metrics.webp
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/vault/hashicorp/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://hub.docker.com/_/vault
+[source-image-repo-link]: https://hub.docker.com/hashicorp/vault
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/vault

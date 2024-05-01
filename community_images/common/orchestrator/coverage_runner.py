@@ -39,7 +39,7 @@ class CoverageRunner:
         for tag_mappings in self.repo_set_mappings:
             try:
                 self.run_tag_mappings(command, tag_mappings)
-                if(command == Commands.TEST_COVERAGE):
+                if command == Commands.TEST_COVERAGE:
                     break
             except Exception as exec:  # pylint:disable=broad-except
                 logging.warning(

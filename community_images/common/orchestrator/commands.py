@@ -10,6 +10,7 @@ class Commands(Enum):
     HARDEN = "harden"
     HARDEN_COVERAGE = "harden_coverage"
     LATEST_COVERAGE = "latest_coverage"
+    TEST_COVERAGE = "test_coverage"
 
     def __str__(self):
         return self.value.lower()

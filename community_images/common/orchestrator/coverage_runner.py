@@ -39,6 +39,8 @@ class CoverageRunner:
         for tag_mappings in self.repo_set_mappings:
             try:
                 self.run_tag_mappings(command, tag_mappings)
+                if(command == Commands.TEST_COVERAGE):
+                    break
             except Exception as exec:  # pylint:disable=broad-except
                 logging.warning(
                     f"Coverage run {command} failed for {tag_mappings} due to {exec}")
@@ -140,32 +142,40 @@ class CoverageRunner:
     def _prepare_image_tag_details(self, command, tag_mappings):
         """ Prepare image tag details for runner objects """
         image_tag_details = {}
-        for tag_mapping in tag_mappings:
-            if (tag_mapping.needs_generation
-                or (not tag_mapping.needs_generation and
-                    command == Commands.LATEST_COVERAGE)):
-
+        if command == Commands.TEST_COVERAGE:
+            image_to_scan = self.orchestrator.image_to_scan
+            if image_to_scan:
+                tag_mapping = tag_mappings[0]
                 tag_details = tag_mapping.output_tag_details
-
                 image_tag_details[tag_details.repo] = {}
+                test_image = image_tag_details[tag_details.repo]["repo_path"] = self.orchestrator.image_to_scan.split(":")[0]
+                test_tag = image_tag_details[tag_details.repo]["tag"] = self.orchestrator.image_to_scan.split(":")[1]
+                logging.info(f"Test Coverage for Image: {test_image} and Tag: {test_tag}")
+            else:
+                logging.error("Image to scan details are incorrect, please try again")
+        else:
+            for tag_mapping in tag_mappings:
+                if (tag_mapping.needs_generation
+                    or (not tag_mapping.needs_generation and
+                        command == Commands.LATEST_COVERAGE)):
+                    tag_details = tag_mapping.output_tag_details
+                    image_tag_details[tag_details.repo] = {}
+                    image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
+                    if command == Commands.STUB_COVERAGE:
+                        image_tag_value = tag_details.stub_tag
+                    elif command == Commands.HARDEN_COVERAGE:
+                        # we only push original tag to registry
+                        image_tag_value = tag_details.tag
+                    elif command == Commands.LATEST_COVERAGE:
+                        version_tag_for_latest = (self.orchestrator.
+                                                    output_registry_helper.
+                                                    find_version_tag_for_rolling_tag(
+                                                        tag_details.account,
+                                                        tag_details.repo,
+                                                        "latest"))
+                        image_tag_value = version_tag_for_latest or "latest"
 
-                image_tag_details[tag_details.repo]["repo_path"] = tag_details.repo_path
-                if command == Commands.STUB_COVERAGE:
-                    image_tag_value = tag_details.stub_tag
-                elif command == Commands.HARDEN_COVERAGE:
-                    # we only push original tag to registry
-                    image_tag_value = tag_details.tag
-                elif command == Commands.LATEST_COVERAGE:
-                    version_tag_for_latest = (self.orchestrator.
-                                                output_registry_helper.
-                                                find_version_tag_for_rolling_tag(
-                                                    tag_details.account,
-                                                    tag_details.repo,
-                                                    "latest"))
-                    image_tag_value = version_tag_for_latest or "latest"
-
-                image_tag_details[tag_details.repo]["tag"] = image_tag_value
-
+                    image_tag_details[tag_details.repo]["tag"] = image_tag_value
         logging.info(f"Image tag list = {image_tag_details}")
         return image_tag_details
 

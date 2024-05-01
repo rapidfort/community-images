@@ -22,7 +22,7 @@ def get_list_of_files(pull_number):
     github_token = os.environ.get("GITHUB_TOKEN")
     endpoint = "https://api.github.com"
     url = f"{endpoint}/repos/rapidfort/community-images"
-    url += f"/pulls/{pull_number}/files"
+    url += f"/pulls/{pull_number}/files?per_page=100"
 
     headers = {"Authorization" : f"Bearer {github_token}"}
     resp = requests.get(url, headers=headers, timeout=60)

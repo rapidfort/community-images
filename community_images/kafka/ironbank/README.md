@@ -63,7 +63,7 @@ The runtime instructions for this hardened container image are the same as the o
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # install kafka, just replace repository with RapidFort registry and use the helmn chart version 21.1.1
-$ helm install my-kafka bitnami/kafka --version 21.1.1 --set image.repository=rapidfort/kafka-ib
+$ helm install my-kafka bitnami/kafka --version 21.1.1 --set image.repository=rapidfort/kafka-ib --set image.tag=latest
 
 ```
 

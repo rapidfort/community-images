@@ -89,7 +89,7 @@ RapidFort’s hardened [rapidfort/fluentd][rf-dh-image-link] image has been opti
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1`, `1-debian-12`, `1.16.5`, `1.16.5-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-12/Dockerfile)
+* [`1`, `1-debian-12`, `1.17.0`, `1.17.0-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/fluentd/1/debian-12/Dockerfile)
 
 ## Need support
 

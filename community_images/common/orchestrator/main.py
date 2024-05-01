@@ -26,6 +26,7 @@ class Orchestrator:
         self.namespace_name = args.namespace_name
         self.force_publish = args.force_publish
         self.config_name = self.args.config.strip("/")
+        self.image_to_scan = args.image_to_scan or None
         self.input_registry_helper, self.output_registry_helper = self._auth_registries()
 
     def _load_config(self) -> dict:
@@ -53,7 +54,8 @@ class Orchestrator:
             ).generate()
         elif command in [Commands.STUB_COVERAGE,
                          Commands.HARDEN_COVERAGE,
-                         Commands.LATEST_COVERAGE]:
+                         Commands.LATEST_COVERAGE,
+                         Commands.TEST_COVERAGE]:
             CoverageRunner(
                 self,
                 self.config_name,
@@ -154,6 +156,8 @@ def main():
     parser.set_defaults(force_publish=False)
     parser.add_argument("--namespace", dest="namespace_name",
                         type=str, default="< n u l l >", help="name of namespace to use")
+    parser.add_argument("--image-to-scan", dest="image_to_scan",
+                        type=str, default="", help= "Image_name:tag to work on")
     parser.add_argument("--loglevel", type=str, default="info",
                         help="debug, info, warning, error")
     args = parser.parse_args()

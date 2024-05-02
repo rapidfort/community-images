@@ -17,10 +17,12 @@ class StubGenerator:
             config_name,
             config_dict,
             docker_client,
+            publish_stub,
             repo_set_mappings):
         self.config_name = config_name
         self.config_dict = config_dict
         self.docker_client = docker_client
+        self.publish_stub = publish_stub
         self.repo_set_mappings = repo_set_mappings
 
     def generate(self):
@@ -68,11 +70,14 @@ class StubGenerator:
             result = stub_image.tag(output_tag_details.full_stub_tag)
             logging.info(
                 f"image tag:[{output_tag_details.full_stub_tag}] success={result}")
-            # push stubbed image to output repo
-            result = self.docker_client.api.push(
-                output_tag_details.full_repo_path,
-                output_tag_details.stub_tag)
-            logging.info(f"docker client push result: {result}")
+
+            if publish_stub == "yes":
+                # push stubbed image to output repo
+                result = self.docker_client.api.push(
+                    output_tag_details.full_repo_path,
+                    output_tag_details.stub_tag)
+                logging.info(f"docker client push result: {result}")
+
             # Remove original input image to clean up space
             logging.info(f"Removing original input image: [{input_tag_details.full_tag}]")
             self.docker_client.images.remove(input_tag_details.full_stub_tag)

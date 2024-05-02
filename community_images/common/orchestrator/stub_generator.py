@@ -71,7 +71,7 @@ class StubGenerator:
             logging.info(
                 f"image tag:[{output_tag_details.full_stub_tag}] success={result}")
 
-            if publish_stub == "yes":
+            if self.publish_stub == "yes":
                 # push stubbed image to output repo
                 result = self.docker_client.api.push(
                     output_tag_details.full_repo_path,

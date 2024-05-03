@@ -88,6 +88,8 @@ class StubGenerator:
         cmd = "rfstub "
         if self.config_dict.get("use_rapid_stub", False):
             cmd += "-s rapid "
+        else:
+            cmd +="-s bpfwrap "
         cmd += tag
         Utils.run_cmd(cmd.split())
 

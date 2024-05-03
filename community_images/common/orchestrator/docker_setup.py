@@ -76,7 +76,7 @@ class DockerSetup:
             if entrypoint is not None:
                 cmd += f" --entrypoint {entrypoint}"
 
-            if self.command == Commands.STUB_COVERAGE:
+            if self.command == Commands.STUB_COVERAGE or self.command == Commands.TEST_COVERAGE:
                 cmd += " --cap-add=SYS_PTRACE"
 
             env_file = os.path.join(

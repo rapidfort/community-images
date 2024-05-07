@@ -4,7 +4,7 @@ name: Image Creation Run
 on:
 
   schedule:
-  - cron: '0 * * * *'
+  - cron: '0 */2 * * *'
 
   workflow_dispatch:
 

@@ -1,5 +1,8 @@
-# function_test.py
+"""
+function_test.py
 
+A script to calculate the factorial of a non-negative integer.
+"""
 def factorial(n):
     """
     Calculate the factorial of a non-negative integer n.

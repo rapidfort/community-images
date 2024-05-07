@@ -10,7 +10,7 @@ github_location: bats/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbats%2Fbats
 usage_instructions: |
   #Run the bats container:
-  $ docker run -it -v "$PWD:/tmp" rapidfort/bats=ib /tmp/test.bat
+  $ docker run -it -v "$PWD:/tmp" rapidfort/bats-ib /tmp/test.bat
 what_is_text: |
   That image embed bats, a bash-testing framework. The idea is to use Docker's lightweight isolation to have a self-contained image embedding bats, any dependency, and all your tests.
 disclaimer: |

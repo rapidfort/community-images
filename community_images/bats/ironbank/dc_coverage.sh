@@ -12,8 +12,8 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME=${PROJECT_NAME}-bats-1
 # version
-docker exec -i ${CONTAINER_NAME} bats -v
+docker exec -i "${CONTAINER_NAME}" bats -v
 # unit testing
-docker exec -i ${CONTAINER_NAME} bats /tmp/tests.bat
+docker exec -i "${CONTAINER_NAME}" bats /tmp/tests.bat
 # function, external file run, setup and teardown test
-docker exec -i ${CONTAINER_NAME} bats /tmp/test2.bat
+docker exec -i "${CONTAINER_NAME}" bats /tmp/test2.bat

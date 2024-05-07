@@ -1,7 +1,7 @@
-FROM joyzoursky/python-chromedriver:latest
+FROM schukinpavel/python-chromedriver:latest
 
+RUN mkdir -p /usr/workspace/selenium_tests
 WORKDIR /usr/workspace
-RUN git clone https://github.com/joyzoursky/docker-python-chromedriver.git
 RUN pip install pytest selenium
 ADD https://raw.githubusercontent.com/rapidfort/community-images/main/community_images/common/scripts/bash_helper.sh /usr/workspace/bash_helper.sh
 

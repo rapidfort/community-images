@@ -7,9 +7,12 @@ ansible-ib:
 apache-ib:
   search_tags:
     - 2.4.
+bats-ib:
+  search_tags:
+    - v1.11.
 chart-testing-ib:
   search_tags:
-    - v3.10.
+    - v3.11.
 consul-ib:
   search_tags:
     - 1.17.
@@ -69,10 +72,10 @@ nats-ib:
     - v2.10.
 nginx-ib:
   search_tags:
-    - 1.25.
+    - 1.26.
 nifi-ib:
   search_tags:
-    - 1.25.
+    - 1.26.
 node-exporter-ib:
   search_tags:
     - v1.8.

@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/helm/chart-testing:
-      input_base_tag: "v3.10."
+      input_base_tag: "v3.11."
       output_repo: chart-testing-ib
 runtimes:
   - type: docker_compose

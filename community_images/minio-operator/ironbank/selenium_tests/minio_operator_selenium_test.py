@@ -46,12 +46,12 @@ class TestMinioOperator():
                     params["port"]))  # pylint: disable=consider-using-f-string
         self.driver.set_window_size(1366, 732)
 
-        ## Login ##
+        # # Login # #
         self.driver.find_element(By.ID, "jwt").click()
         self.driver.find_element(By.ID, "jwt").send_keys(jwt)
         self.driver.find_element(By.ID, "do-login").click()
 
-        ## Create tenant ##
+        # # Create tenant # #
         time.sleep(5)
         self.driver.find_element(By.CSS_SELECTOR, "#create-tenant > .button-label").click()
         self.driver.find_element(By.ID, "tenant-name").click()
@@ -75,7 +75,7 @@ class TestMinioOperator():
         self.driver.find_element(By.CSS_SELECTOR, "#download-button > .button-label").click()
         self.driver.find_element(By.ID, "close").click()
 
-        ## Monkey clicking on created tenant ##
+        # # Monkey clicking on created tenant # #
         self.driver.find_element(By.XPATH, "//div[@id=\'list-tenant-first-tenant\']/div/div[2]/div/div").click()
         self.driver.find_element(By.ID, "tenant-refresh").click()
         self.driver.find_element(By.CSS_SELECTOR, "#tenant-hop .min-icon").click()
@@ -93,13 +93,13 @@ class TestMinioOperator():
         self.driver.find_element(By.ID, "details-events").click()
         self.driver.find_element(By.ID, "details-csr").click()
 
-        ## Monkey clicking sidenav ##
+        # # Monkey clicking sidenav # #
         self.driver.find_element(By.ID, "details-license").click()
         self.driver.find_element(By.ID, "License").click()
         self.driver.find_element(By.CSS_SELECTOR, "#close > .min-icon").click()
         self.driver.find_element(By.ID, "Register").click()
 
-        ## Delete tenant ##
+        # # Delete tenant # #
         self.driver.get(
                 "http://localhost:{}/tenants".format(
                     params["port"]))  # pylint: disable=consider-using-f-string
@@ -110,6 +110,6 @@ class TestMinioOperator():
         self.driver.find_element(By.CSS_SELECTOR, ".switchRail").click()
         self.driver.find_element(By.CSS_SELECTOR, "#confirm-ok > .button-label").click()
 
-        ## Logout ##
+        # # Logout # #
         self.driver.find_element(By.XPATH, "//button[@id=\'sign-out\']/span").click()
         self.driver.close()

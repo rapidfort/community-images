@@ -35,3 +35,14 @@ runtimes:
         repository: "operator.image.repository"
         tag: "operator.image.tag"
     readiness_wait_pod_name_suffix: []
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: minio-operator
+      repo_url: https://operator.min.io
+      chart: operator
+    image_keys:
+      minio-operator-ib:
+        repository: "console.image.repository"
+        tag: "console.image.tag"
+    readiness_wait_pod_name_suffix: []

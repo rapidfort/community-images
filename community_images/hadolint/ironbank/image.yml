@@ -12,7 +12,7 @@ report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil
 usage_instructions: |
   $ docker run --rm -i -v ./your/path/to/hadolint.yaml:/root/.config/hadolint.yaml rapidfort/hadolint-ib:latest < Dockerfile
 what_is_text: |
-  Terraform is a smarter Dockerfile linter that helps you build best practice Docker images. The linter is parsing the Dockerfile into an AST and performs rules on top of the AST. It additionally is using the famous Shellcheck to lint the Bash code inside RUN instructions.
+  Hadolint is a smarter Dockerfile linter that helps you build best practice Docker images. The linter is parsing the Dockerfile into an AST and performs rules on top of the AST. It additionally is using the famous Shellcheck to lint the Bash code inside RUN instructions.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 docker_links:
@@ -22,13 +22,13 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/hadolint/hadolint:
-      input_base_tag: "v2.12"
+      input_base_tag: "v2.12."
       output_repo: hadolint-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      terraform-ib:
+      hadolint-ib:
         repository: "HADOLINT_IMAGE_REPOSITORY"
         tag: "HADOLINT_IMAGE_TAG"

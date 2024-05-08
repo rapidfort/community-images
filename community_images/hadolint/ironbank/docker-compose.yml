@@ -11,5 +11,5 @@ services:
     command:
       - "infinity"
     volumes:
-      - ./hadolint_tests/hadolint.yml:root/.config/hadolint.yml
-      
+      - ./hadolint_tests/hadolint.yaml:/hadolint.yaml
+      - ./hadolint_tests/Dockerfile:/Dockerfile

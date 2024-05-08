@@ -61,7 +61,7 @@ The runtime instructions for this hardened container image are the same as the o
 
 ```sh
 #Run the bats container:
-$ docker run -it -v "$PWD:/tmp" rapidfort/bats=ib /tmp/test.bat
+$ docker run -it -v "$PWD:/tmp" rapidfort/bats-ib /tmp/test.bat
 
 ```
 

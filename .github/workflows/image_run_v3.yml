@@ -4,7 +4,7 @@ name: Image Creation Run
 on:
 
   schedule:
-  - cron: '0 */2 * * *'
+  - cron: '0 */4 * * *'
 
   workflow_dispatch:
 
@@ -52,7 +52,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami --publish
 
 
       - name: Report pulls
@@ -106,7 +106,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank --publish
 
 
       - name: Report pulls
@@ -160,7 +160,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run ansible/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run ansible/ironbank --publish
 
 
       - name: Report pulls
@@ -214,7 +214,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami --publish
 
 
       - name: Report pulls
@@ -268,7 +268,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank --publish
 
 
       - name: Report pulls
@@ -322,7 +322,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run apache/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/official --publish
 
 
       - name: Report pulls
@@ -376,7 +376,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay --publish
 
 
       - name: Report pulls
@@ -430,7 +430,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run bats/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run bats/ironbank --publish
 
 
       - name: Report pulls
@@ -484,7 +484,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official --publish
 
 
       - name: Report pulls
@@ -538,7 +538,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run chart-testing/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run chart-testing/ironbank --publish
 
 
       - name: Report pulls
@@ -592,7 +592,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami --publish
 
 
       - name: Report pulls
@@ -646,7 +646,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank --publish
 
 
       - name: Report pulls
@@ -700,7 +700,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run consul/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/official --publish
 
 
       - name: Report pulls
@@ -754,7 +754,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/bitnami --publish
 
 
       - name: Report pulls
@@ -808,7 +808,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/ironbank --publish
 
 
       - name: Report pulls
@@ -862,7 +862,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official --publish
 
 
       - name: Report pulls
@@ -916,7 +916,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages --publish
 
 
       - name: Report pulls
@@ -970,7 +970,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/bitnami --publish
 
 
       - name: Report pulls
@@ -1024,7 +1024,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official --publish
 
 
       - name: Report pulls
@@ -1078,7 +1078,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami --publish
 
 
       - name: Report pulls
@@ -1132,7 +1132,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official --publish
 
 
       - name: Report pulls
@@ -1186,7 +1186,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami --publish
 
 
       - name: Report pulls
@@ -1240,7 +1240,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank --publish
 
 
       - name: Report pulls
@@ -1294,7 +1294,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run filebeat/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run filebeat/ironbank --publish
 
 
       - name: Report pulls
@@ -1348,7 +1348,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/bitnami --publish
 
 
       - name: Report pulls
@@ -1402,7 +1402,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank --publish
 
 
       - name: Report pulls
@@ -1456,7 +1456,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami --publish
 
 
       - name: Report pulls
@@ -1510,7 +1510,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank --publish
 
 
       - name: Report pulls
@@ -1564,7 +1564,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official --publish
 
 
       - name: Report pulls
@@ -1618,7 +1618,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run ghost/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run ghost/bitnami --publish
 
 
       - name: Report pulls
@@ -1672,7 +1672,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank --publish
 
 
       - name: Report pulls
@@ -1726,7 +1726,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami --publish
 
 
       - name: Report pulls
@@ -1780,7 +1780,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank --publish
 
 
       - name: Report pulls
@@ -1834,7 +1834,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official --publish
 
 
       - name: Report pulls
@@ -1888,7 +1888,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish
 
 
       - name: Report pulls
@@ -1942,7 +1942,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run kafka/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run kafka/ironbank --publish
 
 
       - name: Report pulls
@@ -1996,7 +1996,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official --publish
 
 
       - name: Report pulls
@@ -2050,7 +2050,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank --publish
 
 
       - name: Report pulls
@@ -2104,7 +2104,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run kong/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run kong/official --publish
 
 
       - name: Report pulls
@@ -2158,7 +2158,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank --publish
 
 
       - name: Report pulls
@@ -2212,7 +2212,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami --publish
 
 
       - name: Report pulls
@@ -2266,7 +2266,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank --publish
 
 
       - name: Report pulls
@@ -2320,7 +2320,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official --publish
 
 
       - name: Report pulls
@@ -2374,7 +2374,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami --publish
 
 
       - name: Report pulls
@@ -2428,7 +2428,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank --publish
 
 
       - name: Report pulls
@@ -2482,7 +2482,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official --publish
 
 
       - name: Report pulls
@@ -2536,7 +2536,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run metricbeat/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run metricbeat/ironbank --publish
 
 
       - name: Report pulls
@@ -2590,7 +2590,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank --publish
 
 
       - name: Report pulls
@@ -2644,7 +2644,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami --publish
 
 
       - name: Report pulls
@@ -2698,7 +2698,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank --publish
 
 
       - name: Report pulls
@@ -2752,7 +2752,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official --publish
 
 
       - name: Report pulls
@@ -2806,7 +2806,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank --publish
 
 
       - name: Report pulls
@@ -2860,7 +2860,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami --publish
 
 
       - name: Report pulls
@@ -2914,7 +2914,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank --publish
 
 
       - name: Report pulls
@@ -2968,7 +2968,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official --publish
 
 
       - name: Report pulls
@@ -3022,7 +3022,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami --publish
 
 
       - name: Report pulls
@@ -3076,7 +3076,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank --publish
 
 
       - name: Report pulls
@@ -3130,7 +3130,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nats/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/official --publish
 
 
       - name: Report pulls
@@ -3184,7 +3184,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami --publish
 
 
       - name: Report pulls
@@ -3238,7 +3238,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank --publish
 
 
       - name: Report pulls
@@ -3292,7 +3292,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official --publish
 
 
       - name: Report pulls
@@ -3346,7 +3346,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank --publish
 
 
       - name: Report pulls
@@ -3400,7 +3400,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/bitnami --publish
 
 
       - name: Report pulls
@@ -3454,7 +3454,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank --publish
 
 
       - name: Report pulls
@@ -3508,7 +3508,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish
 
 
       - name: Report pulls
@@ -3562,7 +3562,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank --publish
 
 
       - name: Report pulls
@@ -3616,7 +3616,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami --publish
 
 
       - name: Report pulls
@@ -3670,7 +3670,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank --publish
 
 
       - name: Report pulls
@@ -3724,7 +3724,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official --publish
 
 
       - name: Report pulls
@@ -3778,7 +3778,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami --publish
 
 
       - name: Report pulls
@@ -3832,7 +3832,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank --publish
 
 
       - name: Report pulls
@@ -3886,7 +3886,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami --publish
 
 
       - name: Report pulls
@@ -3940,7 +3940,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami --publish
 
 
       - name: Report pulls
@@ -3994,7 +3994,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami --publish
 
 
       - name: Report pulls
@@ -4048,7 +4048,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank --publish
 
 
       - name: Report pulls
@@ -4102,7 +4102,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/official --publish
 
 
       - name: Report pulls
@@ -4156,7 +4156,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run telegraf/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run telegraf/bitnami --publish
 
 
       - name: Report pulls
@@ -4210,7 +4210,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank --publish
 
 
       - name: Report pulls
@@ -4264,7 +4264,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run tika/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run tika/ironbank --publish
 
 
       - name: Report pulls
@@ -4318,7 +4318,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik --publish
 
 
       - name: Report pulls
@@ -4372,7 +4372,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank --publish
 
 
       - name: Report pulls
@@ -4426,7 +4426,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp --publish
 
 
       - name: Report pulls
@@ -4480,7 +4480,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank --publish
 
 
       - name: Report pulls
@@ -4534,7 +4534,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami --publish
 
 
       - name: Report pulls
@@ -4588,7 +4588,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/ironbank --publish
 
 
       - name: Report pulls
@@ -4642,7 +4642,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official --publish
 
 
       - name: Report pulls
@@ -4696,7 +4696,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami --publish
 
 
       - name: Report pulls
@@ -4750,7 +4750,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank --publish
 
 
       - name: Report pulls
@@ -4804,7 +4804,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official --publish --publish-stub no
+        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official --publish
 
 
       - name: Report pulls

@@ -93,7 +93,7 @@ RapidFort’s hardened [rapidfort/airflow-scheduler][rf-dh-image-link] image has
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-12`, `2.9.0`, `2.9.0-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-scheduler/2/debian-12/Dockerfile)
+* [`2`, `2-debian-12`, `2.9.1`, `2.9.1-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow-scheduler/2/debian-12/Dockerfile)
 
 ## Need support
 

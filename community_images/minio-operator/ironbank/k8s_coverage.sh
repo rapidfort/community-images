@@ -14,7 +14,7 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 # shellcheck disable=SC1091
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-sleep 10
+sleep 30
 
 # Get JWT token for sign-in
 JWT=$(kubectl get secret/console-sa-secret -n ${NAMESPACE} -o json | jq -r ".data.token" | base64 -d)

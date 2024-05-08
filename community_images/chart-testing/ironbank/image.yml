@@ -1,0 +1,33 @@
+name: chart-testing-ib
+official_name: Helm Chart Testing Ironbank
+official_website: https://helm.sh/docs/topics/chart_tests/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/helm/chart-testing
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fhelm%2Fchart-testing
+source_image_readme: https://repo1.dso.mil/dsop/opensource/helm/chart-testing/-/blob/development/README.md
+rf_docker_link: rapidfort/chart-testing-ib
+github_location: chart-testing/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fhelm%2Fchart-testing
+usage_instructions: |
+  # change current directory to root of git repo that contains charts
+  # Using docker run
+  $ docker run --network host --workdir=/data --volume ~/.kube/config:/root/.kube/config:ro --volume $(pwd):/data --user root rapidfort/chart-testing:latest lint
+what_is_text: |
+  `ct` is the the tool for testing Helm charts. It is meant to be used for linting and testing pull requests. It automatically detects charts changed against the target branch.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/helm/chart-testing:
+      input_base_tag: "v3.10."
+      output_repo: chart-testing-ib
+runtimes:
+  - type: docker_compose
+    before_script: dc_before.sh
+    script: dc_coverage.sh
+    image_keys:
+      chart-testing-ib:
+        repository: "CT_IMAGE_REPOSITORY"
+        tag: "CT_IMAGE_TAG"

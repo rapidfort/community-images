@@ -67,7 +67,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -137,7 +137,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -205,8 +205,9 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run ansible/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run ansible/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -276,7 +277,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -346,7 +347,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -416,7 +417,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run apache/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run apache/official --publish-stub no
 
 
       - name: Report pulls
@@ -486,7 +487,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay
+        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay --publish-stub no
 
 
       - name: Report pulls
@@ -500,6 +501,76 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/argocd": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  bats-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py bats-ib bats/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
+
+      - name: Start minikube
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        run: python3 community_images/common/orchestrator/main.py hourly_run bats/ironbank --publish-stub no
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/bats-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   cassandra-official:
     runs-on: ubuntu-latest
@@ -556,7 +627,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official --publish-stub no
 
 
       - name: Report pulls
@@ -570,6 +641,76 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/cassandra-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  chart-testing-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py chart-testing-ib chart-testing/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
+
+      - name: Start minikube
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        run: python3 community_images/common/orchestrator/main.py hourly_run chart-testing/ironbank --publish-stub no
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/chart-testing-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   consul:
     runs-on: ubuntu-latest
@@ -626,7 +767,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -696,7 +837,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -766,7 +907,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run consul/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run consul/official --publish-stub no
 
 
       - name: Report pulls
@@ -836,7 +977,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -906,7 +1047,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -976,7 +1117,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official --publish-stub no
 
 
       - name: Report pulls
@@ -1046,7 +1187,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages
+        run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages --publish-stub no
 
 
       - name: Report pulls
@@ -1116,7 +1257,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -1186,7 +1327,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official --publish-stub no
 
 
       - name: Report pulls
@@ -1256,7 +1397,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -1326,7 +1467,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official --publish-stub no
 
 
       - name: Report pulls
@@ -1396,7 +1537,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -1466,7 +1607,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -1536,7 +1677,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run filebeat/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run filebeat/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -1606,7 +1747,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -1676,7 +1817,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -1746,7 +1887,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -1816,7 +1957,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -1886,7 +2027,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official --publish-stub no
 
 
       - name: Report pulls
@@ -1956,7 +2097,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run ghost/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run ghost/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -2026,7 +2167,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -2096,7 +2237,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -2166,7 +2307,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -2236,7 +2377,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official --publish-stub no
 
 
       - name: Report pulls
@@ -2306,7 +2447,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -2376,7 +2517,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run kafka/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run kafka/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -2446,7 +2587,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official --publish-stub no
 
 
       - name: Report pulls
@@ -2516,7 +2657,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -2586,7 +2727,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run kong/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run kong/official --publish-stub no
 
 
       - name: Report pulls
@@ -2656,7 +2797,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -2726,7 +2867,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -2796,7 +2937,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -2866,7 +3007,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official --publish-stub no
 
 
       - name: Report pulls
@@ -2936,7 +3077,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -3006,7 +3147,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -3076,7 +3217,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official --publish-stub no
 
 
       - name: Report pulls
@@ -3144,8 +3285,9 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run metricbeat/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run metricbeat/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -3215,7 +3357,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -3285,7 +3427,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -3355,7 +3497,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -3425,7 +3567,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official --publish-stub no
 
 
       - name: Report pulls
@@ -3495,7 +3637,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -3565,7 +3707,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -3635,7 +3777,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -3705,7 +3847,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official --publish-stub no
 
 
       - name: Report pulls
@@ -3775,7 +3917,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -3845,7 +3987,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -3915,7 +4057,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run nats/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run nats/official --publish-stub no
 
 
       - name: Report pulls
@@ -3985,7 +4127,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -4055,7 +4197,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -4125,7 +4267,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official --publish-stub no
 
 
       - name: Report pulls
@@ -4195,7 +4337,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -4265,7 +4407,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -4335,7 +4477,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -4405,7 +4547,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana
+        run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish-stub no
 
 
       - name: Report pulls
@@ -4475,7 +4617,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -4545,7 +4687,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -4615,7 +4757,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -4685,7 +4827,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official --publish-stub no
 
 
       - name: Report pulls
@@ -4755,7 +4897,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -4825,7 +4967,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -4895,7 +5037,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -4965,7 +5107,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -5035,7 +5177,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -5105,7 +5247,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -5175,7 +5317,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run redis/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run redis/official --publish-stub no
 
 
       - name: Report pulls
@@ -5245,7 +5387,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run telegraf/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run telegraf/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -5315,7 +5457,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -5329,6 +5471,76 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/terraform-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  tika-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd-pr
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/tests_required.py tika-ib tika/ironbank output.txt
+          cat output.txt >> $GITHUB_OUTPUT
+
+      - name: Start minikube
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+
+
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        run: python3 community_images/common/orchestrator/main.py hourly_run tika/ironbank --publish-stub no
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/tika-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   traefik:
     runs-on: ubuntu-latest
@@ -5385,7 +5597,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik
+        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik --publish-stub no
 
 
       - name: Report pulls
@@ -5455,7 +5667,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -5525,7 +5737,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp
+        run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp --publish-stub no
 
 
       - name: Report pulls
@@ -5595,7 +5807,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -5665,7 +5877,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -5735,7 +5947,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -5805,7 +6017,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official --publish-stub no
 
 
       - name: Report pulls
@@ -5875,7 +6087,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami
+        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami --publish-stub no
 
 
       - name: Report pulls
@@ -5945,7 +6157,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank --publish-stub no
 
 
       - name: Report pulls
@@ -6015,7 +6227,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official
+        run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official --publish-stub no
 
 
       - name: Report pulls

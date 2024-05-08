@@ -11,7 +11,7 @@ function test_zookeeper() {
     CMD="docker exec -i ${CONTAINER_NAME} bash -c /opt/bitnami/scripts/coverage_script.sh"
 
     if [[ "${USE_KUBECTL}" == "yes" ]]; then
-        CMD="kubectl exec -i ${CONTAINER_NAME} -n ${NAMESPACE} -- bash /opt/bitnami/scripts/coverage_script.sh"
+        CMD="kubectl exec -i ${CONTAINER_NAME} -n ${NAMESPACE} -- bash /tmp/coverage_script.sh"
     fi
 
     $CMD

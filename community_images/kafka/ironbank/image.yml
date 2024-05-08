@@ -13,7 +13,7 @@ usage_instructions: |
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
   # install kafka, just replace repository with RapidFort registry and use the helmn chart version 21.1.1
-  $ helm install my-kafka bitnami/kafka --version 21.1.1 --set image.repository=rapidfort/kafka-ib
+  $ helm install my-kafka bitnami/kafka --version 21.1.1 --set image.repository=rapidfort/kafka-ib --set image.tag=latest
 what_is_text: |
   Apache Kafka is a distributed streaming platform designed to build real-time pipelines and can be used as a message broker or as a replacement for a log aggregation solution for big data applications.
 disclaimer: |
@@ -36,6 +36,8 @@ runtimes:
       repo_url: https://charts.bitnami.com/bitnami
       chart: kafka
       version: "21.1.1"
+    helm_additional_params:
+      replicaCount: 3
     wait_time_sec: 120
     image_keys:
       kafka-ib:

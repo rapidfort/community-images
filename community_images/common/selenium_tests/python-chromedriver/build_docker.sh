@@ -6,7 +6,7 @@ set -e
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 
-TAG=$(git ls-remote https://github.com/joyzoursky/docker-python-chromedriver.git HEAD | awk '{ print $1}')
+TAG=$(curl -s "https://hub.docker.com/v2/namespaces/schukinpavel/repositories/python-chromedriver/tags" | jq -r '.results[0].name')
 
 IMAGE_TAG="$RAPIDFORT_ACCOUNT"/python-chromedriver:"${TAG}"
 

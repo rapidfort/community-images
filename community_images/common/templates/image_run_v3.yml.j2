@@ -10,7 +10,7 @@ on:
     - main
 {% elif  output == "main_build" %}
   schedule:
-  - cron: '0 * * * *'
+  - cron: '0 */4 * * *'
 {% endif %}
   workflow_dispatch:
 

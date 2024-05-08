@@ -23,6 +23,7 @@ class Orchestrator:
         self.config_dict = self._load_config()
         self.docker_client = docker.from_env()
         self.publish = args.publish
+        self.publish_stub = args.publish_stub
         self.namespace_name = args.namespace_name
         self.force_publish = args.force_publish
         self.config_name = self.args.config.strip("/")
@@ -50,6 +51,7 @@ class Orchestrator:
                 self.config_name,
                 self.config_dict,
                 self.docker_client,
+                self.publish_stub,
                 tag_manager.repo_set_mappings
             ).generate()
         elif command in [Commands.STUB_COVERAGE,
@@ -81,6 +83,7 @@ class Orchestrator:
             self.config_name,
             self.config_dict,
             self.docker_client,
+            self.publish_stub,
             tag_manager.repo_set_mappings
         ).generate()
 
@@ -154,6 +157,8 @@ def main():
     parser.add_argument("--force-publish", dest="force_publish",
                         action="store_true", help="force publish image")
     parser.set_defaults(force_publish=False)
+    parser.add_argument("--publish-stub", dest="publish_stub", choices=["yes", "no"],
+                        type=str, default="yes", help="publish stub image [yes/no]")
     parser.add_argument("--namespace", dest="namespace_name",
                         type=str, default="< n u l l >", help="name of namespace to use")
     parser.add_argument("--image-to-scan", dest="image_to_scan",

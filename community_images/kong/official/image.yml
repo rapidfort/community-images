@@ -49,6 +49,7 @@ runtimes:
       repo: kong
       repo_url: https://charts.konghq.com
       chart: kong
+      version: "2.13.0"
     wait_time_sec: 60
     readiness_check_script: kong_setup.sh
     image_keys:

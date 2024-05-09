@@ -12,8 +12,7 @@ services:
       - "discovery.type=single-node"
   
   packetbeat:
-    # image: ${PACKETBEAT_IMAGE_REPOSITORY}:${PACKETBEAT_IMAGE_TAG}
-    image: kphull/packetbeat-ib:8.13.2-rfstub
+    image: ${PACKETBEAT_IMAGE_REPOSITORY}:${PACKETBEAT_IMAGE_TAG}
     user: root
     cap_add:
       - SYS_PTRACE
@@ -22,9 +21,6 @@ services:
     network_mode: host
     volumes:
       - "./packetbeat.docker.yml:/usr/share/packetbeat/packetbeat.yml:ro"
-      # - "./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
-      # - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
-      # - "/var/run/docker.sock:/var/run/docker.sock:ro"
     command: -e --strict.perms=false
     depends_on:
       - elasticsearch

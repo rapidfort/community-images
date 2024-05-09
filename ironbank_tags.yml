@@ -7,9 +7,12 @@ ansible-ib:
 apache-ib:
   search_tags:
     - 2.4.
+bats-ib:
+  search_tags:
+    - v1.11.
 chart-testing-ib:
   search_tags:
-    - v3.10.
+    - v3.11.
 consul-ib:
   search_tags:
     - 1.17.
@@ -31,6 +34,9 @@ fluentd-ib:
 grafana-ib:
   search_tags:
     - 10.4.
+hadolint-ib:
+  search_tags:
+    - v2.12.
 haproxy-ib:
   search_tags:
     - 2.4.
@@ -69,10 +75,10 @@ nats-ib:
     - v2.10.
 nginx-ib:
   search_tags:
-    - 1.25.
+    - 1.26.
 nifi-ib:
   search_tags:
-    - 1.25.
+    - 1.26.
 node-exporter-ib:
   search_tags:
     - v1.8.
@@ -84,7 +90,7 @@ postgresql-ib:
     - "12."
 prometheus-ib:
   search_tags:
-    - v2.51.
+    - v2.52.
 redis-ib:
   search_tags:
     - 6.2.

@@ -14,7 +14,7 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 # get docker host ip
 REDIS_HOST=$(jq -r '.container_details."redis-official".ip_address' < "$JSON_PARAMS")
-REDIS_CONTAINER= $(jq -r '.container_details."redis-official".name' < "$JSON_PARAMS")
+REDIS_CONTAINER=$(jq -r '.container_details."redis-official".name' < "$JSON_PARAMS")
 # REPO_PATH=$(jq -r '.image_tag_details."redis-official".repo_path' < "$JSON_PARAMS")
 # TAG=$(jq -r '.image_tag_details."redis-official".tag' < "$JSON_PARAMS")
 

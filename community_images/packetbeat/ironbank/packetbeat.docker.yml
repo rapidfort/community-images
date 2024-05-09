@@ -1,6 +1,6 @@
 output:
   elasticsearch:
-    hosts: ["elasticsearch:9200"]
+    hosts: ["127.0.0.1:9200"]
 
 packetbeat.interfaces.device: any
 

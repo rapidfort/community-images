@@ -14,7 +14,7 @@ services:
   packetbeat:
     # image: ${PACKETBEAT_IMAGE_REPOSITORY}:${PACKETBEAT_IMAGE_TAG}
     image: kphull/packetbeat-ib:8.13.2-rfstub
-    user: packetbeat
+    user: root
     cap_add:
       - SYS_PTRACE
       - NET_ADMIN

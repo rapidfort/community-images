@@ -40,4 +40,3 @@ curl -i -X POST \
 # CLI coverage
 docker exec -i "${CONTAINER_NAME}" packetbeat version
 docker exec -i "${CONTAINER_NAME}" packetbeat keystore list
-docker exec -i "${CONTAINER_NAME}" packetbeat export config

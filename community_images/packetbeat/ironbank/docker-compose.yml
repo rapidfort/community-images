@@ -11,15 +11,20 @@ services:
       - xpack.security.enabled=false
       - "discovery.type=single-node"
   
-  filebeat:
-    image: ${FILEBEAT_IMAGE_REPOSITORY}:${FILEBEAT_IMAGE_TAG}
-    user: root
+  packetbeat:
+    # image: ${PACKETBEAT_IMAGE_REPOSITORY}:${PACKETBEAT_IMAGE_TAG}
+    image: kphull/packetbeat-ib:8.13.2-rfstub
+    user: packetbeat
     cap_add:
       - SYS_PTRACE
+      - NET_ADMIN
+      - NET_RAW
+    network_mode: host
     volumes:
-      - "./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
-      - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./packetbeat.docker.yml:/usr/share/packetbeat/packetbeat.yml:ro"
+      # - "./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro"
+      # - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
+      # - "/var/run/docker.sock:/var/run/docker.sock:ro"
     command: -e --strict.perms=false
     depends_on:
       - elasticsearch

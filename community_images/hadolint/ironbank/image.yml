@@ -1,0 +1,34 @@
+name: hadolint-ib
+official_name: Hadolint IronBank
+official_website: https://github.com/hadolint/hadolint
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/hadolint/hadolint
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fhadolint%2Fhadolint
+source_image_readme: https://repo1.dso.mil/dsop/opensource/hadolint/hadolint/-/blob/development/README.md
+rf_docker_link: rapidfort/hadolint-ib
+image_workflow_name: hadolint_ironbank
+github_location: hadolint/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fhadolint%2Fhadolint
+usage_instructions: |
+  $ docker run --rm -i -v ./your/path/to/hadolint.yaml:/root/.config/hadolint.yaml rapidfort/hadolint-ib:latest < Dockerfile
+what_is_text: |
+  Hadolint is a smarter Dockerfile linter that helps you build best practice Docker images. The linter is parsing the Dockerfile into an AST and performs rules on top of the AST. It additionally is using the famous Shellcheck to lint the Bash code inside RUN instructions.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/hadolint/hadolint/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/hadolint/hadolint:
+      input_base_tag: "v2.12."
+      output_repo: hadolint-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      hadolint-ib:
+        repository: "HADOLINT_IMAGE_REPOSITORY"
+        tag: "HADOLINT_IMAGE_TAG"

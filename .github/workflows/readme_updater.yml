@@ -114,6 +114,14 @@ jobs:
           repository: rapidfort/argocd
           readme-filepath: ./community_images/argocd/quay/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Argo CD Quay
+      - name: Docker Hub Description Bats Iron-Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/bats-ib
+          readme-filepath: ./community_images/bats/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Bats Iron-Bank
       - name: Docker Hub Description Cassandra Official
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -298,6 +306,14 @@ jobs:
           repository: rapidfort/grafana-ib
           readme-filepath: ./community_images/grafana/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Grafana Ironbank
+      - name: Docker Hub Description Hadolint IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/hadolint-ib
+          readme-filepath: ./community_images/hadolint/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Hadolint IronBank
       - name: Docker Hub Description HAProxy
         uses: peter-evans/dockerhub-description@v3
         with:

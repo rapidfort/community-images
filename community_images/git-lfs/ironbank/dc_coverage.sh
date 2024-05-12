@@ -23,6 +23,8 @@ docker exec -i "${CONTAINER_NAME}" git help
 docker exec -i "${CONTAINER_NAME}" git init
 # Sets up Git LFS to track large binary files with the .bin extension.
 docker exec -i "${CONTAINER_NAME}" git lfs track "*.psd"
+docker exec -i "${CONTAINER_NAME}" git config user.email "rf@test.com"
+docker exec -i "${CONTAINER_NAME}" git config user.name "test"
 # adding to attribute file
 docker exec -i "${CONTAINER_NAME}" git add .gitattributes
 docker exec -i "${CONTAINER_NAME}" git commit -m "track *.psd files using Git LFS"

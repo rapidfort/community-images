@@ -29,12 +29,12 @@ docker exec -i "${CONTAINER_NAME}" git config user.name "test"
 docker exec -i "${CONTAINER_NAME}" git add .gitattributes
 docker exec -i "${CONTAINER_NAME}" git commit -m "track *.psd files using Git LFS"
 # Generates a large binary file named large_file.bin with 100 MB of random data.
-docker exec -it "${CONTAINER_NAME}" bash -c 'dd if=/dev/urandom of=large_file.psd bs=1M count=100'
+docker exec -i "${CONTAINER_NAME}" bash -c 'dd if=/dev/urandom of=large_file.psd bs=1M count=100'
 # Adds the large binary file to the Git repository, utilizing Git LFS for tracking.
-docker exec -it "${CONTAINER_NAME}" git add large_file.psd
+docker exec -i "${CONTAINER_NAME}" git add large_file.psd
 # displays helpful information about your Git repository
-docker exec -it "${CONTAINER_NAME}" git lfs env
-docker exec -it "${CONTAINER_NAME}" git commit -m "add bin"
+docker exec -i "${CONTAINER_NAME}" git lfs env
+docker exec -i "${CONTAINER_NAME}" git commit -m "add bin"
 # Lists the files tracked by Git LFS in the repository.
-docker exec -it "${CONTAINER_NAME}" git lfs ls-files
-docker exec -it "${CONTAINER_NAME}" ls
+docker exec -i "${CONTAINER_NAME}" git lfs ls-files
+docker exec -i "${CONTAINER_NAME}" ls

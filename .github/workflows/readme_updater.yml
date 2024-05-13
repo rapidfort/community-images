@@ -306,6 +306,14 @@ jobs:
           repository: rapidfort/ghost
           readme-filepath: ./community_images/ghost/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Ghost
+      - name: Docker Hub Description Git-lfs Iron-Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/git-lfs-ib
+          readme-filepath: ./community_images/git-lfs/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Git-lfs Iron-Bank
       - name: Docker Hub Description Grafana Ironbank
         uses: peter-evans/dockerhub-description@v3
         with:

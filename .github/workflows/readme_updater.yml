@@ -586,6 +586,14 @@ jobs:
           repository: rapidfort/oncall
           readme-filepath: ./community_images/oncall/grafana/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Grafana Oncall
+      - name: Docker Hub Description Packetbeat Iron Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/packetbeat-ib
+          readme-filepath: ./community_images/packetbeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Packetbeat Iron Bank
       - name: Docker Hub Description PAUSE IronBank
         uses: peter-evans/dockerhub-description@v3
         with:

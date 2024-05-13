@@ -122,6 +122,14 @@ jobs:
           repository: rapidfort/bats-ib
           readme-filepath: ./community_images/bats/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Bats Iron-Bank
+      - name: Docker Hub Description Bats Iron-Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/bats-ib
+          readme-filepath: ./community_images/bats/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Bats Iron-Bank
       - name: Docker Hub Description Cassandra Official
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -450,6 +458,14 @@ jobs:
           repository: rapidfort/microsoft-sql-server-2019-ib
           readme-filepath: ./community_images/microsoft-sql-server-2019/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Microsoft SQL Server 2019
+      - name: Docker Hub Description MinIO Operator Ironbank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/minio-operator-ib
+          readme-filepath: ./community_images/minio-operator/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for MinIO Operator Ironbank
       - name: Docker Hub Description MongoDB®
         uses: peter-evans/dockerhub-description@v3
         with:

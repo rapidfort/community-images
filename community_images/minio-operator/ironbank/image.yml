@@ -1,0 +1,48 @@
+name: minio-operator-ib
+official_name: MinIO Operator Ironbank
+official_website: https://github.com/minio/operator
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/minio/operator
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fminio%2Foperator
+source_image_readme: https://repo1.dso.mil/dsop/opensource/minio/minio-operator/-/blob/development/README.md
+rf_docker_link: rapidfort/minio-operator-ib
+github_location: minio-operator/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Foperator
+usage_instructions: |
+  # Using helm
+  $ helm install operator minio-operator/operator
+what_is_text: |
+  MinIO Kubernetes Operator supports deploying MinIO Tenants onto private and public cloud infrastructures (“Hybrid” Cloud).
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/minio/operator:
+      input_base_tag: "v5.0."
+      output_repo: minio-operator-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: minio-operator
+      repo_url: https://operator.min.io
+      chart: operator
+    image_keys:
+      minio-operator-ib:
+        repository: "operator.image.repository"
+        tag: "operator.image.tag"
+    readiness_wait_pod_name_suffix: []
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: minio-operator
+      repo_url: https://operator.min.io
+      chart: operator
+    image_keys:
+      minio-operator-ib:
+        repository: "console.image.repository"
+        tag: "console.image.tag"
+    readiness_wait_pod_name_suffix: []

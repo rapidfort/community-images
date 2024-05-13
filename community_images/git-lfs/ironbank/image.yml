@@ -10,7 +10,7 @@ github_location: git-lfs/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgit-lfs%2Fgit-lfs
 usage_instructions: |
   #Run the git-lfs container: To run commands inside this container you can use docker run
-   $ docker run --name git rapidfort/git-lfs-ib git lfs version
+   $ docker run --name git rapidfort/git-lfs-ib git lfs --version
 what_is_text: |
   Git LFS is a command line extension and specification for managing large files with Git.
 disclaimer: |

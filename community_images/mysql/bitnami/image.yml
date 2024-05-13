@@ -27,6 +27,8 @@ repo_sets:
       input_base_tag: "8.0.37-debian-12-r"
   - mysql:
       input_base_tag: "8.3.0-debian-12-r"
+  - mysql:
+      input_base_tag: "8.4.0-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

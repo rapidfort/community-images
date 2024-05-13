@@ -1,0 +1,34 @@
+name: packetbeat-ib
+official_name: Packetbeat Iron Bank
+official_website: https://www.elastic.co/beats/packetbeat
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/elastic/beats/packetbeat
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/elastic%2Fbeats%2Fpacketbeat
+source_image_readme: https://repo1.dso.mil/dsop/elastic/beats/packetbeat/-/blob/development/README.md
+rf_docker_link: rapidfort/packetbeat-ib
+image_workflow_name: packetbeat_ironbank
+github_location: packetbeat/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Fpacketbeat
+usage_instructions: "docker run rapidfort/packetbeat-ib"
+what_is_text: |
+  Packetbeat is a lightweight shipper for network data and packet analyzer that monitors your network traffic—critical for gaining observability over your environment to ensure high levels of performance and security—and sends data from your hosts and containers to Logstash or Elasticsearch.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - elastic/beats/packetbeat:
+      input_base_tag: "8.13."
+      output_repo: packetbeat-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    before_script: dc_before.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 60
+    image_keys:
+      packetbeat-ib:
+        repository: "PACKETBEAT_IMAGE_REPOSITORY"
+        tag: "PACKETBEAT_IMAGE_TAG"

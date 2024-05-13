@@ -27,6 +27,8 @@ repo_sets:
       input_base_tag: "1.24.0-debian-12-r"
   - nginx:
       input_base_tag: "1.25.5-debian-12-r"
+  - nginx:
+      input_base_tag: "1.26.0-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

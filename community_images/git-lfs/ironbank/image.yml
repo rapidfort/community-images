@@ -1,0 +1,32 @@
+name: git-lfs-ib
+official_name: Git-lfs Iron-Bank
+official_website: https://git-lfs.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/git-lfs/git-lfs
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fgit-lfs%2Fgit-lfs
+source_image_readme: https://repo1.dso.mil/dsop/opensource/git-lfs/git-lfs/-/blob/development/README.md
+rf_docker_link: rapidfort/git-lfs-ib
+github_location: git-lfs/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgit-lfs%2Fgit-lfs
+usage_instructions: |
+  #Run the git-lfs container: To run commands inside this container you can use docker run
+   $ docker run --name git rapidfort/git-lfs-ib git lfs --version
+what_is_text: |
+  Git LFS is a command line extension and specification for managing large files with Git.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/git-lfs/git-lfs:
+      input_base_tag: "2.44.0-3.5."
+      output_repo: git-lfs-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      git-lfs-ib:
+        repository: "GIT_LFS_IMAGE_REPOSITORY"
+        tag: "GIT_LFS_IMAGE_TAG"

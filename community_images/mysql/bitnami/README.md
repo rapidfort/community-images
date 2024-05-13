@@ -89,6 +89,7 @@ RapidFort’s hardened [rapidfort/mysql][rf-dh-image-link] image has been optimi
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
+* [`8.4`, `8.4-debian-12`, `8.4.0`, `8.4.0-debian-12-r` (8.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.4/debian-12/Dockerfile)
 * [`8.3`, `8.3-debian-12`, `8.3.0`, `8.3.0-debian-12-r` (8.3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.3/debian-12/Dockerfile)
 * [`8.0`, `8.0-debian-12`, `8.0.37`, `8.0.37-debian-12-r` (8.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-12/Dockerfile)
 

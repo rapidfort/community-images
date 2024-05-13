@@ -1,0 +1,34 @@
+name: rabbitmq-ib-bitnami
+official_name: Rabbitmq Iron-Bank (Bitnami)
+official_website: https://www.rabbitmq.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/bitnami/rabbitmq
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Frabbitmq
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/rabbitmq/rabbitmq312/-/blob/development/README.md
+rf_docker_link: rapidfort/rabbitmq-ib-bitnami
+image_workflow_name: rabbitmq_bitnami_ironbank
+github_location: rabbitmq/bitnami-ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Frabbitmq
+usage_instructions: |
+  $ docker run -d --name rabbitmq --network app-tier rapidfort/rabbitmq-ib-bitnami
+what_is_text: |
+  RabbitMQ is an open source general-purpose message broker that is designed for consistent, highly-available messaging scenarios (both synchronous and asynchronous).
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - bitnami/rabbitmq:
+      input_base_tag: "3.12."
+      output_repo: rabbitmq-ib-bitnami
+needs_common_commands: False
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      rabbitmq-ib-bitnami:
+        repository: "RABBITMQ_IMAGE_REPOSITORY"
+        tag: "RABBITMQ_IMAGE_TAG"

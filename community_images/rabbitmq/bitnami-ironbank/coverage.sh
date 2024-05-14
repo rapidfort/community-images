@@ -14,7 +14,7 @@ function test_rabbitmq_docker_compose() {
 
     PUBLISHER_POD_NAME="publisher"
 
-    docker run --name ${PUBLISHER_POD_NAME} --rm -d --network ${RABBITMQ_NETWORK} bitnami/python sleep infinity
+    docker run --name "${PUBLISHER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
     sleep 20
 
     echo "#!/bin/bash
@@ -29,7 +29,7 @@ function test_rabbitmq_docker_compose() {
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
-    docker run --name ${CONSUMER_POD_NAME} --rm -d --network ${RABBITMQ_NETWORK} bitnami/python sleep infinity
+    docker run --name "${CONSUMER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
     sleep 20
 
     echo "#!/bin/bash
@@ -43,8 +43,8 @@ function test_rabbitmq_docker_compose() {
     docker exec -i  "${CONSUMER_POD_NAME}" bash -c "/tmp/consume_commands.sh"
 
     # delete the client containers
-    docker stop ${PUBLISHER_POD_NAME}
-    docker stop ${CONSUMER_POD_NAME}
+    docker stop "${PUBLISHER_POD_NAME}"
+    docker stop "${CONSUMER_POD_NAME}"
 
     # delete the generated command files
     rm "$SCRIPTPATH"/publish_commands.sh
@@ -58,8 +58,8 @@ function test_rabbitmq_docker_compose() {
     sleep 15
 
     # run the perf benchmark test
-    docker run -i --name ${PERF_POD} \
-        --network ${RABBITMQ_NETWORK} \
+    docker run -i --name "${PERF_POD}" \
+        --network "${RABBITMQ_NETWORK}" \
         -e RABBITMQ_PERF_TEST_LOGGERS=com.rabbitmq.perf=debug,com.rabbitmq.perf.Producer=debug \
         pivotalrabbitmq/perf-test:"${PERF_TEST_IMAGE_VERSION}" \
         --uri amqp://"${DEFAULT_RABBITMQ_USER}":"${RABBITMQ_PASSWORD}"@"${RABBITMQ_SERVER}" \
@@ -75,6 +75,6 @@ function test_rabbitmq_docker_compose() {
     fi
 
     # delete the perf container
-    docker stop ${PERF_POD}
-    docker rm ${PERF_POD}
+    docker stop "${PERF_POD}"
+    docker rm "${PERF_POD}"
 }

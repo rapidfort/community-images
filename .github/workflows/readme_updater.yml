@@ -146,17 +146,6 @@ jobs:
           repository: rapidfort/bats-ib
           readme-filepath: ./community_images/bats/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Bats Iron-Bank
-<<<<<<< dependabot/github_actions/peter-evans/dockerhub-description-4
-      - name: Docker Hub Description Bats Iron-Bank
-        uses: peter-evans/dockerhub-description@v4
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/bats-ib
-          readme-filepath: ./community_images/bats/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Bats Iron-Bank
-=======
->>>>>>> main
       - name: Docker Hub Description Cassandra Official
         uses: peter-evans/dockerhub-description@v4
         with:

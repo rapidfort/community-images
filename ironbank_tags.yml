@@ -1,3 +1,12 @@
+airflow-scheduler-ib-bitnami:
+  search_tags:
+    - 2.8.
+airflow-worker-ib-bitnami:
+  search_tags:
+    - 2.8.
+airflow-ib-bitnami:
+  search_tags:
+    - 2.8.
 airflow-ib:
   search_tags:
     - 2.8.
@@ -31,6 +40,9 @@ fluent-bit-ib:
 fluentd-ib:
   search_tags:
     - 1.17.
+git-lfs-ib:
+  search_tags:
+    - 2.44.0-3.5.
 grafana-ib:
   search_tags:
     - 10.4.
@@ -61,6 +73,9 @@ metricbeat-ib:
 microsoft-sql-server-2019-ib:
   search_tags:
     - 2019-CU15-rhel-8
+minio-operator-ib:
+  search_tags:
+    - v5.0.
 mongodb-ib:
   search_tags:
     - 6.0.
@@ -82,6 +97,9 @@ nifi-ib:
 node-exporter-ib:
   search_tags:
     - v1.8.
+packetbeat-ib:
+  search_tags:
+    - 8.13.
 pause-ib:
   search_tags:
     - "3."
@@ -97,6 +115,9 @@ redis-ib:
 terraform-ib:
   search_tags:
     - 1.7.
+terragrunt-ib:
+  search_tags:
+    - v0.58.
 tika-ib:
   search_tags:
     - 2.9.

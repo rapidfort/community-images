@@ -58,6 +58,14 @@ jobs:
           repository: rapidfort/airflow-ib
           readme-filepath: ./community_images/airflow/airflow/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Airflow Ironbank
+      - name: Docker Hub Description Airflow Ironbank (Bitnami)
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/airflow-ib-bitnami
+          readme-filepath: ./community_images/airflow/airflow/bitnami-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Airflow Ironbank (Bitnami)
       - name: Docker Hub Description Apache Airflow Scheduler
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -66,6 +74,14 @@ jobs:
           repository: rapidfort/airflow-scheduler
           readme-filepath: ./community_images/airflow/airflow-scheduler/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Airflow Scheduler
+      - name: Docker Hub Description Airflow Scheduler Ironbank (Bitnami)
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/airflow-scheduler-ib-bitnami
+          readme-filepath: ./community_images/airflow/airflow-scheduler/bitnami-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Airflow Scheduler Ironbank (Bitnami)
       - name: Docker Hub Description Apache Airflow Worker
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -74,6 +90,14 @@ jobs:
           repository: rapidfort/airflow-worker
           readme-filepath: ./community_images/airflow/airflow-worker/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Airflow Worker
+      - name: Docker Hub Description Airflow Worker Ironbank (Bitnami)
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/airflow-worker-ib-bitnami
+          readme-filepath: ./community_images/airflow/airflow-worker/bitnami-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Airflow Worker Ironbank (Bitnami)
       - name: Docker Hub Description Ansible IronBank
         uses: peter-evans/dockerhub-description@v3
         with:

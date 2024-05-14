@@ -1,0 +1,33 @@
+name: terragrunt-ib
+official_name: Terragrunt Iron=Bank
+official_website: https://terragrunt.gruntwork.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/gruntwork-io/terragrunt
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fgruntwork-io%2Fterragrunt
+source_image_readme: https://repo1.dso.mil/dsop/opensource/gruntwork-io/terragrunt/-/blob/development/README.md
+rf_docker_link: rapidfort/terragrunt-ib
+image_workflow_name: terragrunt_ironbank
+github_location: terragrunt/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgruntwork-io%2Fterragrunt
+usage_instructions: |
+  $ docker run -i -v $(pwd):/data rapidfort/terragrunt-ib [COMMAND]
+what_is_text: |
+  Terragrunt is a thin wrapper for Terraform that provides extra tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+is_locked: "False"
+repo_sets:
+  - opensource/gruntwork-io/terragrunt:
+      input_base_tag: "v0.58."
+      output_repo: terragrunt-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      terragrunt-ib:
+        repository: "TERRAGRUNT_IMAGE_REPOSITORY"
+        tag: "TERRAGRUNT_IMAGE_TAG"

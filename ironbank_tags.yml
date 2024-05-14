@@ -16,9 +16,12 @@ ansible-ib:
 apache-ib:
   search_tags:
     - 2.4.
+bats-ib:
+  search_tags:
+    - v1.11.
 chart-testing-ib:
   search_tags:
-    - v3.10.
+    - v3.11.
 consul-ib:
   search_tags:
     - 1.17.
@@ -37,9 +40,15 @@ fluent-bit-ib:
 fluentd-ib:
   search_tags:
     - 1.17.
+git-lfs-ib:
+  search_tags:
+    - 2.44.0-3.5.
 grafana-ib:
   search_tags:
     - 10.4.
+hadolint-ib:
+  search_tags:
+    - v2.12.
 haproxy-ib:
   search_tags:
     - 2.4.
@@ -64,12 +73,15 @@ metricbeat-ib:
 microsoft-sql-server-2019-ib:
   search_tags:
     - 2019-CU15-rhel-8
+minio-operator-ib:
+  search_tags:
+    - v5.0.
 mongodb-ib:
   search_tags:
     - 6.0.
 moodle-ib:
   search_tags:
-    - 4.3.
+    - 4.4.
 mysql-ib:
   search_tags:
     - 8.0.
@@ -78,13 +90,16 @@ nats-ib:
     - v2.10.
 nginx-ib:
   search_tags:
-    - 1.25.
+    - 1.26.
 nifi-ib:
   search_tags:
-    - 1.25.
+    - 1.26.
 node-exporter-ib:
   search_tags:
-    - v1.7.
+    - v1.8.
+packetbeat-ib:
+  search_tags:
+    - 8.13.
 pause-ib:
   search_tags:
     - "3."
@@ -93,13 +108,16 @@ postgresql-ib:
     - "12."
 prometheus-ib:
   search_tags:
-    - v2.51.
+    - v2.52.
 redis-ib:
   search_tags:
     - 6.2.
 terraform-ib:
   search_tags:
     - 1.7.
+terragrunt-ib:
+  search_tags:
+    - v0.58.
 tika-ib:
   search_tags:
     - 2.9.

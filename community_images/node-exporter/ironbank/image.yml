@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus/node-exporter:
-      input_base_tag: "v1.7."
+      input_base_tag: "v1.8."
       output_repo: node-exporter-ib
 runtimes:
   - type: docker_compose

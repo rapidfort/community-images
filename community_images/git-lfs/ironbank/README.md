@@ -61,7 +61,7 @@ The runtime instructions for this hardened container image are the same as the o
 
 ```sh
 #Run the git-lfs container: To run commands inside this container you can use docker run
- $ docker run --name git rapidfort/git-lfs-ib git lfs version
+ $ docker run --name git rapidfort/git-lfs-ib git lfs --version
 
 ```
 

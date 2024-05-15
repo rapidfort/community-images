@@ -1,0 +1,52 @@
+name: airflow-ib-bitnami
+official_name: Airflow Ironbank (Bitnami)
+official_website: https://airflow.apache.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/bitnami/airflow
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fairflow
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/airflow/-/blob/development/README.md
+rf_docker_link: rapidfort/airflow-ib-bitnami
+image_workflow_name: airflow_airflow_bitnami_ironbank
+github_location: airflow/airflow/bitnami-ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fairflow
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install airflow, just replace repository with RapidFort registry
+  $ helm install my-airflow bitnami/airflow --set image.repository=rapidfort/airflow-ib-bitnami
+what_is_text: |
+  Apache Airflow (or simply Airflow) is a platform to programmatically author, schedule, and monitor workflows.
+
+  When workflows are defined as code, they become more maintainable, versionable, testable, and collaborative.
+
+  Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - bitnami/airflow:
+      input_base_tag: "2.8."
+      output_repo: airflow-ib-bitnami
+    bitnami/airflow-scheduler:
+      input_base_tag: "2.8."
+      output_repo: airflow-scheduler-ib-bitnami
+    bitnami/airflow-worker:
+      input_base_tag: "2.8."
+      output_repo: airflow-worker-ib-bitnami
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 300
+    image_keys:
+      airflow-ib-bitnami:
+        repository: "AIRFLOW_IMAGE_REPOSITORY"
+        tag: "AIRFLOW_IMAGE_TAG"
+      airflow-scheduler-ib-bitnami:
+        repository: "AIRFLOW_SCHEDULER_IMAGE_REPOSITORY"
+        tag: "AIRFLOW_SCHEDULER_IMAGE_TAG"
+      airflow-worker-ib-bitnami:
+        repository: "AIRFLOW_WORKER_IMAGE_REPOSITORY"
+        tag: "AIRFLOW_WORKER_IMAGE_TAG"

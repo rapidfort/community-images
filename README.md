@@ -277,13 +277,25 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [airflow-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-ib?logo=docker&logoColor=white
 [airflow-ib-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fairflow%2Fairflow?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-ib&utm_content=landing_view_report
 
+[airflow-ib-bitnami-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow/bitnami-ironbank
+[airflow-ib-bitnami-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-ib-bitnami?logo=docker&logoColor=white
+[airflow-ib-bitnami-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fairflow?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-ib-bitnami&utm_content=landing_view_report
+
 [airflow-scheduler-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow-scheduler/bitnami
 [airflow-scheduler-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-scheduler?logo=docker&logoColor=white
 [airflow-scheduler-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-scheduler?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-scheduler&utm_content=landing_view_report
 
+[airflow-scheduler-ib-bitnami-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow-scheduler/bitnami-ironbank
+[airflow-scheduler-ib-bitnami-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-scheduler-ib-bitnami?logo=docker&logoColor=white
+[airflow-scheduler-ib-bitnami-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fairflow-scheduler?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-scheduler-ib-bitnami&utm_content=landing_view_report
+
 [airflow-worker-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow-worker/bitnami
 [airflow-worker-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-worker?logo=docker&logoColor=white
 [airflow-worker-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fairflow-worker?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-worker&utm_content=landing_view_report
+
+[airflow-worker-ib-bitnami-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/airflow/airflow-worker/bitnami-ironbank
+[airflow-worker-ib-bitnami-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/airflow-worker-ib-bitnami?logo=docker&logoColor=white
+[airflow-worker-ib-bitnami-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fairflow-worker?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=airflow-worker-ib-bitnami&utm_content=landing_view_report
 
 [ansible-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/ansible/ironbank
 [ansible-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/ansible-ib?logo=docker&logoColor=white

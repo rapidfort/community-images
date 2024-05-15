@@ -10,9 +10,6 @@ server:
         capabilities:
           add:
           - "SYS_PTRACE"
-server.dev.enabled: true
-injector:
-  enabled: "false"
 extraEnvironmentVars:
   - name: "RF_VERBOSE"
     value: "0"

@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/grafana/grafana:
-      input_base_tag: "10.4."
+      input_base_tag: "11.0."
       output_repo: grafana-ib
 runtimes:
   - type: docker_compose

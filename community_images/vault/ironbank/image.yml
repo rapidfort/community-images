@@ -38,6 +38,7 @@ runtimes:
     #readiness_check_script: vault_health_check.sh
     helm_additional_params:
       persistence.enabled: false
+      server.dev.enabled: true
     image_keys:
       vault-ib:
         repository: "server.image.repository"

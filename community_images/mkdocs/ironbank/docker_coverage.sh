@@ -23,7 +23,7 @@ MKDOCS_PID=$!
 # and then update any file in mkdocs to trigger live reload
 (
 sleep 30 # sleep to compensate sleep 30 in selenium_tests
-for ((i = 0; i < 10; i++)); do
+for ((i = 0; i < 30; i++)); do
   sleep 1
   if [[ $(docker exec -i python-chromedriver cat /usr/workspace/selenium_tests/reload.txt || echo "not-found") == *reload* ]]; then
     echo "watch[$i] - signal file found \"reload.txt\""

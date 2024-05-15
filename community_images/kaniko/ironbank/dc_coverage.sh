@@ -9,7 +9,6 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
-SCRIPTPATH=$(jq -r '.image_script_dir' < "$JSON_PARAMS")
 
 # Extracting names for ansible and ubuntu_host
 KANIKO_CONTAINER_NAME="${NAMESPACE}"-kaniko-1

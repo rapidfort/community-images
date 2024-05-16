@@ -143,7 +143,6 @@ class CoverageRunner:
         """ Prepare image tag details for runner objects """
         image_tag_details = {}
         image_tag_value = None
-        
         if command == Commands.TEST_COVERAGE:
             image_to_scan = self.orchestrator.image_to_scan
             if image_to_scan:

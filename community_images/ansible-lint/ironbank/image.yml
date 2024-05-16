@@ -10,7 +10,7 @@ image_workflow_name: ansible_lint_ironbank
 github_location: ansible-lint/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fansible%2Fansible-lint
 usage_instructions: |
-  $ docker run --rm -it rapidfort:ansible-lint-ib:latest <file/directory_to_be_checked>
+  $ docker run --rm -it rapidfort/ansible-lint-ib:latest <file/directory_to_be_checked>
 what_is_text: |
   ansible-lint checks ansible playbooks for practices and behaviour that could potentially be improved.
 disclaimer: |

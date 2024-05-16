@@ -1,0 +1,36 @@
+name: mkdocs-ib
+official_name: MkDocs IronBank
+official_website: https://www.mkdocs.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/mkdocs
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fmkdocs%2Fmkdocs-material
+source_image_readme: https://repo1.dso.mil/dsop/opensource/mkdocs/mkdocs-material/-/blob/development/README.md
+rf_docker_link: rapidfort/mkdocs-ib
+image_workflow_name: mkdocs_ironbank
+github_location: mkdocs/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmkdocs
+usage_instructions: |
+  $ docker run -it -v ${PWD}/docs:/docs -p 8000:8000 rapidfort/mkdocs-ib:latest
+  # Open browser and load http://localhost:8000
+what_is_text: |
+  MkDocs is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Documentation source files are written in Markdown, and configured with a single YAML configuration file.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/mkdocs:
+      input_base_tag: "9.5."
+      output_repo: mkdocs-ib
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    mkdocs-ib:
+      entrypoint: sleep
+      exec_command: infinity
+      volumes:
+        docs: /docs
+      ports:
+        - 5678:5678

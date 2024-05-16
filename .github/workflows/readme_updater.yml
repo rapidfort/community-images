@@ -490,6 +490,14 @@ jobs:
           repository: rapidfort/minio-operator-ib
           readme-filepath: ./community_images/minio-operator/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MinIO Operator Ironbank
+      - name: Docker Hub Description MkDocs IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/mkdocs-ib
+          readme-filepath: ./community_images/mkdocs/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for MkDocs IronBank
       - name: Docker Hub Description MongoDB®
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -738,14 +746,14 @@ jobs:
           repository: rapidfort/terraform-ib
           readme-filepath: ./community_images/terraform/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Terraform IronBank
-      - name: Docker Hub Description Terragrunt Iron=Bank
+      - name: Docker Hub Description Terragrunt IronBank
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/terragrunt-ib
           readme-filepath: ./community_images/terragrunt/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Terragrunt Iron=Bank
+          short-description: RapidFort optimized, hardened image for Terragrunt IronBank
       - name: Docker Hub Description Tika Iron Bank
         uses: peter-evans/dockerhub-description@v3
         with:

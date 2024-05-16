@@ -126,6 +126,7 @@ class ImageTagsCheckHelper:
             None
         """
         unsupported_images = {}
+        source_image_account = None
         with open(self.image_list_file_path, "r", encoding="utf8") as stream:
             for image_path in stream.readlines():
                 image_path = image_path.strip()

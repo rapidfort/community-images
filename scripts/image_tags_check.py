@@ -180,10 +180,7 @@ class ImageTagsCheckHelper:
                     elif "/r/" in source_image_repo_link:
                         source_image_repo, source_image_name = source_image_repo_link.split("/")[-2:]
 
-                    logging.info(
-                        f"Fetching tags for image: '{source_image_name}' "
-                        f"from repo: '{source_image_repo}'"
-                    )
+                    logging.info(f"Fetching tags for image: '{source_image_name}' from repo: '{source_image_repo}'")
                     source_image_tags = self._fetch_image_tags(source_image_name, source_image_repo, image_path)
 
                     # now fetching tags for hardened image

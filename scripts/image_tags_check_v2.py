@@ -164,8 +164,7 @@ class ImageTagsCheckHelper:
                 input_base_tags = [item[source_image_name]["input_base_tag"] for item in image_dict["repo_sets"]]
                 for base_tag in input_base_tags:
                     logging.info(f"🏷️  Checking for base tag: '{base_tag}'")
-                    latest_source_tag, source_release_timestamp = self.get_latest_tag_from_base_tag(
-                        source_image_account, source_image_name, base_tag)
+                    latest_source_tag, source_release_timestamp = self.get_latest_tag_from_base_tag(source_image_account, source_image_name, base_tag)
                     latest_hardened_tag, _ = self.get_latest_tag_from_base_tag(hardened_image_account, hardened_image_name, base_tag)
 
                     logging.info(f"Latest Source Tag: {latest_source_tag}")

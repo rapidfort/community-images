@@ -14,28 +14,36 @@ CONTAINER_NAME=${PROJECT_NAME}-vault-1
 
 docker exec "${CONTAINER_NAME}" vault version
 
-docker exec "${CONTAINER_NAME}" vault operator init \
-  -key-shares=1 \
-  -key-threshold=1 \
-  -format=json > /tmp/keys.json
+UNSEAL_KEY=$(docker logs "${CONTAINER_NAME}" 2>&1 | grep "Unseal Key" | awk '{print $NF}')
+ROOT_TOKEN=$(docker logs "${CONTAINER_NAME}" 2>&1 | grep "Root Token" | awk '{print $NF}')
 
-docker exec "${CONTAINER_NAME}" cat /tmp/keys.json
+echo "Unseal Key: $UNSEAL_KEY"
+echo "Root Token: $ROOT_TOKEN"
 
-UNSEAL_KEYS=$(docker exec "${CONTAINER_NAME}" sh -c '
-  grep "Unseal Key" /tmp/keys.json | awk -F": " "{print \$2}"
-')
+docker exec "${CONTAINER_NAME}" vault operator unseal "$UNSEAL_KEY"
 
-echo "$UNSEAL_KEYS" | while read -r key; do
-  docker exec "${CONTAINER_NAME}" vault operator unseal "$key"
-done
+# docker exec "${CONTAINER_NAME}" vault operator init \
+#   -key-shares=1 \
+#   -key-threshold=1 \
+#   -format=json > /vault/file/keys
 
-ROOT_TOKEN=$(docker exec "${CONTAINER_NAME}" sh -c '
-  grep "Initial Root Token" /tmp/keys.json | awk -F": " "{print \$2}"
-')
+# docker exec "${CONTAINER_NAME}" cat /tmp/keys.json
+
+# UNSEAL_KEYS=$(docker exec "${CONTAINER_NAME}" sh -c '
+#   grep "Unseal Key" /tmp/keys.json | awk -F": " "{print \$2}"
+# ')
+
+# echo "$UNSEAL_KEYS" | while read -r key; do
+#   docker exec "${CONTAINER_NAME}" vault operator unseal "$key"
+# done
+
+# ROOT_TOKEN=$(docker exec "${CONTAINER_NAME}" sh -c '
+#   grep "Initial Root Token" /tmp/keys.json | awk -F": " "{print \$2}"
+# ')
 
 docker exec "${CONTAINER_NAME}" vault login "$ROOT_TOKEN"
 
-docker exec "${CONTAINER_NAME}" vault secrets enable -path=secret kv-v2
+# docker exec "${CONTAINER_NAME}" vault secrets enable -path=secret kv-v2
 
 docker exec "${CONTAINER_NAME}" vault path-help secret
 

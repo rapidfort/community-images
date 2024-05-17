@@ -14,15 +14,15 @@ CONTAINER_NAME=${PROJECT_NAME}-vault-1
 
 docker exec "${CONTAINER_NAME}" vault version
 
-docker exec "${CONTAINER_NAME}" sh -c '
-  mkdir -p /vault/file && \
-  vault operator init -key-shares=1 -key-threshold=1 -format=json > /vault/file/keys
-'
+docker exec "${CONTAINER_NAME}" vault operator init \
+  -key-shares=1 \
+  -key-threshold=1 \
+  -format=json > /keys.json
 
-docker exec "${CONTAINER_NAME}" ls /vault/file
+docker exec "${CONTAINER_NAME}" cat keys.json
 
 UNSEAL_KEYS=$(docker exec "${CONTAINER_NAME}" sh -c '
-  grep "Unseal Key" /vault/file/keys | awk -F": " "{print \$2}"
+  grep "Unseal Key" /keys.json | awk -F": " "{print \$2}"
 ')
 
 echo "$UNSEAL_KEYS" | while read -r key; do
@@ -30,7 +30,7 @@ echo "$UNSEAL_KEYS" | while read -r key; do
 done
 
 ROOT_TOKEN=$(docker exec "${CONTAINER_NAME}" sh -c '
-  grep "Initial Root Token" /vault/file/keys | awk -F": " "{print \$2}"
+  grep "Initial Root Token" /keys.json | awk -F": " "{print \$2}"
 ')
 
 docker exec "${CONTAINER_NAME}" vault login "$ROOT_TOKEN"

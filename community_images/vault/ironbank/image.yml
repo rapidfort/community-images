@@ -10,10 +10,7 @@ image_workflow_name: vault_ironbank
 github_location: vault/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14
 usage_instructions: |
-  $ helm repo add hashicorp https://helm.releases.hashicorp.com
-
-  # install vault, just replace repository with RapidFort registry
-  $ helm install vault hashicorp/vault
+  
 what_is_text: |
   Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
 disclaimer: |
@@ -28,23 +25,11 @@ repo_sets:
       output_repo: vault-ib
 needs_common_commands: False
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    # use_helm: false
-    wait_time_sec: 120
-    helm:
-      repo: hashicorp
-      repo_url: https://helm.releases.hashicorp.com
-      chart: vault
-    #readiness_check_script: vault_health_check.sh
-    helm_additional_params:
-      persistence.enabled: false
-      server.dev.enabled: true
-      server.image.pullPolicy: Always
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    # wait_time_sec: 120
     image_keys:
       vault-ib:
-        repository: "server.image.repository"
-        tag: "server.image.tag"
-    override_file: "overrides.yml"
-    # readiness_wait_pod_name_suffix:
-    #   - ""
+        repository: "VAULT_IMAGE_REPOSITORY"
+        tag: "VAULT_IMAGE_TAG"

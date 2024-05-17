@@ -15,6 +15,10 @@ CONTAINER_NAME=${PROJECT_NAME}-vault-1
 docker exec "${CONTAINER_NAME}" vault version
 
 docker exec "${CONTAINER_NAME}" sh -c '
+  if [ ! -f /vault/file/keys ]; then
+    vault operator init -key-shares=1 -key-threshold=1 -format=json > /vault/file/keys
+  fi
+  
   UNSEAL_KEYS=$(grep "Unseal Key" /vault/file/keys | awk -F": " "{print \$2}")
   ROOT_TOKEN=$(grep "Initial Root Token" /vault/file/keys | awk -F": " "{print \$2}")
 

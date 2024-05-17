@@ -14,7 +14,10 @@ CONTAINER_NAME=${PROJECT_NAME}-vault-1
 
 docker exec "${CONTAINER_NAME}" vault version
 
-docker exec "${CONTAINER_NAME}" vault operator init -key-shares=1 -key-threshold=1 -format=json > /vault/file/keys
+docker exec "${CONTAINER_NAME}" sh -c '
+  mkdir -p /vault/file && \
+  vault operator init -key-shares=1 -key-threshold=1 -format=json > /vault/file/keys
+'
 
 docker exec "${CONTAINER_NAME}" ls /vault/file
 

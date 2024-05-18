@@ -83,22 +83,22 @@ influxdb:
 mariadb:
   docker_links:
   - '[`11.3`, `11.3-debian-12`, `11.3.2`, `11.3.2-debian-12-r` (11.3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.3/debian-12/Dockerfile)'
-  - '[`11.2`, `11.2-debian-12`, `11.2.3`, `11.2.3-debian-12-r` (11.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-12/Dockerfile)'
-  - '[`11.1`, `11.1-debian-12`, `11.1.4`, `11.1.4-debian-12-r` (11.1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.1/debian-12/Dockerfile)'
-  - '[`11.0`, `11.0-debian-12`, `11.0.5`, `11.0.5-debian-12-r` (11.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.0/debian-12/Dockerfile)'
-  - '[`10.11`, `10.11-debian-12`, `10.11.7`, `10.11.7-debian-12-r` (10.11/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-12/Dockerfile)'
-  - '[`10.6`, `10.6-debian-12`, `10.6.17`, `10.6.17-debian-12-r` (10.6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-12/Dockerfile)'
-  - '[`10.5`, `10.5-debian-12`, `10.5.24`, `10.5.24-debian-12-r` (10.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-12/Dockerfile)'
-  - '[`10.4`, `10.4-debian-12`, `10.4.33`, `10.4.33-debian-12-r` (10.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.4/debian-12/Dockerfile)'
+  - '[`11.2`, `11.2-debian-12`, `11.2.4`, `11.2.4-debian-12-r` (11.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-12/Dockerfile)'
+  - '[`11.1`, `11.1-debian-12`, `11.1.5`, `11.1.5-debian-12-r` (11.1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.1/debian-12/Dockerfile)'
+  - '[`11.0`, `11.0-debian-12`, `11.0.6`, `11.0.6-debian-12-r` (11.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.0/debian-12/Dockerfile)'
+  - '[`10.11`, `10.11-debian-12`, `10.11.8`, `10.11.8-debian-12-r` (10.11/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-12/Dockerfile)'
+  - '[`10.6`, `10.6-debian-12`, `10.6.18`, `10.6.18-debian-12-r` (10.6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-12/Dockerfile)'
+  - '[`10.5`, `10.5-debian-12`, `10.5.25`, `10.5.25-debian-12-r` (10.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-12/Dockerfile)'
+  - '[`10.4`, `10.4-debian-12`, `10.4.34`, `10.4.34-debian-12-r` (10.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.4/debian-12/Dockerfile)'
   search_tags:
   - 11.3.2-debian-12-r
-  - 11.2.3-debian-12-r
-  - 11.1.4-debian-12-r
-  - 11.0.5-debian-12-r
-  - 10.11.7-debian-12-r
-  - 10.6.17-debian-12-r
-  - 10.5.24-debian-12-r
-  - 10.4.33-debian-12-r
+  - 11.2.4-debian-12-r
+  - 11.1.5-debian-12-r
+  - 11.0.6-debian-12-r
+  - 10.11.8-debian-12-r
+  - 10.6.18-debian-12-r
+  - 10.5.25-debian-12-r
+  - 10.4.34-debian-12-r
 memcached:
   docker_links:
   - '[`1`, `1-debian-12`, `1.6.27`, `1.6.27-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/memcached/1/debian-12/Dockerfile)'
@@ -120,9 +120,9 @@ mysql:
   - 8.0.37-debian-12-r
 nats:
   docker_links:
-  - '[`2`, `2-debian-12`, `2.10.14`, `2.10.14-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-12/Dockerfile)'
+  - '[`2`, `2-debian-12`, `2.10.15`, `2.10.15-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-12/Dockerfile)'
   search_tags:
-  - 2.10.14-debian-12-r
+  - 2.10.15-debian-12-r
 nginx:
   docker_links:
   - '[`1.26`, `1.26-debian-12`, `1.26.0`, `1.26.0-debian-12-r` (1.26/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.26/debian-12/Dockerfile)'

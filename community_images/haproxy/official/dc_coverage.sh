@@ -37,6 +37,12 @@ PORT3=$(docker inspect "${CONTAINER3_NAME}" | jq -r ".[].NetworkSettings.Ports.\
 #adding wait time to read  config from file
 sleep 10
 
+# Logs
+# log for debugging
+docker logs "${CONTAINER1_NAME}"
+docker logs "${CONTAINER2_NAME}"
+docker logs "${CONTAINER3_NAME}"
+
 # run curl in loop (roundrobin)
 for i in {1..10};
 do

@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/ansible/ansible-lint:
-      input_base_tag: "24.2."
+      input_base_tag: "24.5."
       output_repo: ansible-lint-ib
 runtimes:
   - type: docker

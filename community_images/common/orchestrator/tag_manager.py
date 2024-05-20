@@ -96,7 +96,7 @@ class TagManager:
     def _get_tag_detail(self, registry, account, registry_helper, repo, base_tag):
         """Generate tag details object"""
         latest_tag = None
-
+        latest_digest = None
         if base_tag != "latest":
             latest_tag, latest_digest = registry_helper.get_latest_tag_with_digest(
                 account, repo, base_tag)

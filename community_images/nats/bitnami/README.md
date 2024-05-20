@@ -89,7 +89,7 @@ RapidFort’s hardened [rapidfort/nats][rf-dh-image-link] image has been optimiz
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-12`, `2.10.14`, `2.10.14-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-12/Dockerfile)
+* [`2`, `2-debian-12`, `2.10.15`, `2.10.15-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-12/Dockerfile)
 
 ## Need support
 

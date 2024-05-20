@@ -106,6 +106,14 @@ jobs:
           repository: rapidfort/ansible-ib
           readme-filepath: ./community_images/ansible/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Ansible IronBank
+      - name: Docker Hub Description Ansible-Lint Iron Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ansible-lint-ib
+          readme-filepath: ./community_images/ansible-lint/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ansible-Lint Iron Bank
       - name: Docker Hub Description Apache
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -498,6 +506,14 @@ jobs:
           repository: rapidfort/minio-operator-ib
           readme-filepath: ./community_images/minio-operator/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MinIO Operator Ironbank
+      - name: Docker Hub Description MkDocs IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/mkdocs-ib
+          readme-filepath: ./community_images/mkdocs/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for MkDocs IronBank
       - name: Docker Hub Description MongoDB®
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -626,6 +642,14 @@ jobs:
           repository: rapidfort/node-exporter-ib
           readme-filepath: ./community_images/node-exporter/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Node-Exporter IronBank
+      - name: Docker Hub Description Node Exporter Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/node-exporter-official
+          readme-filepath: ./community_images/node-exporter/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Node Exporter Official
       - name: Docker Hub Description Grafana Oncall
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -698,6 +722,14 @@ jobs:
           repository: rapidfort/rabbitmq
           readme-filepath: ./community_images/rabbitmq/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for RabbitMQ
+      - name: Docker Hub Description RabbitMQ Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/rabbitmq-official
+          readme-filepath: ./community_images/rabbitmq/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for RabbitMQ Official
       - name: Docker Hub Description Redis™
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -746,14 +778,14 @@ jobs:
           repository: rapidfort/terraform-ib
           readme-filepath: ./community_images/terraform/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Terraform IronBank
-      - name: Docker Hub Description Terragrunt Iron=Bank
+      - name: Docker Hub Description Terragrunt IronBank
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/terragrunt-ib
           readme-filepath: ./community_images/terragrunt/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Terragrunt Iron=Bank
+          short-description: RapidFort optimized, hardened image for Terragrunt IronBank
       - name: Docker Hub Description Tika Iron Bank
         uses: peter-evans/dockerhub-description@v3
         with:

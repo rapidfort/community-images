@@ -11,7 +11,7 @@ function test_rabbitmq_docker_compose() {
 
     local RABBITMQ_USERNAME=$3
     local RABBITMQ_PASSWORD=$4
-
+    echo "$RABBITMQ_USERNAME"
     PUBLISHER_POD_NAME="publisher"
 
     docker run --name "${PUBLISHER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity

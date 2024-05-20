@@ -21,3 +21,16 @@ docker pull localhost:5001/alpine:latest
 
 #cleaning up the pulled image
 docker image remove localhost:5001/alpine:latest
+
+# Add commands to run common commands inside the Kaniko container
+run_command_inside_kaniko() {
+    cmd="$1"
+    
+    docker exec -i "${KANIKO_CONTAINER_NAME}" "$cmd" --help
+}
+
+commands=(mkdir chmod ls mv rm ln rmdir chgrp chown touch cat sed sort head date)
+
+for cmd in "${commands[@]}"; do
+    run_command_inside_kaniko "$cmd"
+done

@@ -21,12 +21,15 @@ input_registry:
   registry: docker.io
   account: prom
 repo_sets:
-  - node-exporter-official:
+  - node-exporter:
       input_base_tag: "v1.8."
-  - node-exporter-official:
+      output_repo: node-exporter-official
+  - node-exporter:
       input_base_tag: "v1.7."
-  - node-exporter-official:
+      output_repo: node-exporter-official
+  - node-exporter:
       input_base_tag: "v1.6."
+      output_repo: node-exporter-official
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

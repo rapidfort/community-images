@@ -1,0 +1,40 @@
+name: node-exporter-official 
+official_name: Node Exporter Official
+official_website: https://prometheus.io/
+source_image_provider: prometheus
+source_image_repo: docker.io/prom/node-exporter
+source_image_repo_link: https://hub.docker.com/r/prom/node-exporter
+source_image_readme: https://github.com/prometheus/node_exporter/blob/master/README.md
+rf_docker_link: rapidfort/node-exporter-official
+image_workflow_name: node-exporter_official
+github_location: node-exporter/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fprom%2Fnode-exporter
+usage_instructions: |
+  # Using docker run:
+  $ docker run -it --name my-node-exporter -p 9100:9100 rapidfort/node-exporter-official
+what_is_text: |
+  Prometheus exporter for hardware and OS metrics exposed by UNIX kernels, with pluggable metric collectors.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: prom
+repo_sets:
+  - node-exporter:
+      input_base_tag: "v1.8."
+      output_repo: node-exporter-official
+  - node-exporter:
+      input_base_tag: "v1.7."
+      output_repo: node-exporter-official
+  - node-exporter:
+      input_base_tag: "v1.6."
+      output_repo: node-exporter-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      node-exporter-official:
+        repository: "NODE_EXPORTER_IMAGE_REPOSITORY"
+        tag: "NODE_EXPORTER_IMAGE_TAG"

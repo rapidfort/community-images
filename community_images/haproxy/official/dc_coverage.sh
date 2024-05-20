@@ -34,23 +34,26 @@ PORT2=$(docker inspect "${CONTAINER2_NAME}" | jq -r ".[].NetworkSettings.Ports.\
 docker inspect "${CONTAINER3_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort"
 PORT3=$(docker inspect "${CONTAINER3_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort")
 
+#adding wait time to read  config from file
+sleep 10
+
 # run curl in loop (roundrobin)
 for i in {1..10};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT1}"
 done
 
 # run curl in loop for app1 route
 for i in {1..10};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT1}"/app1
 done
 
 # run curl in loop for app2 route
 for i in {1..10};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT1}"/app2
 done
@@ -60,14 +63,14 @@ curl http://localhost:"${PORT1}"/admin
 
 # run curl in loop (leastconn)
 for i in {1..10};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT2}"
 done
 
 # run curl in loop (source)
 for i in {1..10};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT3}"
 done

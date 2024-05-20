@@ -106,6 +106,14 @@ jobs:
           repository: rapidfort/ansible-ib
           readme-filepath: ./community_images/ansible/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Ansible IronBank
+      - name: Docker Hub Description Ansible-Lint Iron Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ansible-lint-ib
+          readme-filepath: ./community_images/ansible-lint/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ansible-Lint Iron Bank
       - name: Docker Hub Description Apache
         uses: peter-evans/dockerhub-description@v4
         with:

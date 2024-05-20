@@ -19,7 +19,7 @@ function test_rabbitmq_docker_compose() {
 
     echo "#!/bin/bash
     pip install pika
-    python3 /tmp/publish.py --rabbitmq-server="$RABBITMQ_SERVER" --password=$RABBITMQ_PASSWORD" > "$SCRIPTPATH"/publish_commands.sh
+    python3 /tmp/publish.py --rabbitmq-server=$RABBITMQ_SERVER --password=$RABBITMQ_PASSWORD" > "$SCRIPTPATH"/publish_commands.sh
 
     docker cp "${SCRIPTPATH}"/publish.py "${PUBLISHER_POD_NAME}":/tmp/publish.py
     chmod +x "$SCRIPTPATH"/publish_commands.sh
@@ -34,7 +34,7 @@ function test_rabbitmq_docker_compose() {
 
     echo "#!/bin/bash
     pip install pika
-    python3 /tmp/consume.py --rabbitmq-server="$RABBITMQ_SERVER" --password=$RABBITMQ_PASSWORD" > "$SCRIPTPATH"/consume_commands.sh
+    python3 /tmp/consume.py --rabbitmq-server=$RABBITMQ_SERVER --password=$RABBITMQ_PASSWORD" > "$SCRIPTPATH"/consume_commands.sh
 
     docker cp "${SCRIPTPATH}"/consume.py "${CONSUMER_POD_NAME}":/tmp/consume.py
     chmod +x "$SCRIPTPATH"/consume_commands.sh

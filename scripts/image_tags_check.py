@@ -161,6 +161,8 @@ class ImageTagsCheckHelper:
         Runs the tag check for all images in the image list file.
         """
         failed_images = []
+        source_image_name = None
+        source_image_repo = None
         with open(self.image_list_file_path, "r", encoding="utf8") as stream:
             for image_path in stream.readlines():
                 image_path = image_path.strip()

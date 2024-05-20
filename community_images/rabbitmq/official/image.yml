@@ -1,0 +1,36 @@
+name: rabbitmq-official
+official_name: RabbitMQ
+official_website: https://www.rabbitmq.com/
+source_image_provider: Rabbitmq
+source_image_repo: docker.io/library/rabbitmq
+source_image_repo_link: https://hub.docker.com/_/rabbitmq
+source_image_readme: https://github.com/docker-library/rabbitmq/blob/master/README.md
+rf_docker_link: rapidfort/rabbitmq-official
+image_workflow_name: rabbitmq_official
+github_location: rabbitmq/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Frabbitmq
+usage_instructions: |
+  $ docker run -d --hostname my-rabbit --name rf-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rapidfort/rabbitmq-official
+what_is_text: |
+  RabbitMQ is an open source general-purpose message broker that is designed for consistent, highly-available messaging scenarios (both synchronous and asynchronous).
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - rabbitmq:
+      input_base_tag: "3.13."
+  - rabbitmq:
+      input_base_tag: "3.12."
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      rabbitmq:
+        repository: "RABBITMQ_IMAGE_REPOSITORY"
+        tag: "RABBITMQ_IMAGE_TAG"
+  
+    

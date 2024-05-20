@@ -60,7 +60,7 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-$ docker run --rm -it rapidfort:ansible-lint-ib:latest <file/directory_to_be_checked>
+$ docker run --rm -it rapidfort/ansible-lint-ib:latest <file/directory_to_be_checked>
 
 ```
 

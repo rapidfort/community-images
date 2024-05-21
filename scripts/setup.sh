@@ -87,4 +87,5 @@ minikube addons enable ingress
 
 # add common python modules
 pip install --upgrade pip
+pip install requests==2.31.0
 pip install backoff python-dateutil ruamel.yaml docker

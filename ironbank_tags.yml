@@ -3,10 +3,13 @@ airflow-ib:
     - 2.8.
 ansible-ib:
   search_tags:
-    - 9.5.
+    - 9.6.
 apache-ib:
   search_tags:
     - 2.4.
+auditbeat-ib:
+  search_tags:
+    - 8.13.
 bats-ib:
   search_tags:
     - v1.11.
@@ -36,7 +39,7 @@ git-lfs-ib:
     - 2.44.0-3.5.
 grafana-ib:
   search_tags:
-    - 10.4.
+    - 11.0.
 hadolint-ib:
   search_tags:
     - v2.12.

@@ -10,7 +10,7 @@ github_location: auditbeat/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Fauditbeat
 usage_instructions: |
   #Run the auditbeat container:
-  $ docker run -d -p 5601:5601 --name auditbeat --net=elastic_network -e auditbeat_ELASTICSEARCH_URL=elasticsearch rapidfort/auditbeat-ib
+  $ docker run -d --cap-add="AUDIT_CONTROL" --cap-add="AUDIT_READ" rapidfort/auditbeat-ib:latest setup -E setup.kibana.host=kibana:5601  -E output.elasticsearch.hosts=["elasticsearch:9200"]
 what_is_text: |
   Auditbeat Lightweight shipper for audit data.Collect your Linux audit framework data and monitor the integrity of your files.Auditbeat ships these events in real time to the rest of the Elastic Stack for further analysis.
 disclaimer: |

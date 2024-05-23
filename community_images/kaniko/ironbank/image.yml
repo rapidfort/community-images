@@ -1,0 +1,35 @@
+name: kaniko-ib
+official_name: Kaniko IronBank
+official_website: https://github.com/GoogleContainerTools/kaniko
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/kaniko/kaniko
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fkaniko%2Fkaniko
+source_image_readme: https://repo1.dso.mil/dsop/opensource/kaniko/kaniko/-/blob/development/README.md
+rf_docker_link: rapidfort/kaniko-ib
+image_workflow_name: kaniko_ironbank
+github_location: kaniko/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkaniko%2Fkaniko
+usage_instructions: |
+  $ docker run --rm -it -v /path/to/context:/workspace rapidfort/kaniko-ib:latest --dockerfile /workspace/Dockerfile --destination [YOUR/DESTINATION/REGISTRY/IMAGE_NAME:IMAGE_TAG] --context dir:///workspace
+what_is_text: |
+  Kaniko is a tool to build container images from a Dockerfile, inside a container or Kubernetes cluster. kaniko doesn't depend on a Docker daemon and executes each command within a Dockerfile completely in userspace.This enables building container images in environments that can't easily or securely run a Docker daemon,such as a standard Kubernetes cluster.
+Disclaimer:
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/kaniko/kaniko/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+needs_common_commands: False
+repo_sets:
+  - opensource/kaniko/kaniko:
+      input_base_tag: "v1.22."
+      output_repo: kaniko-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      kaniko-ib:
+        repository: "KANIKO_IMAGE_REPOSITORY"
+        tag: "KANIKO_IMAGE_TAG"

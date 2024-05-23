@@ -394,6 +394,14 @@ jobs:
           repository: rapidfort/kafka-ib
           readme-filepath: ./community_images/kafka/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apacha Kafka Ironbank
+      - name: Docker Hub Description Kaniko IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kaniko-ib
+          readme-filepath: ./community_images/kaniko/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kaniko IronBank
       - name: Docker Hub Description Keycloak Official
         uses: peter-evans/dockerhub-description@v3
         with:

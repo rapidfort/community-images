@@ -35,23 +35,26 @@ PORT2=$(docker inspect "${CONTAINER2_NAME}" | jq -r ".[].NetworkSettings.Ports.\
 docker inspect "${CONTAINER3_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort"
 PORT3=$(docker inspect "${CONTAINER3_NAME}" | jq -r ".[].NetworkSettings.Ports.\"80/tcp\"[0].HostPort")
 
+# Adding wait time to allow haproxy to pick configuration from file
+sleep 10
+
 # run curl in loop (identity)
 for i in {1..5};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT1}"
 done
 
 # run curl in loop (gzip)
 for i in {1..5};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT2}"
 done
 
 # run curl in loop (deflate)
 for i in {1..5};
-do 
+do
     echo "Attempt $i"
     curl http://localhost:"${PORT3}"
 done

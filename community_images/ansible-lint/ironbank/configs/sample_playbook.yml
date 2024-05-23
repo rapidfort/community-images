@@ -1,0 +1,5 @@
+- name: Lint multiple roles
+  hosts: all
+  tasks:
+    - include_role:
+        name: geerlingguy.apache

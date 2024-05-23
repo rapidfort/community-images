@@ -91,7 +91,6 @@ We are big fans of open-source software and secure software development. RapidFo
 ## Supported tags and respective `Dockerfile` links
 * [`1.26`, `1.26-debian-12`, `1.26.0`, `1.26.0-debian-12-r` (1.26/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.26/debian-12/Dockerfile)
 * [`1.25`, `1.25-debian-12`, `1.25.5`, `1.25.5-debian-12-r` (1.25/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.25/debian-12/Dockerfile)
-* [`1.24`, `1.24-debian-12`, `1.24.0`, `1.24.0-debian-12-r` (1.24/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.24/debian-12/Dockerfile)
 
 ## Need support
 

@@ -61,7 +61,7 @@ The runtime instructions for this hardened container image are the same as the o
 
 ```sh
 #Run the auditbeat container:
-$ docker run -d -p 5601:5601 --name auditbeat --net=elastic_network -e auditbeat_ELASTICSEARCH_URL=elasticsearch rapidfort/auditbeat-ib
+$ docker run -d --cap-add="AUDIT_CONTROL" --cap-add="AUDIT_READ" rapidfort/auditbeat-ib:latest setup -E setup.kibana.host=kibana:5601  -E output.elasticsearch.hosts=["elasticsearch:9200"]
 
 ```
 

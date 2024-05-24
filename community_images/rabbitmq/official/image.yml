@@ -22,14 +22,16 @@ input_registry:
 repo_sets:
   - rabbitmq:
       input_base_tag: "3.13."
+      output_repo: rabbitmq-official
   - rabbitmq:
       input_base_tag: "3.12."
+      output_repo: rabbitmq-official
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      rabbitmq:
+      rabbitmq-official:
         repository: "RABBITMQ_IMAGE_REPOSITORY"
         tag: "RABBITMQ_IMAGE_TAG"
   

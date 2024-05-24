@@ -82,6 +82,14 @@ jobs:
           repository: rapidfort/airflow-scheduler
           readme-filepath: ./community_images/airflow/airflow-scheduler/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Airflow Scheduler
+      - name: Docker Hub Description Airflow Scheduler Iron Bank (AIML)
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/airflow-scheduler-ib-aiml
+          readme-filepath: ./community_images/airflow/airflow-scheduler/aiml-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Airflow Scheduler Iron Bank (AIML)
       - name: Docker Hub Description Airflow Scheduler Iron Bank (Bitnami)
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -98,6 +106,14 @@ jobs:
           repository: rapidfort/airflow-worker
           readme-filepath: ./community_images/airflow/airflow-worker/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Airflow Worker
+      - name: Docker Hub Description Airflow Worker Iron Bank (AIML)
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/airflow-worker-ib-aiml
+          readme-filepath: ./community_images/airflow/airflow-worker/aiml-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Airflow Worker Iron Bank (AIML)
       - name: Docker Hub Description Airflow Worker Iron Bank (Bitnami)
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -114,6 +130,14 @@ jobs:
           repository: rapidfort/ansible-ib
           readme-filepath: ./community_images/ansible/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Ansible IronBank
+      - name: Docker Hub Description Ansible-Lint Iron Bank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ansible-lint-ib
+          readme-filepath: ./community_images/ansible-lint/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ansible-Lint Iron Bank
       - name: Docker Hub Description Apache
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -394,6 +418,14 @@ jobs:
           repository: rapidfort/kafka-ib
           readme-filepath: ./community_images/kafka/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apacha Kafka Ironbank
+      - name: Docker Hub Description Kaniko IronBank
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kaniko-ib
+          readme-filepath: ./community_images/kaniko/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kaniko IronBank
       - name: Docker Hub Description Keycloak Official
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -634,6 +666,14 @@ jobs:
           repository: rapidfort/node-exporter-ib
           readme-filepath: ./community_images/node-exporter/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Node-Exporter IronBank
+      - name: Docker Hub Description Node Exporter Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/node-exporter-official
+          readme-filepath: ./community_images/node-exporter/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Node Exporter Official
       - name: Docker Hub Description Grafana Oncall
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -706,6 +746,14 @@ jobs:
           repository: rapidfort/rabbitmq
           readme-filepath: ./community_images/rabbitmq/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for RabbitMQ
+      - name: Docker Hub Description RabbitMQ Official
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/rabbitmq-official
+          readme-filepath: ./community_images/rabbitmq/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for RabbitMQ Official
       - name: Docker Hub Description Redis™
         uses: peter-evans/dockerhub-description@v3
         with:

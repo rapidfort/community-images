@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  node-exporter:
+    image: ${NODE_EXPORTER_IMAGE_REPOSITORY}:${NODE_EXPORTER_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - '0.0.0.0::9100'
+  prometheus:
+    image: rapidfort/prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/opt/prometheus.yml
+    command:
+      - '--config.file=/opt/prometheus.yml'

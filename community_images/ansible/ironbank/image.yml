@@ -10,7 +10,7 @@ image_workflow_name: ansible_ironbank
 github_location: ansible/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fansible%2Fansible
 usage_instructions: |
-  $ docker run --rm -it rapidfort:ansible-ib:latest
+  $ docker run --rm -it rapidfort/ansible-ib:latest
 what_is_text: |
   Ansible is a radically simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex changes like zero-downtime rolling updates with load balancers easy. disclaimer: |
 Disclaimer:

@@ -9,13 +9,13 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-# RapidFort hardened image for Vault Ironbank (Hashicorp)
+# RapidFort hardened image for Vault Iron Bank
 
 
-RapidFort has optimized and hardened this Vault Ironbank (Hashicorp) container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Vault Iron Bank container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One Vault Ironbank (Hashicorp)][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Vault Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -37,21 +37,21 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 <br>
 
 
-## What is Vault Ironbank (Hashicorp)?
+## What is Vault Iron Bank?
 
 > Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
 
 
-[Overview of Vault Ironbank (Hashicorp)](https://www.vaultproject.io/)
+[Overview of Vault Iron Bank](https://www.vaultproject.io/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened Vault Ironbank (Hashicorp) image?
+## How do I use this hardened Vault Iron Bank image?
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Vault Ironbank (Hashicorp)][source-image-repo-link].
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Vault Iron Bank][source-image-repo-link].
 
 <a href="https://repo1.dso.mil/dsop/hashicorp/vault/1.14/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -68,7 +68,7 @@ $ docker run --cap-add=IPC_LOCK -e 'VAULT_DEV_ROOT_TOKEN_ID=myroot' -e 'VAULT_DE
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One Vault Ironbank (Hashicorp)][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Vault Iron Bank][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
@@ -80,7 +80,7 @@ Vulnerability reports for RapidFort's hardened images are updated daily to inclu
 <br>
 <br>
 
-## What’s the difference between the official [Platform One Vault Ironbank (Hashicorp)][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [Platform One Vault Iron Bank][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/vault-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.

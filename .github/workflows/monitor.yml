@@ -14,19 +14,19 @@ jobs:
     steps:
       - name: Pull Apache Airflow
         run: docker pull rapidfort/airflow
-      - name: Pull Apache Airflow Ironbank
+      - name: Pull Apache Airflow Iron Bank
         run: docker pull rapidfort/airflow-ib
-      - name: Pull Airflow IronBank (AIML)
+      - name: Pull Airflow Iron Bank (AIML)
         run: docker pull rapidfort/airflow-ib-aiml
-      - name: Pull Airflow Ironbank (Bitnami)
+      - name: Pull Airflow Iron Bank (Bitnami)
         run: docker pull rapidfort/airflow-ib-bitnami
       - name: Pull Apache Airflow Scheduler
         run: docker pull rapidfort/airflow-scheduler
-      - name: Pull Airflow Scheduler Ironbank (Bitnami)
+      - name: Pull Airflow Scheduler Iron Bank (Bitnami)
         run: docker pull rapidfort/airflow-scheduler-ib-bitnami
       - name: Pull Apache Airflow Worker
         run: docker pull rapidfort/airflow-worker
-      - name: Pull Airflow Worker Ironbank (Bitnami)
+      - name: Pull Airflow Worker Iron Bank (Bitnami)
         run: docker pull rapidfort/airflow-worker-ib-bitnami
       - name: Pull Ansible IronBank
         run: docker pull rapidfort/ansible-ib

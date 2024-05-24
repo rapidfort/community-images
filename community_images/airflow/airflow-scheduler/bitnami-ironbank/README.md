@@ -9,13 +9,13 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-# RapidFort hardened image for Airflow Scheduler Ironbank (Bitnami)
+# RapidFort hardened image for Airflow Scheduler Iron Bank (Bitnami)
 
 
-RapidFort has optimized and hardened this Airflow Scheduler Ironbank (Bitnami) container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Airflow Scheduler Iron Bank (Bitnami) container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One Airflow Scheduler Ironbank (Bitnami)][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Airflow Scheduler Iron Bank (Bitnami)][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -37,7 +37,7 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 <br>
 
 
-## What is Airflow Scheduler Ironbank (Bitnami)?
+## What is Airflow Scheduler Iron Bank (Bitnami)?
 
 > Apache Airflow (or simply Airflow) is a platform to programmatically author, schedule, and monitor workflows.
 
@@ -46,16 +46,16 @@ When workflows are defined as code, they become more maintainable, versionable, 
 Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.
 
 
-[Overview of Airflow Scheduler Ironbank (Bitnami)](https://airflow.apache.org/)
+[Overview of Airflow Scheduler Iron Bank (Bitnami)](https://airflow.apache.org/)
 
 Disclaimer: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened Airflow Scheduler Ironbank (Bitnami) image?
+## How do I use this hardened Airflow Scheduler Iron Bank (Bitnami) image?
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Airflow Scheduler Ironbank (Bitnami)][source-image-repo-link].
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Airflow Scheduler Iron Bank (Bitnami)][source-image-repo-link].
 
 <a href="https://repo1.dso.mil/dsop/bitnami/airflow-scheduler/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -75,7 +75,7 @@ $ helm install my-airflow bitnami/airflow --set scheduler.image.repository=rapid
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One Airflow Scheduler Ironbank (Bitnami)][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Airflow Scheduler Iron Bank (Bitnami)][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
@@ -87,7 +87,7 @@ Vulnerability reports for RapidFort's hardened images are updated daily to inclu
 <br>
 <br>
 
-## What’s the difference between the official [Platform One Airflow Scheduler Ironbank (Bitnami)][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [Platform One Airflow Scheduler Iron Bank (Bitnami)][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/airflow-scheduler-ib-bitnami][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.

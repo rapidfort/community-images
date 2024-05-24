@@ -1,0 +1,34 @@
+name: auditbeat-ib
+official_name: auditbeat Iron-Bank
+official_website: https://www.elastic.co/beats/auditbeat
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/elastic/beats/auditbeat
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/elastic%2Fbeats%2Fauditbeat
+source_image_readme: https://repo1.dso.mil/dsop/elastic/beats/auditbeat/-/blob/development/README.md
+rf_docker_link: rapidfort/auditbeat-ib
+github_location: auditbeat/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Fauditbeat
+usage_instructions: |
+  #Run the auditbeat container:
+  $ docker run -d --cap-add="AUDIT_CONTROL" --cap-add="AUDIT_READ" rapidfort/auditbeat-ib:latest setup -E setup.kibana.host=kibana:5601  -E output.elasticsearch.hosts=["elasticsearch:9200"]
+what_is_text: |
+  Auditbeat Lightweight shipper for audit data.Collect your Linux audit framework data and monitor the integrity of your files.Auditbeat ships these events in real time to the rest of the Elastic Stack for further analysis.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - elastic/beats/auditbeat:
+      input_base_tag: "8.13."
+      output_repo: auditbeat-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    before_script: dc_before.sh    
+    compose_file: docker-compose.yml
+    wait_time_sec: 60
+    image_keys:
+      auditbeat-ib:
+        repository: "AUDITBEAT_IMAGE_REPOSITORY"
+        tag: "AUDITBEAT_IMAGE_TAG"

@@ -1,0 +1,64 @@
+name: rook-ceph-ib
+official_name: Rook Ceph Ironbank
+official_website: https://rook.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/rook/ceph
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/rook%2Fceph
+source_image_readme: https://repo1.dso.mil/dsop/rook/ceph/-/blob/development/README.md
+rf_docker_link: rapidfort/rook-ceph-ib
+image_workflow_name: rook_ceph_ironbank
+github_location: rook-ceph/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Frook%2Fceph
+usage_instructions: |
+  # TODO: Add usage instructions
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install mariadb, just replace repository with RapidFort registry
+  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+what_is_text: |
+  Ceph is a highly scalable distributed storage solution for block storage, object storage, and shared filesystems with years of production deployments.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - rook/ceph:
+      input_base_tag: "18.2."
+      output_repo: rook-ceph-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: nats
+    tls_certs:
+      generate: true
+      secret_name: localhost-server-tls
+      common_name: localhost
+    image_keys:
+      nats:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      redis:
+        repository: "REDIS_IMAGE_REPOSITORY"
+        tag: "REDIS_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    redis:
+      env_file: docker.env
+      environment:
+        KEY_FOO: VAL_BAR
+      volumes:
+        configs/dynamic/bootstrap.yaml: /opt/bitnami/redis/conf/redis.yaml
+        configs/dynamic: /etc/redis

@@ -11,6 +11,8 @@
 
 # RapidFort hardened image for Prometheus
 
+<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> <a href="https://www.rapidfort.com" style="color:blue;">www.rapidfort.com</a> <span style="color:red;">to access these images</span>
+
 
 RapidFort has optimized and hardened this Prometheus container image. This container is free to use and has no license limitations.
 
@@ -89,7 +91,7 @@ RapidFort’s hardened [rapidfort/prometheus][rf-dh-image-link] image has been o
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-12`, `2.52.0`, `2.52.0-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)
+* [`2`, `2-debian-12`, `2.52.1`, `2.52.1-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)
 
 ## Need support
 

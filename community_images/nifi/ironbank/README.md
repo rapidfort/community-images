@@ -11,6 +11,8 @@
 
 # RapidFort hardened image for Apache Nifi IronBank
 
+<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> <a href="https://www.rapidfort.com" style="color:blue;">www.rapidfort.com</a> <span style="color:red;">to access these images</span>
+
 
 RapidFort has optimized and hardened this Apache Nifi IronBank container image. This container is free to use and has no license limitations.
 

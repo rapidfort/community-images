@@ -11,7 +11,7 @@
 
 # RapidFort hardened image for Zookeeper
 
-<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> <a href="https://www.rapidfort.com" style="color:blue;">www.rapidfort.com</a> <span style="color:red;">to access these images</span>
+**<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> [<span style="color:blue;">www.rapidfort.com</span>](https://www.rapidfort.com/get-a-demo) <span style="color:red;">to access these images</span>**
 
 
 RapidFort has optimized and hardened this Zookeeper container image. This container is free to use and has no license limitations.

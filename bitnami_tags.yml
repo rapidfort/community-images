@@ -48,10 +48,10 @@ envoy:
   - 1.27.5-debian-12-r
 etcd:
   docker_links:
-  - '[`3.5`, `3.5-debian-12`, `3.5.13`, `3.5.13-debian-12-r` (3.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-12/Dockerfile)'
+  - '[`3.5`, `3.5-debian-12`, `3.5.14`, `3.5.14-debian-12-r` (3.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-12/Dockerfile)'
   - '[`3.4`, `3.4-debian-12`, `3.4.32`, `3.4.32-debian-12-r` (3.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-12/Dockerfile)'
   search_tags:
-  - 3.5.13-debian-12-r
+  - 3.5.14-debian-12-r
   - 3.4.32-debian-12-r
 fluent-bit:
   docker_links:
@@ -125,10 +125,10 @@ nats:
   - 2.10.16-debian-12-r
 nginx:
   docker_links:
-  - '[`1.26`, `1.26-debian-12`, `1.26.0`, `1.26.0-debian-12-r` (1.26/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.26/debian-12/Dockerfile)'
+  - '[`1.26`, `1.26-debian-12`, `1.26.1`, `1.26.1-debian-12-r` (1.26/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.26/debian-12/Dockerfile)'
   - '[`1.25`, `1.25-debian-12`, `1.25.5`, `1.25.5-debian-12-r` (1.25/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nginx/1.25/debian-12/Dockerfile)'
   search_tags:
-  - 1.26.0-debian-12-r
+  - 1.26.1-debian-12-r
   - 1.25.5-debian-12-r
 node-exporter:
   docker_links:

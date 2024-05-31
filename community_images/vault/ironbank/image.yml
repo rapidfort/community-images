@@ -1,0 +1,32 @@
+name: vault-ib
+official_name: Vault Iron Bank
+official_website: https://www.vaultproject.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/hashicorp/vault/1.14
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fvault%2F1.14
+source_image_readme: https://repo1.dso.mil/dsop/hashicorp/vault/1.14/-/blob/development/README.md
+rf_docker_link: rapidfort/vault-ib
+image_workflow_name: vault_ironbank
+github_location: vault/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14
+usage_instructions: |
+  $ docker run --cap-add=IPC_LOCK -e 'VAULT_DEV_ROOT_TOKEN_ID=myroot' -e 'VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:1234' rapidfort/vault-ib
+what_is_text: |
+  Secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - hashicorp/vault:
+      input_base_tag: "1.14."
+      output_repo: vault-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      vault-ib:
+        repository: "VAULT_IMAGE_REPOSITORY"
+        tag: "VAULT_IMAGE_TAG"

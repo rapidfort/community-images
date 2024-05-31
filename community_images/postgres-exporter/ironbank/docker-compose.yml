@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  postgres-exporter:
+    image: kphull/postgres-exporter-ib:0.9.0-rfstub
+    container_name: postgres-exporter
+    user: root
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      DATA_SOURCE_NAME: "postgresql://postgres:mysecretpassword@postgres:5432/postgres?sslmode=disable"
+    ports:
+      - "9187:9187"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:

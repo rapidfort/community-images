@@ -85,7 +85,7 @@ class StubGenerator:
     @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins
     def _run_stub_command(self, tag): # pylint: disable=unused-argument
         """ Run stub command with backoff """
-        cmd = "rfstub "
+        cmd = "rfstub -s unstub "
         if self.config_dict.get("use_rapid_stub", False):
             cmd += "-s rapid "
         cmd += tag

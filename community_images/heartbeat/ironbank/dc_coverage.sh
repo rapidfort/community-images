@@ -52,6 +52,7 @@ docker exec -i "${CONTAINER_NAME}" heartbeat keystore create
 docker exec -i "${CONTAINER_NAME}" heartbeat keystore list
 
 # Test configuration settings from YAML file
+docker exec -i "${CONTAINER_NAME}" chown root:root /usr/share/heartbeat/heartbeat.yml
 docker exec -i "${CONTAINER_NAME}" heartbeat test config /usr/share/heartbeat/heartbeat.yml
 # Test metricbeat can connect to the output by using the current settings
 docker exec -i "${CONTAINER_NAME}" heartbeat test output

@@ -210,7 +210,7 @@ jobs:
         run: docker pull rapidfort/vault
       - name: Pull Vault Iron Bank
         run: docker pull rapidfort/vault-ib
-      - name: Pull Vault k8s Ironbank
+      - name: Pull Vault-k8s Iron Bank
         run: docker pull rapidfort/vault-k8s-ib
       - name: Pull Wordpress
         run: docker pull rapidfort/wordpress

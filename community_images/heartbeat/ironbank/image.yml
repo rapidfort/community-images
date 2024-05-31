@@ -9,7 +9,9 @@ rf_docker_link: rapidfort/heartbeat-ib
 image_workflow_name: heartbeat_ironbank
 github_location: heartbeat/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Fheartbeat
-usage_instructions: "docker run -d rapidfort/heartbeat-ib"
+usage_instructions: |
+  # Using docker run:
+  $ docker run -d rapidfort/heartbeat-ib:latest
 what_is_text: |
   Heartbeat is a lightweight daemon that you install on a remote server to periodically check the status of your services and determine whether they are available. Unlike Metricbeat, which only tells you if your servers are up or down, Heartbeat tells you whether your services are reachable.
 disclaimer: |

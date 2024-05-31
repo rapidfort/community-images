@@ -36,14 +36,23 @@ curl -i -X POST \
 docker exec -i "${CONTAINER_NAME}" heartbeat version
 docker exec -i "${CONTAINER_NAME}" heartbeat --help
 
+# Export current config
 docker exec -i "${CONTAINER_NAME}" heartbeat export config
+# Export ILM policy
 docker exec -i "${CONTAINER_NAME}" heartbeat export ilm-policy
+# Export kibana index pattern
 docker exec -i "${CONTAINER_NAME}" heartbeat export index-pattern
+# Export index template
 docker exec -i "${CONTAINER_NAME}" heartbeat export template
 
+
+# Create a keystore
 docker exec -i "${CONTAINER_NAME}" heartbeat keystore create
+# List all keystores
 docker exec -i "${CONTAINER_NAME}" heartbeat keystore list
 
+# Test configuration settings from YAML file
 docker exec -i "${CONTAINER_NAME}" heartbeat test config /usr/share/heartbeat/heartbeat.yml
+# Test metricbeat can connect to the output by using the current settings
 docker exec -i "${CONTAINER_NAME}" heartbeat test output
 

@@ -549,6 +549,7 @@ jobs:
           readme-filepath: ./community_images/memcached/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached Official
       - name: Docker Hub Description Metabase Iron Bank
+        if: always()
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}

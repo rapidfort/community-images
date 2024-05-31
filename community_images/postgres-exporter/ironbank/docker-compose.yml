@@ -14,7 +14,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
 
   postgres-exporter:
-    image: kphull/postgres-exporter-ib:0.9.0-rfstub
+    image: ${PG_EXP_IMAGE_REPOSITORY}:${PG_EXP_IMAGE_TAG}
     container_name: postgres-exporter
     user: root
     cap_add:

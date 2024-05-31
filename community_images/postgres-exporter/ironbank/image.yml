@@ -9,12 +9,7 @@ rf_docker_link: rapidfort/postgres-exporter-ib
 image_workflow_name: postgres_exporter_ironbank
 github_location: postgres-exporter/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter
-usage_instructions: |
-  # TODO: Add usage instructions here
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-  # install mariadb, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+usage_instructions: "docker run --name postgres-exporter rapidfort/postgres-exporter-ib:latest"
 what_is_text: |
   Bitnami PostgreSQL Exporter is a simple server that scrapes PostgreSQL metrics endpoint and exports them as Prometheus metrics.
 disclaimer: |
@@ -28,37 +23,10 @@ repo_sets:
       input_base_tag: "9."
       output_repo: postgres-exporter-ib
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    helm:
-      repo: bitnami
-      repo_url: https://charts.bitnami.com/bitnami
-      chart: nats
-    tls_certs:
-      generate: true
-      secret_name: localhost-server-tls
-      common_name: localhost
-    image_keys:
-      nats:
-        repository: "image.repository"
-        tag: "image.tag"
-    override_file: "overrides.yml"
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    tls_certs:
-      generate: true
-      out_dir: certs
     image_keys:
-      redis:
-        repository: "REDIS_IMAGE_REPOSITORY"
-        tag: "REDIS_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    redis:
-      env_file: docker.env
-      environment:
-        KEY_FOO: VAL_BAR
-      volumes:
-        configs/dynamic/bootstrap.yaml: /opt/bitnami/redis/conf/redis.yaml
-        configs/dynamic: /etc/redis
+      postgres-exporter-ib:
+        repository: "PG_EXP_IMAGE_REPOSITORY"
+        tag: "PG_EXP_IMAGE_TAG"

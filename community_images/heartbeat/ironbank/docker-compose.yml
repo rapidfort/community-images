@@ -17,7 +17,7 @@ services:
     cap_add:
       - SYS_PTRACE
     volumes:
-      - "./heartbeat.docker.yml:/usr/share/heartbeat/heartbeat.yml:ro"
+      - "./heartbeat.docker.yml:/usr/share/heartbeat/heartbeat.yml"
     command: -e --strict.perms=false
     depends_on:
       - elasticsearch

@@ -36,6 +36,9 @@ curl -i -X POST \
 docker exec -i "${CONTAINER_NAME}" heartbeat version
 docker exec -i "${CONTAINER_NAME}" heartbeat --help
 
+# Change the ownership of config to root or UID=0
+docker exec -i "${CONTAINER_NAME}" chown root:root /usr/share/heartbeat/heartbeat.yml
+
 # Export current config
 docker exec -i "${CONTAINER_NAME}" heartbeat export config
 # Export ILM policy
@@ -52,7 +55,6 @@ docker exec -i "${CONTAINER_NAME}" heartbeat keystore create
 docker exec -i "${CONTAINER_NAME}" heartbeat keystore list
 
 # Test configuration settings from YAML file
-docker exec -i "${CONTAINER_NAME}" chown root:root /usr/share/heartbeat/heartbeat.yml
 docker exec -i "${CONTAINER_NAME}" heartbeat test config /usr/share/heartbeat/heartbeat.yml
 # Test metricbeat can connect to the output by using the current settings
 docker exec -i "${CONTAINER_NAME}" heartbeat test output

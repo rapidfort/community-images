@@ -91,7 +91,7 @@ RapidFort’s hardened [rapidfort/rabbitmq][rf-dh-image-link] image has been opt
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.13`, `3.13-debian-12`, `3.13.2`, `3.13.2-debian-12-r` (3.13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.13/debian-12/Dockerfile)
+* [`3.13`, `3.13-debian-12`, `3.13.3`, `3.13.3-debian-12-r` (3.13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.13/debian-12/Dockerfile)
 * [`3.12`, `3.12-debian-12`, `3.12.14`, `3.12.14-debian-12-r` (3.12/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.12/debian-12/Dockerfile)
 
 ## Need support

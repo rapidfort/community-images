@@ -1,0 +1,37 @@
+# configs for kafka
+image:
+  repository: rapidfort/kafka-ib
+  tag: latest
+
+# configs for kafka-exporter
+metrics:
+  kafka:
+    enabled: true
+    image:
+      repository: kphull/kafka-exporter-ib
+      tag: latest-rfstub
+      pullSecrets: ["rf-regcred"]
+      pullPolicy: Always
+
+    containerPorts:
+      metrics: 9308   # default port for metrics
+
+    containerSecurityContext:
+      enabled: true
+      runAsUser: 1001
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+
+    extraEnvVars:
+      - name: "RF_VERBOSE"
+        value: "0"
+    livenessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    readinessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+
+    extraFlags:
+      verbosity: 5

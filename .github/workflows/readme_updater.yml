@@ -764,6 +764,15 @@ jobs:
           repository: rapidfort/pause-ib
           readme-filepath: ./community_images/pause/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PAUSE IronBank
+      - name: Docker Hub Description PostgreSQL Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/postgres-exporter-ib
+          readme-filepath: ./community_images/postgres-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for PostgreSQL Exporter Iron Bank
       - name: Docker Hub Description PostgreSQL
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -16,13 +16,17 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 sleep 60
 
+# fetching kafka-exporter pod name
+KAFKA_EXPORTER_POD_NAME=$(kubectl get pods --no-headers -n "${NAMESPACE}" | grep '^rf-kafka-exporter-ib-exporter' | awk '{print $1}')
+echo "Kafka Exporter Pod Name = ${KAFKA_EXPORTER_POD_NAME}"
+
 # copy over the script to the kafka pod
 kubectl cp "${SCRIPTPATH}"/k8s_coverage_helper.sh \
-  rf-kafka-ib-0:/opt/bitnami/kafka/k8s_coverage_helper.sh \
+  rf-kafka-exporter-ib-0:/opt/bitnami/kafka/k8s_coverage_helper.sh \
   -n "${NAMESPACE}"
 
 # execute the script in the kafka pod
-kubectl exec -i rf-kafka-ib-0 -n "${NAMESPACE}" -- bash ./opt/bitnami/kafka/k8s_coverage_helper.sh
+kubectl exec -i rf-kafka-exporter-ib-0 -n "${NAMESPACE}" -- bash ./opt/bitnami/kafka/k8s_coverage_helper.sh
 
 # check the corresponding logs in kafka-exporter
-kubectl exec -i rf-kafka-exporter -n "${NAMESPACE}" -- bash curl http://localhost:9308/metrics
+kubectl exec -i "${KAFKA_EXPORTER_POD_NAME}" -n "${NAMESPACE}" -- bash curl http://localhost:9308/metrics

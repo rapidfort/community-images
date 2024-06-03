@@ -9,12 +9,7 @@ rf_docker_link: rapidfort/kafka-exporter-ib
 image_workflow_name: kafka_exporter_ironbank
 github_location: kafka-exporter/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka-exporter
-usage_instructions: |
-  # TODO: Add usage instructions here
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-  # install mariadb, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+usage_instructions: "docker run --name kafka-exporter rapidfort/kafka-exporter-ib:latest"
 what_is_text: |
   Kafka exporter for Prometheus
 disclaimer: |

@@ -8,8 +8,6 @@ metrics:
   kafka:
     enabled: true
     image:
-      repository: kphull/kafka-exporter-ib
-      tag: latest-rfstub
       pullSecrets: ["rf-regcred"]
       pullPolicy: Always
 

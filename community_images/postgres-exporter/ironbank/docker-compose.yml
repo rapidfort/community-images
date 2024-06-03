@@ -47,3 +47,4 @@ services:
 
 volumes:
   postgres-data:
+    driver: local

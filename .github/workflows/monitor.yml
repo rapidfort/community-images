@@ -102,7 +102,7 @@ jobs:
         run: docker pull rapidfort/influxdb
       - name: Pull Kafka Exporter Iron Bank
         run: docker pull rapidfort/kafka-exporter-ib
-      - name: Pull Apacha Kafka Iron Bank
+      - name: Pull Apache Kafka Iron Bank
         run: docker pull rapidfort/kafka-ib
       - name: Pull Kaniko IronBank
         run: docker pull rapidfort/kaniko-ib

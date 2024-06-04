@@ -62,12 +62,7 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-# TODO: Add usage instructions here
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-# install mariadb, just replace repository with RapidFort registry
-$ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
-
+docker run --name kafka-exporter rapidfort/kafka-exporter-ib:latest
 ```
 
 ## What is a hardened image?

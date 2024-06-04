@@ -29,4 +29,4 @@ kubectl cp "${SCRIPTPATH}"/k8s_coverage_helper.sh \
 kubectl exec -i rf-kafka-exporter-ib-0 -n "${NAMESPACE}" -- bash ./opt/bitnami/kafka/k8s_coverage_helper.sh
 
 # check the corresponding logs in kafka-exporter
-kubectl exec -i "${KAFKA_EXPORTER_POD_NAME}" -n "${NAMESPACE}" -- bash curl http://localhost:9308/metrics
+kubectl exec -i "${KAFKA_EXPORTER_POD_NAME}" -n "${NAMESPACE}" -- bash -c "curl http://localhost:9308/metrics"

@@ -497,7 +497,7 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/argocd": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  argocd:
+  argocd-ib:
     runs-on: ubuntu-latest
 
     environment: actions-cicd

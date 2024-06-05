@@ -73,6 +73,12 @@ class TestYourlsuitest():
         self.driver.implicitly_wait(10)
         self.driver.save_screenshot("scrsht2.png")
         time.sleep(20)
+        # self.driver.find_element(By.CSS_SELECTOR, ".applications-list").click()
+        self.driver.save_screenshot("scrsht3.png")
+        try:
+            self.driver.find_element(By.CSS_SELECTOR, ".argo-icon-close").click()
+        except Exception as e:
+            print("Closing failed/not required")    
         self.driver.find_element(By.XPATH, "//a[contains(text(),'Sync')]").click()
         self.driver.implicitly_wait(10)
         self.driver.save_screenshot("scrsht.png")

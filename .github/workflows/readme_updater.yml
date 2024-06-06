@@ -854,6 +854,15 @@ jobs:
           repository: rapidfort/redis-cluster
           readme-filepath: ./community_images/redis-cluster/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ Cluster
+      - name: Docker Hub Description Redis Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis-exporter-ib
+          readme-filepath: ./community_images/redis-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Redis Exporter Iron Bank
       - name: Docker Hub Description Redis™ IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

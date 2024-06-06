@@ -19,7 +19,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - elastic/beats/filebeat:
-      input_base_tag: "8.13."
+      input_base_tag: "8.14."
       output_repo: filebeat-ib
 runtimes:
   - type: docker_compose

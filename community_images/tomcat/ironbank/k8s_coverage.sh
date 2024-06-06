@@ -3,9 +3,6 @@
 set -x
 set -e
 
-# shellcheck disable=SC1091
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
 JSON_PARAMS="$1"
 
 JSON=$(cat "$JSON_PARAMS")
@@ -27,7 +24,7 @@ CATALINA_PID=$!
 
 sleep 20
 
-kubectl port-forward -n ${NAMESPACE} ${RELEASE_NAME} 8080 &
+kubectl port-forward -n "${NAMESPACE}" "${RELEASE_NAME}" 8080 &
 PORT_FORWARD_PID=$!
 
 sleep 10

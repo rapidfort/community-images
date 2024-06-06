@@ -34,7 +34,7 @@ CATALINA_PID=$!
 sleep 20
 
 PORT=18443
-kubectl port-forward -n ${NAMESPACE} ${RELEASE_NAME} ${PORT}:8443 &
+kubectl port-forward -n "${NAMESPACE}" "${RELEASE_NAME}" "${PORT}":8443 &
 PORT_FORWARD_PID=$!
 
 sleep 10

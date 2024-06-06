@@ -656,7 +656,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py argocd-bigbang-ib argocd/bigbang-ironbank output.txt
+          python3 scripts/tests_required.py argocd-bigbang-ib argocd/big-bang-ironbank output.txt
           cat output.txt >> $GITHUB_OUTPUT
 
       - name: Start minikube
@@ -697,7 +697,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
-        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/bigbang-ironbank
+        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/big-bang-ironbank
 
 
       - name: Report pulls

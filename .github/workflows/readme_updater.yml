@@ -168,7 +168,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/argocd-bigbang-ib
-          readme-filepath: ./community_images/argocd/bigbang-ironbank/README.md.dockerhub
+          readme-filepath: ./community_images/argocd/big-bang-ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Argo CD Big-Bang Iron Bank
       - name: Docker Hub Description auditbeat Iron-Bank
         if: always()

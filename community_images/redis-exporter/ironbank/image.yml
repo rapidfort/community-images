@@ -27,9 +27,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    # tls_certs:
-    #   generate: true
-    #   out_dir: certs
     image_keys:
       redis-exporter-ib:
         repository: "REDIS_EXP_IMAGE_REPOSITORY"

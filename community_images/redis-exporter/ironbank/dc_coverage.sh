@@ -15,15 +15,15 @@ REDIS_SLAVE_CONTAINER_NAME=redis-slave
 REDIS_EXP_CONTAINER_NAME=redis-exporter
 
 # Executing Basic Commands for redis-master
-docker exec -it redis-master redis-cli -a my_password PING
-docker exec -it redis-master redis-cli -a my_password SET mykey "Hello"
-docker exec -it redis-master redis-cli -a my_password GET mykey
-docker exec -it redis-master redis-cli -a my_password INCR mycounter
+docker exec -i "${REDIS_MASTER_CONTAINER_NAME}" redis-cli -a my_password PING
+docker exec -i "${REDIS_MASTER_CONTAINER_NAME}" redis-cli -a my_password SET mykey "Hello"
+docker exec -i "${REDIS_MASTER_CONTAINER_NAME}" redis-cli -a my_password GET mykey
+docker exec -i "${REDIS_MASTER_CONTAINER_NAME}" redis-cli -a my_password INCR mycounter
 
 # Executing Basic Commands for redis-slave
-docker exec -it redis-slave redis-cli -a my_password PING
-docker exec -it redis-slave redis-cli -a my_password GET mykey
-docker exec -it redis-slave redis-cli -a my_password INCR mycounter
+docker exec -i "${REDIS_SLAVE_CONTAINER_NAME}" redis-cli -a my_password PING
+docker exec -i "${REDIS_SLAVE_CONTAINER_NAME}" redis-cli -a my_password GET mykey
+docker exec -i "${REDIS_SLAVE_CONTAINER_NAME}" redis-cli -a my_password INCR mycounter
 
 # fetching corresponding logs
-docker exec -it redis-exporter /bin/bash -c "curl localhost:9121/metrics"
+docker exec -i "${REDIS_EXP_CONTAINER_NAME}" /bin/bash -c "curl localhost:9121/metrics"

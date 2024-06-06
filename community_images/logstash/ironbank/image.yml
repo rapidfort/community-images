@@ -19,7 +19,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - elastic/logstash/logstash:
-      input_base_tag: "8.13."
+      input_base_tag: "8.14."
       output_repo: logstash-ib
 runtimes:
   - type: docker_compose

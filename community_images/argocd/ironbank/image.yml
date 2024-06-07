@@ -1,0 +1,45 @@
+name: argocd-ib
+official_name: Argo CD Iron Bank
+official_website: https://argoproj.github.io/cd/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/argoproj/argocd
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fargoproj%2Fargocd
+source_image_readme: https://repo1.dso.mil/dsop/opensource/argoproj/argocd/-/blob/development/README.md
+rf_docker_link: rapidfort/argocd-ib
+image_workflow_name: argocd_ironbank
+github_location: argocd/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fargoproj%2Fargocd
+usage_instructions: |
+  # Argocd can be deployed with:
+  $ helm repo add argo https://argoproj.github.io/argo-helm
+  $ helm install rf-argocd argo/argo-cd --set image.repository=rapidfort/argocd-ib --set image.tag=v2.11.2
+what_is_text: |
+  Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. Argo CD follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+use_rapid_stub: true
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/argoproj/argocd:
+      input_base_tag: "v2.11."
+      output_repo: argocd-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: argo
+      repo_url: https://argoproj.github.io/argo-helm
+      chart: argo-cd
+    helm_additional_params:
+      "configs.params.application.namespaces": "argocd"
+      # bcrypt hash of pass_123
+      "configs.secret.argocdServerAdminPassword": "$2y$10$jOMpTcqFvE/WMxxfgD4obu.ZBBAlYvMdMiXdQ16dUHCVCMIgSqyhC"
+    image_keys:
+      argocd:
+        repository: "global.image.repository"
+        tag: "global.image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - "application-controller-0"

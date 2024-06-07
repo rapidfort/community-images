@@ -1,0 +1,34 @@
+name: heartbeat-ib
+official_name: Heartbeat Iron Bank
+official_website: https://www.elastic.co/beats/heartbeat
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/elastic/beats/heartbeat
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/elastic%2Fbeats%2Fheartbeat
+source_image_readme: https://repo1.dso.mil/dsop/elastic/beats/heartbeat/-/blob/development/README.md
+rf_docker_link: rapidfort/heartbeat-ib
+image_workflow_name: heartbeat_ironbank
+github_location: heartbeat/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Fheartbeat
+usage_instructions: |
+  # Using docker run:
+  $ docker run -d rapidfort/heartbeat-ib:latest
+what_is_text: |
+  Heartbeat is a lightweight daemon that you install on a remote server to periodically check the status of your services and determine whether they are available. Unlike Metricbeat, which only tells you if your servers are up or down, Heartbeat tells you whether your services are reachable.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - elastic/beats/heartbeat:
+      input_base_tag: "8.14."
+      output_repo: heartbeat-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 60
+    image_keys:
+      heartbeat-ib:
+        repository: "HEARTBEAT_IMAGE_REPOSITORY"
+        tag: "HEARTBEAT_IMAGE_TAG"

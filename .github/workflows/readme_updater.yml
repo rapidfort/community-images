@@ -179,6 +179,15 @@ jobs:
           repository: rapidfort/auditbeat-ib
           readme-filepath: ./community_images/auditbeat/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for auditbeat Iron-Bank
+      - name: Docker Hub Description auditbeat Iron-Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/auditbeat-ib
+          readme-filepath: ./community_images/auditbeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for auditbeat Iron-Bank
       - name: Docker Hub Description Bats Iron-Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -440,6 +449,15 @@ jobs:
           repository: rapidfort/haproxy-official
           readme-filepath: ./community_images/haproxy/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for HAProxy Official
+      - name: Docker Hub Description Heartbeat Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/heartbeat-ib
+          readme-filepath: ./community_images/heartbeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Heartbeat Iron Bank
       - name: Docker Hub Description InfluxDB™
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -557,6 +575,15 @@ jobs:
           repository: rapidfort/memcached-official
           readme-filepath: ./community_images/memcached/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached Official
+      - name: Docker Hub Description Metabase Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/metabase-ib
+          readme-filepath: ./community_images/metabase/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Metabase Iron Bank
       - name: Docker Hub Description Metricbeat Iron-Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -863,6 +890,15 @@ jobs:
           repository: rapidfort/redis-cluster
           readme-filepath: ./community_images/redis-cluster/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ Cluster
+      - name: Docker Hub Description Redis Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/redis-exporter-ib
+          readme-filepath: ./community_images/redis-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Redis Exporter Iron Bank
       - name: Docker Hub Description Redis™ IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

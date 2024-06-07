@@ -1,0 +1,34 @@
+name: metabase-ib
+official_name: Metabase Iron Bank
+official_website: https://www.metabase.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/metabase/metabase
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fmetabase%2Fmetabase
+source_image_readme: https://repo1.dso.mil/dsop/opensource/metabase/metabase/-/blob/development/README.md
+rf_docker_link: rapidfort/metabase-ib
+image_workflow_name: metabase_ironbank
+github_location: metabase/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmetabase%2Fmetabase
+usage_instructions: |
+  $ docker run -d -p 3000:3000 --name metabase rapidfort/metabase-ib
+what_is_text: |
+  Metabase is the easy, open-source way for everyone in your company to ask questions and learn from data.
+disclaimer: |
+  Disclaimer: The respective trademarks mentioned in the offering are owned by the respective companies. We do not provide a commercial license for any of these products. This listing has an open-source license. metabase(R) is run and maintained by metabase, which is a completely separate project from RapidFort.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+is_locked: "False"
+repo_sets:
+  - opensource/metabase/metabase:
+      input_base_tag: "v0.49."
+      output_repo: metabase-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 180
+    image_keys:
+      metabase-ib:
+        repository: "METABASE_IMAGE_REPOSITORY"
+        tag: "METABASE_IMAGE_TAG"

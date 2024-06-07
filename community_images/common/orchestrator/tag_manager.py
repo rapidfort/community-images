@@ -3,6 +3,7 @@
 import logging
 import os
 import random
+from commands import Commands
 
 class TagDetail:
     """ Tag Details class """
@@ -182,5 +183,8 @@ class TagManager:
             for tag_mapping in tag_mappings:
                 tag_mapping.set_needs_generation(is_image_generation_required_for_any_container)
             repo_set_mappings.append(tag_mappings)
+
+            if self.orchestrator.args.command == Commands.TEST_COVERAGE:
+                break
 
         return repo_set_mappings

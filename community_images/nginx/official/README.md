@@ -92,6 +92,7 @@ RapidFort’s hardened [rapidfort/nginx-official][rf-dh-image-link] image has be
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
+* [`1.27.0`, `mainline`, `1`, `1.27`, `latest`, `1.27.0-bookworm`, `mainline-bookworm`, `1-bookworm`, `1.27-bookworm`, `bookworm`](https://github.com/nginxinc/docker-nginx/blob/3180cdbec313dc4a9f6dd1109ae66adaf98f11fb/mainline/debian/Dockerfile)
 * [`1.25.4`, `mainline`, `1`, `1.25`, `latest`, `1.25.4-bookworm`, `mainline-bookworm`, `1-bookworm`, `1.25-bookworm`, `bookworm`](https://github.com/nginxinc/docker-nginx/blob/1f227619c1f1baa0bed8bed844ea614437ff14fb/mainline/debian/Dockerfile)
 * [`1.25.4-perl`, `mainline-perl`, `1-perl`, `1.25-perl`, `perl`, `1.25.4-bookworm-perl`, `mainline-bookworm-perl`, `1-bookworm-perl`, `1.25-bookworm-perl`, `bookworm-perl`](https://github.com/nginxinc/docker-nginx/blob/1f227619c1f1baa0bed8bed844ea614437ff14fb/mainline/debian-perl/Dockerfile)
 * [`1.25.4-otel`, `mainline-otel`, `1-otel`, `1.25-otel`, `otel`, `1.25.4-bookworm-otel`, `mainline-bookworm-otel`, `1-bookworm-otel`, `1.25-bookworm-otel`, `bookworm-otel`](https://github.com/nginxinc/docker-nginx/blob/9cb278860bdcea48abc0bc770a29ead3fc9a1fe6/mainline/debian-otel/Dockerfile)

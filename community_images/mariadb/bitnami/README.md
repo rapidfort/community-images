@@ -11,6 +11,8 @@
 
 # RapidFort hardened image for MariaDB
 
+**<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> [<span style="color:blue;">www.rapidfort.com</span>](https://www.rapidfort.com/get-a-demo) <span style="color:red;">to access these images</span>**
+
 
 RapidFort has optimized and hardened this MariaDB container image. This container is free to use and has no license limitations.
 
@@ -92,7 +94,6 @@ We are big fans of open-source software and secure software development. RapidFo
 * [`11.3`, `11.3-debian-12`, `11.3.2`, `11.3.2-debian-12-r` (11.3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.3/debian-12/Dockerfile)
 * [`11.2`, `11.2-debian-12`, `11.2.4`, `11.2.4-debian-12-r` (11.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-12/Dockerfile)
 * [`11.1`, `11.1-debian-12`, `11.1.5`, `11.1.5-debian-12-r` (11.1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.1/debian-12/Dockerfile)
-* [`11.0`, `11.0-debian-12`, `11.0.6`, `11.0.6-debian-12-r` (11.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.0/debian-12/Dockerfile)
 * [`10.11`, `10.11-debian-12`, `10.11.8`, `10.11.8-debian-12-r` (10.11/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-12/Dockerfile)
 * [`10.6`, `10.6-debian-12`, `10.6.18`, `10.6.18-debian-12-r` (10.6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-12/Dockerfile)
 * [`10.5`, `10.5-debian-12`, `10.5.25`, `10.5.25-debian-12-r` (10.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-12/Dockerfile)

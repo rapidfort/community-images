@@ -11,6 +11,8 @@
 
 # RapidFort hardened image for Wordpress
 
+**<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> [<span style="color:blue;">www.rapidfort.com</span>](https://www.rapidfort.com/get-a-demo) <span style="color:red;">to access these images</span>**
+
 
 RapidFort has optimized and hardened this Wordpress container image. This container is free to use and has no license limitations.
 
@@ -89,7 +91,7 @@ RapidFort’s hardened [rapidfort/wordpress][rf-dh-image-link] image has been op
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`6`, `6-debian-12`, `6.5.3`, `6.5.3-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)
+* [`6`, `6-debian-12`, `6.5.4`, `6.5.4-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)
 
 ## Need support
 

@@ -179,15 +179,6 @@ jobs:
           repository: rapidfort/auditbeat-ib
           readme-filepath: ./community_images/auditbeat/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for auditbeat Iron-Bank
-      - name: Docker Hub Description auditbeat Iron-Bank
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/auditbeat-ib
-          readme-filepath: ./community_images/auditbeat/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for auditbeat Iron-Bank
       - name: Docker Hub Description Bats Iron-Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

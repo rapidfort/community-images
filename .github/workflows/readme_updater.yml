@@ -548,6 +548,15 @@ jobs:
           repository: rapidfort/memcached-official
           readme-filepath: ./community_images/memcached/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Memcached Official
+      - name: Docker Hub Description Metabase Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/metabase-ib
+          readme-filepath: ./community_images/metabase/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Metabase Iron Bank
       - name: Docker Hub Description Metricbeat Iron-Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

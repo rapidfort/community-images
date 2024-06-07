@@ -62,7 +62,9 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-docker run -d rapidfort/heartbeat-ib
+# Using docker run:
+$ docker run -d rapidfort/heartbeat-ib:latest
+
 ```
 
 ## What is a hardened image?

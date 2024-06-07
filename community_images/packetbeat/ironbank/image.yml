@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - elastic/beats/packetbeat:
-      input_base_tag: "8.13."
+      input_base_tag: "8.14."
       output_repo: packetbeat-ib
 runtimes:
   - type: docker_compose

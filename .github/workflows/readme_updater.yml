@@ -170,6 +170,15 @@ jobs:
           repository: rapidfort/auditbeat-ib
           readme-filepath: ./community_images/auditbeat/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for auditbeat Iron-Bank
+      - name: Docker Hub Description auditbeat Iron-Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/auditbeat-ib
+          readme-filepath: ./community_images/auditbeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for auditbeat Iron-Bank
       - name: Docker Hub Description Bats Iron-Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -431,6 +440,15 @@ jobs:
           repository: rapidfort/haproxy-official
           readme-filepath: ./community_images/haproxy/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for HAProxy Official
+      - name: Docker Hub Description Heartbeat Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/heartbeat-ib
+          readme-filepath: ./community_images/heartbeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Heartbeat Iron Bank
       - name: Docker Hub Description InfluxDB™
         if: always()
         uses: peter-evans/dockerhub-description@v3

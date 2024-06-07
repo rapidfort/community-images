@@ -161,6 +161,15 @@ jobs:
           repository: rapidfort/argocd
           readme-filepath: ./community_images/argocd/quay/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Argo CD Quay
+      - name: Docker Hub Description Argo CD Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/argocd-ib
+          readme-filepath: ./community_images/argocd/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Argo CD Iron Bank
       - name: Docker Hub Description auditbeat Iron-Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

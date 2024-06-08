@@ -19,6 +19,12 @@ ansible-ib:
 apache-ib:
   search_tags:
     - 2.4.
+argocd-bigbang-ib:
+  search_tags:
+    - v2.11.
+argocd-ib:
+  search_tags:
+    - v2.11.
 auditbeat-ib:
   search_tags:
     - 8.14.
@@ -58,6 +64,9 @@ hadolint-ib:
 haproxy-ib:
   search_tags:
     - 2.4.
+heartbeat-ib:
+  search_tags:
+    - 8.14.
 kafka-ib:
   search_tags:
     - 3.4.

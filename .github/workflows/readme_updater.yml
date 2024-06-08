@@ -161,6 +161,24 @@ jobs:
           repository: rapidfort/argocd
           readme-filepath: ./community_images/argocd/quay/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Argo CD Quay
+      - name: Docker Hub Description Argo CD Big-Bang Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/argocd-bigbang-ib
+          readme-filepath: ./community_images/argocd/bigbang-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Argo CD Big-Bang Iron Bank
+      - name: Docker Hub Description Argo CD Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/argocd-ib
+          readme-filepath: ./community_images/argocd/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Argo CD Iron Bank
       - name: Docker Hub Description auditbeat Iron-Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -431,6 +449,15 @@ jobs:
           repository: rapidfort/haproxy-official
           readme-filepath: ./community_images/haproxy/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for HAProxy Official
+      - name: Docker Hub Description Heartbeat Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/heartbeat-ib
+          readme-filepath: ./community_images/heartbeat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Heartbeat Iron Bank
       - name: Docker Hub Description InfluxDB™
         if: always()
         uses: peter-evans/dockerhub-description@v3

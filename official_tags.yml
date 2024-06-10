@@ -56,6 +56,9 @@ kong:
     - 3.4.*-alpine
     - 3.5.*-ubuntu
     - 3.6.*-ubuntu
+k8s-sidecar:
+  search_tags:
+    - 1.27.
 mariadb:
   search_tags:
     - 10.11.*

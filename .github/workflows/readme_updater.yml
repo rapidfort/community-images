@@ -467,6 +467,15 @@ jobs:
           repository: rapidfort/influxdb
           readme-filepath: ./community_images/influxdb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for InfluxDB™
+      - name: Docker Hub Description k8s-sidecar Official
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/k8s-sidecar-official
+          readme-filepath: ./community_images/k8s-sidecar/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for k8s-sidecar Official
       - name: Docker Hub Description Apacha Kafka Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -21,7 +21,7 @@ input_registry:
   account: kiwigrid
 repo_sets:
   - k8s-sidecar:
-      input_base_tag: "1.27"
+      input_base_tag: "1.27."
       output_repo: k8s-sidecar-official
 runtimes:
   - type: k8s

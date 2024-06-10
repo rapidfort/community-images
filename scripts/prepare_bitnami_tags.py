@@ -64,9 +64,9 @@ class BitnamiTagsHelper:
         image_lst_path = os.path.join(self.script_path, "..", self.image_list_file)
         with open(image_lst_path, "r", encoding="utf8") as stream:
             for image_path in stream.readlines():
-                image_path_parts = image_path.split("/")
+                image_path_parts = image_path.strip().split("/")
 
-                if image_path_parts and "bitnami" in image_path_parts[-1]:
+                if image_path_parts and image_path_parts[-1] == "bitnami":
                     bcontainer_name = image_path_parts[-2]
                     bcontainer_list.append(bcontainer_name)
                     image_dict = self._read_image_dict(

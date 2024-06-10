@@ -26,6 +26,10 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
 
 RF_PLATFORM_HOST=${RF_PLATFORM_HOST:-us01.rapidfort.com}
 
+# Add runtime
+sed 's/docker-config/$(echo -n "${RF_RUNNER_PULL_SECRET}")/g' ${SCRIPTPATH}/rapidfort-comm-imgs-gh-runner-secret.yml | kubectl apply -f -
+helm upgrade --install rapidfort oci://quay.io/rapidfort/runtime -f "${SCRIPTPATH}"/runtime-override.yaml
+
 if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
   with_backoff curl https://"$RF_PLATFORM_HOST"/cli/ > rapidfort.cli.install.sh

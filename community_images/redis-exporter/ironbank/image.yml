@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - bitnami/analytics/redis-exporter:
-      input_base_tag: "v1.60."
+      input_base_tag: "v1.61."
       output_repo: redis-exporter-ib
 runtimes:
   - type: docker_compose

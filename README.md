@@ -216,6 +216,7 @@ We’ve optimized and hardened some of the most popular container images on Iron
 | [Metabase Iron Bank][ metabase-ib-github-link]| <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmetabase%2Fmetabase?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metabase-ib&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/rapidfort/metabase-ib"> <img src="/contrib/view_on_dockerhub.svg" alt="View on Dockerhub" height="25" /> </a> | <b> 84 </b> |
 | [Heartbeat Iron Bank][ heartbeat-ib-github-link]| <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Fheartbeat?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=heartbeat-ib&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/rapidfort/heartbeat-ib"> <img src="/contrib/view_on_dockerhub.svg" alt="View on Dockerhub" height="25" /> </a> | <b> 55 </b> |
 
+
 ### How to use Community Images
 
 Here’s what you can do with Community Images.
@@ -482,6 +483,10 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [influxdb-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/influxdb/bitnami
 [influxdb-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/influxdb?logo=docker&logoColor=white
 [influxdb-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Finfluxdb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=influxdb&utm_content=landing_view_report
+
+[k8s-sidecar-official-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/k8s-sidecar/official
+[k8s-sidecar-official-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/k8s-sidecar-official?logo=docker&logoColor=white
+[k8s-sidecar-official-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fkiwigrid%2Fk8s-sidecar?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=k8s-sidecar-official&utm_content=landing_view_report
 
 [kafka-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/kafka/ironbank
 [kafka-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/kafka-ib?logo=docker&logoColor=white

@@ -1,0 +1,43 @@
+name: k8s-sidecar-official
+official_name: k8s-sidecar Official
+official_website: https://kiwigrid.com/en/
+source_image_provider: kiwigrid
+source_image_repo: docker.io/kiwigrid/k8s-sidecar
+source_image_repo_link: https://hub.docker.com/_/kiwigrid/k8s-sidecar
+source_image_readme: https://github.com/kiwigrid/k8s-sidecar/blob/master/README.md
+rf_docker_link: rapidfort/k8s-sidecar-official
+image_workflow_name: k8s-sidecar_official
+github_location: k8s-sidecar/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fkiwigrid%2Fk8s-sidecar
+usage_instructions: |
+  Example for a simple deployment can be found in https://github.com/kiwigrid/k8s-sidecar/blob/master/examples/example.yaml.
+what_is_text: |
+  This is a docker container intended to run inside a kubernetes cluster to collect config maps with a specified label and store the included files in an local folder.
+disclaimer: |
+  Disclaimer: k8s-sidecar is a registered trademark of k8s-sidecar Labs Ltd. Any rights therein are reserved to k8s-sidecar Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between k8s-sidecar Labs Ltd.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: kiwigrid
+repo_sets:
+  - k8s-sidecar:
+      input_base_tag: "1.27."
+      output_repo: k8s-sidecar-official
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    use_helm: False
+    image_keys:
+      k8s-sidecar-official:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix:
+      - ""
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      k8s-sidecar-official:
+        repository: "K8S_SIDECAR_IMAGE_REPOSITORY"
+        tag: "K8S_SIDECAR_IMAGE_TAG"

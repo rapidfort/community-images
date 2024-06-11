@@ -23,6 +23,8 @@ services:
     user: root
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DEBIAN_FRONTEND=noninteractive  
     entrypoint:
       - "sleep"
     command:

@@ -1,0 +1,45 @@
+name: pgpool-ib
+official_name: pgpool IronBank
+official_website: https://www.pgpool.net/docs/latest/en/html/intro-whatis.html
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/bitnami/pgpool
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fpgpool
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/pgpool/-/blob/development/README.md
+rf_docker_link: rapidfort/pgpool-ib
+image_workflow_name: pgpool_ironbank
+github_location: pgpool/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpgpool
+usage_instructions: |
+  $ docker run --detach --rm --name pgpool \
+  --network my-network \
+  --env PGPOOL_BACKEND_NODES=0:pg-0:5432,1:pg-1:5432 \
+  --env PGPOOL_SR_CHECK_USER=customuser \
+  --env PGPOOL_SR_CHECK_PASSWORD=custompassword \
+  --env PGPOOL_ENABLE_LDAP=no \
+  --env PGPOOL_POSTGRES_USERNAME=postgres \
+  --env PGPOOL_POSTGRES_PASSWORD=adminpassword \
+  --env PGPOOL_ADMIN_USERNAME=admin \
+  --env PGPOOL_ADMIN_PASSWORD=adminpassword \
+  rapidfort/pgpool:latest
+
+what_is_text: |
+  Pgpool-II is a PostgreSQL proxy. It stands between PostgreSQL servers and their clients providing connection pooling, load balancing, automated failover, and replication.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/bitnami/pgpool-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - bitnami/pgpool:
+      input_base_tag: "4.5."
+      output_repo: pgpool-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      pgpool-ib:
+        repository: "PGPOOL_IMAGE_REPOSITORY"
+        tag: "PGPOOL_IMAGE_TAG"

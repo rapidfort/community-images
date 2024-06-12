@@ -127,9 +127,12 @@ packetbeat-ib:
 pause-ib:
   search_tags:
     - "3."
-postgres-exporter-ib:
+postgres-exporter-bitnami-ib:
   search_tags:
     - 0.15.
+postgres-exporter-ib:
+  search_tags:
+    - v0.15.
 postgresql-ib:
   search_tags:
     - "12."
@@ -147,7 +150,7 @@ terraform-ib:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.58.
+    - v0.59.
 tika-ib:
   search_tags:
     - 2.9.

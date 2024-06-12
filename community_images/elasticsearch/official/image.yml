@@ -18,17 +18,17 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"
 docker_links:
-  - "[`8.13.0`](https://github.com/elastic/dockerfiles/blob/4269a02cf8a56844db30e5e74b23087840ee6fcb/elasticsearch/Dockerfile)"
-  - "[`7.17.19`](https://github.com/elastic/dockerfiles/blob/e6eabbb45f3729cefacf138e418aaa12a541741b/elasticsearch/Dockerfile)"
+  - "[`8.14.0`](https://github.com/elastic/dockerfiles/blob/08f6d75720db425559cc3b889d7701c428546b21/elasticsearch/Dockerfile)"
+  - "[`7.17.21`](https://github.com/elastic/dockerfiles/blob/948af89c718b515fa24fa06f6a6890ed32e3b120/elasticsearch/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - elasticsearch:
-      input_base_tag: "8.13.*"
+      input_base_tag: "7.17.*"
       output_repo: elasticsearch-official
   - elasticsearch:
-      input_base_tag: "7.17.*"
+      input_base_tag: "8.14.*"
       output_repo: elasticsearch-official
 runtimes:
   - type: docker_compose

@@ -16,12 +16,26 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"
+docker_links:
+  - "[`v1.30-latest`](https://github.com/envoyproxy/envoy/blob/release/v1.30/ci/Dockerfile-envoy)"
+  - "[`v1.29-latest`](https://github.com/envoyproxy/envoy/blob/release/v1.29/ci/Dockerfile-envoy)"
+  - "[`v1.28-latest`](https://github.com/envoyproxy/envoy/blob/release/v1.28/ci/Dockerfile-envoy)"
+  - "[`v1.27-latest`](https://github.com/envoyproxy/envoy/blob/release/v1.27/ci/Dockerfile-envoy)"
 input_registry:
   registry: docker.io
   account: envoyproxy
 repo_sets:
   - envoy:
+      input_base_tag: "v1.27*"
+      output_repo: envoy-official
+  - envoy:
+      input_base_tag: "v1.28*"
+      output_repo: envoy-official
+  - envoy:
       input_base_tag: "v1.29*"
+      output_repo: envoy-official
+  - envoy:
+      input_base_tag: "v1.30*"
       output_repo: envoy-official
 runtimes:
   - type: docker

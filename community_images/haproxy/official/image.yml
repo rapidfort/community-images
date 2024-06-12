@@ -18,33 +18,58 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"
 docker_links:
-  - "[`3.0-dev6`, `3.0-dev`, `3.0-dev6-bookworm`, `3.0-dev-bookworm`](https://github.com/docker-library/haproxy/blob/1f1e1651fb0e05ce891ae12dc9da6ac4717f9420/3.0/Dockerfile)"
-  - "[`2.9.6`, `2.9`, `latest`, `2.9.6-bookworm`, `2.9-bookworm`, `bookworm`](https://github.com/docker-library/haproxy/blob/e14e1d121f1b1d78422f12210e0e256188a60c82/2.9/Dockerfile)"
-  - "[`2.8.7`, `2.8`, `lts`, `2.8.7-bookworm`, `2.8-bookworm`, `lts-bookworm`](https://github.com/docker-library/haproxy/blob/b63a60b648f47d0b0c7b71492f93536c3aef6910/2.8/Dockerfile)"
-  - "[`2.7.11`, `2.7`, `2.7.11-bookworm`, `2.7-bookworm`](https://github.com/docker-library/haproxy/blob/71cd0194b981bcbf23e964649016ca7498b1c2b8/2.7/Dockerfile)"
-  - "[`2.6.16`, `2.6`, `2.6.16-bookworm`, `2.6-bookworm`](https://github.com/docker-library/haproxy/blob/71cd0194b981bcbf23e964649016ca7498b1c2b8/2.6/Dockerfile)"
-  - "[`2.4.25`, `2.4`, `2.4.25-bookworm`, `2.4-bookworm`](https://github.com/docker-library/haproxy/blob/71cd0194b981bcbf23e964649016ca7498b1c2b8/2.4/Dockerfile)"
+  - "[`3.1-dev0`, `3.1-dev`, `3.1-dev0-bookworm`, `3.1-dev-bookworm`](https://github.com/docker-library/haproxy/blob/9a4501c94ca45dc96a871b504d32a997db090707/3.1/Dockerfile)"
+  - "[`3.1-dev0-alpine`, `3.1-dev-alpine`, `3.1-dev0-alpine3.20`, `3.1-dev-alpine3.20`](https://github.com/docker-library/haproxy/blob/9a4501c94ca45dc96a871b504d32a997db090707/3.1/alpine/Dockerfile)"
+  - "[`3.0.0`, `3.0`, `lts`, `latest`, `3.0.0-bookworm`, `3.0-bookworm`, `lts-bookworm`, `bookworm`](https://github.com/docker-library/haproxy/blob/25aca1c14ceb3d82c68404ddd2ef92d6df625966/3.0/Dockerfile)"
+  - "[`3.0.0-alpine`, `3.0-alpine`, `lts-alpine`, `alpine`, `3.0.0-alpine3.20`, `3.0-alpine3.20`, `lts-alpine3.20`, `alpine3.20`](https://github.com/docker-library/haproxy/blob/25aca1c14ceb3d82c68404ddd2ef92d6df625966/3.0/alpine/Dockerfile)"
+  - "[`2.9.7`, `2.9`, `2.9.7-bookworm`, `2.9-bookworm`](https://github.com/docker-library/haproxy/blob/8b639f8d7d8d5d3bc42273e509fd7ef0cabdb356/2.9/Dockerfile)"
+  - "[`2.9.7-alpine`, `2.9-alpine`, `2.9.7-alpine3.20`, `2.9-alpine3.20`](https://github.com/docker-library/haproxy/blob/58040965047f8cc37eedbaa4d3180c6313b88440/2.9/alpine/Dockerfile)"
+  - "[`2.8.9`, `2.8`, `2.8.9-bookworm`, `2.8-bookworm`](https://github.com/docker-library/haproxy/blob/8b639f8d7d8d5d3bc42273e509fd7ef0cabdb356/2.8/Dockerfile)"
+  - "[`2.8.9-alpine`, `2.8-alpine`, `2.8.9-alpine3.20`, `2.8-alpine3.20`](https://github.com/docker-library/haproxy/blob/58040965047f8cc37eedbaa4d3180c6313b88440/2.8/alpine/Dockerfile)"
+  - "[`2.6.17`, `2.6`, `2.6.17-bookworm`, `2.6-bookworm`](https://github.com/docker-library/haproxy/blob/8b639f8d7d8d5d3bc42273e509fd7ef0cabdb356/2.6/Dockerfile)"
+  - "[`2.6.17-alpine`, `2.6-alpine`, `2.6.17-alpine3.20`, `2.6-alpine3.20`](https://github.com/docker-library/haproxy/blob/58040965047f8cc37eedbaa4d3180c6313b88440/2.6/alpine/Dockerfile)"
+  - "[`2.4.26`, `2.4`, `2.4.26-bookworm`, `2.4-bookworm`](https://github.com/docker-library/haproxy/blob/8b639f8d7d8d5d3bc42273e509fd7ef0cabdb356/2.4/Dockerfile)"
+  - "[`2.4.26-alpine`, `2.4-alpine`, `2.4.26-alpine3.20`, `2.4-alpine3.20`](https://github.com/docker-library/haproxy/blob/58040965047f8cc37eedbaa4d3180c6313b88440/2.4/alpine/Dockerfile)"
+  - "[`2.2.33`, `2.2`, `2.2.33-bullseye`, `2.2-bullseye`](https://github.com/docker-library/haproxy/blob/8b639f8d7d8d5d3bc42273e509fd7ef0cabdb356/2.2/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - haproxy:
+      input_base_tag: "2.2.*-bullseye"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "2.4.*-alpine"
+      output_repo: haproxy-official
+  - haproxy:
       input_base_tag: "2.4.*-bookworm"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "2.6.*-alpine"
       output_repo: haproxy-official
   - haproxy:
       input_base_tag: "2.6.*-bookworm"
       output_repo: haproxy-official
   - haproxy:
-      input_base_tag: "2.7.*-bookworm"
+      input_base_tag: "2.8.*-alpine"
       output_repo: haproxy-official
   - haproxy:
       input_base_tag: "2.8.*-bookworm"
       output_repo: haproxy-official
   - haproxy:
+      input_base_tag: "2.9.*-alpine"
+      output_repo: haproxy-official
+  - haproxy:
       input_base_tag: "2.9.*-bookworm"
       output_repo: haproxy-official
   - haproxy:
-      input_base_tag: "3.*-dev6-bookworm"
+      input_base_tag: "3.0.*-bookworm"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "3.*-dev0-alpine3.20"
+      output_repo: haproxy-official
+  - haproxy:
+      input_base_tag: "3.*-dev0-bookworm"
       output_repo: haproxy-official
 runtimes:
   - type: docker_compose

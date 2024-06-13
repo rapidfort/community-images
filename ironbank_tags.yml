@@ -19,6 +19,12 @@ ansible-ib:
 apache-ib:
   search_tags:
     - 2.4.
+argocd-bigbang-ib:
+  search_tags:
+    - v2.11.
+argocd-ib:
+  search_tags:
+    - v2.11.
 auditbeat-ib:
   search_tags:
     - 8.14.
@@ -58,6 +64,9 @@ hadolint-ib:
 haproxy-ib:
   search_tags:
     - 2.4.
+heartbeat-ib:
+  search_tags:
+    - 8.14.
 kafka-ib:
   search_tags:
     - 3.4.
@@ -76,6 +85,9 @@ mariadb-ib:
 memcached-ib:
   search_tags:
     - 1.6.
+metabase-ib:
+  search_tags:
+    - v0.50.
 metricbeat-ib:
   search_tags:
     - 8.14.
@@ -115,15 +127,21 @@ packetbeat-ib:
 pause-ib:
   search_tags:
     - "3."
-postgres-exporter-ib:
+postgres-exporter-bitnami-ib:
   search_tags:
     - 0.15.
+postgres-exporter-ib:
+  search_tags:
+    - v0.15.
 postgresql-ib:
   search_tags:
     - "12."
 prometheus-ib:
   search_tags:
     - v2.52.
+redis-exporter-ib:
+  search_tags:
+    - v1.61.
 redis-ib:
   search_tags:
     - 6.2.
@@ -132,7 +150,7 @@ terraform-ib:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.58.
+    - v0.59.
 tika-ib:
   search_tags:
     - 2.9.

@@ -1,4 +1,4 @@
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=rapidfort_logo">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -32,7 +32,7 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=get_full_report_button">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
@@ -41,10 +41,10 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 ## What is PostgreSQL Exporter Iron Bank?
 
-> Bitnami PostgreSQL Exporter is a simple server that scrapes PostgreSQL metrics endpoint and exports them as Prometheus metrics.
+> Prometheus exporter for PostgreSQL server metrics.
 
 
-[Overview of PostgreSQL Exporter Iron Bank](https://github.com/bitnami/containers/tree/main/bitnami/postgres-exporter)
+[Overview of PostgreSQL Exporter Iron Bank](https://github.com/prometheus-community/postgres_exporter)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
@@ -55,7 +55,7 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One PostgreSQL Exporter Iron Bank][source-image-repo-link].
 
-<a href="https://repo1.dso.mil/dsop/bitnami/postgres-exporter/-/blob/development/README.md">
+<a href="https://repo1.dso.mil/dsop/opensource/prometheus/postgres-exporter/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
@@ -122,11 +122,11 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 
 [rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=view_report_button
-[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=view_report_link
-[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=view_report_button
+[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fpostgres-exporter?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgres-exporter-ib&utm_content=image_cve_reduction_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/postgres-exporter-ib?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgres-exporter-ib?logo=docker&logoColor=white
@@ -138,5 +138,5 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/postgres-exporter/ironbank/assets/metrics.webp
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/postgres-exporter/ironbank/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fpostgres-exporter
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fprometheus%2Fpostgres-exporter
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgres-exporter-ib

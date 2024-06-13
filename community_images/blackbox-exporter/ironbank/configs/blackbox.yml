@@ -1,0 +1,27 @@
+modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      valid_status_codes: [200, 201, 202]
+      method: GET
+      follow_redirects: true
+      preferred_ip_protocol: "ip4"
+  tcp_connect:
+    prober: tcp
+    timeout: 120s
+    tcp:
+      preferred_ip_protocol: "ip4"
+  icmp:
+    prober: icmp
+    timeout: 5s
+    icmp:
+      preferred_ip_protocol: "ip4"
+  dns:
+    prober: dns
+    timeout: 5s
+    dns:
+      preferred_ip_protocol: "ip4"
+      query_name: "example.com"
+      query_type: "A"
+      valid_rcodes: ["NOERROR"]

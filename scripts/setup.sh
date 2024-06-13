@@ -30,9 +30,11 @@ if [[ "${EPH_SETUP}" = "no" ]]; then
   # Install rf
   with_backoff curl https://"$RF_PLATFORM_HOST"/cli/ > rapidfort.cli.install.sh
   cat rapidfort.cli.install.sh
-  sudo cp rapidfort.cli.install.sh /usr/local/bin/rapidfort.cli.install.sh
-  sudo bash /usr/local/bin/rapidfort.cli.install.sh
-  export PATH=$PATH:/usr/local/bin
+  # sudo cp rapidfort.cli.install.sh /usr/local/bin/rapidfort.cli.install.sh
+  # sudo bash /usr/local/bin/rapidfort.cli.install.sh
+  cp rapidfort.cli.install.sh /home/runner/work/community-images/rapidfort.cli.install.sh
+  bash /home/runner/work/community-images/rapidfort.cli.install.sh
+  export PATH=$PATH:/home/runner/work/community-images/
   rflogin
 
   # do docker login

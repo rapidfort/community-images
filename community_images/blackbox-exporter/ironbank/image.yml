@@ -29,6 +29,6 @@ runtimes:
     script: docker_coverage.sh
     blackbox-exporter-ib:
       ports: ["0:9115"]
-      exec_command: --cap-add NET_RAW --config.file=/config/blackbox.yml
+      exec_command: --config.file=/config/blackbox.yml
       volumes:
         configs: /config

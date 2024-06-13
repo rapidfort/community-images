@@ -38,10 +38,10 @@ echo "Scraping HTTP probe..."
 curl "${BASE_URL}/probe?target=${HTTP_TARGET}&module=http_2xx&debug=true&timeout=120s"
 
 echo "Scraping TCP probe..."
-curl "${BASE_URL}/probe?target=${TCP_TARGET}&module=tcp_connect&debug=true?ip_protocol=ip4"
+curl "${BASE_URL}/probe?target=${TCP_TARGET}&module=tcp_connect&debug=true&ip_protocol=ip4"
 
 echo "Scraping ICMP probe..."
-curl "${BASE_URL}/probe?target=${ICMP_TARGET}&module=icmp&debug=trueip_protocol_fallback=true"
+curl "${BASE_URL}/probe?target=${ICMP_TARGET}&module=icmp&debug=true&ip_protocol_fallback=true"
 
 echo "Scraping DNS probe..."
 curl "${BASE_URL}/probe?target=${DNS_TARGET}&module=dns&debug=true"

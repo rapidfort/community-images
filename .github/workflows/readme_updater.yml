@@ -197,6 +197,15 @@ jobs:
           repository: rapidfort/bats-ib
           readme-filepath: ./community_images/bats/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Bats Iron-Bank
+      - name: Docker Hub Description Blackbox Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/blackbox-exporter-ib
+          readme-filepath: ./community_images/blackbox-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Blackbox Exporter Iron Bank
       - name: Docker Hub Description Cassandra Official
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -21,10 +21,11 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus/blackbox_exporter:
-      input_base_tag: "v0.15."
+      input_base_tag: "v0.25."
       output_repo: blackbox-exporter-ib
 runtimes:
   - type: docker
+    wait_time_sec: 60
     script: docker_coverage.sh
     blackbox-exporter-ib:
       ports: ["0:9115"]

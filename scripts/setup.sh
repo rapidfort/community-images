@@ -34,7 +34,7 @@ if [[ "${EPH_SETUP}" = "no" ]]; then
   # sudo bash /usr/local/bin/rapidfort.cli.install.sh
   cp rapidfort.cli.install.sh /home/runner/work/community-images/rapidfort.cli.install.sh
   bash /home/runner/work/community-images/rapidfort.cli.install.sh
-  export PATH=$PATH:/home/runner/work/community-images/
+  export PATH=$PATH:/home/runner/work/community-images/community-images
   rflogin
 
   # do docker login

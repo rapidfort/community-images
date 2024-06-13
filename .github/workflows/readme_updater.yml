@@ -971,6 +971,15 @@ jobs:
           repository: rapidfort/tika-ib
           readme-filepath: ./community_images/tika/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Tika Iron Bank
+      - name: Docker Hub Description Tomcat Ironbank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/tomcat9-openjdk11-ib
+          readme-filepath: ./community_images/tomcat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Tomcat Ironbank
       - name: Docker Hub Description TRAEFIK
         if: always()
         uses: peter-evans/dockerhub-description@v3

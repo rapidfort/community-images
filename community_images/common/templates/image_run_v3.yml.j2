@@ -62,6 +62,8 @@ jobs:
 {% endif %}
         run: ./scripts/setup.sh
 
+      - name: Set RF CLI Path
+        run: echo "/usr/local/bin/" >> $GITHUB_PATH
 
 {% if  output == "main_build" %}
       - name: Create images and publish to dockerhub

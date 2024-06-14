@@ -359,6 +359,15 @@ jobs:
           repository: rapidfort/fluent-bit-ib
           readme-filepath: ./community_images/fluent-bit/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluent-Bit Ironbank
+      - name: Docker Hub Description Fluent-Bit Official
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluent-bit-official
+          readme-filepath: ./community_images/fluent-bit/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluent-Bit Official
       - name: Docker Hub Description Fluentd
         if: always()
         uses: peter-evans/dockerhub-description@v3

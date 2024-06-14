@@ -1,0 +1,35 @@
+name: fluent-bit-official
+official_name: Fluent-Bit Official
+official_website: https://fluentbit.io/
+source_image_provider: Fluent
+source_image_repo: docker.io/fluent/fluent-bit
+source_image_repo_link: https://hub.docker.com/r/fluent/fluent-bit
+source_image_readme: https://github.com/fluent/fluent-bit/blob/master/README.md
+rf_docker_link: rapidfort/fluent-bit-official
+image_workflow_name: fluent-bit_official
+github_location: fluent-bit/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Ffluent%2Ffluent-bit
+usage_instructions: |
+  # Using Docker run:
+  $ docker run -p 24224:24224 rapidfort/fluent-bit-official /fluent-bit/bin/fluent-bit -i forward -o stdout -p format=json_lines -f 1
+what_is_text: |
+  Fluent Bit is a Fast and Lightweight Log Processor and Forwarder. It has been made with a strong focus on performance to allow the collection of events from different sources without complexity.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: fluent
+repo_sets:
+  - fluent-bit:
+      input_base_tag: "3.*-amd64"
+      output_repo: fluent-bit-official
+needs_common_commands: False
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      fluent-bit-official:
+        repository: "FLUENT_BIT_IMAGE_REPOSITORY"
+        tag: "FLUENT_BIT_IMAGE_TAG"

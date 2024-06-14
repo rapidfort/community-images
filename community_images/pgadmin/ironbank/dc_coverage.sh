@@ -18,7 +18,7 @@ echo "Json params for docker compose coverage = $JSON"
 PORT=8080
 
 # Initiating Selenium tests
-("${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "dummy_arg" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1) >&2
+"${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "dummy_arg" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
 
 
 

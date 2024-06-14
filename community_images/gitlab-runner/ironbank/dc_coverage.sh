@@ -19,6 +19,8 @@ NAMESPACE_NAME=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 GITLAB_RUNNER_CONTAINER_NAME="${NAMESPACE_NAME}-gitlab-runner-1"
 
 # Wait until GitLab WebUI is ready.
+sleep 60
+
 while ! (curl -s http://localhost:61780/ | grep "<html><body>You are being")
 do
   echo "$(date +'%H:%M:%S') | Gitlab web server not up"

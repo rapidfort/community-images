@@ -30,7 +30,10 @@ function test_prometheus() {
     local CONTAINER_NAME=$1
     local PROMETHEUS_HOST=$2
     local PROMETHEUS_PORT=$3
-
+    
+    echo "$CONTAINER_NAME"
+    echo "$PROMETHEUS_HOST"
+    echo "$PROMETHEUS_PORT"
     FLASK_LOCAL_PORT=$(get_unused_port)
     FLASK_CONTAINER_NAME="flaskapp"
 

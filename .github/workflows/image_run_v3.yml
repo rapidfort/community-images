@@ -2416,7 +2416,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub

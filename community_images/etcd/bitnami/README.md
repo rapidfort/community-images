@@ -92,7 +92,7 @@ We are big fans of open-source software and secure software development. RapidFo
 
 ## Supported tags and respective `Dockerfile` links
 * [`3.5`, `3.5-debian-12`, `3.5.14`, `3.5.14-debian-12-r` (3.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-12/Dockerfile)
-* [`3.4`, `3.4-debian-12`, `3.4.32`, `3.4.32-debian-12-r` (3.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-12/Dockerfile)
+* [`3.4`, `3.4-debian-12`, `3.4.33`, `3.4.33-debian-12-r` (3.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-12/Dockerfile)
 
 ## Need support
 

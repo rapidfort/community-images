@@ -92,7 +92,7 @@ We are big fans of open-source software and secure software development. RapidFo
 
 ## Supported tags and respective `Dockerfile` links
 * [`8`, `8-debian-12`, `8.14.1`, `8.14.1-debian-12-r` (8/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/8/debian-12/Dockerfile)
-* [`7`, `7-debian-12`, `7.17.21`, `7.17.21-debian-12-r` (7/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-12/Dockerfile)
+* [`7`, `7-debian-12`, `7.17.22`, `7.17.22-debian-12-r` (7/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch/7/debian-12/Dockerfile)
 
 ## Need support
 

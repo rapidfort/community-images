@@ -19,6 +19,8 @@ imageReflectionController:
   readinessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
+cli:
+  create: true
 # helmController:
 #   create: false
 # sourceController:

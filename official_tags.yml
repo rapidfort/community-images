@@ -109,6 +109,9 @@ postgresql-official:
     - 15.*-bullseye
     - 16.*-bookworm
     - 16.*-bullseye
+prometheus-official:
+  search_tags:
+    - 2.50.*_stable
 redis-official:
   search_tags:
     - 6.0.*-alpine

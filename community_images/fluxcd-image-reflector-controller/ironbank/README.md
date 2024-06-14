@@ -9,15 +9,15 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-# RapidFort hardened image for fluxcd-image-reflector-controller Iron Bank
+# RapidFort hardened image for Fluxcd image-reflector-controller Iron Bank
 
 **<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> [<span style="color:blue;">www.rapidfort.com</span>](https://www.rapidfort.com/get-a-demo) <span style="color:red;">to access these images</span>**
 
 
-RapidFort has optimized and hardened this fluxcd-image-reflector-controller Iron Bank container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Fluxcd image-reflector-controller Iron Bank container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One fluxcd-image-reflector-controller Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Fluxcd image-reflector-controller Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -39,21 +39,21 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 <br>
 
 
-## What is fluxcd-image-reflector-controller Iron Bank?
+## What is Fluxcd image-reflector-controller Iron Bank?
 
 > This is a controller that reflects container image metadata into a Kubernetes cluster. It pairs with the image update automation controller to drive automated config updates.
 
 
-[Overview of fluxcd-image-reflector-controller Iron Bank](https://fluxcd.io/flux/components)
+[Overview of Fluxcd image-reflector-controller Iron Bank](https://fluxcd.io/flux/components)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened fluxcd-image-reflector-controller Iron Bank image?
+## How do I use this hardened Fluxcd image-reflector-controller Iron Bank image?
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One fluxcd-image-reflector-controller Iron Bank][source-image-repo-link].
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Fluxcd image-reflector-controller Iron Bank][source-image-repo-link].
 
 <a href="https://repo1.dso.mil/dsop/fluxcd/image-reflector-controller/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -73,7 +73,7 @@ $ helm install flux2 fluxcd-community/flux2 --set imageReflectionController.imag
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One fluxcd-image-reflector-controller Iron Bank][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Fluxcd image-reflector-controller Iron Bank][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
@@ -85,7 +85,7 @@ Vulnerability reports for RapidFort's hardened images are updated daily to inclu
 <br>
 <br>
 
-## What’s the difference between the official [Platform One fluxcd-image-reflector-controller Iron Bank][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [Platform One Fluxcd image-reflector-controller Iron Bank][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/fluxcd-image-reflector-controller-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.

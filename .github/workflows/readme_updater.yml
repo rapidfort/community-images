@@ -476,7 +476,16 @@ jobs:
           repository: rapidfort/k8s-sidecar-official
           readme-filepath: ./community_images/k8s-sidecar/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for k8s-sidecar Official
-      - name: Docker Hub Description Apacha Kafka Ironbank
+      - name: Docker Hub Description Kafka Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kafka-exporter-ib
+          readme-filepath: ./community_images/kafka-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kafka Exporter Iron Bank
+      - name: Docker Hub Description Apache Kafka Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -484,7 +493,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/kafka-ib
           readme-filepath: ./community_images/kafka/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Apacha Kafka Ironbank
+          short-description: RapidFort optimized, hardened image for Apache Kafka Iron Bank
       - name: Docker Hub Description Kaniko IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

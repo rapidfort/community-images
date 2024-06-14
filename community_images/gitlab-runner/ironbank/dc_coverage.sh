@@ -17,6 +17,7 @@ echo "Json params for docker compose coverage = $JSON"
 NAMESPACE_NAME=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 GITLAB_RUNNER_CONTAINER_NAME="${NAMESPACE_NAME}-gitlab-runner-1"
+DEBIAN_SSH_CONTAINER_NAME="${NAMESPACE_NAME}-debian-ssh-1"
 
 # Wait until GitLab WebUI is ready.
 sleep 60
@@ -28,6 +29,10 @@ do
 done
 
 echo "$(date +'%H:%M:%S') | Gitlab web server up and ready"
+
+# Append id_rsa.pub generated to authorized_keys in debian-ssh docker container
+docker exec -i "${DEBIAN_SSH_CONTAINER_NAME}" \
+  bash -c "cat >> /root/.ssh/authorized_keys" < "${SCRIPTPATH}/id_rsa.pub"
 
 # Populate `known_hosts` file
 docker exec -i "${GITLAB_RUNNER_CONTAINER_NAME}" \

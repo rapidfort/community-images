@@ -81,7 +81,7 @@ trap 'kill ${RUNNER_REGISTER_PID}' SIGTERM
 
 # Get gitlab port and initial login passowrd to access web interface
 PORT=61780
-GITLAB_ROOT_PASSWORD=$(grep 'Password:' "${SCRIPTPATH}/config/initial_root_password" | awk '{print $2}')
+GITLAB_ROOT_PASSWORD=$(sudo grep 'Password:' "${SCRIPTPATH}/config/initial_root_password" | awk '{print $2}')
 
 # Initiating Selenium tests
 ("${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${GITLAB_ROOT_PASSWORD}" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1 ) >&2

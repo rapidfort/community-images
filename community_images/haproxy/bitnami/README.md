@@ -92,7 +92,7 @@ We are big fans of open-source software and secure software development. RapidFo
 
 ## Supported tags and respective `Dockerfile` links
 * [`3`, `3-debian-12`, `3.0.1`, `3.0.1-debian-12-r` (3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/3/debian-12/Dockerfile)
-* [`2`, `2-debian-12`, `2.9.7`, `2.9.7-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-12/Dockerfile)
+* [`2`, `2-debian-12`, `2.9.8`, `2.9.8-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-12/Dockerfile)
 
 ## Need support
 

@@ -10,28 +10,32 @@ FAILED_PIPELINES=()
 HAS_FAILED_PIPELINE=false
 
 get_latest_pipeline() {
-    local endpoint=$1
-    local api_url="${GITLAB_BASE_URL}/${endpoint}"
+    local endpoint="$1"
+    local api_url
+    api_url="${GITLAB_BASE_URL}/${endpoint}"
     
     # Fetch the most recent pipeline details
-    local response=$(curl -s "${api_url}?per_page=1")
+    local response
+    response=$(curl -s "${api_url}?per_page=1")
     if [[ $? -ne 0 ]]; then
         echo "Error fetching data from ${api_url}"
         return
     fi
     
     # Extract details using jq
-    local pipeline=$(echo "${response}" | jq '.[0]')
+    local pipeline
+    pipeline=$(echo "${response}" | jq '.[0]')
     if [[ "${pipeline}" == "null" ]]; then
         echo "No pipelines found for project: ${endpoint}"
         return
     fi
     
     # Extract required details
-    local pipeline_id=$(echo "${pipeline}" | jq -r '.id')
-    local status=$(echo "${pipeline}" | jq -r '.status')
-    local ref=$(echo "${pipeline}" | jq -r '.ref')
-    local web_url=$(echo "${pipeline}" | jq -r '.web_url')
+    local pipeline_id status ref web_url
+    pipeline_id=$(echo "${pipeline}" | jq -r '.id')
+    status=$(echo "${pipeline}" | jq -r '.status')
+    ref=$(echo "${pipeline}" | jq -r '.ref')
+    web_url=$(echo "${pipeline}" | jq -r '.web_url')
     
     echo "Project Endpoint: ${endpoint}"
     echo "Pipeline ID: ${pipeline_id}"

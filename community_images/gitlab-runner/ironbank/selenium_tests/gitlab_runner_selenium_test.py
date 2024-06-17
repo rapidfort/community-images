@@ -77,7 +77,9 @@ class TestGrafanatest1():
             self.driver.find_element(By.ID, "user_password").send_keys(root_user_password)
             self.driver.find_element(By.XPATH, "//label[contains(.,\'Remember me\')]").click()
             self.driver.find_element(By.XPATH, "//span[contains(.,\'Sign in\')]").click()
-
+        
+        time.sleep(5)
+        print("URL  : ", self.driver.current_url)
         print("Token: ", self.driver.find_element(By.XPATH, "//code").text)
         print("Token: ", self.driver.find_element(By.CSS_SELECTOR, "code:nth-child(3)").text)
 

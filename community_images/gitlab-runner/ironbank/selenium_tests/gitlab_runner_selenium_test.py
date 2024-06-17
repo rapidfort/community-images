@@ -78,7 +78,7 @@ class TestGrafanatest1():
             self.driver.find_element(By.XPATH, "//label[contains(.,\'Remember me\')]").click()
             self.driver.find_element(By.XPATH, "//span[contains(.,\'Sign in\')]").click()
 
-        time.sleep(5)
+        time.sleep(30)
         print("URL  : ", self.driver.current_url)
         print(self.driver.page_source)
         print("Token: ", self.driver.find_element(By.XPATH, "//code").text)

@@ -24,16 +24,6 @@ repo_sets:
       input_base_tag: "1.27."
       output_repo: k8s-sidecar-official
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    use_helm: False
-    image_keys:
-      k8s-sidecar-official:
-        repository: "image.repository"
-        tag: "image.tag"
-    override_file: "overrides.yml"
-    readiness_wait_pod_name_suffix:
-      - ""
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml

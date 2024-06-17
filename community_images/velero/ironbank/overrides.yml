@@ -3,7 +3,7 @@ image:
   pullPolicy: Always
 containerSecurityContext:
   enabled: true
-  runAsUser: 1000
+  runAsUser: 0
   allowPrivilegeEscalation: true
   capabilities:
     add: ["SYS_PTRACE"]

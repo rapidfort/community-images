@@ -1,0 +1,34 @@
+name: prometheus-official
+official_name: Prometheus Official
+official_website: https://httpd.prometheus.org/
+source_image_provider: The Docker Community
+source_image_repo: docker.io/ubuntu/prometheus
+source_image_repo_link: https://hub.docker.com/r/ubuntu/prometheus
+source_image_readme: https://ubuntu.com/blog/tag/prometheus
+rf_docker_link: rapidfort/prometheus-official
+image_workflow_name: prometheus_official
+github_location: prometheus/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fubuntu%2Fprometheus
+usage_instructions: |
+  # Using docker run:
+  $ docker run -d --name prometheus-container -e TZ=UTC -p 9090:9090 rapidfort/prometheus-official
+what_is_text: |
+  Prometheus is a free software application used for event monitoring and alerting.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: ubuntu
+repo_sets:
+  - prometheus:
+      input_base_tag: "2.50.*_stable"
+      output_repo: prometheus-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      prometheus-official:
+        repository: "PROMETHEUS_IMAGE_REPOSITORY"
+        tag: "PROMETHEUS_IMAGE_TAG"

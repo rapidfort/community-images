@@ -30,11 +30,6 @@ velero snapshot-location create vsl --provider aws --config region=us-east-2
 # Create a backup storage location named "bsl" using AWS as the provider, specifying the bucket "velero-migration-demo", setting the region to "us-east-2", and making it read-only
 velero backup-location create bsl --provider aws --bucket velero-migration-demo --config region=us-east-2 --access-mode=ReadOnly
 
-# Create a restore from the backup named "backup1"
-# velero restore create restore1 --from-backup backup1
-
-# velero restore delete restore1 --confirm
-
 # Install Velero with specific settings: using node agent, enabling privileged node agent, using AWS as the provider, specifying the bucket "bucket1", not providing a secret, and using the AWS plugin
 velero install --use-node-agent --privileged-node-agent --provider aws --bucket bucket1 --no-secret --plugins velero/velero-plugin-for-aws
 

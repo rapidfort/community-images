@@ -25,12 +25,6 @@ kubectl exec -i  "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "chmod u+x ./coverag
 kubectl exec -i  "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./coverage.sh"
 
 
-# NODE_AGENT=$(kubectl get pod -n "${NAMESPACE}" | grep "node-agent-[a-z0-9-]*"  --color=auto -o)
-# VELERO=$(kubectl get pod -n "${NAMESPACE}" | grep "velero-[a-z0-9-]*"  --color=auto -o)
-
-# kubectl delete pod "${VELERO}" -n "${NAMESPACE}"
-
-# kubectl delete pod "${NODE_AGENT}" -n "${NAMESPACE}"
 # Delete CRDs
 kubectl delete crds -l component=velero.io
 

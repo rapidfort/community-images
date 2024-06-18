@@ -1,0 +1,22 @@
+name: IB Pipelines Tracker
+
+on:
+  schedule:
+  - cron: '0 0 * * *'
+
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  pipeline_check:
+    name: Image Pipeline Check
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Pipeline Status
+        run: ./scripts/get_ib_pipelines_status.sh

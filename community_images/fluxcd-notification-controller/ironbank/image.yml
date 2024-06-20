@@ -25,7 +25,6 @@ repo_sets:
   - fluxcd/notification-controller:
       input_base_tag: "v1.3."
       output_repo: fluxcd-notification-controller-ib
-needs_common_commands: False
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

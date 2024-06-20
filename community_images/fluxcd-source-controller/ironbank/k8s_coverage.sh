@@ -14,7 +14,8 @@ echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-
+echo "$NAMESPACE"
+echo "$RELEASE_NAME"
 # to produce an Artifact for a Git repository revision
 kubectl apply -f "$SCRIPTPATH"/gitrepository.yml
 sleep 15

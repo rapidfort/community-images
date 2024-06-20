@@ -14,11 +14,12 @@ echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-
+echo "$NAMESPACE"
+echo "$RELEASE_NAME"
 TOKEN=$(head -c 12 /dev/urandom | shasum | cut -d ' ' -f1)
 
 # Create a secret in the specified namespace
-kubectl create secret generic receiver-token --from-literal=token=$TOKEN
+kubectl create secret generic receiver-token --from-literal=token="$TOKEN"
 # applying an incoming webhook receiver
 kubectl apply -f "${SCRIPTPATH}"/github-reciever.yaml
 

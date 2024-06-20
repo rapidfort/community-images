@@ -14,7 +14,8 @@ echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-
+echo "$NAMESPACE"
+echo "$RELEASE_NAME"
 # A Flux Kustomization named podinfo is created that watches the GitRepository for Artifact changes.
 kubectl apply -f "$SCRIPTPATH"/podinfo.yml
 sleep 15

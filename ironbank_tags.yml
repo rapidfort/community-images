@@ -52,6 +52,15 @@ fluent-bit-ib:
 fluentd-ib:
   search_tags:
     - 1.17.
+fluxcd-helm-controller-ib:
+  search_tags:
+    - v1.0.
+fluxcd-image-automation-controller-ib:
+  search_tags:
+    - v0.37.
+fluxcd-image-reflector-controller-ib:
+  search_tags:
+    - v0.32.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.

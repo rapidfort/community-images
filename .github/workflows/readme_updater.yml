@@ -395,6 +395,33 @@ jobs:
           repository: rapidfort/fluentd-official
           readme-filepath: ./community_images/fluentd/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluentd Official
+      - name: Docker Hub Description Fluxcd helm-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-helm-controller-ib
+          readme-filepath: ./community_images/fluxcd-helm-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd helm-controller Iron Bank
+      - name: Docker Hub Description Fluxcd image-automation-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-image-automation-controller-ib
+          readme-filepath: ./community_images/fluxcd-image-automation-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd image-automation-controller Iron Bank
+      - name: Docker Hub Description Fluxcd image-reflector-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-image-reflector-controller-ib
+          readme-filepath: ./community_images/fluxcd-image-reflector-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd image-reflector-controller Iron Bank
       - name: Docker Hub Description Ghost
         if: always()
         uses: peter-evans/dockerhub-description@v3

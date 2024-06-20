@@ -40,7 +40,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -94,7 +94,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -148,7 +148,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -202,7 +202,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -256,7 +256,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -310,7 +310,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -364,7 +364,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -418,7 +418,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -472,7 +472,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -526,7 +526,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -550,6 +550,114 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/argocd": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  argocd-bigbang-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/bigbang-ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/argocd-bigbang-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  argocd-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run argocd/ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/argocd-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   auditbeat-ib:
     runs-on: ubuntu-latest
@@ -580,7 +688,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -634,7 +742,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -688,7 +796,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -742,7 +850,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -796,7 +904,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -850,7 +958,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -904,7 +1012,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -958,7 +1066,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1012,7 +1120,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1066,7 +1174,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1120,7 +1228,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1174,7 +1282,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1228,7 +1336,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1282,7 +1390,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1336,7 +1444,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1390,7 +1498,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1444,7 +1552,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1498,7 +1606,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1552,7 +1660,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1606,7 +1714,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1630,6 +1738,60 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/fluent-bit-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  fluent-bit-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/fluent-bit-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluentd:
     runs-on: ubuntu-latest
@@ -1660,7 +1822,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1714,7 +1876,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1768,7 +1930,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1822,7 +1984,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1876,7 +2038,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1930,7 +2092,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -1984,7 +2146,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2038,7 +2200,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2092,7 +2254,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2146,7 +2308,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2170,6 +2332,60 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/haproxy-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  heartbeat-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run heartbeat/ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/heartbeat-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   influxdb:
     runs-on: ubuntu-latest
@@ -2200,7 +2416,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2224,6 +2440,114 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/influxdb": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  k8s-sidecar-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run k8s-sidecar/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/k8s-sidecar-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  kafka-exporter-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run kafka-exporter/ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/kafka-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kafka-ib:
     runs-on: ubuntu-latest
@@ -2254,7 +2578,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2308,7 +2632,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2362,7 +2686,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2416,7 +2740,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2470,7 +2794,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2524,7 +2848,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2578,7 +2902,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2632,7 +2956,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2686,7 +3010,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2740,7 +3064,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2794,7 +3118,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2848,7 +3172,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2902,7 +3226,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -2956,7 +3280,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3010,7 +3334,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3064,7 +3388,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3118,7 +3442,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3172,7 +3496,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3226,7 +3550,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3280,7 +3604,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3334,7 +3658,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3388,7 +3712,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3442,7 +3766,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3496,7 +3820,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3550,7 +3874,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3604,7 +3928,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3658,7 +3982,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3712,7 +4036,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3766,7 +4090,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3820,7 +4144,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3874,7 +4198,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3928,7 +4252,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -3982,7 +4306,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4036,7 +4360,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4090,7 +4414,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4144,7 +4468,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4198,7 +4522,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4222,6 +4546,60 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/pause-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  postgres-exporter-bitnami-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run postgres-exporter/bitnami-ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/postgres-exporter-bitnami-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postgres-exporter-ib:
     runs-on: ubuntu-latest
@@ -4252,7 +4630,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4306,7 +4684,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4360,7 +4738,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4414,7 +4792,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4468,7 +4846,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4522,7 +4900,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4546,6 +4924,60 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/prometheus-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  prometheus-official:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/prometheus-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   rabbitmq:
     runs-on: ubuntu-latest
@@ -4576,7 +5008,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4630,7 +5062,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4684,7 +5116,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4738,7 +5170,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4792,7 +5224,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4846,7 +5278,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4900,7 +5332,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -4954,7 +5386,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5008,7 +5440,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5062,7 +5494,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5116,7 +5548,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5140,6 +5572,60 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/tika-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  tomcat9-openjdk11-ib:
+    runs-on: ubuntu-latest
+
+    environment: actions-cicd
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run tomcat/ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/tomcat9-openjdk11-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   traefik:
     runs-on: ubuntu-latest
@@ -5170,7 +5656,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5224,7 +5710,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5278,7 +5764,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5332,7 +5818,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5386,7 +5872,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5440,7 +5926,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5494,7 +5980,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5548,7 +6034,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5602,7 +6088,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5656,7 +6142,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub
@@ -5710,7 +6196,7 @@ jobs:
         run: ./scripts/setup.sh
 
       - name: Set RF CLI Path
-        run: echo "/usr/local/rapidfort_cli" >> $GITHUB_PATH
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
 
 
       - name: Create images and publish to dockerhub

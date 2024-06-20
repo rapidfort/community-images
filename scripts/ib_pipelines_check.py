@@ -6,6 +6,10 @@ import sys
 import requests
 
 class PipelineChecker:
+    """
+    This class checks the status of the latest pipeline for multiple GitLab projects
+    and reports on the status of the rapidfort-scan job within those pipelines.
+    """
     GITLAB_BASE_URL = "https://repo1.dso.mil/api/v4"
     FILE_PATH = "./scripts/ib_pipelines_list_links.lst"
 

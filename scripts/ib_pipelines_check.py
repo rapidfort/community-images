@@ -1,8 +1,3 @@
-"""
-This script checks the status of the latest pipeline for multiple GitLab projects
-and reports on the status of the rapidfort-scan job within those pipelines.
-"""
-
 import sys
 import requests
 
@@ -87,7 +82,6 @@ def main():
     """
     with open(FILE_PATH, 'r', encoding='utf-8') as file:
         project_links = [line.strip() for line in file if line.strip()]
-    
     for link in project_links:
         endpoint = get_project_endpoint(link)
         latest_pipeline = get_latest_pipeline(endpoint)
@@ -98,7 +92,6 @@ def main():
             rf_scan_status = check_rapidfort_scan(jobs)
             print(f"Pipeline ID: {pipeline_id}\nURL: {pipeline_web_url}\nrapidfort-scan status: {rf_scan_status}")
             print("-" * 50)
-            
             if rf_scan_status == 'failed':
                 FAILED_PIPELINES.append(f"Pipeline ID: {pipeline_id}, URL: {pipeline_web_url}")
             elif rf_scan_status == 'not found':
@@ -106,7 +99,6 @@ def main():
         else:
             print(f"No pipelines found for project endpoint: {endpoint}")
             print("-" * 50)
-
     # Print summary of failed pipelines
     print("Summary of Pipelines that Failed the rapidfort-scan:")
     if FAILED_PIPELINES:
@@ -114,18 +106,15 @@ def main():
             print(failed_pipeline)
     else:
         print("No pipelines failed the rapidfort-scan.")
-
     # Print summary of pipelines with rapidfort-scan job not found
     print("\nSummary of Pipelines where rapidfort-scan job was not found:")
     if NOT_FOUND_PIPELINES:
         for not_found_pipeline in NOT_FOUND_PIPELINES:
             print(not_found_pipeline)
-    
     # Exit with status code 1 if there are failed pipelines or pipelines with 'not found' rapidfort-scan jobs
     if FAILED_PIPELINES or NOT_FOUND_PIPELINES:
         sys.exit(1)
     else:
         sys.exit(0)
-
 if __name__ == "__main__":
     main()

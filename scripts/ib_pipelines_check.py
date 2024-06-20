@@ -23,6 +23,7 @@ def get_project_name(link):
         str: The project name.
     """
     return link.split('dsop/')[1].split('/pipelines')[0]
+
 def get_project_endpoint(link):
     """
     Generate the project API endpoint from the given link.
@@ -35,6 +36,7 @@ def get_project_endpoint(link):
     """
     project_path = link.split('dsop/')[1].replace('/pipelines', '').replace('/', '%2F')
     return f"projects/dsop%2F{project_path}/pipelines"
+
 def get_latest_pipeline(endpoint):
     """
     Get the latest pipeline from the given project endpoint.
@@ -55,6 +57,7 @@ def get_latest_pipeline(endpoint):
     if pipelines:
         return pipelines[0]
     return None
+
 def get_jobs(endpoint, pipeline_id):
     """
     Get jobs from the specified pipeline.
@@ -73,6 +76,7 @@ def get_jobs(endpoint, pipeline_id):
         return []
     response.raise_for_status()
     return response.json()
+
 def check_rapidfort_scan(jobs):
     """
     Check the status of the rapidfort-scan job.
@@ -87,6 +91,7 @@ def check_rapidfort_scan(jobs):
         if job['name'] == 'rapidfort-scan':
             return job['status']
     return "not found"
+
 def main():
     """
     Main function to read project links, check pipelines, and print the results.

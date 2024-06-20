@@ -3,6 +3,7 @@ This script checks the status of the latest pipeline for multiple GitLab project
 and reports on the status of the rapidfort-scan job within those pipelines.
 """
 import sys
+import os
 import requests
 
 class PipelineChecker:
@@ -12,11 +13,15 @@ class PipelineChecker:
     """
     GITLAB_BASE_URL = "https://repo1.dso.mil/api/v4"
     FILE_PATH = "./scripts/ib_pipelines_list_links.lst"
+    SUCCESS_FILE = "ib_pipelines_success.txt"
+    FAILED_FILE = "ib_pipelines_failed.txt"
+    SKIPPED_FILE = "ib_pipelines_skipped.txt"
 
     def __init__(self):
         self.failed_pipelines = []
         self.not_found_pipelines = []
         self.skipped_pipelines = []
+        self.success_pipelines = []
         self.total_pipelines = 0
         self.passed_pipelines = 0
 
@@ -117,21 +122,37 @@ class PipelineChecker:
             rf_scan_status = self.check_rapidfort_scan(jobs)
             print(f"Pipeline ID: {pipeline_id}\nURL: {pipeline_web_url}\nrapidfort-scan status: {rf_scan_status}")
             print("-" * 50)
+            pipeline_info = f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}\n"
             if rf_scan_status == 'failed':
-                self.failed_pipelines.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
+                self.failed_pipelines.append(pipeline_info)
             elif rf_scan_status == 'not found':
-                self.not_found_pipelines.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
+                self.not_found_pipelines.append(pipeline_info)
             elif rf_scan_status == 'skipped':
-                self.skipped_pipelines.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
+                self.skipped_pipelines.append(pipeline_info)
             else:
                 self.passed_pipelines += 1
+                self.success_pipelines.append(pipeline_info)
         else:
             print(f"No pipelines found for project endpoint: {endpoint}")
             print("-" * 50)
 
+    def write_to_file(self, filename, data):
+        """
+        Write data to a file, clearing the file first if it already exists and is not empty.
+
+        Args:
+            filename (str): The file to write to.
+            data (list): The data to write.
+        """
+        if os.path.exists(filename) and os.path.getsize(filename) > 0:
+            open(filename, 'w').close()  # Clear the file
+        with open(filename, 'w', encoding='utf-8') as file:
+            for idx, entry in enumerate(data, 1):
+                file.write(f"{idx}. {entry}\n")
+
     def print_summary(self):
         """
-        Print the summary of pipeline statuses.
+        Print the summary of pipeline statuses and write to files.
         """
         print("Summary of Pipelines:")
         print(f"Total: {self.total_pipelines}")
@@ -164,6 +185,11 @@ class PipelineChecker:
         else:
             print("No pipelines skipped the rapidfort-scan job.")
         print("-" * 50)
+
+        # Write to files
+        self.write_to_file(self.SUCCESS_FILE, self.success_pipelines)
+        self.write_to_file(self.FAILED_FILE, self.failed_pipelines + self.not_found_pipelines)
+        self.write_to_file(self.SKIPPED_FILE, self.skipped_pipelines)
 
     def run(self):
         """

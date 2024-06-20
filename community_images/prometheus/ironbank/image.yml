@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus/prometheus:
-      input_base_tag: "v2.52."
+      input_base_tag: "v2.53."
       output_repo: prometheus-ib
 runtimes:
   - type: k8s

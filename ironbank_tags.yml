@@ -4,6 +4,9 @@ airflow-scheduler-ib-bitnami:
 airflow-worker-ib-bitnami:
   search_tags:
     - 2.8.
+airflow-ib-aiml:
+  search_tags:
+    - 2.8.
 airflow-ib-bitnami:
   search_tags:
     - 2.8.
@@ -15,7 +18,7 @@ ansible-lint-ib:
     - 24.6.
 ansible-ib:
   search_tags:
-    - 10.0.
+    - 10.1.
 apache-ib:
   search_tags:
     - 2.4.
@@ -141,7 +144,7 @@ postgresql-ib:
     - "12."
 prometheus-ib:
   search_tags:
-    - v2.52.
+    - v2.53.
 redis-exporter-ib:
   search_tags:
     - v1.61.

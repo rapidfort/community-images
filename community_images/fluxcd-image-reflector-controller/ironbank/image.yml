@@ -1,0 +1,41 @@
+name: fluxcd-image-reflector-controller-ib
+official_name: Fluxcd image-reflector-controller Iron Bank
+official_website: https://fluxcd.io/flux/components
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/fluxcd/image-reflector-controller
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/fluxcd%2Fimage-reflector-controller
+source_image_readme: https://repo1.dso.mil/dsop/fluxcd/image-reflector-controller/-/blob/development/README.md
+rf_docker_link: rapidfort/fluxcd-image-reflector-controller-ib
+image_workflow_name: fluxcd-image-reflector-controller_ironbank
+github_location: fluxcd-image-reflector-controller/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller
+usage_instructions: |
+  $ helm repo add fluxcd-community https://fluxcd-community.github.io/helm-charts
+
+  # install fluxcd-image-reflector-controller, just replace repository with RapidFort registry
+  $ helm install flux2 fluxcd-community/flux2 --set imageReflectionController.image=rapidfort/fluxcd-image-reflector-controller-ib
+what_is_text: |
+  This is a controller that reflects container image metadata into a Kubernetes cluster. It pairs with the image update automation controller to drive automated config updates.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - fluxcd/image-reflector-controller:
+      input_base_tag: "v0.32."
+      output_repo: fluxcd-image-reflector-controller-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: fluxcd-community
+      repo_url: https://fluxcd-community.github.io/helm-charts
+      chart: flux2
+    wait_time_sec: 60
+    readiness_check_script: controller_health_check.sh
+    image_keys:
+      fluxcd-image-reflector-controller-ib:
+        repository: "imageReflectionController.image"
+        tag: "imageReflectionController.tag"
+    override_file: "overrides.yml"

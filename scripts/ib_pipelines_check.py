@@ -144,8 +144,6 @@ class PipelineChecker:
             filename (str): The file to write to.
             data (list): The data to write.
         """
-        if os.path.exists(filename) and os.path.getsize(filename) > 0:
-            open(filename, 'w').close()  # Clear the file
         with open(filename, 'w', encoding='utf-8') as file:
             for idx, entry in enumerate(data, 1):
                 file.write(f"{idx}. {entry}\n")

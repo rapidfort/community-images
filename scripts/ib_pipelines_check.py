@@ -1,3 +1,7 @@
+"""
+This script checks the status of the latest pipeline for multiple GitLab projects
+and reports on the status of the rapidfort-scan job within those pipelines.
+"""
 import sys
 import requests
 

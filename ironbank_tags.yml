@@ -76,6 +76,9 @@ haproxy-ib:
 heartbeat-ib:
   search_tags:
     - 8.14.
+kafka-exporter-ib:
+  search_tags:
+    - 1.7.
 kafka-ib:
   search_tags:
     - 3.4.
@@ -136,6 +139,9 @@ packetbeat-ib:
 pause-ib:
   search_tags:
     - "3."
+pgadmin-ib:
+  search_tags:
+    - "8."
 postgres-exporter-bitnami-ib:
   search_tags:
     - 0.15.
@@ -175,6 +181,9 @@ vault-k8s-ib:
 vault-ib:
   search_tags:
     - 1.14.
+velero-ib:
+  search_tags:
+    - v1.13.
 wordpress-ib:
   search_tags:
     - 6.5.

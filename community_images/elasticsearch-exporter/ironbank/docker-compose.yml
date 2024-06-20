@@ -18,14 +18,14 @@ services:
       - SYS_PTRACE
     command:
       - '--es.uri=http://elasticsearch:9200'
-      - '--es.all=true'
-      - '--es.indices=true'
-      - '--es.indices_settings=true'
-      - '--es.indices_mappings=true'
-      - '--es.shards=true'
-      - '--collector.snapshots=true'
-      - '--es.slm=true'
-      - '--es.data_stream=true'
+      - '--es.all'
+      - '--es.indices'
+      - '--es.indices_settings'
+      - '--es.indices_mappings'
+      - '--es.shards'
+      - '--collector.snapshots'
+      - '--es.slm'
+      - '--es.data_stream'
     ports:
       - '9114'
     depends_on:

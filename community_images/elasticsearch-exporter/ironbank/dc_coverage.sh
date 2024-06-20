@@ -77,4 +77,4 @@ curl -X DELETE "${ES_BASE_URL}/my_index?pretty"
 curl "${ES_EXPORTER_BASE_URL}/metrics"
 
 # CLI Coverage for elasticsearch-exporter
-docker exec -i "$ES_EXPORTER_CONTAINER_NAME" /bin/bash -c "elasticsearch-exporter --help"
+docker exec -i "$ES_EXPORTER_CONTAINER_NAME" elasticsearch-exporter --help || true

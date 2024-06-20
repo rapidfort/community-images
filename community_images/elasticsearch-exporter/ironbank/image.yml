@@ -10,11 +10,7 @@ image_workflow_name: elasticsearch_exporter_ironbank
 github_location: elasticsearch-exporter/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Felasticsearch-exporter
 usage_instructions: |
-  # TODO: Add usage instruction here
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-  # install mariadb, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+  $ docker run --name elasticsearch-exporter rapidfort/elasticsearch-exporter-ib:latest
 what_is_text: |
   Prometheus exporter for various metrics about ElasticSearch, written in Go.
 disclaimer: |
@@ -30,47 +26,9 @@ repo_sets:
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
-    before_script: dc_before.sh
     compose_file: docker-compose.yml
     wait_time_sec: 60
     image_keys:
-      packetbeat-ib:
-        repository: "PACKETBEAT_IMAGE_REPOSITORY"
-        tag: "PACKETBEAT_IMAGE_TAG"
-
-
-runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    helm:
-      repo: bitnami
-      repo_url: https://charts.bitnami.com/bitnami
-      chart: nats
-    tls_certs:
-      generate: true
-      secret_name: localhost-server-tls
-      common_name: localhost
-    image_keys:
-      nats:
-        repository: "image.repository"
-        tag: "image.tag"
-    override_file: "overrides.yml"
-  - type: docker_compose
-    script: dc_coverage.sh
-    compose_file: docker-compose.yml
-    tls_certs:
-      generate: true
-      out_dir: certs
-    image_keys:
-      redis:
-        repository: "REDIS_IMAGE_REPOSITORY"
-        tag: "REDIS_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    redis:
-      env_file: docker.env
-      environment:
-        KEY_FOO: VAL_BAR
-      volumes:
-        configs/dynamic/bootstrap.yaml: /opt/bitnami/redis/conf/redis.yaml
-        configs/dynamic: /etc/redis
+      elasticsearch-exporter-ib:
+        repository: "ES_EXP_IMAGE_REPOSITORY"
+        tag: "ES_EXP_IMAGE_TAG"

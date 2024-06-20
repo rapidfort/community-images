@@ -1,3 +1,8 @@
+"""
+This script checks the status of the latest pipeline for multiple GitLab projects
+and reports on the status of the rapidfort-scan job within those pipelines.
+"""
+
 import sys
 import requests
 
@@ -11,6 +16,12 @@ NOT_FOUND_PIPELINES = []
 def get_project_endpoint(link):
     """
     Generate the project API endpoint from the given link.
+
+    Args:
+        link (str): The project link.
+
+    Returns:
+        str: The project API endpoint.
     """
     project_path = link.split('dsop/')[1].replace('/pipelines', '').replace('/', '%2F')
     return f"projects/dsop%2F{project_path}/pipelines"
@@ -18,6 +29,12 @@ def get_project_endpoint(link):
 def get_latest_pipeline(endpoint):
     """
     Get the latest pipeline from the given project endpoint.
+
+    Args:
+        endpoint (str): The project API endpoint.
+
+    Returns:
+        dict or None: The latest pipeline or None if no pipeline is found.
     """
     url = f"{GITLAB_BASE_URL}/{endpoint}"
     response = requests.get(url, timeout=10)
@@ -33,6 +50,13 @@ def get_latest_pipeline(endpoint):
 def get_jobs(endpoint, pipeline_id):
     """
     Get jobs from the specified pipeline.
+
+    Args:
+        endpoint (str): The project API endpoint.
+        pipeline_id (int): The pipeline ID.
+
+    Returns:
+        list: The list of jobs in the pipeline.
     """
     url = f"{GITLAB_BASE_URL}/{endpoint}/{pipeline_id}/jobs"
     response = requests.get(url, timeout=10)
@@ -45,6 +69,12 @@ def get_jobs(endpoint, pipeline_id):
 def check_rapidfort_scan(jobs):
     """
     Check the status of the rapidfort-scan job.
+
+    Args:
+        jobs (list): The list of jobs in the pipeline.
+
+    Returns:
+        str: The status of the rapidfort-scan job or "not found" if the job does not exist.
     """
     for job in jobs:
         if job['name'] == 'rapidfort-scan':

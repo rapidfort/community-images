@@ -6,14 +6,21 @@ GITLAB_BASE_URL = "https://repo1.dso.mil/api/v4"
 FILE_PATH = "./scripts/ib_pipelines_list_links.lst"
 
 FAILED_PIPELINES = []
+NOT_FOUND_PIPELINES = []
 
 def get_project_endpoint(link):
+    """
+    Generate the project API endpoint from the given link.
+    """
     project_path = link.split('dsop/')[1].replace('/pipelines', '').replace('/', '%2F')
     return f"projects/dsop%2F{project_path}/pipelines"
 
 def get_latest_pipeline(endpoint):
+    """
+    Get the latest pipeline from the given project endpoint.
+    """
     url = f"{GITLAB_BASE_URL}/{endpoint}"
-    response = requests.get(url)
+    response = requests.get(url, timeout=10)
     if response.status_code == 401:
         print(f"Unauthorized access to {url}. This project may require authentication.")
         return None
@@ -24,8 +31,11 @@ def get_latest_pipeline(endpoint):
     return None
 
 def get_jobs(endpoint, pipeline_id):
+    """
+    Get jobs from the specified pipeline.
+    """
     url = f"{GITLAB_BASE_URL}/{endpoint}/{pipeline_id}/jobs"
-    response = requests.get(url)
+    response = requests.get(url, timeout=10)
     if response.status_code == 401:
         print(f"Unauthorized access to {url}. This project may require authentication.")
         return []
@@ -33,13 +43,19 @@ def get_jobs(endpoint, pipeline_id):
     return response.json()
 
 def check_rapidfort_scan(jobs):
+    """
+    Check the status of the rapidfort-scan job.
+    """
     for job in jobs:
         if job['name'] == 'rapidfort-scan':
             return job['status']
     return "not found"
 
 def main():
-    with open(FILE_PATH, 'r') as file:
+    """
+    Main function to read project links, check pipelines, and print the results.
+    """
+    with open(FILE_PATH, 'r', encoding='utf-8') as file:
         project_links = [line.strip() for line in file if line.strip()]
     
     for link in project_links:
@@ -55,19 +71,31 @@ def main():
             
             if rf_scan_status == 'failed':
                 FAILED_PIPELINES.append(f"Pipeline ID: {pipeline_id}, URL: {pipeline_web_url}")
+            elif rf_scan_status == 'not found':
+                NOT_FOUND_PIPELINES.append(f"Pipeline ID: {pipeline_id}, URL: {pipeline_web_url}")
         else:
             print(f"No pipelines found for project endpoint: {endpoint}")
             print("-" * 50)
 
     # Print summary of failed pipelines
-    print("\nSummary of Pipelines that Failed the rapidfort-scan:")
+    print("Summary of Pipelines that Failed the rapidfort-scan:")
     if FAILED_PIPELINES:
         for failed_pipeline in FAILED_PIPELINES:
             print(failed_pipeline)
-        sys.exit(1)  # Exit with status code 1 if there are failed pipelines
     else:
-        print("\nNo pipelines failed the rapidfort-scan.")
-        sys.exit(0)  # Exit with status code 0 if no pipelines failed
+        print("No pipelines failed the rapidfort-scan.")
+
+    # Print summary of pipelines with rapidfort-scan job not found
+    print("\nSummary of Pipelines where rapidfort-scan job was not found:")
+    if NOT_FOUND_PIPELINES:
+        for not_found_pipeline in NOT_FOUND_PIPELINES:
+            print(not_found_pipeline)
+    
+    # Exit with status code 1 if there are failed pipelines or pipelines with 'not found' rapidfort-scan jobs
+    if FAILED_PIPELINES or NOT_FOUND_PIPELINES:
+        sys.exit(1)
+    else:
+        sys.exit(0)
 
 if __name__ == "__main__":
     main()

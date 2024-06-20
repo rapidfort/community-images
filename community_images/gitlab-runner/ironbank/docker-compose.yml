@@ -10,12 +10,10 @@ services:
   
   gitlab:
     image: gitlab/gitlab-ee:17.0.1-ee.0
-    # hostname: localhost:61780
-    hostname: 10.228.73.117:61780
+    hostname: localhost:61780
     ports:
       - "61743:443"
       - "61780:61780"
-      # - "61722:22"  # Optional, comment out if not using SSH
     volumes:
       - ./config:/etc/gitlab
       - ./logs:/var/log/gitlab

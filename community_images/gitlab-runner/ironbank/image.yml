@@ -1,7 +1,4 @@
 name: gitlab-runner-ib
-############################
-# readiness_check_script: gitlab_readiness_check.sh ############
-############################
 official_name: Gitlab Runner Iron Bank
 official_website: https://docs.gitlab.com/runner
 source_image_provider: Platform One
@@ -31,7 +28,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     before_script: dc_before.sh
-    readiness_check_script: gitlab_readiness_check.sh
     compose_file: docker-compose.yml
     image_keys:
       gitlab-runner-ib:

@@ -4,6 +4,7 @@ and reports on the status of the rapidfort-scan job within those pipelines.
 """
 import sys
 import requests
+
 # Configuration
 GITLAB_BASE_URL = "https://repo1.dso.mil/api/v4"
 FILE_PATH = "./scripts/ib_pipelines_list_links.lst"
@@ -12,6 +13,7 @@ NOT_FOUND_PIPELINES = []
 SKIPPED_PIPELINES = []
 TOTAL_PIPELINES = 0
 PASSED_PIPELINES = 0
+
 def get_project_name(link):
     """
     Extract the project name from the given link.
@@ -92,37 +94,40 @@ def check_rapidfort_scan(jobs):
             return job['status']
     return "not found"
 
-def main():
+def process_pipeline(link):
     """
-    Main function to read project links, check pipelines, and print the results.
+    Process a single pipeline, updating the global counters and lists accordingly.
+
+    Args:
+        link (str): The project link.
     """
-    global TOTAL_PIPELINES, PASSED_PIPELINES, SKIPPED_PIPELINES
-    with open(FILE_PATH, 'r', encoding='utf-8') as file:
-        project_links = [line.strip() for line in file if line.strip()]
-    TOTAL_PIPELINES = len(project_links)
-    for link in project_links:
-        project_name = get_project_name(link)
-        endpoint = get_project_endpoint(link)
-        latest_pipeline = get_latest_pipeline(endpoint)
-        if latest_pipeline:
-            pipeline_id = latest_pipeline['id']
-            pipeline_web_url = latest_pipeline['web_url']
-            jobs = get_jobs(endpoint, pipeline_id)
-            rf_scan_status = check_rapidfort_scan(jobs)
-            print(f"Pipeline ID: {pipeline_id}\nURL: {pipeline_web_url}\nrapidfort-scan status: {rf_scan_status}")
-            print("-" * 50)
-            if rf_scan_status == 'failed':
-                FAILED_PIPELINES.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
-            elif rf_scan_status == 'not found':
-                NOT_FOUND_PIPELINES.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
-            elif rf_scan_status == 'skipped':
-                SKIPPED_PIPELINES.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
-            else:
-                PASSED_PIPELINES += 1
+    global PASSED_PIPELINES
+    project_name = get_project_name(link)
+    endpoint = get_project_endpoint(link)
+    latest_pipeline = get_latest_pipeline(endpoint)
+    if latest_pipeline:
+        pipeline_id = latest_pipeline['id']
+        pipeline_web_url = latest_pipeline['web_url']
+        jobs = get_jobs(endpoint, pipeline_id)
+        rf_scan_status = check_rapidfort_scan(jobs)
+        print(f"Pipeline ID: {pipeline_id}\nURL: {pipeline_web_url}\nrapidfort-scan status: {rf_scan_status}")
+        print("-" * 50)
+        if rf_scan_status == 'failed':
+            FAILED_PIPELINES.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
+        elif rf_scan_status == 'not found':
+            NOT_FOUND_PIPELINES.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
+        elif rf_scan_status == 'skipped':
+            SKIPPED_PIPELINES.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
         else:
-            print(f"No pipelines found for project endpoint: {endpoint}")
-            print("-" * 50)
-    # Print summary of failed pipelines
+            PASSED_PIPELINES += 1
+    else:
+        print(f"No pipelines found for project endpoint: {endpoint}")
+        print("-" * 50)
+
+def print_summary():
+    """
+    Print the summary of pipeline statuses.
+    """
     print("Summary of Pipelines:")
     print(f"Total: {TOTAL_PIPELINES}")
     print(f"Passed: {PASSED_PIPELINES}")
@@ -130,6 +135,7 @@ def main():
     print(f"Skipped due to non-related failure: {len(SKIPPED_PIPELINES)}")
     print(f"Not found: {len(NOT_FOUND_PIPELINES)}")
     print("-" * 50)
+
     if FAILED_PIPELINES:
         print("Failed Pipelines:")
         for idx, failed_pipeline in enumerate(FAILED_PIPELINES, 1):
@@ -137,6 +143,7 @@ def main():
     else:
         print("No pipelines failed the rapidfort-scan.")
     print("-" * 50)
+
     if NOT_FOUND_PIPELINES:
         print("Not Found Pipelines:")
         for idx, not_found_pipeline in enumerate(NOT_FOUND_PIPELINES, 1):
@@ -144,6 +151,7 @@ def main():
     else:
         print("No pipelines had the rapidfort-scan job not found.")
     print("-" * 50)
+
     if SKIPPED_PIPELINES:
         print("Skipped Pipelines:")
         for idx, skipped_pipeline in enumerate(SKIPPED_PIPELINES, 1):
@@ -151,10 +159,24 @@ def main():
     else:
         print("No pipelines skipped the rapidfort-scan job.")
     print("-" * 50)
+
+def main():
+    """
+    Main function to read project links, check pipelines, and print the results.
+    """
+    global TOTAL_PIPELINES
+    with open(FILE_PATH, 'r', encoding='utf-8') as file:
+        project_links = [line.strip() for line in file if line.strip()]
+    TOTAL_PIPELINES = len(project_links)
+    for link in project_links:
+        process_pipeline(link)
+    print_summary()
+
     # Exit with status code 1 if there are failed pipelines or pipelines with 'not found' rapidfort-scan jobs
     if FAILED_PIPELINES or NOT_FOUND_PIPELINES:
         sys.exit(1)
     else:
         sys.exit(0)
+
 if __name__ == "__main__":
     main()

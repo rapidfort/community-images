@@ -395,6 +395,33 @@ jobs:
           repository: rapidfort/fluentd-official
           readme-filepath: ./community_images/fluentd/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluentd Official
+      - name: Docker Hub Description Fluxcd kustomize-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-kustomize-controller-ib
+          readme-filepath: ./community_images/fluxcd-kustomize-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd kustomize-controller Iron Bank
+      - name: Docker Hub Description Fluxcd notification-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-notification-controller-ib
+          readme-filepath: ./community_images/fluxcd-notification-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd notification-controller Iron Bank
+      - name: Docker Hub Description Fluxcd source-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-source-controller-ib
+          readme-filepath: ./community_images/fluxcd-source-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd source-controller Iron Bank
       - name: Docker Hub Description Ghost
         if: always()
         uses: peter-evans/dockerhub-description@v3

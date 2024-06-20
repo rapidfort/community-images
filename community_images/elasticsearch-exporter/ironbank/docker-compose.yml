@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  elasticsearch:
+    image: rapidfort/elasticsearch-official
+    container_name: elasticsearch
+    environment:
+      - xpack.ml.enabled=false
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    ports:
+      - '9200'
+    # volumes:
+    #   - 'elasticsearch_data:/bitnami/elasticsearch/data'
+
+  elasticsearch-exporter:
+    image: kphull/elasticsearch-exporter-ib:1.7.0-rfstub
+    container_name: elasticsearch-exporter
+    user: root
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - ELASTICSEARCH_URI=http://elasticsearch:9200
+    ports:
+      - '9114'
+    depends_on:
+      - elasticsearch
+
+# volumes:
+#   elasticsearch_data:

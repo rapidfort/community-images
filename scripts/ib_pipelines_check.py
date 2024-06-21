@@ -1,9 +1,7 @@
-"""
-This script checks the status of the latest pipeline for multiple GitLab projects
-and reports on the status of the rapidfort-scan job within those pipelines.
-"""
 import sys
 import requests
+import csv
+from datetime import datetime
 
 class PipelineChecker:
     """
@@ -12,17 +10,15 @@ class PipelineChecker:
     """
     GITLAB_BASE_URL = "https://repo1.dso.mil/api/v4"
     FILE_PATH = "./scripts/ib_pipelines_list_links.lst"
-    SUCCESS_FILE = "ib_pipelines_success.txt"
-    FAILED_FILE = "ib_pipelines_failed.txt"
-    SKIPPED_FILE = "ib_pipelines_skipped.txt"
+    CSV_FILE_PATH = "pipeline_logs.csv"
 
     def __init__(self):
         self.failed_pipelines = []
         self.not_found_pipelines = []
         self.skipped_pipelines = []
-        self.success_pipelines = []
         self.total_pipelines = 0
         self.passed_pipelines = 0
+        self.init_csv_file()
 
     def get_project_name(self, link):
         """
@@ -104,6 +100,20 @@ class PipelineChecker:
                 return job['status']
         return "not found"
 
+    @staticmethod
+    def format_timestamp(iso_timestamp):
+        """
+        Convert an ISO 8601 timestamp to a more readable format.
+
+        Args:
+            iso_timestamp (str): The ISO 8601 timestamp.
+
+        Returns:
+            str: The formatted timestamp.
+        """
+        dt = datetime.fromisoformat(iso_timestamp.replace("Z", "+00:00"))
+        return dt.strftime("%B %d, %Y, %I:%M:%S %p %Z")
+
     def process_pipeline(self, link):
         """
         Process a single pipeline, updating the counters and lists accordingly.
@@ -117,39 +127,50 @@ class PipelineChecker:
         if latest_pipeline:
             pipeline_id = latest_pipeline['id']
             pipeline_web_url = latest_pipeline['web_url']
+            pipeline_time_created = self.format_timestamp(latest_pipeline['created_at'])
             jobs = self.get_jobs(endpoint, pipeline_id)
             rf_scan_status = self.check_rapidfort_scan(jobs)
-            print(f"Pipeline ID: {pipeline_id}\nURL: {pipeline_web_url}\nrapidfort-scan status: {rf_scan_status}")
+            self.write_to_csv(pipeline_time_created, pipeline_id, pipeline_web_url, rf_scan_status, project_name)
+            print(f"Time Created At: {pipeline_time_created}\nPipeline ID: {pipeline_id}\nURL: {pipeline_web_url}\nrapidfort-scan status: {rf_scan_status}")
             print("-" * 50)
-            pipeline_info = f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}\n"
             if rf_scan_status == 'failed':
-                self.failed_pipelines.append(pipeline_info)
+                self.failed_pipelines.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
             elif rf_scan_status == 'not found':
-                self.not_found_pipelines.append(pipeline_info)
+                self.not_found_pipelines.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
             elif rf_scan_status == 'skipped':
-                self.skipped_pipelines.append(pipeline_info)
+                self.skipped_pipelines.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
             else:
                 self.passed_pipelines += 1
-                self.success_pipelines.append(pipeline_info)
         else:
             print(f"No pipelines found for project endpoint: {endpoint}")
             print("-" * 50)
 
-    def write_to_file(self, filename, data):
+    def init_csv_file(self):
         """
-        Write data to a file, clearing the file first if it already exists and is not empty.
+        Initialize and clear the CSV file.
+        """
+        with open(self.CSV_FILE_PATH, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow(["Pipeline Time Created", "Pipeline ID", "Pipeline URL", "rapidfort-scan Status", "Project Name"])
+
+    def write_to_csv(self, pipeline_time_created, pipeline_id, pipeline_web_url, rf_scan_status, project_name):
+        """
+        Write the pipeline information to the CSV file.
 
         Args:
-            filename (str): The file to write to.
-            data (list): The data to write.
+            pipeline_time_created (str): The formatted pipeline creation time.
+            pipeline_id (int): The pipeline ID.
+            pipeline_web_url (str): The pipeline URL.
+            rf_scan_status (str): The status of the rapidfort-scan job.
+            project_name (str): The name of the project.
         """
-        with open(filename, 'w', encoding='utf-8') as file:
-            for idx, entry in enumerate(data, 1):
-                file.write(f"{idx}. {entry}\n")
+        with open(self.CSV_FILE_PATH, 'a', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([pipeline_time_created, pipeline_id, pipeline_web_url, rf_scan_status, project_name])
 
     def print_summary(self):
         """
-        Print the summary of pipeline statuses and write to files.
+        Print the summary of pipeline statuses.
         """
         print("Summary of Pipelines:")
         print(f"Total: {self.total_pipelines}")
@@ -182,11 +203,6 @@ class PipelineChecker:
         else:
             print("No pipelines skipped the rapidfort-scan job.")
         print("-" * 50)
-
-        # Write to files
-        self.write_to_file(self.SUCCESS_FILE, self.success_pipelines)
-        self.write_to_file(self.FAILED_FILE, self.failed_pipelines + self.not_found_pipelines)
-        self.write_to_file(self.SKIPPED_FILE, self.skipped_pipelines)
 
     def run(self):
         """

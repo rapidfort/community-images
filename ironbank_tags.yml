@@ -15,7 +15,7 @@ ansible-lint-ib:
     - 24.6.
 ansible-ib:
   search_tags:
-    - 10.0.
+    - 10.1.
 apache-ib:
   search_tags:
     - 2.4.
@@ -61,6 +61,15 @@ fluxcd-image-automation-controller-ib:
 fluxcd-image-reflector-controller-ib:
   search_tags:
     - v0.32.
+fluxcd-kustomize-controller-ib:
+  search_tags:
+    - v1.3.
+fluxcd-notification-controller-ib:
+  search_tags:
+    - v1.3.
+fluxcd-source-controller-ib:
+  search_tags:
+    - v1.3.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
@@ -153,7 +162,7 @@ postgresql-ib:
     - "12."
 prometheus-ib:
   search_tags:
-    - v2.52.
+    - v2.53.
 redis-exporter-ib:
   search_tags:
     - v1.61.
@@ -183,7 +192,7 @@ vault-ib:
     - 1.14.
 velero-ib:
   search_tags:
-    - v1.13.
+    - v1.14.
 wordpress-ib:
   search_tags:
     - 6.5.

@@ -1,0 +1,38 @@
+name: kafka-exporter-ib
+official_name: Kafka Exporter Iron Bank
+official_website: https://github.com/danielqsj/kafka_exporter
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/bitnami/kafka-exporter
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fkafka-exporter
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/kafka-exporter/-/blob/development/README.md
+rf_docker_link: rapidfort/kafka-exporter-ib
+image_workflow_name: kafka_exporter_ironbank
+github_location: kafka-exporter/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fkafka-exporter
+usage_instructions: "docker run --name kafka-exporter rapidfort/kafka-exporter-ib:latest"
+what_is_text: |
+  Kafka exporter for Prometheus
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - bitnami/kafka-exporter:
+      input_base_tag: "1.7."
+      output_repo: kafka-exporter-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: kafka
+      version: "21.1.1"
+    wait_time_sec: 120
+    image_keys:
+      kafka-exporter-ib:
+        repository: "metrics.kafka.image.repository"
+        tag: "metrics.kafka.image.tag"
+    override_file: "overrides.yml"

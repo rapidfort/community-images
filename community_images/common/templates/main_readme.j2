@@ -13,7 +13,8 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6087/badge)](https://bestpractices.coreinfrastructure.org/projects/6087)
 [![CodeQL](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml/badge.svg)](https://github.com/rapidfort/community-images/actions/workflows/codeql.yml)
 
-**<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> [<span style="color:blue;">www.rapidfort.com</span>](https://www.rapidfort.com/get-a-demo) <span style="color:red;">to access these images</span>**
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
+<b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
 [Getting started](#getting-started) ·
 [Supported containers](#supported-containers) ·

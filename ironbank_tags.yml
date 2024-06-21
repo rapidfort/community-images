@@ -15,7 +15,7 @@ ansible-lint-ib:
     - 24.6.
 ansible-ib:
   search_tags:
-    - 10.0.
+    - 10.1.
 apache-ib:
   search_tags:
     - 2.4.
@@ -52,6 +52,24 @@ fluent-bit-ib:
 fluentd-ib:
   search_tags:
     - 1.17.
+fluxcd-helm-controller-ib:
+  search_tags:
+    - v1.0.
+fluxcd-image-automation-controller-ib:
+  search_tags:
+    - v0.37.
+fluxcd-image-reflector-controller-ib:
+  search_tags:
+    - v0.32.
+fluxcd-kustomize-controller-ib:
+  search_tags:
+    - v1.3.
+fluxcd-notification-controller-ib:
+  search_tags:
+    - v1.3.
+fluxcd-source-controller-ib:
+  search_tags:
+    - v1.3.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
@@ -67,6 +85,9 @@ haproxy-ib:
 heartbeat-ib:
   search_tags:
     - 8.14.
+kafka-exporter-ib:
+  search_tags:
+    - 1.7.
 kafka-ib:
   search_tags:
     - 3.4.
@@ -127,6 +148,9 @@ packetbeat-ib:
 pause-ib:
   search_tags:
     - "3."
+pgadmin-ib:
+  search_tags:
+    - "8."
 postgres-exporter-bitnami-ib:
   search_tags:
     - 0.15.
@@ -138,7 +162,7 @@ postgresql-ib:
     - "12."
 prometheus-ib:
   search_tags:
-    - v2.52.
+    - v2.53.
 redis-exporter-ib:
   search_tags:
     - v1.61.
@@ -166,6 +190,9 @@ vault-k8s-ib:
 vault-ib:
   search_tags:
     - 1.14.
+velero-ib:
+  search_tags:
+    - v1.14.
 wordpress-ib:
   search_tags:
     - 6.5.

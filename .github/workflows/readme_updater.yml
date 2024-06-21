@@ -46,7 +46,7 @@ jobs:
         run: ./scripts/update_readme_dh.sh
       - name: Docker Hub Description Apache Airflow
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -55,7 +55,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache Airflow
       - name: Docker Hub Description Apache Airflow Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -64,7 +64,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache Airflow Ironbank
       - name: Docker Hub Description Airflow Ironbank (Bitnami)
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -73,7 +73,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Airflow Ironbank (Bitnami)
       - name: Docker Hub Description Apache Airflow Scheduler
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -82,7 +82,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache Airflow Scheduler
       - name: Docker Hub Description Airflow Scheduler Ironbank (Bitnami)
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -91,7 +91,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Airflow Scheduler Ironbank (Bitnami)
       - name: Docker Hub Description Apache Airflow Worker
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -100,7 +100,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache Airflow Worker
       - name: Docker Hub Description Airflow Worker Ironbank (Bitnami)
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -109,7 +109,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Airflow Worker Ironbank (Bitnami)
       - name: Docker Hub Description Ansible IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -118,7 +118,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Ansible IronBank
       - name: Docker Hub Description Ansible-Lint Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -127,7 +127,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Ansible-Lint Iron Bank
       - name: Docker Hub Description Apache
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -136,7 +136,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache
       - name: Docker Hub Description Apache IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -145,7 +145,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache IronBank
       - name: Docker Hub Description Apache Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -154,7 +154,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache Official
       - name: Docker Hub Description Argo CD Quay
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -163,7 +163,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Argo CD Quay
       - name: Docker Hub Description Argo CD Big-Bang Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -172,7 +172,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Argo CD Big-Bang Iron Bank
       - name: Docker Hub Description Argo CD Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -181,7 +181,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Argo CD Iron Bank
       - name: Docker Hub Description auditbeat Iron-Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -190,7 +190,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for auditbeat Iron-Bank
       - name: Docker Hub Description Bats Iron-Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -199,7 +199,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Bats Iron-Bank
       - name: Docker Hub Description Cassandra Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -208,7 +208,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Cassandra Official
       - name: Docker Hub Description Helm Chart Testing Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -217,7 +217,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Helm Chart Testing Ironbank
       - name: Docker Hub Description Consul
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -226,7 +226,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Consul
       - name: Docker Hub Description Consul IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -235,7 +235,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Consul IronBank
       - name: Docker Hub Description Consul Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -244,7 +244,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Consul Official
       - name: Docker Hub Description Couchdb Database Server
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -253,7 +253,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Couchdb Database Server
       - name: Docker Hub Description Couchdb Database Server IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -262,7 +262,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Couchdb Database Server IronBank
       - name: Docker Hub Description Couchdb Database Server Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -271,7 +271,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Couchdb Database Server Official
       - name: Docker Hub Description Curl
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -280,7 +280,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Curl
       - name: Docker Hub Description ElasticSearch
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -289,7 +289,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for ElasticSearch
       - name: Docker Hub Description ElasticSearch Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -298,7 +298,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for ElasticSearch Official
       - name: Docker Hub Description Envoy
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -307,7 +307,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Envoy
       - name: Docker Hub Description Envoy Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -316,7 +316,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Envoy Official
       - name: Docker Hub Description Etcd
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -325,7 +325,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Etcd
       - name: Docker Hub Description Etcd Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -334,7 +334,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Etcd Ironbank
       - name: Docker Hub Description Filebeat Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -343,7 +343,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Filebeat Ironbank
       - name: Docker Hub Description Fluent-Bit
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -352,7 +352,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluent-Bit
       - name: Docker Hub Description Fluent-Bit Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -361,7 +361,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluent-Bit Ironbank
       - name: Docker Hub Description Fluent-Bit Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -370,7 +370,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluent-Bit Official
       - name: Docker Hub Description Fluentd
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -379,7 +379,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluentd
       - name: Docker Hub Description Fluentd IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -388,7 +388,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluentd IronBank
       - name: Docker Hub Description Fluentd Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -397,7 +397,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluentd Official
       - name: Docker Hub Description Fluxcd helm-controller Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -406,7 +406,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluxcd helm-controller Iron Bank
       - name: Docker Hub Description Fluxcd image-automation-controller Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -415,7 +415,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluxcd image-automation-controller Iron Bank
       - name: Docker Hub Description Fluxcd image-reflector-controller Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -424,7 +424,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluxcd image-reflector-controller Iron Bank
       - name: Docker Hub Description Fluxcd kustomize-controller Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -433,7 +433,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluxcd kustomize-controller Iron Bank
       - name: Docker Hub Description Fluxcd notification-controller Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -442,7 +442,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluxcd notification-controller Iron Bank
       - name: Docker Hub Description Fluxcd source-controller Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -451,7 +451,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Fluxcd source-controller Iron Bank
       - name: Docker Hub Description Ghost
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -460,7 +460,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Ghost
       - name: Docker Hub Description Git-lfs Iron-Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -469,7 +469,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Git-lfs Iron-Bank
       - name: Docker Hub Description Grafana Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -478,7 +478,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Grafana Ironbank
       - name: Docker Hub Description Hadolint IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -487,7 +487,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Hadolint IronBank
       - name: Docker Hub Description HAProxy
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -496,7 +496,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for HAProxy
       - name: Docker Hub Description HAProxy IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -505,7 +505,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for HAProxy IronBank
       - name: Docker Hub Description HAProxy Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -514,7 +514,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for HAProxy Official
       - name: Docker Hub Description Heartbeat Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -523,7 +523,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Heartbeat Iron Bank
       - name: Docker Hub Description InfluxDB™
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -532,7 +532,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for InfluxDB™
       - name: Docker Hub Description k8s-sidecar Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -541,7 +541,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for k8s-sidecar Official
       - name: Docker Hub Description Kafka Exporter Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -550,7 +550,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Kafka Exporter Iron Bank
       - name: Docker Hub Description Apache Kafka Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -559,7 +559,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache Kafka Iron Bank
       - name: Docker Hub Description Kaniko IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -568,7 +568,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Kaniko IronBank
       - name: Docker Hub Description Keycloak Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -577,7 +577,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Keycloak Official
       - name: Docker Hub Description Kibana Iron-Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -586,7 +586,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Kibana Iron-Bank
       - name: Docker Hub Description Kong
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -595,7 +595,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Kong
       - name: Docker Hub Description Logstash Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -604,7 +604,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Logstash Ironbank
       - name: Docker Hub Description MariaDB
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -613,7 +613,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MariaDB
       - name: Docker Hub Description MariaDB IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -622,7 +622,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MariaDB IronBank
       - name: Docker Hub Description MariaDB Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -631,7 +631,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MariaDB Official
       - name: Docker Hub Description Memcached
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -640,7 +640,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Memcached
       - name: Docker Hub Description Memcached IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -649,7 +649,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Memcached IronBank
       - name: Docker Hub Description Memcached Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -658,7 +658,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Memcached Official
       - name: Docker Hub Description Metabase Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -667,7 +667,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Metabase Iron Bank
       - name: Docker Hub Description Metricbeat Iron-Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -676,7 +676,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Metricbeat Iron-Bank
       - name: Docker Hub Description Microsoft SQL Server 2019
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -685,7 +685,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Microsoft SQL Server 2019
       - name: Docker Hub Description MinIO Operator Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -694,7 +694,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MinIO Operator Ironbank
       - name: Docker Hub Description MkDocs IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -703,7 +703,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MkDocs IronBank
       - name: Docker Hub Description MongoDB®
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -712,7 +712,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MongoDB®
       - name: Docker Hub Description MongoDB® IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -721,7 +721,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MongoDB® IronBank
       - name: Docker Hub Description MongoDB® Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -730,7 +730,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MongoDB® Official
       - name: Docker Hub Description Moodle Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -739,7 +739,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Moodle Ironbank
       - name: Docker Hub Description MySQL
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -748,7 +748,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MySQL
       - name: Docker Hub Description MySQL IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -757,7 +757,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MySQL IronBank
       - name: Docker Hub Description MySQL Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -766,7 +766,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for MySQL Official
       - name: Docker Hub Description NATS
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -775,7 +775,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for NATS
       - name: Docker Hub Description NATS Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -784,7 +784,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for NATS Ironbank
       - name: Docker Hub Description NATS Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -793,7 +793,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for NATS Official
       - name: Docker Hub Description NGINX
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -802,7 +802,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for NGINX
       - name: Docker Hub Description NGINX IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -811,7 +811,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for NGINX IronBank
       - name: Docker Hub Description NGINX Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -820,7 +820,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for NGINX Official
       - name: Docker Hub Description Apache Nifi IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -829,7 +829,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Apache Nifi IronBank
       - name: Docker Hub Description Node Exporter
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -838,7 +838,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Node Exporter
       - name: Docker Hub Description Node-Exporter IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -847,7 +847,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Node-Exporter IronBank
       - name: Docker Hub Description Node Exporter Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -856,7 +856,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Node Exporter Official
       - name: Docker Hub Description Grafana Oncall
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -865,7 +865,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Grafana Oncall
       - name: Docker Hub Description Packetbeat Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -874,7 +874,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Packetbeat Iron Bank
       - name: Docker Hub Description PAUSE IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -883,7 +883,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for PAUSE IronBank
       - name: Docker Hub Description pgAdmin IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -892,7 +892,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for pgAdmin IronBank
       - name: Docker Hub Description PostgreSQL Exporter Bitnami Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -901,7 +901,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for PostgreSQL Exporter Bitnami Iron Bank
       - name: Docker Hub Description PostgreSQL Exporter Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -910,7 +910,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for PostgreSQL Exporter Iron Bank
       - name: Docker Hub Description PostgreSQL
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -919,7 +919,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for PostgreSQL
       - name: Docker Hub Description PostgreSQL IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -928,7 +928,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for PostgreSQL IronBank
       - name: Docker Hub Description PostgreSQL Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -937,7 +937,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for PostgreSQL Official
       - name: Docker Hub Description Prometheus
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -946,7 +946,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Prometheus
       - name: Docker Hub Description Prometheus Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -955,7 +955,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Prometheus Ironbank
       - name: Docker Hub Description Prometheus Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -964,7 +964,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Prometheus Official
       - name: Docker Hub Description RabbitMQ
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -973,7 +973,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for RabbitMQ
       - name: Docker Hub Description RabbitMQ Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -982,7 +982,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for RabbitMQ Official
       - name: Docker Hub Description Redis™
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -991,7 +991,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Redis™
       - name: Docker Hub Description Redis™ Cluster
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1000,7 +1000,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Redis™ Cluster
       - name: Docker Hub Description Redis Exporter Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1009,7 +1009,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Redis Exporter Iron Bank
       - name: Docker Hub Description Redis™ IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1018,7 +1018,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Redis™ IronBank
       - name: Docker Hub Description Redis™ Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1027,7 +1027,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Redis™ Official
       - name: Docker Hub Description Telegraf
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1036,7 +1036,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Telegraf
       - name: Docker Hub Description Terraform IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1045,7 +1045,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Terraform IronBank
       - name: Docker Hub Description Terragrunt IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1054,7 +1054,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Terragrunt IronBank
       - name: Docker Hub Description Tika Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1063,7 +1063,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Tika Iron Bank
       - name: Docker Hub Description Tomcat Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1072,7 +1072,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Tomcat Ironbank
       - name: Docker Hub Description TRAEFIK
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1081,7 +1081,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for TRAEFIK
       - name: Docker Hub Description TRAEFIK Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1090,7 +1090,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for TRAEFIK Ironbank
       - name: Docker Hub Description Vault
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1099,7 +1099,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Vault
       - name: Docker Hub Description Vault Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1108,7 +1108,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Vault Iron Bank
       - name: Docker Hub Description Vault-k8s Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1117,7 +1117,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Vault-k8s Iron Bank
       - name: Docker Hub Description Velero Iron Bank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1126,7 +1126,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Velero Iron Bank
       - name: Docker Hub Description Wordpress
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1135,7 +1135,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Wordpress
       - name: Docker Hub Description Wordpress Ironbank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1144,7 +1144,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Wordpress Ironbank
       - name: Docker Hub Description YOURLS
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1153,7 +1153,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for YOURLS
       - name: Docker Hub Description Zookeeper
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1162,7 +1162,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Zookeeper
       - name: Docker Hub Description Zookeeper IronBank
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -1171,7 +1171,7 @@ jobs:
           short-description: RapidFort optimized, hardened image for Zookeeper IronBank
       - name: Docker Hub Description Zookeeper Official
         if: always()
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}

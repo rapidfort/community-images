@@ -1,7 +1,13 @@
-import sys
-import requests
+"""
+This script checks the status of the latest pipeline for multiple GitLab projects
+and reports on the status of the rapidfort-scan job within those pipelines.
+It also logs the information to a CSV file for further analysis.
+"""
+
 import csv
 from datetime import datetime
+import sys
+import requests
 
 class PipelineChecker:
     """

@@ -18,3 +18,5 @@ message HealthCheckResponse {
   }
   ServingStatus status = 1;
 }
+
+// Generate python code from proto file using: python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. health.proto

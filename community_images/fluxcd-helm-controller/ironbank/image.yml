@@ -13,7 +13,7 @@ usage_instructions: |
   $ helm repo add fluxcd-community https://fluxcd-community.github.io/helm-charts
 
   # install fluxcd-helm-controller, just replace repository with RapidFort registry
-  $ helm install flux2 fluxcd-community/flux2 --set imageAutomationController.image=rapidfort/fluxcd-helm-controller-ib
+  $ helm install flux2 fluxcd-community/flux2 --set helmController.image=rapidfort/fluxcd-helm-controller-ib
 what_is_text: |
   The helm-controller is a Kubernetes operator, allowing one to declaratively manage Helm chart releases. It is part of a composable GitOps toolkit and depends on source-controller to acquire the Helm charts from Helm repositories.
 disclaimer: |

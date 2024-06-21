@@ -1,4 +1,4 @@
-<a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fhelm-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=rapidfort_logo">
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fnotification-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -12,13 +12,13 @@
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
-# RapidFort hardened image for Fluxcd helm-controller Iron Bank
+# RapidFort hardened image for Fluxcd notification-controller Iron Bank
 
 
-RapidFort has optimized and hardened this Fluxcd helm-controller Iron Bank container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Fluxcd notification-controller Iron Bank container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One Fluxcd helm-controller Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Fluxcd notification-controller Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -33,40 +33,40 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fhelm-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=get_full_report_button">
+<a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fnotification-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>
 
 
-## What is Fluxcd helm-controller Iron Bank?
+## What is Fluxcd notification-controller Iron Bank?
 
-> The helm-controller is a Kubernetes operator, allowing one to declaratively manage Helm chart releases. It is part of a composable GitOps toolkit and depends on source-controller to acquire the Helm charts from Helm repositories.
+> Event forwarder and notification dispatcher for the GitOps Toolkit controllers. The notification-controller is an implementation of the notification.toolkit.fluxcd.io API based on the specifications described in the RFC.
 
 
-[Overview of Fluxcd helm-controller Iron Bank](https://fluxcd.io/flux/components)
+[Overview of Fluxcd notification-controller Iron Bank](https://fluxcd.io/flux/components)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened Fluxcd helm-controller Iron Bank image?
+## How do I use this hardened Fluxcd notification-controller Iron Bank image?
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Fluxcd helm-controller Iron Bank][source-image-repo-link].
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Fluxcd notification-controller Iron Bank][source-image-repo-link].
 
-<a href="https://repo1.dso.mil/dsop/fluxcd/helm-controller/-/blob/development/README.md">
+<a href="https://repo1.dso.mil/dsop/fluxcd/notification-controller/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>
 
 ```sh
-$ helm repo add fluxcd-community https://fluxcd-community.github.io/helm-charts
+$ source repo add fluxcd-community https://fluxcd-community.github.io/source-charts
 
-# install fluxcd-helm-controller, just replace repository with RapidFort registry
-$ helm install flux2 fluxcd-community/flux2 --set helmController.image=rapidfort/fluxcd-helm-controller-ib
+# install fluxcd-notification-controller, just replace repository with RapidFort registry
+$ source install flux2 fluxcd-community/flux2 --set notificationController.image=rapidfort/fluxcd-notification-controller-ib
 
 ```
 
@@ -74,20 +74,20 @@ $ helm install flux2 fluxcd-community/flux2 --set helmController.image=rapidfort
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One Fluxcd helm-controller Iron Bank][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Fluxcd notification-controller Iron Bank][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
-<a href="https://github.com/rapidfort/community-images/tree/main/community_images/fluxcd-helm-controller/ironbank">
+<a href="https://github.com/rapidfort/community-images/tree/main/community_images/fluxcd-notification-controller/ironbank">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
 </a>
 <br>
 <br>
 
-## What’s the difference between the official [Platform One Fluxcd helm-controller Iron Bank][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/fluxcd-helm-controller-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
+## What’s the difference between the official [Platform One Fluxcd notification-controller Iron Bank][source-image-repo-link] image and this hardened image?
+RapidFort’s hardened [rapidfort/fluxcd-notification-controller-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
@@ -125,23 +125,23 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [fossa-badge]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images.svg?type=shield
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
-[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=rapidfort_have_questions
+[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fhelm-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fhelm-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=view_report_button
-[rf-view-report-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fhelm-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=view_report_link
-[rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fhelm-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fhelm-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-helm-controller-ib&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fnotification-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fnotification-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=view_report_button
+[rf-view-report-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fnotification-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fnotification-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fnotification-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-notification-controller-ib&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/fluxcd-helm-controller-ib?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/fluxcd-helm-controller-ib?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/fluxcd-notification-controller-ib?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/fluxcd-notification-controller-ib?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/fluxcd-helm-controller/ironbank/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/fluxcd-helm-controller/ironbank/assets/cve_reduction.webp
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/fluxcd-notification-controller/ironbank/assets/metrics.webp
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/fluxcd-notification-controller/ironbank/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/fluxcd%2Fhelm-controller
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/fluxcd-helm-controller-ib
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/fluxcd%2Fnotification-controller
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/fluxcd-notification-controller-ib

@@ -7,17 +7,12 @@ JSON_PARAMS="$1"
 
 JSON=$(cat "$JSON_PARAMS")
 
-echo "Json params for docker coverage = $JSON"
+echo "Json params for docker compose coverage = $JSON"
 
-CONTAINER_NAME=$(jq -r '.container_details."blackbox-exporter-ib".name' < "$JSON_PARAMS")
-
-if [ -z "$CONTAINER_NAME" ]; then
-  echo "Failed to fetch the container name for blackbox-exporter."
-  exit 1
-fi
+BB_EXP_CONTAINER_NAME="blackbox-exporter"
 
 # fetching the dynamically assigned port for blackbox-exporter using container name
-BLACKBOX_EXPORTER_PORT=$(docker port "$CONTAINER_NAME" 9115 | head -n 1 | awk -F: '{print $2}')
+BLACKBOX_EXPORTER_PORT=$(docker port "$BB_EXP_CONTAINER_NAME" 9115 | head -n 1 | awk -F: '{print $2}')
 
 if [ -z "$BLACKBOX_EXPORTER_PORT" ]; then
   echo "Failed to retrieve the port for blackbox-exporter. Ensure the service is running."
@@ -32,6 +27,8 @@ HTTP_TARGET="http://example.com"
 TCP_TARGET="example.com:80"
 ICMP_TARGET="8.8.8.8"
 DNS_TARGET="8.8.8.8"
+# manually hosted gRPC target
+GRPC_TARGET="grpc-server:50051"
 
 # Scrape metrics for each module
 echo "Scraping HTTP probe..."
@@ -45,6 +42,9 @@ curl "${BASE_URL}/probe?target=${ICMP_TARGET}&module=icmp&debug=true&ip_protocol
 
 echo "Scraping DNS probe..."
 curl "${BASE_URL}/probe?target=${DNS_TARGET}&module=dns&debug=true"
+
+echo "Scraping gRPC probe..."
+curl "${BASE_URL}/probe?target=${GRPC_TARGET}&module=grpc&debug=true"
 
 # Coverage for CLI command
 docker exec -i "$CONTAINER_NAME" /bin/bash -c "blackbox_exporter --help"

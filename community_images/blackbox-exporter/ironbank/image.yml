@@ -24,11 +24,11 @@ repo_sets:
       input_base_tag: "v0.25."
       output_repo: blackbox-exporter-ib
 runtimes:
-  - type: docker
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
     wait_time_sec: 60
-    script: docker_coverage.sh
-    blackbox-exporter-ib:
-      ports: ["0:9115"]
-      exec_command: --config.file=/config/blackbox.yml
-      volumes:
-        configs: /config
+    image_keys:
+      blackbox-exporter-ib:
+        repository: "BB_EXP_IMAGE_REPOSITORY"
+        tag: "BB_EXP_IMAGE_TAG"

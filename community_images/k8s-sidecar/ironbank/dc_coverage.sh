@@ -137,7 +137,7 @@ EOF
 
 # Apply configuration with substituted variables
 echo "$YAML_CONTENT" | kubectl apply -f -
-sleep 5
+sleep 10
 # getting pod details
 kubectl get pods -l app=sample
 kubectl describe pods -l app=sample

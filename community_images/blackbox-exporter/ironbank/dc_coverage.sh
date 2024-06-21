@@ -10,6 +10,7 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for docker compose coverage = $JSON"
 
 BB_EXP_CONTAINER_NAME="blackbox-exporter"
+# GRPC_CONTAINER_NAME="grpc-server"
 
 # fetching the dynamically assigned port for blackbox-exporter using container name
 BLACKBOX_EXPORTER_PORT=$(docker port "$BB_EXP_CONTAINER_NAME" 9115 | head -n 1 | awk -F: '{print $2}')
@@ -47,4 +48,4 @@ echo "Scraping gRPC probe..."
 curl "${BASE_URL}/probe?target=${GRPC_TARGET}&module=grpc&debug=true"
 
 # Coverage for CLI command
-docker exec -i "$CONTAINER_NAME" /bin/bash -c "blackbox_exporter --help"
+docker exec -i "$BB_EXP_CONTAINER_NAME" /bin/bash -c "blackbox_exporter --help"

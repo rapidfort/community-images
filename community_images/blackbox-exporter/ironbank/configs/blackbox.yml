@@ -29,8 +29,6 @@ modules:
     prober: grpc
     timeout: 10s
     grpc:
-      service: example.ExampleService
-      method: SayHello
-      request: |
-        name: "world"
+      service: "grpc.health.v1.Health"
       tls: false
+      preferred_ip_protocol: "ip4"

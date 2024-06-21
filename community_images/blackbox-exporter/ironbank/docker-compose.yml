@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   blackbox-exporter:
+    container_name: blackbox-exporter
     image: ${BB_EXP_IMAGE_REPOSITORY}:${BB_EXP_IMAGE_TAG}
     user: root
     cap_add:
@@ -9,14 +10,15 @@ services:
     ports:
       - "9115"
     volumes:
-      - configs: /config
+      - ./configs:/config
     command:
       - '--config.file=/config/blackbox.yml'
     depends_on:
-      - grpc_server
+      - grpc-server
 
   # a gRPC server to test gRPC probing in blackbox-exporter
   grpc-server:
+    container_name: grpc-server
     image: rapidfort/flaskapp
     volumes:
       - ./grpc-server-configs:/app

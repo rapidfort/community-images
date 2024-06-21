@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import example_pb2 as example__pb2
+import health_pb2 as health__pb2
 
 GRPC_GENERATED_VERSION = '1.64.1'
 GRPC_VERSION = grpc.__version__
@@ -20,7 +20,7 @@ except ImportError:
 if _version_not_supported:
     warnings.warn(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in example_pb2_grpc.py depends on'
+        + f' but the generated code in health_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -30,7 +30,7 @@ if _version_not_supported:
     )
 
 
-class ExampleServiceStub(object):
+class HealthStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -39,43 +39,43 @@ class ExampleServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.SayHello = channel.unary_unary(
-                '/example.ExampleService/SayHello',
-                request_serializer=example__pb2.HelloRequest.SerializeToString,
-                response_deserializer=example__pb2.HelloResponse.FromString,
+        self.Check = channel.unary_unary(
+                '/grpc.health.v1.Health/Check',
+                request_serializer=health__pb2.HealthCheckRequest.SerializeToString,
+                response_deserializer=health__pb2.HealthCheckResponse.FromString,
                 _registered_method=True)
 
 
-class ExampleServiceServicer(object):
+class HealthServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def SayHello(self, request, context):
+    def Check(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_ExampleServiceServicer_to_server(servicer, server):
+def add_HealthServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SayHello': grpc.unary_unary_rpc_method_handler(
-                    servicer.SayHello,
-                    request_deserializer=example__pb2.HelloRequest.FromString,
-                    response_serializer=example__pb2.HelloResponse.SerializeToString,
+            'Check': grpc.unary_unary_rpc_method_handler(
+                    servicer.Check,
+                    request_deserializer=health__pb2.HealthCheckRequest.FromString,
+                    response_serializer=health__pb2.HealthCheckResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'example.ExampleService', rpc_method_handlers)
+            'grpc.health.v1.Health', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('example.ExampleService', rpc_method_handlers)
+    server.add_registered_method_handlers('grpc.health.v1.Health', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class ExampleService(object):
+class Health(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def SayHello(request,
+    def Check(request,
             target,
             options=(),
             channel_credentials=None,
@@ -88,9 +88,9 @@ class ExampleService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/example.ExampleService/SayHello',
-            example__pb2.HelloRequest.SerializeToString,
-            example__pb2.HelloResponse.FromString,
+            '/grpc.health.v1.Health/Check',
+            health__pb2.HealthCheckRequest.SerializeToString,
+            health__pb2.HealthCheckResponse.FromString,
             options,
             channel_credentials,
             insecure,

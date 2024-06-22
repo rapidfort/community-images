@@ -12,6 +12,7 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${NAMESPACE}"-kubectl-1
 
+kubectl create namespace custom-namespace
 
 kubectl --namespace custom-namespace create secret generic rf-regcred --from-file=.dockerconfigjson=/home/runner/.docker/config.json --type=kubernetes.io/dockerconfigjson
 

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   kubectl:
-    image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.27.15
+    image: ${KUBECTL_IMAGE_REPOSITORY}:${KUBECTL_IMAGE_TAG}
     user: root
     cap_add:
       - SYS_PTRACE 
@@ -15,4 +15,5 @@ services:
     volumes:
       - ~/.kube/config:/.kube/config
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./coverage.sh:/tmp/coverage.sh
     network_mode: "host"   

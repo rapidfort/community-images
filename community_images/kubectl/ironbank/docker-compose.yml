@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  kubectl:
+    image: registry1.dso.mil/ironbank/opensource/kubernetes/kubectl:v1.27.15
+    user: root
+    cap_add:
+      - SYS_PTRACE 
+    entrypoint:
+      - "sleep"  
+    command:
+      - "infinity"
+    environment:
+      - KUBECONFIG=/.kube/config
+    volumes:
+      - ~/.kube/config:/.kube/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"   

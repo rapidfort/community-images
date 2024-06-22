@@ -1,5 +1,5 @@
 #!/bin/bash
-cat /.kube/config
+cat /root/.kube/config
 
 kubectl version
 

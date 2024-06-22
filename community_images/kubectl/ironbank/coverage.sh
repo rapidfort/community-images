@@ -1,13 +1,13 @@
 #!/bin/bash
-cat /root/.kube/config
+# cat /root/.kube/config
 
-kubectl version
+# kubectl version
 
-kubectl get pods
+# kubectl get pods
 
-kubectl auth can-i create pods --all-namespaces
+# kubectl auth can-i create pods --all-namespaces
 
-kubectl create namespace custom-namespace
+# kubectl create namespace custom-namespace
 
 kubectl create deployment nginx-deployment --image=nginx --namespace=custom-namespace
 

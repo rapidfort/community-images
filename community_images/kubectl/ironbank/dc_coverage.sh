@@ -14,9 +14,9 @@ CONTAINER_NAME="${NAMESPACE}"-kubectl-1
 
 echo $HOME 
 
-cat "${HOME}"/.kube/config
+(cat "${HOME}"/.kube/config 2>&1) >&2
 
-ls -a "${HOME}"
+(ls -a "${HOME}" 2>&1) >&2
 
 echo $KUBECONFIG
 

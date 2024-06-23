@@ -13,8 +13,8 @@ services:
     environment:
       - KUBECONFIG=/root/.minkube/config
     volumes:
-      - ~/.minikube:/root/.minikube
-      - ~/.kube/config:/root/.kube/config
+      - ${HOME}/.minikube:/root/.minikube
+      - ${HOME}/.kube/config:/root/.kube/config
       - /var/run/docker.sock:/var/run/docker.sock
       - ./coverage.sh:/tmp/coverage.sh
     network_mode: "host"   

@@ -18,6 +18,8 @@ echo $HOME
 
 (ls -a "${HOME}" 2>&1) >&2
 
+(ls -a "${HOME}"/.minikube 2>&1) >&2
+
 echo $KUBECONFIG
 
 kubectl create namespace custom-namespace

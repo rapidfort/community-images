@@ -11,7 +11,7 @@ services:
     command:
       - "infinity"
     environment:
-      - KUBECONFIG=/root/.kube/config
+      - KUBECONFIG=/root/.minkube/config
     volumes:
       - ~/.minikube:/root/.minikube
       - ~/.kube/config:/root/.kube/config

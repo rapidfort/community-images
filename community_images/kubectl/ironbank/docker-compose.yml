@@ -11,9 +11,9 @@ services:
     command:
       - "infinity"
     environment:
-      - KUBECONFIG=${HOME}/.minkube/config
+      - KUBECONFIG=/root/.kube/config
     volumes:
-      - ${HOME}/.minikube/config:${HOME}/.minikube/config
+      - ${HOME}/.minikube:/root/.minikube
       - ${HOME}/.kube/config:/root/.kube/config
       - /var/run/docker.sock:/var/run/docker.sock
       - ./coverage.sh:/tmp/coverage.sh

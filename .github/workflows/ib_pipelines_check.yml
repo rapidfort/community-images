@@ -2,7 +2,8 @@ name: IB Pipelines Tracker
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+  - cron: '0 0 * * *'
+
   workflow_dispatch:
 
 permissions: read-all
@@ -13,24 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run Pipeline Check
-        id: pipeline_check_step
-        run: |
-          python3 ./scripts/ib_pipelines_check.py | tee ib_tracker_logs.txt
-          exit ${PIPESTATUS[0]}
-        continue-on-error: true
-
-      - name: Set job status
-        if: steps.pipeline_check_step.outcome == 'failure'
-        run: |
-          echo "Pipeline check failed."
-          exit 1
-
-      - name: Upload logs
-        uses: actions/upload-artifact@v3
-        with:
-          name: pipeline-logs
-          path: ib_tracker_logs.txt
+      - name: Check Pipeline Status
+        run: python3 ./scripts/ib_pipelines_check.py | tee ib_tracker_logs.txt

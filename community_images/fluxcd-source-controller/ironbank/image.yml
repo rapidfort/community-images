@@ -1,0 +1,41 @@
+name: fluxcd-source-controller-ib
+official_name: Fluxcd source-controller Iron Bank
+official_website: https://fluxcd.io/flux/components
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/fluxcd/source-controller
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/fluxcd%2Fsource-controller
+source_image_readme: https://repo1.dso.mil/dsop/fluxcd/source-controller/-/blob/development/README.md
+rf_docker_link: rapidfort/fluxcd-source-controller-ib
+image_workflow_name: fluxcd-source-controller_ironbank
+github_location: fluxcd-source-controller/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fsource-controller
+usage_instructions: |
+  $ source repo add fluxcd-community https://fluxcd-community.github.io/source-charts
+
+  # install fluxcd-source-controller, just replace repository with RapidFort registry
+  $ source install flux2 fluxcd-community/flux2 --set sourceController.image=rapidfort/fluxcd-source-controller-ib
+what_is_text: |
+  The source-controller is a Kubernetes operator, specialised in artifacts acquisition from external sources such as Git, OCI, Helm repositories and S3-compatible buckets. The source-controller implements the source.toolkit.fluxcd.io API and is a core component of the GitOps toolkit.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - fluxcd/source-controller:
+      input_base_tag: "v1.3."
+      output_repo: fluxcd-source-controller-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: fluxcd-community
+      repo_url: https://fluxcd-community.github.io/helm-charts
+      chart: flux2
+    wait_time_sec: 60
+    readiness_check_script: controller_health_check.sh
+    image_keys:
+      fluxcd-source-controller-ib:
+        repository: "sourceController.image"
+        tag: "sourceController.tag"
+    override_file: "overrides.yml"

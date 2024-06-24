@@ -404,6 +404,60 @@ jobs:
           repository: rapidfort/fluentd-official
           readme-filepath: ./community_images/fluentd/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluentd Official
+      - name: Docker Hub Description Fluxcd helm-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-helm-controller-ib
+          readme-filepath: ./community_images/fluxcd-helm-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd helm-controller Iron Bank
+      - name: Docker Hub Description Fluxcd image-automation-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-image-automation-controller-ib
+          readme-filepath: ./community_images/fluxcd-image-automation-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd image-automation-controller Iron Bank
+      - name: Docker Hub Description Fluxcd image-reflector-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-image-reflector-controller-ib
+          readme-filepath: ./community_images/fluxcd-image-reflector-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd image-reflector-controller Iron Bank
+      - name: Docker Hub Description Fluxcd kustomize-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-kustomize-controller-ib
+          readme-filepath: ./community_images/fluxcd-kustomize-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd kustomize-controller Iron Bank
+      - name: Docker Hub Description Fluxcd notification-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-notification-controller-ib
+          readme-filepath: ./community_images/fluxcd-notification-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd notification-controller Iron Bank
+      - name: Docker Hub Description Fluxcd source-controller Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluxcd-source-controller-ib
+          readme-filepath: ./community_images/fluxcd-source-controller/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluxcd source-controller Iron Bank
       - name: Docker Hub Description Ghost
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -836,6 +890,15 @@ jobs:
           repository: rapidfort/pause-ib
           readme-filepath: ./community_images/pause/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PAUSE IronBank
+      - name: Docker Hub Description pgAdmin IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/pgadmin-ib
+          readme-filepath: ./community_images/pgadmin/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for pgAdmin IronBank
       - name: Docker Hub Description PostgreSQL Exporter Bitnami Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1061,6 +1124,15 @@ jobs:
           repository: rapidfort/vault-k8s-ib
           readme-filepath: ./community_images/vault-k8s/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Vault-k8s Iron Bank
+      - name: Docker Hub Description Velero Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/velero-ib
+          readme-filepath: ./community_images/velero/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Velero Iron Bank
       - name: Docker Hub Description Wordpress
         if: always()
         uses: peter-evans/dockerhub-description@v3

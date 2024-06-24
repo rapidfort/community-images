@@ -12,21 +12,5 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${NAMESPACE}"-kubectl-1
 
-echo $HOME 
-
-(cat "${HOME}"/.kube/config 2>&1) >&2
-
-(ls -a "${HOME}" 2>&1) >&2
-
-(ls -a "${HOME}"/.minikube 2>&1) >&2
-
-echo $KUBECONFIG
-
-kubectl create namespace custom-namespace
-
-kubectl --namespace custom-namespace create secret generic rf-regcred --from-file=.dockerconfigjson=/home/runner/.docker/config.json --type=kubernetes.io/dockerconfigjson
-
-kubectl apply -f /home/runner/work/community-images/community-images/community_images/common/cert_managet_ns.yml --namespace custom-namespace
-
 #kubectl test coverage
-docker exec -i  "$CONTAINER_NAME" ./tmp/coverage.sh
+docker exec -i  "${CONTAINER_NAME}" ./tmp/coverage.sh

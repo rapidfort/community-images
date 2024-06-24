@@ -14,12 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Check Pipeline Status
-        run: python3 ./scripts/ib_pipelines_check.py | tee ib_tracker_logs.txt
+      - name: Run Pipeline Check
+        id: pipeline_check_step
+        run: python3 ./scripts/ib_pipelines_check.py | tee ib_tracker_logs.txt | echo "::set-output name=workflow-status::${PIPESTATUS[0]}"
 
-      
-
+      - name: Check Workflow Status
+        run: |
+          if [[ "${{ steps.pipeline_check_step.outputs.workflow-status }}" != "0" ]]; then
+            echo "Pipeline check failed."
+            exit 1
+          fi

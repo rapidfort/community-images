@@ -1,0 +1,34 @@
+name: blackbox-exporter-ib
+official_name: Blackbox Exporter Iron Bank
+official_website: https://github.com/prometheus/blackbox_exporter
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/prometheus/blackbox_exporter
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fprometheus%2Fblackbox_exporter
+source_image_readme: https://repo1.dso.mil/dsop/opensource/prometheus/blackbox_exporter/-/blob/development/README.md
+rf_docker_link: rapidfort/blackbox-exporter-ib
+image_workflow_name: blackbox-exporter_ironbank
+github_location: blackbox-exporter/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fblackbox_exporter
+usage_instructions: |
+  $ docker run --rm -d -p 9115:9115 --name blackbox_exporter -v `pwd`:/config rapidfort/blackbox-exporter-ib:latest --config.file=/config/blackbox.yml
+what_is_text: |
+  The blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/prometheus/blackbox_exporter:
+      input_base_tag: "v0.25."
+      output_repo: blackbox-exporter-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 60
+    image_keys:
+      blackbox-exporter-ib:
+        repository: "BB_EXP_IMAGE_REPOSITORY"
+        tag: "BB_EXP_IMAGE_TAG"

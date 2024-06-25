@@ -1,0 +1,41 @@
+name: fluxcd-image-automation-controller-ib
+official_name: Fluxcd image-automation-controller Iron Bank
+official_website: https://fluxcd.io/flux/components
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/fluxcd/image-automation-controller
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/fluxcd%2Fimage-automation-controller
+source_image_readme: https://repo1.dso.mil/dsop/fluxcd/image-automation-controller/-/blob/development/README.md
+rf_docker_link: rapidfort/fluxcd-image-automation-controller-ib
+image_workflow_name: fluxcd-image-automation-controller_ironbank
+github_location: fluxcd-image-automation-controller/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-automation-controller
+usage_instructions: |
+  $ helm repo add fluxcd-community https://fluxcd-community.github.io/helm-charts
+
+  # install fluxcd-image-automation-controller, just replace repository with RapidFort registry
+  $ helm install flux2 fluxcd-community/flux2 --set imageAutomationController.image=rapidfort/fluxcd-image-automation-controller-ib
+what_is_text: |
+  This controller automates updates to YAML when new container images are available.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - fluxcd/image-automation-controller:
+      input_base_tag: "v0.37."
+      output_repo: fluxcd-image-automation-controller-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: fluxcd-community
+      repo_url: https://fluxcd-community.github.io/helm-charts
+      chart: flux2
+    wait_time_sec: 60
+    readiness_check_script: controller_health_check.sh
+    image_keys:
+      fluxcd-image-automation-controller-ib:
+        repository: "imageAutomationController.image"
+        tag: "imageAutomationController.tag"
+    override_file: "overrides.yml"

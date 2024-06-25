@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: rapidfort/postgresql-official:10.23-bullseye
+    container_name: postgres
+    environment:
+      POSTGRES_USER: coverity
+      POSTGRES_PASSWORD: coverity
+      POSTGRES_DB: coverity
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  coverity:
+    image: kphull/coverity-ib:2024.3.0-rfstub
+    container_name: coverity
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+      - "9090:9090"
+    environment:
+      DB_USER: coverity
+      DB_PASSWORD: coverity
+      DB_PORT: 5432
+      DB_NAME: coverity
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    hostname: coverity
+
+volumes:
+  pgdata:
+    driver: local

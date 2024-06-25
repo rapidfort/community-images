@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   elasticsearch:
-    image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:8.14.1
+    image: rapidfort/elasticsearch-official:8.13.4
     container_name: elasticsearch
     environment:
       - xpack.ml.enabled=false

@@ -1,0 +1,74 @@
+version: '3.7'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+    networks:
+      - thanos
+
+  thanos-sidecar:
+    image: registry1.dso.mil/ironbank/opensource/thanos/thanos
+    command:
+      - sidecar
+      - --tsdb.path=/prometheus
+      - --prometheus.url=http://prometheus:9090
+      - --grpc-address=0.0.0.0:10901
+      - --http-address=0.0.0.0:10902
+    volumes:
+      - ./data:/prometheus
+    ports:
+      - "10901:10901"
+      - "10902:10902"
+    networks:
+      - thanos
+
+  thanos-store:
+    image: quay.io/thanos/thanos:latest
+    command:
+      - store
+      - --data-dir=/prometheus
+      - --grpc-address=0.0.0.0:10905
+      - --http-address=0.0.0.0:10906
+    volumes:
+      - ./data:/prometheus
+    ports:
+      - "10905:10905"
+      - "10906:10906"
+    networks:
+      - thanos
+
+  thanos-query:
+    image: quay.io/thanos/thanos:latest
+    command:
+      - query
+      - --http-address=0.0.0.0:10904
+      - --store=thanos-sidecar:10901
+      - --store=thanos-store:10905
+    ports:
+      - "10904:10904"
+    networks:
+      - thanos
+
+networks:
+  thanos:
+    driver: bridge
+
+
+
+# version: '2'
+
+# services:
+#   template:
+#     image: ${IMAGE}:${TAG}
+#     user: root
+#     cap_add:
+#       - SYS_PTRACE
+#     ports:
+#       - '8080'

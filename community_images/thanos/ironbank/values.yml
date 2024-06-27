@@ -1,0 +1,48 @@
+objstoreConfig: |-
+  type: FILESYSTEM
+  config:
+    directory: /data
+query:
+  dnsDiscovery:
+    sidecarsService: prometheus-thanos
+    sidecarsNamespace: thanos
+bucketweb:
+  enabled: true
+compactor:
+  enabled: true
+  objstoreConfig: |-
+    type: FILESYSTEM
+    config:
+      directory: /data
+storegateway:
+  enabled: true
+  objstoreConfig: |-
+    type: FILESYSTEM
+    config:
+      directory: /data
+ruler:
+  enabled: true
+  alertmanagers:
+    - http://prometheus-alertmanager.thanos.svc.cluster.local:9093
+  config: |-
+    groups:
+      - name: "metamonitoring"
+        rules:
+          - alert: "PrometheusDown"
+            expr: absent(up{prometheus="thanos/prometheus"})
+  objstoreConfig: |-
+    type: FILESYSTEM
+    config:
+      directory: /data
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: false
+minio:
+  enabled: false
+persistence:
+  enabled: true
+  storageClass: "standard"
+  accessModes:
+    - ReadWriteOnce
+  size: 50Gi

@@ -1,0 +1,54 @@
+replicas: 1
+image:
+  pullSecrets:
+    - name: rf-regcred
+  pullPolicy: IfNotPresent
+
+postUpgrade:
+  securityContext:
+    # enabled: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: true
+    runAsNonRoot: false
+    capabilities:
+      add: ["SYS_PTRACE"]
+  labelNamespace:    
+    podSecurity: null  
+postInstall:
+  securityContext:
+    # enabled: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: true
+    runAsNonRoot: false
+    capabilities:
+      add: ["SYS_PTRACE"]
+  labelNamespace:    
+    podSecurity: null
+preUninstall:
+  securityContext:
+    # enabled: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: true
+    runAsNonRoot: false
+    capabilities:
+      add: ["SYS_PTRACE"]
+controllerManager:
+  securityContext:
+    # enabled: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: true
+    runAsNonRoot: false
+    capabilities:
+      add: ["SYS_PTRACE"]
+audit:
+  securityContext:
+    # enabled: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: true
+    runAsNonRoot: false
+    capabilities:
+      add: ["SYS_PTRACE"]
+              
+extraEnvVars:
+  - name: "RF_VERBOSE"
+    value: "0"

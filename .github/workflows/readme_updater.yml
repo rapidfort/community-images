@@ -296,6 +296,15 @@ jobs:
           repository: rapidfort/elasticsearch
           readme-filepath: ./community_images/elasticsearch/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for ElasticSearch
+      - name: Docker Hub Description Elasticsearch Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/elasticsearch-exporter-ib
+          readme-filepath: ./community_images/elasticsearch-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Elasticsearch Exporter Iron Bank
       - name: Docker Hub Description ElasticSearch Official
         if: always()
         uses: peter-evans/dockerhub-description@v3

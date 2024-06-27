@@ -1,0 +1,41 @@
+name: fluxcd-kustomize-controller-ib
+official_name: Fluxcd kustomize-controller Iron Bank
+official_website: https://fluxcd.io/flux/components
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/fluxcd/kustomize-controller
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/fluxcd%2Fkustomize-controller
+source_image_readme: https://repo1.dso.mil/dsop/fluxcd/kustomize-controller/-/blob/development/README.md
+rf_docker_link: rapidfort/fluxcd-kustomize-controller-ib
+image_workflow_name: fluxcd-kustomize-controller_ironbank
+github_location: fluxcd-kustomize-controller/ironbank
+report_url: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fkustomize-controller
+usage_instructions: |
+  $ source repo add fluxcd-community https://fluxcd-community.github.io/source-charts
+
+  # install fluxcd-kustomize-controller, just replace repository with RapidFort registry
+  $ source install flux2 fluxcd-community/flux2 --set kustomizeController.image=rapidfort/fluxcd-kustomize-controller-ib
+what_is_text: |
+  The kustomize-controller is a Flux component, specialized in running continuous delivery pipelines for infrastructure and workloads defined with Kubernetes manifests and assembled with Kustomize.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - fluxcd/kustomize-controller:
+      input_base_tag: "v1.3."
+      output_repo: fluxcd-kustomize-controller-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: fluxcd-community
+      repo_url: https://fluxcd-community.github.io/helm-charts
+      chart: flux2
+    wait_time_sec: 60
+    readiness_check_script: controller_health_check.sh
+    image_keys:
+      fluxcd-kustomize-controller-ib:
+        repository: "kustomizeController.image"
+        tag: "kustomizeController.tag"
+    override_file: "overrides.yml"

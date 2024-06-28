@@ -1,0 +1,103 @@
+podSecurityContext:
+  enabled: true
+  privileged: true
+  allowPrivilegeEscalation: true
+  capabilities:
+    add: ["SYS_PTRACE"]
+securityContext:
+  enabled: true
+  privileged: true
+  allowPrivilegeEscalation: true
+  capabilities:
+    add: ["SYS_PTRACE"]
+global:
+  podSecurityContext:
+    enabled: true
+    privileged: true
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+  securityContext:
+    enabled: true
+    privileged: true
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+  gitaly:
+    podSecurityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+    securityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+    extraEnvVars:
+      - name: "RF_VERBOSE"
+        value: "0"
+    livenessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    readinessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+  gitlab:
+    podSecurityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+    securityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+    extraEnvVars:
+      - name: "RF_VERBOSE"
+        value: "0"
+    livenessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    readinessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+gitaly:
+    podSecurityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+    securityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+    extraEnvVars:
+      - name: "RF_VERBOSE"
+        value: "0"
+    livenessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    readinessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+gitlab:
+    podSecurityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities.add: ["SYS_PTRACE"]
+    securityContext:
+      enabled: true
+      privileged: true
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]

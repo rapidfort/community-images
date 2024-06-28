@@ -13,12 +13,6 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
-RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-POD_NAME=$(kubectl get pod -n "${NAMESPACE}" | grep "${RELEASE_NAME}-controller-manager-[a-z0-9-]*"  --color=auto -o)
-
-
-
-# NAMESPACE="gatekeeper-system-saarthak"
 
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/demo/basic/templates/k8srequiredlabels_template.yaml
 
@@ -26,22 +20,7 @@ kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/
 
 kubectl get constraints
 
-cat << EOF | kubectl apply -f -
-apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sRequiredLabels
-metadata:
-  name: ns-must-have-gk
-spec:
-  match:
-    kinds:
-      - apiGroups: [""]
-        kinds: ["Namespace"]
-  parameters:
-    # Note that "labels" is now an array item, rather than an object
-    - labels: ["gatekeeper"]
-EOF
-
-cat << EOF | kubectl apply -f -
+kubectl apply -f - <<EOF
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sRequiredLabels
 metadata:
@@ -81,7 +60,9 @@ EOF
 
 kubectl get constraint
 
-kubectl get k8srequiredlabels.constraints.gatekeeper.sh require-labels -o yaml
+sleep 60
+
+kubectl get K8sRequiredLabels.constraints.gatekeeper.sh require-labels -o yaml
 
 kubectl apply -f - <<EOF
 apiVersion: syncset.gatekeeper.sh/v1alpha1
@@ -142,16 +123,40 @@ spec:
         }
 EOF
 
-kubectl -n "${NAMESPACE}" logs -l control-plane=controller-manager
+# kubectl -n "${NAMESPACE}" logs -l control-plane=controller-manager
+
+kubectl apply -f "${SCRIPTPATH}"/pod-security-policy/allow_privileged_escalation.yml
+
+kubectl apply -f "${SCRIPTPATH}"/pod-security-policy/capabilities.yml
+
+kubectl apply -f "${SCRIPTPATH}"/pod-security-policy/read_only_root_filesystem.yml
+
+kubectl apply -f "${SCRIPTPATH}"/pod-security-policy/seccomp.yml
+
+kubectl apply -f "${SCRIPTPATH}"/pod-security-policy/selinux.yml
+
+kubectl apply -f "${SCRIPTPATH}"/pod-security-policy/users.yml
+
+kubectl delete -f "${SCRIPTPATH}"/pod-security-policy/allow_privileged_escalation.yml
+
+kubectl delete -f "${SCRIPTPATH}"/pod-security-policy/capabilities.yml
+
+kubectl delete -f "${SCRIPTPATH}"/pod-security-policy/read_only_root_filesystem.yml
+
+kubectl delete -f "${SCRIPTPATH}"/pod-security-policy/seccomp.yml
+
+kubectl delete -f "${SCRIPTPATH}"/pod-security-policy/selinux.yml
+
+kubectl delete -f "${SCRIPTPATH}"/pod-security-policy/users.yml
 
 kubectl delete constrainttemplate k8sdenynamespace
  
-kubectl delete constraint require-labels ns-must-have-gk
+kubectl delete constraint require-labels ns-must-have-gk || echo 0
 
 kubectl delete configmap gatekeeper-audit -n "${NAMESPACE}"
 
-kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/demo/basic/constraints/all_ns_must_have_gatekeeper.yaml
+kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/demo/basic/constraints/all_ns_must_have_gatekeeper.yaml || echo 0
 
-kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/demo/basic/templates/k8srequiredlabels_template.yaml
+kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/demo/basic/templates/k8srequiredlabels_template.yaml || echo 0
 
 kubectl delete crd -l gatekeeper.sh/system=yes

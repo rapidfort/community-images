@@ -10,7 +10,9 @@ image_workflow_name: gatekeeper_ironbank
 github_location: gatekeeper/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fopenpolicyagent%2Fgatekeeper
 usage_instructions: |
-  $ docker run -i -v /path/to/main.tf:/main.tf  rapidfort/terraform-ib:latest [COMMAND]
+  # Gatekeeper can be deployed with:
+  $ helm repo add gatekeeper https://open-policy-agent.github.io/gatekeeper/charts
+  $ helm install rf-gatekeeper-ib gatekeeper/gatekeeper --set image.repository=rapidfort/gatekeeper-ib --set image.release=latest
 what_is_text: |
   The Open Policy Agent Gatekeeper project can be leveraged to help enforce policies and strengthen governance in your Kubernetes environment. In this post, we will walk through the goals, history, and current state of the project.
 disclaimer: |
@@ -36,5 +38,4 @@ runtimes:
         repository: "image.repository"
         tag: "image.release"
     override_file: "overrides.yml"
-    readiness_wait_pod_name_suffix:
-      - ""
+    readiness_wait_pod_name_suffix: []

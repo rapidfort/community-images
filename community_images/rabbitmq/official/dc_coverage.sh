@@ -23,4 +23,8 @@ RABBITMQ_USERNAME='user'
 RABBITMQ_PASSWORD='password'
 
 sleep 20
+CONTAINER_NAME=${PROJECT_NAME}-rabbitmq-1
+
 test_rabbitmq_docker_compose "${RABBITMQ_SERVER}" "${RABBITMQ_NETWORK}" "${RABBITMQ_USERNAME}" "${RABBITMQ_PASSWORD}"
+
+docker exec -i "${CONTAINER_NAME}" /tmp/commands.sh

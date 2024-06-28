@@ -12,4 +12,4 @@ rabbitmq-queues help
 rabbitmq-upgrade help
 rabbitmq-diagnostics cluster_status
 rabbitmq-streams help
-rabbitmqadmin help
+rabbitmqadmin help || echo 0

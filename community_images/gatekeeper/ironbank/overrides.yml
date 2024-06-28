@@ -6,7 +6,6 @@ image:
 
 postUpgrade:
   securityContext:
-    # enabled: true
     runAsUser: 0
     allowPrivilegeEscalation: true
     readOnlyRootFilesystem: false
@@ -17,7 +16,6 @@ postUpgrade:
     podSecurity: null  
 postInstall:
   securityContext:
-    # enabled: true
     runAsUser: 0
     allowPrivilegeEscalation: true
     readOnlyRootFilesystem: false
@@ -28,7 +26,6 @@ postInstall:
     podSecurity: null
 preUninstall:
   securityContext:
-    # enabled: true
     runAsUser: 0
     allowPrivilegeEscalation: true
     readOnlyRootFilesystem: false
@@ -37,7 +34,6 @@ preUninstall:
       add: ["SYS_PTRACE"]
 controllerManager:
   securityContext:
-    # enabled: true
     runAsUser: 0
     allowPrivilegeEscalation: true
     readOnlyRootFilesystem: false
@@ -46,7 +42,6 @@ controllerManager:
       add: ["SYS_PTRACE"]
 audit:
   securityContext:
-    # enabled: true
     runAsUser: 0
     allowPrivilegeEscalation: true
     readOnlyRootFilesystem: false
@@ -55,7 +50,6 @@ audit:
       add: ["SYS_PTRACE"]
 crds:
   securityContext:
-    # enabled: true
     runAsUser: 0
     allowPrivilegeEscalation: true
     readOnlyRootFilesystem: false

@@ -7,8 +7,9 @@ image:
 postUpgrade:
   securityContext:
     # enabled: true
-    runAsUser: 1000
+    runAsUser: 0
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     runAsNonRoot: false
     capabilities:
       add: ["SYS_PTRACE"]
@@ -17,8 +18,9 @@ postUpgrade:
 postInstall:
   securityContext:
     # enabled: true
-    runAsUser: 1000
+    runAsUser: 0
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     runAsNonRoot: false
     capabilities:
       add: ["SYS_PTRACE"]
@@ -27,28 +29,41 @@ postInstall:
 preUninstall:
   securityContext:
     # enabled: true
-    runAsUser: 1000
+    runAsUser: 0
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     runAsNonRoot: false
     capabilities:
       add: ["SYS_PTRACE"]
 controllerManager:
   securityContext:
     # enabled: true
-    runAsUser: 1000
+    runAsUser: 0
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     runAsNonRoot: false
     capabilities:
       add: ["SYS_PTRACE"]
 audit:
   securityContext:
     # enabled: true
-    runAsUser: 1000
+    runAsUser: 0
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     runAsNonRoot: false
     capabilities:
       add: ["SYS_PTRACE"]
-              
+crds:
+  securityContext:
+    # enabled: true
+    runAsUser: 0
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    capabilities:
+      add: ["SYS_PTRACE"]      
+upgradeCRDs:
+  enabled: false              
 extraEnvVars:
   - name: "RF_VERBOSE"
     value: "0"

@@ -32,7 +32,7 @@ runtimes:
       repo_url: https://open-policy-agent.github.io/gatekeeper/charts
       chart: gatekeeper
     image_keys:
-      argocd:
+      gatekeeper-ib:
         repository: "image.repository"
         tag: "image.release"
     override_file: "overrides.yml"

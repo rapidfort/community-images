@@ -1,45 +1,107 @@
+image:
+  repository: kphull/thanos
+  tag: latest-rfstub
+
 objstoreConfig: |-
   type: FILESYSTEM
   config:
     directory: /data
+
 query:
   dnsDiscovery:
-    sidecarsService: prometheus-thanos
-    sidecarsNamespace: thanos
+    enabled: false
+  stores:
+    - dnssrv+_grpc._tcp.thanos-storegateway.thanos.svc.cluster.local
+    - dnssrv+_grpc._tcp.thanos-ruler.thanos.svc.cluster.local
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+
+queryFrontend:
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+
 bucketweb:
   enabled: true
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+
 compactor:
   enabled: true
-  objstoreConfig: |-
-    type: FILESYSTEM
-    config:
-      directory: /data
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+
 storegateway:
   enabled: true
   objstoreConfig: |-
     type: FILESYSTEM
     config:
       directory: /data
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+
 ruler:
   enabled: true
   alertmanagers:
-    - http://prometheus-alertmanager.thanos.svc.cluster.local:9093
+    - http://prometheus-alertmanager.thanos.svc.cluster.local:80
   config: |-
     groups:
       - name: "metamonitoring"
         rules:
           - alert: "PrometheusDown"
             expr: absent(up{prometheus="thanos/prometheus"})
-  objstoreConfig: |-
-    type: FILESYSTEM
-    config:
-      directory: /data
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+
 metrics:
   enabled: true
   serviceMonitor:
     enabled: false
+
 minio:
   enabled: false
+
 persistence:
   enabled: true
   storageClass: "standard"

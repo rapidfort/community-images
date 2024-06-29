@@ -467,6 +467,15 @@ jobs:
           repository: rapidfort/fluxcd-source-controller-ib
           readme-filepath: ./community_images/fluxcd-source-controller/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluxcd source-controller Iron Bank
+      - name: Docker Hub Description Gatekeeper IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gatekeeper-ib
+          readme-filepath: ./community_images/gatekeeper/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gatekeeper IronBank
       - name: Docker Hub Description Ghost
         if: always()
         uses: peter-evans/dockerhub-description@v3

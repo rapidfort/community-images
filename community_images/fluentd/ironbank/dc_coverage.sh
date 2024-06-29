@@ -39,7 +39,8 @@ docker exec -i "$CONTAINER_NAME" fluent-ca-generate -help
 # checking Generating Plugin Project Skeleton
 docker exec -i "$CONTAINER_NAME" fluent-plugin-generate --help
 # testing fluent-debug
-# docker exec -i "$CONTAINER_NAME" fluent-debug <<EOF
-# irb_quit
-# EOF
-docker exec -i "$CONTAINER_NAME" fluent-debug --help
+(
+  docker exec -i "$CONTAINER_NAME" fluent-debug <<EOF
+  irb_quit
+EOF
+) || echo 0

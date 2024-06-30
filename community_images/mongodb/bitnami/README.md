@@ -92,7 +92,7 @@ RapidFort’s hardened [rapidfort/mongodb][rf-dh-image-link] image has been opti
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.0`, `7.0-debian-12`, `7.0.11`, `7.0.11-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-12/Dockerfile)
+* [`7.0`, `7.0-debian-12`, `7.0.12`, `7.0.12-debian-12-r` (7.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb/7.0/debian-12/Dockerfile)
 
 ## Need support
 

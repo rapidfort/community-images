@@ -1,6 +1,6 @@
 name: gitlab-certificates-ib
 official_name: GitLab Certificates Iron Bank
-official_website: https://docs.gitlab.com/runner/
+official_website: https://about.gitlab.com/
 source_image_provider: Platform One
 source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/certificates
 source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fcertificates
@@ -10,7 +10,7 @@ image_workflow_name: gitlab-certificates_ironbank
 github_location: gitlab-certificates/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fcertificates
 usage_instructions: |
-  # GitLab certificates can be added by using
+  # GitLab certificates can be added to gitlab helm installation by using
   $ helm upgrade --install gitlab gitlab/gitlab \
       --timeout 600s \
       --set certmanager-issuer.email=me@example.com \
@@ -31,33 +31,12 @@ repo_sets:
       input_base_tag: "16.11."
       output_repo: gitlab-certificates-ib
 runtimes:
-  # - type: docker
-  #   before_script: docker_before.sh
-  #   script: docker_coverage.sh
-  #   gitlab-certificates-ib:
-  #     entrypoint: sleep
-  #     exec_command: infinity
-  #     volumes:
-  #       "public_key.crt": "/usr/local/share/ca-certificates/public_key.crt"
-  #       "public_key2.crt": "/usr/local/share/ca-certificates/public_key2.crt"
-  - type: k8s
-    script: k8s_coverage.sh
-    before_script: k8s_before.sh
-    helm:
-      repo: gitlab
-      repo_url: https://charts.gitlab.io/
-      chart: gitlab
-    helm_additional_params:
-      "certmanager-issuer.email": "me@example.com"
-      "postgresql.image.tag": "13.6.0"
-      "global.certificates.customCAs[0].secret": "secret-custom-ca"
-      "global.certificates.customCAs[1].configMap": "cm-custom-ca"
-      "certmanager.installCRDs": "false"
-      "certmanager.nameOverride": "glcertmanager"
-    image_keys:
-      gitlab-certificates-ib:
-        repository: "global.certificates.image.repository"
-        tag: "global.certificates.image.tag"
-    override_file: "overrides.yml"
-    readiness_wait_pod_name_suffix:
-      - "gitaly-0"
+  - type: docker
+    before_script: docker_before.sh
+    script: docker_coverage.sh
+    gitlab-certificates-ib:
+      entrypoint: sleep
+      exec_command: infinity
+      volumes:
+        "public_key.crt": "/usr/local/share/ca-certificates/public_key.crt"
+        "public_key2.crt": "/usr/local/share/ca-certificates/public_key2.crt"

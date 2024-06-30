@@ -14,13 +14,13 @@ echo "Json params for docker coverage = $JSON"
 
 CONTAINER_NAME=$(jq -r '.container_details."gitlab-certificates-ib".name' "${JSON_PARAMS}")
 
-docker exec -it --user root "${CONTAINER_NAME}" \
+docker exec -i --user root "${CONTAINER_NAME}" \
   /scripts/entrypoint-ubi8.sh echo Done
 
-docker exec -it --user root "${CONTAINER_NAME}" \
+docker exec -i --user root "${CONTAINER_NAME}" \
   /scripts/entrypoint.sh echo Done
 
-docker exec -it --user root "${CONTAINER_NAME}" \
+docker exec -i --user root "${CONTAINER_NAME}" \
   /scripts/bundle-certificates
 
 rm -rf \

@@ -92,7 +92,7 @@ We are big fans of open-source software and secure software development. RapidFo
 * [`1.30`, `1.30-debian-12`, `1.30.3`, `1.30.3-debian-12-r` (1.30/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.30/debian-12/Dockerfile)
 * [`1.29`, `1.29-debian-12`, `1.29.6`, `1.29.6-debian-12-r` (1.29/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.29/debian-12/Dockerfile)
 * [`1.28`, `1.28-debian-12`, `1.28.4`, `1.28.4-debian-12-r` (1.28/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.28/debian-12/Dockerfile)
-* [`1.27`, `1.27-debian-12`, `1.27.6`, `1.27.6-debian-12-r` (1.27/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.27/debian-12/Dockerfile)
+* [`1.27`, `1.27-debian-12`, `1.27.7`, `1.27.7-debian-12-r` (1.27/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.27/debian-12/Dockerfile)
 
 ## Need support
 

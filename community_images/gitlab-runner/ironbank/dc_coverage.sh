@@ -89,5 +89,5 @@ GITLAB_ROOT_PASSWORD=$(sudo grep 'Password:' "${SCRIPTPATH}/config/initial_root_
 # Kill the runner registeration process if runner_registeration takes time or selenium fails.
 kill "${RUNNER_REGISTER_PID}" || true
 
-rm -rf "${SCRIPTPATH}/config" "${SCRIPTPATH}/data" "${SCRIPTPATH}/logs" "${SCRIPTPATH}/id_rsa"*
+sudo rm -rf "${SCRIPTPATH}/config" "${SCRIPTPATH}/data" "${SCRIPTPATH}/logs" "${SCRIPTPATH}/id_rsa"*
 

@@ -65,7 +65,7 @@ function test_rabbitmq_docker_compose() {
         --uri amqp://"${DEFAULT_RABBITMQ_USER}":"${RABBITMQ_PASSWORD}"@"${RABBITMQ_SERVER}" \
         --time 10
 
-    sleep 15
+    sleep 30
     # check for message from perf test
     out=$(docker logs "${PERF_POD}" | grep -ic 'consumer latency')
 

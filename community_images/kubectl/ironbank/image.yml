@@ -1,0 +1,34 @@
+name: kubectl-ib
+official_name: Kubectl IronBank
+official_website: https://kubernetes.io/docs/reference/kubectl/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/kubernetes/1.27/kubectl
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fkubernetes%2F1.27%2Fkubectl
+source_image_readme: https://repo1.dso.mil/dsop/opensource/kubernetes/1.27/kubectl/-/blob/development/README.md
+rf_docker_link: rapidfort/kubectl-ib
+image_workflow_name: kubectl_ironbank
+github_location: kubectl/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes%2F1.27%2Fkubectl
+usage_instructions: |
+  $ docker run --rm --name kubectl -v /path/to/your/kube/config:/root/.kube/config rapidfort/kubectl-ib:latest [COMMAND]
+what_is_text: |
+  Kubectl is the Kubernetes command line interface. It allows to manage Kubernetes cluster by providing a wide set of commands that allows to communicate with the Kubernetes API in a friendly way.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/kubernetes/1.27/kubectl/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/kubernetes/kubectl:
+      input_base_tag: "v1.27."
+      output_repo: kubectl-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      kubectl-ib:
+        repository: "KUBECTL_IMAGE_REPOSITORY"
+        tag: "KUBECTL_IMAGE_TAG"

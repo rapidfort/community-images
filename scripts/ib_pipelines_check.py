@@ -221,11 +221,13 @@ class PipelineChecker:
             self.process_pipeline(link)
         self.print_summary()
 
-        # Exit with status code 1 if there are failed pipelines or pipelines with 'not found' rapidfort-scan jobs
+        # Check if there are failed pipelines or pipelines with 'not found' rapidfort-scan jobs
         if self.failed_pipelines or self.not_found_pipelines:
-            sys.exit(1)
+            print("::set-output name=workflow-status::failed")
+            sys.exit(1)  # Exit with non-zero status
         else:
-            sys.exit(0)
+            print("::set-output name=workflow-status::passed")
+            sys.exit(0)  # Exit with zero status
 
 if __name__ == "__main__":
     checker = PipelineChecker()

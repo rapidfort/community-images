@@ -63,7 +63,7 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-$ docker run --rm --name kubectl -v /path/to/your/kube/config:/.kube/config rapidfort/kubectl-ib:latest [COMMAND]
+$ docker run --rm --name kubectl -v /path/to/your/kube/config:/root/.kube/config rapidfort/kubectl-ib:latest [COMMAND]
 
 ```
 

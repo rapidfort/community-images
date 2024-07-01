@@ -1,0 +1,33 @@
+name: k8s-sidecar-ib
+official_name: k8s-sidecar ironbank
+official_website: https://kiwigrid.com/en/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/kiwigrid/k8s-sidecar
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/kiwigrid%2Fk8s-sidecar
+source_image_readme: https://repo1.dso.mil/dsop/kiwigrid/k8s-sidecar/-/blob/development/README.md
+rf_docker_link: rapidfort/k8s-sidecar-ib
+image_workflow_name: k8s-sidecar_ironbank
+github_location: k8s-sidecar/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fkiwigrid%2Fk8s-sidecar
+usage_instructions: |
+  Example for a simple deployment can be found in https://github.com/kiwigrid/k8s-sidecar/blob/master/examples/example.yaml.
+what_is_text: |
+  This is a docker container intended to run inside a kubernetes cluster to collect config maps with a specified label and store the included files in an local folder.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - kiwigrid/k8s-sidecar:
+      input_base_tag: "1.27."
+      output_repo: k8s-sidecar-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      k8s-sidecar-ib:
+        repository: "K8S_SIDECAR_IMAGE_REPOSITORY"
+        tag: "K8S_SIDECAR_IMAGE_TAG"

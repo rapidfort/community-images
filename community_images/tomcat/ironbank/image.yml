@@ -25,6 +25,12 @@ repo_sets:
   - opensource/apache/tomcat9-openjdk11:
       input_base_tag: "9.0."
       output_repo: tomcat9-openjdk11-ib
+  - opensource/apache/tomcat10-openjdk17:
+      input_base_tag: "10.1."
+      output_repo: tomcat10-openjdk17-ib
+  - opensource/apache/tomcat-openjdk11:
+      input_base_tag: "11.0."
+      output_repo: tomcat-openjdk11-ib
 needs_common_commands: False
 runtimes:
   - type: k8s
@@ -37,6 +43,14 @@ runtimes:
     wait_time_sec: 30
     image_keys:
       tomcat9-openjdk11-ib:
+        registry: "image.registry"
+        repository: "image.repository"
+        tag: "image.tag"
+      tomcat10-openjdk17-ib:
+        registry: "image.registry"
+        repository: "image.repository"
+        tag: "image.tag"
+      tomcat-openjdk11-ib:
         registry: "image.registry"
         repository: "image.repository"
         tag: "image.tag"
@@ -54,6 +68,14 @@ runtimes:
     wait_time_sec: 30
     image_keys:
       tomcat9-openjdk11-ib:
+        registry: "image.registry"
+        repository: "image.repository"
+        tag: "image.tag"
+      tomcat10-openjdk17-ib:
+        registry: "image.registry"
+        repository: "image.repository"
+        tag: "image.tag"
+      tomcat-openjdk11-ib:
         registry: "image.registry"
         repository: "image.repository"
         tag: "image.tag"

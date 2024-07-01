@@ -18,14 +18,25 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 # get pod name
 TOMCAT_SERVER=localhost
 
-kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
-	-- curl "https://tomcat.apache.org/tomcat-10.0-doc/appdev/sample/sample.war" --output "webapps/sample.war"
+DIR_FLAG=$(kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
+  -- ls | grep "webapps" || echo "Not found")
+
+DIR_PREPEND="."
+if [[ ${DIR_FLAG} == 'Not found' ]]; then
+  DIR_PREPEND=".."
+fi
 
 kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
-  -- bash -c 'echo -e "\n\n\n\n\n\nyes\n" | keytool -genkey -alias localhost-rsa -keyalg RSA -keystore conf/localhost-rsa.jks -storepass changeit -validity 3650 -keypass changeit'
+	-- curl "https://tomcat.apache.org/tomcat-10.0-doc/appdev/sample/sample.war" --output "${DIR_PREPEND}/webapps/sample.war"
+
+# kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
+# 	-- curl "https://tomcat.apache.org/tomcat-10.0-doc/appdev/sample/sample.war" --output "webapps/sample.war"
+
+kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
+  -- bash -c 'echo -e "\n\n\n\n\n\nyes\n" | keytool -genkey -alias localhost-rsa -keyalg RSA -keystore '"${DIR_PREPEND}/conf/localhost-rsa.jks"' -storepass changeit -validity 3650 -keypass changeit'
 
 kubectl -n "${NAMESPACE}" exec -i "${RELEASE_NAME}" \
-  -- bash -c 'cat > conf/server.xml' < "${SCRIPTPATH}/server.xml"
+  -- bash -c "cat > ${DIR_PREPEND}/conf/server.xml" < "${SCRIPTPATH}/server.xml"
 
 kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
 	-- catalina.sh run &

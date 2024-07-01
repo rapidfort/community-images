@@ -15,8 +15,16 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 # get pod name
 TOMCAT_SERVER=localhost
 
+DIR_FLAG=$(kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
+  -- ls | grep "webapps" || echo "Not found")
+
+WEBAPP_DIR_PREPEND="."
+if [[ ${DIR_FLAG} == 'Not found' ]]; then
+  WEBAPP_DIR_PREPEND=".."
+fi
+
 kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
-	-- curl "https://tomcat.apache.org/tomcat-10.0-doc/appdev/sample/sample.war" --output "webapps/sample.war"
+	-- curl "https://tomcat.apache.org/tomcat-10.0-doc/appdev/sample/sample.war" --output "${WEBAPP_DIR_PREPEND}/webapps/sample.war"
 
 kubectl -n "${NAMESPACE}" exec "${RELEASE_NAME}" \
 	-- catalina.sh run &

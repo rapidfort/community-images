@@ -17,6 +17,7 @@ echo "Json params for docker compose coverage = $JSON"
 NAMESPACE_NAME=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 GITLAB_RUNNER_CONTAINER_NAME="${NAMESPACE_NAME}-gitlab-runner-1"
+DEBIAN_SSH_CONTAINER_NAME="${NAMESPACE_NAME}-debian-ssh-1"
 
 # Wait until GitLab WebUI is ready.
 sleep 60
@@ -28,6 +29,10 @@ do
 done
 
 echo "$(date +'%H:%M:%S') | Gitlab web server up and ready"
+
+# Append id_rsa.pub generated to authorized_keys in debian-ssh docker container
+docker exec -i "${DEBIAN_SSH_CONTAINER_NAME}" \
+  bash -c "cat >> /root/.ssh/authorized_keys" < "${SCRIPTPATH}/id_rsa.pub"
 
 # Populate `known_hosts` file
 docker exec -i "${GITLAB_RUNNER_CONTAINER_NAME}" \
@@ -76,10 +81,13 @@ trap 'kill ${RUNNER_REGISTER_PID}' SIGTERM
 
 # Get gitlab port and initial login passowrd to access web interface
 PORT=61780
-GITLAB_ROOT_PASSWORD=$(grep 'Password:' "${SCRIPTPATH}/config/initial_root_password" | awk '{print $2}')
+GITLAB_ROOT_PASSWORD=$(sudo grep 'Password:' "${SCRIPTPATH}/config/initial_root_password" | awk '{print $2}')
 
 # Initiating Selenium tests
 ("${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${GITLAB_ROOT_PASSWORD}" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1 ) >&2
 
 # Kill the runner registeration process if runner_registeration takes time or selenium fails.
 kill "${RUNNER_REGISTER_PID}" || true
+
+sudo rm -rf "${SCRIPTPATH}/config" "${SCRIPTPATH}/data" "${SCRIPTPATH}/logs" "${SCRIPTPATH}/id_rsa"*
+

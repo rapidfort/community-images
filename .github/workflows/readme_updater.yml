@@ -485,6 +485,15 @@ jobs:
           repository: rapidfort/git-lfs-ib
           readme-filepath: ./community_images/git-lfs/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Git-lfs Iron-Bank
+      - name: Docker Hub Description Gitlab Runner Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-runner-ib
+          readme-filepath: ./community_images/gitlab-runner/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab Runner Iron Bank
       - name: Docker Hub Description Grafana Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

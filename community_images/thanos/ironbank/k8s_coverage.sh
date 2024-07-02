@@ -11,3 +11,5 @@ echo "Json params for k8s coverage = $JSON"
 
 # NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 # RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
+
+echo "Hey! Coverage Script is Running!"

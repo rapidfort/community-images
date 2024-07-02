@@ -1,12 +1,14 @@
-image:
-  repository: kphull/thanos
-  tag: latest-rfstub
+# image:
+#   repository: kphull/thanos
+#   tag: latest-rfstub
 
+image:
+  pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
 objstoreConfig: |-
   type: FILESYSTEM
   config:
     directory: /data
-
 query:
   dnsDiscovery:
     enabled: false
@@ -15,49 +17,45 @@ query:
     - dnssrv+_grpc._tcp.thanos-ruler.thanos.svc.cluster.local
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsGroup: 1001
+    runAsUser: 0
+    runAsGroup: 0
     runAsNonRoot: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
-
 queryFrontend:
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsGroup: 1001
+    runAsUser: 0
+    runAsGroup: 0
     runAsNonRoot: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
-
 bucketweb:
   enabled: true
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsGroup: 1001
+    runAsUser: 0
+    runAsGroup: 0
     runAsNonRoot: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
-
 compactor:
   enabled: true
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsGroup: 1001
+    runAsUser: 0
+    runAsGroup: 0
     runAsNonRoot: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
-
 storegateway:
   enabled: true
   objstoreConfig: |-
@@ -66,14 +64,13 @@ storegateway:
       directory: /data
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsGroup: 1001
+    runAsUser: 0
+    runAsGroup: 0
     runAsNonRoot: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
-
 ruler:
   enabled: true
   alertmanagers:
@@ -83,25 +80,27 @@ ruler:
       - name: "metamonitoring"
         rules:
           - alert: "PrometheusDown"
-            expr: absent(up{prometheus="thanos/prometheus"})
+            expr: absent(up{prometheus="*/prometheus"})
+            labels:
+              severity: "critical"
+            annotations:
+              summary: "Prometheus is down"
+              description: "Prometheus server is not reachable."
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsGroup: 1001
+    runAsUser: 0
+    runAsGroup: 0
     runAsNonRoot: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
-
 metrics:
   enabled: true
   serviceMonitor:
     enabled: false
-
 minio:
   enabled: false
-
 persistence:
   enabled: true
   storageClass: "standard"

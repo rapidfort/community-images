@@ -24,7 +24,6 @@ services:
   elastic-agent:
     image: ${ELASTIC_AGENT_IMAGE_REPOSITORY}:${ELASTIC_AGENT_IMAGE_TAG}
     user: root
-    entrypoint: /bin/bash -c "sleep 20 && elastic-agent run"
     cap_add:
       - SYS_PTRACE
     environment:

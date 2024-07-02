@@ -287,6 +287,15 @@ jobs:
           repository: rapidfort/curl
           readme-filepath: ./community_images/curl/curlimages/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Curl
+      - name: Docker Hub Description elastic-agent Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/elastic-agent-ib
+          readme-filepath: ./community_images/elastic-agent/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for elastic-agent Iron Bank
       - name: Docker Hub Description ElasticSearch
         if: always()
         uses: peter-evans/dockerhub-description@v3

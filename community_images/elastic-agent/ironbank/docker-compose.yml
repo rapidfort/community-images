@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.14.1
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false # Disable security for simplicity
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 9200:9200
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+    
+  kibana:
+    image: kibana:8.14.1
+    ports:
+      - 5601:5601
+    networks:
+      - elastic
+
+  elastic-agent:
+    image: ${ELASTIC_AGENT_IMAGE_REPOSITORY}:${ELASTIC_AGENT_IMAGE_TAG}
+    user: root
+    entrypoint: /bin/bash -c "sleep 20 && elastic-agent run"
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - OUTPUT_ELASTICSEARCH_HOSTS=http://elasticsearch:9200  # Directly send data to Elasticsearch
+      - FLEET_INSECURE=1  # Allow insecure communication
+      # - FLEET_SERVER_ENABLE=true 
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # Allow Elastic Agent to monitor Docker containers
+      - ./commands.sh:/tmp/commands.sh
+      - ./elastic-agent.yml:/usr/share/elastic-agent/elastic-agent.yml
+    networks:
+      - elastic
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge

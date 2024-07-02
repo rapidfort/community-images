@@ -1,0 +1,32 @@
+name: elastic-agent-ib
+official_name: elastic-agent Iron Bank
+official_website: https://www.elastic.co/elastic-agent
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/elastic/beats/elastic-agent
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/elastic%2Fbeats%2Felastic-agent
+source_image_readme: https://repo1.dso.mil/dsop/elastic/beats/elastic-agent/-/blob/development/README.md
+rf_docker_link: rapidfort/elastic-agent-ib
+github_location: elastic-agent/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Felastic-agent
+usage_instructions: |
+  # after running elasticsearch and kibna instance Run the elastic-agent container:
+  $ docker run -d --name elastic-agent --net=elastic_network -e OUTPUT_ELASTICSEARCH_HOSTS=http://elasticsearch:9200 -e FLEET_INSECURE=1 rapidfort/elastic-agent-ib
+what_is_text: "Elastic-agent is a single, unified way to add monitoring for logs, metrics, and other types of data to each host. A single agent makes it easier and faster to deploy monitoring across your infrastructure. \n"
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - elastic/beats/elastic-agent:
+      input_base_tag: "8.14."
+      output_repo: elastic-agent-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 60
+    image_keys:
+      elastic-agent-ib:
+        repository: "ELASTIC_AGENT_IMAGE_REPOSITORY"
+        tag: "ELASTIC_AGENT_IMAGE_TAG"

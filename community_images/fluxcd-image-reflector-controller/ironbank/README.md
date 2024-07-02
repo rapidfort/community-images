@@ -1,4 +1,4 @@
-<a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=rapidfort_logo">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -9,9 +9,10 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-# RapidFort hardened image for Fluxcd image-reflector-controller Iron Bank
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
+<b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
-**<span style="color:red;">As of 7/2024 community-images will be gated. Please register for free at</span> [<span style="color:blue;">www.rapidfort.com</span>](https://www.rapidfort.com/get-a-demo) <span style="color:red;">to access these images</span>**
+# RapidFort hardened image for Fluxcd image-reflector-controller Iron Bank
 
 
 RapidFort has optimized and hardened this Fluxcd image-reflector-controller Iron Bank container image. This container is free to use and has no license limitations.
@@ -32,7 +33,7 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=get_full_report_button">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
@@ -126,11 +127,11 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 
 [rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=view_report_button
-[rf-view-report-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=view_report_link
-[rf-image-metrics-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://frontrow.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=view_report_button
+[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ffluxcd%2Fimage-reflector-controller?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=fluxcd-image-reflector-controller-ib&utm_content=image_cve_reduction_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/fluxcd-image-reflector-controller-ib?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/fluxcd-image-reflector-controller-ib?logo=docker&logoColor=white

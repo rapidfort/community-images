@@ -30,5 +30,5 @@ runtimes:
     compose_file: docker-compose.yml
     image_keys:
       nifi-registry-ib:
-        repository: "nifi-registry_REGISTRY_IMAGE_REPOSITORY"
-        tag: "nifi-registry_REGISTRY_IMAGE_TAG"
+        repository: "NIFI_REGISTRY_IMAGE_REPOSITORY"
+        tag: "NIFI_REGISTRY_IMAGE_TAG"

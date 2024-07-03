@@ -33,6 +33,7 @@ curl -s http://localhost:9093/api/v2/alerts
 curl -s http://localhost:9093/api/v2/alerts | jq -r '.[].labels.alertname'
 
 #silences
+# shellcheck disable=SC2046
 curl -XPOST -H "Content-Type: application/json" -d '{
   "matchers": [
     {
@@ -41,8 +42,8 @@ curl -XPOST -H "Content-Type: application/json" -d '{
       "isRegex": false
     }
   ],
-  "startsAt": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
-  "endsAt": "$(date -u -d '+5 minutes' +"%Y-%m-%dT%H:%M:%SZ")",
+  "startsAt": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'",
+  "endsAt": "'$(date -u -d '+5 minutes' +"%Y-%m-%dT%H:%M:%SZ")'",
   "comment": "Silencing TestAlert2 for testing purposes",
   "createdBy": "test_script"
 }' http://localhost:9093/api/v2/silences

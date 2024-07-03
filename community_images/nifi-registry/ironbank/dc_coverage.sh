@@ -31,7 +31,7 @@ curl -s -X POST \
   -d '{
     "name": "My Flow",
     "description": "Description of my flow",
-    "bucketIdentifier": "'${identifier}'",
+    "bucketIdentifier": "'"${identifier}"'",
     "flow": {
         "processGroups": [
             {
@@ -41,7 +41,7 @@ curl -s -X POST \
             }
         ]
     }
-}' "http://localhost:18080/nifi-registry-api/buckets/"${identifier}"/flows"
+}' "http://localhost:18080/nifi-registry-api/buckets/""${identifier}""/flows"
 
 curl -s http://localhost:18080/nifi-registry-api/buckets
 curl -s http://localhost:18080/nifi-registry-api/buckets/"${identifier}"/flows

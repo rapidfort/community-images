@@ -46,6 +46,9 @@ couchdb-ib:
 elasticsearch-exporter-ib:
   search_tags:
     - 1.7.
+elasticsearch-ib:
+  search_tags:
+    - 8.14.
 etcd-ib:
   search_tags:
     - v3.5.
@@ -94,6 +97,9 @@ haproxy-ib:
 heartbeat-ib:
   search_tags:
     - 8.14.
+influxdb-ib-bitnami:
+  search_tags:
+    - 2.7.
 k8s-sidecar-ib:
   search_tags:
     - 1.27.
@@ -144,7 +150,7 @@ moodle-ib:
     - 4.4.
 mysql-ib:
   search_tags:
-    - 8.0.
+    - 8.4.
 nats-ib:
   search_tags:
     - v2.10.

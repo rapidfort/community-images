@@ -18,8 +18,7 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${PROJECT_NAME}"-nifi-registry-1
 echo "${CONTAINER_NAME}"
-sleep 10
-curl http://localhost:18080/nifi-registry
+sleep 60
 # bucket creation
 curl -s -X POST -H "Content-Type: application/json" -d '{"name":"test-bucket"}' http://localhost:18080/nifi-registry-api/buckets > /dev/null
 

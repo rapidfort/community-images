@@ -25,6 +25,9 @@ repo_sets:
   - opensource/postgres/postgresql12:
       input_base_tag: "12."
       output_repo: postgresql12-ib
+  - opensource/postgres/postgresql:
+      input_base_tag: "15."
+      output_repo: postgresql15-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
@@ -33,7 +36,13 @@ runtimes:
       postgresql12-ib:
         repository: "PG_IMAGE_REPOSITORY"
         tag: "PG_IMAGE_TAG"
+      postgresql15-ib:
+        repository: "PG_IMAGE_REPOSITORY"
+        tag: "PG_IMAGE_TAG"
   - type: docker
     postgresql12-ib:
+      environment:
+        POSTGRES_PASSWORD: PgPwd
+    postgresql15-ib:
       environment:
         POSTGRES_PASSWORD: PgPwd

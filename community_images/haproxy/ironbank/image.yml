@@ -24,6 +24,9 @@ repo_sets:
   - opensource/haproxy/haproxy24:
       input_base_tag: "2.4."
       output_repo: haproxy24-ib
+  - opensource/haproxy/haproxy22:
+      input_base_tag: "v2.2."
+      output_repo: haproxy22-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
@@ -33,6 +36,9 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
+      haproxy22-ib:
+        repository: "HAPROXY_IMAGE_REPOSITORY"
+        tag: "HAPROXY_IMAGE_TAG"
       haproxy24-ib:
         repository: "HAPROXY_IMAGE_REPOSITORY"
         tag: "HAPROXY_IMAGE_TAG"
@@ -44,6 +50,9 @@ runtimes:
       generate: true
       out_dir: certs
     image_keys:
+      haproxy22-ib:
+        repository: "HAPROXY_IMAGE_REPOSITORY"
+        tag: "HAPROXY_IMAGE_TAG"
       haproxy24-ib:
         repository: "HAPROXY_IMAGE_REPOSITORY"
         tag: "HAPROXY_IMAGE_TAG"

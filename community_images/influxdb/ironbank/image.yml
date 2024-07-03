@@ -1,0 +1,46 @@
+name: influxdb-ib-bitnami
+official_name: InfluxDB Iron Bank (Bitnami)
+official_website: https://www.influxdata.com/products/influxdb-overview
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/bitnami/influxdb
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Finfluxdb
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/influxdb/-/blob/development/README.md
+rf_docker_link: rapidfort/influxdb-ib-bitnami
+github_location: elasticsearch/ironbank-bitnami
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Finfluxdb
+usage_instructions: |
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install influxdb, just replace repository with RapidFort registry
+  $ helm install my-influxdb bitnami/influxdb --set image.repository=rapidfort/influxdb-ib-bitnami
+what_is_text: |
+  InfluxDB is a time series database built from the ground up to handle high write and query loads. InfluxDB is meant to be used as a backing store for any use case involving large amounts of timestamped data, including DevOps monitoring, application metrics, IoT sensor data, and real-time analytics.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - bitnami/influxdb:
+      input_base_tag: "2.7."
+      output_repo: influxdb-ib-bitnami
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    imagepullsecret:
+      filepath: /tmp/docker/config.json
+      create: True
+      name: rf-regcred
+    preserve_namespace: True
+    use_helm: False
+    kubectl_additional_params:
+      "env INFLUXDB_ADMIN_USER_PASSWORD": "mypasswordthatislong"
+      "env INFLUXDB_ADMIN_USER_TOKEN": "mytokenislongtoo"
+    image_keys:
+      influxdb-ib-bitnami:
+        registry: "image.registry"
+        repository: "image.repository"
+        tag: "image.tag"
+    readiness_wait_pod_name_suffix:
+      - ""
+

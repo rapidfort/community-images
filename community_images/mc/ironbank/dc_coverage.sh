@@ -12,9 +12,6 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME=${PROJECT_NAME}-minio-client-1
 
-# shellcheck disable=SC1091
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
 sleep 10
 
 # docker exec "${CONTAINER_NAME}" mc alias set myminio http://mc-minio-1:9000 minio minio123

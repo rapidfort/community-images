@@ -1,0 +1,39 @@
+name: gitlab-sidekiq-ib
+############################
+# readiness_check_script: gitlab_readiness_check.sh ############
+############################
+official_name: Gitlab Sidekiq Iron Bank
+official_website: https://docs.gitlab.com/ee/development/sidekiq
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/gitlab-sidekiq
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fgitlab-sidekiq
+source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab/gitlab-sidekiq/-/blob/development/README.md
+rf_docker_link: rapidfort/gitlab-sidekiq-ib
+image_workflow_name: gitlab_sidekiq_ironbank
+github_location: gitlab-sidekiq/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fgitlab-sidekiq
+usage_instructions: |
+  # Using docker run
+  $ docker run -d --name=gitlab-runner rapidfort/gitlab-runner-ib
+what_is_text: |
+  The Gitlab-sidekiq is responsible for handling background jobs and asynchronous processing within the GitLab techstack, ensuring efficient execution of tasks such as email notifications, webhooks, and CI/CD jobs.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - gitlab/gitlab/gitlab-sidekiq:
+      input_base_tag: "v17.0."
+      output_repo: gitlab-sidekiq-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    before_script: dc_before.sh
+    readiness_check_script: gitlab_readiness_check.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      gitlab-runner-ib:
+        repository: "SIDEKIQ_IMAGE_REPOSITORY"
+        tag: "SIDEKIQ_IMAGE_TAG"

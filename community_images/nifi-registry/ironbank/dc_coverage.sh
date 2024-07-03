@@ -17,7 +17,7 @@ echo "Json params for docker compose coverage = $JSON"
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 
 CONTAINER_NAME="${PROJECT_NAME}"-nifi-registry-1
-
+echo "${CONTAINER_NAME}"
 sleep 10
 curl http://localhost:18080/nifi-registry
 # bucket creation
@@ -41,11 +41,11 @@ curl -s -X POST \
             }
         ]
     }
-}' "http://localhost:18080/nifi-registry-api/buckets/${identifier}/flows"
+}' "http://localhost:18080/nifi-registry-api/buckets/"${identifier}"/flows"
 
 curl -s http://localhost:18080/nifi-registry-api/buckets
-curl -s http://localhost:18080/nifi-registry-api/buckets/${identifier}/flows
+curl -s http://localhost:18080/nifi-registry-api/buckets/"${identifier}"/flows
 
 curl -s http://localhost:18080/nifi-registry-api/bundles
 #deleting bucket
-curl -X DELETE http://localhost:18080/nifi-registry-api/buckets/${identifier}
+curl -X DELETE http://localhost:18080/nifi-registry-api/buckets/"${identifier}"

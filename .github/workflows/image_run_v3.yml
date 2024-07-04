@@ -6857,6 +6857,8 @@ jobs:
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run yq/ironbank --publish
+
+
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
@@ -6909,6 +6911,8 @@ jobs:
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run zeek/ironbank --publish
+
+
       - name: Report pulls
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}

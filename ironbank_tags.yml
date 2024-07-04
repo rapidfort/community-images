@@ -79,6 +79,9 @@ fluxcd-notification-controller-ib:
 fluxcd-source-controller-ib:
   search_tags:
     - v1.3.
+gatekeeper-ib:
+  search_tags:
+    - v3.16.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
@@ -150,7 +153,7 @@ moodle-ib:
     - 4.4.
 mysql-ib:
   search_tags:
-    - 8.0.
+    - 8.4.
 nats-ib:
   search_tags:
     - v2.10.
@@ -193,6 +196,9 @@ redis-ib:
 shellcheck-ib:
   search_tags:
     - v0.10.
+sqlite-ib:
+  search_tags:
+    - v3.34.
 terraform-ib:
   search_tags:
     - 1.7.
@@ -220,6 +226,12 @@ velero-ib:
 wordpress-ib:
   search_tags:
     - 6.5.
+yq-ib:
+  search_tags:
+    - 4.44.
+zeek-ib:
+  search_tags:
+    - 6.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

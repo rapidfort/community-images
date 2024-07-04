@@ -11,7 +11,6 @@ report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil
 usage_instructions: |
   # Start the Gateway stack using
   $ docker-compose up
-
 what_is_text: |
   Kong or Kong API Gateway is a cloud-native, platform-agnostic, scalable API Gateway distinguished for its high performance and extensibility via plugins.
 
@@ -23,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - kong/kong/kong:
-      input_base_tag: "3.5."
+      input_base_tag: "3.7."
       output_repo: kong-ib
 runtimes:
   - type: docker_compose

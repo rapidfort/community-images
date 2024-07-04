@@ -215,6 +215,15 @@ jobs:
           repository: rapidfort/blackbox-exporter-ib
           readme-filepath: ./community_images/blackbox-exporter/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Blackbox Exporter Iron Bank
+      - name: Docker Hub Description Cassandra Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/cassandra-ib
+          readme-filepath: ./community_images/chart-testing/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Cassandra Iron Bank
       - name: Docker Hub Description Cassandra Official
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -591,7 +600,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/influxdb-ib-bitnami
-          readme-filepath: ./community_images/elasticsearch/ironbank-bitnami/README.md.dockerhub
+          readme-filepath: ./community_images/influxdb/ironbank-bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for InfluxDB Iron Bank (Bitnami)
       - name: Docker Hub Description k8s-sidecar ironbank
         if: always()
@@ -665,6 +674,15 @@ jobs:
           repository: rapidfort/kong
           readme-filepath: ./community_images/kong/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Kong
+      - name: Docker Hub Description Kong Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kong-ib
+          readme-filepath: ./community_images/kong/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kong Iron Bank
       - name: Docker Hub Description Kubectl IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -683,6 +701,15 @@ jobs:
           repository: rapidfort/logstash-ib
           readme-filepath: ./community_images/logstash/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Logstash Ironbank
+      - name: Docker Hub Description Loki Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/loki-ib
+          readme-filepath: ./community_images/loki/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Loki Iron Bank
       - name: Docker Hub Description MariaDB
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1061,6 +1088,15 @@ jobs:
           repository: rapidfort/prometheus-official
           readme-filepath: ./community_images/prometheus/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Prometheus Official
+      - name: Docker Hub Description Promtail Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/promtail-ib
+          readme-filepath: ./community_images/promtail/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Promtail Iron Bank
       - name: Docker Hub Description RabbitMQ
         if: always()
         uses: peter-evans/dockerhub-description@v3

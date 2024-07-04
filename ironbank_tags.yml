@@ -37,6 +37,9 @@ bats-ib:
 blackbox-exporter-ib:
   search_tags:
     - v0.25.
+cassandra-ib:
+  search_tags:
+    - 4.1.
 chart-testing-ib:
   search_tags:
     - v3.11.
@@ -121,12 +124,18 @@ kaniko-ib:
 kibana-ib:
   search_tags:
     - 8.14.
+kong-ib:
+  search_tags:
+    - 3.7.
 kubectl-ib:
   search_tags:
     - v1.27.
 logstash-ib:
   search_tags:
     - 8.14.
+loki-ib:
+  search_tags:
+    - 3.1.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -196,6 +205,9 @@ postgresql-ib:
 prometheus-ib:
   search_tags:
     - v2.53.
+promtail-ib:
+  search_tags:
+    - v3.1.
 redis-exporter-ib:
   search_tags:
     - v1.61.

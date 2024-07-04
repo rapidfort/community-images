@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/grafana/promtail:
-      input_base_tag: "3.0."
+      input_base_tag: "v3.1."
       output_repo: promtail-ib
 runtimes:
   - type: docker_compose
@@ -35,4 +35,3 @@ runtimes:
       promtail-ib:
         repository: "PROMTAIL_IMAGE_REPOSITORY"
         tag: "PROMTAIL_IMAGE_TAG"
-

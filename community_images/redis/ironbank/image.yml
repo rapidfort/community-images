@@ -25,9 +25,6 @@ repo_sets:
   - opensource/redis/redis6:
       input_base_tag: "6.2."
       output_repo: redis6-ib
-  - opensource/redis/redis6-alpine:
-      input_base_tag: "6.2."
-      output_repo: redis6-alpine-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

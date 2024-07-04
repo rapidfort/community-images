@@ -1079,6 +1079,15 @@ jobs:
           repository: rapidfort/redis-official
           readme-filepath: ./community_images/redis/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ Official
+      - name: Docker Hub Description Sqlite Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/sqlite-ib
+          readme-filepath: ./community_images/sqlite/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Sqlite Iron Bank
       - name: Docker Hub Description Telegraf
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1205,6 +1214,15 @@ jobs:
           repository: rapidfort/yourls
           readme-filepath: ./community_images/yourls/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for YOURLS
+      - name: Docker Hub Description YQ Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/yq-ib
+          readme-filepath: ./community_images/yq/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for YQ Iron Bank
       - name: Docker Hub Description Zeek Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

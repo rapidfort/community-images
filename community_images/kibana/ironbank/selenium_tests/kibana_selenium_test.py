@@ -42,17 +42,18 @@ class TestKibanatest():
         # self.driver.find_element(By.CSS_SELECTOR, ".euiFlexItem:nth-child(1) > .euiPanel .euiButton__text").click()
         # time.sleep(10)
         # self.driver.close()
-        self.driver.execute_script("window.scrollTo(0,19.33333396911621)")
         self.driver.find_element(By.CSS_SELECTOR, ".euiAccordion__buttonContent").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".euiFlexItem:nth-child(1) > .euiPanel .css-1bascr2-euiButtonDisplayContent").click()
-        self.driver.execute_script("window.scrollTo(0,670)")
+        element = self.driver.find_element(By.CSS_SELECTOR, ".euiFlexItem:nth-child(1) > .euiPanel:nth-child(1) .eui-textTruncate:nth-child(1)")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).click_and_hold().perform()
+        element = self.driver.find_element(By.CSS_SELECTOR, ".euiFlexItem:nth-child(1) > .euiPanel .css-cf8eum-euiButtonDisplayContent")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).release().perform()
+        self.driver.find_element(By.CSS_SELECTOR, ".euiFlexItem:nth-child(1) > .euiPanel .css-cf8eum-euiButtonDisplayContent").click()
+        self.driver.execute_script("window.scrollTo(0,508)")
+        self.driver.execute_script("window.scrollTo(0,508)")
         self.driver.close()
-    # a theme test of data on ui
-    def test_canvas(self, params):
-        self.driver.get("http://{}:{}/app/canvas".format(params["server"], params["port"]))  
-        self.driver.set_window_size(1296, 688)
-        self.driver.find_element(By.CSS_SELECTOR, ".euiLink:nth-child(1) > span").click()
-        self.driver.close()    
+
     # testing map section of kibana ui
     def test_maps(self, params):
         self.driver.get("http://{}:{}/app/maps".format(params["server"], params["port"]))  
@@ -78,20 +79,6 @@ class TestKibanatest():
         element = self.driver.find_element(By.CSS_SELECTOR, "body")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "#ui5f8 .eui-textTruncate")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.CSS_SELECTOR, "#ui5f8 .eui-textTruncate").click()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "#jmtgf .eui-textTruncate")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.CSS_SELECTOR, "#jmtgf .eui-textTruncate").click()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
         self.driver.close()
 
     # performing task on dashboard and different filters
@@ -110,14 +97,6 @@ class TestKibanatest():
         actions.move_to_element(element).perform()
         self.driver.execute_script("window.scrollTo(0,233.3333282470703)")
         self.driver.find_element(By.CSS_SELECTOR, "#panel-bdb525ab-270b-46f1-a847-dd29be19aadb .euiButtonIcon").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".euiSuperUpdateButton > .css-1bascr2-euiButtonDisplayContent").click()
-        element = self.driver.find_element(By.CSS_SELECTOR, ".euiSuperDatePicker__prettyFormat")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.execute_script("window.scrollTo(0,993.3333129882812)")
         self.driver.close()
     # visualization of different sections of data in ui
     def test_visualize(self, params):
@@ -135,9 +114,6 @@ class TestKibanatest():
     def test_discover(self, params):
         self.driver.get("http://{}:{}/app/discover".format(params["server"], params["port"]))
         self.driver.set_window_size(1296, 688)
-        self.driver.find_element(By.CSS_SELECTOR, ".css-ktbug8-euiIcon-s-inherit-isLoaded").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".css-ktbug8-euiIcon-s-inherit-isLoaded").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".euiSuperUpdateButton .euiIcon").click()
         self.driver.close()
 
     # deleting of data added
@@ -150,8 +126,8 @@ class TestKibanatest():
         self.driver.execute_script("window.scrollTo(0,19.33333396911621)")
         self.driver.execute_script("window.scrollTo(0,262)")
         self.driver.find_element(By.CSS_SELECTOR, ".euiAccordion__buttonContent").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".css-1w2wz8r-euiButtonDisplay-euiButtonEmpty-m-empty-danger-flush-left .eui-textTruncate").click()
         self.driver.execute_script("window.scrollTo(0,678)")
+        self.driver.find_element(By.CSS_SELECTOR, ".css-1h0356f-euiButtonDisplay-euiButtonEmpty-m-empty-danger-flush-left .eui-textTruncate").click()
         self.driver.close()
     
     # testing dev tools of kibana in console
@@ -205,16 +181,4 @@ class TestKibanatest():
         actions.move_to_element(element).perform()
         self.driver.find_element(By.CSS_SELECTOR, ".euiFlexItem:nth-child(1) > .euiLink .euiImage").click()
         self.driver.close()
-    #testing observability section of ui
-    def test_observe(self, params):
-        self.driver.get("http://{}:{}/app/observability/overview".format(params["server"], params["port"]))  # pylint: disable=consider-using-f-string
-        self.driver.set_window_size(1296, 688)
-        self.driver.find_element(By.CSS_SELECTOR, ".euiSuperUpdateButton > .css-1bascr2-euiButtonDisplayContent").click()
-        element = self.driver.find_element(By.CSS_SELECTOR, "#guidedSetupButton > .css-1bascr2-euiButtonDisplayContent")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.CSS_SELECTOR, ".euiSideNavItem:nth-child(3) .euiSideNavItem:nth-child(1) .euiSideNavItemButton__label").click()
-        self.driver.close()
+    

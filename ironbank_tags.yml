@@ -10,6 +10,9 @@ airflow-ib-bitnami:
 airflow-ib:
   search_tags:
     - 2.8.
+alertmanager-ib:
+  search_tags:
+    - v0.27.
 ansible-lint-ib:
   search_tags:
     - 24.6.
@@ -55,6 +58,9 @@ filebeat-ib:
 fluent-bit-ib:
   search_tags:
     - 3.0.
+fluentd-elasticsearch-ib:
+  search_tags:
+    - 5.4.
 fluentd-ib:
   search_tags:
     - 1.17.
@@ -76,6 +82,9 @@ fluxcd-notification-controller-ib:
 fluxcd-source-controller-ib:
   search_tags:
     - v1.3.
+gatekeeper-ib:
+  search_tags:
+    - v3.16.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
@@ -118,6 +127,9 @@ logstash-ib:
 mariadb-ib:
   search_tags:
     - 10.6.
+mc-ib:
+  search_tags:
+    - RELEASE.
 memcached-ib:
   search_tags:
     - 1.6.
@@ -151,12 +163,18 @@ nats-ib:
 nginx-ib:
   search_tags:
     - 1.26.
+nifi-registry-ib:
+  search_tags:
+    - 1.26.
 nifi-ib:
   search_tags:
     - 1.26.
 node-exporter-ib:
   search_tags:
     - v1.8.
+openldap-ib:
+  search_tags:
+    - 2.6.
 packetbeat-ib:
   search_tags:
     - 8.14.
@@ -190,6 +208,12 @@ redis-exporter-ib:
 redis-ib:
   search_tags:
     - 6.2.
+shellcheck-ib:
+  search_tags:
+    - v0.10.
+sqlite-ib:
+  search_tags:
+    - v3.34.
 terraform-ib:
   search_tags:
     - 1.7.
@@ -217,6 +241,12 @@ velero-ib:
 wordpress-ib:
   search_tags:
     - 6.5.
+yq-ib:
+  search_tags:
+    - 4.44.
+zeek-ib:
+  search_tags:
+    - 6.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

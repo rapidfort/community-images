@@ -1,8 +1,7 @@
 version: '3'
 services:
   zeek:
-    image: registry1.dso.mil/ironbank/opensource/zeek/zeek:6.0.4
-    # image: ${ZEEK_IMAGE_REPOSITORY}:${ZEEK_IMAGE_TAG}
+    image: ${ZEEK_IMAGE_REPOSITORY}:${ZEEK_IMAGE_TAG}
     network_mode: host
     user: root
     cap_add:

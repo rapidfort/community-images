@@ -1,0 +1,33 @@
+name: yq-ib
+official_name: YQ Iron Bank
+official_website: https://mikefarah.gitbook.io/yq
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/yq/yq
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fyq%2Fyq
+source_image_readme: https://repo1.dso.mil/dsop/opensource/yq/yq/-/blob/development/README.md
+rf_docker_link: rapidfort/yq-ib
+image_workflow_name: yq_ironbank
+github_location: yq/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fyq%2Fyq
+usage_instructions: |
+  #Run the yq container:
+  $ docker run -d --name yq-new rapidfort/yq-ib (command)
+what_is_text: |
+  YQ is a command line tool to query and manipulate yaml files. It is the yaml equivalent to JQ (same but for json files).
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/yq/yq:
+      input_base_tag: "4.44."
+      output_repo: yq-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      yq-ib:
+        repository: "YQ_IMAGE_REPOSITORY"
+        tag: "YQ_IMAGE_TAG"

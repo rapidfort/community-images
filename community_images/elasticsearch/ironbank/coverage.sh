@@ -48,7 +48,7 @@ function test_elasticsearch() {
         --name "${ESCLIENT_POD_NAME}" \
         -v "${SCRIPTPATH}"/es_test.py:/tmp/es_test.py \
         -v "${SCRIPTPATH}"/es_commands.sh:/tmp/es_commands.sh \
-        -d registry1.dso.mil/ironbank/opensource/python:v3.10.13 \
+        -d bitnami/python \
         bash -c 'sleep infinity'
 
     # wait for publisher pod to come up

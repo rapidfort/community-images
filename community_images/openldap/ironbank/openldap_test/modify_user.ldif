@@ -1,0 +1,5 @@
+# modify_user.ldif
+dn: uid=jdoe,ou=people,dc=usaf,dc=mil
+changetype: modify
+replace: cn
+cn: Johnathan Doe

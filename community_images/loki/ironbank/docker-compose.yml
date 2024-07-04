@@ -2,14 +2,14 @@ version: "3"
 
 services:
   prometheus:
-    image: registry1.dso.mil/ironbank/opensource/prometheus/prometheus:v2.49.1
+    image: bitnami/prometheus:2.49.1
     ports:
      - '9090:9090'
     volumes:
       - ./log:/var/log
 
   alertmanager:
-    image: registry1.dso.mil/ironbank/opensource/prometheus/alertmanager:v0.26.0
+    image: bitnami/alertmanager:0.26.0
     ports:
       - '9093:9093'
     volumes:
@@ -27,7 +27,7 @@ services:
     command: -config.file=/etc/loki/config.yaml
 
   promtail:
-    image: registry1.dso.mil/ironbank/opensource/grafana/promtail:latest
+    image: grafana/promtail:latest
     cap_add:
      - SYS_PTRACE
     volumes:
@@ -40,7 +40,7 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_INSTALL_PLUGINS=grafana-clock-panel
-    image: registry1.dso.mil/ironbank/opensource/grafana/grafana:10.3.3
+    image: grafana/grafana:10.3.3
     cap_add:
      - SYS_PTRACE
     ports:
@@ -68,7 +68,7 @@ services:
         EOF
         /run.sh
   tempo:
-    image: registry1.dso.mil/ironbank/opensource/grafana/tempo:2.4.2
+    image: grafana/tempo:2.4.2
     cap_add:
      - SYS_PTRACE
     command: -config.file=/etc/tempo/config.yaml

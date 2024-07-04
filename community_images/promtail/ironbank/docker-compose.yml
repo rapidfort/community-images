@@ -2,21 +2,21 @@ version: "3"
 
 services:
   prometheus:
-    image: registry1.dso.mil/ironbank/opensource/prometheus/prometheus:v2.49.1
+    image: bitnami/prometheus:2.49.1
     ports:
-      - "9090:9090"
+     - '9090:9090'
     volumes:
       - ./log:/var/log
 
   alertmanager:
-    image: registry1.dso.mil/ironbank/opensource/prometheus/alertmanager:v0.26.0
+    image: bitnami/alertmanager:0.26.0
     ports:
-      - "9093:9093"
+      - '9093:9093'
     volumes:
       - ./log:/var/log
 
   loki:
-    image: registry1.dso.mil/ironbank/opensource/grafana/loki:3.0.0
+    image: grafana/loki:3.0.0
     cap_add:
       - SYS_PTRACE
     ports:
@@ -40,9 +40,9 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_INSTALL_PLUGINS=grafana-clock-panel
-    image: registry1.dso.mil/ironbank/opensource/grafana/grafana:10.3.3
+    image: grafana/grafana:10.3.3
     cap_add:
-      - SYS_PTRACE
+     - SYS_PTRACE
     ports:
       - "3000:3000"
     volumes:
@@ -68,17 +68,17 @@ services:
         EOF
         /run.sh
   tempo:
-    image: registry1.dso.mil/ironbank/opensource/grafana/tempo:2.4.2
+    image: grafana/tempo:2.4.2
     cap_add:
-      - SYS_PTRACE
+     - SYS_PTRACE
     command: -config.file=/etc/tempo/config.yaml
     volumes:
       - ./tempo-config.yaml:/etc/tempo/config.yaml
     ports:
-      - "14268:14268" # jaeger ingest
-      - "3200:3200" # tempo
+      - "14268:14268"  # jaeger ingest
+      - "3200:3200"   # tempo
       - "9095:9095" # tempo grpc
-      - "4317:4317" # otlp grpc
-      - "4318:4318" # otlp http
-      - "9411:9411" # zipkin
+      - "4317:4317"  # otlp grpc
+      - "4318:4318"  # otlp http
+      - "9411:9411"   # zipkin
 

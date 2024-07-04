@@ -57,6 +57,7 @@ curl 'http://localhost:3000/api/ds/query?ds_type=loki&requestId=loki-data-sample
     --compressed \
     --insecure
 
+# shellcheck disable=SC2016
 curl 'http://localhost:3000/api/ds/query?ds_type=loki&requestId=loki-data-samples_1' \
   -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
   -H 'Connection: keep-alive' \
@@ -109,6 +110,7 @@ curl 'http://localhost:3000/api/datasources/uid/P8E80F9AEF21F6940/resources/inde
   --compressed \
   --insecure
 
+# shellcheck disable=SC2016
 curl 'http://localhost:3000/api/query-history' \
   -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
   -H 'Connection: keep-alive' \
@@ -123,6 +125,7 @@ curl 'http://localhost:3000/api/query-history' \
   --compressed \
   --insecure
 
+# shellcheck disable=SC2016
 curl 'http://localhost:3000/api/ds/query?ds_type=loki&requestId=explore_Hpo_1' \
   -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
   -H 'Connection: keep-alive' \
@@ -140,6 +143,7 @@ curl 'http://localhost:3000/api/ds/query?ds_type=loki&requestId=explore_Hpo_1' \
   --compressed \
   --insecure
 
+# shellcheck disable=SC2016
 curl 'http://localhost:3000/api/ds/query?ds_type=loki&requestId=explore_Hpo_logs_sample_0_1' \
   -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' \
   -H 'Connection: keep-alive' \

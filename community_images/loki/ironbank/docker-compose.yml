@@ -1,0 +1,83 @@
+version: "3"
+
+services:
+  prometheus:
+    image: registry1.dso.mil/ironbank/opensource/prometheus/prometheus:v2.49.1
+    ports:
+     - '9090:9090'
+    volumes:
+      - ./log:/var/log
+
+  alertmanager:
+    image: registry1.dso.mil/ironbank/opensource/prometheus/alertmanager:v0.26.0
+    ports:
+      - '9093:9093'
+    volumes:
+      - ./log:/var/log
+
+  loki:
+    image: ${LOKI_IMAGE_REPOSITORY}:${LOKI_IMAGE_TAG}
+    cap_add:
+     - SYS_PTRACE
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./log:/var/log
+      - ./loki-config.yaml:/etc/loki/config.yaml
+    command: -config.file=/etc/loki/config.yaml
+
+  promtail:
+    image: registry1.dso.mil/ironbank/opensource/grafana/promtail:latest
+    cap_add:
+     - SYS_PTRACE
+    volumes:
+      - ./log:/var/log
+      - ./promtail-config.yaml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+
+  grafana:
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
+    image: registry1.dso.mil/ironbank/opensource/grafana/grafana:10.3.3
+    cap_add:
+     - SYS_PTRACE
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./log:/var/log
+      - ./grafana.ini:/etc/grafana/grafana.ini
+    entrypoint:
+      - sh
+      - -euc
+      - |
+        mkdir -p /etc/grafana/provisioning/datasources
+        cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
+        apiVersion: 1
+        datasources:
+        - name: Loki
+          type: loki
+          access: proxy
+          orgId: 1
+          url: http://loki:3100
+          basicAuth: false
+          isDefault: true
+          version: 1
+          editable: false
+        EOF
+        /run.sh
+  tempo:
+    image: registry1.dso.mil/ironbank/opensource/grafana/tempo:2.4.2
+    cap_add:
+     - SYS_PTRACE
+    command: -config.file=/etc/tempo/config.yaml
+    volumes:
+      - ./tempo-config.yaml:/etc/tempo/config.yaml
+    ports:
+      - "14268:14268"  # jaeger ingest
+      - "3200:3200"   # tempo
+      - "9095:9095" # tempo grpc
+      - "4317:4317"  # otlp grpc
+      - "4318:4318"  # otlp http
+      - "9411:9411"   # zipkin

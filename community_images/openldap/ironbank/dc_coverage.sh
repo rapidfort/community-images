@@ -11,5 +11,5 @@ echo "Json params for docker compose coverage = $JSON"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${NAMESPACE}"-openldap-1
 
-#k8s cluster scannig
+#k8s cluster scanning
 docker exec -i -u root "$CONTAINER_NAME" /bin/bash /coverage.sh

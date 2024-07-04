@@ -10,10 +10,10 @@ function test_rabbitmq_docker_compose() {
 
     local RABBITMQ_USERNAME=$3
     local RABBITMQ_PASSWORD=$4
-
+    echo "${RABBITMQ_USERNAME}"
     PUBLISHER_POD_NAME="publisher"
 
-    docker run --name ${PUBLISHER_POD_NAME} --rm -d --network ${RABBITMQ_NETWORK} bitnami/python sleep infinity
+    docker run --name "${PUBLISHER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
     sleep 20
 
     echo "#!/bin/bash
@@ -28,7 +28,7 @@ function test_rabbitmq_docker_compose() {
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
-    docker run --name ${CONSUMER_POD_NAME} --rm -d --network ${RABBITMQ_NETWORK} bitnami/python sleep infinity
+    docker run --name "${CONSUMER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
     sleep 20
 
     echo "#!/bin/bash
@@ -42,12 +42,12 @@ function test_rabbitmq_docker_compose() {
     docker exec -i  "${CONSUMER_POD_NAME}" bash -c "/tmp/consume_commands.sh"
 
     # delete the client containers
-    docker stop ${PUBLISHER_POD_NAME}
-    docker stop ${CONSUMER_POD_NAME}
+    docker stop "${PUBLISHER_POD_NAME}"
+    docker stop "${CONSUMER_POD_NAME}"
 
     # delete the generated command files
-    rm "$SCRIPTPATH"/publish_commands.sh
-    rm "$SCRIPTPATH"/consume_commands.sh
+    rm "${SCRIPTPATH}"/publish_commands.sh
+    rm "${SCRIPTPATH}"/consume_commands.sh
 
     # Perf
     PERF_POD="perf-test"
@@ -58,7 +58,7 @@ function test_rabbitmq_docker_compose() {
 
     # run the perf benchmark test
     docker run -i --name ${PERF_POD} \
-        --network ${RABBITMQ_NETWORK} \
+        --network "${RABBITMQ_NETWORK}" \
         -e RABBITMQ_PERF_TEST_LOGGERS=com.rabbitmq.perf=debug,com.rabbitmq.perf.Producer=debug \
         pivotalrabbitmq/perf-test:"${PERF_TEST_IMAGE_VERSION}" \
         --uri amqp://"${DEFAULT_RABBITMQ_USER}":"${RABBITMQ_PASSWORD}"@"${RABBITMQ_SERVER}" \
@@ -74,6 +74,6 @@ function test_rabbitmq_docker_compose() {
     fi
 
     # delete the perf container
-    docker stop ${PERF_POD}
-    docker rm ${PERF_POD}
+    docker stop "${PERF_POD}"
+    docker rm "${PERF_POD}"
 }

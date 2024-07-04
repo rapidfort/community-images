@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -ex
+set -e
+set -x
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
@@ -11,7 +12,7 @@ function test_rabbitmq_docker_compose() {
     local RABBITMQ_USERNAME=$3
     local RABBITMQ_PASSWORD=$4
     echo "${RABBITMQ_USERNAME}"
-    PUBLISHER_POD_NAME="publisher"
+    PUBLISHER_POD_NAME="publisherr"
 
     docker run --name "${PUBLISHER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
     sleep 20
@@ -24,7 +25,7 @@ function test_rabbitmq_docker_compose() {
     chmod +x "$SCRIPTPATH"/publish_commands.sh
     docker cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
     
-    docker exec -i  "${PUBLISHER_POD_NAME}" bash -c "/tmp/publish_commands.sh"
+    docker exec -i "${PUBLISHER_POD_NAME}" bash -c "/tmp/publish_commands.sh"
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
@@ -57,14 +58,14 @@ function test_rabbitmq_docker_compose() {
     sleep 15
 
     # run the perf benchmark test
-    docker run -i --name ${PERF_POD} \
+    docker run -i --name "${PERF_POD}" \
         --network "${RABBITMQ_NETWORK}" \
         -e RABBITMQ_PERF_TEST_LOGGERS=com.rabbitmq.perf=debug,com.rabbitmq.perf.Producer=debug \
         pivotalrabbitmq/perf-test:"${PERF_TEST_IMAGE_VERSION}" \
         --uri amqp://"${DEFAULT_RABBITMQ_USER}":"${RABBITMQ_PASSWORD}"@"${RABBITMQ_SERVER}" \
         --time 10
 
-    sleep 15
+    sleep 30
     # check for message from perf test
     out=$(docker logs "${PERF_POD}" | grep -ic 'consumer latency')
 

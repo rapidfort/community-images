@@ -862,7 +862,7 @@ jobs:
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run chart-testing/ironbank --publish
+        run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/ironbank --publish
 
 
       - name: Report pulls

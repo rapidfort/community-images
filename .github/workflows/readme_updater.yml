@@ -1205,6 +1205,15 @@ jobs:
           repository: rapidfort/yourls
           readme-filepath: ./community_images/yourls/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for YOURLS
+      - name: Docker Hub Description Zeek Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/zeek-ib
+          readme-filepath: ./community_images/zeek/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Zeek Iron Bank
       - name: Docker Hub Description Zookeeper
         if: always()
         uses: peter-evans/dockerhub-description@v3

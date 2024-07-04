@@ -1,0 +1,41 @@
+name: gatekeeper-ib
+official_name: Gatekeeper IronBank
+official_website: https://open-policy-agent.github.io/gatekeeper/website
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/openpolicyagent/gatekeeper
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fopenpolicyagent%2Fgatekeeper
+source_image_readme: https://repo1.dso.mil/dsop/opensource/openpolicyagent/gatekeeper/-/blob/development/README.md
+rf_docker_link: rapidfort/gatekeeper-ib
+image_workflow_name: gatekeeper_ironbank
+github_location: gatekeeper/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fopenpolicyagent%2Fgatekeeper
+usage_instructions: |
+  # Gatekeeper can be deployed with:
+  $ helm repo add gatekeeper https://open-policy-agent.github.io/gatekeeper/charts
+  $ helm install rf-gatekeeper-ib gatekeeper/gatekeeper --set image.repository=rapidfort/gatekeeper-ib --set image.release=latest
+what_is_text: |
+  The Open Policy Agent Gatekeeper project can be leveraged to help enforce policies and strengthen governance in your Kubernetes environment. In this post, we will walk through the goals, history, and current state of the project.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/openpolicyagent/gatekeeper/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/openpolicyagent/gatekeeper:
+      input_base_tag: "v3.16."
+      output_repo: gatekeeper-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: gatekeeper
+      repo_url: https://open-policy-agent.github.io/gatekeeper/charts
+      chart: gatekeeper
+    image_keys:
+      gatekeeper-ib:
+        repository: "image.repository"
+        tag: "image.release"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix: []

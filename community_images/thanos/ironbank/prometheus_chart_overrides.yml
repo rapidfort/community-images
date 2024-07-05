@@ -1,3 +1,41 @@
 alertmanager:
   containerSecurityContext:
+    runAsNonRoot: false
+    privileged: true
     readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+
+server:
+  configuration: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+      external_labels:
+        monitor: 'my-project'
+  
+    scrape_configs:
+      - job_name: 'prometheus'
+        scrape_interval: 15s
+        static_configs:
+          - targets: ['localhost:9090']
+  
+  thanos:
+    create: true
+
+    # image:
+    #   pullSecrets: ["rf-regcred"]
+    #   pullPolicy: Always
+    
+    image:
+      repository: kphull/thanos
+      tag: latest-rfstub
+
+    containerSecurityContext:
+      enabled: true
+      runAsUser: 0
+      runAsGroup: 0
+      runAsNonRoot: false
+      readOnlyRootFilesystem: false
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]

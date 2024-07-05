@@ -1,10 +1,10 @@
-# image:
-#   repository: kphull/thanos
-#   tag: latest-rfstub
-
 image:
-  pullSecrets: ["rf-regcred"]
-  pullPolicy: Always
+  repository: kphull/thanos
+  tag: latest-rfstub
+
+# image:
+#   pullSecrets: ["rf-regcred"]
+#   pullPolicy: Always
 objstoreConfig: |-
   type: FILESYSTEM
   config:
@@ -13,8 +13,8 @@ query:
   dnsDiscovery:
     enabled: false
   stores:
-    - dnssrv+_grpc._tcp.thanos-storegateway.thanos.svc.cluster.local
-    - dnssrv+_grpc._tcp.thanos-ruler.thanos.svc.cluster.local
+    - dnssrv+_grpc._tcp.rf-thanos-ib-storegateway.thanos.svc.cluster.local
+    - dnssrv+_grpc._tcp.rf-thanos-ib-ruler.thanos.svc.cluster.local
   containerSecurityContext:
     enabled: true
     runAsUser: 0

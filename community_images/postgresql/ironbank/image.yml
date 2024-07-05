@@ -25,6 +25,9 @@ repo_sets:
   - opensource/postgres/postgresql12:
       input_base_tag: "12."
       output_repo: postgresql12-ib
+  - opensource/postgres/postgresql:
+      input_base_tag: "15."
+      output_repo: postgresql15-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

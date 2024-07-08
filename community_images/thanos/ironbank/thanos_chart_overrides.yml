@@ -1,20 +1,19 @@
 image:
-  repository: kphull/thanos
-  tag: latest-rfstub
+  pullSecrets: ["rf-regcred"]
+  pullPolicy: Always
 
-# image:
-#   pullSecrets: ["rf-regcred"]
-#   pullPolicy: Always
 objstoreConfig: |-
   type: FILESYSTEM
   config:
     directory: /data
+
 query:
   dnsDiscovery:
     enabled: false
   stores:
-    - dnssrv+_grpc._tcp.rf-thanos-ib-storegateway.thanos.svc.cluster.local
-    - dnssrv+_grpc._tcp.rf-thanos-ib-ruler.thanos.svc.cluster.local
+    - dnssrv+_grpc._tcp.rf-thanos-ib-storegateway.thanos-ib-2sgm1244so.svc.cluster.local
+    - dnssrv+_grpc._tcp.rf-thanos-ib-ruler.thanos-ib-2sgm1244so.svc.cluster.local
+    - prometheus-thanos.thanos-ib-2sgm1244so.svc.cluster.local:10901
   containerSecurityContext:
     enabled: true
     runAsUser: 0
@@ -52,6 +51,7 @@ queryFrontend:
   readinessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
+
 bucketweb:
   enabled: true
   containerSecurityContext:
@@ -116,10 +116,11 @@ storegateway:
   readinessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
+
 ruler:
   enabled: true
   alertmanagers:
-    - http://prometheus-alertmanager.thanos.svc.cluster.local:80
+    - http://prometheus-alertmanager.thanos-ib-2sgm1244so.svc.cluster.local:80
   config: |-
     groups:
       - name: "metamonitoring"
@@ -153,8 +154,10 @@ metrics:
   enabled: true
   serviceMonitor:
     enabled: false
+    
 minio:
   enabled: false
+  
 persistence:
   enabled: true
   storageClass: "standard"

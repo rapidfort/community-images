@@ -6,6 +6,22 @@ alertmanager:
     allowPrivilegeEscalation: true
 
 server:
+  containerSecurityContext:
+    runAsNonRoot: false
+    privileged: true
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+  args:
+    - --config.file=/opt/bitnami/prometheus/conf/prometheus.yaml                                                                              
+    - --storage.tsdb.path=/prometheus
+    - --storage.tsdb.retention.time=10d                                                                                                       
+    - --storage.tsdb.retention.size=0
+    - --log.level=info                                                                                                                        
+    - --log.format=logfmt
+    - --web.listen-address=:9090                                                                                                              
+    - --web.console.libraries=/opt/bitnami/prometheus/conf/console_libraries
+    - --web.console.templates=/opt/bitnami/prometheus/conf/consoles                                                                           
+    - --web.route-prefix=/
   configuration: |
     global:
       scrape_interval: 15s
@@ -21,14 +37,9 @@ server:
   
   thanos:
     create: true
-
-    # image:
-    #   pullSecrets: ["rf-regcred"]
-    #   pullPolicy: Always
-    
     image:
-      repository: kphull/thanos
-      tag: latest-rfstub
+      pullSecrets: ["rf-regcred"]
+      pullPolicy: Always
 
     containerSecurityContext:
       enabled: true

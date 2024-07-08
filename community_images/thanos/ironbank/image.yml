@@ -10,11 +10,11 @@ image_workflow_name: thanos_ironbank
 github_location: thanos/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fthanos%2Fthanos
 usage_instructions: |
-  # TODO: Add usage instructions here
+  # helm charts like thanos, prometheus, prometheus-operator, etc. can be installed to setup thanos
   $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-  # install mariadb, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+  # install thanos, just replace repository with RapidFort image
+  $ helm install thanos bitnami/thanos --set image.repository=rapidfort/thanos-ib
 what_is_text: |
   Thanos is a set of components that can be composed into a highly available metric system with unlimited storage capacity, which can be added seamlessly on top of existing Prometheus deployments.
 disclaimer: |
@@ -46,4 +46,3 @@ runtimes:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "thanos_chart_overrides.yml"
-  

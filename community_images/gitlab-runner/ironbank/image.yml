@@ -1,7 +1,4 @@
 name: gitlab-runner-ib
-############################
-# readiness_check_script: gitlab_readiness_check.sh ############
-############################
 official_name: Gitlab Runner Iron Bank
 official_website: https://docs.gitlab.com/runner
 source_image_provider: Platform One
@@ -9,7 +6,7 @@ source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab-runner/gitlab-runner
 source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab-runner%2Fgitlab-runner
 source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab-runner/gitlab-runner/-/blob/development/README.md
 rf_docker_link: rapidfort/gitlab-runner-ib
-image_workflow_name: gitlab_runner_ironbank
+image_workflow_name: gitlab-runner_ironbank
 github_location: gitlab-runner/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab-runner%2Fgitlab-runner
 usage_instructions: |
@@ -31,7 +28,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     before_script: dc_before.sh
-    readiness_check_script: gitlab_readiness_check.sh
     compose_file: docker-compose.yml
     image_keys:
       gitlab-runner-ib:

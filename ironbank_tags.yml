@@ -10,6 +10,9 @@ airflow-ib-bitnami:
 airflow-ib:
   search_tags:
     - 2.8.
+alertmanager-ib:
+  search_tags:
+    - v0.27.
 ansible-lint-ib:
   search_tags:
     - 24.6.
@@ -31,6 +34,9 @@ auditbeat-ib:
 bats-ib:
   search_tags:
     - v1.11.
+blackbox-exporter-ib:
+  search_tags:
+    - v0.25.
 chart-testing-ib:
   search_tags:
     - v3.11.
@@ -40,6 +46,9 @@ consul-ib:
 couchdb-ib:
   search_tags:
     - 3.3.
+elasticsearch-exporter-ib:
+  search_tags:
+    - 1.7.
 etcd-ib:
   search_tags:
     - v3.5.
@@ -49,6 +58,9 @@ filebeat-ib:
 fluent-bit-ib:
   search_tags:
     - 3.0.
+fluentd-elasticsearch-ib:
+  search_tags:
+    - 5.4.
 fluentd-ib:
   search_tags:
     - 1.17.
@@ -70,12 +82,18 @@ fluxcd-notification-controller-ib:
 fluxcd-source-controller-ib:
   search_tags:
     - v1.3.
+gatekeeper-ib:
+  search_tags:
+    - v3.16.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
+gitlab-runner-ib:
+  search_tags:
+    - v17.0.
 grafana-ib:
   search_tags:
-    - 11.0.
+    - 11.1.
 hadolint-ib:
   search_tags:
     - v2.12.
@@ -85,6 +103,9 @@ haproxy-ib:
 heartbeat-ib:
   search_tags:
     - 8.14.
+k8s-sidecar-ib:
+  search_tags:
+    - 1.27.
 kafka-exporter-ib:
   search_tags:
     - 1.7.
@@ -106,6 +127,9 @@ logstash-ib:
 mariadb-ib:
   search_tags:
     - 10.6.
+mc-ib:
+  search_tags:
+    - RELEASE.
 memcached-ib:
   search_tags:
     - 1.6.
@@ -132,11 +156,14 @@ moodle-ib:
     - 4.4.
 mysql-ib:
   search_tags:
-    - 8.0.
+    - 8.4.
 nats-ib:
   search_tags:
     - v2.10.
 nginx-ib:
+  search_tags:
+    - 1.26.
+nifi-registry-ib:
   search_tags:
     - 1.26.
 nifi-ib:
@@ -145,6 +172,9 @@ nifi-ib:
 node-exporter-ib:
   search_tags:
     - v1.8.
+openldap-ib:
+  search_tags:
+    - 2.6.
 packetbeat-ib:
   search_tags:
     - 8.14.
@@ -172,6 +202,12 @@ redis-exporter-ib:
 redis-ib:
   search_tags:
     - 6.2.
+shellcheck-ib:
+  search_tags:
+    - v0.10.
+sqlite-ib:
+  search_tags:
+    - v3.34.
 terraform-ib:
   search_tags:
     - 1.7.
@@ -199,6 +235,12 @@ velero-ib:
 wordpress-ib:
   search_tags:
     - 6.5.
+yq-ib:
+  search_tags:
+    - 4.44.
+zeek-ib:
+  search_tags:
+    - 6.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

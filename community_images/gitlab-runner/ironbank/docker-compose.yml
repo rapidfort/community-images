@@ -4,19 +4,16 @@ services:
   debian-ssh:
     image: debian:12.5
     volumes:
-      - "./id_rsa.pub:/root/.ssh/authorized_keys"
       - "./debian-add-ssh.sh:/root/debian-add-ssh.sh"
     command:
       - "/root/debian-add-ssh.sh"
   
   gitlab:
-    image: gitlab/gitlab-ee:17.0.1-ee.0
-    # hostname: localhost:61780
-    hostname: 10.228.73.117:61780
+    image: gitlab/gitlab-ee:17.1.1-ee.0
+    hostname: localhost:61780
     ports:
       - "61743:443"
       - "61780:61780"
-      # - "61722:22"  # Optional, comment out if not using SSH
     volumes:
       - ./config:/etc/gitlab
       - ./logs:/var/log/gitlab

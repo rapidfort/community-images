@@ -25,6 +25,9 @@ vcluster --version
 # wait for 10s so that rf-vcluster-ib-0 and coredns are up and running
 sleep 10
 
+# navigate to the root directory to avoid name clash with the helm chart
+cd
+
 # creating a new vcluster seperate from the chart deployed 
 vcluster create vcluster-ib -n "${NAMESPACE}"
 

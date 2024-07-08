@@ -10,11 +10,6 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
-RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-
-# Fetching the repo_path and the tag from the JSON_PARAMS
-REPO_PATH=$(jq -r '.image_tag_details."vcluster-ib".repo_path' <<< "$JSON")
-TAG=$(jq -r '.image_tag_details."vcluster-ib".tag' <<< "$JSON")
 
 # current scriptpath
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"

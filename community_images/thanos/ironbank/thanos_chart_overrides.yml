@@ -24,6 +24,15 @@ query:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
 queryFrontend:
   containerSecurityContext:
     enabled: true
@@ -34,6 +43,15 @@ queryFrontend:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
 bucketweb:
   enabled: true
   containerSecurityContext:
@@ -45,6 +63,15 @@ bucketweb:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
 compactor:
   enabled: true
   containerSecurityContext:
@@ -56,6 +83,15 @@ compactor:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
 storegateway:
   enabled: true
   objstoreConfig: |-
@@ -71,6 +107,15 @@ storegateway:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
 ruler:
   enabled: true
   alertmanagers:
@@ -95,6 +140,15 @@ ruler:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
+  extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
 metrics:
   enabled: true
   serviceMonitor:

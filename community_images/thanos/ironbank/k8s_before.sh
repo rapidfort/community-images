@@ -21,8 +21,19 @@ RELEASE_NAME="prometheus"
 PROMETHEUS_CHART="oci://registry-1.docker.io/bitnamicharts/prometheus"
 OVERRIDES_FILE="${SCRIPTPATH}/prometheus_chart_overrides.yml"
 
-# creating namespace
-kubectl create namespace "${NAMESPACE}"
+# Check if namespace exists
+if kubectl get namespace "${NAMESPACE}"; then
+  echo "Namespace ${NAMESPACE} already exists ..."
+  echo "Skipping namespace creation ..."
+else
+  # Create namespace if it doesn't exist
+  echo "Creating namespace ${NAMESPACE} ..."
+  kubectl create namespace "${NAMESPACE}"
+fi
+
+# adding cleanup trap for prometheus helm release
+# beyond this point, if THIS script exits WITH AN ERROR, the cleanup script will be executed
+trap '${SCRIPTPATH}/cleanup_script_for_prometheus_helm_release.sh ${NAMESPACE}' ERR
 
 # Deploying Prometheus Helm Chart
 echo "Deploying Helm chart: $PROMETHEUS_CHART"

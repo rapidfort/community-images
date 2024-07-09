@@ -9,7 +9,13 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for k8s coverage = $JSON"
 
+# shellcheck disable=SC1091
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
+
+# adding cleanup trap for prometheus helm release
+# beyond this point, if THIS script exits, with whichever exit code and due to whatever reason, the cleanup script will be executed
+trap '${SCRIPTPATH}/cleanup_script_for_prometheus_helm_release.sh ${NAMESPACE}' EXIT
 
 THANOS_QUERY_POD_NAME=$(kubectl get pods -n "${NAMESPACE}" -l app.kubernetes.io/component=query -o jsonpath="{.items[0].metadata.name}")
 THANOS_QUERY_SVC_CLUSTER_IP=$(kubectl get svc -n "${NAMESPACE}" -l app.kubernetes.io/component=query -o jsonpath="{.items[0].spec.clusterIP}")

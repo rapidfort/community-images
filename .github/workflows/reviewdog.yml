@@ -16,6 +16,8 @@ jobs:
           reporter: github-pr-review # Change reporter.
           path: "." # Optional.
           pattern: "*.sh" # Optional.
-          exclude: "./.git/*" # Optional.
+          exclude: | 
+            ./.git/*
+            ./community_images/shellcheck/ironbank/scripts/*
           check_all_files_with_shebangs: "false" # Optional.
           fail_on_error: true

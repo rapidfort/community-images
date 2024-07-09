@@ -80,7 +80,6 @@ class StubGenerator:
 
             # Remove original input image to clean up space
             logging.info(f"Removing original input image: [{input_tag_details.full_tag}]")
-            self.docker_client.images.remove(input_tag_details.full_tag)
             self.docker_client.images.remove(input_tag_details.full_stub_tag)
 
     @backoff.on_exception(backoff.expo, BaseException, max_time=3000) # 50 mins

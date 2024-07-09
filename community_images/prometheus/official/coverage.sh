@@ -35,7 +35,7 @@ function test_prometheus() {
     echo "$PROMETHEUS_HOST"
     echo "$PROMETHEUS_PORT"
     FLASK_LOCAL_PORT=$(get_unused_port)
-    FLASK_CONTAINER_NAME="flaskapp"
+    FLASK_CONTAINER_NAME="flaskapp-${CONTAINER_NAME}"
 
     # Run the Flask app container
     docker run -d --name "${FLASK_CONTAINER_NAME}" -p "${FLASK_LOCAL_PORT}:5000" rapidfort/flaskapp

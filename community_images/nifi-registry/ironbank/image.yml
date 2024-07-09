@@ -1,0 +1,34 @@
+name: nifi-registry-ib
+official_name: Apache nifi-registry IronBank
+official_website: https://nifi.apache.org/docs/nifi-registry-docs/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/apache/nifi-registry
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Fnifi-registry
+source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/nifi-registry/-/blob/development/README.md
+rf_docker_link: rapidfort/nifi-registry-ib
+image_workflow_name: nifi-registry_ironbank
+github_location: nifi-registry/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Fnifi-registry
+usage_instructions: |
+  # Using docker run:
+  $ docker run -it --name my-nifi-registry -p 18080:18080 rapidfort/nifi-registry-ib
+what_is_text: |
+  Apache NiFi - is a complementary application that provides a central location for storage and management of shared resources across one or more instances of NiFi
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/apache/nifi-registry:
+      input_base_tag: "1.26."
+      output_repo: nifi-registry-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      nifi-registry-ib:
+        repository: "NIFI_REGISTRY_IMAGE_REPOSITORY"
+        tag: "NIFI_REGISTRY_IMAGE_TAG"

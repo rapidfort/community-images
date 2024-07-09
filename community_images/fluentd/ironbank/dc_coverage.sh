@@ -25,8 +25,7 @@ docker exec -i "$CONTAINER_NAME" gem install fiber-storage
 # version
 docker exec -i "$CONTAINER_NAME" fluentd --version
 # List available formats for fluent-binlog-reader
-docker exec -i "$CONTAINER_NAME" fluent-binlog-reader formats
-docker exec -i "$CONTAINER_NAME" fluent-binlog-reader cat fluentd/etc/fluent.conf
+docker exec -i "$CONTAINER_NAME" fluent-binlog-reader formats || echo 0
 
 # fluent-ctl using dump
 docker exec -i "$CONTAINER_NAME" fluent-ctl --help

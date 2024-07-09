@@ -26,7 +26,7 @@ test_prometheus "${CONTAINER_NAME}" "${PROMETHEUS_HOST}" "${PROMETHEUS_PORT}"
 # ui testing
 "${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${PROMETHEUS_HOST}" "${PROMETHEUS_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
 
-FLASK_CONTAINER_NAME="flaskapp"
+FLASK_CONTAINER_NAME="flaskapp-${CONTAINER_NAME}"
 # cleanup
 docker stop "${FLASK_CONTAINER_NAME}"
 docker rm "${FLASK_CONTAINER_NAME}"

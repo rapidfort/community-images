@@ -296,6 +296,15 @@ jobs:
           repository: rapidfort/curl
           readme-filepath: ./community_images/curl/curlimages/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Curl
+      - name: Docker Hub Description Cypress-Included Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/cypress-included-ib
+          readme-filepath: ./community_images/cypress-included/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Cypress-Included Iron Bank
       - name: Docker Hub Description ElasticSearch
         if: always()
         uses: peter-evans/dockerhub-description@v3

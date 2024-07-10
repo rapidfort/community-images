@@ -22,8 +22,14 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/tomcat9-openjdk11:
-      input_base_tag: "11.0."
+      input_base_tag: "9.0."
       output_repo: tomcat9-openjdk11-ib
+  - opensource/apache/tomcat10-openjdk17:
+      input_base_tag: "10.1."
+      output_repo: tomcat10-openjdk17-ib
+  - opensource/apache/tomcat-openjdk11:
+      input_base_tag: "11.0."
+      output_repo: tomcat-openjdk11-ib
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

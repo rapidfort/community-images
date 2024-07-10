@@ -11,12 +11,10 @@ set -x
 solr -version
 
 # Start Solr server
-solr start -p 8984 | echo 0 
-sleep 4
+solr start -p 8984
 
 # Restart Solr server
-solr restart -p 8984 | echo 0 
-sleep 4
+solr restart -p 8984 
 
 # Check Solr status
 solr status
@@ -44,8 +42,7 @@ solr stop -p 8984
 #############
 
 # Start Solr in SolrCloud mode
-solr start -cloud -p 8984 -z zookeeper:2181 | echo 0
-sleep 10
+solr start -cloud -p 8984 -z zookeeper:2181
 
 # Create a new collection in SolrCloud
 # A collection is a group of distributed cores
@@ -86,11 +83,37 @@ solr autoscaling -stats -zkHost zookeeper:2181
 
 # Access Solr API endpoints
 solr api -get "http://localhost:8984/solr/mycollection/select?q=*:*"
-# Access Solr SQL API endpoint using curl
-curl "http://localhost:8984/solr/mycollection/sql?stmt=select+*+from+mycollection+limit+100"
 
 # Manage Solr authorization settings
 solr auth enable -credentials user:pass -z zookeeper:2181
+solr auth disable -z zookeeper:2181
+
+#############
+## API Endpoints
+#############
+
+# Create collection 
+curl "http://localhost:8984/solr/admin/collections?action=CREATE&name=test_collection&numShards=1"
+
+# Query Data from collections
+curl "http://localhost:8984/solr/test_collection/select?indent=on&q=*:*"
+
+# Define Schema 
+curl -X POST -H 'Content-type:application/json' --data-binary '{"add-field": {"name":"name", "type":"text_general", "multiValued":false, "stored":true}}' http://localhost:8984/solr/test_collection/schema
+
+# Commit Changes
+curl "http://localhost:8984/solr/test_collection/update?commit=true"
+
+# Check Cluster Status
+curl "http://localhost:8984/solr/admin/collections?action=CLUSTERSTATUS"
+
+# System Information
+curl "http://localhost:8984/solr/admin/info/system"
+
+# Delete Collection
+curl "http://localhost:8984/solr/admin/collections?action=DELETE&name=test_collection"
+
+#############
 
 # Stop all Solr instances
 solr stop -all

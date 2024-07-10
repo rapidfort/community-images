@@ -5,7 +5,7 @@ services:
     restart: always
     user: root
     ports:
-      - "2181:2181"
+      - "2181"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
@@ -17,7 +17,7 @@ services:
     environment:
       - SOLR_HEAP=4g 
     ports:
-      - "8983:8983"
+      - "8983"
     volumes:
       - ./coverage.sh:/tmp/coverage.sh
     depends_on:
@@ -25,3 +25,4 @@ services:
       
 volumes:
   solr_data:
+    driver: local

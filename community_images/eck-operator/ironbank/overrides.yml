@@ -1,0 +1,12 @@
+imagePullSecrets:
+  - name: rf-regcred
+securityContext:
+  allowPrivilegeEscalation: true
+  runAsNonRoot: true
+  readOnlyRootFilesystem: false
+  capabilities:
+    add:
+      - SYS_PTRACE
+env:
+  - name: "RF_VERBOSE"
+    value: "0"

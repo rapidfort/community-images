@@ -1,0 +1,44 @@
+name: eck-operator-ib
+official_name: ECK Operator Iron Bank
+official_website: https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/elastic/eck-operator/eck-operator
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/elastic%2Feck-operator%2Feck-operator
+source_image_readme: https://repo1.dso.mil/dsop/elastic/eck-operator/eck-operator/-/blob/development/README.md?ref_type=heads
+rf_docker_link: rapidfort/eck-operator-ib
+image_workflow_name: eck-operator_ironbank
+github_location: eck-operator/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Feck-operator%2Feck-operator
+usage_instructions: |
+  $ helm repo add elastic https://helm.elastic.co
+
+  # install eck-operator, just replace repository with RapidFort registry
+  $ helm install rf-eck-operator-ib elastic/eck-operator --set image.repository=rapidfort/eck-operator
+what_is_text: |
+  Elastic Cloud on Kubernetes automates the deployment, provisioning, management, and orchestration of Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes based on the operator pattern.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+needs_common_commands: false
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+use_rapid_stub: true
+repo_sets:
+  - elastic/eck-operator/eck-operator:
+      input_base_tag: "2.13."
+      output_repo: eck-operator-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: elastic
+      repo_url: https://helm.elastic.co
+      chart: eck-operator
+    helm_additional_params:
+      fullnameOverride: "rf-eck-operator-ib"
+    image_keys:
+      eck-operator-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

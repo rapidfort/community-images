@@ -15,7 +15,7 @@ usage_instructions: |
   # install vcluster, just replace repository with RapidFort registry
   $ helm install rf-vcluster-ib loft/vcluster --set syncer.image=rapidfort/vcluster-ib --set service.type=<type_of_service> --set service.externalTrafficPolicy=<type_of_externalTrafficPolicy>
 what_is_text: |
-  Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.
+  Virtual clusters are fully functional Kubernetes clusters nested inside a physical host cluster providing better isolation and flexibility to support multi-tenancy. Multiple teams can operate independently within the same physical infrastructure while minimizing conflicts, maximizing autonomy, and reducing costs.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"

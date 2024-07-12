@@ -42,7 +42,7 @@ solr stop -p 8984
 #############
 
 # Start Solr in SolrCloud mode
-solr start -cloud -p 8984 -z $ZOOKEEPER_ADDRESS
+solr start -cloud -p 8984 -z "$ZOOKEEPER_ADDRESS"
 
 # Create a new collection in SolrCloud
 # A collection is a group of distributed cores
@@ -52,7 +52,7 @@ solr create_collection -p 8984 -c new_collection -shards 2 -replicationFactor 2
 solr create -p 8984 -c new_collection2 -shards 2 -replicationFactor 2
 
 # Perform healthcheck on a collection
-solr healthcheck -c new_collection -z $ZOOKEEPER_ADDRESS
+solr healthcheck -c new_collection -z "$ZOOKEEPER_ADDRESS"
 
 # Delete collections
 solr delete -p 8984 -c new_collection
@@ -66,7 +66,7 @@ solr delete -p 8984 -c new_collection2
 solr -help
 
 # Perform operations affecting ZooKeeper. These operations are for SolrCloud mode only
-solr zk ls / -z $ZOOKEEPER_ADDRESS
+solr zk ls / -z "$ZOOKEEPER_ADDRESS"
 
 # Manage Solr configuration files
 solr create -c mycollection -p 8984
@@ -79,14 +79,14 @@ solr export mycollection -query "*:*" -out /tmp/mycollection.json -url http://lo
 solr package list-installed
 
 # Manage Solr autoscaling policies
-solr autoscaling -stats -zkHost $ZOOKEEPER_ADDRESS
+solr autoscaling -stats -zkHost "$ZOOKEEPER_ADDRESS"
 
 # Access Solr API endpoints
 solr api -get "http://localhost:8984/solr/mycollection/select?q=*:*"
 
 # Manage Solr authorization settings
-solr auth enable -credentials user:pass -z $ZOOKEEPER_ADDRESS
-solr auth disable -z $ZOOKEEPER_ADDRESS
+solr auth enable -credentials user:pass -z "$ZOOKEEPER_ADDRESS"
+solr auth disable -z "$ZOOKEEPER_ADDRESS"
 
 #############
 ## API Endpoints

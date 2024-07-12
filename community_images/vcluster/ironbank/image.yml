@@ -1,0 +1,44 @@
+name: vcluster-ib
+official_name: vCluster Iron Bank
+official_website: https://www.vcluster.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/loft-sh/vcluster
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Floft-sh%2Fvcluster
+source_image_readme: https://repo1.dso.mil/dsop/opensource/loft-sh/vcluster/-/blob/development/README.md
+rf_docker_link: rapidfort/vcluster-ib
+image_workflow_name: vcluster_ironbank
+github_location: vcluster/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Floft-sh%2Fvcluster
+usage_instructions: |
+  $ helm repo add loft https://charts.loft.sh
+
+  # install vcluster, just replace repository with RapidFort registry
+  $ helm install rf-vcluster-ib loft/vcluster --set syncer.image=rapidfort/vcluster-ib --set service.type=<type_of_service> --set service.externalTrafficPolicy=<type_of_externalTrafficPolicy>
+what_is_text: |
+  Virtual clusters are fully functional Kubernetes clusters nested inside a physical host cluster providing better isolation and flexibility to support multi-tenancy. Multiple teams can operate independently within the same physical infrastructure while minimizing conflicts, maximizing autonomy, and reducing costs.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/loft-sh/vcluster:
+      input_base_tag: "0.19."
+      output_repo: vcluster-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    before_script: k8s_before.sh
+    helm:
+      repo: loft
+      repo_url: https://charts.loft.sh
+      chart: vcluster
+    helm_additional_params:
+      service.type: NodePort
+      service.externalTrafficPolicy: "Cluster"
+    image_keys:
+      vcluster-ib:
+        repository: "syncer.image"
+        tag: "syncer.tag"
+    override_file: "overrides.yml"

@@ -116,6 +116,15 @@ jobs:
           repository: rapidfort/alertmanager-ib
           readme-filepath: ./community_images/alertmanager/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Alertmanager Ironbank
+      - name: Docker Hub Description Alloy IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/alloy-ib
+          readme-filepath: ./community_images/alloy/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Alloy IronBank
       - name: Docker Hub Description Ansible IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

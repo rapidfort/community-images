@@ -20,20 +20,30 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"
+use_rapid_stub: true
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
 repo_sets:
   - gitlab/gitlab/gitlab-sidekiq:
-      input_base_tag: "v17.0."
+      input_base_tag: "17.1."
       output_repo: gitlab-sidekiq-ib
 runtimes:
-  - type: docker_compose
-    script: dc_coverage.sh
-    before_script: dc_before.sh
-    readiness_check_script: gitlab_readiness_check.sh
-    compose_file: docker-compose.yml
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: gitlab
+      repo_url: https://charts.gitlab.io
+      chart: gitlab
+    readiness_check_script: sidekiq_setup.sh
+    readiness_check_timeout: 600
+    wait_time_sec: 120
+    helm_additional_params:
+      certmanager-issuer.email: rf@rapidfort.com
+      certmanager.installCRDs: false
+      certmanager.nameOverride: glcertmanager
     image_keys:
-      gitlab-runner-ib:
-        repository: "SIDEKIQ_IMAGE_REPOSITORY"
-        tag: "SIDEKIQ_IMAGE_TAG"
+      gitlab-sidekiq-ib:
+        repository: "gitlab.sidekiq.image.repository"
+        tag: "gitlab.sidekiq.image.tag"
+    override_file: "overrides.yml"

@@ -11,15 +11,23 @@ JSON=$(cat "$JSON_PARAMS")
 
 echo "Json params for docker compose coverage = $JSON"
 
+# Getting Container Names
+
+PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
+SOLR8_CONTAINER="${PROJECT_NAME}"-solr-1
+ZOOKEEPER_CONTAINER="${PROJECT_NAME}"-zookeeper-1
+
 # Getting Active Ports
 
-ZOOKEEPER_PORT=$(docker port zookeeper 2181 | head -n 1 | awk -F: '{print $2}')
-SOLR8_PORT=$(docker port solr8 8983 | head -n 1 | awk -F: '{print $2}')
+SOLR8_PORT=$(docker inspect "${SOLR8_CONTAINER}" | jq -r ".[].NetworkSettings.Ports.\"8983/tcp\"[0].HostPort")
+ZOOKEEPER_PORT=$(docker inspect "${ZOOKEEPER_CONTAINER}" | jq -r ".[].NetworkSettings.Ports.\"2181/tcp\"[0].HostPort")
 SOLR8_BASE_URL="http://localhost:${SOLR8_PORT}/solr"
+ZOOKEEPER_ADDRESS="${ZOOKEEPER_CONTAINER}:2181"
 
+echo "Zookeeper Port = $ZOOKEEPER_PORT"
+echo "Solr8 Port = $SOLR8_PORT"
 echo "Solr8 Base URL = $SOLR8_BASE_URL"
-echo "Active Zookeeper Port = $ZOOKEEPER_PORT"
 
 # Running Coverage Script
 
-docker exec -i solr8 /tmp/coverage.sh
+docker exec -e ZOOKEEPER_ADDRESS="${ZOOKEEPER_ADDRESS}" "${SOLR8_CONTAINER}" /tmp/coverage.sh

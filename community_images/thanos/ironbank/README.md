@@ -63,11 +63,11 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-# TODO: Add usage instructions here
+# helm charts like thanos, prometheus, prometheus-operator, etc. can be installed to setup thanos
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-# install mariadb, just replace repository with RapidFort registry
-$ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+# install thanos, just replace repository with RapidFort image
+$ helm install thanos bitnami/thanos --set image.repository=rapidfort/thanos-ib
 
 ```
 

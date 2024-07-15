@@ -32,7 +32,7 @@ while true; do
 done
 
 # Calling all the coverage scripts one by one
-."${SCRIPTPATH}/coverage/elasticsearch.sh" ${NAMESPACE}
+"${SCRIPTPATH}/coverage/elasticsearch.sh" ${NAMESPACE}
 
 # Cleanup
 kubectl delete -f ${SCRIPTPATH}/manifests/manifest.yml

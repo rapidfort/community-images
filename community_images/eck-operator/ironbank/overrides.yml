@@ -6,7 +6,7 @@ securityContext:
   readOnlyRootFilesystem: false
   capabilities:
     add:
-      - SYS_PTRACE
+      - "SYS_PTRACE"
 env:
   - name: "RF_VERBOSE"
     value: "0"

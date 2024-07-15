@@ -27,4 +27,6 @@ sleep 60
 # copy over the script to the pod
 kubectl cp -n "${NAMESPACE}" "${SCRIPTPATH}/scripts/sidekiq_coverage.sh" "${POD_NAME}:/srv/gitlab/coverage_script.sh" -c "${CONTAINER_NAME}"
 
+kubectl cp -n "${NAMESPACE}" "${SCRIPTPATH}/scripts/gitlab_sidekiq_worker.rb" "${POD_NAME}:/srv/gitlab/app/workers/complex_user_activity_worker.rb" -c "${CONTAINER_NAME}"
+
 test_sidekiq "${POD_NAME}" "${NAMESPACE}" "${CONTAINER_NAME}"

@@ -2,7 +2,6 @@ gitlab:
     sidekiq:
         init:
             containerSecurityContext:
-                enabled: true
                 privileged: true
                 allowPrivilegeEscalation: true
                 capabilities:
@@ -15,7 +14,6 @@ gitlab:
         pullSecrets: ["rf-regcred"]
         pullPolicy: Always
         containerSecurityContext:
-            enabled: true
             privileged: true
             allowPrivilegeEscalation: true
             capabilities:

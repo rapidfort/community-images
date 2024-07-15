@@ -78,6 +78,7 @@ enqueue_test_jobs() {
                 ProjectCacheWorker.perform_async(1)
                 PruneOldEventsWorker.perform_async
                 RemoveExpiredMembersWorker.perform_async
+                ComplexUserActivityWorker.perform_async
                 " RAILS_ENV=$RAILS_ENV
 }
 

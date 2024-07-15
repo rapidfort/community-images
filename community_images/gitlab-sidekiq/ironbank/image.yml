@@ -1,7 +1,4 @@
 name: gitlab-sidekiq-ib
-############################
-# readiness_check_script: gitlab_readiness_check.sh ############
-############################
 official_name: Gitlab Sidekiq Iron Bank
 official_website: https://docs.gitlab.com/ee/development/sidekiq
 source_image_provider: Platform One
@@ -14,7 +11,11 @@ github_location: gitlab-sidekiq/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fgitlab-sidekiq
 usage_instructions: |
   # Using docker run
-  $ docker run -d --name=gitlab-runner rapidfort/gitlab-runner-ib
+  $ helm upgrade --install rf-gitlab gitlab/gitlab \
+  --set certmanager-issuer.email=me@example.com \
+  --set certmanager.installCRDs=false \
+  --set certmanager.nameOverride=glcertmanager \
+  --set gitlab.sidekiq.image.repository=rapidfort/gitlab-sidekiq-ib \
 what_is_text: |
   The Gitlab-sidekiq is responsible for handling background jobs and asynchronous processing within the GitLab techstack, ensuring efficient execution of tasks such as email notifications, webhooks, and CI/CD jobs.
 disclaimer: |

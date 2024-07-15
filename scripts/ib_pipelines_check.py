@@ -120,7 +120,7 @@ class PipelineChecker:
         """
         dt = datetime.fromisoformat(iso_timestamp.replace("Z", "+00:00"))
         return dt.strftime("%B %d, %Y, %I:%M:%S %p %Z")
-    
+
     @staticmethod
     def is_pipeline_inactive(pipeline_created_at):
         """
@@ -134,7 +134,7 @@ class PipelineChecker:
         """
         dt = datetime.fromisoformat(pipeline_created_at.replace("Z", "+00:00"))
         return datetime.now(timezone.utc) - dt > timedelta(days=3)
-    
+
     def process_pipeline(self, link):
         """
         Process a single pipeline, updating the counters and lists accordingly.

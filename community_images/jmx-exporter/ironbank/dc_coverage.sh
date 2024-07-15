@@ -17,7 +17,10 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-jmx-exporter-1
 echo "Container name: ${CONTAINER_NAME}"
 
-# Execute commands inside the container
-docker exec -i "${CONTAINER_NAME}" bash -c "/opt/jmx_exporter/commands.sh"
+# Get the dynamically assigned port using docker inspect
+PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"12345/tcp\"[0].HostPort")
 
-curl http://localhost:12345/metrics
+# Execute commands inside the container, passing PORT as an environment variable
+docker exec -i -e PORT="${PORT}" "${CONTAINER_NAME}" bash -c "/opt/jmx_exporter/commands.sh"
+
+curl http://localhost:"${PORT}"/metrics

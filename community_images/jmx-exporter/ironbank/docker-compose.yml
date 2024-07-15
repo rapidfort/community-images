@@ -2,7 +2,7 @@ services:
   jmx-exporter:
     image: ${JMX_EXPORTER_IMAGE_REPOSITORY}:${JMX_EXPORTER_IMAGE_TAG}
     ports:
-      - "12345:12345"
+      - "0.0.0.0::12345"
     cap_add:
       - SYS_PTRACE
     volumes:

@@ -1178,6 +1178,15 @@ jobs:
           repository: rapidfort/terragrunt-ib
           readme-filepath: ./community_images/terragrunt/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Terragrunt IronBank
+      - name: Docker Hub Description Thanos Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/thanos-ib
+          readme-filepath: ./community_images/thanos/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Thanos Iron Bank
       - name: Docker Hub Description Tika Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

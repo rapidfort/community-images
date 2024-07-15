@@ -23,7 +23,6 @@ needs_common_commands: false
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
-use_rapid_stub: true
 repo_sets:
   - elastic/eck-operator/eck-operator:
       input_base_tag: "2.13."

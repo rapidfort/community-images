@@ -19,15 +19,15 @@ podman pull docker.io/library/nginx:latest
 CONT_ID=$(podman run -d docker.io/library/nginx) || echo 0
 # Exec into Nginx container and exit
 (
-    podman exec -i $CONT_ID /bin/bash <<EOF
+    podman exec -i "$CONT_ID" /bin/bash <<EOF
 exit
 EOF
 ) || echo 0
 
 # Stop and restart the Nginx container
-podman stop $CONT_ID || echo 0
-podman restart $CONT_ID || echo 0
-# podman attach $CONT_ID || echo 0
+podman stop "$CONT_ID" || echo 0
+podman restart "$CONT_ID" || echo 0
+
 # Podman info
 podman info
 # Podman pod operations
@@ -35,9 +35,9 @@ podman pod create new_pod
 
 pod_id=$(podman pod ps -q)
 
-podman pod stop $pod_id
+podman pod stop "$pod_id"
 
-podman pod restart $pod_id || echo 0
+podman pod restart "$pod_id" || echo 0
 
 podman pod exists new_pod
 
@@ -45,9 +45,9 @@ podman pod exists new_pod
 
 podman pod logs new_pod
 
-podman pod stop $pod_id
+podman pod stop "$pod_id"
 
-podman pod rm $pod_id
+podman pod rm "$pod_id"
 
 # Podman login and logout
 podman login -u "test" -p "test123"
@@ -59,7 +59,7 @@ podman mount
 # Create Fedora container and events
 now=$(date --iso-8601=seconds)
 podman create fedora
-podman events --since $now --stream=false --no-trunc=false
+podman events --since "$now" --stream=false --no-trunc=false
 # Search for 'yq' image
 podman search yq
 # Podman info with debug log level

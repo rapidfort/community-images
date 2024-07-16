@@ -42,7 +42,7 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 ## What is vCluster Iron Bank?
 
-> Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.
+> Virtual clusters are fully functional Kubernetes clusters nested inside a physical host cluster providing better isolation and flexibility to support multi-tenancy. Multiple teams can operate independently within the same physical infrastructure while minimizing conflicts, maximizing autonomy, and reducing costs.
 
 
 [Overview of vCluster Iron Bank](https://www.vcluster.com/)
@@ -66,7 +66,7 @@ The runtime instructions for this hardened container image are the same as the o
 $ helm repo add loft https://charts.loft.sh
 
 # install vcluster, just replace repository with RapidFort registry
-$ helm install rf-vcluster-ib loft/vcluster --set syncer.image=rapidfort/vcluster-ib
+$ helm install rf-vcluster-ib loft/vcluster --set syncer.image=rapidfort/vcluster-ib --set service.type=<type_of_service> --set service.externalTrafficPolicy=<type_of_externalTrafficPolicy>
 
 ```
 

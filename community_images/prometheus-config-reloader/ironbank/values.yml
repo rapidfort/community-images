@@ -1,0 +1,25 @@
+operator:
+  prometheusConfigReloader:
+    image:
+      repository: kphull/prometheus-config-reloader-ib
+      tag: v0.75.1-rfstub
+      pullPolicy: Always
+    containerSecurityContext:
+      enabled: true
+      runAsUser: 1001
+      runAsGroup: 1001
+      runAsNonRoot: false
+      privileged: true
+      readOnlyRootFilesystem: false
+      allowPrivilegeEscalation: true
+      capabilities:
+        add: ["SYS_PTRACE"]
+    livenessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    readinessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 30
+    extraEnvVars:
+    - name: "RF_VERBOSE"
+      value: "0"

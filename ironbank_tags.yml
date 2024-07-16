@@ -18,7 +18,7 @@ alloy-ib:
     - v1.2.
 ansible-lint-ib:
   search_tags:
-    - 24.6.
+    - 24.7.
 ansible-ib:
   search_tags:
     - 10.1.
@@ -72,7 +72,7 @@ fluxcd-helm-controller-ib:
     - v1.0.
 fluxcd-image-automation-controller-ib:
   search_tags:
-    - v0.37.
+    - v0.38.
 fluxcd-image-reflector-controller-ib:
   search_tags:
     - v0.32.
@@ -216,7 +216,10 @@ terraform-ib:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.60.
+    - v0.62.
+thanos-ib:
+  search_tags:
+    - v0.35.
 tika-ib:
   search_tags:
     - 2.9.
@@ -225,7 +228,7 @@ tomcat9-openjdk11-ib:
     - 9.0.
 traefik-ib:
   search_tags:
-    - v3.0.
+    - v3.1.
 vault-k8s-ib:
   search_tags:
     - v1.4.

@@ -63,7 +63,7 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-$ docker run -i -v /path/to/main.tf:/main.tf  rapidfort/terraform-ib:latest [COMMAND]
+$ docker run -v <CONFIG_FILE_PATH>:/etc/alloy/config.alloy -p 12345:12345 rapidfort/alloy-ib:latest run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
 
 ```
 

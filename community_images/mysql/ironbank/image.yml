@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/mysql/mysql8:
-      input_base_tag: "8.0."
+      input_base_tag: "8.4."
       output_repo: mysql8-ib
 runtimes:
   - type: docker

@@ -185,9 +185,9 @@ telegraf:
   - 1.31.1-debian-12-r
 wordpress:
   docker_links:
-  - '[`6`, `6-debian-12`, `6.5.5`, `6.5.5-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)'
+  - '[`6`, `6-debian-12`, `6.6.0`, `6.6.0-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)'
   search_tags:
-  - 6.5.5-debian-12-r
+  - 6.6.0-debian-12-r
 zookeeper:
   docker_links:
   - '[`3.9`, `3.9-debian-12`, `3.9.2`, `3.9.2-debian-12-r` (3.9/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper/3.9/debian-12/Dockerfile)'

@@ -1,0 +1,38 @@
+name: trufflehog-ib
+official_name: TruffleHog Iron Bank
+official_website: https://trufflesecurity.com/trufflehog
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/traefik/traefik
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Ftrufflehog%2Ftrufflehog
+source_image_readme: https://repo1.dso.mil/dsop/opensource/trufflehog/trufflehog-v3/-/blob/development/README.md
+rf_docker_link: rapidfort/trufflehog-ib
+image_workflow_name: trufflehog_ironbank
+github_location: trufflehog/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Ftrufflehog%2Ftrufflehog
+usage_instructions: |
+  # Run truffle, using docker run
+  $ docker run -it rapidfort/trufflehog-ib
+what_is_text: |
+  TruffleHog¢ is a secrets scanning tool that digs deep into your code repositories to find secrets, passwords, and sensitive keys.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/trufflehog/trufflehog:
+      input_base_tag: "3.79."
+      output_repo: trufflehog
+needs_common_commands: False
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    tls_certs:
+      generate: true
+      out_dir: certs
+    trufflehog:
+      entrypoint: sleep
+      exec_command: infinity
+      volumes:
+        certs: /proj

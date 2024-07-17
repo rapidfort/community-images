@@ -1,0 +1,48 @@
+name: thanos-ib
+official_name: Thanos Iron Bank
+official_website: https://thanos.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/thanos/thanos
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fthanos%2Fthanos
+source_image_readme: https://repo1.dso.mil/dsop/opensource/thanos/thanos/-/blob/development/README.md
+rf_docker_link: rapidfort/thanos-ib
+image_workflow_name: thanos_ironbank
+github_location: thanos/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fthanos%2Fthanos
+usage_instructions: |
+  # helm charts like thanos, prometheus, prometheus-operator, etc. can be installed to setup thanos
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install thanos, just replace repository with RapidFort image
+  $ helm install thanos bitnami/thanos --set image.repository=rapidfort/thanos-ib
+what_is_text: |
+  Thanos is a set of components that can be composed into a highly available metric system with unlimited storage capacity, which can be added seamlessly on top of existing Prometheus deployments.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/thanos/thanos:
+      input_base_tag: "v0.35."
+      output_repo: thanos-ib
+runtimes:
+  - type: k8s
+    before_script: k8s_before.sh
+    script: k8s_coverage.sh
+    helm:
+      repo: bitnami
+      repo_url: https://charts.bitnami.com/bitnami
+      chart: thanos
+    wait_time_sec: 120
+    readiness_wait_deployments_suffix:
+      - bucketweb
+      - compactor
+      - query
+      - query-frontend
+    image_keys:
+      thanos-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "thanos_chart_overrides.yml"

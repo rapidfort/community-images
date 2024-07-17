@@ -1,18 +1,49 @@
-image:
-  pullSecrets: ["rf-regcred"]
-  pullPolicy: Always
-containerSecurityContext:
-  enabled: true
-  runAsUser: 1001
-  allowPrivilegeEscalation: true
-  capabilities:
-    add: ["SYS_PTRACE"]
-extraEnvVars:
-  - name: "RF_VERBOSE"
-    value: "0"
-livenessProbe:
-  initialDelaySeconds: 30
-  timeoutSeconds: 30
-readinessProbe:
-  initialDelaySeconds: 30
-  timeoutSeconds: 30
+global:
+  imagePullSecrets: ["rf-regcred"]
+
+cleanPrometheusOperatorObjectNames: true
+
+prometheusOperator:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+  containerSecurityContext:
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    capabilities:
+      add:
+      - SYS_PTRACE
+  env:
+    RF_VERBOSE: "0"
+  prometheusConfigReloader:
+    image:
+      registry: docker.io
+
+prometheus:
+  prometheusSpec:
+    initContainers:
+    - name: init-config-reloader
+      env:
+      - name: "RF_VERBOSE"
+        value: "0"
+      securityContext:
+        allowPrivilegeEscalation: true
+        readOnlyRootFilesystem: false
+        capabilities:
+          add:
+          - SYS_PTRACE
+        runAsNonRoot: false
+        runAsUser: 0
+    containers:
+    - name: config-reloader 
+      env:
+      - name: "RF_VERBOSE"
+        value: "0"
+      securityContext:
+        allowPrivilegeEscalation: true
+        readOnlyRootFilesystem: false
+        capabilities:
+          add:
+          - SYS_PTRACE
+        runAsNonRoot: false
+        runAsUser: 0

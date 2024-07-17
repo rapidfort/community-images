@@ -10,13 +10,12 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
-RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
-PROMETHEUS_CR_NAME="prometheus-stack-kube-prom-prometheus"
-RELOADER_POD=$(kubectl get pods -n $NAMESPACE -l app=prometheus,component=server -o jsonpath="{.items[0].metadata.name}")
+# Define the names for the pods
+PROMETHEUS_CR_NAME="rf-prometheus-stack-ib"
+RELOADER_POD="prometheus-rf-prometheus-stack-ib-0"
 
 # Create Secret with additional scrape configs
-echo "Creating Secret with additional scrape configs for prometheus..."
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Secret
@@ -42,15 +41,55 @@ kubectl patch prometheus ${PROMETHEUS_CR_NAME} -n ${NAMESPACE} --type='json' -p=
   }
 ]'
 
-# Sleep for 10 seconds to make sure prometheus-config-reloader updates the configuration of the prometheus CR
-sleep 10
-
+# Waiting for prometheus-config-reloader to detect changes and trigger reload...
 echo "Waiting for prometheus-config-reloader to detect changes and trigger reload..."
-kubectl logs -n $NAMESPACE $RELOADER_POD -c config-reloader -f | while read LOGLINE
-do
-    [[ "${LOGLINE}" == *"Config reloader triggered"* ]] && pkill -P $$ tail
+
+# Define the maximum total wait time (in seconds)
+MAX_WAIT_TIME=600  # 10 minutes
+
+# Initialize the start time
+START_TIME=$(date +%s)
+
+while true; do
+  # Fetch the latest log
+  LOG_OUTPUT=$(kubectl logs ${RELOADER_POD} -c config-reloader -n ${NAMESPACE} --tail=1)
+  
+  # Check whether the log contains "Reload triggered" as substring or not
+  if [[ ! $LOG_OUTPUT == *"Reload triggered"* ]]; then
+    echo "Log is not of 'Reload triggered' type."
+    continue
+  fi
+
+  # Extract the timestamp from the log
+  LOG_TIMESTAMP=$(echo $LOG_OUTPUT | grep -oP 'ts=\K[0-9T:\.-]+Z')
+
+  # Get the current timestamp in the same format
+  CURRENT_TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S.%NZ")
+  
+  # Convert both timestamps to seconds since epoch
+  LOG_SECONDS=$(date -d "$LOG_TIMESTAMP" +%s)
+  CURRENT_SECONDS=$(date -d "$CURRENT_TIMESTAMP" +%s)
+  
+  # Calculate the difference in seconds
+  DIFF_SECONDS=$((CURRENT_SECONDS - LOG_SECONDS))
+  
+  # Check if the difference is less than 10 seconds
+  if [ $DIFF_SECONDS -lt 10 ]; then
+    echo "Configuration reload detected."
+    break
+  fi
+  
+  # Check if the total elapsed time exceeds the maximum wait time
+  CURRENT_TIME=$(date +%s)
+  ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
+  if [ $ELAPSED_TIME -ge $MAX_WAIT_TIME ]; then
+    echo "Maximum wait time exceeded. Exiting the script."
+    exit 1
+  fi
+  
+  # Wait for a short period before checking again
+  sleep 1
 done
-echo "Configuration reload detected."
 
 # Clean up- Delete the secret additional-scrape-configs
 kubectl delete secret additional-scrape-configs -n $NAMESPACE

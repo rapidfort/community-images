@@ -7,7 +7,7 @@ JSON_PARAMS="$1"
 
 JSON=$(cat "$JSON_PARAMS")
 
-echo "Json params for k8s coverage = $JSON"
+echo "Json params for k8s coverage = "$JSON""
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
@@ -21,7 +21,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: additional-scrape-configs
-  namespace: ${NAMESPACE}
+  namespace: "${NAMESPACE}"
 stringData:
   additional-scrape-configs.yaml: |
     - job_name: "test-job"
@@ -30,7 +30,7 @@ stringData:
 EOF
 
 # Apply a patch to the prometheus CR to trigger a configuration change
-kubectl patch prometheus ${PROMETHEUS_CR_NAME} -n ${NAMESPACE} --type='json' -p='[
+kubectl patch prometheus "${PROMETHEUS_CR_NAME}" -n "${NAMESPACE}" --type='json' -p='[
   {
     "op": "add",
     "path": "/spec/additionalScrapeConfigs",
@@ -52,16 +52,16 @@ START_TIME=$(date +%s)
 
 while true; do
   # Fetch the latest log
-  LOG_OUTPUT=$(kubectl logs ${RELOADER_POD} -c config-reloader -n ${NAMESPACE} --tail=1)
+  LOG_OUTPUT=$(kubectl logs "${RELOADER_POD}" -c config-reloader -n "${NAMESPACE}" --tail=1)
   
   # Check whether the log contains "Reload triggered" as substring or not
-  if [[ ! $LOG_OUTPUT == *"Reload triggered"* ]]; then
+  if [[ ! "$LOG_OUTPUT" == *"Reload triggered"* ]]; then
     echo "Log is not of 'Reload triggered' type."
     continue
   fi
 
   # Extract the timestamp from the log
-  LOG_TIMESTAMP=$(echo $LOG_OUTPUT | grep -oP 'ts=\K[0-9T:\.-]+Z')
+  LOG_TIMESTAMP=$(echo "$LOG_OUTPUT" | grep -oP 'ts=\K[0-9T:\.-]+Z')
 
   # Get the current timestamp in the same format
   CURRENT_TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S.%NZ")
@@ -74,7 +74,7 @@ while true; do
   DIFF_SECONDS=$((CURRENT_SECONDS - LOG_SECONDS))
   
   # Check if the difference is less than 10 seconds
-  if [ $DIFF_SECONDS -lt 10 ]; then
+  if [ "$DIFF_SECONDS" -lt 10 ]; then
     echo "Configuration reload detected."
     break
   fi
@@ -82,7 +82,7 @@ while true; do
   # Check if the total elapsed time exceeds the maximum wait time
   CURRENT_TIME=$(date +%s)
   ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
-  if [ $ELAPSED_TIME -ge $MAX_WAIT_TIME ]; then
+  if [ "$ELAPSED_TIME" -ge "$MAX_WAIT_TIME" ]; then
     echo "Maximum wait time exceeded. Exiting the script."
     exit 1
   fi
@@ -92,4 +92,4 @@ while true; do
 done
 
 # Clean up- Delete the secret additional-scrape-configs
-kubectl delete secret additional-scrape-configs -n $NAMESPACE
+kubectl delete secret additional-scrape-configs -n "$NAMESPACE"

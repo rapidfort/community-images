@@ -54,7 +54,7 @@ class TestMinio():
         self.driver.find_element(By.XPATH, "//span[2]").click()
         self.driver.find_element(By.ID, "object-browser").click()
         #testing upload
-        self.driver.find_element(By.XPATH, "//span/div").click()
+        self.driver.find_element(By.XPATH, "//div[@id='root']/div/main/div[2]/div/div/div[2]/div/div/div/div/div[2]/div/div/div/span/div").click()
         self.driver.find_element(By.ID, "upload-main")
     
         self.driver.find_element(By.ID, "object-browser").click()

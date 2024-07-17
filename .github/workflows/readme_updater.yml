@@ -107,6 +107,24 @@ jobs:
           repository: rapidfort/airflow-worker-ib-bitnami
           readme-filepath: ./community_images/airflow/airflow-worker/bitnami-ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Airflow Worker Ironbank (Bitnami)
+      - name: Docker Hub Description Alertmanager Ironbank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/alertmanager-ib
+          readme-filepath: ./community_images/alertmanager/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Alertmanager Ironbank
+      - name: Docker Hub Description Alloy IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/alloy-ib
+          readme-filepath: ./community_images/alloy/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Alloy IronBank
       - name: Docker Hub Description Ansible IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -296,6 +314,15 @@ jobs:
           repository: rapidfort/elasticsearch
           readme-filepath: ./community_images/elasticsearch/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for ElasticSearch
+      - name: Docker Hub Description Elasticsearch Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/elasticsearch-exporter-ib
+          readme-filepath: ./community_images/elasticsearch-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Elasticsearch Exporter Iron Bank
       - name: Docker Hub Description ElasticSearch Official
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -386,6 +413,15 @@ jobs:
           repository: rapidfort/fluentd
           readme-filepath: ./community_images/fluentd/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluentd
+      - name: Docker Hub Description Fluentd Elasticsearch IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/fluentd-elasticsearch-ib
+          readme-filepath: ./community_images/fluentd-elasticsearch/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Fluentd Elasticsearch IronBank
       - name: Docker Hub Description Fluentd IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -458,6 +494,15 @@ jobs:
           repository: rapidfort/fluxcd-source-controller-ib
           readme-filepath: ./community_images/fluxcd-source-controller/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Fluxcd source-controller Iron Bank
+      - name: Docker Hub Description Gatekeeper IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gatekeeper-ib
+          readme-filepath: ./community_images/gatekeeper/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gatekeeper IronBank
       - name: Docker Hub Description Ghost
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -476,6 +521,15 @@ jobs:
           repository: rapidfort/git-lfs-ib
           readme-filepath: ./community_images/git-lfs/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Git-lfs Iron-Bank
+      - name: Docker Hub Description Gitlab Runner Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-runner-ib
+          readme-filepath: ./community_images/gitlab-runner/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab Runner Iron Bank
       - name: Docker Hub Description Grafana Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -539,6 +593,15 @@ jobs:
           repository: rapidfort/influxdb
           readme-filepath: ./community_images/influxdb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for InfluxDB™
+      - name: Docker Hub Description k8s-sidecar ironbank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/k8s-sidecar-ib
+          readme-filepath: ./community_images/k8s-sidecar/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for k8s-sidecar ironbank
       - name: Docker Hub Description k8s-sidecar Official
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -647,6 +710,15 @@ jobs:
           repository: rapidfort/mariadb-official
           readme-filepath: ./community_images/mariadb/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MariaDB Official
+      - name: Docker Hub Description mc Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/mc-ib
+          readme-filepath: ./community_images/mc/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for mc Iron Bank
       - name: Docker Hub Description Memcached
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -845,6 +917,15 @@ jobs:
           repository: rapidfort/nifi-ib
           readme-filepath: ./community_images/nifi/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Nifi IronBank
+      - name: Docker Hub Description Apache nifi-registry IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/nifi-registry-ib
+          readme-filepath: ./community_images/nifi-registry/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apache nifi-registry IronBank
       - name: Docker Hub Description Node Exporter
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -881,6 +962,15 @@ jobs:
           repository: rapidfort/oncall
           readme-filepath: ./community_images/oncall/grafana/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Grafana Oncall
+      - name: Docker Hub Description OpenLDAP IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/openldap-ib
+          readme-filepath: ./community_images/openldap/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for OpenLDAP IronBank
       - name: Docker Hub Description Packetbeat Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1043,6 +1133,24 @@ jobs:
           repository: rapidfort/redis-official
           readme-filepath: ./community_images/redis/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis™ Official
+      - name: Docker Hub Description shellcheck Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/shellcheck-ib
+          readme-filepath: ./community_images/shellcheck/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for shellcheck Iron Bank
+      - name: Docker Hub Description Sqlite Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/sqlite-ib
+          readme-filepath: ./community_images/sqlite/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Sqlite Iron Bank
       - name: Docker Hub Description Telegraf
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1070,6 +1178,15 @@ jobs:
           repository: rapidfort/terragrunt-ib
           readme-filepath: ./community_images/terragrunt/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Terragrunt IronBank
+      - name: Docker Hub Description Thanos Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/thanos-ib
+          readme-filepath: ./community_images/thanos/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Thanos Iron Bank
       - name: Docker Hub Description Tika Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1133,6 +1250,15 @@ jobs:
           repository: rapidfort/vault-k8s-ib
           readme-filepath: ./community_images/vault-k8s/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Vault-k8s Iron Bank
+      - name: Docker Hub Description vCluster Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/vcluster-ib
+          readme-filepath: ./community_images/vcluster/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for vCluster Iron Bank
       - name: Docker Hub Description Velero Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1169,6 +1295,24 @@ jobs:
           repository: rapidfort/yourls
           readme-filepath: ./community_images/yourls/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for YOURLS
+      - name: Docker Hub Description YQ Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/yq-ib
+          readme-filepath: ./community_images/yq/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for YQ Iron Bank
+      - name: Docker Hub Description Zeek Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/zeek-ib
+          readme-filepath: ./community_images/zeek/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Zeek Iron Bank
       - name: Docker Hub Description Zookeeper
         if: always()
         uses: peter-evans/dockerhub-description@v3

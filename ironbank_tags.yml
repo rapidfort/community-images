@@ -10,9 +10,15 @@ airflow-ib-bitnami:
 airflow-ib:
   search_tags:
     - 2.8.
+alertmanager-ib:
+  search_tags:
+    - v0.27.
+alloy-ib:
+  search_tags:
+    - v1.2.
 ansible-lint-ib:
   search_tags:
-    - 24.6.
+    - 24.7.
 ansible-ib:
   search_tags:
     - 10.1.
@@ -31,6 +37,9 @@ auditbeat-ib:
 bats-ib:
   search_tags:
     - v1.11.
+blackbox-exporter-ib:
+  search_tags:
+    - v0.25.
 chart-testing-ib:
   search_tags:
     - v3.11.
@@ -40,6 +49,9 @@ consul-ib:
 couchdb-ib:
   search_tags:
     - 3.3.
+elasticsearch-exporter-ib:
+  search_tags:
+    - 1.7.
 etcd-ib:
   search_tags:
     - v3.5.
@@ -48,7 +60,10 @@ filebeat-ib:
     - 8.14.
 fluent-bit-ib:
   search_tags:
-    - 3.0.
+    - 3.1.
+fluentd-elasticsearch-ib:
+  search_tags:
+    - 5.4.
 fluentd-ib:
   search_tags:
     - 1.17.
@@ -57,7 +72,7 @@ fluxcd-helm-controller-ib:
     - v1.0.
 fluxcd-image-automation-controller-ib:
   search_tags:
-    - v0.37.
+    - v0.38.
 fluxcd-image-reflector-controller-ib:
   search_tags:
     - v0.32.
@@ -70,12 +85,18 @@ fluxcd-notification-controller-ib:
 fluxcd-source-controller-ib:
   search_tags:
     - v1.3.
+gatekeeper-ib:
+  search_tags:
+    - v3.16.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
+gitlab-runner-ib:
+  search_tags:
+    - v17.1.
 grafana-ib:
   search_tags:
-    - 11.0.
+    - 11.1.
 hadolint-ib:
   search_tags:
     - v2.12.
@@ -85,6 +106,9 @@ haproxy-ib:
 heartbeat-ib:
   search_tags:
     - 8.14.
+k8s-sidecar-ib:
+  search_tags:
+    - 1.27.
 kafka-exporter-ib:
   search_tags:
     - 1.7.
@@ -106,6 +130,9 @@ logstash-ib:
 mariadb-ib:
   search_tags:
     - 10.6.
+mc-ib:
+  search_tags:
+    - RELEASE.
 memcached-ib:
   search_tags:
     - 1.6.
@@ -132,19 +159,25 @@ moodle-ib:
     - 4.4.
 mysql-ib:
   search_tags:
-    - 8.0.
+    - 8.4.
 nats-ib:
   search_tags:
     - v2.10.
 nginx-ib:
   search_tags:
     - 1.26.
+nifi-registry-ib:
+  search_tags:
+    - 1.27.
 nifi-ib:
   search_tags:
-    - 1.26.
+    - 1.27.
 node-exporter-ib:
   search_tags:
     - v1.8.
+openldap-ib:
+  search_tags:
+    - 2.6.
 packetbeat-ib:
   search_tags:
     - 8.14.
@@ -172,12 +205,21 @@ redis-exporter-ib:
 redis-ib:
   search_tags:
     - 6.2.
+shellcheck-ib:
+  search_tags:
+    - v0.10.
+sqlite-ib:
+  search_tags:
+    - v3.34.
 terraform-ib:
   search_tags:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.59.
+    - v0.62.
+thanos-ib:
+  search_tags:
+    - v0.35.
 tika-ib:
   search_tags:
     - 2.9.
@@ -186,19 +228,28 @@ tomcat9-openjdk11-ib:
     - 9.0.
 traefik-ib:
   search_tags:
-    - v3.0.
+    - v3.1.
 vault-k8s-ib:
   search_tags:
     - v1.4.
 vault-ib:
   search_tags:
     - 1.14.
+vcluster-ib:
+  search_tags:
+    - 0.19.
 velero-ib:
   search_tags:
     - v1.14.
 wordpress-ib:
   search_tags:
     - 6.5.
+yq-ib:
+  search_tags:
+    - 4.44.
+zeek-ib:
+  search_tags:
+    - 6.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

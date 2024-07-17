@@ -1,4 +1,4 @@
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fterraform%2F1.7?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=rapidfort_logo">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -12,13 +12,13 @@
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
-# RapidFort hardened image for Terraform IronBank
+# RapidFort hardened image for Tempo-query IronBank
 
 
-RapidFort has optimized and hardened this Terraform IronBank container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Tempo-query IronBank container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One Terraform IronBank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Tempo-query IronBank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -33,37 +33,36 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fterraform%2F1.7?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=get_full_report_button">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>
 
 
-## What is Terraform IronBank?
+## What is Tempo-query IronBank?
 
-> Terraform is an infrastructure as code (IaC) tool that allows you to build, change, and version infrastructure safely and efficiently. This includes low-level components such as compute instances, storage, and networking, as well as high-level components such as DNS entries, SaaS features, etc. Terraform can manage both existing service providers and custom in-house solutions.
-
-
-[Overview of Terraform IronBank](https://www.terraform.io/)
-
-Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+> Grafana Tempo is an open-source, easy-to-use, and high-scale distributed tracing backend. Tempo lets you search for traces, generate metrics from spans, and link your tracing data with logs and metrics.disclaimer: |
 
 
-## How do I use this hardened Terraform IronBank image?
+[Overview of Tempo-query IronBank](https://grafana.com/docs/tempo/latest/)
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Terraform IronBank][source-image-repo-link].
+## How do I use this hardened Tempo-query IronBank image?
 
-<a href="https://repo1.dso.mil/dsop/hashicorp/terraform/1.7/-/blob/development/README.md">
+
+
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Tempo-query IronBank][source-image-repo-link].
+
+<a href="https://repo1.dso.mil/dsop/opensource/grafana/tempo-query/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>
 
 ```sh
-$ docker run -i -v /path/to/main.tf:/main.tf  rapidfort/terraform-ib:latest [COMMAND]
+$ docker run -v <CONFIG_FILE_PATH>:/etc/tempo-query/config.tempo-query -p 12345:12345 rapidfort/tempo-query-ib:latest run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/tempo-query/data /etc/tempo-query/config.tempo-query
 
 ```
 
@@ -71,25 +70,25 @@ $ docker run -i -v /path/to/main.tf:/main.tf  rapidfort/terraform-ib:latest [COM
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One Terraform IronBank][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Tempo-query IronBank][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
-<a href="https://github.com/rapidfort/community-images/tree/main/community_images/terraform/ironbank">
+<a href="https://github.com/rapidfort/community-images/tree/main/community_images/tempo-query/ironbank">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
 </a>
 <br>
 <br>
 
-## What’s the difference between the official [Platform One Terraform IronBank][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/terraform-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
+## What’s the difference between the official [Platform One Tempo-query IronBank][source-image-repo-link] image and this hardened image?
+RapidFort’s hardened [rapidfort/tempo-query-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/hashicorp/terraform/1.7/-/blob/development/Dockerfile)
+* [`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/grafana/tempo-query/-/blob/development/Dockerfile)
 
 ## Need support
 
@@ -123,23 +122,23 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [fossa-badge]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images.svg?type=shield
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
-[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=rapidfort_have_questions
+[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fterraform%2F1.7?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fterraform%2F1.7?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=view_report_button
-[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fterraform%2F1.7?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=view_report_link
-[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fterraform%2F1.7?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fterraform%2F1.7?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=terraform-ib&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=view_report_button
+[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tempo-query-ib&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/terraform-ib?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/terraform-ib?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/tempo-query-ib?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/tempo-query-ib?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/terraform/ironbank/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/terraform/ironbank/assets/cve_reduction.webp
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/tempo-query/ironbank/assets/metrics.webp
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/tempo-query/ironbank/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fterraform%2F1.7
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/terraform-ib
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fgrafana%2Ftempo-query
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/tempo-query-ib

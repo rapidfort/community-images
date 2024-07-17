@@ -14,9 +14,12 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 POD_NAME=$(kubectl get pod -n "${NAMESPACE}" | grep "${RELEASE_NAME}[a-z0-9-]*"  --color=auto -o)
 
-kubectl exec -i "${POD_NAME}" -c tempo-query -n "${NAMESPACE}"  -- bash -c "./go/bin/query-linux print-config"
+# Execute the 'print-config' command in the 'tempo-query' container to display the current configuration.
+kubectl exec -i "${POD_NAME}" -c tempo-query -n "${NAMESPACE}" -- bash -c "./go/bin/query-linux print-config"
 
-kubectl exec -i "${POD_NAME}" -c tempo-query -n "${NAMESPACE}"  -- bash -c "./go/bin/query-linux completion bash"
+# Execute the 'completion' command to generate bash completion script for 'query-linux'.
+kubectl exec -i "${POD_NAME}" -c tempo-query -n "${NAMESPACE}" -- bash -c "./go/bin/query-linux completion bash"
 
-kubectl exec -i "${POD_NAME}" -c tempo-query -n "${NAMESPACE}"  -- bash -c "./tempo-query" || echo 0
+# Attempt to execute the 'tempo-query' binary in the 'tempo-query' container.
+kubectl exec -i "${POD_NAME}" -c tempo-query -n "${NAMESPACE}" -- bash -c "./tempo-query" || echo 0
 

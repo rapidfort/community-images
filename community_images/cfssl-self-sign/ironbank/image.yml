@@ -10,9 +10,8 @@ image_workflow_name: cfssl-self-sign_ironbank
 github_location: cfssl-self-sign/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fcfssl-self-sign
 usage_instructions: |
-  # Argocd can be deployed with:
-  $ helm repo add argo https://argoproj.github.io/argo-helm
-  $ helm install rf-argocd argo/argo-cd --set image.repository=rapidfort/argocd-ib --set image.tag=v2.11.2
+  $ docker pull rapidfort/cfssl-self-sign-ib
+  $ docker run rapidfort/cfssl-self-sign-ib
 what_is_text: |
   CFSSL is CloudFlare's PKI/TLS swiss army knife. It is both a command line tool and an HTTP API server for signing, verifying, and bundling TLS certificates.
 disclaimer: |

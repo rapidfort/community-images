@@ -1,0 +1,29 @@
+ Network cfssl-self-sign-ib-qsvme1lsh9_default  Creating
+ Network cfssl-self-sign-ib-qsvme1lsh9_default  Created
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Creating
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Created
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Starting
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Started
++ set -e
++++ dirname /root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank/dc_coverage.sh
+++ cd -- /root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank
+++ pwd -P
++ SCRIPTPATH=/root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank
++ . /root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank/../../common/scripts/bash_helper.sh
+++ set -x
+++ set -e
++ JSON_PARAMS=/root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank/run_param.json
+++ cat /root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank/run_param.json
++ JSON='{"namespace_name": "cfssl-self-sign-ib-qsvme1lsh9", "release_name": "rf-cfssl-self-sign-ib", "image_tag_details": {"cfssl-self-sign-ib": {"repo_path": "pranav0s/cfssl-self-sign-ib", "tag": "1.6.1-rfstub"}}, "project_name": "cfssl-self-sign-ib-qsvme1lsh9", "network_name": "cfssl-self-sign-ib-qsvme1lsh9_default", "image_script_dir": "/root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank", "runtime_props": {"type": "docker_compose", "script": "dc_coverage.sh", "compose_file": "docker-compose.yml", "image_keys": {"cfssl-self-sign-ib": {"repository": "CFSSL_IMAGE_REPOSITORY", "tag": "CFSSL_IMAGE_TAG"}}}}'
++ echo 'Json params for docker coverage = {"namespace_name": "cfssl-self-sign-ib-qsvme1lsh9", "release_name": "rf-cfssl-self-sign-ib", "image_tag_details": {"cfssl-self-sign-ib": {"repo_path": "pranav0s/cfssl-self-sign-ib", "tag": "1.6.1-rfstub"}}, "project_name": "cfssl-self-sign-ib-qsvme1lsh9", "network_name": "cfssl-self-sign-ib-qsvme1lsh9_default", "image_script_dir": "/root/rapidfort/community-images/community_images/cfssl-self-sign/ironbank", "runtime_props": {"type": "docker_compose", "script": "dc_coverage.sh", "compose_file": "docker-compose.yml", "image_keys": {"cfssl-self-sign-ib": {"repository": "CFSSL_IMAGE_REPOSITORY", "tag": "CFSSL_IMAGE_TAG"}}}}'
+++ jq -r .project_name
++ PROJECT_NAME=cfssl-self-sign-ib-qsvme1lsh9
++ CONTAINER_NAME=cfssl-self-sign-ib-qsvme1lsh9-cfssl-1
++ docker exec -i cfssl-self-sign-ib-qsvme1lsh9-cfssl-1 ./test_cfssl.sh
+./test_cfssl.sh: line 23: file: command not found
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Stopping
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Stopped
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Removing
+ Container cfssl-self-sign-ib-qsvme1lsh9-cfssl-1  Removed
+ Network cfssl-self-sign-ib-qsvme1lsh9_default  Removing
+ Network cfssl-self-sign-ib-qsvme1lsh9_default  Removed

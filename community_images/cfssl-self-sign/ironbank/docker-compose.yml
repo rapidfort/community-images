@@ -1,0 +1,24 @@
+services:
+  cfssl:
+    image: pranav0s/cfssl-self-sign-ib:1.6.1-rfstub
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace
+    cap_add:
+      - SYS_PTRACE
+    entrypoint: ["/bin/sh", "-c"]
+    command: 
+      - |
+        /scripts/generate-certificates
+        tail -f /dev/null
+    environment:
+      - ALGORITHM=ecdsa
+      - KEY_SIZE=256
+      - EXPIRY=8760h
+      - CA_SUBJECT=MyCA
+      - CA_ORG=MyOrganization
+      - CA_ORG_UNIT=IT
+      - CERT_SUBJECT=MyServer
+      - CERT_DOMAIN=example.com
+    ports:
+      - "8888:8888"

@@ -21,7 +21,6 @@ repo_sets:
   - opensource/minio/minio:
       input_base_tag: "RELEASE."
       output_repo: minio-ib
-needs_common_commands: False
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

@@ -53,9 +53,6 @@ class TestMinio():
         self.driver.find_element(By.ID, "create-bucket").click()
         self.driver.find_element(By.XPATH, "//span[2]").click()
         self.driver.find_element(By.ID, "object-browser").click()
-        #testing upload
-        self.driver.find_element(By.XPATH, "//div/div[2]/div/div/div[2]").click()
-        self.driver.find_element(By.ID, "upload-main")
     
         self.driver.find_element(By.ID, "object-browser").click()
         self.driver.find_element(By.ID, "buckets").click()

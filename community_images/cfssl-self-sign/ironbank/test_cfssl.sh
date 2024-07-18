@@ -27,7 +27,7 @@ cfssl serve -address=0.0.0.0 -port=8888 -ca=/output/ca.pem -ca-key=/output/ca-ke
 CFSSL_SERVER_PID=$!
 
 # Ensure server is stopped on exit
-trap "kill $CFSSL_SERVER_PID" EXIT
+trap 'kill "$CFSSL_SERVER_PID"' EXIT
 
 # Wait for server to start
 sleep 5

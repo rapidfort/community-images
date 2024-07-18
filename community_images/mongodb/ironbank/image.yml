@@ -23,9 +23,6 @@ repo_sets:
   - opensource/mongodb/mongodb:
       input_base_tag: "6.0."
       output_repo: mongodb-ib
-  - opensource/mongodb/mongodb_7.x:
-      input_base_tag: "7.0."
-      output_repo: mongodb-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

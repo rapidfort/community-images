@@ -28,7 +28,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/airflow/airflow:
-      input_base_tag: "2.8."
+      input_base_tag: "2.9."
       output_repo: airflow-ib
 runtimes:
   - type: docker_compose

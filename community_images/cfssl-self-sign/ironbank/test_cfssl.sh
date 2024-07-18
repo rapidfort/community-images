@@ -3,8 +3,6 @@
 set -e
 set -x
 
-echo "Running as $(whoami)"
-
 # Test cfssl and cfssljson versions
 cfssl version
 cfssljson -version

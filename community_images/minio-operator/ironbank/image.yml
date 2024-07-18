@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/minio/operator:
-      input_base_tag: "v5.0."
+      input_base_tag: "v6.0."
       output_repo: minio-operator-ib
 runtimes:
   - type: k8s

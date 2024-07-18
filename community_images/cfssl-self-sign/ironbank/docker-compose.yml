@@ -2,7 +2,7 @@ services:
   cfssl:
     image: ${CFSSL_IMAGE_REPOSITORY}:${CFSSL_IMAGE_TAG}
     volumes:
-      - ./:/workspace
+      - ./test_cfssl.sh:/workspace/test_cfssl.sh
     working_dir: /workspace
     cap_add:
       - SYS_PTRACE
@@ -21,4 +21,4 @@ services:
       - CERT_SUBJECT=MyServer
       - CERT_DOMAIN=example.com
     ports:
-      - "8888:8888"
+      - "0.0.0.0::8888"

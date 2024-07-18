@@ -998,6 +998,15 @@ jobs:
           repository: rapidfort/pgadmin-ib
           readme-filepath: ./community_images/pgadmin/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for pgAdmin IronBank
+      - name: Docker Hub Description Podman Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/podman-ib
+          readme-filepath: ./community_images/podman/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Podman Iron Bank
       - name: Docker Hub Description PostgreSQL Exporter Bitnami Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

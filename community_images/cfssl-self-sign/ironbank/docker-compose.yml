@@ -1,6 +1,6 @@
 services:
   cfssl:
-    image: pranav0s/cfssl-self-sign-ib:1.6.1-rfstub
+    image: ${CFSSL_IMAGE_REPOSITORY}:${CFSSL_IMAGE_TAG}
     volumes:
       - ./:/workspace
     working_dir: /workspace

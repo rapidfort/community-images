@@ -233,6 +233,15 @@ jobs:
           repository: rapidfort/cassandra-official
           readme-filepath: ./community_images/cassandra/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Cassandra Official
+      - name: Docker Hub Description CFSSL Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/cfssl-self-sign-ib
+          readme-filepath: ./community_images/cfssl-self-sign/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for CFSSL Iron Bank
       - name: Docker Hub Description Helm Chart Testing Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

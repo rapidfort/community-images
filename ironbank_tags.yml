@@ -21,7 +21,7 @@ ansible-lint-ib:
     - 24.7.
 ansible-ib:
   search_tags:
-    - 10.1.
+    - 10.2.
 apache-ib:
   search_tags:
     - 2.4.
@@ -190,6 +190,9 @@ pause-ib:
 pgadmin-ib:
   search_tags:
     - "8."
+podman-ib:
+  search_tags:
+    - 4.9.
 postgres-exporter-bitnami-ib:
   search_tags:
     - 0.15.

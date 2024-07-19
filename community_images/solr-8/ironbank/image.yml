@@ -1,0 +1,35 @@
+name: solr-8-ib
+official_name: Solr-8 Iron Bank
+official_website: https://solr.apache.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/solr/solr-8
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/ironbank%2Fopensource%2Fsolr%2Fsolr-8
+source_image_readme: https://repo1.dso.mil/dsop/opensource/solr/solr-8/-/blob/development/README.md
+rf_docker_link: rapidfort/solr-8-ib
+image_workflow_name: solr-8_ironbank
+github_location: solr-8/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fsolr%2Fsolr-8
+usage_instructions: |
+  # Using docker run:
+  $ docker run -p 8983:8983 -t --name solr-8 rapidfort/solr-8-ib:latest
+what_is_text: |
+  Apache Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world's largest internet sites.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/solr/solr-8:
+      input_base_tag: "8.11."
+      output_repo: solr-8-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      solr-8-ib:
+        repository: "SOLR_8_IMAGE_REPOSITORY"
+        tag: "SOLR_8_IMAGE_TAG"
+ 

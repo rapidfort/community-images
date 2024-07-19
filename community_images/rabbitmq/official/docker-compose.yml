@@ -8,6 +8,8 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password
+    volumes:
+      - ./commands.sh:/tmp/commands.sh
     ports:
       # AMQP protocol port
       - '5672'

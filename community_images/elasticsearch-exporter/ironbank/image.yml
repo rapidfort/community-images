@@ -1,0 +1,34 @@
+name: elasticsearch-exporter-ib
+official_name: Elasticsearch Exporter Iron Bank
+official_website: https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch-exporter
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/bitnami/elasticsearch-exporter
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fbitnami%2Felasticsearch-exporter
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/elasticsearch-exporter/-/blob/development/README.md
+rf_docker_link: rapidfort/elasticsearch-exporter-ib
+image_workflow_name: elasticsearch-exporter_ironbank
+github_location: elasticsearch-exporter/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fbitnami%2Felasticsearch-exporter
+usage_instructions: |
+  $ docker run --name elasticsearch-exporter rapidfort/elasticsearch-exporter-ib:latest
+what_is_text: |
+  Prometheus exporter for various metrics about ElasticSearch, written in Go.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/bitnami/elasticsearch-exporter:
+      input_base_tag: "1.7."
+      output_repo: elasticsearch-exporter-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 60
+    image_keys:
+      elasticsearch-exporter-ib:
+        repository: "ES_EXP_IMAGE_REPOSITORY"
+        tag: "ES_EXP_IMAGE_TAG"

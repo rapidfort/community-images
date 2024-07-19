@@ -1,0 +1,33 @@
+name: shellcheck-ib
+official_name: shellcheck Iron Bank
+official_website: https://www.shellcheck.net
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/shellcheck/shellcheck
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fshellcheck%2Fshellcheck
+source_image_readme: https://repo1.dso.mil/dsop/opensource/shellcheck/shellcheck/-/blob/development/README.md
+rf_docker_link: rapidfort/shellcheck-ib
+image_workflow_name: shellcheck_ironbank
+github_location: shellcheck/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fshellcheck%2Fshellcheck
+usage_instructions: |
+  #Run the shellcheck container:
+  $ docker run --rm -v "$PWD:/mnt" rapidfort/shellcheck-ib myscript
+what_is_text: |
+  ShellCheck is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/shellcheck/shellcheck:
+      input_base_tag: "v0.10."
+      output_repo: shellcheck-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      shellcheck-ib:
+        repository: "SHELLCHECK_IMAGE_REPOSITORY"
+        tag: "SHELLCHECK_IMAGE_TAG"

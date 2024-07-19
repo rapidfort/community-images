@@ -15,7 +15,7 @@ services:
       - elastic
 
   elasticsearch:
-    image: rapidfort/elasticsearch:8.13
+    image: elasticsearch:8.14.1
     ports:
       - 9200:9200
     volumes:

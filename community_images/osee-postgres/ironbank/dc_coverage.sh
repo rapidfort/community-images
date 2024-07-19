@@ -37,13 +37,13 @@ docker cp "${SCRIPTPATH}"/configs/pg_hba.conf "${POSTGRESQL_CONTAINER}":/var/lib
 
 # Restart PostgreSQL container to apply new configurations
 docker restart "${POSTGRESQL_CONTAINER}"
-sleep 10
+sleep 25
 
 # Run Coverage Commands
 
 ## Run OSEE on PostgreSQL
 docker exec -d "${OSEE_CONTAINER}" /bin/bash "./runOSEEonP1.sh"
-sleep 10
+sleep 25
 
 ## Initialize Database with OSEE Schemas
 curl -X POST -H "Content-Type: application/json" "http://localhost:${OSEE_PORT}/orcs/datastore/initialize"

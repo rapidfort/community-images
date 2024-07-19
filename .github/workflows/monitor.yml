@@ -174,7 +174,7 @@ jobs:
         run: docker pull rapidfort/metricbeat-ib
       - name: Pull Microsoft SQL Server 2019
         run: docker pull rapidfort/microsoft-sql-server-2019-ib
-      - name: Pull minio Iron Bank
+      - name: Pull minIO Iron Bank
         run: docker pull rapidfort/minio-ib
       - name: Pull MinIO Operator Ironbank
         run: docker pull rapidfort/minio-operator-ib

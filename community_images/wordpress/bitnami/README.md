@@ -92,7 +92,7 @@ RapidFort’s hardened [rapidfort/wordpress][rf-dh-image-link] image has been op
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`6`, `6-debian-12`, `6.5.5`, `6.5.5-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)
+* [`6`, `6-debian-12`, `6.6.0`, `6.6.0-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)
 
 ## Need support
 

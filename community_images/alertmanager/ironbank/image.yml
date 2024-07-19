@@ -11,8 +11,7 @@ github_location: alertmanager/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Falertmanager
 usage_instructions: |
   $ docker run --name alertmanager -d -p 9093:9093 rapidfort/alertmanager-ib
-what_is_text: |
-  The Alertmanager handles alerts sent by client applications such as the Prometheus server. 
+what_is_text: "The Alertmanager handles alerts sent by client applications such as the Prometheus server. \n"
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"

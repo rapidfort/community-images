@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/ansible/ansible:
-      input_base_tag: "10.1."
+      input_base_tag: "10.2."
       output_repo: ansible-ib
 runtimes:
   - type: docker_compose

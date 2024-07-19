@@ -1151,6 +1151,15 @@ jobs:
           repository: rapidfort/shellcheck-ib
           readme-filepath: ./community_images/shellcheck/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for shellcheck Iron Bank
+      - name: Docker Hub Description Solr-8 Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/solr-8-ib
+          readme-filepath: ./community_images/solr-8/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Solr-8 Iron Bank
       - name: Docker Hub Description Sqlite Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -5,7 +5,7 @@ kind: Elasticsearch
 metadata:
   name: elasticsearch
 spec:
-  version: 7.17.0
+  version: 8.14.3
   nodeSets:
   - name: masters
     count: 1
@@ -16,77 +16,28 @@ spec:
     config:
       node.roles: ["data"]
 ---
-# ##### Kibana #####
+##### Kibana #####
 
-# apiVersion: kibana.k8s.elastic.co/v1
-# kind: Kibana
-# metadata:
-#   name: kibana
-# spec:
-#   version: 8.14.2
-#   count: 1
-#   elasticsearchRef:
-#     name: elasticsearch
-# ---
-# ##### LogStash #####
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: kibana
+spec:
+  version: 8.14.3
+  count: 1
+  elasticsearchRef:
+    name: elasticsearch
+---
+##### APM Server #####
 
-# apiVersion: logstash.k8s.elastic.co/v1alpha1
-# kind: Logstash
-# metadata:
-#   name: logstash
-# spec:
-#   count: 1
-#   elasticsearchRefs:
-#     - name: elasticsearch
-#       clusterName: es
-#   version: 8.14.3
-#   pipelines:
-#     - pipeline.id: main
-#       config.string: |
-#         input {
-#           file {
-#             path => "./test.log"
-#             start_position => "beginning"
-#           }
-#         }
-#         output {
-#           elasticsearch {
-#             hosts => [ "https://localhost:9200" ]
-#             user => "elastic"
-#             password => "changeme"
-#             ssl_certificate_verification => false
-#           }
-#         }
-#   podTemplate:
-#     spec:
-#       containers:
-#       - name: logstash
-#         volumeMounts:
-#         - name: log-volume
-#           mountPath: /usr/share/logstash
-#       volumes:
-#       - name: log-volume
-#         configMap:
-#           name: log-config
-# ---
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-#   name: logstash-config
-# data:
-#   test.log: |
-#     2024-04-12T10:15:30 INFO Example log message 1
-#     2024-04-12T10:16:15 WARN Example log message 2
-#     2024-04-12T10:17:02 ERROR Example log message 3
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: logstash-svc
-# spec:
-#   ports:
-#   - port: 5044 
-#     targetPort: 5044
-#     protocol: TCP
-#   selector:
-#     app: logstash
+apiVersion: apm.k8s.elastic.co/v1
+kind: ApmServer
+metadata:
+  name: apm-server
+spec:
+  version: 8.14.3
+  count: 1
+  elasticsearchRef:
+    name: elasticsearch
+  kibanaRef: 
+    name: kibana

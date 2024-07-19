@@ -15,8 +15,9 @@ PASSWORD=$(kubectl get secret elasticsearch-es-elastic-user -n ${NAMESPACE} -o j
 
 # Forward the host port 9200 to elastic http service port 9200 in k8s cluster
 kubectl port-forward service/elasticsearch-es-http 9200:9200 -n ${NAMESPACE} &
-
-# Get the PID of the background process
+kubectl port-forward service/elasticsearch-es-http 9200:9200 -n eck-1 &
+# 2227658
+# Get the PID of the background elasticsearch process
 PORT_FORWARD_PID=$!
 
 # Sleep for 5 seconds
@@ -69,3 +70,60 @@ curl -X DELETE "${ES_BASE_URL}/my_index?pretty" -u elastic:${PASSWORD} -k
 
 # Kill the exposed host port
 kill $PORT_FORWARD_PID
+
+# for apm_server
+
+curl -k -X PUT "https://localhost:9200/_template/metrics-apm-template" -u elastic:OH33aX9cgi94XSb1R6Da11g8 -H 'Content-Type: application/json' -d '
+{
+  "index_patterns": ["metrics-apm-*"],
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "service": {
+        "properties": {
+          "name": { "type": "keyword" }
+        }
+      },
+      "transaction": {
+        "properties": {
+          "duration": { "type": "double" }
+        }
+      },
+      "timestamp": { "type": "date" }
+    }
+  }
+}
+'
+
+curl -k -X PUT "https://localhost:9200/_template/logs-apm-template" -u elastic:OH33aX9cgi94XSb1R6Da11g8 -H 'Content-Type: application/json' -d '
+{
+  "index_patterns": ["logs-apm-*"],
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "service": {
+        "properties": {
+          "name": { "type": "keyword" }
+        }
+      },
+      "message": { "type": "text" },
+      "timestamp": { "type": "date" }
+    }
+  }
+}
+'
+
+curl -k -X GET "https://localhost:9200/_cat/templates?v" -u elastic:OH33aX9cgi94XSb1R6Da11g8
+
+curl -k -X PUT "https://localhost:9200/_security/role_mapping/eck-1-apm-server-apm-kb-user-mapping" -u elastic:TtnsFV34594l8Doh7X6R9V8x -H 'Content-Type: application/json' -d '
+{
+  "roles": ["superuser", "kibana_admin", "kibana_user", "apm_user"],
+  "enabled": true,
+  "rules": { "field": { "username": "eck-1-apm-server-apm-kb-user" } }
+}'
+
+curl -k -X GET "https://localhost:9200/_security/role_mapping/eck-1-apm-server-apm-kb-user-mapping" -u elastic:TtnsFV34594l8Doh7X6R9V8x

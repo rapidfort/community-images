@@ -1,8 +1,12 @@
 imagePullSecrets:
   - name: rf-regcred
+podSecurityContext:
+  runAsNonRoot: false
+  runAsUser: 0
 securityContext:
   allowPrivilegeEscalation: true
-  runAsNonRoot: true
+  runAsNonRoot: false
+  runAsUser: 0
   readOnlyRootFilesystem: false
   capabilities:
     add:
@@ -10,3 +14,8 @@ securityContext:
 env:
   - name: "RF_VERBOSE"
     value: "0"
+image:
+  repository: docker.io/mridul549/eck-operator-ib 
+  pullPolicy: IfNotPresent
+  tag: 2.13.0-rfstub
+fullnameOverride: "rf-eck-operator-ib"

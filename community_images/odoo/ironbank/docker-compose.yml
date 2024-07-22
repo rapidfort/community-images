@@ -1,0 +1,91 @@
+# version: '3.8'
+
+# services:
+#   db:
+#     image: rapidfort/postgresql-official:13.14-bullseye
+#     container_name: db-container
+#     environment:
+#       - POSTGRES_USER=odoo
+#       - POSTGRES_PASSWORD=odoo
+#       - POSTGRES_DB=postgres
+#     volumes:
+#       - db-data:/var/lib/postgresql/data
+
+#   odoo:
+#     image: registry1.dso.mil/ironbank/opensource/odoo/odoo:latest-rfstub
+#     container_name: odoo-container
+#     user: root
+#     cap_add:
+#       - SYS_PTRACE
+#     depends_on:
+#       - db
+#     # command:
+#     #   - '-- --list_db=True'
+#     ports:
+#       - "8069:8069"
+#     volumes:
+#       - odoo-data:/var/lib/odoo
+#       - ./config:/etc/odoo
+#     #   - ./addons:/mnt/extra-addons
+
+# volumes:
+#   db-data:
+#   odoo-data:
+
+# version: '3.1'
+# services:
+#   web:
+#     image: registry1.dso.mil/ironbank/opensource/odoo/odoo:latest-rfstub
+#     depends_on:
+#       - db
+#     ports:
+#       - "8069:8069"
+    # user: root
+    # cap_add:
+    #   - SYS_PTRACE
+#     volumes:
+#       - ./config:/etc/odoo
+#   db:
+#     image: postgres:15
+#     environment:
+#       - POSTGRES_DB=postgres
+#       - POSTGRES_PASSWORD=odoo
+#       - POSTGRES_USER=odoo
+
+version: '3.1'
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - db-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+  web:
+    image: registry1.dso.mil/ironbank/opensource/odoo/odoo:latest-rfstub
+    platform: linux/amd64
+    depends_on:
+      - db
+    environment: 
+      -  HOST=db
+      -  PORT=5432
+      -  USER=odoo
+      -  PASSWORD=odoo
+    ports:
+      - "8069:8069/tcp"
+    volumes:
+      - web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    user: root
+    cap_add:
+      - SYS_PTRACE
+volumes:
+  db-data:
+    driver: local
+  web-data:
+    driver: local

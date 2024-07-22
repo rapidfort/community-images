@@ -23,6 +23,6 @@ curl "localhost:9200/_search?pretty" \
   -H 'Content-Type: application/json' \
   -d'{ "query": { "match_all": {} }}'
 
-# testing other conf
-docker exec "${CONTAINER_NAME}" /fluent-bit/bin/fluent-bit -c /tmp/fluent-bit.config &
+# testing other conf in detached mode
+docker exec -d "${CONTAINER_NAME}" /fluent-bit/bin/fluent-bit -c /tmp/fluent-bit.config &
 sleep 10

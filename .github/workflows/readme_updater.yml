@@ -593,6 +593,15 @@ jobs:
           repository: rapidfort/influxdb
           readme-filepath: ./community_images/influxdb/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for InfluxDB™
+      - name: Docker Hub Description JMX Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/jmx-exporter-ib
+          readme-filepath: ./community_images/jmx-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for JMX Exporter Iron Bank
       - name: Docker Hub Description k8s-sidecar ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

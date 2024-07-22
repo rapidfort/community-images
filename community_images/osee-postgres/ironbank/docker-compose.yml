@@ -19,7 +19,5 @@ services:
       - sleep
     command:
       - infinity
-    environment:
-      - JAVA_OPTS=-Xmx4g -Xms4g
     depends_on:
       - postgresql

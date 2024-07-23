@@ -1,16 +1,16 @@
 #!/bin/bash
 
 set -x
-set -e
+# set -e
 
-NAMESPACE="eck-1"
+NAMESPACE=$1
 
 kubectl delete crds -n ${NAMESPACE} --all
 
 kubectl delete ns ${NAMESPACE}
 
-kubectl delete clusterrole rf-elastic-operator elastic-operator-edit elastic-operator-view
+kubectl delete clusterrole rf-eck-operator-ib rf-elastic-operator elastic-operator-edit elastic-operator-view
 
-kubectl delete clusterrolebinding rf-elastic-operator-ib
+kubectl delete clusterrolebinding rf-eck-operator-ib
 
-kubectl create ns ${NAMESPACE}
+# kubectl create ns ${NAMESPACE}

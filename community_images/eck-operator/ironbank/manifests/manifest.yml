@@ -15,29 +15,3 @@ spec:
     count: 1
     config:
       node.roles: ["data"]
----
-##### Kibana #####
-
-apiVersion: kibana.k8s.elastic.co/v1
-kind: Kibana
-metadata:
-  name: kibana
-spec:
-  version: 8.14.3
-  count: 1
-  elasticsearchRef:
-    name: elasticsearch
----
-##### APM Server #####
-
-apiVersion: apm.k8s.elastic.co/v1
-kind: ApmServer
-metadata:
-  name: apm-server
-spec:
-  version: 8.14.3
-  count: 1
-  elasticsearchRef:
-    name: elasticsearch
-  kibanaRef: 
-    name: kibana

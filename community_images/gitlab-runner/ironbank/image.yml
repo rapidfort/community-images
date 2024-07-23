@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - gitlab/gitlab-runner/gitlab-runner:
-      input_base_tag: "v17.0."
+      input_base_tag: "v17.1."
       output_repo: gitlab-runner-ib
 runtimes:
   - type: docker_compose

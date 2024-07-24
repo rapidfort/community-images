@@ -67,9 +67,9 @@ fluentd:
   - 1.17.0-debian-12-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-12`, `5.87.2`, `5.87.2-debian-12-r` (5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-12/Dockerfile)'
+  - '[`5`, `5-debian-12`, `5.88.1`, `5.88.1-debian-12-r` (5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-12/Dockerfile)'
   search_tags:
-  - 5.87.2-debian-12-r
+  - 5.88.1-debian-12-r
 haproxy:
   docker_links:
   - '[`3`, `3-debian-12`, `3.0.3`, `3.0.3-debian-12-r` (3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/3/debian-12/Dockerfile)'
@@ -113,13 +113,13 @@ mongodb:
   - 7.0.12-debian-12-r
 mysql:
   docker_links:
-  - '[`9.0`, `9.0-debian-12`, `9.0.0`, `9.0.0-debian-12-r` (9.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/9.0/debian-12/Dockerfile)'
-  - '[`8.4`, `8.4-debian-12`, `8.4.1`, `8.4.1-debian-12-r` (8.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.4/debian-12/Dockerfile)'
-  - '[`8.0`, `8.0-debian-12`, `8.0.38`, `8.0.38-debian-12-r` (8.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-12/Dockerfile)'
+  - '[`9.0`, `9.0-debian-12`, `9.0.1`, `9.0.1-debian-12-r` (9.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/9.0/debian-12/Dockerfile)'
+  - '[`8.4`, `8.4-debian-12`, `8.4.2`, `8.4.2-debian-12-r` (8.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.4/debian-12/Dockerfile)'
+  - '[`8.0`, `8.0-debian-12`, `8.0.39`, `8.0.39-debian-12-r` (8.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-12/Dockerfile)'
   search_tags:
-  - 9.0.0-debian-12-r
-  - 8.4.1-debian-12-r
-  - 8.0.38-debian-12-r
+  - 9.0.1-debian-12-r
+  - 8.4.2-debian-12-r
+  - 8.0.39-debian-12-r
 nats:
   docker_links:
   - '[`2`, `2-debian-12`, `2.10.18`, `2.10.18-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/nats/2/debian-12/Dockerfile)'
@@ -180,9 +180,9 @@ redis-cluster:
   - 7.0.15-debian-12-r
 telegraf:
   docker_links:
-  - '[`1`, `1-debian-12`, `1.31.1`, `1.31.1-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-12/Dockerfile)'
+  - '[`1`, `1-debian-12`, `1.31.2`, `1.31.2-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/telegraf/1/debian-12/Dockerfile)'
   search_tags:
-  - 1.31.1-debian-12-r
+  - 1.31.2-debian-12-r
 wordpress:
   docker_links:
   - '[`6`, `6-debian-12`, `6.6.0`, `6.6.0-debian-12-r` (6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/wordpress/6/debian-12/Dockerfile)'

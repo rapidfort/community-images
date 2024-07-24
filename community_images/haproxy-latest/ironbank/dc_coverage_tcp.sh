@@ -55,3 +55,14 @@ do
     echo "Attempt $i"
     curl http://localhost:"${PORT3}"
 done
+
+# Additional tests for version 3.0+
+if [[ "$VERSION" =~ ^3 ]]; then
+    # Test dynamic SSL certificate updates
+    echo 'set ssl cert /etc/ssl/private/haproxy.pem <<\n$(cat /path/to/new/cert.pem)\n' | socat stdio /var/run/haproxy.sock
+    echo 'commit ssl cert /etc/ssl/private/haproxy.pem' | socat stdio /var/run/haproxy.sock
+
+    # Test dynamic server weight adjustment
+    echo "set server be_servers/server1 weight 20" | socat stdio /var/run/haproxy.sock
+    echo "set server be_servers/server2 weight 5" | socat stdio /var/run/haproxy.sock
+fi

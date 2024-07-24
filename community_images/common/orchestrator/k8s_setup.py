@@ -192,7 +192,10 @@ class K8sSetup:
                 "helm_additional_params", {}).items():
             cmd += f" --set {key}={val}"
 
-        if self.command != Commands.LATEST_COVERAGE:
+        if self.command in [Commands.HARDEN_COVERAGE, Commands.LATEST_COVERAGE] and self.runtime_props.get('harden_override_file'):
+            override_file = f"{self.image_script_dir}/{self.runtime_props.get('harden_override_file', 'overrides.yml')}"
+            cmd += f" -f {override_file}"
+        elif self.command != Commands.LATEST_COVERAGE:
             cmd += f" -f {override_file}"
 
         return cmd

@@ -85,7 +85,6 @@ influxdb:
 mariadb:
   docker_links:
   - '[`11.4`, `11.4-debian-12`, `11.4.2`, `11.4.2-debian-12-r` (11.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.4/debian-12/Dockerfile)'
-  - '[`11.3`, `11.3-debian-12`, `11.3.2`, `11.3.2-debian-12-r` (11.3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.3/debian-12/Dockerfile)'
   - '[`11.2`, `11.2-debian-12`, `11.2.4`, `11.2.4-debian-12-r` (11.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-12/Dockerfile)'
   - '[`11.1`, `11.1-debian-12`, `11.1.5`, `11.1.5-debian-12-r` (11.1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.1/debian-12/Dockerfile)'
   - '[`10.11`, `10.11-debian-12`, `10.11.8`, `10.11.8-debian-12-r` (10.11/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-12/Dockerfile)'
@@ -94,7 +93,6 @@ mariadb:
   - '[`10.4`, `10.4-debian-12`, `10.4.34`, `10.4.34-debian-12-r` (10.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.4/debian-12/Dockerfile)'
   search_tags:
   - 11.4.2-debian-12-r
-  - 11.3.2-debian-12-r
   - 11.2.4-debian-12-r
   - 11.1.5-debian-12-r
   - 10.11.8-debian-12-r
@@ -157,10 +155,10 @@ prometheus:
   - 2.53.1-debian-12-r
 rabbitmq:
   docker_links:
-  - '[`3.13`, `3.13-debian-12`, `3.13.5`, `3.13.5-debian-12-r` (3.13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.13/debian-12/Dockerfile)'
+  - '[`3.13`, `3.13-debian-12`, `3.13.6`, `3.13.6-debian-12-r` (3.13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.13/debian-12/Dockerfile)'
   - '[`3.12`, `3.12-debian-12`, `3.12.14`, `3.12.14-debian-12-r` (3.12/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq/3.12/debian-12/Dockerfile)'
   search_tags:
-  - 3.13.5-debian-12-r
+  - 3.13.6-debian-12-r
   - 3.12.14-debian-12-r
 redis:
   docker_links:

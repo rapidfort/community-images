@@ -92,7 +92,7 @@ RapidFort’s hardened [rapidfort/consul][rf-dh-image-link] image has been optim
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1`, `1-debian-12`, `1.19.0`, `1.19.0-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/consul/1/debian-12/Dockerfile)
+* [`1`, `1-debian-12`, `1.19.1`, `1.19.1-debian-12-r` (1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/consul/1/debian-12/Dockerfile)
 
 ## Need support
 

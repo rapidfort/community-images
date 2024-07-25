@@ -1,0 +1,25 @@
+gitlab:
+    sidekiq:
+        init:
+            containerSecurityContext:
+                privileged: true
+                allowPrivilegeEscalation: true
+                capabilities:
+                    add: ["SYS_PTRACE"]
+            securityContext:
+                privileged: true
+                allowPrivilegeEscalation: true
+                capabilities:
+                    add: ["SYS_PTRACE"]
+        pullSecrets: ["rf-regcred"]
+        pullPolicy: Always
+        containerSecurityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+            capabilities:
+                add: ["SYS_PTRACE"]
+        securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+            capabilities:
+                add: ["SYS_PTRACE"]

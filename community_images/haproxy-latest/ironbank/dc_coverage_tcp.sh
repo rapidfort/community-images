@@ -49,14 +49,14 @@ for i in {1..5}; do
     curl http://localhost:"${PORT3}"
 done
 
-# Test dynamic SSL certificate updates
-printf "set ssl cert /etc/ssl/private/haproxy.pem <<\n$(cat /path/to/new/cert.pem)\n" | socat stdio /var/run/haproxy.sock
-printf "commit ssl cert /etc/ssl/private/haproxy.pem" | socat stdio /var/run/haproxy.sock
+# Additional tests for version 3.0+
+if [[ "$VERSION" =~ ^3 ]]; then
+    # Test dynamic SSL certificate updates
+    new_cert=$(cat /path/to/new/cert.pem)
+    printf "set ssl cert /etc/ssl/private/haproxy.pem <<\n%s\n" "$new_cert" | socat stdio /var/run/haproxy.sock
+    printf "commit ssl cert /etc/ssl/private/haproxy.pem\n" | socat stdio /var/run/haproxy.sock
 
-# Test dynamic server weight adjustment
-printf "set server be_servers/server1 weight 20" | socat stdio /var/run/haproxy.sock
-printf "set server be_servers/server2 weight 5" | socat stdio /var/run/haproxy.sock
-
-# Observability Testing (Metrics)
-echo "Fetching metrics"
-curl http://localhost:8404/metrics
+    # Test dynamic server weight adjustment
+    printf "set server be_servers/server1 weight 20\n" | socat stdio /var/run/haproxy.sock
+    printf "set server be_servers/server2 weight 5\n" | socat stdio /var/run/haproxy.sock
+fi

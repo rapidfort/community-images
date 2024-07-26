@@ -1,0 +1,36 @@
+services:
+  workhorse:
+    image: ${WORKHORSE_IMAGE_REPOSITORY}:${WORKHORSE_IMAGE_TAG}
+    # image: registry1.dso.mil/ironbank/gitlab/gitlab/gitlab-workhorse:latest
+    entrypoint: ["/bin/sh", "-c"]
+    volumes:
+      - ./test_files/file1.txt:/workspace/file1.txt
+      - ./test_files/file2.txt:/workspace/file2.txt
+      - ./test_files/template.tpl:/workspace/template.tpl
+      - ./test_files/test_image.jpg:/workspace/test_image.jpg
+      - ./test_files/test.zip:/workspace/test.zip
+      - ./test_files/test_workhorse.sh:/workspace/test_workhorse.sh
+    working_dir: /workspace
+    user: root
+    command: 
+      - |
+        gitlab-workhorse \
+          -logFile /var/log/gitlab-workhorse.log \
+          -logFormat json \
+          -apiCiLongPollingDuration 1m \
+          -apiLimit 100 \
+          -apiQueueDuration 1m \
+          -apiQueueLimit 50 \
+          -developmentMode \
+          -listenNetwork tcp \
+          -listenUmask 0022 \
+          -proxyHeadersTimeout 10m \
+          
+        tail -f /dev/null
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - ARCHIVE_PATH=test.zip
+      - ENCODED_FILE_NAME=ZmlsZTEudHh0
+    ports:
+      - "::8181"

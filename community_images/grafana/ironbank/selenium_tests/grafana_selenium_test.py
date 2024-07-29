@@ -50,43 +50,34 @@ class TestGrafanatest1():
         # 4 | click | id=:r1: |  | 
         self.driver.find_element(By.ID, ":r1:").click()
         # 5 | type | id=:r1: | admin | 
-        self.driver.find_element(By.ID, ":r1:").send_keys("admin")
+        self.driver.find_element(By.ID, ":r1:").send_keys("admin@$123")
         # 6 | click | css=.css-1b7vft8-button > .css-1riaxdn |  | 
-        self.driver.find_element(By.CSS_SELECTOR, ".css-1b7vft8-button > .css-1riaxdn").click()
-        # 7 | click | .css-bhnz0e-button > .css-1riaxdn |  |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-bhnz0e-button > .css-1riaxdn").click()
-        time.sleep(60)
-        # 8 | click | css=.css-fmaj2t-Icon > path |  |
-        self.driver.find_element(By.CSS_SELECTOR, ".css-fmaj2t-Icon > path").click()
-        # 9 | click | css=.css-1bht7sk:nth-child(6) .css-fmaj2t-Icon |  | 
-        self.driver.find_element(By.CSS_SELECTOR, ".css-1bht7sk:nth-child(6) .css-fmaj2t-Icon").click()
-        # 10 | click | xpath=//span[contains(.,'Data sources')] |  |
-        self.driver.find_element(By.XPATH, "//span[contains(.,'Data sources')]").click()
-        # 11 | click | xpath=//span[contains(.,\'Add data source\')]
+        self.driver.find_element(By.XPATH, "//span[contains(.,'Log in')]").click()
+        # 7 | click | xpath=//span[contains(.,'Data sources')] |  |
+        self.driver.find_element(By.XPATH, "//h4[contains(.,'Add your first data source')]").click()
+        # 8 | click | xpath=//span[contains(.,\'Add data source\')]
         self.driver.find_element(By.XPATH, "//span[contains(.,\'Add data source\')]").click()
         self.driver.implicitly_wait(10)
-        # 12 | click | xpath=//button[contains(.,'Prometheus')] |  | 
+        # 9 | click | xpath=//button[contains(.,'Prometheus')] |  | 
         self.driver.find_element(By.XPATH, "//button[contains(.,\'Prometheus\')]").click()
-        # 13 | click | css=#connection-url |  | 
+        # 10 | click | css=#connection-url |  | 
         self.driver.find_element(By.CSS_SELECTOR, "#connection-url").click()
-        # 14 | type | css=#connection-url | http://prometheus:9090 | 
+        # 11 | type | css=#connection-url | http://prometheus:9090 | 
         self.driver.find_element(By.CSS_SELECTOR, "#connection-url").send_keys("http://prometheus:9090")
-        # 15 | click | css=.css-td06pi-button > .css-1riaxdn |  | 
+        # 12 | click | css=.css-td06pi-button > .css-1riaxdn |  | 
         self.driver.find_element(By.CSS_SELECTOR, ".css-td06pi-button > .css-1riaxdn").click()
         
         ### Dashboards setup
-        # 1 | click | xpath=//a[contains(.,'Dashboards')] |  |
-        self.driver.find_element(By.XPATH, "//a[contains(.,'Dashboards')]").click()
-        # 2 | setWindowSize | 727x785 |  |
-        self.driver.set_window_size(727, 785)
-        # 3 | click | css=tr:nth-child(2) .css-1riaxdn |  |
-        self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) .css-1riaxdn").click()
-        # 4 | click | linkText=Prometheus 2.0 Stats |  | 
-        self.driver.find_element(By.LINK_TEXT, "Prometheus 2.0 Stats").click()
-        self.driver.implicitly_wait(10)
-        # 5 | runScript | window.scrollTo(0,0) |  | 
+        self.driver.get(
+            "http://localhost:{}/dashboard/new".format(
+                params['port']))
+        self.driver.set_window_size(1277, 733)
+        # self.driver.implicitly_wait(10)
+        self.driver.find_element(By.XPATH, "//span[contains(.,\'Add visualization\')]").click()
+        self.driver.find_element(By.XPATH, "//h2/button").click()
+        self.driver.find_element(By.XPATH, "//span[contains(.,\'Apply\')]").click()
         self.driver.execute_script("window.scrollTo(0,0)")
-
+        
         ### Alert manager
         # 1 | open | /connections/your-connections/datasources/new |  | 
         self.driver.get(
@@ -102,12 +93,6 @@ class TestGrafanatest1():
         self.driver.find_element(By.CSS_SELECTOR, ".css-zyjsuv-input-suffix").click()
         # 6 | click | xpath=//span[contains(.,'Prometheus')]
         self.driver.find_element(By.XPATH, "//span[contains(.,'Prometheus')]").click()
-        # 7 | click | xpath=//div[@id='pageContent']/div[3]/div/div/div/div[3]/form/div[2]/div[2]/div/div/div/div/input
-        self.driver.find_element(By.XPATH, "//div[@id='pageContent']/div[3]/div/div/div/div[3]/form/div[2]/div[2]/div/div/div/div/input").click()
-        # 8 | type | css=//div[@id='pageContent']/div[3]/div/div/div/div[3]/form/div[2]/div[2]/div/div/div/div/input | 
-        self.driver.find_element(By.XPATH, "//div[@id='pageContent']/div[3]/div/div/div/div[3]/form/div[2]/div[2]/div/div/div/div/input").send_keys("http://alertmanager:9093")
-        # 9 | click | css=.css-td06pi-button > .css-1riaxdn |  | 
-        self.driver.find_element(By.CSS_SELECTOR, ".css-td06pi-button > .css-1riaxdn").click()
 
         ### User management
         # 1 | open | /admin/users/create |  | 

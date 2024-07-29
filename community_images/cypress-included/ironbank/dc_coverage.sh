@@ -38,4 +38,4 @@ docker exec -i "${CONTAINER_NAME}" cypress cache path
 
 docker exec -i "${CONTAINER_NAME}" cypress cache list --size
 
-npx cypress run --component || echo 0
+docker exec -i "${CONTAINER_NAME}" npx cypress run --component || echo 0

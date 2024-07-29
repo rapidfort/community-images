@@ -1,4 +1,4 @@
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=rapidfort_logo">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.15?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -33,7 +33,7 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=get_full_report_button">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.15?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
@@ -56,7 +56,7 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Vault Iron Bank][source-image-repo-link].
 
-<a href="https://repo1.dso.mil/dsop/hashicorp/vault/1.14/-/blob/development/README.md">
+<a href="https://repo1.dso.mil/dsop/hashicorp/vault/1.15/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
@@ -124,11 +124,11 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 
 [rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=view_report_button
-[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=view_report_link
-[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.14?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.15?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.15?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=view_report_button
+[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.15?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.15?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2F1.15?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-ib&utm_content=image_cve_reduction_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/vault-ib?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/vault-ib?logo=docker&logoColor=white
@@ -140,5 +140,5 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/vault/ironbank/assets/metrics.webp
 [cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/vault/ironbank/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fvault%2F1.14
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fvault%2F1.15
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/vault-ib

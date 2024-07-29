@@ -4,17 +4,6 @@ image:
 containerSecurityContext:
   runAsUser: 0
   allowPrivilegeEscalation: true
-  capabilities:
-    add: ["SYS_PTRACE"]
-extraEnvVars:
-  - name: "RF_VERBOSE"
-    value: "0"
-livenessProbe:
-  initialDelaySeconds: 30
-  timeoutSeconds: 30
-readinessProbe:
-  initialDelaySeconds: 30
-  timeoutSeconds: 30
 
 # Adding BackupStorageLocation and VolumeSnapshotLocation configurations for local storage
 configuration:

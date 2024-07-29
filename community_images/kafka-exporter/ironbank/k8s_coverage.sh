@@ -17,7 +17,7 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 sleep 60
 
 # fetching kafka-exporter pod name
-KAFKA_EXPORTER_POD_NAME=$(kubectl get pods --no-headers -n "${NAMESPACE}" | grep '^rf-kafka-exporter-ib-exporter' | awk '{print $1}')
+KAFKA_EXPORTER_POD_NAME=$(kubectl get pods --no-headers -n "${NAMESPACE}" | grep '^rf-kafka-exporter-ib-exporter-0' | awk '{print $1}')
 echo "Kafka Exporter Pod Name = ${KAFKA_EXPORTER_POD_NAME}"
 
 # copy over the script to the kafka pod

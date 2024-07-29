@@ -1,7 +1,6 @@
 services:
   workhorse:
     image: ${WORKHORSE_IMAGE_REPOSITORY}:${WORKHORSE_IMAGE_TAG}
-    # image: registry1.dso.mil/ironbank/gitlab/gitlab/gitlab-workhorse:latest
     entrypoint: ["/bin/sh", "-c"]
     volumes:
       - ./test_files/file1.txt:/workspace/file1.txt

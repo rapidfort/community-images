@@ -9,7 +9,8 @@ curl http://localhost:8181
 # find the contents of file1.txt depending on ARCHIVE_PATH
 gitlab-zip-cat
 
-touch /usr/local/bin/gitlab-resize-image
+# required GL_IMAGE_WIDTH env var
+gitlab-resize-image || true
 
 # extract metadata from the archive
 gitlab-zip-metadata test.zip > /dev/null

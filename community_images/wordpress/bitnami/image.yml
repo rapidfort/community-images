@@ -24,7 +24,7 @@ input_registry:
   account: bitnami
 repo_sets:
   - wordpress:
-      input_base_tag: "6.6.0-debian-12-r"
+      input_base_tag: "6.6.1-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

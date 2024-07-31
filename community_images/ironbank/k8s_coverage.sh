@@ -15,7 +15,7 @@ echo "Json params for k8s coverage = $JSON"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
-POD_NAME=$(kubectl get pods -n $NAMESPACE | grep "${RELEASE_NAME}-gitlab-exporter" | awk '{ print $1 }')
+POD_NAME=$(kubectl get pods -n "${NAMESPACE}" | grep "${RELEASE_NAME}-gitlab-exporter" | awk '{ print $1 }')
 
 kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "curl localhost:9168/git_process"
 

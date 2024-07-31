@@ -32,7 +32,7 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    readiness_check_script: alloy_health_check.sh
+    readiness_check_script: health_check.sh
     helm:
       repo: gitlab
       repo_url: https://charts.gitlab.io

@@ -45,26 +45,8 @@ services:
     user: root
     stop_signal: SIGUSR1
     volumes:
-      - ./configs/tcp-mode/haproxy-tcp1.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - ./configs/tcp-mode/haproxy-tcp3.cfg:/usr/local/etc/haproxy/haproxy.cfg
     container_name: haproxy-1
-    networks:
-      - haproxy
-    cap_add:
-      - SYS_PTRACE
-    ports: 
-      - '0.0.0.0::80'
-    depends_on: 
-      - python-flask-1
-      - python-flask-2
-  
-  haproxy-2:
-    image: ${HAPROXY_OFFICIAL_IMAGE_REPOSITORY}:${HAPROXY_OFFICIAL_IMAGE_TAG}
-    init: true
-    user: root
-    stop_signal: SIGUSR1
-    volumes:
-      - ./configs/tcp-mode/haproxy-tcp2.cfg:/usr/local/etc/haproxy/haproxy.cfg
-    container_name: haproxy-2
     networks:
       - haproxy
     cap_add:

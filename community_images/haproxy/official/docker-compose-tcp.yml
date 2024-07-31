@@ -44,6 +44,7 @@ services:
     init: true
     user: root
     stop_signal: SIGUSR1
+    restart: always
     volumes:
       - ./configs/tcp-mode/haproxy-tcp1.cfg:/usr/local/etc/haproxy/haproxy.cfg
     container_name: haproxy-1
@@ -62,6 +63,7 @@ services:
     init: true
     user: root
     stop_signal: SIGUSR1
+    restart: always
     volumes:
       - ./configs/tcp-mode/haproxy-tcp2.cfg:/usr/local/etc/haproxy/haproxy.cfg
     container_name: haproxy-2

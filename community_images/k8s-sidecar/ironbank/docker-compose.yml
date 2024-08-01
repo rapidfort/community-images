@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  k8ssidecar:
-    image: ${K8S_SIDECAR_IMAGE_REPOSITORY}:${K8S_SIDECAR_IMAGE_TAG}
-    cap_add:
-      - SYS_PTRACE
-    entrypoint: ["sh", "-c"]
-    command: ["sleep 3600s"]

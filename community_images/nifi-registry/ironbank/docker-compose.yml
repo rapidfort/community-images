@@ -1,9 +1,0 @@
-version: '2'
-
-services:
-  nifi-registry:
-    image: ${NIFI_REGISTRY_IMAGE_REPOSITORY}:${NIFI_REGISTRY_IMAGE_TAG}
-    cap_add:
-      - SYS_PTRACE
-    ports:
-      - "18080:18080" 

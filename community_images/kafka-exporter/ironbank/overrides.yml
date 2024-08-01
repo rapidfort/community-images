@@ -6,7 +6,6 @@ image:
 # configs for kafka-exporter
 metrics:
   kafka:
-    enabled: true
     image:
       pullSecrets: ["rf-regcred"]
       pullPolicy: Always

@@ -26,7 +26,15 @@ jobs:
     environment: actions-cicd
 {% endif %}
     steps:
+{% if  output == "main_build" %}
       - uses: actions/checkout@v4
+{% elif  output == "pull_request" %}
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ '{{' }} secrets.COVERAGE_ACCESS_TOKEN {{ '}}' }}
+{% endif %}
 
 {% if  output == "pull_request" %}
       - name: Check if test required

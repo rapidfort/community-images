@@ -63,7 +63,7 @@ jobs:
       - name: Set RF CLI Path
         run: |
           ls
-          ls community-images-core/
+          pwd
           echo "/home/runner/work/community-images-core/community-images-core" >> $GITHUB_PATH
 
 

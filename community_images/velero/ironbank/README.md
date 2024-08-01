@@ -66,8 +66,8 @@ The runtime instructions for this hardened container image are the same as the o
 # Velero can be deployed with:
 $ helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 $ helm install rf-velero vmware-tanzu/velero 
-$--set image.repository=rapidfort/argocd-ib 
-$ --set image.tag=v2.11.2
+$--set image.repository=rapidfort/velero-ib 
+$ --set image.tag=v1.14.0
 $ --set-file credentials.secretContents.cloud=<FULL PATH TO FILE> \
 $ --set configuration.backupStorageLocation[0].name=<BACKUP STORAGE LOCATION NAME> \
 $ --set configuration.backupStorageLocation[0].provider=<PROVIDER NAME> \

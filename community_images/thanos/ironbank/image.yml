@@ -25,7 +25,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/thanos/thanos:
-      input_base_tag: "v0.35."
+      input_base_tag: "v0.36."
       output_repo: thanos-ib
 runtimes:
   - type: k8s

@@ -196,7 +196,7 @@ class K8sSetup:
             cmd += f" --set {key}={val}"
 
         if self.command in [Commands.HARDEN_COVERAGE, Commands.LATEST_COVERAGE] and self.runtime_props.get('harden_override_file'):
-            override_file = f"{self.image_script_dir}/{self.runtime_props.get("harden_override_file")}"
+            override_file = f"{self.image_script_dir}/{self.runtime_props.get('harden_override_file')}"
             cmd += f" -f {override_file}"
         elif self.command != Commands.LATEST_COVERAGE:
             cmd += f" -f {override_file}"

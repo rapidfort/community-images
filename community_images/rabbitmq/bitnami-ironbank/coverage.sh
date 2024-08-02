@@ -26,7 +26,8 @@ function test_rabbitmq_docker_compose() {
     docker cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
     
     docker exec -i  "${PUBLISHER_POD_NAME}" /bin/bash -c "/tmp/publish_commands.sh" > /dev/null 2>&1 &
-    sleep 5
+    
+    sleep 20
     # consumer specific
     CONSUMER_POD_NAME="consumer"
     docker run --name "${CONSUMER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
@@ -44,7 +45,8 @@ function test_rabbitmq_docker_compose() {
     docker cp "${SCRIPTPATH}"/consume_commands.sh "${CONSUMER_POD_NAME}":/tmp/consume_commands.sh
 
     docker exec -i  "${CONSUMER_POD_NAME}" /bin/bash -c /tmp/consume_commands.sh > /dev/null 2>&1 &
-    sleep 5
+    
+    sleep 20
     # delete the client containers
     docker stop "${PUBLISHER_POD_NAME}"
     docker stop "${CONSUMER_POD_NAME}"

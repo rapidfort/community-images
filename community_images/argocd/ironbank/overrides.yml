@@ -1,7 +1,7 @@
 global:
   image:
     pullSecrets: ["rf-regcred"]
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
   containerSecurityContext:
     enabled: true
     readOnlyRootFilesystem: false

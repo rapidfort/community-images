@@ -135,4 +135,4 @@ curl -X DELETE ""${ES_BASE_URL}/"template_index_1?pretty" -u elastic:"${PASSWORD
 curl -X DELETE ""${ES_BASE_URL}/"_index_template/my_template?pretty" -u elastic:"${PASSWORD}" -k
 
 # Kill the exposed host port
-kill $PORT_FORWARD_PID
+kill "$PORT_FORWARD_PID"

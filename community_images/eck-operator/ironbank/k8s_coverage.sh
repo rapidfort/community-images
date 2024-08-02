@@ -23,7 +23,7 @@ sleep 60
 echo "Waiting for all pods in namespace ""$NAMESPACE"" to be running..."
 
 while true; do
-  pending_pods=$(kubectl get pods -n "$NAMESPACE" --no-headers | awk '{print $3}' | grep -vE 'Running|Completed' | wc -l)
+  pending_pods=$(kubectl get pods -n "$NAMESPACE" --no-headers | awk '{print $3}' | grep -cvE 'Running|Completed')
   if [ "$pending_pods" -eq 0 ]; then
     echo "All pods are now running in namespace ""$NAMESPACE""."
     break

@@ -4,7 +4,7 @@ services:
   prometheus:
     image: rapidfort/prometheus:2.44
     ports:
-     - '9090:9090'
+      - '9090:9090'
 
   alertmanager:
     image: prom/alertmanager:v0.20.0
@@ -16,8 +16,10 @@ services:
     cap_add:
       - SYS_PTRACE
     environment:
-         - GF_INSTALL_PLUGINS=grafana-clock-panel
-         - GF_SERVER_ROOT_URL=http://my.grafana.server/
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
+      - GF_SERVER_ROOT_URL=http://my.grafana.server/
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin@$123
     ports:
-     - '3000:3000'
+      - '3000:3000'
   

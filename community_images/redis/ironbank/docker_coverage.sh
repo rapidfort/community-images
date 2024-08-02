@@ -13,9 +13,10 @@ RAPIDFORT_ACCOUNT="${RAPIDFORT_ACCOUNT:-rapidfort}"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
 # get docker host ip
-REDIS_HOST=$(jq -r '.container_details."redis6-ib".ip_address' < "$JSON_PARAMS")
-REPO_PATH=$(jq -r '.image_tag_details."redis6-ib".repo_path' < "$JSON_PARAMS")
-TAG=$(jq -r '.image_tag_details."redis6-ib".tag' < "$JSON_PARAMS")
+IMAGE_KEY=$(jq -r '.image_tag_details | keys[0]' "$JSON_PARAMS")
+REDIS_HOST=$(jq -r ".container_details.\"${IMAGE_KEY}\".ip_address" < "$JSON_PARAMS")
+REPO_PATH=$(jq -r ".image_tag_details.\"${IMAGE_KEY}\".repo_path" < "$JSON_PARAMS")
+TAG=$(jq -r ".image_tag_details.\"${IMAGE_KEY}\".tag" < "$JSON_PARAMS")
 
 # run redis-client tests
 docker run --rm -i --cap-add=SYS_PTRACE \

@@ -33,7 +33,13 @@ runtimes:
       postgresql12-ib:
         repository: "PG_IMAGE_REPOSITORY"
         tag: "PG_IMAGE_TAG"
+      postgresql15-ib:
+        repository: "PG_IMAGE_REPOSITORY"
+        tag: "PG_IMAGE_TAG"
   - type: docker
     postgresql12-ib:
+      environment:
+        POSTGRES_PASSWORD: PgPwd
+    postgresql15-ib:
       environment:
         POSTGRES_PASSWORD: PgPwd

@@ -40,6 +40,9 @@ bats-ib:
 blackbox-exporter-ib:
   search_tags:
     - v0.25.
+cassandra-ib:
+  search_tags:
+    - 4.1.
 chart-testing-ib:
   search_tags:
     - v3.11.
@@ -52,6 +55,9 @@ couchdb-ib:
 elasticsearch-exporter-ib:
   search_tags:
     - 1.7.
+elasticsearch-ib:
+  search_tags:
+    - 8.14.
 etcd-ib:
   search_tags:
     - v3.5.
@@ -106,6 +112,9 @@ haproxy-ib:
 heartbeat-ib:
   search_tags:
     - 8.14.
+influxdb-ib-bitnami:
+  search_tags:
+    - 2.7.
 jmx-exporter-ib:
   search_tags:
     - 0.20.
@@ -121,15 +130,24 @@ kafka-ib:
 kaniko-ib:
   search_tags:
     - v1.22.
+keycloak-ib:
+  search_tags:
+    - 25.0.
 kibana-ib:
   search_tags:
     - 8.14.
+kong-ib:
+  search_tags:
+    - 3.7.
 kubectl-ib:
   search_tags:
     - v1.27.
 logstash-ib:
   search_tags:
     - 8.14.
+loki-ib:
+  search_tags:
+    - 3.1.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -211,6 +229,9 @@ prometheus-config-reloader-ib:
 prometheus-ib:
   search_tags:
     - v2.53.
+promtail-ib:
+  search_tags:
+    - v3.1.
 redis-exporter-ib:
   search_tags:
     - v1.62.
@@ -226,6 +247,9 @@ solr-8-ib:
 sqlite-ib:
   search_tags:
     - v3.34.
+tempo-ib:
+  search_tags:
+    - 2.5.
 terraform-ib:
   search_tags:
     - 1.7.

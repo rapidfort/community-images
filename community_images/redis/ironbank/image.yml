@@ -33,6 +33,10 @@ runtimes:
       redis6-ib:
         repository: "REDIS_IMAGE_REPOSITORY"
         tag: "REDIS_IMAGE_TAG"
+      redis6-alpine-ib:
+        repository: "REDIS_IMAGE_REPOSITORY"
+        tag: "REDIS_IMAGE_TAG"
   - type: docker
     script: docker_coverage.sh
     redis6-ib: {}
+    redis6-alpine-ib: {}

@@ -174,7 +174,7 @@ class K8sSetup:
         if helm_chart_version != '':
             cmd += f" --version {helm_chart_version}"
         cmd += f" --namespace {self.namespace_name}"
-        rf_access_token = os.getenv("RF_ACCESS_TOKEN")
+        rf_access_token = os.getenv("RF_ACCESS_TOKEN") # pylint: disable=too-many-variables
         if rf_access_token:
             cmd += f' --set env.MY_ENV_VAR={rf_access_token}'
 

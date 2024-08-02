@@ -1088,6 +1088,15 @@ jobs:
           repository: rapidfort/prometheus
           readme-filepath: ./community_images/prometheus/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Prometheus
+      - name: Docker Hub Description prometheus-config-reloader Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/prometheus-config-reloader-ib
+          readme-filepath: ./community_images/prometheus-config-reloader/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for prometheus-config-reloader Iron Bank
       - name: Docker Hub Description Prometheus Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

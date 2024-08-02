@@ -46,3 +46,4 @@ runtimes:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "thanos_chart_overrides.yml"
+    harden_override_file: thanos_chart_harden_overrides.yml

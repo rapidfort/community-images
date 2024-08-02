@@ -5,7 +5,7 @@ services:
     cap_add:
       - SYS_PTRACE
     volumes:
-    - /dev/urandom:/dev/random:ro
+      - /dev/urandom:/dev/random:ro
     ports:
       - 3000:3000
     environment:
@@ -22,7 +22,7 @@ services:
       interval: 15s
       timeout: 5s
       retries: 5
-  
+
   postgres:
     image: rapidfort/postgresql12-ib:12.18
     environment:
@@ -35,5 +35,3 @@ services:
 networks:
   internal:
     driver: bridge
-
-

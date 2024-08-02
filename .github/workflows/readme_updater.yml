@@ -539,6 +539,15 @@ jobs:
           repository: rapidfort/grafana-ib
           readme-filepath: ./community_images/grafana/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Grafana Ironbank
+      - name: Docker Hub Description Grafana Official
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/grafana-official
+          readme-filepath: ./community_images/grafana/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Grafana Official
       - name: Docker Hub Description Hadolint IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -202,6 +202,9 @@ postgres-exporter-bitnami-ib:
 postgres-exporter-ib:
   search_tags:
     - v0.15.
+postgresql-ib-bitnami:
+  search_tags:
+    - 11.22.
 postgresql-ib:
   search_tags:
     - "12."
@@ -211,6 +214,9 @@ prometheus-config-reloader-ib:
 prometheus-ib:
   search_tags:
     - v2.53.
+rabbitmq-ib-bitnami:
+  search_tags:
+    - 3.13.
 redis-exporter-ib:
   search_tags:
     - v1.62.

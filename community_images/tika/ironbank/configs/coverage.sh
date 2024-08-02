@@ -51,16 +51,15 @@ test_curl_command "curl -X GET http://localhost:9998/tika"
 
 # PUT Tika Resource 
 test_curl_command "curl -X PUT --data-binary @GeoSPARQL.pdf http://localhost:9998/tika --header \"Content-type: application/pdf\""
-test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika"
 
 # PUT Tika Resource (specifying /text handler type after /tika)
 test_curl_command "curl -T ledgers.xlsx http://localhost:9998/tika/text --header \"Accept: application/json\""
 
 # PUT Tika Resource (Skip Embedded Files/Attachments)
-test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/tika --header \"X-Tika-Skip-Embedded: true\""
+test_curl_command "curl -T lorem_ipsum.docx http://localhost:9998/tika/text --header \"X-Tika-Skip-Embedded: true\""
 
 # PUT Tika Resource (Multipart Support)
-test_curl_command "curl -F upload=@ledgers.xlsx http://localhost:9998/tika/form"
+test_curl_command "curl -F upload=@ledgers.xlsx http://localhost:9998/tika/form/text"
 
 # Detector Resource (RTF)
 test_curl_command "curl -X PUT --data-binary @sample_rtf.rtf http://localhost:9998/detect/stream"

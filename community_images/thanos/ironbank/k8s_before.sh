@@ -72,7 +72,7 @@ if [ "${all_ready}" != true ]; then
 fi
 
 
-# Using yq to put namespace and release name in overrides file for thanos chart (which will later be deployed by orchestrator) 
+# Using yq to put namespace and release name in both the overrides file for thanos chart (which will later be deployed by orchestrator) 
 THANOS_CHART_RELEASE_NAME="rf-thanos-ib"
 THANOS_CHART_OVERRIDES_FILE="${SCRIPTPATH}/thanos_chart_overrides.yml"
 # namespace is same
@@ -81,3 +81,10 @@ yq -i ".query.stores[1] = \"dnssrv+_grpc._tcp.${THANOS_CHART_RELEASE_NAME}-ruler
 yq -i ".query.stores[2] = \"prometheus-thanos.${NAMESPACE}.svc.cluster.local:10901\"" "${THANOS_CHART_OVERRIDES_FILE}"
 yq -i ".ruler.alertmanagers[0] = \"http://prometheus-alertmanager.${NAMESPACE}.svc.cluster.local:80\"" "${THANOS_CHART_OVERRIDES_FILE}"
 yq -i ".ruler.config[0] = \"http://prometheus-server.${NAMESPACE}.svc.cluster.local:80\"" "${THANOS_CHART_OVERRIDES_FILE}"
+
+THANOS_CHART_HARDEN_OVERRIDES_FILE="${SCRIPTPATH}/thanos_chart_harden_overrides.yml"
+yq -i ".query.stores[0] = \"dnssrv+_grpc._tcp.${THANOS_CHART_RELEASE_NAME}-storegateway.${NAMESPACE}.svc.cluster.local\"" "${THANOS_CHART_HARDEN_OVERRIDES_FILE}"
+yq -i ".query.stores[1] = \"dnssrv+_grpc._tcp.${THANOS_CHART_RELEASE_NAME}-ruler.${NAMESPACE}.svc.cluster.local\"" "${THANOS_CHART_HARDEN_OVERRIDES_FILE}"
+yq -i ".query.stores[2] = \"prometheus-thanos.${NAMESPACE}.svc.cluster.local:10901\"" "${THANOS_CHART_HARDEN_OVERRIDES_FILE}"
+yq -i ".ruler.alertmanagers[0] = \"http://prometheus-alertmanager.${NAMESPACE}.svc.cluster.local:80\"" "${THANOS_CHART_HARDEN_OVERRIDES_FILE}"
+yq -i ".ruler.config[0] = \"http://prometheus-server.${NAMESPACE}.svc.cluster.local:80\"" "${THANOS_CHART_HARDEN_OVERRIDES_FILE}"

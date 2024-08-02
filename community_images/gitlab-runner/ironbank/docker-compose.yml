@@ -9,7 +9,7 @@ services:
       - "/root/debian-add-ssh.sh"
   
   gitlab:
-    image: gitlab/gitlab-ee:17.1.1-ee.0
+    image: gitlab/gitlab-ee:latest
     hostname: localhost:61780
     ports:
       - "61743:443"

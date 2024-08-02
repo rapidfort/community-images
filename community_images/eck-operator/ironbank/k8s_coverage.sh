@@ -17,7 +17,7 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # Apply the manifest file to create resources for all elastic applications supported by eck-operator
 kubectl apply -f "${SCRIPTPATH}"/manifests/manifest.yml -n "${NAMESPACE}"
 
-# Wait until all pods are in the Running or Completed state
+# Wait until all pods are in the Running or Completed state.
 sleep 60
 
 echo "Waiting for all pods in namespace ""$NAMESPACE"" to be running..."

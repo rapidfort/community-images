@@ -7,6 +7,7 @@ services:
     environment:
       - RABBITMQ_USERNAME=user
       - RABBITMQ_PASSWORD=password
+      - RABBITMQ_MANAGEMENT_ALLOW_WEB_ACCESS=true
     ports:
       # AMQP protocol port
       - '5672'

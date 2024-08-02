@@ -12,7 +12,10 @@ ROOT_PATH=${SCRIPTPATH}/..
 IMAGE_LST=${ROOT_PATH}/image.lst
 
 IMAGE_TEMP_LST=${ROOT_PATH}/image.temp.lst
-sort "${IMAGE_LST}" | grep ironbank > "${IMAGE_TEMP_LST}"
+# There is an issue from ironbank side regarding the vault image. Ironbank has incorrectly marked the latest vault image version as "9.1" instead of "1.7".
+# Our automated scripts pull information from ironbank and get the incorrect tag. 
+# Until the issue from ironbank is fixed we are excluding vault/ironbank for any automation script.
+sort "${IMAGE_LST}" | grep ironbank | grep -v vault/ironbank > "${IMAGE_TEMP_LST}"
 
 REPO_SET_FILE=${ROOT_PATH}/ironbank_tags.yml
 echo "" > "${REPO_SET_FILE}"

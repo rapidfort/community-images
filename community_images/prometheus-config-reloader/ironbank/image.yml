@@ -1,0 +1,47 @@
+name: prometheus-config-reloader-ib
+official_name: prometheus-config-reloader Iron Bank
+official_website: https://prometheus-operator.dev/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/prometheus-operator/prometheus-config-reloader
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fprometheus-operator%2Fprometheus-config-reloader
+source_image_readme: https://repo1.dso.mil/dsop/opensource/prometheus-operator/prometheus-config-reloader/-/blob/development/README.md?ref_type=heads
+rf_docker_link: rapidfort/prometheus-config-reloader-ib
+image_workflow_name: prometheus-config-reloader_ironbank
+github_location: prometheus-config-reloader/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus-operator%2Fprometheus-config-reloader
+usage_instructions: |
+  $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+  # install prometheus-operator, just replace the prometheus-config-reloader repository with the rapidfort repository
+  $ helm install rf-prometheus-stack-ib prometheus-community/kube-prometheus-stack --set prometheusOperator.prometheusConfigReloader.image.registry=docker.io --set prometheusOperator.prometheusConfigReloader.image.repository=rapidfort/prometheus-config-reloader-ib
+what_is_text: |
+  prometheus-config-reloader is a component typically used in conjunction with Prometheus, especially within the context of Kubernetes and other containerized environments. This tool is responsible for reloading the Prometheus configuration dynamically without needing to restart the Prometheus server.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/prometheus-operator/prometheus-config-reloader:
+      input_base_tag: "v0.75."
+      output_repo: prometheus-config-reloader-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    readiness_check_script: prometheus-health-check.sh
+    helm:
+      repo: prometheus-community
+      repo_url: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+    helm_additional_params:
+      fullnameOverride: "rf-prometheus-stack-ib"
+      kubeStateMetrics.enabled: false
+      nodeExporter.enabled: false
+      grafana.enabled: false
+      alertmanager.enabled: false
+    image_keys:
+      prometheus-config-reloader-ib:
+        repository: "prometheusOperator.prometheusConfigReloader.image.repository"
+        tag: "prometheusOperator.prometheusConfigReloader.image.tag"
+    override_file: "overrides.yml"

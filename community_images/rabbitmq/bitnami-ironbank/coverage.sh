@@ -18,9 +18,6 @@ function test_rabbitmq_docker_compose() {
     sleep 20
 
     echo "#!/bin/bash
-    python3 -m venv /tmp/venv
-    source /tmp/venv/bin/activate
-    pip install --upgrade pip
     pip install pika
     python3 /tmp/publish.py --rabbitmq-server=$RABBITMQ_SERVER --password=$RABBITMQ_PASSWORD" > "$SCRIPTPATH"/publish_commands.sh
 
@@ -28,8 +25,8 @@ function test_rabbitmq_docker_compose() {
     chmod +x "$SCRIPTPATH"/publish_commands.sh
     docker cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
     
-    docker exec -i  "${PUBLISHER_POD_NAME}" /bin/bash -c "/tmp/publish_commands.sh"
-
+    docker exec -i  "${PUBLISHER_POD_NAME}" /bin/bash -c "/tmp/publish_commands.sh" > /dev/null 2>&1 &
+    sleep 5
     # consumer specific
     CONSUMER_POD_NAME="consumer"
     docker run --name "${CONSUMER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
@@ -46,8 +43,8 @@ function test_rabbitmq_docker_compose() {
     chmod +x "$SCRIPTPATH"/consume_commands.sh
     docker cp "${SCRIPTPATH}"/consume_commands.sh "${CONSUMER_POD_NAME}":/tmp/consume_commands.sh
 
-    docker exec -i  "${CONSUMER_POD_NAME}" /bin/bash -c /tmp/consume_commands.sh
-
+    docker exec -i  "${CONSUMER_POD_NAME}" /bin/bash -c /tmp/consume_commands.sh > /dev/null 2>&1 &
+    sleep 5
     # delete the client containers
     docker stop "${PUBLISHER_POD_NAME}"
     docker stop "${CONSUMER_POD_NAME}"

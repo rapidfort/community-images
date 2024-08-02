@@ -1,6 +1,6 @@
 name: promtail-ib
 official_name: Promtail Iron Bank
-official_website: https://grafana.com/oss/promtail/
+official_website: https://grafana.com/docs/loki/latest/send-data/promtail/
 source_image_provider: Platform One
 source_image_repo: registry1.dso.mil/ironbank/opensource/grafana/promtail
 source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fgrafana%2Fpromtail
@@ -13,7 +13,7 @@ usage_instructions: |
   # Using docker run
   $ docker run -d --name=promtail -p 3100:3100 rapidfort/promtail-ib
 what_is_text: |
-  Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
+  Promtail is an agent which ships the contents of local logs to a private Grafana Loki instance or Grafana Cloud. It is usually deployed to every machine that runs applications which need to be monitored.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 input_registry:

@@ -9,7 +9,7 @@ rf_docker_link: rapidfort/velero-ib
 image_workflow_name: velero_ironbank
 github_location: velero/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fvelero%2Fvelero
-usage_instructions: "# Velero can be deployed with:\n$ helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts\n$ helm install rf-velero vmware-tanzu/velero \n$--set image.repository=rapidfort/argocd-ib \n$ --set image.tag=v2.11.2\n$ --set-file credentials.secretContents.cloud=<FULL PATH TO FILE> \\\n$ --set configuration.backupStorageLocation[0].name=<BACKUP STORAGE LOCATION NAME> \\\n$ --set configuration.backupStorageLocation[0].provider=<PROVIDER NAME> \\\n$ --set configuration.backupStorageLocation[0].bucket=<BUCKET NAME> \\\n$ --set configuration.backupStorageLocation[0].config.region=<REGION> \\\n$ --set configuration.volumeSnapshotLocation[0].name=<VOLUME SNAPSHOT LOCATION NAME> \\\n$ --set configuration.volumeSnapshotLocation[0].provider=<PROVIDER NAME> \\\n$ --set configuration.volumeSnapshotLocation[0].config.region=<REGION> \\\n$ --set initContainers[0].name=velero-plugin-for-<PROVIDER NAME> \\\n$ --set initContainers[0].image=velero/velero-plugin-for-<PROVIDER NAME>:<PROVIDER PLUGIN TAG> \\\n$ --set initContainers[0].volumeMounts[0].mountPath=/target \\\n$ --set initContainers[0].volumeMounts[0].name=plugins\n"
+usage_instructions: "# Velero can be deployed with:\n$ helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts\n$ helm install rf-velero vmware-tanzu/velero \n$--set image.repository=rapidfort/velero-ib \n$ --set image.tag=v1.14.0\n$ --set-file credentials.secretContents.cloud=<FULL PATH TO FILE> \\\n$ --set configuration.backupStorageLocation[0].name=<BACKUP STORAGE LOCATION NAME> \\\n$ --set configuration.backupStorageLocation[0].provider=<PROVIDER NAME> \\\n$ --set configuration.backupStorageLocation[0].bucket=<BUCKET NAME> \\\n$ --set configuration.backupStorageLocation[0].config.region=<REGION> \\\n$ --set configuration.volumeSnapshotLocation[0].name=<VOLUME SNAPSHOT LOCATION NAME> \\\n$ --set configuration.volumeSnapshotLocation[0].provider=<PROVIDER NAME> \\\n$ --set configuration.volumeSnapshotLocation[0].config.region=<REGION> \\\n$ --set initContainers[0].name=velero-plugin-for-<PROVIDER NAME> \\\n$ --set initContainers[0].image=velero/velero-plugin-for-<PROVIDER NAME>:<PROVIDER PLUGIN TAG> \\\n$ --set initContainers[0].volumeMounts[0].mountPath=/target \\\n$ --set initContainers[0].volumeMounts[0].name=plugins\n"
 what_is_text: |
   Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes.
 disclaimer: |
@@ -34,5 +34,6 @@ runtimes:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
+    harden_override_file: "harden_overrides.yml"
     readiness_wait_pod_name_suffix:
       - "velero"

@@ -92,9 +92,9 @@ RapidFort’s hardened [rapidfort/mysql][rf-dh-image-link] image has been optimi
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`9.0`, `9.0-debian-12`, `9.0.0`, `9.0.0-debian-12-r` (9.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/9.0/debian-12/Dockerfile)
-* [`8.4`, `8.4-debian-12`, `8.4.1`, `8.4.1-debian-12-r` (8.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.4/debian-12/Dockerfile)
-* [`8.0`, `8.0-debian-12`, `8.0.38`, `8.0.38-debian-12-r` (8.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-12/Dockerfile)
+* [`9.0`, `9.0-debian-12`, `9.0.1`, `9.0.1-debian-12-r` (9.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/9.0/debian-12/Dockerfile)
+* [`8.4`, `8.4-debian-12`, `8.4.2`, `8.4.2-debian-12-r` (8.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.4/debian-12/Dockerfile)
+* [`8.0`, `8.0-debian-12`, `8.0.39`, `8.0.39-debian-12-r` (8.0/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mysql/8.0/debian-12/Dockerfile)
 
 ## Need support
 

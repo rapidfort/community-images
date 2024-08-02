@@ -10,7 +10,6 @@ JSON=$(cat "$JSON_PARAMS")
 echo "Json params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
-RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 # current scriptpath
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"

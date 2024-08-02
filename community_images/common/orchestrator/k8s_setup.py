@@ -144,7 +144,8 @@ class K8sSetup:
         cmd = f"kubectl run {self.release_name}"
         cmd += " --restart=Never --privileged"
         cmd += f" --namespace {self.namespace_name}"
-        cmd += f" --env=RF_ACCESS_TOKEN={rf_access_token}"
+        if rf_access_token:
+            cmd += f" --env=RF_ACCESS_TOKEN={rf_access_token}"
 
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():
@@ -173,7 +174,9 @@ class K8sSetup:
         if helm_chart_version != '':
             cmd += f" --version {helm_chart_version}"
         cmd += f" --namespace {self.namespace_name}"
-        cmd += f' --set env.MY_ENV_VAR={os.getenv("RF_ACCESS_TOKEN")}'
+        rf_access_token = os.getenv("RF_ACCESS_TOKEN") # pylint: disable=too-many-variables
+        if rf_access_token:
+            cmd += f' --set env.MY_ENV_VAR={rf_access_token}'
 
         image_keys = self.runtime_props.get("image_keys", {})
         for repo_key, tag_details in self.image_tag_details.items():
@@ -193,7 +196,7 @@ class K8sSetup:
             cmd += f" --set {key}={val}"
 
         if self.command in [Commands.HARDEN_COVERAGE, Commands.LATEST_COVERAGE] and self.runtime_props.get('harden_override_file'):
-            override_file = f"{self.image_script_dir}/{self.runtime_props.get('harden_override_file', 'overrides.yml')}"
+            override_file = f"{self.image_script_dir}/{self.runtime_props.get('harden_override_file')}"
             cmd += f" -f {override_file}"
         elif self.command != Commands.LATEST_COVERAGE:
             cmd += f" -f {override_file}"

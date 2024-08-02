@@ -39,3 +39,4 @@ runtimes:
         repository: "helmController.image"
         tag: "helmController.tag"
     override_file: "overrides.yml"
+    harden_override_file: "harden_overrides.yml"

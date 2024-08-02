@@ -9,8 +9,6 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 JSON_PARAMS="$1"
 
-JSON=$(cat "$JSON_PARAMS")
-
 PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 CONTAINER_NAME="${PROJECT_NAME}"-keycloak-1
 

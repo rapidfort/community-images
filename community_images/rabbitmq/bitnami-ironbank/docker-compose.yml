@@ -6,16 +6,9 @@ services:
     privileged: true
     environment:
       - RABBITMQ_USERNAME=user
-      - RABBITMQ_PASSWORD=bitnami
-      - RABBITMQ_MANAGEMENT_ALLOW_WEB_ACCESS=true
+      - RABBITMQ_PASSWORD=password
     ports:
       # AMQP protocol port
       - '5672'
       # HTTP management UI
       - '15672'
-    volumes:
-      - 'rabbitmq_data:/bitnami/rabbitmq/mnesia'
-volumes:
-  rabbitmq_data:
-    driver: local
-

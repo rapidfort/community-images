@@ -11,7 +11,7 @@ function test_rabbitmq_docker_compose() {
 
     local RABBITMQ_USERNAME=$3
     local RABBITMQ_PASSWORD=$4
-    echo "${RABBITMQ_USERNAME}"
+    echo "$RABBITMQ_USERNAME"
     PUBLISHER_POD_NAME="publisher"
 
     docker run --name "${PUBLISHER_POD_NAME}" --rm -d --network "${RABBITMQ_NETWORK}" bitnami/python sleep infinity
@@ -25,7 +25,7 @@ function test_rabbitmq_docker_compose() {
     chmod +x "$SCRIPTPATH"/publish_commands.sh
     docker cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
     
-    docker exec -i "${PUBLISHER_POD_NAME}" bash -c "/tmp/publish_commands.sh"
+    docker exec -i  "${PUBLISHER_POD_NAME}" bash -c "/tmp/publish_commands.sh"
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
@@ -40,15 +40,15 @@ function test_rabbitmq_docker_compose() {
     chmod +x "$SCRIPTPATH"/consume_commands.sh
     docker cp "${SCRIPTPATH}"/consume_commands.sh "${CONSUMER_POD_NAME}":/tmp/consume_commands.sh
 
-    docker exec -i "${CONSUMER_POD_NAME}" bash -c "/tmp/consume_commands.sh"
+    docker exec -i  "${CONSUMER_POD_NAME}" bash -c "/tmp/consume_commands.sh"
 
     # delete the client containers
     docker stop "${PUBLISHER_POD_NAME}"
     docker stop "${CONSUMER_POD_NAME}"
 
     # delete the generated command files
-    rm "${SCRIPTPATH}"/publish_commands.sh
-    rm "${SCRIPTPATH}"/consume_commands.sh
+    rm "$SCRIPTPATH"/publish_commands.sh
+    rm "$SCRIPTPATH"/consume_commands.sh
 
     # Perf
     PERF_POD="perf-test"

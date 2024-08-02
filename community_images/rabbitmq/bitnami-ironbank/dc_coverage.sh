@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -ex
+set -x
+set -e
 
 JSON_PARAMS="$1"
 
@@ -19,8 +20,8 @@ RABBITMQ_SERVER=${PROJECT_NAME}-rabbitmq-1
 RABBITMQ_NETWORK=${PROJECT_NAME}_default
 
 RABBITMQ_USERNAME='user'
-RABBITMQ_PASSWORD='bitnami'
+RABBITMQ_PASSWORD='password'
 
-sleep 20
+sleep 60
 
 test_rabbitmq_docker_compose "${RABBITMQ_SERVER}" "${RABBITMQ_NETWORK}" "${RABBITMQ_USERNAME}" "${RABBITMQ_PASSWORD}"

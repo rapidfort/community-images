@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - f18-navy-boeing/osee/osee-postgres:
-      input_base_tag: "1.0."
+      input_base_tag: "1.0.0."
       output_repo: osee-postgres-ib
 runtimes:
   - type: docker_compose

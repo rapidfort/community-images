@@ -90,7 +90,8 @@ class DockerSetup:
             environment.update(common_environment)
 
             rf_access_token = os.getenv("RF_ACCESS_TOKEN")
-            cmd += f" -e RF_ACCESS_TOKEN={rf_access_token}"
+            if rf_access_token:
+                cmd += f" -e RF_ACCESS_TOKEN={rf_access_token}"
 
             for key, val in environment.items():
                 cmd += f" -e {key}={val}"

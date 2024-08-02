@@ -78,6 +78,7 @@ export RUNNER_REGISTER_PID=$!
 #   in background of terminal while manual testing
 trap 'kill ${RUNNER_REGISTER_PID}' SIGINT
 trap 'kill ${RUNNER_REGISTER_PID}' SIGTERM
+trap 'kill ${RUNNER_REGISTER_PID} || true' EXIT
 
 # Get gitlab port and initial login passowrd to access web interface
 PORT=61780
@@ -85,9 +86,6 @@ GITLAB_ROOT_PASSWORD=$(sudo grep 'Password:' "${SCRIPTPATH}/config/initial_root_
 
 # Initiating Selenium tests
 ("${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${GITLAB_ROOT_PASSWORD}" "${PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1 ) >&2
-
-# Kill the runner registeration process if runner_registeration takes time or selenium fails.
-kill "${RUNNER_REGISTER_PID}" || true
 
 sudo rm -rf "${SCRIPTPATH}/config" "${SCRIPTPATH}/data" "${SCRIPTPATH}/logs" "${SCRIPTPATH}/id_rsa"*
 

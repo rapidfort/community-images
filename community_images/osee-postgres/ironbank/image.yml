@@ -1,0 +1,35 @@
+name: osee-postgres-ib
+official_name: OSEE-Postgres Iron Bank
+official_website: https://wiki.eclipse.org/OSEE/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/f18-navy-boeing/osee/osee-postgres
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/ironbank%2Ff18-navy-boeing%2Fosee%2Fosee-postgres
+source_image_readme: https://repo1.dso.mil/dsop/f18-navy-boeing/osee/osee-postgres/-/blob/development/README.md
+rf_docker_link: rapidfort/osee-postgres-ib
+image_workflow_name: osee-postgres_ironbank
+github_location: osee-postgres/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ff18-navy-boeing%2Fosee%2Fosee-postgres
+usage_instructions: |
+  # Using docker run:
+  # Note: OSEE-Postgres expects to have a Postgres database running on the same network.
+  $ docker run -p 8089:8089 -t --name osee-postgres rapidfort/osee-postgres-ib:latest
+what_is_text: |
+  This project feeds the container build and hardening pipeline of the Open System Engineering Environment (OSEE) open source server maintained at Eclipse.org.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - f18-navy-boeing/osee/osee-postgres:
+      input_base_tag: "1.0."
+      output_repo: osee-postgres-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      osee-postgres-ib:
+        repository: "OSEE_POSTGRES_IMAGE_REPOSITORY"
+        tag: "OSEE_POSTGRES_IMAGE_TAG"

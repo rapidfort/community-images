@@ -786,6 +786,10 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [osee-postgres-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/osee-postgres-ib?logo=docker&logoColor=white
 [osee-postgres-ib-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ff18-navy-boeing%2Fosee%2Fosee-postgres?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=osee-postgres-ib&utm_content=landing_view_report
 
+[osee-postgres-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/osee-postgres/ironbank
+[osee-postgres-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/osee-postgres-ib?logo=docker&logoColor=white
+[osee-postgres-ib-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Ff18-navy-boeing%2Fosee%2Fosee-postgres?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=osee-postgres-ib&utm_content=landing_view_report
+
 [packetbeat-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/packetbeat/ironbank
 [packetbeat-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/packetbeat-ib?logo=docker&logoColor=white
 [packetbeat-ib-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Fbeats%2Fpacketbeat?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=packetbeat-ib&utm_content=landing_view_report

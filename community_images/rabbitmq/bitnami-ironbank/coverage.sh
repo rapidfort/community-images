@@ -28,7 +28,7 @@ function test_rabbitmq_docker_compose() {
     chmod +x "$SCRIPTPATH"/publish_commands.sh
     docker cp "${SCRIPTPATH}"/publish_commands.sh "${PUBLISHER_POD_NAME}":/tmp/publish_commands.sh
     
-    docker exec -i  "${PUBLISHER_POD_NAME}" bash -c "/tmp/publish_commands.sh" 2>&1
+    docker exec -i  "${PUBLISHER_POD_NAME}" /bin/bash -c "/tmp/publish_commands.sh"
 
     # consumer specific
     CONSUMER_POD_NAME="consumer"
@@ -46,7 +46,7 @@ function test_rabbitmq_docker_compose() {
     chmod +x "$SCRIPTPATH"/consume_commands.sh
     docker cp "${SCRIPTPATH}"/consume_commands.sh "${CONSUMER_POD_NAME}":/tmp/consume_commands.sh
 
-    docker exec -i  "${CONSUMER_POD_NAME}" bash -c "/tmp/consume_commands.sh" 2>&1
+    docker exec -i  "${CONSUMER_POD_NAME}" /bin/bash -c /tmp/consume_commands.sh
 
     # delete the client containers
     docker stop "${PUBLISHER_POD_NAME}"

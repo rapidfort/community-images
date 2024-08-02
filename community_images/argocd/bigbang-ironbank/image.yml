@@ -38,7 +38,7 @@ runtimes:
       # bcrypt hash of pass_123
       "configs.secret.argocdServerAdminPassword": "$2y$10$jOMpTcqFvE/WMxxfgD4obu.ZBBAlYvMdMiXdQ16dUHCVCMIgSqyhC"
     image_keys:
-      argocd-big-bang-ib:
+      argocd-bigbang-ib:
         repository: "global.image.repository"
         tag: "global.image.tag"
     override_file: "overrides.yml"

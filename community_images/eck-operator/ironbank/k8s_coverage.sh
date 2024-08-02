@@ -21,12 +21,12 @@ kubectl apply -f "${SCRIPTPATH}"/manifests/manifest.yml -n "${NAMESPACE}"
 # Wait until all pods are in the Running or Completed state
 sleep 60
 
-echo "Waiting for all pods in namespace "$NAMESPACE" to be running..."
+echo "Waiting for all pods in namespace ""$NAMESPACE"" to be running..."
 
 while true; do
   pending_pods=$(kubectl get pods -n "$NAMESPACE" --no-headers | awk '{print $3}' | grep -vE 'Running|Completed' | wc -l)
   if [ "$pending_pods" -eq 0 ]; then
-    echo "All pods are now running in namespace "$NAMESPACE"."
+    echo "All pods are now running in namespace ""$NAMESPACE""."
     break
   else
     sleep 5
@@ -34,7 +34,7 @@ while true; do
 done
 
 # Calling the coverage scripts 
-""${SCRIPTPATH}"/coverage/elasticsearch.sh" "${NAMESPACE}"
+"""${SCRIPTPATH}""/coverage/elasticsearch.sh" "${NAMESPACE}"
 
 # Cleanup
 kubectl delete -f "${SCRIPTPATH}"/manifests/manifest.yml -n "${NAMESPACE}"

@@ -9,7 +9,7 @@ function test_nats() {
    local NAMESPACE=$1
    local RELEASE_NAME=$2
 
-   NATS_SERVER=$(kubectl get pod "${RELEASE_NAME}" -n "${NAMESPACE}" --template '{{.status.podIP}}')
+   NATS_SERVER=$(kubectl get pod "${RELEASE_NAME}-0" -n "${NAMESPACE}" --template '{{.status.podIP}}')
 
    # NATS_USER=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 user | awk '{print $2}' | tr -d '"')
    # NATS_PASS=$(kubectl get secret --namespace "${NAMESPACE}" "${RELEASE_NAME}" -o jsonpath='{.data.*}' | base64 -d | grep -m 1 password | awk '{print $2}' | tr -d '"')

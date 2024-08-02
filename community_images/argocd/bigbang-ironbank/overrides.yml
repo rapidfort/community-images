@@ -4,6 +4,7 @@ global:
     pullPolicy: Always
   containerSecurityContext:
     enabled: true
+    readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
@@ -65,3 +66,13 @@ notifications:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
+redisSecretInit:
+  containerSecurityContext:
+    runAsNonRoot: false
+    runAsUser: 0
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+    capabilities:
+      add: ["SYS_PTRACE"]
+  
+

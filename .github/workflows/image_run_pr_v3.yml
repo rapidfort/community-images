@@ -65,7 +65,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami
 
@@ -135,7 +134,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank
 
@@ -205,7 +203,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami-ironbank
 
@@ -275,7 +272,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run alertmanager/ironbank
 
@@ -345,7 +341,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run alloy/ironbank
 
@@ -415,7 +410,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run ansible/ironbank
 
@@ -485,7 +479,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run ansible-lint/ironbank
 
@@ -555,7 +548,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami
 
@@ -625,7 +617,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank
 
@@ -695,7 +686,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/official
 
@@ -765,7 +755,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay
 
@@ -835,7 +824,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/bigbang-ironbank
 
@@ -905,7 +893,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/ironbank
 
@@ -975,7 +962,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run auditbeat/ironbank
 
@@ -1045,7 +1031,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run bats/ironbank
 
@@ -1115,7 +1100,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run blackbox-exporter/ironbank
 
@@ -1185,7 +1169,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official
 
@@ -1255,7 +1238,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run chart-testing/ironbank
 
@@ -1325,7 +1307,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami
 
@@ -1395,7 +1376,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank
 
@@ -1465,7 +1445,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/official
 
@@ -1535,7 +1514,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/bitnami
 
@@ -1605,7 +1583,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/ironbank
 
@@ -1675,7 +1652,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official
 
@@ -1745,7 +1721,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages
 
@@ -1885,7 +1860,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/bitnami
 
@@ -1955,7 +1929,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch-exporter/ironbank
 
@@ -2025,7 +1998,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official
 
@@ -2095,7 +2067,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami
 
@@ -2165,7 +2136,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official
 
@@ -2235,7 +2205,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami
 
@@ -2305,7 +2274,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank
 
@@ -2375,7 +2343,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run filebeat/ironbank
 
@@ -2445,7 +2412,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/bitnami
 
@@ -2515,7 +2481,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank
 
@@ -2585,7 +2550,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/official
 
@@ -2655,7 +2619,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami
 
@@ -2725,7 +2688,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd-elasticsearch/ironbank
 
@@ -2795,7 +2757,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank
 
@@ -2865,7 +2826,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official
 
@@ -2935,7 +2895,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-helm-controller/ironbank
 
@@ -3005,7 +2964,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-image-automation-controller/ironbank
 
@@ -3075,7 +3033,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-image-reflector-controller/ironbank
 
@@ -3145,7 +3102,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-kustomize-controller/ironbank
 
@@ -3215,7 +3171,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-notification-controller/ironbank
 
@@ -3285,7 +3240,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-source-controller/ironbank
 
@@ -3355,7 +3309,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run gatekeeper/ironbank
 
@@ -3425,7 +3378,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run ghost/bitnami
 
@@ -3495,7 +3447,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run git-lfs/ironbank
 
@@ -3565,7 +3516,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-runner/ironbank
 
@@ -3635,7 +3585,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank
 
@@ -3705,7 +3654,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana/official
 
@@ -3775,7 +3723,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run hadolint/ironbank
 
@@ -3845,7 +3792,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami
 
@@ -3915,7 +3861,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank
 
@@ -3985,7 +3930,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official
 
@@ -4055,7 +3999,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run heartbeat/ironbank
 
@@ -4125,7 +4068,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
 
@@ -4195,7 +4137,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run jmx-exporter/ironbank
 
@@ -4265,7 +4206,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run k8s-sidecar/ironbank
 
@@ -4335,7 +4275,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run k8s-sidecar/official
 
@@ -4405,7 +4344,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run kafka-exporter/ironbank
 
@@ -4475,7 +4413,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run kafka/ironbank
 
@@ -4545,7 +4482,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run kaniko/ironbank
 
@@ -4615,7 +4551,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official
 
@@ -4685,7 +4620,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank
 
@@ -4755,7 +4689,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run kong/official
 
@@ -4825,7 +4758,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run kubectl/ironbank
 
@@ -4895,7 +4827,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank
 
@@ -4965,7 +4896,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami
 
@@ -5035,7 +4965,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank
 
@@ -5105,7 +5034,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official
 
@@ -5175,7 +5103,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mc/ironbank
 
@@ -5245,7 +5172,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami
 
@@ -5315,7 +5241,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank
 
@@ -5385,7 +5310,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official
 
@@ -5455,7 +5379,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run metabase/ironbank
 
@@ -5525,7 +5448,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run metricbeat/ironbank
 
@@ -5595,7 +5517,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank
 
@@ -5665,7 +5586,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run minio-operator/ironbank
 
@@ -5735,7 +5655,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mkdocs/ironbank
 
@@ -5805,7 +5724,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami
 
@@ -5875,7 +5793,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank
 
@@ -5945,7 +5862,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official
 
@@ -6015,7 +5931,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank
 
@@ -6085,7 +6000,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami
 
@@ -6155,7 +6069,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank
 
@@ -6225,7 +6138,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official
 
@@ -6295,7 +6207,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami
 
@@ -6365,7 +6276,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank
 
@@ -6435,7 +6345,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/official
 
@@ -6505,7 +6414,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami
 
@@ -6575,7 +6483,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank
 
@@ -6645,7 +6552,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official
 
@@ -6715,7 +6621,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank
 
@@ -6785,7 +6690,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run nifi-registry/ironbank
 
@@ -6855,7 +6759,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/bitnami
 
@@ -6925,7 +6828,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank
 
@@ -6995,7 +6897,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/official
 
@@ -7065,7 +6966,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana
 
@@ -7135,7 +7035,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run openldap/ironbank
 
@@ -7205,7 +7104,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run osee-postgres/ironbank
 
@@ -7275,7 +7173,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run packetbeat/ironbank
 
@@ -7345,7 +7242,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank
 
@@ -7415,7 +7311,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run pgadmin/ironbank
 
@@ -7485,7 +7380,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run podman/ironbank
 
@@ -7555,7 +7449,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgres-exporter/bitnami-ironbank
 
@@ -7625,7 +7518,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgres-exporter/ironbank
 
@@ -7695,7 +7587,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami
 
@@ -7765,7 +7656,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank
 
@@ -7835,7 +7725,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official
 
@@ -7905,7 +7794,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami
 
@@ -7975,7 +7863,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus-config-reloader/ironbank
 
@@ -8045,7 +7932,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank
 
@@ -8115,7 +8001,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/official
 
@@ -8185,7 +8070,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami
 
@@ -8255,7 +8139,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/official
 
@@ -8325,7 +8208,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami
 
@@ -8395,7 +8277,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami
 
@@ -8465,7 +8346,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis-exporter/ironbank
 
@@ -8535,7 +8415,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank
 
@@ -8605,7 +8484,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/official
 
@@ -8675,7 +8553,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run shellcheck/ironbank
 
@@ -8745,7 +8622,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run solr-8/ironbank
 
@@ -8815,7 +8691,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run sqlite/ironbank
 
@@ -8885,7 +8760,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run telegraf/bitnami
 
@@ -8955,7 +8829,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank
 
@@ -9025,7 +8898,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run terragrunt/ironbank
 
@@ -9095,7 +8967,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run thanos/ironbank
 
@@ -9165,7 +9036,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run tika/ironbank
 
@@ -9235,7 +9105,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run tomcat/ironbank
 
@@ -9305,7 +9174,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik
 
@@ -9375,7 +9243,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank
 
@@ -9445,7 +9312,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp
 
@@ -9515,7 +9381,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/ironbank
 
@@ -9585,7 +9450,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank
 
@@ -9655,7 +9519,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run vcluster/ironbank
 
@@ -9725,7 +9588,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run velero/ironbank
 
@@ -9795,7 +9657,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami
 
@@ -9865,7 +9726,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/ironbank
 
@@ -9935,7 +9795,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official
 
@@ -10005,7 +9864,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run yq/ironbank
 
@@ -10075,7 +9933,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run zeek/ironbank
 
@@ -10145,7 +10002,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami
 
@@ -10215,7 +10071,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank
 
@@ -10285,7 +10140,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official
 

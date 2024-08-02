@@ -27,11 +27,20 @@ repo_sets:
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
-    use_helm: False
+    helm:
+      repo: nats
+      repo_url: https://nats-io.github.io/k8s/helm/charts/
+      chart: nats
     image_keys:
       nats-ib:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
-    readiness_wait_pod_name_suffix:
-      - ""
+    helm_additional_params:
+      auth.enabled: true
+      auth.user: "testuser"
+      auth.password: "testpass"
+      auth.token: ""
+      auth.timeout: 1
+      auth.usersCredentials: []
+      auth.noAuthUser: ""

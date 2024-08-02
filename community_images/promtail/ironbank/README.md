@@ -9,6 +9,8 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
+<b>Near Zero CVE images availabe at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
@@ -42,10 +44,10 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 ## What is Promtail Iron Bank?
 
-> Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
+> Promtail is an agent which ships the contents of local logs to a private Grafana Loki instance or Grafana Cloud. It is usually deployed to every machine that runs applications which need to be monitored.
 
 
-[Overview of Promtail Iron Bank](https://grafana.com/oss/promtail/)
+[Overview of Promtail Iron Bank](https://grafana.com/docs/loki/latest/send-data/promtail/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 

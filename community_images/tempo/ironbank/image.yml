@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/grafana/tempo:
-      input_base_tag: '2.5'
+      input_base_tag: '2.5.'
       output_repo: tempo-ib
 needs_common_commands: False
 runtimes:

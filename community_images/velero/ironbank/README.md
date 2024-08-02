@@ -9,6 +9,8 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
+<b>Near Zero CVE images availabe at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
@@ -66,8 +68,8 @@ The runtime instructions for this hardened container image are the same as the o
 # Velero can be deployed with:
 $ helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
 $ helm install rf-velero vmware-tanzu/velero 
-$--set image.repository=rapidfort/argocd-ib 
-$ --set image.tag=v2.11.2
+$--set image.repository=rapidfort/velero-ib 
+$ --set image.tag=v1.14.0
 $ --set-file credentials.secretContents.cloud=<FULL PATH TO FILE> \
 $ --set configuration.backupStorageLocation[0].name=<BACKUP STORAGE LOCATION NAME> \
 $ --set configuration.backupStorageLocation[0].provider=<PROVIDER NAME> \

@@ -9,6 +9,8 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
+<b>Near Zero CVE images availabe at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
@@ -92,7 +94,7 @@ RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been opti
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`11.3`, `11.3-debian-12`, `11.3.2`, `11.3.2-debian-12-r` (11.3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.3/debian-12/Dockerfile)
+* [`11.4`, `11.4-debian-12`, `11.4.2`, `11.4.2-debian-12-r` (11.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.4/debian-12/Dockerfile)
 * [`11.2`, `11.2-debian-12`, `11.2.4`, `11.2.4-debian-12-r` (11.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-12/Dockerfile)
 * [`11.1`, `11.1-debian-12`, `11.1.5`, `11.1.5-debian-12-r` (11.1/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.1/debian-12/Dockerfile)
 * [`10.11`, `10.11-debian-12`, `10.11.8`, `10.11.8-debian-12-r` (10.11/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-12/Dockerfile)

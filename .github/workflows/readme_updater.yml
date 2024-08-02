@@ -989,6 +989,15 @@ jobs:
           repository: rapidfort/openldap-ib
           readme-filepath: ./community_images/openldap/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for OpenLDAP IronBank
+      - name: Docker Hub Description OSEE-Postgres Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/osee-postgres-ib
+          readme-filepath: ./community_images/osee-postgres/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for OSEE-Postgres Iron Bank
       - name: Docker Hub Description Packetbeat Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

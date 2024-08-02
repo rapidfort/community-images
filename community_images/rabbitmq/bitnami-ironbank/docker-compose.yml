@@ -9,12 +9,10 @@ services:
       - RABBITMQ_PASSWORD=bitnami
       - RABBITMQ_MANAGEMENT_ALLOW_WEB_ACCESS=true
     ports:
-      - '4369:4369'
-      - '5551:5551'
-      - '5552:5552'
-      - '5672:5672'
-      - '25672:25672'
-      - '15672:15672'
+      # AMQP protocol port
+      - '5672'
+      # HTTP management UI
+      - '15672'
     volumes:
       - 'rabbitmq_data:/bitnami/rabbitmq/mnesia'
 volumes:

@@ -18,6 +18,9 @@ function test_rabbitmq_docker_compose() {
     sleep 20
 
     echo "#!/bin/bash
+    python3 -m venv /tmp/venv
+    source /tmp/venv/bin/activate
+    pip install --upgrade pip
     pip install pika
     python3 /tmp/publish.py --rabbitmq-server=$RABBITMQ_SERVER --password=$RABBITMQ_PASSWORD" > "$SCRIPTPATH"/publish_commands.sh
 

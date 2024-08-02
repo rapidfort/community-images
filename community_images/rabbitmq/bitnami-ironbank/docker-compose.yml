@@ -3,7 +3,7 @@ version: '2'
 services:
   rabbitmq:
     image: ${RABBITMQ_IMAGE_REPOSITORY}:${RABBITMQ_IMAGE_TAG}
-    privileged: true
+    # privileged: true
     environment:
       - RABBITMQ_USERNAME=user
       - RABBITMQ_PASSWORD=bitnami

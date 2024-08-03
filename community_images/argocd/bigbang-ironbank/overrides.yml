@@ -19,35 +19,22 @@ global:
     timeoutSeconds: 30
 controller:
   containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
     readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
 dex:
   containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
     readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
 server:
   containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
     readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
 repoServer:
   containerSecurityContext:
-    runAsNonRoot: false
-    runAsUser: 0
-    privileged: true
     readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"] 
 applicationSet: 

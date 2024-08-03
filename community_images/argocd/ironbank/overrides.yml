@@ -25,16 +25,10 @@ controller:
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
-dex:
+server:
   containerSecurityContext:
     runAsNonRoot: false
     runAsUser: 0
-    readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
-    capabilities:
-      add: ["SYS_PTRACE"]
-server:
-  containerSecurityContext:
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:

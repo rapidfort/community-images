@@ -40,6 +40,8 @@ runtimes:
       nodeExporter.enabled: false
       grafana.enabled: false
       alertmanager.enabled: false
+      cleanPrometheusOperatorObjectNames: true
+      prometheusOperator.prometheusConfigReloader.image.registry: docker.io
     image_keys:
       prometheus-config-reloader-ib:
         repository: "prometheusOperator.prometheusConfigReloader.image.repository"

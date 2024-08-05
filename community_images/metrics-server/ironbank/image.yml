@@ -1,0 +1,40 @@
+name: metrics-server
+official_name: Metrics-Server IronBank
+official_website: https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/kubernetes-sigs/metrics-server
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fkubernetes-sigs%2Fmetrics-server
+source_image_readme: https://repo1.dso.mil/dsop/opensource/kubernetes-sigs/metrics-server/-/blob/development/README.md
+rf_docker_link: rapidfort/metrics-server-ib
+image_workflow_name: metrics-server_ironbank
+github_location: metrics-server/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server
+usage_instructions: |
+  $ docker run rapidfort/metrics-server-ib
+what_is_text: |
+  Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines. It collects resource metrics from Kubelets and exposes them in Kubernetes apiserver through Metrics API.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/kubernetes-sigs/metrics-server/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/kubernetes-sigs/metrics-server:
+      input_base_tag: "v0.7."
+      output_repo: metrics-server-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    readiness_check_script: metrics-server_health_check.sh
+    helm:
+      repo: metrics-server
+      repo_url: https://kubernetes-sigs.github.io/metrics-server/
+      chart: metrics-server
+    image_keys:
+      metrics-server-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix: []

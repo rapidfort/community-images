@@ -36,7 +36,6 @@ dex:
 server:
   containerSecurityContext:
     readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
 repoServer:

@@ -16,4 +16,4 @@ docker exec -i "${CONTAINER_NAME}" terragrunt -v
 # testing commands
 docker exec -i "${CONTAINER_NAME}" /tmp/commands.sh
 # Terragrunt scaffolding can generate files for you automatically using boilerplate templates
-docker exec -i -u root "${CONTAINER_NAME}" terragrunt scaffold github.com/gruntwork-io/terragrunt.git//test/fixture-inputs --var=Ref=v0.53.1 --terragrunt-working-dir=/run
+docker exec -i -u root "${CONTAINER_NAME}" terragrunt scaffold github.com/gruntwork-io/terragrunt.git//test/fixture-hooks --terragrunt-working-dir=/run

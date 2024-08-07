@@ -1,8 +1,6 @@
 global:
   imagePullSecrets: ["rf-regcred"]
 
-cleanPrometheusOperatorObjectNames: true
-
 prometheusOperator:
   securityContext:
     runAsNonRoot: true
@@ -15,9 +13,6 @@ prometheusOperator:
       - SYS_PTRACE
   env:
     RF_VERBOSE: "0"
-  prometheusConfigReloader:
-    image:
-      registry: docker.io
 
 prometheus:
   prometheusSpec:

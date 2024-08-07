@@ -5,6 +5,8 @@ set -e
 
 # Getting Runtime Parameters
 
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
 JSON_PARAMS="$1"
 JSON=$(cat "$JSON_PARAMS")
 
@@ -12,7 +14,11 @@ echo "Json Params for k8s coverage = $JSON"
 
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
-POD_NAME=$(kubectl get pod -n "${NAMESPACE}" | grep "${RELEASE_NAME}-[a-z0-9-]*" --color=auto -o)
+POD_NAME=$(kubectl get pod -n "${NAMESPACE}" | grep "${RELEASE_NAME}-[a-z0-9-]*" -o)
+
+# Adding Cleanup Trap for php-apache Release
+
+trap '${SCRIPTPATH}/cleanup_script.sh' EXIT
 
 # Running Kubectl Top Commands
 
@@ -33,9 +39,3 @@ kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
 # Check the HPA status
 
 kubectl get hpa
-
-# Resource Cleanup
-
-kubectl delete service php-apache
-kubectl delete deployment php-apache
-kubectl delete hpa php-apache

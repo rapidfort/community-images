@@ -161,7 +161,7 @@ class K8sSetup:
 
         return cmd
 
-    def prepare_helm_cmd(self):
+    def prepare_helm_cmd(self): # pylint: disable=too-many-locals
         """ Prepare helm chart command """
         # Install helm
         override_file = f"{self.image_script_dir}/{self.runtime_props.get('override_file', 'overrides.yml')}"
@@ -174,7 +174,7 @@ class K8sSetup:
         if helm_chart_version != '':
             cmd += f" --version {helm_chart_version}"
         cmd += f" --namespace {self.namespace_name}"
-        rf_access_token = os.getenv("RF_ACCESS_TOKEN") # pylint: disable=too-many-variables
+        rf_access_token = os.getenv("RF_ACCESS_TOKEN")
         if rf_access_token:
             cmd += f' --set env.MY_ENV_VAR={rf_access_token}'
 

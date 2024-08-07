@@ -19,54 +19,47 @@ global:
     timeoutSeconds: 30
 controller:
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 1000
+    runAsNonRoot: false
+    runAsUser: 0
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
 dex:
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 1000
+    runAsNonRoot: false
+    runAsUser: 0
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
 server:
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 1000
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"]
 repoServer:
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 1000
+    runAsNonRoot: false
+    runAsUser: 0
+    privileged: true
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: true
     capabilities:
       add: ["SYS_PTRACE"] 
 applicationSet: 
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 1000  
     readOnlyRootFilesystem: false
     capabilities:
       add: ["SYS_PTRACE"]
 notifications:
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 1000  
     readOnlyRootFilesystem: false
     capabilities:
       add: ["SYS_PTRACE"]
 redisSecretInit:
   containerSecurityContext:
-    runAsNonRoot: true
-    runAsUser: 1000  
     readOnlyRootFilesystem: false
     capabilities:
       add: ["SYS_PTRACE"]

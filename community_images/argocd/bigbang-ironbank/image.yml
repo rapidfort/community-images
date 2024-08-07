@@ -41,5 +41,6 @@ runtimes:
         repository: "global.image.repository"
         tag: "global.image.tag"
     override_file: "overrides.yml"
+    harden_override_file: "harden_overrides.yml"
     readiness_wait_pod_name_suffix:
       - "application-controller-0"

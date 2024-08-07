@@ -17,7 +17,6 @@ what_is_text: |
   Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. Argo CD follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state.
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-use_rapid_stub: true
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
@@ -38,7 +37,7 @@ runtimes:
       # bcrypt hash of pass_123
       "configs.secret.argocdServerAdminPassword": "$2y$10$jOMpTcqFvE/WMxxfgD4obu.ZBBAlYvMdMiXdQ16dUHCVCMIgSqyhC"
     image_keys:
-      argocd-big-bang-ib:
+      argocd-bigbang-ib:
         repository: "global.image.repository"
         tag: "global.image.tag"
     override_file: "overrides.yml"

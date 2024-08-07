@@ -1790,7 +1790,6 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
-          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
         run: python3 community_images/common/orchestrator/main.py hourly_run eck-operator/ironbank
 

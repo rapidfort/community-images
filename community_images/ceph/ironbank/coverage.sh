@@ -101,7 +101,7 @@ ID=$(echo "{\"cephx_secret\": \"$OSD_SECRET\"}" | \
    -n client.bootstrap-osd -k /var/lib/ceph/bootstrap-osd/ceph.keyring)
 
 # mkfs.xfs /dev/sda1
-mount /dev/sda1 /var/lib/ceph/osd/ceph-"$ID"s
+mount /dev/sda1 /var/lib/ceph/osd/ceph-"$ID"
 
 ceph-authtool --create-keyring /var/lib/ceph/osd/ceph-"$ID"/keyring \
      --name osd."$ID" --add-key "$OSD_SECRET"

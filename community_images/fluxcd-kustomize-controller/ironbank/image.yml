@@ -39,3 +39,4 @@ runtimes:
         repository: "kustomizeController.image"
         tag: "kustomizeController.tag"
     override_file: "overrides.yml"
+    harden_override_file: "harden_overrides.yml"

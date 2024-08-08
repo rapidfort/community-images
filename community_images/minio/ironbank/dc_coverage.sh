@@ -16,9 +16,9 @@ CONTAINER_NAME=${PROJECT_NAME}-minio-1
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 MINIO_HOST='127.0.0.1'
-MINIO_PORT='9001'
+MINIO_PORT=$(docker inspect "${CONTAINER_NAME}" | jq -r ".[].NetworkSettings.Ports.\"9001/tcp\"[0].HostPort")
 # version
 docker exec -i "${CONTAINER_NAME}" minio -v
 docker exec -i "${CONTAINER_NAME}" minio
 
-("${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${MINIO_HOST}" "${MINIO_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1) 2>&1
+("${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${MINIO_HOST}" "${MINIO_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1) >&2

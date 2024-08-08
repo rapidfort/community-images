@@ -1,0 +1,6 @@
+image:
+  pullSecrets:
+    - name: rf-regcred
+  pullPolicy: IfNotPresent
+upgradeCRDs:
+  enabled: false   

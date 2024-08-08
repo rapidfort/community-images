@@ -15,7 +15,7 @@ alertmanager-ib:
     - v0.27.
 alloy-ib:
   search_tags:
-    - v1.2.
+    - v1.3.
 ansible-lint-ib:
   search_tags:
     - 24.7.
@@ -27,10 +27,10 @@ apache-ib:
     - 2.4.
 argocd-bigbang-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 argocd-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 auditbeat-ib:
   search_tags:
     - 8.14.
@@ -118,9 +118,6 @@ kafka-exporter-ib:
 kafka-ib:
   search_tags:
     - 3.4.
-kaniko-ib:
-  search_tags:
-    - v1.22.
 kibana-ib:
   search_tags:
     - 8.14.
@@ -184,6 +181,9 @@ node-exporter-ib:
 openldap-ib:
   search_tags:
     - 2.6.
+osee-postgres-ib:
+  search_tags:
+    - 1.0.0.
 packetbeat-ib:
   search_tags:
     - 8.14.
@@ -205,6 +205,9 @@ postgres-exporter-ib:
 postgresql-ib:
   search_tags:
     - "12."
+prometheus-config-reloader-ib:
+  search_tags:
+    - v0.75.
 prometheus-ib:
   search_tags:
     - v2.53.
@@ -228,10 +231,10 @@ terraform-ib:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.64.
+    - v0.66.
 thanos-ib:
   search_tags:
-    - v0.35.
+    - v0.36.
 tika-ib:
   search_tags:
     - 2.9.
@@ -244,6 +247,9 @@ traefik-ib:
 vault-k8s-ib:
   search_tags:
     - v1.4.
+vault-ib:
+  search_tags:
+    - 1.15.
 vcluster-ib:
   search_tags:
     - 0.19.
@@ -258,7 +264,7 @@ yq-ib:
     - 4.44.
 zeek-ib:
   search_tags:
-    - 6.0.
+    - 7.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

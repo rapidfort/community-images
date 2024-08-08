@@ -26,8 +26,6 @@ input_registry:
   account: bitnami
 repo_sets:
   - redis-cluster:
-      input_base_tag: "7.0.15-debian-12-r"
-  - redis-cluster:
       input_base_tag: "7.2.5-debian-12-r"
 runtimes:
   - type: k8s

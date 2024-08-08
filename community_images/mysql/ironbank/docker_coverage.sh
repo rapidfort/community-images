@@ -35,10 +35,13 @@ docker cp "${SCRIPTPATH}"/../../common/tests/mysql_coverage.sh "${CONTAINER_NAME
 # run mysql_coverage on cluster
 docker exec -i "${CONTAINER_NAME}" /bin/bash -c "/tmp/mysql_coverage.sh"
 
-# create sbtest schema
-docker exec -i "${CONTAINER_NAME}" \
-    /bin/bash -c \
-    "mysql -h localhost -uroot -p\"$MYSQL_ROOT_PASSWORD\" -e \"CREATE SCHEMA sbtest;\""
+# create sbtest schema and user
+docker exec -i "${CONTAINER_NAME}" /bin/bash -c \
+    "mysql -h localhost -uroot -p\"${MYSQL_ROOT_PASSWORD}\" -e \
+    \"CREATE DATABASE sbtest; \
+    CREATE USER 'sbtest'@'%' IDENTIFIED WITH mysql_native_password BY 'password'; \
+    GRANT ALL PRIVILEGES ON sbtest.* TO 'sbtest'@'%'; \
+    FLUSH PRIVILEGES;\""
 
 # prepare benchmark
 docker run --network="${NETWORK_NAME}" \
@@ -51,8 +54,8 @@ docker run --network="${NETWORK_NAME}" \
     --threads=1 \
     --mysql-host="${MYSQL_HOST}" \
     --mysql-port=3306 \
-    --mysql-user=root \
-    --mysql-password="${MYSQL_ROOT_PASSWORD}" \
+    --mysql-user=sbtest \
+    --mysql-password=password \
     --mysql-debug=on \
     /usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua \
     run
@@ -71,7 +74,7 @@ docker run --network="${NETWORK_NAME}" \
     --time=45 \
     --mysql-host="${MYSQL_HOST}" \
     --mysql-port=3306 \
-    --mysql-user=root \
-    --mysql-password="${MYSQL_ROOT_PASSWORD}" \
+    --mysql-user=sbtest \
+    --mysql-password=password \
     /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua \
     run

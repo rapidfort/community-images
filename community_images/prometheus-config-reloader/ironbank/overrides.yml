@@ -1,0 +1,44 @@
+global:
+  imagePullSecrets: ["rf-regcred"]
+
+prometheusOperator:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+  containerSecurityContext:
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    capabilities:
+      add:
+      - SYS_PTRACE
+  env:
+    RF_VERBOSE: "0"
+
+prometheus:
+  prometheusSpec:
+    initContainers:
+    - name: init-config-reloader
+      env:
+      - name: "RF_VERBOSE"
+        value: "0"
+      securityContext:
+        allowPrivilegeEscalation: true
+        readOnlyRootFilesystem: false
+        capabilities:
+          add:
+          - SYS_PTRACE
+        runAsNonRoot: false
+        runAsUser: 0
+    containers:
+    - name: config-reloader 
+      env:
+      - name: "RF_VERBOSE"
+        value: "0"
+      securityContext:
+        allowPrivilegeEscalation: true
+        readOnlyRootFilesystem: false
+        capabilities:
+          add:
+          - SYS_PTRACE
+        runAsNonRoot: false
+        runAsUser: 0

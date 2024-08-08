@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - cypress/included:
-      input_base_tag: "v1.11."
+      input_base_tag: "13.13"
       output_repo: cypress-included-ib
 runtimes:
   - type: docker_compose

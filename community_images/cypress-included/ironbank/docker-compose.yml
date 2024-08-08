@@ -1,0 +1,12 @@
+version: '3'
+services:
+  cypress-included:
+    image: ${CYPRESS_INCLUDED_IMAGE_REPOSITORY}:${CYPRESS_INCLUDED_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    entrypoint: ["bash"]
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./e2e:/e2e
+    working_dir: /e2e

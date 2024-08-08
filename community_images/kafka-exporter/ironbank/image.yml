@@ -31,6 +31,8 @@ runtimes:
       chart: kafka
       version: "21.1.1"
     wait_time_sec: 120
+    helm_additional_params:
+      metrics.kafka.enabled: true
     image_keys:
       kafka-exporter-ib:
         repository: "metrics.kafka.image.repository"

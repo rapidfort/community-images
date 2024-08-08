@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/traefik/traefik:
-      input_base_tag: "v3.0."
+      input_base_tag: "v3.1."
       output_repo: traefik-ib
 runtimes:
   - type: docker_compose

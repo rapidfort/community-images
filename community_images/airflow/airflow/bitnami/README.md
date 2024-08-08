@@ -9,6 +9,8 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
+<b>Near Zero CVE images availabe at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
@@ -96,7 +98,7 @@ RapidFort’s hardened [rapidfort/airflow][rf-dh-image-link] image has been opti
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`2`, `2-debian-12`, `2.9.2`, `2.9.2-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow/2/debian-12/Dockerfile)
+* [`2`, `2-debian-12`, `2.9.3`, `2.9.3-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/airflow/2/debian-12/Dockerfile)
 
 ## Need support
 

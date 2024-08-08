@@ -9,6 +9,8 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
+<b>Near Zero CVE images availabe at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
@@ -89,9 +91,9 @@ RapidFort’s hardened [rapidfort/envoy][rf-dh-image-link] image has been optimi
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.30`, `1.30-debian-12`, `1.30.3`, `1.30.3-debian-12-r` (1.30/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.30/debian-12/Dockerfile)
-* [`1.29`, `1.29-debian-12`, `1.29.6`, `1.29.6-debian-12-r` (1.29/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.29/debian-12/Dockerfile)
-* [`1.28`, `1.28-debian-12`, `1.28.4`, `1.28.4-debian-12-r` (1.28/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.28/debian-12/Dockerfile)
+* [`1.30`, `1.30-debian-12`, `1.30.4`, `1.30.4-debian-12-r` (1.30/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.30/debian-12/Dockerfile)
+* [`1.29`, `1.29-debian-12`, `1.29.7`, `1.29.7-debian-12-r` (1.29/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.29/debian-12/Dockerfile)
+* [`1.28`, `1.28-debian-12`, `1.28.5`, `1.28.5-debian-12-r` (1.28/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.28/debian-12/Dockerfile)
 * [`1.27`, `1.27-debian-12`, `1.27.7`, `1.27.7-debian-12-r` (1.27/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.27/debian-12/Dockerfile)
 
 ## Need support

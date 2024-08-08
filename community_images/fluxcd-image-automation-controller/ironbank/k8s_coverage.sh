@@ -17,6 +17,9 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 
 echo "$NAMESPACE"
 echo "$RELEASE_NAME"
+POD_NAME=$(kubectl -n "$NAMESPACE" get pods | grep image-automation-controller | awk '{print $1}')
+# logs
+kubectl logs "$POD_NAME" -n "$NAMESPACE"
 # Apply the resource on the cluster
 kubectl apply -f "$SCRIPTPATH"/imageupdateautomation.yaml
 sleep 30

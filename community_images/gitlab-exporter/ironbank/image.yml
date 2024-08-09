@@ -1,0 +1,48 @@
+name: gitlab-exporter-ib
+official_name: Gitlab Exporter Iron Bank
+official_website: https://docs.gitlab.com/ee/administration/monitoring/prometheus/gitlab_exporter.html
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/gitlab-exporter
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fgitlab-exporter
+source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab/gitlab-exporter/-/blob/development/README.md
+rf_docker_link: rapidfort/gitlab-exporter-ib
+image_workflow_name: gitlab_exporter_ironbank
+github_location: gitlab-exporter/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fgitlab-exporter
+usage_instructions: |
+  # Using helm
+  $ helm upgrade --install rf-gitlab gitlab/gitlab \
+  --set certmanager-issuer.email=me@example.com \
+  --set certmanager.installCRDs=false \
+  --set gitlab.gitlab-exporter.image.repository=rapidfort/gitlab-exporter-ib \
+  --set gitlab.gitlab-exporter.image.repository=latest
+what_is_text: |
+  The GitLab exporter enables you to measure various GitLab metrics pulled from Redis and the database in Linux package instances.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+use_rapid_stub: true
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - gitlab/gitlab/gitlab-exporter:
+      input_base_tag: "17.2."
+      output_repo: gitlab-exporter-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    readiness_check_script: health_check.sh
+    helm:
+      repo: gitlab
+      repo_url: https://charts.gitlab.io
+      chart: gitlab
+    helm_additional_params:
+      certmanager-issuer.email: rf@rapidfort.com
+      certmanager.installCRDs: false
+    image_keys:
+      gitlab-exporter-ib:
+        repository: "gitlab.gitlab-exporter.image.repository"
+        tag: "gitlab.gitlab-exporter.image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix: []

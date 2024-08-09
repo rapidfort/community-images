@@ -24,7 +24,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Generate new readme and image files
         if: always()
@@ -791,7 +791,7 @@ jobs:
           repository: rapidfort/metricbeat-ib
           readme-filepath: ./community_images/metricbeat/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Metricbeat Iron-Bank
-      - name: Docker Hub Description Metrics-Server IronBank
+      - name: Docker Hub Description Metrics-Server Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -799,7 +799,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/metrics-server-ib
           readme-filepath: ./community_images/metrics-server/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Metrics-Server IronBank
+          short-description: RapidFort optimized, hardened image for Metrics-Server Iron Bank
       - name: Docker Hub Description Microsoft SQL Server 2019
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1241,7 +1241,7 @@ jobs:
           repository: rapidfort/telegraf
           readme-filepath: ./community_images/telegraf/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Telegraf
-      - name: Docker Hub Description Tempo-query IronBank
+      - name: Docker Hub Description Grafana Tempo-query Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -1249,7 +1249,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/tempo-query-ib
           readme-filepath: ./community_images/tempo-query/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Tempo-query IronBank
+          short-description: RapidFort optimized, hardened image for Grafana Tempo-query Iron Bank
       - name: Docker Hub Description Terraform IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1292,8 +1292,26 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/tomcat9-openjdk11-ib
+          repository: rapidfort/tomcat-openjdk11-ib
           readme-filepath: ./community_images/tomcat/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Tomcat Ironbank
+      - name: Docker Hub Description Tomcat Ironbank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/tomcat10-openjdk17-ib
+          readme-filepath: ./community_images/tomcat10/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Tomcat Ironbank
+      - name: Docker Hub Description Tomcat Ironbank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/tomcat9-openjdk11-ib
+          readme-filepath: ./community_images/tomcat9/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Tomcat Ironbank
       - name: Docker Hub Description TRAEFIK
         if: always()

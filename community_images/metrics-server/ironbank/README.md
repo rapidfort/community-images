@@ -1,4 +1,4 @@
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=rapidfort_logo">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -14,13 +14,13 @@
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
-# RapidFort hardened image for Metrics-Server IronBank
+# RapidFort hardened image for Metrics-Server Iron Bank
 
 
-RapidFort has optimized and hardened this Metrics-Server IronBank container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Metrics-Server Iron Bank container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One Metrics-Server IronBank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Metrics-Server Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -35,28 +35,28 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=get_full_report_button">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>
 
 
-## What is Metrics-Server IronBank?
+## What is Metrics-Server Iron Bank?
 
 > Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines. It collects resource metrics from Kubelets and exposes them in Kubernetes apiserver through Metrics API.
 
 
-[Overview of Metrics-Server IronBank](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/)
+[Overview of Metrics-Server Iron Bank](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened Metrics-Server IronBank image?
+## How do I use this hardened Metrics-Server Iron Bank image?
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Metrics-Server IronBank][source-image-repo-link].
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Metrics-Server Iron Bank][source-image-repo-link].
 
 <a href="https://repo1.dso.mil/dsop/opensource/kubernetes-sigs/metrics-server/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -65,7 +65,29 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-$ docker run rapidfort/metrics-server-ib
+# Using Helm 
+
+# 1. Add the Helm repository
+$ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+$ helm repo update
+
+# 2. Customize the Values
+# Create a values.yaml file to override the default image with rapidfort/metrics-server-ib.
+# values.yaml: 
+image:
+  repository: rapidfort/metrics-server-ib
+  tag: latest
+
+# 3. Install the chart with custom values.yaml
+$ helm install metrics-server metrics-server/metrics-server -f values.yaml
+
+# 4. Verify the Installation
+$ kubectl get pods --all-namespaces
+# Look for the metrics-server pod and ensure it uses the rapidfort/metrics-server-ib image.
+
+# Using Docker 
+# You can get a full list of Metrics Server configuration flags by running:
+$ docker run --rm rapidfort/metrics-server-ib --help
 
 ```
 
@@ -73,7 +95,7 @@ $ docker run rapidfort/metrics-server-ib
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One Metrics-Server IronBank][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Metrics-Server Iron Bank][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
@@ -85,7 +107,7 @@ Vulnerability reports for RapidFort's hardened images are updated daily to inclu
 <br>
 <br>
 
-## What’s the difference between the official [Platform One Metrics-Server IronBank][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [Platform One Metrics-Server Iron Bank][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/metrics-server-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
@@ -125,13 +147,13 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [fossa-badge]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images.svg?type=shield
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
-[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=rapidfort_have_questions
+[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=view_report_button
-[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=view_report_link
-[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=view_report_button
+[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=metrics-server-ib&utm_content=image_cve_reduction_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/metrics-server-ib?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/metrics-server-ib?logo=docker&logoColor=white

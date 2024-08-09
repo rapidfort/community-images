@@ -1,0 +1,39 @@
+name: grafana-official
+official_name: Grafana Official
+official_website: https://grafana.com
+source_image_provider: The Docker Community
+source_image_repo: docker.io/grafana/grafana
+source_image_repo_link: https://hub.docker.com/r/grafana/grafana
+source_image_readme: https://github.com/grafana/grafana/blob/main/README.md
+rf_docker_link: rapidfort/grafana-official
+image_workflow_name: grafana_official
+github_location: grafana/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fgrafana%2Fgrafana
+usage_instructions: |
+  # Using docker run
+  $ docker run -d --name=grafana -p 3000:3000 rapidfort/grafana-official
+
+  # Then, access it via http://localhost:3000/ or http://<host-ip>:3000/ in a browser.
+what_is_text: |
+  Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: grafana
+repo_sets:
+  - grafana:
+      input_base_tag: "11.1."
+      output_repo: grafana-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      grafana-official:
+        repository: "GRAFANA_IMAGE_REPOSITORY"
+        tag: "GRAFANA_IMAGE_TAG"

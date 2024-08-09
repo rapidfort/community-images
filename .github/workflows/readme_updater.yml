@@ -530,6 +530,15 @@ jobs:
           repository: rapidfort/gitlab-certificates-ib
           readme-filepath: ./community_images/gitlab-certificates/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for GitLab Certificates Iron Bank
+      - name: Docker Hub Description Gitlab Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-exporter-ib
+          readme-filepath: ./community_images/gitlab-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab Exporter Iron Bank
       - name: Docker Hub Description Gitlab Runner Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -548,6 +557,15 @@ jobs:
           repository: rapidfort/grafana-ib
           readme-filepath: ./community_images/grafana/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Grafana Ironbank
+      - name: Docker Hub Description Grafana Official
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/grafana-official
+          readme-filepath: ./community_images/grafana/official/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Grafana Official
       - name: Docker Hub Description Hadolint IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -647,15 +665,6 @@ jobs:
           repository: rapidfort/kafka-ib
           readme-filepath: ./community_images/kafka/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Kafka Iron Bank
-      - name: Docker Hub Description Kaniko IronBank
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/kaniko-ib
-          readme-filepath: ./community_images/kaniko/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Kaniko IronBank
       - name: Docker Hub Description Keycloak Official
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -791,6 +800,15 @@ jobs:
           repository: rapidfort/microsoft-sql-server-2019-ib
           readme-filepath: ./community_images/microsoft-sql-server-2019/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Microsoft SQL Server 2019
+      - name: Docker Hub Description minIO Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/minio-ib
+          readme-filepath: ./community_images/minio/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for minIO Iron Bank
       - name: Docker Hub Description MinIO Operator Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -989,6 +1007,15 @@ jobs:
           repository: rapidfort/openldap-ib
           readme-filepath: ./community_images/openldap/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for OpenLDAP IronBank
+      - name: Docker Hub Description OSEE-Postgres Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/osee-postgres-ib
+          readme-filepath: ./community_images/osee-postgres/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for OSEE-Postgres Iron Bank
       - name: Docker Hub Description Packetbeat Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1079,6 +1106,15 @@ jobs:
           repository: rapidfort/prometheus
           readme-filepath: ./community_images/prometheus/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Prometheus
+      - name: Docker Hub Description prometheus-config-reloader Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/prometheus-config-reloader-ib
+          readme-filepath: ./community_images/prometheus-config-reloader/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for prometheus-config-reloader Iron Bank
       - name: Docker Hub Description Prometheus Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1196,6 +1232,15 @@ jobs:
           repository: rapidfort/telegraf
           readme-filepath: ./community_images/telegraf/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Telegraf
+      - name: Docker Hub Description Grafana Tempo-query Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/tempo-query-ib
+          readme-filepath: ./community_images/tempo-query/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Grafana Tempo-query Iron Bank
       - name: Docker Hub Description Terraform IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

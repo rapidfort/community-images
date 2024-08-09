@@ -1,0 +1,23 @@
+services:
+
+  postgresql:
+    image: 'rapidfort/postgresql12-ib:latest'
+    ports:
+      - '5432'
+    environment:
+      - POSTGRES_USER=osee
+      - POSTGRES_PASSWORD=osee
+      - POSTGRES_DB=osee
+
+  osee-postgres:
+    image: '${OSEE_POSTGRES_IMAGE_REPOSITORY}:${OSEE_POSTGRES_IMAGE_TAG}'
+    ports:
+      - '8089'
+    cap_add:
+      - SYS_PTRACE
+    entrypoint:
+      - sleep
+    command:
+      - infinity
+    depends_on:
+      - postgresql

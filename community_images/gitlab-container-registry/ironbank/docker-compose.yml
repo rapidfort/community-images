@@ -1,13 +1,4 @@
 version: '2'
-#     user: root
-#  3 -v "$(pwd)"/certs:/certs
-#  4 -v ${PWD}/config.yml:/etc/docker/registry/config.yml
-#  5 -v ${PWD}/htpasswd:/tmp/htpasswd
-#  6
-#  7 -e REGISTRY_HTTP_ADDR=0.0.0.0:4433
-#  8 -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.crt
-#  9 -e REGISTRY_HTTP_TLS_KEY=/certs/server.key
-# 10 -p 4433:4433
 
 services:
   gitlab-container-registry:

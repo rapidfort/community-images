@@ -24,7 +24,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Generate new readme and image files
         if: always()
@@ -692,6 +692,15 @@ jobs:
           repository: rapidfort/kong
           readme-filepath: ./community_images/kong/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Kong
+      - name: Docker Hub Description Kube-Webhook-Certgen Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kube-webhook-certgen-ib
+          readme-filepath: ./community_images/kube-webhook-certgen/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kube-Webhook-Certgen Iron Bank
       - name: Docker Hub Description Kubectl IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1232,7 +1241,7 @@ jobs:
           repository: rapidfort/telegraf
           readme-filepath: ./community_images/telegraf/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Telegraf
-      - name: Docker Hub Description Tempo-query IronBank
+      - name: Docker Hub Description Grafana Tempo-query Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -1240,7 +1249,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/tempo-query-ib
           readme-filepath: ./community_images/tempo-query/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Tempo-query IronBank
+          short-description: RapidFort optimized, hardened image for Grafana Tempo-query Iron Bank
       - name: Docker Hub Description Terraform IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - big-bang/argocd:
-      input_base_tag: "v2.11."
+      input_base_tag: "v2.12."
       output_repo: argocd-bigbang-ib
 runtimes:
   - type: k8s
@@ -32,7 +32,7 @@ runtimes:
       repo_url: https://argoproj.github.io/argo-helm
       chart: argo-cd
     helm_additional_params:
-      "crds.keep": "false"    
+      "crds.keep": "false"
       "configs.params.application.namespaces": "argocd"
       # bcrypt hash of pass_123
       "configs.secret.argocdServerAdminPassword": "$2y$10$jOMpTcqFvE/WMxxfgD4obu.ZBBAlYvMdMiXdQ16dUHCVCMIgSqyhC"

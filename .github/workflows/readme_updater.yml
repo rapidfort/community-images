@@ -791,6 +791,15 @@ jobs:
           repository: rapidfort/metricbeat-ib
           readme-filepath: ./community_images/metricbeat/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Metricbeat Iron-Bank
+      - name: Docker Hub Description Metrics-Server IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/metrics-server-ib
+          readme-filepath: ./community_images/metrics-server/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Metrics-Server IronBank
       - name: Docker Hub Description Microsoft SQL Server 2019
         if: always()
         uses: peter-evans/dockerhub-description@v3

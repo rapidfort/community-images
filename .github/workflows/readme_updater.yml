@@ -24,7 +24,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Generate new readme and image files
         if: always()
@@ -305,6 +305,15 @@ jobs:
           repository: rapidfort/curl
           readme-filepath: ./community_images/curl/curlimages/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Curl
+      - name: Docker Hub Description ECK Operator Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/eck-operator-ib
+          readme-filepath: ./community_images/eck-operator/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for ECK Operator Iron Bank
       - name: Docker Hub Description ElasticSearch
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -521,6 +530,15 @@ jobs:
           repository: rapidfort/git-lfs-ib
           readme-filepath: ./community_images/git-lfs/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Git-lfs Iron-Bank
+      - name: Docker Hub Description Gitlab Exporter Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-exporter-ib
+          readme-filepath: ./community_images/gitlab-exporter/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab Exporter Iron Bank
       - name: Docker Hub Description Gitlab Runner Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -791,6 +809,15 @@ jobs:
           repository: rapidfort/microsoft-sql-server-2019-ib
           readme-filepath: ./community_images/microsoft-sql-server-2019/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Microsoft SQL Server 2019
+      - name: Docker Hub Description minIO Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/minio-ib
+          readme-filepath: ./community_images/minio/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for minIO Iron Bank
       - name: Docker Hub Description MinIO Operator Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1214,6 +1241,15 @@ jobs:
           repository: rapidfort/telegraf
           readme-filepath: ./community_images/telegraf/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Telegraf
+      - name: Docker Hub Description Tempo-query IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/tempo-query-ib
+          readme-filepath: ./community_images/tempo-query/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Tempo-query IronBank
       - name: Docker Hub Description Terraform IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3

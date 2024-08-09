@@ -1,0 +1,42 @@
+name: gitlab-certificates-ib
+official_name: GitLab Certificates Iron Bank
+official_website: https://about.gitlab.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/certificates
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fcertificates
+source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab/certificates/-/blob/development/README.md
+rf_docker_link: rapidfort/gitlab-certificates-ib
+image_workflow_name: gitlab-certificates_ironbank
+github_location: gitlab-certificates/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fcertificates
+usage_instructions: |
+  # GitLab certificates can be added to gitlab helm installation by using
+  $ helm upgrade --install gitlab gitlab/gitlab \
+      --timeout 600s \
+      --set certmanager-issuer.email=me@example.com \
+      --set postgresql.image.tag=13.6.0 \
+      --set global.certificates.customCAs[0].secret=secret-custom-ca \
+      --set global.certificates.customCAs[1].configMap=cm-custom-ca \
+      --set global.certificates.image.repository=docker.io/gitlab-certificates-ib
+what_is_text: |
+  GitLab Certificates is a kubernetes sidecar helper to manage kubernetes CA certificates in GitLab tool installation.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+use_rapid_stub: true
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - gitlab/gitlab/certificates:
+      input_base_tag: "17.2."
+      output_repo: gitlab-certificates-ib
+runtimes:
+  - type: docker
+    before_script: docker_before.sh
+    script: docker_coverage.sh
+    gitlab-certificates-ib:
+      entrypoint: sleep
+      exec_command: infinity
+      volumes:
+        "public_key.crt": "/usr/local/share/ca-certificates/public_key.crt"
+        "public_key2.crt": "/usr/local/share/ca-certificates/public_key2.crt"

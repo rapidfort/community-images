@@ -137,17 +137,17 @@ node-exporter:
   - 1.8.2-debian-12-r
 postgresql:
   docker_links:
-  - '[`16`, `16-debian-12`, `16.3.0`, `16.3.0-debian-12-r` (16/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-12/Dockerfile)'
-  - '[`15`, `15-debian-12`, `15.7.0`, `15.7.0-debian-12-r` (15/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-12/Dockerfile)'
-  - '[`14`, `14-debian-12`, `14.12.0`, `14.12.0-debian-12-r` (14/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-12/Dockerfile)'
-  - '[`13`, `13-debian-12`, `13.15.0`, `13.15.0-debian-12-r` (13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-12/Dockerfile)'
-  - '[`12`, `12-debian-12`, `12.19.0`, `12.19.0-debian-12-r` (12/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-12/Dockerfile)'
+  - '[`16`, `16-debian-12`, `16.4.0`, `16.4.0-debian-12-r` (16/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-12/Dockerfile)'
+  - '[`15`, `15-debian-12`, `15.8.0`, `15.8.0-debian-12-r` (15/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-12/Dockerfile)'
+  - '[`14`, `14-debian-12`, `14.13.0`, `14.13.0-debian-12-r` (14/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-12/Dockerfile)'
+  - '[`13`, `13-debian-12`, `13.16.0`, `13.16.0-debian-12-r` (13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-12/Dockerfile)'
+  - '[`12`, `12-debian-12`, `12.20.0`, `12.20.0-debian-12-r` (12/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-12/Dockerfile)'
   search_tags:
-  - 16.3.0-debian-12-r
-  - 15.7.0-debian-12-r
-  - 14.12.0-debian-12-r
-  - 13.15.0-debian-12-r
-  - 12.19.0-debian-12-r
+  - 16.4.0-debian-12-r
+  - 15.8.0-debian-12-r
+  - 14.13.0-debian-12-r
+  - 13.16.0-debian-12-r
+  - 12.20.0-debian-12-r
 prometheus:
   docker_links:
   - '[`2`, `2-debian-12`, `2.53.1`, `2.53.1-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/prometheus/2/debian-12/Dockerfile)'
@@ -162,9 +162,11 @@ rabbitmq:
   - 3.12.14-debian-12-r
 redis:
   docker_links:
+  - '[`7.4`, `7.4-debian-12`, `7.4.0`, `7.4.0-debian-12-r` (7.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.4/debian-12/Dockerfile)'
   - '[`7.2`, `7.2-debian-12`, `7.2.5`, `7.2.5-debian-12-r` (7.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.2/debian-12/Dockerfile)'
   - '[`6.2`, `6.2-debian-12`, `6.2.14`, `6.2.14-debian-12-r` (6.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-12/Dockerfile)'
   search_tags:
+  - 7.4.0-debian-12-r
   - 7.2.5-debian-12-r
   - 6.2.14-debian-12-r
 redis-cluster:

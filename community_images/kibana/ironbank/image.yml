@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - elastic/kibana/kibana:
-      input_base_tag: "8.14."
+      input_base_tag: "8.15."
       output_repo: kibana-ib
 runtimes:
   - type: docker_compose

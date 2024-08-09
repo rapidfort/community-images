@@ -1,0 +1,62 @@
+name: metrics-server-ib
+official_name: Metrics-Server Iron Bank
+official_website: https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/kubernetes-sigs/metrics-server
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fkubernetes-sigs%2Fmetrics-server
+source_image_readme: https://repo1.dso.mil/dsop/opensource/kubernetes-sigs/metrics-server/-/blob/development/README.md
+rf_docker_link: rapidfort/metrics-server-ib
+image_workflow_name: metrics-server_ironbank
+github_location: metrics-server/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server
+usage_instructions: |
+  # Using Helm 
+
+  # 1. Add the Helm repository
+  $ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+  $ helm repo update
+
+  # 2. Customize the Values
+  # Create a values.yaml file to override the default image with rapidfort/metrics-server-ib.
+  # values.yaml: 
+  image:
+    repository: rapidfort/metrics-server-ib
+    tag: latest
+
+  # 3. Install the chart with custom values.yaml
+  $ helm install metrics-server metrics-server/metrics-server -f values.yaml
+
+  # 4. Verify the Installation
+  $ kubectl get pods --all-namespaces
+  # Look for the metrics-server pod and ensure it uses the rapidfort/metrics-server-ib image.
+
+  # Using Docker 
+  # You can get a full list of Metrics Server configuration flags by running:
+  $ docker run --rm rapidfort/metrics-server-ib --help
+
+what_is_text: |
+  Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines. It collects resource metrics from Kubelets and exposes them in Kubernetes apiserver through Metrics API.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/kubernetes-sigs/metrics-server/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/kubernetes-sigs/metrics-server:
+      input_base_tag: "v0.7."
+      output_repo: metrics-server-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    readiness_check_script: metrics-server_health_check.sh
+    helm:
+      repo: metrics-server
+      repo_url: https://kubernetes-sigs.github.io/metrics-server/
+      chart: metrics-server
+    image_keys:
+      metrics-server-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

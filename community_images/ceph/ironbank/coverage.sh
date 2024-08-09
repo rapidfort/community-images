@@ -120,7 +120,7 @@ ceph -s
 ceph osd pool create rbd 128
 ceph osd pool ls
 
-# # ceph filesystem
-ceph fs volume create cephfss
+# # ceph filesystem || only some version feature
+ceph fs volume create cephfss || echo 0
 # ceph status
 cephadm shell -- ceph orch set backend test_orchestrator

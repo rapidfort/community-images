@@ -1,0 +1,43 @@
+name: tempo-query-ib
+official_name: Grafana Tempo-query Iron Bank
+official_website: https://grafana.com/docs/tempo/latest/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/grafana/tempo-query
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fgrafana%2Ftempo-query
+source_image_readme: https://repo1.dso.mil/dsop/opensource/grafana/tempo-query/-/blob/development/README.md
+rf_docker_link: rapidfort/tempo-query-ib
+image_workflow_name: tempo-query_ironbank
+github_location: tempo-query/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Ftempo-query
+usage_instructions: |
+  # TempoQuery can be deployed with:
+  $ helm repo add grafana https://grafana.github.io/helm-charts
+  $ helm install rf-tempoQuery grafana/tempo --set tempoQuery.repository=rapidfort/tempo-query-ib --set tempoQuery.tag=latest --set tempoQuery.enabled=true
+what_is_text: |
+  Grafana's Tempo-Query component is used for querying and visualizing trace data stored in Grafana Tempo. It provides a user interface and an API for searching, viewing, and analyzing distributed traces, which are collected from various sources and stored in Tempo.
+Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/grafana/tempo-query/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/grafana/tempo-query:
+      input_base_tag: "2.5."
+      output_repo: tempo-query-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    readiness_check_script: tempoQuery_health_check.sh
+    helm:
+      repo: grafana
+      repo_url: https://grafana.github.io/helm-charts
+      chart: tempo
+    helm_additional_params:
+      "tempoQuery.enabled": "true"
+    image_keys:
+      tempo-query-ib:
+        repository: "tempoQuery.repository"
+        tag: "tempoQuery.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix: []

@@ -15,4 +15,4 @@ PROJECT_NAME=$(jq -r '.project_name' < "$JSON_PARAMS")
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 WORDPRESS_PORT='8080'
-"${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${PROJECT_NAME}" "${WORDPRESS_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1
+("${SCRIPTPATH}"/../../common/selenium_tests/runner-dc.sh "${PROJECT_NAME}" "${WORDPRESS_PORT}" "${SCRIPTPATH}"/selenium_tests 2>&1) 2>&1

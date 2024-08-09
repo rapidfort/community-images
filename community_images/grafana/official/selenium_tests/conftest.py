@@ -7,9 +7,9 @@ import pytest  # pylint: disable=import-error
 
 def pytest_addoption(parser):
     """The function to add options"""
-    parser.addoption("--server", action="store", help="wordpress server")
+    parser.addoption("--server", action="store", help="grafana server")
     parser.addoption("--port", action="store",
-                     help="port for wordpress container")
+                     help="port for grafana container")
 
 
 @pytest.fixture

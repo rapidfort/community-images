@@ -30,7 +30,7 @@ runtimes:
     script: docker_coverage.sh
     wait_time_sec: 60
     mysql8-ib:
-      exec_command: --default-authentication-plugin=mysql_native_password
+      exec_command: --mysql-native-password=ON
       environment:
         MYSQL_ROOT_PASSWORD: my_root_password
         MYSQL_ROOT_HOST: "%"

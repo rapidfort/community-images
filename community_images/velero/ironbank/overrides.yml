@@ -2,7 +2,6 @@ image:
   pullSecrets: ["rf-regcred"]
   pullPolicy: Always
 containerSecurityContext:
-  enabled: true
   runAsUser: 0
   allowPrivilegeEscalation: true
   capabilities:

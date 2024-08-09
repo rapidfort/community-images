@@ -6,16 +6,16 @@ airflow-worker-ib-bitnami:
     - 2.8.
 airflow-ib-bitnami:
   search_tags:
-    - 2.8.
+    - 2.9.
 airflow-ib:
   search_tags:
-    - 2.8.
+    - 2.9.
 alertmanager-ib:
   search_tags:
     - v0.27.
 alloy-ib:
   search_tags:
-    - v1.2.
+    - v1.3.
 ansible-lint-ib:
   search_tags:
     - 24.7.
@@ -27,10 +27,10 @@ apache-ib:
     - 2.4.
 argocd-bigbang-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 argocd-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 auditbeat-ib:
   search_tags:
     - 8.14.
@@ -91,6 +91,9 @@ gatekeeper-ib:
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
+gitlab-exporter-ib:
+  search_tags:
+    - 17.2.
 gitlab-runner-ib:
   search_tags:
     - v17.1.
@@ -106,6 +109,9 @@ haproxy-ib:
 heartbeat-ib:
   search_tags:
     - 8.14.
+jmx-exporter-ib:
+  search_tags:
+    - 0.20.
 k8s-sidecar-ib:
   search_tags:
     - 1.27.
@@ -115,9 +121,6 @@ kafka-exporter-ib:
 kafka-ib:
   search_tags:
     - 3.4.
-kaniko-ib:
-  search_tags:
-    - v1.22.
 kibana-ib:
   search_tags:
     - 8.14.
@@ -147,7 +150,10 @@ microsoft-sql-server-2019-ib:
     - 2019-CU15-rhel-8
 minio-operator-ib:
   search_tags:
-    - v5.0.
+    - v6.0.
+minio-ib:
+  search_tags:
+    - RELEASE.
 mkdocs-ib:
   search_tags:
     - 9.5.
@@ -178,6 +184,9 @@ node-exporter-ib:
 openldap-ib:
   search_tags:
     - 2.6.
+osee-postgres-ib:
+  search_tags:
+    - 1.0.0.
 packetbeat-ib:
   search_tags:
     - 8.14.
@@ -187,6 +196,9 @@ pause-ib:
 pgadmin-ib:
   search_tags:
     - "8."
+podman-ib:
+  search_tags:
+    - 4.9.
 postgres-exporter-bitnami-ib:
   search_tags:
     - 0.15.
@@ -196,6 +208,9 @@ postgres-exporter-ib:
 postgresql-ib:
   search_tags:
     - "12."
+prometheus-config-reloader-ib:
+  search_tags:
+    - v0.75.
 prometheus-ib:
   search_tags:
     - v2.53.
@@ -208,6 +223,9 @@ redis-ib:
 shellcheck-ib:
   search_tags:
     - v0.10.
+solr-8-ib:
+  search_tags:
+    - 8.11.
 sqlite-ib:
   search_tags:
     - v3.34.
@@ -216,10 +234,10 @@ terraform-ib:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.62.
+    - v0.66.
 thanos-ib:
   search_tags:
-    - v0.35.
+    - v0.36.
 tika-ib:
   search_tags:
     - 2.9.
@@ -234,7 +252,7 @@ vault-k8s-ib:
     - v1.4.
 vault-ib:
   search_tags:
-    - 1.17.
+    - 1.15.
 vcluster-ib:
   search_tags:
     - 0.19.
@@ -249,7 +267,7 @@ yq-ib:
     - 4.44.
 zeek-ib:
   search_tags:
-    - 6.0.
+    - 7.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

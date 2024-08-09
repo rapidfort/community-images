@@ -8,7 +8,7 @@ services:
       - SYS_PTRACE
     privileged: true
     ports:
-      - "6789:6789"
+      - "0.0.0.0::6789"
     volumes:
       - ./coverage.sh:/tmp/coverage.sh
       - ./ceph.conf:/etc/ceph/ceph.conf

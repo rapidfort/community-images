@@ -7,8 +7,8 @@ set -e
 cephadm version
 cephadm -h
 
-cephadm list-networks || echo 0
-cephadm install || echo 0
+cephadm list-networks
+cephadm install
 
 # ceph version
 ceph -v
@@ -91,6 +91,7 @@ ceph mgr module enable cli_api --force
 # ceph volume 
 ceph-volume lvm create --data / || echo 0
 
+ceph mgr module enable test_orchestrator --force
 # osd with all utilities
 UUID=$(uuidgen)
 
@@ -114,17 +115,12 @@ ceph-osd -i "$ID" &
 sleep 5
 
 ceph -s
-# testing orch
-ceph mgr module enable test_orchestrator --force
-ceph orch set backend test_orchestrator || echo 0
-ceph orch status || echo 0
-# Apply the spec for hardware monitoring
-ceph orch apply -i host.yml || echo 0
 
 # rbd
-ceph osd pool create rbd 128 || echo 0
+ceph osd pool create rbd 128
 ceph osd pool ls
 
-# ceph filesystem
-ceph fs volume create cephfs || echo 0
-ceph status
+# # ceph filesystem
+ceph fs volume create cephfss
+# ceph status
+cephadm shell -- ceph orch set backend test_orchestrator

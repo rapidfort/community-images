@@ -1,0 +1,9 @@
+image:
+  pullPolicy: Always
+imagePullSecrets:
+  - name: rf-regcred
+securityContext:
+  capabilities:
+    add: ["SYS_PTRACE"]
+args:
+  - --kubelet-insecure-tls

@@ -1,0 +1,17 @@
+##### Elasticsearch #####
+
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elasticsearch
+spec:
+  version: 8.14.3
+  nodeSets:
+  - name: masters
+    count: 1
+    config:
+      node.roles: ["master"]
+  - name: data
+    count: 1
+    config:
+      node.roles: ["data"]

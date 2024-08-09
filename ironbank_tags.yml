@@ -49,6 +49,9 @@ consul-ib:
 couchdb-ib:
   search_tags:
     - 3.3.
+eck-operator-ib:
+  search_tags:
+    - 2.13.
 elasticsearch-exporter-ib:
   search_tags:
     - 1.7.
@@ -126,13 +129,13 @@ kafka-ib:
     - 3.4.
 kibana-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 kubectl-ib:
   search_tags:
     - v1.27.
 logstash-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -148,6 +151,9 @@ metabase-ib:
 metricbeat-ib:
   search_tags:
     - 8.14.
+metrics-server-ib:
+  search_tags:
+    - v0.7.
 microsoft-sql-server-2019-ib:
   search_tags:
     - 2019-CU15-rhel-8

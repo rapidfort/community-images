@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  kube-webhook-certgen-create:
+    user: root
+    image: ${KUBE_WEBHOOK_CERTGEN_IMAGE_REPOSITORY}:${KUBE_WEBHOOK_CERTGEN_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    entrypoint: ["/kube-webhook-certgen"]
+    command:
+      - create
+      - --namespace=test
+      - --secret-name=test
+      - --cert-name=cert
+      - --host=test
+      - --kubeconfig=/root/.kube/config
+      - --log-level=debug
+    environment:
+      - KUBECONFIG=/root/.kube/config
+    volumes:
+      - ${HOME}/.minikube:/home/runner/.minikube
+      - ${HOME}/.kube/config:/root/.kube/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"   
+
+  kube-webhook-certgen-patch:
+    user: root
+    image: ${KUBE_WEBHOOK_CERTGEN_IMAGE_REPOSITORY}:${KUBE_WEBHOOK_CERTGEN_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    entrypoint: ["/kube-webhook-certgen"]
+    command:
+      - patch
+      - --namespace=test
+      - --secret-name=test
+      - --webhook-name=pod-policy.example.com
+      - --kubeconfig=/root/.kube/config
+      - --log-level=debug
+    environment:
+      - KUBECONFIG=/root/.kube/config
+    volumes:
+      - ${HOME}/.minikube:/home/runner/.minikube
+      - ${HOME}/.kube/config:/root/.kube/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"
+    depends_on:
+      - kube-webhook-certgen-create

@@ -1,0 +1,35 @@
+name: kube-webhook-certgen-ib
+official_name: Kube-Webhook-Certgen Iron Bank
+official_website: https://github.com/jet/kube-webhook-certgen
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/jet/kube-webhook-certgen
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fjet%2Fkube-webhook-certgen
+source_image_readme: https://repo1.dso.mil/dsop/opensource/jet/kube-webhook-certgen/-/blob/development/README.md
+rf_docker_link: rapidfort/kube-webhook-certgen-ib
+image_workflow_name: kube-webhook-certgen_ironbank
+github_location: kube-webhook-certgen/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fjet%2Fkube-webhook-certgen
+usage_instructions: |
+  $ docker run --rm --name kube-webhook-certgen rapidfort/kube-webhook-certgen [COMMAND]
+what_is_text: |
+  Generates a CA and leaf certificate with a long (100y) expiration, then patches Kubernetes Admission Webhooks by setting the caBundle field with the generated CA
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+is_locked: "False"
+repo_sets:
+  - opensource/jet/kube-webhook-certgen:
+      input_base_tag: "v1.5."
+      output_repo: kube-webhook-certgen-ib
+needs_common_commands: false
+runtimes:
+  - type: docker_compose
+    before_script: setup_resources.sh
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      kube-webhook-certgen-ib:
+        repository: "KUBE_WEBHOOK_CERTGEN_IMAGE_REPOSITORY"
+        tag: "KUBE_WEBHOOK_CERTGEN_IMAGE_TAG"

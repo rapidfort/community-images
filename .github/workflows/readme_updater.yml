@@ -233,6 +233,15 @@ jobs:
           repository: rapidfort/cassandra-official
           readme-filepath: ./community_images/cassandra/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Cassandra Official
+      - name: Docker Hub Description Ceph Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ceph-ib
+          readme-filepath: ./community_images/ceph/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ceph Iron Bank
       - name: Docker Hub Description Helm Chart Testing Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

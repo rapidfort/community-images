@@ -1,0 +1,33 @@
+name: ceph-ib
+official_name: Ceph Iron Bank
+official_website: https://ceph.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/ceph/ceph
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fceph%2Fceph
+source_image_readme: https://repo1.dso.mil/dsop/opensource/ceph/ceph/-/blob/development/README.md
+rf_docker_link: rapidfort/ceph-ib
+github_location: ceph/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fceph%2Fceph
+usage_instructions: |
+  #Run the ceph container:
+  $ docker run -d --name ceph rapidfort/ceph-ib {command}
+  #command for keyring, starting mon
+what_is_text: |
+  Ceph is an open source software-defined storage solution designed to address the block, file and object storage needs of modern enterprises.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/ceph/ceph:
+      input_base_tag: "v18.2."
+      output_repo: ceph-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      ceph-ib:
+        repository: "CEPH_IMAGE_REPOSITORY"
+        tag: "CEPH_IMAGE_TAG"

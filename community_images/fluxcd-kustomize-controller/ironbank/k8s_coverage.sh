@@ -16,6 +16,10 @@ NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 echo "$NAMESPACE"
 echo "$RELEASE_NAME"
+
+POD_NAME=$(kubectl -n "$NAMESPACE" get pods | grep kustomize-controller | awk '{print $1}')
+# logs
+kubectl logs "$POD_NAME" -n "$NAMESPACE"
 # A Flux Kustomization named podinfo is created that watches the GitRepository for Artifact changes.
 kubectl apply -f "$SCRIPTPATH"/podinfo.yml
 sleep 15

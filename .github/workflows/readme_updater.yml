@@ -24,7 +24,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Generate new readme and image files
         if: always()
@@ -656,15 +656,6 @@ jobs:
           repository: rapidfort/kafka-ib
           readme-filepath: ./community_images/kafka/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Apache Kafka Iron Bank
-      - name: Docker Hub Description Kaniko IronBank
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/kaniko-ib
-          readme-filepath: ./community_images/kaniko/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Kaniko IronBank
       - name: Docker Hub Description Keycloak Official
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -800,6 +791,15 @@ jobs:
           repository: rapidfort/microsoft-sql-server-2019-ib
           readme-filepath: ./community_images/microsoft-sql-server-2019/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Microsoft SQL Server 2019
+      - name: Docker Hub Description minIO Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/minio-ib
+          readme-filepath: ./community_images/minio/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for minIO Iron Bank
       - name: Docker Hub Description MinIO Operator Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -998,6 +998,15 @@ jobs:
           repository: rapidfort/openldap-ib
           readme-filepath: ./community_images/openldap/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for OpenLDAP IronBank
+      - name: Docker Hub Description OSEE-Postgres Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/osee-postgres-ib
+          readme-filepath: ./community_images/osee-postgres/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for OSEE-Postgres Iron Bank
       - name: Docker Hub Description Packetbeat Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1088,6 +1097,15 @@ jobs:
           repository: rapidfort/prometheus
           readme-filepath: ./community_images/prometheus/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Prometheus
+      - name: Docker Hub Description prometheus-config-reloader Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/prometheus-config-reloader-ib
+          readme-filepath: ./community_images/prometheus-config-reloader/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for prometheus-config-reloader Iron Bank
       - name: Docker Hub Description Prometheus Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

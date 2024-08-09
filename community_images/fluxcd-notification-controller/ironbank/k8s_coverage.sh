@@ -17,7 +17,9 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 echo "$NAMESPACE"
 echo "$RELEASE_NAME"
 TOKEN=$(head -c 12 /dev/urandom | shasum | cut -d ' ' -f1)
-
+POD_NAME=$(kubectl -n "$NAMESPACE" get pods | grep notification-controller | awk '{print $1}')
+# logs
+kubectl logs "$POD_NAME" -n "$NAMESPACE"
 # Create a secret in the specified namespace
 kubectl create secret generic receiver-token --from-literal=token="$TOKEN"
 # applying an incoming webhook receiver

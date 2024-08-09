@@ -40,6 +40,9 @@ bats-ib:
 blackbox-exporter-ib:
   search_tags:
     - v0.25.
+cfssl-self-sign-ib:
+  search_tags:
+    - 1.6.
 chart-testing-ib:
   search_tags:
     - v3.11.
@@ -126,13 +129,13 @@ kafka-ib:
     - 3.4.
 kibana-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 kubectl-ib:
   search_tags:
     - v1.27.
 logstash-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -148,7 +151,7 @@ metabase-ib:
 metricbeat-ib:
   search_tags:
     - 8.14.
-metrics-server:
+metrics-server-ib:
   search_tags:
     - v0.7.
 microsoft-sql-server-2019-ib:
@@ -235,6 +238,9 @@ solr-8-ib:
 sqlite-ib:
   search_tags:
     - v3.34.
+tempo-query-ib:
+  search_tags:
+    - 2.5.
 terraform-ib:
   search_tags:
     - 1.7.

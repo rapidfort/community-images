@@ -791,6 +791,15 @@ jobs:
           repository: rapidfort/microsoft-sql-server-2019-ib
           readme-filepath: ./community_images/microsoft-sql-server-2019/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Microsoft SQL Server 2019
+      - name: Docker Hub Description minIO Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/minio-ib
+          readme-filepath: ./community_images/minio/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for minIO Iron Bank
       - name: Docker Hub Description MinIO Operator Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3

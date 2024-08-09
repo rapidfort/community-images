@@ -1,0 +1,13 @@
+tempoQuery:
+  pullSecrets:
+    - name: "rf-regcred"
+  pullPolicy: Always 
+  securityContext:
+    enabled: true
+    allowPrivilegeEscalation: true
+    capabilities:
+      add:
+        - SYS_PTRACE
+  extraEnv:
+    - name: "RF_VERBOSE"
+      value: "0" 

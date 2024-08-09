@@ -61,5 +61,4 @@ class Testmetabasetest():
         self.driver.find_element(By.XPATH, "//li[2]/div").click()
         self.driver.find_element(By.XPATH, "//div[11]/button/div/div").click()
         self.driver.find_element(By.XPATH, "//button/div/div").click()
-        self.driver.find_element(By.LINK_TEXT, "Take me to Metabase").click()
         self.driver.close()

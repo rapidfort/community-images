@@ -88,10 +88,9 @@ ceph config set global jaeger_tracing_enable true
 ceph mgr module enable cli_api --force
 
 
-# ceph volume 
+# ceph volume just for failure trace
 ceph-volume lvm create --data / || echo 0
 
-ceph mgr module enable test_orchestrator --force
 # osd with all utilities
 UUID=$(uuidgen)
 
@@ -115,12 +114,21 @@ ceph-osd -i "$ID" &
 sleep 5
 
 ceph -s
-
+ceph mgr module enable test_orchestrator --force
+# testing orch
+# Attempt to set the backend for the orchestrator
+if ceph orch set backend test_orchestrator; then 
+    # Check the orchestrator status
+   ceph orch status
+    # Apply the spec for hardware monitoring
+   ceph orch apply -i host.yml
+else
+   ceph orch --help
+fi
 # rbd
 ceph osd pool create rbd 128
 ceph osd pool ls
 
-# # ceph filesystem || only some version feature
-ceph fs volume create cephfss || echo 0
-# ceph status
-cephadm shell -- ceph orch set backend test_orchestrator
+# ceph filesystem || function of some versions
+ceph fs volume create cephfs || echo 0
+ceph status

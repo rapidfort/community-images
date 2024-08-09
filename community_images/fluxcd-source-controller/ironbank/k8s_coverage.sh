@@ -17,6 +17,9 @@ RELEASE_NAME=$(jq -r '.release_name' < "$JSON_PARAMS")
 echo "$NAMESPACE"
 echo "$RELEASE_NAME"
 # to produce an Artifact for a Git repository revision
+POD_NAME=$(kubectl -n "$NAMESPACE" get pods | grep source-controller | awk '{print $1}')
+# logs
+kubectl logs "$POD_NAME" -n "$NAMESPACE"
 kubectl apply -f "$SCRIPTPATH"/gitrepository.yml
 sleep 15
 kubectl get gitrepository

@@ -29,7 +29,9 @@ docker exec -i "$CONTAINER_NAME" fluent-binlog-reader formats
 docker exec -i "$CONTAINER_NAME" fluent-binlog-reader cat fluentd/etc/fluent.conf
 
 # Get the PIDs
-PID=$(docker exec -i "$CONTAINER_NAME" pgrep -f fluentd | head -n 2)
+# PID=$(docker exec -i "$CONTAINER_NAME" pgrep -f fluentd | head -n 2)
+PID='1
+7'
 # fluent-ctl using dump
 docker exec -i "$CONTAINER_NAME" fluent-ctl dump "$PID"
 docker exec -i "$CONTAINER_NAME" fluent-cat --help

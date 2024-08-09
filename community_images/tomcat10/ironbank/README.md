@@ -1,4 +1,4 @@
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11-ib?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=rapidfort_logo">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=rapidfort_logo">
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
 </a>
 
@@ -33,7 +33,7 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 
 [![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
 
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11-ib?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=get_full_report_button">
+<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
 </a>
 <br>
@@ -56,7 +56,7 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Tomcat Ironbank][source-image-repo-link].
 
-<a href="https://repo1.dso.mil/dsop/opensource/apache/tomcat-openjdk11/-/blob/development/README.md">
+<a href="https://repo1.dso.mil/dsop/opensource/apache/tomcat10-openjdk17/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
@@ -64,7 +64,7 @@ The runtime instructions for this hardened container image are the same as the o
 
 ```sh
 # Using docker run
-$ docker run -d --name tomcat -p 8080:8080 -v "application.jar":"/usr/local/tomcat/webapps/application.jar" rapidfort/tomcat-openjdk11-ib
+$ docker run -d --name tomcat -p 8080:8080 -v "application.jar":"/usr/local/tomcat/webapps/application.jar" rapidfort/tomcat10-openjdk17-ib
 # Then, access it via http://localhost:8080/ or http://<host-ip>:8080/ in a browser.
 
 ```
@@ -79,14 +79,14 @@ RapidFort is the pioneering Software Attack Surface Management (SASM) platform i
 
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
-<a href="https://github.com/rapidfort/community-images/tree/main/community_images/tomcat/ironbank">
+<a href="https://github.com/rapidfort/community-images/tree/main/community_images/tomcat10/ironbank">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
 </a>
 <br>
 <br>
 
 ## What’s the difference between the official [Platform One Tomcat Ironbank][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/tomcat-openjdk11-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
+RapidFort’s hardened [rapidfort/tomcat10-openjdk17-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
@@ -124,23 +124,23 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [fossa-badge]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images.svg?type=shield
 [fossa-link]: https://app.fossa.com/projects/git%2Bgithub.com%2Frapidfort%2Fcommunity-images?ref=badge_shield
 
-[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=rapidfort_have_questions
+[rf-link]: https://rapidfort.com?utm_source=github&utm_medium=ci_rf_link&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=rapidfort_have_questions
 
-[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11-ib?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=rapidfort_footer_logo
-[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11-ib?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=view_report_button
-[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11-ib?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=view_report_link
-[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11-ib?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=image_metrics_link
-[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11-ib?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk11-ib&utm_content=image_cve_reduction_link
+[rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=rapidfort_footer_logo
+[rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=view_report_button
+[rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=view_report_link
+[rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=image_metrics_link
+[rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat10-openjdk17-ib&utm_content=image_cve_reduction_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/tomcat-openjdk11-ib?logo=docker&logoColor=white&sort=semver
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/tomcat-openjdk11-ib?logo=docker&logoColor=white
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/tomcat10-openjdk17-ib?logo=docker&logoColor=white&sort=semver
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/tomcat10-openjdk17-ib?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat/ironbank/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat/ironbank/assets/cve_reduction.webp
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat10/ironbank/assets/metrics.webp
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat10/ironbank/assets/cve_reduction.webp
 
-[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Ftomcat-openjdk11-ib
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/tomcat-openjdk11-ib
+[source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Ftomcat10-openjdk17
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/tomcat10-openjdk17-ib

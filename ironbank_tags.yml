@@ -6,28 +6,28 @@ airflow-worker-ib-bitnami:
     - 2.8.
 airflow-ib-bitnami:
   search_tags:
-    - 2.8.
+    - 2.9.
 airflow-ib:
   search_tags:
-    - 2.8.
+    - 2.9.
 alertmanager-ib:
   search_tags:
     - v0.27.
 ansible-lint-ib:
   search_tags:
-    - 24.6.
+    - 24.7.
 ansible-ib:
   search_tags:
-    - 10.1.
+    - 10.2.
 apache-ib:
   search_tags:
     - 2.4.
 argocd-bigbang-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 argocd-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 auditbeat-ib:
   search_tags:
     - 8.14.
@@ -69,7 +69,7 @@ fluxcd-helm-controller-ib:
     - v1.0.
 fluxcd-image-automation-controller-ib:
   search_tags:
-    - v0.37.
+    - v0.38.
 fluxcd-image-reflector-controller-ib:
   search_tags:
     - v0.32.
@@ -117,13 +117,13 @@ kaniko-ib:
     - v1.22.
 kibana-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 kubectl-ib:
   search_tags:
     - v1.27.
 logstash-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -144,7 +144,7 @@ microsoft-sql-server-2019-ib:
     - 2019-CU15-rhel-8
 minio-operator-ib:
   search_tags:
-    - v5.0.
+    - v6.0.
 mkdocs-ib:
   search_tags:
     - 9.5.
@@ -198,7 +198,7 @@ prometheus-ib:
     - v2.53.
 redis-exporter-ib:
   search_tags:
-    - v1.61.
+    - v1.62.
 redis-ib:
   search_tags:
     - 6.2.
@@ -213,22 +213,28 @@ terraform-ib:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.60.
+    - v0.66.
 tika-ib:
   search_tags:
     - 2.9.
 tomcat-openjdk11-ib:
   search_tags:
     - 11.0.
+tomcat10-openjdk17-ib:
+  search_tags:
+    - 10.1.
+tomcat9-openjdk11-ib:
+  search_tags:
+    - 9.0.
 traefik-ib:
   search_tags:
-    - v3.0.
+    - v3.1.
 vault-k8s-ib:
   search_tags:
     - v1.4.
 vault-ib:
   search_tags:
-    - 1.14.
+    - 1.17.
 velero-ib:
   search_tags:
     - v1.14.
@@ -240,7 +246,7 @@ yq-ib:
     - 4.44.
 zeek-ib:
   search_tags:
-    - 6.0.
+    - 7.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

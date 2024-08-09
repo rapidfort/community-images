@@ -6,7 +6,7 @@ airflow-worker-ib-bitnami:
     - 2.8.
 airflow-ib-bitnami:
   search_tags:
-    - 2.8.
+    - 2.9.
 airflow-ib:
   search_tags:
     - 2.9.
@@ -52,6 +52,9 @@ consul-ib:
 couchdb-ib:
   search_tags:
     - 3.3.
+eck-operator-ib:
+  search_tags:
+    - 2.13.
 elasticsearch-exporter-ib:
   search_tags:
     - 1.7.
@@ -94,6 +97,9 @@ gatekeeper-ib:
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
+gitlab-exporter-ib:
+  search_tags:
+    - 17.2.
 gitlab-runner-ib:
   search_tags:
     - v17.1.
@@ -145,12 +151,18 @@ metabase-ib:
 metricbeat-ib:
   search_tags:
     - 8.14.
+metrics-server:
+  search_tags:
+    - v0.7.
 microsoft-sql-server-2019-ib:
   search_tags:
     - 2019-CU15-rhel-8
 minio-operator-ib:
   search_tags:
     - v6.0.
+minio-ib:
+  search_tags:
+    - RELEASE.
 mkdocs-ib:
   search_tags:
     - 9.5.

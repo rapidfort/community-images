@@ -1,0 +1,27 @@
+gitlab:
+    gitlab-exporter:
+        init:
+            containerSecurityContext:
+                privileged: true
+                allowPrivilegeEscalation: true
+                capabilities:
+                    add: ["SYS_PTRACE"]
+            securityContext:
+                privileged: true
+                allowPrivilegeEscalation: true
+                capabilities:
+                    add: ["SYS_PTRACE"]
+        pullSecrets: ["rf-regcred"]
+        pullPolicy: IfNotPresent
+        containerSecurityContext:
+            privileged: true
+            runAsUser: 0
+            runAsNonRoot: false
+            allowPrivilegeEscalation: true
+            capabilities:
+                add: ["SYS_PTRACE"]
+        securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+            capabilities:
+                add: ["SYS_PTRACE"]

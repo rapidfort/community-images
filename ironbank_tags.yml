@@ -6,7 +6,7 @@ airflow-worker-ib-bitnami:
     - 2.8.
 airflow-ib-bitnami:
   search_tags:
-    - 2.8.
+    - 2.9.
 airflow-ib:
   search_tags:
     - 2.9.
@@ -15,7 +15,7 @@ alertmanager-ib:
     - v0.27.
 alloy-ib:
   search_tags:
-    - v1.2.
+    - v1.3.
 ansible-lint-ib:
   search_tags:
     - 24.7.
@@ -27,10 +27,10 @@ apache-ib:
     - 2.4.
 argocd-bigbang-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 argocd-ib:
   search_tags:
-    - v2.11.
+    - v2.12.
 auditbeat-ib:
   search_tags:
     - 8.14.
@@ -118,9 +118,6 @@ kafka-exporter-ib:
 kafka-ib:
   search_tags:
     - 3.4.
-kaniko-ib:
-  search_tags:
-    - v1.22.
 kibana-ib:
   search_tags:
     - 8.14.
@@ -250,6 +247,9 @@ traefik-ib:
 vault-k8s-ib:
   search_tags:
     - v1.4.
+vault-ib:
+  search_tags:
+    - 1.15.
 vcluster-ib:
   search_tags:
     - 0.19.
@@ -264,7 +264,7 @@ yq-ib:
     - 4.44.
 zeek-ib:
   search_tags:
-    - 6.0.
+    - 7.0.
 zookeeper-ib:
   search_tags:
     - 3.9.

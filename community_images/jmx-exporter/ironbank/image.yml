@@ -1,0 +1,33 @@
+name: jmx-exporter-ib
+official_name: JMX Exporter Iron Bank
+official_website: https://github.com/prometheus/jmx_exporter
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/prometheus/jmx-exporter
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fprometheus%2Fjmx-exporter
+source_image_readme: https://repo1.dso.mil/dsop/opensource/prometheus/jmx-exporter/-/blob/development/README.md
+rf_docker_link: rapidfort/jmx-exporter-ib
+image_workflow_name: jmx-exporter_ironbank
+github_location: jmx-exporter/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fprometheus%2Fjmx-exporter
+usage_instructions: |
+  $ docker run -d --name jmx-exporter -v "$PWD"/jmx-configs/java-agent-config.yaml:/opt/jmx_exporter/java-agent-config.yaml -v "$PWD"/jmx-configs/http-server-config.yaml:/opt/jmx_exporter/http-server-config.yaml -v "$PWD"/jar-files/hello-world.jar:/opt/jmx_exporter/hello-world.jar -p 12345:12345 rapidfort/jmx-exporter-ib [COMMAND]
+what_is_text: |
+  A process for exposing JMX Beans via HTTP for Prometheus consumption.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+is_locked: "False"
+repo_sets:
+  - opensource/prometheus/jmx-exporter:
+      input_base_tag: "0.20."
+      output_repo: jmx-exporter-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      jmx-exporter-ib:
+        repository: "JMX_EXPORTER_IMAGE_REPOSITORY"
+        tag: "JMX_EXPORTER_IMAGE_TAG"

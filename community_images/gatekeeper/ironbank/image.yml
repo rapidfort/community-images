@@ -38,4 +38,5 @@ runtimes:
         repository: "image.repository"
         tag: "image.release"
     override_file: "overrides.yml"
+    harden_override_file: "harden_overrides.yml"
     readiness_wait_pod_name_suffix: []

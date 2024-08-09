@@ -5,6 +5,7 @@ containerSecurityContext:
   enabled: true
   runAsUser: 1001
   allowPrivilegeEscalation: true
+  readOnlyRootFilesystem: false
   capabilities:
     add: ["SYS_PTRACE"]
 extraEnvVars:
@@ -15,6 +16,7 @@ arbiter:
     enabled: true
     runAsUser: 1001
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:
@@ -25,6 +27,7 @@ hidden:
     enabled: true
     runAsUser: 1001
     allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
     capabilities:
       add: ["SYS_PTRACE"]
   extraEnvVars:

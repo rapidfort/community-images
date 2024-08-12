@@ -13,6 +13,8 @@ echo "Json params for k8s coverage = $JSON"
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 NAMESPACE=$(jq -r '.namespace_name' < "$JSON_PARAMS")
 
+sleep 30
+
 # adding cleanup trap for prometheus helm release
 # beyond this point, if THIS script exits, with whichever exit code and due to whatever reason, the cleanup script will be executed
 trap '${SCRIPTPATH}/cleanup_script_for_prometheus_helm_release.sh ${NAMESPACE}' EXIT

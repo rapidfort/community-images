@@ -1,0 +1,19 @@
+imagePullSecrets:
+  - name: rf-regcred
+podSecurityContext:
+  runAsNonRoot: false
+  runAsUser: 0
+securityContext:
+  allowPrivilegeEscalation: true
+  runAsNonRoot: false
+  runAsUser: 0
+  readOnlyRootFilesystem: false
+  capabilities:
+    add:
+      - "SYS_PTRACE"
+env:
+  - name: "RF_VERBOSE"
+    value: "0"
+image:
+  pullPolicy: Always
+  

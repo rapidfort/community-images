@@ -67,4 +67,14 @@ runtimes:
       haproxy-official:
         repository: "HAPROXY_OFFICIAL_IMAGE_REPOSITORY"
         tag: "HAPROXY_OFFICIAL_IMAGE_TAG"
+  - type: docker_compose
+    script: dc_coverage_tcp_deflate.sh
+    compose_file: docker-compose-tcp-deflate.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      haproxy-official:
+        repository: "HAPROXY_OFFICIAL_IMAGE_REPOSITORY"
+        tag: "HAPROXY_OFFICIAL_IMAGE_TAG"
 

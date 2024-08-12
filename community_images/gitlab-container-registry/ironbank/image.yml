@@ -1,0 +1,37 @@
+name: gitlab-container-registry-ib
+official_name: Gitlab Container Registry Iron Bank
+official_website: https://docs.gitlab.com/ee/user/packages/container_registry/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/gitlab-container-registry
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fgitlab-container-registry
+source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab/gitlab-container-registry/-/blob/development/README.md
+rf_docker_link: rapidfort/gitlab-container-registry-ib
+image_workflow_name: gitlab-container-registry_ironbank
+github_location: gitlab-container-registry/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fgitlab-container-registry
+usage_instructions: |
+  # Using docker run
+  $ docker run -d -e REGISTRY_HTTP_ADDR=0.0.0.0:443 -p 443:443 rapidfort/gitlab-container-registry-ib
+what_is_text: |
+  Gitlab Container Registry is a Docker toolset for storage and content delivery system, holding named container images and other content, available in different tagged versions. It is a fork of official Docker Registry 2.0 implementation.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - gitlab/gitlab/gitlab-container-registry:
+      input_base_tag: "17.2."
+      output_repo: gitlab-container-registry-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      gitlab-container-registry-ib:
+        repository: "REGISTRY_IMAGE_REPOSITORY"
+        tag: "REGISTRY_IMAGE_TAG"

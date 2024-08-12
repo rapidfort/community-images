@@ -912,7 +912,7 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/cassandra-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  cfssl-self-sign-ib:
+  ceph-ib:
     runs-on: ubuntu-latest
 
     environment: actions-cicd
@@ -951,8 +951,9 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run cfssl-self-sign/ironbank --publish
+        run: python3 community_images/common/orchestrator/main.py hourly_run ceph/ironbank --publish
 
 
       - name: Report pulls
@@ -963,7 +964,7 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/cfssl-self-sign-ib": 1 }' \
+           -d '{ "rapidfort/ceph-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   chart-testing-ib:
     runs-on: ubuntu-latest

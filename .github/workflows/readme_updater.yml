@@ -539,6 +539,15 @@ jobs:
           repository: rapidfort/git-lfs-ib
           readme-filepath: ./community_images/git-lfs/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Git-lfs Iron-Bank
+      - name: Docker Hub Description GitLab Certificates Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-certificates-ib
+          readme-filepath: ./community_images/gitlab-certificates/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for GitLab Certificates Iron Bank
       - name: Docker Hub Description Gitlab CFSSL Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

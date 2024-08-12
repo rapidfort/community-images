@@ -1,0 +1,16 @@
+version: '3'
+services:
+  prometheus-operator:
+    image: ${PROMETHEUS_OPERATOR_IMAGE_REPOSITORY}:${PROMETHEUS_OPERATOR_IMAGE_TAG}
+    user: root
+    cap_add:
+      - SYS_PTRACE 
+    entrypoint:
+      - "sleep"
+    command:
+      - "infinity"
+    environment:
+      - KUBECONFIG=/root/.kube/config
+    volumes:
+      - ${HOME}/.minikube:/home/runner/.minikube
+      - ${HOME}/.kube/config:/root/.kube/config

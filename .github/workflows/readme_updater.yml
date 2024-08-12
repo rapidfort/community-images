@@ -557,6 +557,15 @@ jobs:
           repository: rapidfort/gitlab-cfssl-self-sign-ib
           readme-filepath: ./community_images/gitlab-cfssl-self-sign/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Gitlab CFSSL Iron Bank
+      - name: Docker Hub Description Gitlab Container Registry Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-container-registry-ib
+          readme-filepath: ./community_images/gitlab-container-registry/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab Container Registry Iron Bank
       - name: Docker Hub Description Gitlab Exporter Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

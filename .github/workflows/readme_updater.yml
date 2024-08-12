@@ -539,6 +539,15 @@ jobs:
           repository: rapidfort/git-lfs-ib
           readme-filepath: ./community_images/git-lfs/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Git-lfs Iron-Bank
+      - name: Docker Hub Description Gitlab CFSSL Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-cfssl-self-sign-ib
+          readme-filepath: ./community_images/gitlab-cfssl-self-sign/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab CFSSL Iron Bank
       - name: Docker Hub Description Gitlab Exporter Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -818,7 +827,7 @@ jobs:
           repository: rapidfort/metricbeat-ib
           readme-filepath: ./community_images/metricbeat/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Metricbeat Iron-Bank
-      - name: Docker Hub Description Metrics-Server IronBank
+      - name: Docker Hub Description Metrics-Server Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
         with:
@@ -826,7 +835,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/metrics-server-ib
           readme-filepath: ./community_images/metrics-server/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Metrics-Server IronBank
+          short-description: RapidFort optimized, hardened image for Metrics-Server Iron Bank
       - name: Docker Hub Description Microsoft SQL Server 2019
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -97,6 +97,9 @@ gatekeeper-ib:
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
+gitlab-cfssl-self-sign-ib:
+  search_tags:
+    - 1.6.
 gitlab-exporter-ib:
   search_tags:
     - 17.2.
@@ -105,7 +108,7 @@ gitlab-runner-ib:
     - v17.1.
 gitlab-workhorse-ib:
   search_tags:
-    - 16.11.
+    - 17.2.
 grafana-ib:
   search_tags:
     - 11.1.
@@ -132,13 +135,16 @@ kafka-ib:
     - 3.4.
 kibana-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
+kube-webhook-certgen-ib:
+  search_tags:
+    - v1.5.
 kubectl-ib:
   search_tags:
     - v1.27.
 logstash-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -154,7 +160,7 @@ metabase-ib:
 metricbeat-ib:
   search_tags:
     - 8.14.
-metrics-server:
+metrics-server-ib:
   search_tags:
     - v0.7.
 microsoft-sql-server-2019-ib:
@@ -223,9 +229,12 @@ postgresql-ib:
 prometheus-config-reloader-ib:
   search_tags:
     - v0.75.
+prometheus-operator-ib:
+  search_tags:
+    - v0.75.
 prometheus-ib:
   search_tags:
-    - v2.53.
+    - v2.54.
 redis-exporter-ib:
   search_tags:
     - v1.62.
@@ -241,6 +250,9 @@ solr-8-ib:
 sqlite-ib:
   search_tags:
     - v3.34.
+tempo-query-ib:
+  search_tags:
+    - 2.5.
 terraform-ib:
   search_tags:
     - 1.7.

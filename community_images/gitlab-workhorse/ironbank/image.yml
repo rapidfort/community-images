@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - gitlab/gitlab/gitlab-workhorse:
-      input_base_tag: "16.11."
+      input_base_tag: "17.2."
       output_repo: gitlab-workhorse-ib
 runtimes:
   - type: docker_compose

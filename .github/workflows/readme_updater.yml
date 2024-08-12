@@ -1160,6 +1160,15 @@ jobs:
           repository: rapidfort/prometheus-official
           readme-filepath: ./community_images/prometheus/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Prometheus Official
+      - name: Docker Hub Description Prometheus Operator Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/prometheus-operator-ib
+          readme-filepath: ./community_images/prometheus-operator/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Prometheus Operator Iron Bank
       - name: Docker Hub Description RabbitMQ
         if: always()
         uses: peter-evans/dockerhub-description@v3

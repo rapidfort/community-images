@@ -598,6 +598,10 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [gitlab-runner-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/gitlab-runner-ib?logo=docker&logoColor=white
 [gitlab-runner-ib-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab-runner%2Fgitlab-runner?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=gitlab-runner-ib&utm_content=landing_view_report
 
+[gitlab-workhorse-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/gitlab-workhorse/ironbank
+[gitlab-workhorse-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/gitlab-workhorse-ib?logo=docker&logoColor=white
+[gitlab-workhorse-ib-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fgitlab-workhorse?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=gitlab-workhorse-ib&utm_content=landing_view_report
+
 [grafana-ib-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/grafana/ironbank
 [grafana-ib-dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/grafana-ib?logo=docker&logoColor=white
 [grafana-ib-rf-link]:https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fgrafana%2Fgrafana?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=grafana-ib&utm_content=landing_view_report

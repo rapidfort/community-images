@@ -126,6 +126,8 @@ jobs:
         run: docker pull rapidfort/gitlab-exporter-ib
       - name: Pull Gitlab Runner Iron Bank
         run: docker pull rapidfort/gitlab-runner-ib
+      - name: Pull Gitlab Workhorse Iron Bank
+        run: docker pull rapidfort/gitlab-workhorse-ib
       - name: Pull Grafana Ironbank
         run: docker pull rapidfort/grafana-ib
       - name: Pull Grafana Official

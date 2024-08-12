@@ -233,6 +233,15 @@ jobs:
           repository: rapidfort/cassandra-official
           readme-filepath: ./community_images/cassandra/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Cassandra Official
+      - name: Docker Hub Description Ceph Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ceph-ib
+          readme-filepath: ./community_images/ceph/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ceph Iron Bank
       - name: Docker Hub Description Helm Chart Testing Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -539,6 +548,15 @@ jobs:
           repository: rapidfort/gitlab-certificates-ib
           readme-filepath: ./community_images/gitlab-certificates/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for GitLab Certificates Iron Bank
+      - name: Docker Hub Description Gitlab CFSSL Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-cfssl-self-sign-ib
+          readme-filepath: ./community_images/gitlab-cfssl-self-sign/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab CFSSL Iron Bank
       - name: Docker Hub Description Gitlab Exporter Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -557,6 +575,15 @@ jobs:
           repository: rapidfort/gitlab-runner-ib
           readme-filepath: ./community_images/gitlab-runner/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Gitlab Runner Iron Bank
+      - name: Docker Hub Description Gitlab Workhorse Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitlab-workhorse-ib
+          readme-filepath: ./community_images/gitlab-workhorse/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Gitlab Workhorse Iron Bank
       - name: Docker Hub Description Grafana Ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -701,6 +728,15 @@ jobs:
           repository: rapidfort/kong
           readme-filepath: ./community_images/kong/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Kong
+      - name: Docker Hub Description Kube-Webhook-Certgen Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kube-webhook-certgen-ib
+          readme-filepath: ./community_images/kube-webhook-certgen/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kube-Webhook-Certgen Iron Bank
       - name: Docker Hub Description Kubectl IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1151,6 +1187,15 @@ jobs:
           repository: rapidfort/prometheus-official
           readme-filepath: ./community_images/prometheus/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Prometheus Official
+      - name: Docker Hub Description Prometheus Operator Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/prometheus-operator-ib
+          readme-filepath: ./community_images/prometheus-operator/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Prometheus Operator Iron Bank
       - name: Docker Hub Description RabbitMQ
         if: always()
         uses: peter-evans/dockerhub-description@v3

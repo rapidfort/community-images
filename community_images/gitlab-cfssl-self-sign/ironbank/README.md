@@ -14,13 +14,13 @@
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
-# RapidFort hardened image for CFSSL Iron Bank
+# RapidFort hardened image for Gitlab CFSSL Iron Bank
 
 
-RapidFort has optimized and hardened this CFSSL Iron Bank container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Gitlab CFSSL Iron Bank container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One CFSSL Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Gitlab CFSSL Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -42,21 +42,21 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 <br>
 
 
-## What is CFSSL Iron Bank?
+## What is Gitlab CFSSL Iron Bank?
 
 > CFSSL is CloudFlare's PKI/TLS swiss army knife. It is both a command line tool and an HTTP API server for signing, verifying, and bundling TLS certificates.
 
 
-[Overview of CFSSL Iron Bank](https://cfssl.org/)
+[Overview of Gitlab CFSSL Iron Bank](https://cfssl.org/)
 
 Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 
-## How do I use this hardened CFSSL Iron Bank image?
+## How do I use this hardened Gitlab CFSSL Iron Bank image?
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One CFSSL Iron Bank][source-image-repo-link].
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Gitlab CFSSL Iron Bank][source-image-repo-link].
 
 <a href="https://repo1.dso.mil/dsop/gitlab/gitlab/cfssl-self-sign/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -74,7 +74,7 @@ $ docker run rapidfort/gitlab-cfssl-self-sign-ib
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One CFSSL Iron Bank][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Gitlab CFSSL Iron Bank][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
@@ -86,7 +86,7 @@ Vulnerability reports for RapidFort's hardened images are updated daily to inclu
 <br>
 <br>
 
-## What’s the difference between the official [Platform One CFSSL Iron Bank][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [Platform One Gitlab CFSSL Iron Bank][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/gitlab-cfssl-self-sign-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.

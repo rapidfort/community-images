@@ -108,7 +108,7 @@ gitlab-runner-ib:
     - v17.1.
 gitlab-workhorse-ib:
   search_tags:
-    - 16.11.
+    - 17.2.
 grafana-ib:
   search_tags:
     - 11.1.
@@ -136,6 +136,9 @@ kafka-ib:
 kibana-ib:
   search_tags:
     - 8.15.
+kube-webhook-certgen-ib:
+  search_tags:
+    - v1.5.
 kubectl-ib:
   search_tags:
     - v1.27.
@@ -224,6 +227,9 @@ postgresql-ib:
   search_tags:
     - "12."
 prometheus-config-reloader-ib:
+  search_tags:
+    - v0.75.
+prometheus-operator-ib:
   search_tags:
     - v0.75.
 prometheus-ib:

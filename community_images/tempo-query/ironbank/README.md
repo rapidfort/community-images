@@ -9,16 +9,18 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
+<b>Near Zero CVE images availabe at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+
 <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
 <b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
-# RapidFort hardened image for Tempo-query IronBank
+# RapidFort hardened image for Grafana Tempo-query Iron Bank
 
 
-RapidFort has optimized and hardened this Tempo-query IronBank container image. This container is free to use and has no license limitations.
+RapidFort has optimized and hardened this Grafana Tempo-query Iron Bank container image. This container is free to use and has no license limitations.
 
 
-This optimized image is functionally equivalent to [Platform One Tempo-query IronBank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
+This optimized image is functionally equivalent to [Platform One Grafana Tempo-query Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
 <br>
@@ -40,20 +42,20 @@ Every day, RapidFort automatically optimizes and hardens a growing bank of Docke
 <br>
 
 
-## What is Tempo-query IronBank?
+## What is Grafana Tempo-query Iron Bank?
 
-> Grafana Tempo is an open-source, easy-to-use, and high-scale distributed tracing backend. Tempo lets you search for traces, generate metrics from spans, and link your tracing data with logs and metrics.disclaimer: |
-
-
-[Overview of Tempo-query IronBank](https://grafana.com/docs/tempo/latest/)
+> Grafana's Tempo-Query component is used for querying and visualizing trace data stored in Grafana Tempo. It provides a user interface and an API for searching, viewing, and analyzing distributed traces, which are collected from various sources and stored in Tempo.
 
 
-
-## How do I use this hardened Tempo-query IronBank image?
+[Overview of Grafana Tempo-query Iron Bank](https://grafana.com/docs/tempo/latest/)
 
 
 
-The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Tempo-query IronBank][source-image-repo-link].
+## How do I use this hardened Grafana Tempo-query Iron Bank image?
+
+
+
+The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One Grafana Tempo-query Iron Bank][source-image-repo-link].
 
 <a href="https://repo1.dso.mil/dsop/opensource/grafana/tempo-query/-/blob/development/README.md">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
@@ -62,7 +64,9 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-$ docker run -v <CONFIG_FILE_PATH>:/etc/tempo-query/config.tempo-query -p 12345:12345 rapidfort/tempo-query-ib:latest run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/tempo-query/data /etc/tempo-query/config.tempo-query
+# TempoQuery can be deployed with:
+$ helm repo add grafana https://grafana.github.io/helm-charts
+$ helm install rf-tempoQuery grafana/tempo --set tempoQuery.repository=rapidfort/tempo-query-ib --set tempoQuery.tag=latest --set tempoQuery.enabled=true
 
 ```
 
@@ -70,7 +74,7 @@ $ docker run -v <CONFIG_FILE_PATH>:/etc/tempo-query/config.tempo-query -p 12345:
 
 A hardened container image is a functionally equivalent copy of a container image that has been optimized by removing unnecessary software components, significantly reducing its software attack surface and improving its security. Removing unnecessary software components is a critical practice to protect your infrastructure from attacks and limiting the blast radius of any attacks.
 
-This image is a hardened version of the official [Platform One Tempo-query IronBank][source-image-repo-link] image on Docker Hub.
+This image is a hardened version of the official [Platform One Grafana Tempo-query Iron Bank][source-image-repo-link] image on Docker Hub.
 
 RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
 
@@ -82,7 +86,7 @@ Vulnerability reports for RapidFort's hardened images are updated daily to inclu
 <br>
 <br>
 
-## What’s the difference between the official [Platform One Tempo-query IronBank][source-image-repo-link] image and this hardened image?
+## What’s the difference between the official [Platform One Grafana Tempo-query Iron Bank][source-image-repo-link] image and this hardened image?
 RapidFort’s hardened [rapidfort/tempo-query-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.

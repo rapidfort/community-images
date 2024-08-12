@@ -9,31 +9,7 @@ rf_docker_link: rapidfort/metrics-server-ib
 image_workflow_name: metrics-server_ironbank
 github_location: metrics-server/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fkubernetes-sigs%2Fmetrics-server
-usage_instructions: |
-  # Using Helm 
-
-  # 1. Add the Helm repository
-  $ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
-  $ helm repo update
-
-  # 2. Customize the Values
-  # Create a values.yaml file to override the default image with rapidfort/metrics-server-ib.
-  # values.yaml: 
-  image:
-    repository: rapidfort/metrics-server-ib
-    tag: latest
-
-  # 3. Install the chart with custom values.yaml
-  $ helm install metrics-server metrics-server/metrics-server -f values.yaml
-
-  # 4. Verify the Installation
-  $ kubectl get pods --all-namespaces
-  # Look for the metrics-server pod and ensure it uses the rapidfort/metrics-server-ib image.
-
-  # Using Docker 
-  # You can get a full list of Metrics Server configuration flags by running:
-  $ docker run --rm rapidfort/metrics-server-ib --help
-
+usage_instructions: "# Using Helm \n\n# 1. Add the Helm repository\n$ helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/\n$ helm repo update\n\n# 2. Customize the Values\n# Create a values.yaml file to override the default image with rapidfort/metrics-server-ib.\n# values.yaml: \nimage:\n  repository: rapidfort/metrics-server-ib\n  tag: latest\n\n# 3. Install the chart with custom values.yaml\n$ helm install metrics-server metrics-server/metrics-server -f values.yaml\n\n# 4. Verify the Installation\n$ kubectl get pods --all-namespaces\n# Look for the metrics-server pod and ensure it uses the rapidfort/metrics-server-ib image.\n\n# Using Docker \n# You can get a full list of Metrics Server configuration flags by running:\n$ docker run --rm rapidfort/metrics-server-ib --help\n"
 what_is_text: |
   Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines. It collects resource metrics from Kubelets and exposes them in Kubernetes apiserver through Metrics API.
 disclaimer: |

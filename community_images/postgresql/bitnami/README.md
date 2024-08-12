@@ -94,11 +94,11 @@ RapidFort’s hardened [rapidfort/postgresql][rf-dh-image-link] image has been o
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`16`, `16-debian-12`, `16.3.0`, `16.3.0-debian-12-r` (16/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-12/Dockerfile)
-* [`15`, `15-debian-12`, `15.7.0`, `15.7.0-debian-12-r` (15/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-12/Dockerfile)
-* [`14`, `14-debian-12`, `14.12.0`, `14.12.0-debian-12-r` (14/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-12/Dockerfile)
-* [`13`, `13-debian-12`, `13.15.0`, `13.15.0-debian-12-r` (13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-12/Dockerfile)
-* [`12`, `12-debian-12`, `12.19.0`, `12.19.0-debian-12-r` (12/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-12/Dockerfile)
+* [`16`, `16-debian-12`, `16.4.0`, `16.4.0-debian-12-r` (16/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-12/Dockerfile)
+* [`15`, `15-debian-12`, `15.8.0`, `15.8.0-debian-12-r` (15/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-12/Dockerfile)
+* [`14`, `14-debian-12`, `14.13.0`, `14.13.0-debian-12-r` (14/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-12/Dockerfile)
+* [`13`, `13-debian-12`, `13.16.0`, `13.16.0-debian-12-r` (13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-12/Dockerfile)
+* [`12`, `12-debian-12`, `12.20.0`, `12.20.0-debian-12-r` (12/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/12/debian-12/Dockerfile)
 
 ## Need support
 

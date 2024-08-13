@@ -1,0 +1,37 @@
+name: cass-ib
+official_name: CaSS Iron Bank
+official_website: https://github.com/cassproject/CASS
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/cassproject/cass
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fcassproject%2Fcass
+source_image_readme: https://repo1.dso.mil/dsop/opensource/cassproject/cass/-/blob/development/README.md
+rf_docker_link: rapidfort/cass-ib
+image_workflow_name: cass_ironbank
+github_location: cass/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fcassproject%2Fcass
+usage_instructions: |
+  # TODO: Add usage instructions
+  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  # install mariadb, just replace repository with RapidFort registry
+  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+what_is_text: |
+  The Competency and Skills System, a competency management tool
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/cassproject/cass:
+      input_base_tag: "1.5."
+      output_repo: cass-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      cass-ib:
+        repository: "CASS_IMAGE_REPOSITORY"
+        tag: "CASS_IMAGE_TAG"

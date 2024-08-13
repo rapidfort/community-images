@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    # image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.17.23
+    image: rapidfort/elasticsearch-official:8.6.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.ml.enabled=false
+      - xpack.security.enabled=false
+      - xpack.security.enrollment.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - xpack.security.transport.ssl.enabled=false
+      - action.auto_create_index="+*"   # Allow Elasticsearch to automatically create indices
+    ports:
+      - "9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  cass:
+    image: registry1.dso.mil/ironbank/opensource/cassproject/cass:latest-rfstub
+    container_name: cass
+    depends_on:
+      - elasticsearch
+    user: root
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - ELASTICSEARCH_ENDPOINT=http://elasticsearch:9200
+      - SKYREPO_DEBUG=true
+      - CASS_OIDC_ENABLED=true
+    ports:
+      - "80"
+    command: ["/bin/sh", "-c", "sleep 30 && node src/main/server.js"]
+
+volumes:
+  es_data:
+    driver: local

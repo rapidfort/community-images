@@ -63,7 +63,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami
 
 
@@ -130,7 +130,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank
 
 
@@ -197,7 +197,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/bitnami-ironbank
 
 
@@ -264,7 +264,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run alertmanager/ironbank
 
 
@@ -331,7 +331,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run alloy/ironbank
 
 
@@ -398,7 +398,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run ansible/ironbank
 
 
@@ -465,7 +465,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run ansible-lint/ironbank
 
 
@@ -532,7 +532,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/bitnami
 
 
@@ -599,7 +599,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank
 
 
@@ -666,7 +666,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/official
 
 
@@ -733,7 +733,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay
 
 
@@ -800,7 +800,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/bigbang-ironbank
 
 
@@ -867,7 +867,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/ironbank
 
 
@@ -934,7 +934,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run auditbeat/ironbank
 
 
@@ -1001,7 +1001,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run bats/ironbank
 
 
@@ -1068,7 +1068,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run blackbox-exporter/ironbank
 
 
@@ -1135,7 +1135,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official
 
 
@@ -1202,7 +1202,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run chart-testing/ironbank
 
 
@@ -1269,7 +1269,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/bitnami
 
 
@@ -1336,7 +1336,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank
 
 
@@ -1403,7 +1403,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/official
 
 
@@ -1470,7 +1470,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/bitnami
 
 
@@ -1537,7 +1537,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/ironbank
 
 
@@ -1604,7 +1604,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official
 
 
@@ -1671,7 +1671,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages
 
 
@@ -1738,7 +1738,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/bitnami
 
 
@@ -1805,7 +1805,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch-exporter/ironbank
 
 
@@ -1872,7 +1872,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official
 
 
@@ -1939,7 +1939,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/bitnami
 
 
@@ -2006,7 +2006,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official
 
 
@@ -2073,7 +2073,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/bitnami
 
 
@@ -2140,7 +2140,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank
 
 
@@ -2207,7 +2207,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run filebeat/ironbank
 
 
@@ -2274,7 +2274,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/bitnami
 
 
@@ -2341,7 +2341,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank
 
 
@@ -2408,7 +2408,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/official
 
 
@@ -2475,7 +2475,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/bitnami
 
 
@@ -2542,7 +2542,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd-elasticsearch/ironbank
 
 
@@ -2609,7 +2609,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank
 
 
@@ -2676,7 +2676,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official
 
 
@@ -2743,7 +2743,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-helm-controller/ironbank
 
 
@@ -2810,7 +2810,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-image-automation-controller/ironbank
 
 
@@ -2877,7 +2877,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-image-reflector-controller/ironbank
 
 
@@ -2944,7 +2944,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-kustomize-controller/ironbank
 
 
@@ -3011,7 +3011,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-notification-controller/ironbank
 
 
@@ -3078,7 +3078,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-source-controller/ironbank
 
 
@@ -3145,7 +3145,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run gatekeeper/ironbank
 
 
@@ -3212,7 +3212,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run ghost/bitnami
 
 
@@ -3279,7 +3279,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run git-lfs/ironbank
 
 
@@ -3346,7 +3346,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-runner/ironbank
 
 
@@ -3413,7 +3413,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank
 
 
@@ -3480,7 +3480,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana/official
 
 
@@ -3547,7 +3547,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run hadolint/ironbank
 
 
@@ -3614,7 +3614,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/bitnami
 
 
@@ -3681,7 +3681,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank
 
 
@@ -3748,7 +3748,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official
 
 
@@ -3815,7 +3815,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run heartbeat/ironbank
 
 
@@ -3882,7 +3882,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/bitnami
 
 
@@ -3949,7 +3949,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run jmx-exporter/ironbank
 
 
@@ -4016,7 +4016,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run k8s-sidecar/ironbank
 
 
@@ -4083,7 +4083,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run k8s-sidecar/official
 
 
@@ -4150,7 +4150,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run kafka-exporter/ironbank
 
 
@@ -4217,7 +4217,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run kafka/ironbank
 
 
@@ -4284,7 +4284,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run kaniko/ironbank
 
 
@@ -4351,7 +4351,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official
 
 
@@ -4418,7 +4418,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank
 
 
@@ -4485,7 +4485,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run kong/official
 
 
@@ -4552,7 +4552,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run kubectl/ironbank
 
 
@@ -4619,7 +4619,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank
 
 
@@ -4686,7 +4686,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/bitnami
 
 
@@ -4753,7 +4753,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank
 
 
@@ -4820,7 +4820,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official
 
 
@@ -4887,7 +4887,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mc/ironbank
 
 
@@ -4954,7 +4954,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/bitnami
 
 
@@ -5021,7 +5021,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank
 
 
@@ -5088,7 +5088,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official
 
 
@@ -5155,7 +5155,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run metabase/ironbank
 
 
@@ -5222,7 +5222,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run metricbeat/ironbank
 
 
@@ -5289,7 +5289,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank
 
 
@@ -5356,7 +5356,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run minio-operator/ironbank
 
 
@@ -5423,7 +5423,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mkdocs/ironbank
 
 
@@ -5490,7 +5490,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/bitnami
 
 
@@ -5557,7 +5557,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank
 
 
@@ -5624,7 +5624,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official
 
 
@@ -5691,7 +5691,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank
 
 
@@ -5758,7 +5758,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/bitnami
 
 
@@ -5825,7 +5825,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank
 
 
@@ -5892,7 +5892,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official
 
 
@@ -5959,7 +5959,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/bitnami
 
 
@@ -6026,7 +6026,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank
 
 
@@ -6093,7 +6093,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/official
 
 
@@ -6160,7 +6160,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/bitnami
 
 
@@ -6227,7 +6227,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank
 
 
@@ -6294,7 +6294,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official
 
 
@@ -6361,7 +6361,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank
 
 
@@ -6428,7 +6428,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run nifi-registry/ironbank
 
 
@@ -6495,7 +6495,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/bitnami
 
 
@@ -6562,7 +6562,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank
 
 
@@ -6629,7 +6629,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/official
 
 
@@ -6696,7 +6696,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana
 
 
@@ -6763,7 +6763,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run openldap/ironbank
 
 
@@ -6830,7 +6830,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run packetbeat/ironbank
 
 
@@ -6897,7 +6897,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank
 
 
@@ -6964,7 +6964,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run pgadmin/ironbank
 
 
@@ -7031,7 +7031,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run podman/ironbank
 
 
@@ -7098,7 +7098,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run postgres-exporter/bitnami-ironbank
 
 
@@ -7165,7 +7165,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run postgres-exporter/ironbank
 
 
@@ -7232,7 +7232,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/bitnami
 
 
@@ -7299,7 +7299,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank
 
 
@@ -7366,7 +7366,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official
 
 
@@ -7433,7 +7433,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/bitnami
 
 
@@ -7500,7 +7500,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank
 
 
@@ -7567,7 +7567,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/official
 
 
@@ -7634,7 +7634,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/bitnami
 
 
@@ -7701,7 +7701,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/official
 
 
@@ -7768,7 +7768,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/bitnami
 
 
@@ -7835,7 +7835,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run redis-cluster/bitnami
 
 
@@ -7902,7 +7902,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run redis-exporter/ironbank
 
 
@@ -7969,7 +7969,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank
 
 
@@ -8036,7 +8036,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/official
 
 
@@ -8103,7 +8103,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run shellcheck/ironbank
 
 
@@ -8170,7 +8170,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run solr-8/ironbank
 
 
@@ -8237,7 +8237,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run sqlite/ironbank
 
 
@@ -8304,7 +8304,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run telegraf/bitnami
 
 
@@ -8371,7 +8371,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank
 
 
@@ -8438,7 +8438,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run terragrunt/ironbank
 
 
@@ -8505,7 +8505,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run thanos/ironbank
 
 
@@ -8572,7 +8572,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run tika/ironbank
 
 
@@ -8639,7 +8639,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run tomcat/ironbank
 
 
@@ -8706,7 +8706,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik
 
 
@@ -8773,7 +8773,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank
 
 
@@ -8840,7 +8840,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp
 
 
@@ -8907,7 +8907,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/ironbank
 
 
@@ -8974,7 +8974,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank
 
 
@@ -9041,7 +9041,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run vcluster/ironbank
 
 
@@ -9108,7 +9108,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run velero/ironbank
 
 
@@ -9175,7 +9175,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/bitnami
 
 
@@ -9242,7 +9242,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run wordpress/ironbank
 
 
@@ -9309,7 +9309,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official
 
 
@@ -9376,7 +9376,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run yq/ironbank
 
 
@@ -9443,7 +9443,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run zeek/ironbank
 
 
@@ -9510,7 +9510,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/bitnami
 
 
@@ -9577,7 +9577,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank
 
 
@@ -9644,7 +9644,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
           RF_ACCESS_TOKEN: ${{ secrets.RF_ACCESS_TOKEN }}
-        if: ${{ steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
+        
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official
 
 

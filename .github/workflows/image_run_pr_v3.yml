@@ -27,15 +27,6 @@ jobs:
 
 
 
-      # - name: Check if test required
-      #   id: test-required
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |
-      #     ls
-      #     python3 scripts/tests_required.py airflow airflow/airflow/bitnami output.txt
-      #     cat output.txt >> $GITHUB_OUTPUT
-
       - name: Start minikube
 
         with:

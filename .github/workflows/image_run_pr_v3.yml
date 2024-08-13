@@ -28,14 +28,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -47,7 +47,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -71,7 +71,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -95,14 +95,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -114,7 +114,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -138,7 +138,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -162,14 +162,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -181,7 +181,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -205,7 +205,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -229,14 +229,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -248,7 +248,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -272,7 +272,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -296,14 +296,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -315,7 +315,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -339,7 +339,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -363,14 +363,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -382,7 +382,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -406,7 +406,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -430,14 +430,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -449,7 +449,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -473,7 +473,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -497,14 +497,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -516,7 +516,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -540,7 +540,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -564,14 +564,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -583,7 +583,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -607,7 +607,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -631,14 +631,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -650,7 +650,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -674,7 +674,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -698,14 +698,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -717,7 +717,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -741,7 +741,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -765,14 +765,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -784,7 +784,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -808,7 +808,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -832,14 +832,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -851,7 +851,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -875,7 +875,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -899,14 +899,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -918,7 +918,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -942,7 +942,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -966,14 +966,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -985,7 +985,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1009,7 +1009,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1033,14 +1033,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1052,7 +1052,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1076,7 +1076,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1100,14 +1100,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1119,7 +1119,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1143,7 +1143,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1167,14 +1167,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1186,7 +1186,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1210,7 +1210,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1234,14 +1234,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1253,7 +1253,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1277,7 +1277,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1301,14 +1301,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1320,7 +1320,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1344,7 +1344,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1368,14 +1368,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1387,7 +1387,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1411,7 +1411,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1435,14 +1435,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1454,7 +1454,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1478,7 +1478,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1502,14 +1502,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1521,7 +1521,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1545,7 +1545,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1569,14 +1569,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1588,7 +1588,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1612,7 +1612,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1636,14 +1636,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1655,7 +1655,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1679,7 +1679,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1703,14 +1703,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1722,7 +1722,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1746,7 +1746,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1770,14 +1770,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1789,7 +1789,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1813,7 +1813,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1837,14 +1837,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1856,7 +1856,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1880,7 +1880,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1904,14 +1904,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1923,7 +1923,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -1947,7 +1947,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -1971,14 +1971,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -1990,7 +1990,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2014,7 +2014,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2038,14 +2038,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2057,7 +2057,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2081,7 +2081,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2105,14 +2105,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2124,7 +2124,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2148,7 +2148,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2172,14 +2172,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2191,7 +2191,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2215,7 +2215,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2239,14 +2239,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2258,7 +2258,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2282,7 +2282,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2306,14 +2306,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2325,7 +2325,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2349,7 +2349,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2373,14 +2373,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2392,7 +2392,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2416,7 +2416,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2440,14 +2440,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2459,7 +2459,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2483,7 +2483,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2507,14 +2507,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2526,7 +2526,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2550,7 +2550,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2574,14 +2574,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2593,7 +2593,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2617,7 +2617,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2641,14 +2641,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2660,7 +2660,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2684,7 +2684,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2708,14 +2708,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2727,7 +2727,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2751,7 +2751,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2775,14 +2775,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2794,7 +2794,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2818,7 +2818,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2842,14 +2842,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2861,7 +2861,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2885,7 +2885,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2909,14 +2909,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2928,7 +2928,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -2952,7 +2952,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -2976,14 +2976,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -2995,7 +2995,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3019,7 +3019,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3043,14 +3043,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3062,7 +3062,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3086,7 +3086,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3110,14 +3110,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3129,7 +3129,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3153,7 +3153,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3177,14 +3177,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3196,7 +3196,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3220,7 +3220,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3244,14 +3244,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3263,7 +3263,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3287,7 +3287,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3311,14 +3311,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3330,7 +3330,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3354,7 +3354,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3378,14 +3378,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3397,7 +3397,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3421,7 +3421,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3445,14 +3445,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3464,7 +3464,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3488,7 +3488,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3512,14 +3512,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3531,7 +3531,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3555,7 +3555,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3579,14 +3579,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3598,7 +3598,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3622,7 +3622,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3646,14 +3646,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3665,7 +3665,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3689,7 +3689,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3713,14 +3713,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3732,7 +3732,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3756,7 +3756,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3780,14 +3780,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3799,7 +3799,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3823,7 +3823,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3847,14 +3847,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3866,7 +3866,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3890,7 +3890,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3914,14 +3914,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -3933,7 +3933,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -3957,7 +3957,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -3981,14 +3981,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4000,7 +4000,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4024,7 +4024,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4048,14 +4048,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4067,7 +4067,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4091,7 +4091,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4115,14 +4115,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4134,7 +4134,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4158,7 +4158,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4182,14 +4182,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4201,7 +4201,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4225,7 +4225,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4249,14 +4249,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4268,7 +4268,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4292,7 +4292,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4316,14 +4316,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4335,7 +4335,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4359,7 +4359,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4383,14 +4383,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4402,7 +4402,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4426,7 +4426,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4450,14 +4450,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4469,7 +4469,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4493,7 +4493,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4517,14 +4517,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4536,7 +4536,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4560,7 +4560,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4584,14 +4584,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4603,7 +4603,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4627,7 +4627,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4651,14 +4651,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4670,7 +4670,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4694,7 +4694,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4718,14 +4718,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4737,7 +4737,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4761,7 +4761,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4785,14 +4785,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4804,7 +4804,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4828,7 +4828,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4852,14 +4852,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4871,7 +4871,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4895,7 +4895,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4919,14 +4919,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -4938,7 +4938,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -4962,7 +4962,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -4986,14 +4986,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5005,7 +5005,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5029,7 +5029,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5053,14 +5053,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5072,7 +5072,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5096,7 +5096,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5120,14 +5120,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5139,7 +5139,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5163,7 +5163,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5187,14 +5187,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5206,7 +5206,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5230,7 +5230,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5254,14 +5254,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5273,7 +5273,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5297,7 +5297,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5321,14 +5321,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5340,7 +5340,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5364,7 +5364,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5388,14 +5388,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5407,7 +5407,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5431,7 +5431,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5455,14 +5455,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5474,7 +5474,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5498,7 +5498,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5522,14 +5522,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5541,7 +5541,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5565,7 +5565,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5589,14 +5589,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5608,7 +5608,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5632,7 +5632,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5656,14 +5656,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5675,7 +5675,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5699,7 +5699,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5723,14 +5723,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5742,7 +5742,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5766,7 +5766,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5790,14 +5790,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5809,7 +5809,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5833,7 +5833,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5857,14 +5857,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5876,7 +5876,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5900,7 +5900,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5924,14 +5924,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -5943,7 +5943,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -5967,7 +5967,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -5991,14 +5991,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6010,7 +6010,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6034,7 +6034,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6058,14 +6058,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6077,7 +6077,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6101,7 +6101,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6125,14 +6125,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6144,7 +6144,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6168,7 +6168,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6192,14 +6192,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6211,7 +6211,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6235,7 +6235,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6259,14 +6259,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6278,7 +6278,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6302,7 +6302,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6326,14 +6326,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6345,7 +6345,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6369,7 +6369,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6393,14 +6393,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6412,7 +6412,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6436,7 +6436,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6460,14 +6460,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6479,7 +6479,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6503,7 +6503,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6527,14 +6527,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6546,7 +6546,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6570,7 +6570,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6594,14 +6594,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6613,7 +6613,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6637,7 +6637,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6661,14 +6661,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6680,7 +6680,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6704,7 +6704,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6728,14 +6728,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6747,7 +6747,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6771,7 +6771,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6795,14 +6795,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6814,7 +6814,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6838,7 +6838,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6862,14 +6862,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6881,7 +6881,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6905,7 +6905,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6929,14 +6929,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -6948,7 +6948,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -6972,7 +6972,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -6996,14 +6996,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7015,7 +7015,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7039,7 +7039,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7063,14 +7063,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7082,7 +7082,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7106,7 +7106,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7130,14 +7130,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7149,7 +7149,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7173,7 +7173,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7197,14 +7197,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7216,7 +7216,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7240,7 +7240,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7264,14 +7264,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7283,7 +7283,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7307,7 +7307,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7331,14 +7331,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7350,7 +7350,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7374,7 +7374,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7398,14 +7398,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7417,7 +7417,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7441,7 +7441,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7465,14 +7465,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7484,7 +7484,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7508,7 +7508,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7532,14 +7532,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7551,7 +7551,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7575,7 +7575,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7599,14 +7599,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7618,7 +7618,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7642,7 +7642,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7666,14 +7666,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7685,7 +7685,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7709,7 +7709,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7733,14 +7733,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7752,7 +7752,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7776,7 +7776,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7800,14 +7800,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7819,7 +7819,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7843,7 +7843,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7867,14 +7867,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7886,7 +7886,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7910,7 +7910,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -7934,14 +7934,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -7953,7 +7953,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -7977,7 +7977,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8001,14 +8001,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8020,7 +8020,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8044,7 +8044,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8068,14 +8068,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8087,7 +8087,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8111,7 +8111,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8135,14 +8135,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8154,7 +8154,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8178,7 +8178,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8202,14 +8202,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8221,7 +8221,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8245,7 +8245,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8269,14 +8269,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8288,7 +8288,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8312,7 +8312,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8336,14 +8336,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8355,7 +8355,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8379,7 +8379,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8403,14 +8403,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8422,7 +8422,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8446,7 +8446,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8470,14 +8470,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8489,7 +8489,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8513,7 +8513,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8537,14 +8537,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8556,7 +8556,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8580,7 +8580,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8604,14 +8604,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8623,7 +8623,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8647,7 +8647,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8671,14 +8671,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8690,7 +8690,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8714,7 +8714,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8738,14 +8738,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8757,7 +8757,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8781,7 +8781,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8805,14 +8805,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8824,7 +8824,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8848,7 +8848,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8872,14 +8872,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8891,7 +8891,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8915,7 +8915,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -8939,14 +8939,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -8958,7 +8958,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -8982,7 +8982,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9006,14 +9006,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9025,7 +9025,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9049,7 +9049,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9073,14 +9073,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9092,7 +9092,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9116,7 +9116,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9140,14 +9140,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9159,7 +9159,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9183,7 +9183,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9207,14 +9207,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9226,7 +9226,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9250,7 +9250,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9274,14 +9274,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9293,7 +9293,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9317,7 +9317,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9341,14 +9341,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9360,7 +9360,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9384,7 +9384,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9408,14 +9408,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9427,7 +9427,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9451,7 +9451,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9475,14 +9475,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9494,7 +9494,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9518,7 +9518,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9542,14 +9542,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9561,7 +9561,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9585,7 +9585,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \
@@ -9609,14 +9609,14 @@ jobs:
 
       - name: Start minikube
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         with:
           memory: 6g
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: kubectl get pods -A
       - name: Setup ubuntu
@@ -9628,7 +9628,7 @@ jobs:
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: ./scripts/setup.sh
 
@@ -9652,7 +9652,7 @@ jobs:
         env:
           PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
 
-        if: ${{ github.event_name == 'pull_request' }}
+        
 
         run: |
           curl -X POST \

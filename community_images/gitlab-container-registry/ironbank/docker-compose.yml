@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  gitlab-container-registry:
+    image: ${REGISTRY_IMAGE_REPOSITORY}:${REGISTRY_IMAGE_TAG}
+    cap_add:
+      - SYS_PTRACE
+    user: root
+    volumes:
+      - ./certs:/certs
+      - ./config.yml:/etc/docker/registry/config.yml
+    environment:
+      - REGISTRY_HTTP_ADDR=0.0.0.0:4433
+      - REGISTRY_HTTP_TLS_KEY=/certs/server.key
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/server.crt
+    ports:
+      - 4433:4433
+

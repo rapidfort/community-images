@@ -24,7 +24,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Generate new readme and image files
         if: always()
@@ -224,6 +224,15 @@ jobs:
           repository: rapidfort/blackbox-exporter-ib
           readme-filepath: ./community_images/blackbox-exporter/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Blackbox Exporter Iron Bank
+      - name: Docker Hub Description CaSS Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/cass-ib
+          readme-filepath: ./community_images/cass/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for CaSS Iron Bank
       - name: Docker Hub Description Cassandra Official
         if: always()
         uses: peter-evans/dockerhub-description@v3

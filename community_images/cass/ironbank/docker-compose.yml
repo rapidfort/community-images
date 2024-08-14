@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   elasticsearch:
-    # image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.17.23
     image: rapidfort/elasticsearch-official:8.6.2
     container_name: elasticsearch
     environment:
@@ -20,7 +19,7 @@ services:
       - es_data:/usr/share/elasticsearch/data
 
   cass:
-    image: registry1.dso.mil/ironbank/opensource/cassproject/cass:latest-rfstub
+    image: ${CASS_IMAGE_REPOSITORY}:${CASS_IMAGE_TAG}
     container_name: cass
     depends_on:
       - elasticsearch

@@ -37,4 +37,14 @@ check_curl_success() {
 
 check_curl_success "localhost:${CASS_PORT}"
 
-# curl -v "localhost:${CASS_PORT}"
+check_curl_success "localhost:${CASS_PORT}/#/frameworks"
+
+check_curl_success "localhost:${CASS_PORT}/#/crosswalk"
+
+check_curl_success "localhost:${CASS_PORT}/#/concepts"
+
+check_curl_success "localhost:${CASS_PORT}/#/import"
+
+check_curl_success "localhost:${CASS_PORT}/#/configuration"
+
+check_curl_success "localhost:${CASS_PORT}/#/pluginManager"

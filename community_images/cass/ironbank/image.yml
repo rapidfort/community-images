@@ -10,11 +10,8 @@ image_workflow_name: cass_ironbank
 github_location: cass/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fcassproject%2Fcass
 usage_instructions: |
-  # TODO: Add usage instructions
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
-
-  # install mariadb, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+  # setup elasticsearch first and then run cass
+  $ docker run -p 8080:80 -e ELASTICSEARCH_ENDPOINT=<elasticsearch_endpoint> rapidfort/cass-ib
 what_is_text: |
   The Competency and Skills System, a competency management tool
 disclaimer: |

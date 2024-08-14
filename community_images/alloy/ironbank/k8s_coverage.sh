@@ -37,6 +37,6 @@ EOF
 
 kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "cat > ./tmp/coverage.sh" < "${SCRIPTPATH}/coverage.sh"
 kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "chmod u+x ./tmp/coverage.sh"
-kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "./tmp/coverage.sh"
+kubectl exec -i "${POD_NAME}" -n "${NAMESPACE}" -- bash -c "/tmp/coverage.sh"
 
 

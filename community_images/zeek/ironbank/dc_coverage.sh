@@ -48,4 +48,5 @@ docker exec "${CONTAINER_NAME}" zeek /tmp/hello.zeek
 # using all zkg commands
 docker exec "${CONTAINER_NAME}" /tmp/commands.sh
 # test command in zeek
+
 docker exec "${CONTAINER_NAME}" zeek --test

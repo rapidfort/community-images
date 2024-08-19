@@ -1,0 +1,102 @@
+{% if  output == "main_build" %}
+name: Image Creation Run
+{% elif  output == "pull_request" %}
+name: Image Creation PR Run
+{% endif %}
+on:
+{% if  output == "pull_request" %}
+  pull_request:
+    branches:
+    - main
+{% elif  output == "main_build" %}
+  schedule:
+  - cron: '0 */4 * * *'
+{% endif %}
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+{%- for image in image_list %}
+  {{ image.name -}}:
+    runs-on: ubuntu-latest
+{% if  output == "pull_request" %}
+    environment: actions-cicd-pr
+{% elif  output == "main_build" %}
+    environment: actions-cicd
+{% endif %}
+    steps:
+      - uses: actions/checkout@v4
+
+{% if  output == "pull_request" %}
+      - name: Check if test required
+        id: test-required
+        env:
+          GITHUB_TOKEN: ${{ '{{' }} secrets.GITHUB_TOKEN {{ '}}' }}
+        run: |
+          python3 scripts/tests_required.py {{ image.name }} {{ image.github_location }} output.txt
+          cat output.txt >> $GITHUB_OUTPUT
+{% endif %}
+      - name: Start minikube
+{% if  output == "pull_request" %}
+        if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
+{% endif %}
+        with:
+          memory: 6g
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+{% if  output == "pull_request" %}
+        if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
+{% endif %}
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ '{{' }} secrets.RF_ACCESS_ID {{ '}}' }}
+          RF_SECRET_ACCESS_KEY: ${{ '{{' }} secrets.RF_SECRET_ACCESS_KEY {{ '}}' }}
+          DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
+          DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          RF_PLATFORM_HOST: ${{ '{{' }} secrets.RF_PLATFORM_HOST {{ '}}' }}
+          RF_APP_HOST: ${{ '{{' }} secrets.RF_APP_HOST {{ '}}' }}
+{% if  output == "pull_request" %}
+        if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
+{% endif %}
+        run: ./scripts/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+{% if  output == "main_build" %}
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
+          DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          RAPIDFORT_ACCOUNT: ${{ '{{' }} secrets.RAPIDFORT_ACCOUNT {{ '}}' }}
+          IB_DOCKER_USERNAME: ${{ '{{' }} secrets.IB_DOCKER_USERNAME {{ '}}' }}
+          IB_DOCKER_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run {{ image.github_location }} --publish
+{% elif  output == "pull_request" %}
+      - name: Create images for testing PR
+        env:
+          DOCKERHUB_USERNAME: ${{ '{{' }} secrets.DOCKERHUB_USERNAME {{ '}}' }}
+          DOCKERHUB_PASSWORD: ${{ '{{' }} secrets.DOCKERHUB_PASSWORD {{ '}}' }}
+          RAPIDFORT_ACCOUNT: ${{ '{{' }} secrets.RAPIDFORT_ACCOUNT {{ '}}' }}
+          IB_DOCKER_USERNAME: ${{ '{{' }} secrets.IB_DOCKER_USERNAME {{ '}}' }}
+          IB_DOCKER_PASSWORD: ${{ '{{' }} secrets.IB_DOCKER_PASSWORD {{ '}}' }}
+        if: ${{ '{{' }} steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
+        run: python3 community_images/common/orchestrator/main.py hourly_run {{ image.github_location }}
+{% endif %}
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ '{{' }} secrets.PULL_COUNTER_MAGIC_TOKEN {{ '}}' }}
+{% if  output == "pull_request" %}
+        if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
+{% endif %}
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ " {{- image.rf_docker_link -}} ": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+{%- endfor %}

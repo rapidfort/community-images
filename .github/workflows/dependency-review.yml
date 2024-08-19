@@ -13,6 +13,7 @@ permissions:
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
+    environment: actions-cicd-pr
     steps:
       - name: Import Coverage Tests
         uses: actions/checkout@v4

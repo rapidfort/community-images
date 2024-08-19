@@ -1,5 +1,0 @@
-db = db.getSiblingDB("testdb");
-db.persons.insertOne({'firstname': 'Sarah', 'lastname': 'Smith'});
-db.persons.insertOne({'firstname': 'John', 'lastname': 'Jones'});
-db.persons.find({}, {'_id': 0, 'firstname': 1}).forEach(printjson);
-print(db.persons.deleteMany({}));

@@ -134,7 +134,7 @@ if __name__ == "__main__":
     dc = docker.from_env()
     dh = DockerHubHelper(dc)
 
-    # # Delete the corresponding stub tags from dockerhub
+    # Delete the corresponding stub tags from dockerhub
     for repo_to_del in repos_to_del:
         del_tags = dh.get_rfstub_tag("rapidfort", repo_to_del)
         for del_tag in del_tags:

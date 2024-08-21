@@ -23,4 +23,7 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-        run: python3 ./scripts/remove_rfstub_tags.py
+        run: |
+          pip install --upgrade pip
+          pip install requests docker
+          python3 ./scripts/remove_rfstub_tags.py

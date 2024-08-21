@@ -1,0 +1,26 @@
+name: Stub Tags Cleanup
+
+on:
+  schedule:
+  # Run every Sunday
+  - cron: '0 0 * * 0'
+
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  rfstub_tag_cleanup:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Remove Stubbed Tags from Registry
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: python3 ./scripts/remove_rfstub_tags.py

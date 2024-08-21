@@ -117,8 +117,6 @@ def generate_image_names_list():
                     image_names.append(name)
             except yaml.YAMLError as exc:
                 print(f"Error parsing {image_yml_path}: {exc}")
-            except Exception as e:
-                print(f"An error occurred with {image_yml_path}: {e}")
 
     with open(output_file, 'w', encoding='utf-8') as out_file:
         for name in image_names:

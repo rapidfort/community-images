@@ -1,10 +1,10 @@
+""" Helper script to delete rfstub tags """
 import logging
 import os
 import time
 import docker
 import requests
 import yaml
-import time
 
 class RegistryHelper:
     """ Docker registry helper base class"""
@@ -92,13 +92,14 @@ class DockerHubHelper(RegistryHelper):
         return resp.status_code == 200
 
 def generate_image_names_list():
+    """ Generate image names list """
     base_dir = 'community_images'
     image_list_file = 'image.lst'
     output_file = 'image_names.lst'
 
     image_names = []
 
-    with open(image_list_file, 'r') as file:
+    with open(image_list_file, 'r', encoding='utf-8') as file:
         directories = file.readlines()
 
     for directory in directories:
@@ -107,11 +108,11 @@ def generate_image_names_list():
 
         if os.path.exists(image_yml_path):
             try:
-                with open(image_yml_path, 'r') as yml_file:
+                with open(image_yml_path, 'r', encoding='utf-8') as yml_file:
                     data = yaml.safe_load(yml_file)
-                
+
                 name = data.get('name')
-                
+
                 if name:
                     image_names.append(name)
             except yaml.YAMLError as exc:
@@ -119,7 +120,7 @@ def generate_image_names_list():
             except Exception as e:
                 print(f"An error occurred with {image_yml_path}: {e}")
 
-    with open(output_file, 'w') as out_file:
+    with open(output_file, 'w', encoding='utf-8') as out_file:
         for name in image_names:
             out_file.write(f"{name}\n")
 

@@ -1,0 +1,46 @@
+name: gitaly-ib
+official_name: gitaly Iron Bank
+official_website: https://docs.gitlab.com/ee/administration/gitaly/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/gitaly
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fgitaly
+source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab/gitaly/-/blob/development/README.md
+rf_docker_link: rapidfort/gitaly-ib
+image_workflow_name: gitaly_ironbank
+github_location: gitaly/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fgitaly
+usage_instructions: |
+  $ helm repo add gitlab http://charts.gitlab.io/
+
+  # install gitaly as a gitlab subchart, just replace repository with RapidFort gitaly registry
+  # helm install rf-gitaly-ib gitlab/gitlab --set certmanager-issuer.email=me@example.com  --set certmanager.installCRDs=false --set gitlab.gitaly.image.repository=rapidfort/gitaly-ib --set gitlab.gitaly.image.tag=latest
+what_is_text: |
+  Gitaly is a Git RPC service for handling all the git calls made by GitLab.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+needs_common_commands: false
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - gitlab/gitlab/gitaly:
+      input_base_tag: "17.2."
+      output_repo: gitaly-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    readiness_check_script: gitaly_readiness_check.sh
+    helm:
+      repo: gitlab
+      repo_url: http://charts.gitlab.io/
+      chart: gitlab
+    helm_additional_params:
+      certmanager-issuer.email: rf@rapidfort.com
+      certmanager.installCRDs: false
+      certmanager.nameOverride: glcertmanager
+    image_keys:
+      gitaly-ib:
+        repository: "gitlab.gitaly.image.repository"
+        tag: "gitlab.gitaly.image.tag"
+    override_file: "overrides.yml"

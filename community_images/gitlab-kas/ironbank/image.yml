@@ -1,0 +1,47 @@
+name: gitlab-kas-ib
+official_name: Gitlab KAS Iron Bank
+official_website: https://about.gitlab.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/kas
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fkas
+source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab-kas/-/blob/development/README.md
+rf_docker_link: rapidfort/gitlab-kas-ib
+image_workflow_name: gitlab-kas_ironbank
+github_location: gitlab-kas/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab%2Fkas
+usage_instructions: |
+  # GitLab kas can be added to gitlab helm installation by using
+  $ helm upgrade --install gitlab gitlab/gitlab \
+  --timeout 600s \
+  --set certmanager-issuer.email=me@example.com \
+  --set certmanager.installCRDs=false \
+  --set certmanager.nameOverride=glcertmanager \
+  --set gitlab.kas.image.repository=rapidfort/gitlab-kas-ib
+what_is_text: |
+  GitLab kas is acronym for GitLab Agent for Kubernetes. Gitlab kas is an active in-cluster component for solving any GitLab and Kubernetes integration tasks.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - gitlab/gitlab/kas:
+      input_base_tag: "17.2."
+      output_repo: gitlab-kas-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: gitlab
+      repo_url: https://charts.gitlab.io
+      chart: gitlab
+    helm_additional_params:
+      certmanager-issuer.email: rf@rapidfort.com
+      certmanager.installCRDs: false
+    image_keys:
+      gitlab-kas-ib:
+        repository: "gitlab.kas.image.repository"
+        tag: "gitlab.kas.image.tag"
+    override_file: "overrides.yml"
+    readiness_wait_pod_name_suffix: []
+

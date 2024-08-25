@@ -1,16 +1,16 @@
-name: tomcat-openjdk11-ib
+name: tomcat10-openjdk17-ib
 official_name: Tomcat Ironbank
 official_website: https://tomcat.apache.org/
 source_image_provider: Platform One
-source_image_repo: registry1.dso.mil/ironbank/opensource/apache/tomcat-openjdk11
-source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Ftomcat-openjdk11
-source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/tomcat-openjdk11/-/blob/development/README.md
-rf_docker_link: rapidfort/tomcat-openjdk11-ib
-github_location: tomcat/ironbank
-report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk11
+source_image_repo: registry1.dso.mil/ironbank/opensource/apache/tomcat10-openjdk17
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Ftomcat10-openjdk17
+source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/tomcat10-openjdk17/-/blob/development/README.md
+rf_docker_link: rapidfort/tomcat10-openjdk17-ib
+github_location: tomcat10/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat10-openjdk17
 usage_instructions: |
   # Using docker run
-  $ docker run -d --name tomcat -p 8080:8080 -v "application.jar":"/usr/local/tomcat/webapps/application.jar" rapidfort/tomcat-openjdk11-ib
+  $ docker run -d --name tomcat -p 8080:8080 -v "application.jar":"/usr/local/tomcat/webapps/application.jar" rapidfort/tomcat10-openjdk17-ib
   # Then, access it via http://localhost:8080/ or http://<host-ip>:8080/ in a browser.
 what_is_text: |
   The Apache Tomcat software is an open source implementation of the Jakarta Servlet, Jakarta Pages, Jakarta Expression Language and Jakarta WebSocket technologies.
@@ -21,9 +21,9 @@ input_registry:
   registry: registry1.dso.mil
   account: ironbank
 repo_sets:
-  - opensource/apache/tomcat-openjdk11:
-      input_base_tag: "11.0."
-      output_repo: tomcat-openjdk11-ib
+  - opensource/apache/tomcat10-openjdk17:
+      input_base_tag: "10.1."
+      output_repo: tomcat10-openjdk17-ib
 runtimes:
   - type: k8s
     script: k8s_coverage.sh
@@ -34,7 +34,7 @@ runtimes:
     use_helm: False
     wait_time_sec: 30
     image_keys:
-      tomcat-openjdk11-ib:
+      tomcat10-openjdk17-ib:
         registry: "image.registry"
         repository: "image.repository"
         tag: "image.tag"
@@ -51,7 +51,7 @@ runtimes:
     use_helm: False
     wait_time_sec: 30
     image_keys:
-      tomcat-openjdk11-ib:
+      tomcat10-openjdk17-ib:
         registry: "image.registry"
         repository: "image.repository"
         tag: "image.tag"

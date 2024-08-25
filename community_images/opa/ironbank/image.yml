@@ -1,0 +1,38 @@
+name: opa-ib
+official_name: OPA Iron Bank
+official_website: https://www.openpolicyagent.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/openpolicyagent/opa
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fopenpolicyagent%2Fopa
+source_image_readme: https://repo1.dso.mil/dsop/opensource/openpolicyagent/opa/-/blob/development/README.md
+rf_docker_link: rapidfort/opa-ib
+image_workflow_name: opa_ironbank
+github_location: opa/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fopenpolicyagent%2Fopa
+usage_instructions: |
+  # Using docker run:
+
+  # 1. Pull the rapidfort/opa-ib image:
+  $ docker pull rapidfort/opa-ib:latest
+
+  # 2. Run the image:
+  $ docker run -d -p 8181:8181 rapidfort/opa-ib:latest run --server
+what_is_text: |
+  Open Policy Agent (OPA) is a general-purpose policy engine that enables policy-based control across the stack. OPA provides a high-level declarative language that lets you specify policy as code and simple APIs to offload policy decision-making from your software. You can use OPA to enforce policies in microservices, Kubernetes, CI/CD pipelines, API gateways, and more.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/openpolicyagent/opa:
+      input_base_tag: "0.67."
+      output_repo: opa-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      opa-ib:
+        repository: "OPA_IMAGE_REPOSITORY"
+        tag: "OPA_IMAGE_TAG"

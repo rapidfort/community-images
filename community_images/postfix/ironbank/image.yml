@@ -34,6 +34,6 @@ runtimes:
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      poatfix-ib:
+      postfix-ib:
         repository: "POSTFIX_IMAGE_REPOSITORY"
         tag: "POSTFIX_IMAGE_TAG"

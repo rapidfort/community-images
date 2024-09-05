@@ -1,0 +1,38 @@
+name: minio-operator-sidecar-ib
+official_name: MinIO operator-sidecar Ironbank
+official_website: https://blog.min.io/kubernetes-sidecar/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/minio/operator-sidecar
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fminio%2Foperator-sidecar
+source_image_readme: https://repo1.dso.mil/dsop/opensource/minio/minio-operator/-/blob/development/README.md
+rf_docker_link: rapidfort/minio-operator-sidecar-ib
+image_workflow_name: minio-operator-sidecar_ironbank
+github_location: minio-operator-sidecar/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Foperator-sidecar
+usage_instructions: |
+  # Using helm
+  $ helm install operator minio-operator/operator
+what_is_text: |
+  This sidecar container is used to initialize the MinIO Tenants. It is responsible for retrieving and validating the configuration for each tenant and creating the necessary resources locally in the pod.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/minio/operator-sidecar:
+      input_base_tag: "v6.0."
+      output_repo: minio-operator-sidecar-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: minio-operator
+      repo_url: https://operator.min.io
+      chart: operator
+    image_keys:
+      minio-operator-sidecar-ib:
+        repository: "operator.sidecarImage.repository"
+        tag: "operator.sidecarImage.tag"
+    readiness_wait_pod_name_suffix: []

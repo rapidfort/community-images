@@ -1,0 +1,35 @@
+name: certtool-ib
+official_name: GnuTLS certificate tool Ironbank
+official_website: https://www.gnutls.org/manual/html_node/certtool-Invocation.html
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/certtool/certtool
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fcerttool%2Fcerttool
+source_image_readme: https://repo1.dso.mil/dsop/opensource/certtool/certtool/-/blob/development/README.md
+rf_docker_link: rapidfort/certtool-ib
+image_workflow_name: certtool_ironbank
+github_location: certtool/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fcerttool%2Fcerttool
+usage_instructions: |
+  # Using docker run
+  $ docker run -it rapidfort/certtool-ib
+what_is_text: |
+  Tool to parse and generate X.509 certificates, requests and private keys. It can be used interactively or non interactively by specifying the template command line option.
+disclaimer: |
+  Disclaimer: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: 'False'
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/certtool/certtool:
+      input_base_tag: '1.'
+      output_repo: certtool-ib
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    volumes:
+      ./cert.cfg: /home/certtool/cert.cfg
+      ./cert-tool.coverage.sh: /home/certtool/cert-tool.coverage.sh
+    certtool-ib:
+      entrypoint: sleep
+      exec_command: infinity

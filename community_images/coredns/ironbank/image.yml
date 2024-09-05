@@ -1,0 +1,33 @@
+name: coredns-ib
+official_name: coredns Iron Bank
+official_website: https://coredns.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/coredns/coredns
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fcoredns%2Fcoredns
+source_image_readme: https://repo1.dso.mil/dsop/opensource/coredns/coredns/-/blob/development/README.md
+rf_docker_link: rapidfort/coredns-ib
+github_location: coredns/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fcoredns%2Fcoredns
+usage_instructions: |
+  #Run the coredns container:
+  $ docker run --rm -i -v $PWD:/etc/coredns rapidfort/coredns-ib
+  #command for keyring, starting mon
+what_is_text: |
+  CoreDNS is a fast and flexible DNS server. The key word here is flexible: with CoreDNS you are able to do what you want with your DNS data by utilizing plugins. If some functionality is not provided out of the box you can add it by writing a plugin.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/coredns/coredns:
+      input_base_tag: "1.11."
+      output_repo: coredns-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      coredns-ib:
+        repository: "COREDNS_IMAGE_REPOSITORY"
+        tag: "COREDNS_IMAGE_TAG"

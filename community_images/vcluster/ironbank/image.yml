@@ -13,7 +13,7 @@ usage_instructions: |
   $ helm repo add loft https://charts.loft.sh
 
   # install vcluster, just replace repository with RapidFort registry
-  $ helm install rf-vcluster-ib loft/vcluster --set syncer.image=rapidfort/vcluster-ib --set service.type=<type_of_service> --set service.externalTrafficPolicy=<type_of_externalTrafficPolicy>
+  $ helm install rf-vcluster-ib loft/vcluster --set controlPlane.statefulSet.image.repository=rapidfort/vcluster-ib --set controlPlane.service.spec.type=<type_of_service> --set controlPlane.statefulSet.image.registry=docker.io
 what_is_text: |
   Virtual clusters are fully functional Kubernetes clusters nested inside a physical host cluster providing better isolation and flexibility to support multi-tenancy. Multiple teams can operate independently within the same physical infrastructure while minimizing conflicts, maximizing autonomy, and reducing costs.
 disclaimer: |
@@ -35,10 +35,10 @@ runtimes:
       repo_url: https://charts.loft.sh
       chart: vcluster
     helm_additional_params:
-      service.type: NodePort
-      service.externalTrafficPolicy: "Cluster"
+      controlPlane.service.spec.type: NodePort
+      controlPlane.statefulSet.image.registry: "docker.io"
     image_keys:
       vcluster-ib:
-        repository: "syncer.image"
-        tag: "syncer.tag"
+        repository: "controlPlane.statefulSet.image.repository"
+        tag: "controlPlane.statefulSet.image.tag"
     override_file: "overrides.yml"

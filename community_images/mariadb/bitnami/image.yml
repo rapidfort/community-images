@@ -24,19 +24,17 @@ input_registry:
   account: bitnami
 repo_sets:
   - mariadb:
-      input_base_tag: "10.4.34-debian-12-r"
-  - mariadb:
       input_base_tag: "10.5.26-debian-12-r"
   - mariadb:
       input_base_tag: "10.6.19-debian-12-r"
   - mariadb:
       input_base_tag: "10.11.9-debian-12-r"
   - mariadb:
-      input_base_tag: "11.1.6-debian-12-r"
-  - mariadb:
       input_base_tag: "11.2.5-debian-12-r"
   - mariadb:
       input_base_tag: "11.4.3-debian-12-r"
+  - mariadb:
+      input_base_tag: "11.5.2-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

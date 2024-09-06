@@ -60,7 +60,7 @@ jobs:
 {% if  output == "pull_request" %}
         if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
 {% endif %}
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH

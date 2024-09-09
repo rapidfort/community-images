@@ -566,15 +566,6 @@ jobs:
           repository: rapidfort/gitaly-ib
           readme-filepath: ./community_images/gitaly/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for gitaly Iron Bank
-      - name: Docker Hub Description gitaly Iron Bank
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/gitaly-ib
-          readme-filepath: ./community_images/gitaly/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for gitaly Iron Bank
       - name: Docker Hub Description GitLab Certificates Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

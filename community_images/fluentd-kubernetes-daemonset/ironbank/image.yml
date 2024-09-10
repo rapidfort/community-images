@@ -1,0 +1,42 @@
+name: fluentd-kubernetes-daemonset-ib
+official_name: Fluentd Kubernetes DaemonSet IronBank
+official_website: https://www.fluentd.org/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/fluentd/fluentd-kubernetes-daemonset
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Ffluentd%2Ffluentd-kubernetes-daemonset
+source_image_readme: https://repo1.dso.mil/dsop/opensource/fluentd/fluentd-kubernetes-daemonset/-/blob/development/README.md
+rf_docker_link: rapidfort/fluentd-kubernetes-daemonset-ib
+image_workflow_name: fluentd-kubernetes-daemonset_ironbank
+github_location: fluentd-kubernetes-daemonset/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Ffluentd%2Ffluentd-kubernetes-daemonset
+usage_instructions: |
+  $ helm repo add fluent https://fluent.github.io/helm-charts
+
+  # install fluentd-kubernetes-daemonset, just replace repository with RapidFort registry
+  $ helm install my-fluentd-kubernetes-daemonset fluent/fluentd --set image.repository=rapidfort/fluentd-kubernetes-daemonset-ib
+what_is_text: |
+  Fluentd data collector for kubernetes
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/fluentd/fluentd-kubernetes-daemonset:
+      input_base_tag: "1.17."
+      output_repo: fluentd-kubernetes-daemonset-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: fluent
+      repo_url: https://fluent.github.io/helm-charts
+      chart: fluentd
+    wait_time_sec: 60
+    readiness_check_script: health_check.sh
+    image_keys:
+      fluentd-kubernetes-daemonset-ib:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

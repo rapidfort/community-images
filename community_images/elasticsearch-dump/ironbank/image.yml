@@ -9,7 +9,14 @@ rf_docker_link: rapidfort/elasticsearch-dump-ib
 image_workflow_name: elasticsearch-dump_ironbank
 github_location: elasticsearch-dump/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Felasticdump%2Felasticsearch-dump
-usage_instructions: "# For using elasticsearch-dump, just replace the registry with rapidfort registry\n\n# This is an example command for dumping data from staging to localhost \n$ docker run --net=host --rm -it rapidfort/elasticsearch-dump \\\n    --input=http://staging.es.com:9200/my_index \\\n    --output=http://localhost:9200/my_index \\\n    --type=data\n"
+usage_instructions: |
+  # For using elasticsearch-dump, just replace the registry with rapidfort registry
+  
+  # This is an example command for dumping data from staging to localhost 
+  $ docker run --net=host --rm -it rapidfort/elasticsearch-dump \
+      --input=http://staging.es.com:9200/my_index \
+      --output=http://localhost:9200/my_index \
+      --type=data
 what_is_text: |
   Elasticsearch dump is a tool for moving and saving indices from Elasticsearch and OpenSearch.
 disclaimer: |

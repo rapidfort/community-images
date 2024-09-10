@@ -9,7 +9,8 @@ rf_docker_link: rapidfort/minio-console-ib
 image_workflow_name: minio-console_ironbank
 github_location: minio-console/ironbank
 report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole
-usage_instructions: $ docker run -d --name console -p 9090:9090 --network minio-network -e CONSOLE_MINIO_SERVER=http://minio:9000 -e CONSOLE_ACCESS_KEY=minio -e CONSOLE_SECRET_KEY=minio123 rapidfort/minio-console-ib
+usage_instructions:
+  $ docker run -d --name console -p 9090:9090 --network minio-network -e CONSOLE_MINIO_SERVER=http://minio:9000 -e CONSOLE_ACCESS_KEY=minio -e CONSOLE_SECRET_KEY=minio123 rapidfort/minio-console-ib
 what_is_text: |
   A graphical user interface for MinIO
 disclaimer: |

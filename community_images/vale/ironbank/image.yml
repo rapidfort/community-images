@@ -1,0 +1,34 @@
+name: vale-ib
+official_name: Vale IronBank
+official_website: https://vale.sh/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/vale/vale
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fvale%2Fvale
+source_image_readme: https://repo1.dso.mil/dsop/opensource/vale/vale/-/blob/development/README.md
+rf_docker_link: rapidfort/vale-ib
+image_workflow_name: vale_ironbank
+github_location: vale/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fvale%2Fvale
+usage_instructions: |
+  $ docker run -i -v /path/to/main.tf:/main.tf  rapidfort/terraform-ib:latest [COMMAND]
+what_is_text: |
+  Vale is an open-source, command-line tool  that brings your editorial style guide to life.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/opensource/vale/vale/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/vale/vale:
+      input_base_tag: "v3.7."
+      output_repo: vale-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      vale-ib:
+        repository: "VALE_IMAGE_REPOSITORY"
+        tag: "VALE_IMAGE_TAG"

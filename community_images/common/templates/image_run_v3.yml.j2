@@ -26,7 +26,11 @@ jobs:
     environment: actions-cicd
 {% endif %}
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ '{{' }} secrets.COVERAGE_ACCESS_TOKEN {{ '}}' }}
 
 {% if  output == "pull_request" %}
       - name: Check if test required
@@ -60,7 +64,7 @@ jobs:
 {% if  output == "pull_request" %}
         if: ${{ '{{' }} github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' {{ '}}' }}
 {% endif %}
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH

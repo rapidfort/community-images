@@ -18,7 +18,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -52,7 +56,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -87,7 +91,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -121,7 +129,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -156,7 +164,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -190,7 +202,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -225,7 +237,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -259,7 +275,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -294,7 +310,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -328,7 +348,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -363,7 +383,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -397,7 +421,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -432,7 +456,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -466,7 +494,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -501,7 +529,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -535,7 +567,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -570,7 +602,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -604,7 +640,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -639,7 +675,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -673,7 +713,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -708,7 +748,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -742,7 +786,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -777,7 +821,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -811,7 +859,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -846,7 +894,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -880,7 +932,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -915,7 +967,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -949,7 +1005,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -984,7 +1040,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1018,7 +1078,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1053,7 +1113,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1087,7 +1151,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1122,7 +1186,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1156,7 +1224,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1191,7 +1259,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1225,7 +1297,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1260,7 +1332,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1294,7 +1370,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1329,7 +1405,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1363,7 +1443,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1398,7 +1478,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1432,7 +1516,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1467,7 +1551,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1501,7 +1589,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1536,7 +1624,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1570,7 +1662,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1605,7 +1697,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1639,7 +1735,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1674,7 +1770,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1708,7 +1808,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1743,7 +1843,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1777,7 +1881,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1812,7 +1916,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1846,7 +1954,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1881,7 +1989,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1915,7 +2027,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -1950,7 +2062,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -1984,7 +2100,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2019,7 +2135,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2053,7 +2173,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2088,7 +2208,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2122,7 +2246,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2157,7 +2281,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2191,7 +2319,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2226,7 +2354,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2260,7 +2392,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2295,7 +2427,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2329,7 +2465,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2364,7 +2500,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2398,7 +2538,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2433,7 +2573,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2467,7 +2611,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2502,7 +2646,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2536,7 +2684,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2571,7 +2719,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2605,7 +2757,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2640,7 +2792,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2674,7 +2830,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2709,7 +2865,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2743,7 +2903,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2778,7 +2938,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2812,7 +2976,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2847,7 +3011,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2881,7 +3049,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2916,7 +3084,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -2950,7 +3122,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -2985,7 +3157,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3019,7 +3195,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3054,7 +3230,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3088,7 +3268,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3123,7 +3303,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3157,7 +3341,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3192,7 +3376,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3226,7 +3414,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3261,7 +3449,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3295,7 +3487,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3330,7 +3522,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3364,7 +3560,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3399,7 +3595,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3433,7 +3633,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3468,7 +3668,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3502,7 +3706,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3537,7 +3741,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3571,7 +3779,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3606,7 +3814,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3640,7 +3852,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3675,7 +3887,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3709,7 +3925,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3744,7 +3960,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3778,7 +3998,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3813,7 +4033,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3847,7 +4071,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3882,7 +4106,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3916,7 +4144,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -3951,7 +4179,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -3985,7 +4217,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4020,7 +4252,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4054,7 +4290,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4089,7 +4325,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4123,7 +4363,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4158,7 +4398,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4192,7 +4436,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4227,7 +4471,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4261,7 +4509,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4296,7 +4544,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4330,7 +4582,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4365,7 +4617,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4399,7 +4655,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4434,7 +4690,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4468,7 +4728,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4503,7 +4763,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4537,7 +4801,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4572,7 +4836,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4606,7 +4874,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4641,7 +4909,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4675,7 +4947,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4710,7 +4982,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4744,7 +5020,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4779,7 +5055,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4813,7 +5093,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4848,7 +5128,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4882,7 +5166,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4917,7 +5201,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -4951,7 +5239,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -4986,7 +5274,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5020,7 +5312,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5055,7 +5347,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5089,7 +5385,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5124,7 +5420,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5158,7 +5458,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5193,7 +5493,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5227,7 +5531,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5262,7 +5566,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5296,7 +5604,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5331,7 +5639,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5365,7 +5677,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5400,7 +5712,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5434,7 +5750,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5469,7 +5785,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5503,7 +5823,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5538,7 +5858,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5572,7 +5896,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5607,7 +5931,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5641,7 +5969,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5676,7 +6004,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5710,7 +6042,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5745,7 +6077,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5779,7 +6115,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5814,7 +6150,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5848,7 +6188,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5883,7 +6223,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5917,7 +6261,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -5952,7 +6296,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -5986,7 +6334,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6021,7 +6369,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6055,7 +6407,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6090,7 +6442,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6124,7 +6480,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6159,7 +6515,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6193,7 +6553,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6228,7 +6588,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6262,7 +6626,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6297,7 +6661,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6331,7 +6699,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6366,7 +6734,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6400,7 +6772,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6435,7 +6807,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6469,7 +6845,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6504,7 +6880,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6538,7 +6918,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6573,7 +6953,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6607,7 +6991,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6642,7 +7026,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6676,7 +7064,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6711,7 +7099,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6745,7 +7137,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6780,7 +7172,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6814,7 +7210,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6849,7 +7245,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6883,7 +7283,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6918,7 +7318,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -6952,7 +7356,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -6987,7 +7391,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7021,7 +7429,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7056,7 +7464,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7090,7 +7502,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7125,7 +7537,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7159,7 +7575,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7194,7 +7610,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7228,7 +7648,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7263,7 +7683,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7297,7 +7721,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7332,7 +7756,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7366,7 +7794,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7401,7 +7829,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7435,7 +7867,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7470,7 +7902,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7504,7 +7940,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7539,7 +7975,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7573,7 +8013,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7608,7 +8048,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7642,7 +8086,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7677,7 +8121,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7711,7 +8159,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7746,7 +8194,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7780,7 +8232,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7815,7 +8267,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7849,7 +8305,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7884,7 +8340,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7918,7 +8378,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -7953,7 +8413,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -7987,7 +8451,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8022,7 +8486,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8056,7 +8524,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8091,7 +8559,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8125,7 +8597,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8160,7 +8632,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8194,7 +8670,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8229,7 +8705,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8263,7 +8743,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8298,7 +8778,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8332,7 +8816,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8367,7 +8851,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8401,7 +8889,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8436,7 +8924,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8470,7 +8962,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8505,7 +8997,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8539,7 +9035,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8574,7 +9070,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8608,7 +9108,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8643,7 +9143,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8677,7 +9181,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8712,7 +9216,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8746,7 +9254,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8781,7 +9289,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8815,7 +9327,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8850,7 +9362,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8884,7 +9400,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8919,7 +9435,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -8953,7 +9473,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -8988,7 +9508,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9022,7 +9546,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9057,7 +9581,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9091,7 +9619,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9126,7 +9654,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9160,7 +9692,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9195,7 +9727,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9229,7 +9765,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9264,7 +9800,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9298,7 +9838,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9333,7 +9873,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9367,7 +9911,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9402,7 +9946,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9436,7 +9984,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9471,7 +10019,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9505,7 +10057,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9540,7 +10092,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9574,7 +10130,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9609,7 +10165,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9643,7 +10203,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9678,7 +10238,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9712,7 +10276,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9741,13 +10305,17 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/tika-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
-  tomcat9-openjdk11-ib:
+  tomcat-openjdk11-ib:
     runs-on: ubuntu-latest
 
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9755,7 +10323,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/tests_required.py tomcat9-openjdk11-ib tomcat/ironbank output.txt
+          python3 scripts/tests_required.py tomcat-openjdk11-ib tomcat/ironbank output.txt
           cat output.txt >> $GITHUB_OUTPUT
 
       - name: Start minikube
@@ -9781,7 +10349,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9808,7 +10376,7 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/tomcat9-openjdk11-ib": 1 }' \
+           -d '{ "rapidfort/tomcat-openjdk11-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   traefik:
     runs-on: ubuntu-latest
@@ -9816,7 +10384,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9850,7 +10422,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9885,7 +10457,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9919,7 +10495,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -9954,7 +10530,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -9988,7 +10568,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10023,7 +10603,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10057,7 +10641,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10092,7 +10676,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10126,7 +10714,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10161,7 +10749,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10195,7 +10787,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10230,7 +10822,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10264,7 +10860,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10299,7 +10895,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10333,7 +10933,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10368,7 +10968,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10402,7 +11006,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10437,7 +11041,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10471,7 +11079,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10506,7 +11114,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10540,7 +11152,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10575,7 +11187,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10609,7 +11225,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10644,7 +11260,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10678,7 +11298,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10713,7 +11333,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10747,7 +11371,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
@@ -10782,7 +11406,11 @@ jobs:
     environment: actions-cicd-pr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
 
       - name: Check if test required
@@ -10816,7 +11444,7 @@ jobs:
 
         if: ${{ github.event_name == 'pull_request' && steps.test-required.outputs.TEST_REQUIRED == 'yes' }}
 
-        run: ./scripts/setup.sh
+        run: ./scripts/github-pipelines/setup.sh
 
       - name: Set RF CLI Path
         run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH

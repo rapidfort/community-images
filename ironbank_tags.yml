@@ -1,15 +1,15 @@
 airflow-scheduler-ib-bitnami:
   search_tags:
-    - 2.8.
+    - 2.9.
 airflow-worker-ib-bitnami:
   search_tags:
-    - 2.8.
+    - 2.9.
 airflow-ib-bitnami:
   search_tags:
     - 2.9.
 airflow-ib:
   search_tags:
-    - 2.9.
+    - 2.10.
 alertmanager-ib:
   search_tags:
     - v0.27.
@@ -21,7 +21,7 @@ ansible-lint-ib:
     - 24.7.
 ansible-ib:
   search_tags:
-    - 10.2.
+    - 10.3.
 apache-ib:
   search_tags:
     - 2.4.
@@ -33,13 +33,16 @@ argocd-ib:
     - v2.12.
 auditbeat-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 bats-ib:
   search_tags:
     - v1.11.
 blackbox-exporter-ib:
   search_tags:
     - v0.25.
+cass-ib:
+  search_tags:
+    - 1.5.
 ceph-ib:
   search_tags:
     - v18.2.
@@ -52,9 +55,12 @@ consul-ib:
 couchdb-ib:
   search_tags:
     - 3.3.
+dex-ib:
+  search_tags:
+    - v2.41.
 eck-operator-ib:
   search_tags:
-    - 2.13.
+    - 2.14.
 elasticsearch-exporter-ib:
   search_tags:
     - 1.7.
@@ -63,7 +69,7 @@ etcd-ib:
     - v3.5.
 filebeat-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 fluent-bit-ib:
   search_tags:
     - 3.1.
@@ -93,10 +99,13 @@ fluxcd-source-controller-ib:
     - v1.3.
 gatekeeper-ib:
   search_tags:
-    - v3.16.
+    - v3.17.
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
+gitaly-ib:
+  search_tags:
+    - 17.2.
 gitlab-certificates-ib:
   search_tags:
     - 17.2.
@@ -111,13 +120,19 @@ gitlab-exporter-ib:
     - 17.2.
 gitlab-runner-ib:
   search_tags:
-    - v17.1.
+    - v17.2.
+gitlab-shell-ib:
+  search_tags:
+    - 17.2.
 gitlab-workhorse-ib:
   search_tags:
     - 17.2.
+grafana-plugins-ib:
+  search_tags:
+    - 11.2.
 grafana-ib:
   search_tags:
-    - 11.1.
+    - 11.2.
 hadolint-ib:
   search_tags:
     - v2.12.
@@ -126,7 +141,7 @@ haproxy-ib:
     - 2.4.
 heartbeat-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 jmx-exporter-ib:
   search_tags:
     - 0.20.
@@ -139,6 +154,9 @@ kafka-exporter-ib:
 kafka-ib:
   search_tags:
     - 3.4.
+kaniko-ib:
+  search_tags:
+    - v1.22.
 kibana-ib:
   search_tags:
     - 8.15.
@@ -148,6 +166,15 @@ kube-webhook-certgen-ib:
 kubectl-ib:
   search_tags:
     - v1.27.
+kyverno-background-controller-ib:
+  search_tags:
+    - v1.12.
+kyverno-cleanup-controller-ib:
+  search_tags:
+    - v1.12.
+kyverno-reports-controller-ib:
+  search_tags:
+    - v1.12.
 logstash-ib:
   search_tags:
     - 8.15.
@@ -165,13 +192,16 @@ metabase-ib:
     - v0.50.
 metricbeat-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 metrics-server-ib:
   search_tags:
     - v0.7.
 microsoft-sql-server-2019-ib:
   search_tags:
     - 2019-CU15-rhel-8
+minio-operator-sidecar-ib:
+  search_tags:
+    - v6.0.
 minio-operator-ib:
   search_tags:
     - v6.0.
@@ -205,6 +235,9 @@ nifi-ib:
 node-exporter-ib:
   search_tags:
     - v1.8.
+opa-ib:
+  search_tags:
+    - 0.68.
 openldap-ib:
   search_tags:
     - 2.6.
@@ -213,7 +246,7 @@ osee-postgres-ib:
     - 1.0.0.
 packetbeat-ib:
   search_tags:
-    - 8.14.
+    - 8.15.
 pause-ib:
   search_tags:
     - "3."
@@ -223,6 +256,9 @@ pgadmin-ib:
 podman-ib:
   search_tags:
     - 4.9.
+postfix-ib:
+  search_tags:
+    - "3."
 postgres-exporter-bitnami-ib:
   search_tags:
     - 0.15.
@@ -234,10 +270,10 @@ postgresql-ib:
     - "12."
 prometheus-config-reloader-ib:
   search_tags:
-    - v0.75.
+    - v0.76.
 prometheus-operator-ib:
   search_tags:
-    - v0.75.
+    - v0.76.
 prometheus-ib:
   search_tags:
     - v2.54.
@@ -258,19 +294,28 @@ sqlite-ib:
     - v3.34.
 tempo-query-ib:
   search_tags:
-    - 2.5.
+    - 2.6.
 terraform-ib:
   search_tags:
     - 1.7.
 terragrunt-ib:
   search_tags:
-    - v0.66.
+    - v0.67.
+tflint-ib:
+  search_tags:
+    - v0.53.
 thanos-ib:
   search_tags:
     - v0.36.
 tika-ib:
   search_tags:
     - 2.9.
+tomcat-openjdk11-ib:
+  search_tags:
+    - 11.0.
+tomcat10-openjdk17-ib:
+  search_tags:
+    - 10.1.
 tomcat9-openjdk11-ib:
   search_tags:
     - 9.0.
@@ -285,7 +330,7 @@ vault-ib:
     - 1.15.
 vcluster-ib:
   search_tags:
-    - 0.19.
+    - 0.20.
 velero-ib:
   search_tags:
     - v1.14.

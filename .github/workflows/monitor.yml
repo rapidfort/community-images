@@ -52,12 +52,16 @@ jobs:
         run: docker pull rapidfort/bats-ib
       - name: Pull Blackbox Exporter Iron Bank
         run: docker pull rapidfort/blackbox-exporter-ib
+      - name: Pull buildah Iron Bank
+        run: docker pull rapidfort/buildah-ib
       - name: Pull CaSS Iron Bank
         run: docker pull rapidfort/cass-ib
       - name: Pull Cassandra Official
         run: docker pull rapidfort/cassandra-official
       - name: Pull Ceph Iron Bank
         run: docker pull rapidfort/ceph-ib
+      - name: Pull GnuTLS certificate tool Ironbank
+        run: docker pull rapidfort/certtool-ib
       - name: Pull Helm Chart Testing Ironbank
         run: docker pull rapidfort/chart-testing-ib
       - name: Pull Consul
@@ -66,6 +70,8 @@ jobs:
         run: docker pull rapidfort/consul-ib
       - name: Pull Consul Official
         run: docker pull rapidfort/consul-official
+      - name: Pull coredns Iron Bank
+        run: docker pull rapidfort/coredns-ib
       - name: Pull Couchdb Database Server
         run: docker pull rapidfort/couchdb
       - name: Pull Couchdb Database Server IronBank
@@ -80,6 +86,8 @@ jobs:
         run: docker pull rapidfort/eck-operator-ib
       - name: Pull ElasticSearch
         run: docker pull rapidfort/elasticsearch
+      - name: Pull elasticsearch-dump Iron Bank
+        run: docker pull rapidfort/elasticsearch-dump-ib
       - name: Pull Elasticsearch Exporter Iron Bank
         run: docker pull rapidfort/elasticsearch-exporter-ib
       - name: Pull ElasticSearch Official
@@ -106,6 +114,8 @@ jobs:
         run: docker pull rapidfort/fluentd-elasticsearch-ib
       - name: Pull Fluentd IronBank
         run: docker pull rapidfort/fluentd-ib
+      - name: Pull Fluentd Kubernetes DaemonSet IronBank
+        run: docker pull rapidfort/fluentd-kubernetes-daemonset-ib
       - name: Pull Fluentd Official
         run: docker pull rapidfort/fluentd-official
       - name: Pull Fluxcd helm-controller Iron Bank
@@ -180,6 +190,8 @@ jobs:
         run: docker pull rapidfort/kibana-ib
       - name: Pull Kong
         run: docker pull rapidfort/kong
+      - name: Pull KongKIC IronBank
+        run: docker pull rapidfort/kongkic-ib
       - name: Pull Kube-Webhook-Certgen Iron Bank
         run: docker pull rapidfort/kube-webhook-certgen-ib
       - name: Pull Kubectl IronBank
@@ -214,6 +226,8 @@ jobs:
         run: docker pull rapidfort/metrics-server-ib
       - name: Pull Microsoft SQL Server 2019
         run: docker pull rapidfort/microsoft-sql-server-2019-ib
+      - name: Pull MinIo console Iron Bank
+        run: docker pull rapidfort/minio-console-ib
       - name: Pull minIO Iron Bank
         run: docker pull rapidfort/minio-ib
       - name: Pull MinIO Operator Ironbank
@@ -310,8 +324,12 @@ jobs:
         run: docker pull rapidfort/redis6-ib
       - name: Pull Redis™ Official
         run: docker pull rapidfort/redis-official
+      - name: Pull Redis-Sentinel Iron Bank
+        run: docker pull rapidfort/redis-sentinel-ib
       - name: Pull shellcheck Iron Bank
         run: docker pull rapidfort/shellcheck-ib
+      - name: Pull skopeo Iron Bank
+        run: docker pull rapidfort/skopeo-ib
       - name: Pull Solr-8 Iron Bank
         run: docker pull rapidfort/solr-8-ib
       - name: Pull Sqlite Iron Bank
@@ -340,6 +358,8 @@ jobs:
         run: docker pull rapidfort/traefik
       - name: Pull TRAEFIK Ironbank
         run: docker pull rapidfort/traefik-ib
+      - name: Pull Vale IronBank
+        run: docker pull rapidfort/vale-ib
       - name: Pull Vault
         run: docker pull rapidfort/vault
       - name: Pull Vault Iron Bank
@@ -374,5 +394,5 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/airflow": 1 ,  "rapidfort/airflow-ib": 1 ,  "rapidfort/airflow-ib-bitnami": 1 ,  "rapidfort/airflow-scheduler": 1 ,  "rapidfort/airflow-scheduler-ib-bitnami": 1 ,  "rapidfort/airflow-worker": 1 ,  "rapidfort/airflow-worker-ib-bitnami": 1 ,  "rapidfort/alertmanager-ib": 1 ,  "rapidfort/alloy-ib": 1 ,  "rapidfort/ansible-ib": 1 ,  "rapidfort/ansible-lint-ib": 1 ,  "rapidfort/apache": 1 ,  "rapidfort/apache2-ib": 1 ,  "rapidfort/apache-official": 1 ,  "rapidfort/argocd": 1 ,  "rapidfort/argocd-bigbang-ib": 1 ,  "rapidfort/argocd-ib": 1 ,  "rapidfort/auditbeat-ib": 1 ,  "rapidfort/bats-ib": 1 ,  "rapidfort/blackbox-exporter-ib": 1 ,  "rapidfort/cass-ib": 1 ,  "rapidfort/cassandra-official": 1 ,  "rapidfort/ceph-ib": 1 ,  "rapidfort/chart-testing-ib": 1 ,  "rapidfort/consul": 1 ,  "rapidfort/consul-ib": 1 ,  "rapidfort/consul-official": 1 ,  "rapidfort/couchdb": 1 ,  "rapidfort/couchdb_3-ib": 1 ,  "rapidfort/couchdb-official": 1 ,  "rapidfort/curl": 1 ,  "rapidfort/dex-ib": 1 ,  "rapidfort/eck-operator-ib": 1 ,  "rapidfort/elasticsearch": 1 ,  "rapidfort/elasticsearch-exporter-ib": 1 ,  "rapidfort/elasticsearch-official": 1 ,  "rapidfort/envoy": 1 ,  "rapidfort/envoy-official": 1 ,  "rapidfort/etcd": 1 ,  "rapidfort/etcd-ib": 1 ,  "rapidfort/filebeat-ib": 1 ,  "rapidfort/fluent-bit": 1 ,  "rapidfort/fluent-bit-ib": 1 ,  "rapidfort/fluent-bit-official": 1 ,  "rapidfort/fluentd": 1 ,  "rapidfort/fluentd-elasticsearch-ib": 1 ,  "rapidfort/fluentd-ib": 1 ,  "rapidfort/fluentd-official": 1 ,  "rapidfort/fluxcd-helm-controller-ib": 1 ,  "rapidfort/fluxcd-image-automation-controller-ib": 1 ,  "rapidfort/fluxcd-image-reflector-controller-ib": 1 ,  "rapidfort/fluxcd-kustomize-controller-ib": 1 ,  "rapidfort/fluxcd-notification-controller-ib": 1 ,  "rapidfort/fluxcd-source-controller-ib": 1 ,  "rapidfort/gatekeeper-ib": 1 ,  "rapidfort/ghost": 1 ,  "rapidfort/git-lfs-ib": 1 ,  "rapidfort/gitaly-ib": 1 ,  "rapidfort/gitlab-certificates-ib": 1 ,  "rapidfort/gitlab-cfssl-self-sign-ib": 1 ,  "rapidfort/gitlab-container-registry-ib": 1 ,  "rapidfort/gitlab-exporter-ib": 1 ,  "rapidfort/gitlab-kas-ib": 1 ,  "rapidfort/gitlab-runner-ib": 1 ,  "rapidfort/gitlab-shell-ib": 1 ,  "rapidfort/gitlab-workhorse-ib": 1 ,  "rapidfort/grafana-ib": 1 ,  "rapidfort/grafana-official": 1 ,  "rapidfort/grafana-plugins-ib": 1 ,  "rapidfort/hadolint-ib": 1 ,  "rapidfort/haproxy": 1 ,  "rapidfort/haproxy24-ib": 1 ,  "rapidfort/haproxy-official": 1 ,  "rapidfort/heartbeat-ib": 1 ,  "rapidfort/influxdb": 1 ,  "rapidfort/jmx-exporter-ib": 1 ,  "rapidfort/k8s-sidecar-ib": 1 ,  "rapidfort/k8s-sidecar-official": 1 ,  "rapidfort/kafka-exporter-ib": 1 ,  "rapidfort/kafka-ib": 1 ,  "rapidfort/kaniko-ib": 1 ,  "rapidfort/keycloak-official": 1 ,  "rapidfort/kibana-ib": 1 ,  "rapidfort/kong": 1 ,  "rapidfort/kube-webhook-certgen-ib": 1 ,  "rapidfort/kubectl-ib": 1 ,  "rapidfort/kyverno-background-controller-ib": 1 ,  "rapidfort/kyverno-cleanup-controller-ib": 1 ,  "rapidfort/kyverno-reports-controller-ib": 1 ,  "rapidfort/logstash-ib": 1 ,  "rapidfort/mariadb": 1 ,  "rapidfort/mariadb-ib": 1 ,  "rapidfort/mariadb-official": 1 ,  "rapidfort/mc-ib": 1 ,  "rapidfort/memcached": 1 ,  "rapidfort/memcached-ib": 1 ,  "rapidfort/memcached-official": 1 ,  "rapidfort/metabase-ib": 1 ,  "rapidfort/metricbeat-ib": 1 ,  "rapidfort/metrics-server-ib": 1 ,  "rapidfort/microsoft-sql-server-2019-ib": 1 ,  "rapidfort/minio-ib": 1 ,  "rapidfort/minio-operator-ib": 1 ,  "rapidfort/minio-operator-sidecar-ib": 1 ,  "rapidfort/mkdocs-ib": 1 ,  "rapidfort/mongodb": 1 ,  "rapidfort/mongodb-ib": 1 ,  "rapidfort/mongodb-official": 1 ,  "rapidfort/moodle-ib": 1 ,  "rapidfort/mysql": 1 ,  "rapidfort/mysql8-ib": 1 ,  "rapidfort/mysql-official": 1 ,  "rapidfort/nats": 1 ,  "rapidfort/nats-ib": 1 ,  "rapidfort/nats-official": 1 ,  "rapidfort/nginx": 1 ,  "rapidfort/nginx-ib": 1 ,  "rapidfort/nginx-official": 1 ,  "rapidfort/nifi-ib": 1 ,  "rapidfort/nifi-registry-ib": 1 ,  "rapidfort/node-exporter": 1 ,  "rapidfort/node-exporter-ib": 1 ,  "rapidfort/node-exporter-official": 1 ,  "rapidfort/oncall": 1 ,  "rapidfort/opa-ib": 1 ,  "rapidfort/openldap-ib": 1 ,  "rapidfort/osee-postgres-ib": 1 ,  "rapidfort/packetbeat-ib": 1 ,  "rapidfort/pause-ib": 1 ,  "rapidfort/pgadmin-ib": 1 ,  "rapidfort/podman-ib": 1 ,  "rapidfort/postfix-ib": 1 ,  "rapidfort/postgres-exporter-bitnami-ib": 1 ,  "rapidfort/postgres-exporter-ib": 1 ,  "rapidfort/postgresql": 1 ,  "rapidfort/postgresql12-ib": 1 ,  "rapidfort/postgresql-official": 1 ,  "rapidfort/prometheus": 1 ,  "rapidfort/prometheus-config-reloader-ib": 1 ,  "rapidfort/prometheus-ib": 1 ,  "rapidfort/prometheus-official": 1 ,  "rapidfort/prometheus-operator-ib": 1 ,  "rapidfort/rabbitmq": 1 ,  "rapidfort/rabbitmq-official": 1 ,  "rapidfort/redis": 1 ,  "rapidfort/redis-cluster": 1 ,  "rapidfort/redis-exporter-ib": 1 ,  "rapidfort/redis6-ib": 1 ,  "rapidfort/redis-official": 1 ,  "rapidfort/shellcheck-ib": 1 ,  "rapidfort/solr-8-ib": 1 ,  "rapidfort/sqlite-ib": 1 ,  "rapidfort/telegraf": 1 ,  "rapidfort/tempo-query-ib": 1 ,  "rapidfort/terraform-ib": 1 ,  "rapidfort/terragrunt-ib": 1 ,  "rapidfort/tflint-ib": 1 ,  "rapidfort/thanos-ib": 1 ,  "rapidfort/tika-ib": 1 ,  "rapidfort/tomcat-openjdk11-ib": 1 ,  "rapidfort/tomcat10-openjdk17-ib": 1 ,  "rapidfort/tomcat9-openjdk11-ib": 1 ,  "rapidfort/traefik": 1 ,  "rapidfort/traefik-ib": 1 ,  "rapidfort/vault": 1 ,  "rapidfort/vault-ib": 1 ,  "rapidfort/vault-k8s-ib": 1 ,  "rapidfort/vcluster-ib": 1 ,  "rapidfort/velero-ib": 1 ,  "rapidfort/wordpress": 1 ,  "rapidfort/wordpress-ib": 1 ,  "rapidfort/yourls": 1 ,  "rapidfort/yq-ib": 1 ,  "rapidfort/zeek-ib": 1 ,  "rapidfort/zookeeper": 1 ,  "rapidfort/zookeeper-ib": 1 ,  "rapidfort/zookeeper-official": 1  }' \
+           -d '{ "rapidfort/airflow": 1 ,  "rapidfort/airflow-ib": 1 ,  "rapidfort/airflow-ib-bitnami": 1 ,  "rapidfort/airflow-scheduler": 1 ,  "rapidfort/airflow-scheduler-ib-bitnami": 1 ,  "rapidfort/airflow-worker": 1 ,  "rapidfort/airflow-worker-ib-bitnami": 1 ,  "rapidfort/alertmanager-ib": 1 ,  "rapidfort/alloy-ib": 1 ,  "rapidfort/ansible-ib": 1 ,  "rapidfort/ansible-lint-ib": 1 ,  "rapidfort/apache": 1 ,  "rapidfort/apache2-ib": 1 ,  "rapidfort/apache-official": 1 ,  "rapidfort/argocd": 1 ,  "rapidfort/argocd-bigbang-ib": 1 ,  "rapidfort/argocd-ib": 1 ,  "rapidfort/auditbeat-ib": 1 ,  "rapidfort/bats-ib": 1 ,  "rapidfort/blackbox-exporter-ib": 1 ,  "rapidfort/buildah-ib": 1 ,  "rapidfort/cass-ib": 1 ,  "rapidfort/cassandra-official": 1 ,  "rapidfort/ceph-ib": 1 ,  "rapidfort/certtool-ib": 1 ,  "rapidfort/chart-testing-ib": 1 ,  "rapidfort/consul": 1 ,  "rapidfort/consul-ib": 1 ,  "rapidfort/consul-official": 1 ,  "rapidfort/coredns-ib": 1 ,  "rapidfort/couchdb": 1 ,  "rapidfort/couchdb_3-ib": 1 ,  "rapidfort/couchdb-official": 1 ,  "rapidfort/curl": 1 ,  "rapidfort/dex-ib": 1 ,  "rapidfort/eck-operator-ib": 1 ,  "rapidfort/elasticsearch": 1 ,  "rapidfort/elasticsearch-dump-ib": 1 ,  "rapidfort/elasticsearch-exporter-ib": 1 ,  "rapidfort/elasticsearch-official": 1 ,  "rapidfort/envoy": 1 ,  "rapidfort/envoy-official": 1 ,  "rapidfort/etcd": 1 ,  "rapidfort/etcd-ib": 1 ,  "rapidfort/filebeat-ib": 1 ,  "rapidfort/fluent-bit": 1 ,  "rapidfort/fluent-bit-ib": 1 ,  "rapidfort/fluent-bit-official": 1 ,  "rapidfort/fluentd": 1 ,  "rapidfort/fluentd-elasticsearch-ib": 1 ,  "rapidfort/fluentd-ib": 1 ,  "rapidfort/fluentd-kubernetes-daemonset-ib": 1 ,  "rapidfort/fluentd-official": 1 ,  "rapidfort/fluxcd-helm-controller-ib": 1 ,  "rapidfort/fluxcd-image-automation-controller-ib": 1 ,  "rapidfort/fluxcd-image-reflector-controller-ib": 1 ,  "rapidfort/fluxcd-kustomize-controller-ib": 1 ,  "rapidfort/fluxcd-notification-controller-ib": 1 ,  "rapidfort/fluxcd-source-controller-ib": 1 ,  "rapidfort/gatekeeper-ib": 1 ,  "rapidfort/ghost": 1 ,  "rapidfort/git-lfs-ib": 1 ,  "rapidfort/gitaly-ib": 1 ,  "rapidfort/gitlab-certificates-ib": 1 ,  "rapidfort/gitlab-cfssl-self-sign-ib": 1 ,  "rapidfort/gitlab-container-registry-ib": 1 ,  "rapidfort/gitlab-exporter-ib": 1 ,  "rapidfort/gitlab-kas-ib": 1 ,  "rapidfort/gitlab-runner-ib": 1 ,  "rapidfort/gitlab-shell-ib": 1 ,  "rapidfort/gitlab-workhorse-ib": 1 ,  "rapidfort/grafana-ib": 1 ,  "rapidfort/grafana-official": 1 ,  "rapidfort/grafana-plugins-ib": 1 ,  "rapidfort/hadolint-ib": 1 ,  "rapidfort/haproxy": 1 ,  "rapidfort/haproxy24-ib": 1 ,  "rapidfort/haproxy-official": 1 ,  "rapidfort/heartbeat-ib": 1 ,  "rapidfort/influxdb": 1 ,  "rapidfort/jmx-exporter-ib": 1 ,  "rapidfort/k8s-sidecar-ib": 1 ,  "rapidfort/k8s-sidecar-official": 1 ,  "rapidfort/kafka-exporter-ib": 1 ,  "rapidfort/kafka-ib": 1 ,  "rapidfort/kaniko-ib": 1 ,  "rapidfort/keycloak-official": 1 ,  "rapidfort/kibana-ib": 1 ,  "rapidfort/kong": 1 ,  "rapidfort/kongkic-ib": 1 ,  "rapidfort/kube-webhook-certgen-ib": 1 ,  "rapidfort/kubectl-ib": 1 ,  "rapidfort/kyverno-background-controller-ib": 1 ,  "rapidfort/kyverno-cleanup-controller-ib": 1 ,  "rapidfort/kyverno-reports-controller-ib": 1 ,  "rapidfort/logstash-ib": 1 ,  "rapidfort/mariadb": 1 ,  "rapidfort/mariadb-ib": 1 ,  "rapidfort/mariadb-official": 1 ,  "rapidfort/mc-ib": 1 ,  "rapidfort/memcached": 1 ,  "rapidfort/memcached-ib": 1 ,  "rapidfort/memcached-official": 1 ,  "rapidfort/metabase-ib": 1 ,  "rapidfort/metricbeat-ib": 1 ,  "rapidfort/metrics-server-ib": 1 ,  "rapidfort/microsoft-sql-server-2019-ib": 1 ,  "rapidfort/minio-console-ib": 1 ,  "rapidfort/minio-ib": 1 ,  "rapidfort/minio-operator-ib": 1 ,  "rapidfort/minio-operator-sidecar-ib": 1 ,  "rapidfort/mkdocs-ib": 1 ,  "rapidfort/mongodb": 1 ,  "rapidfort/mongodb-ib": 1 ,  "rapidfort/mongodb-official": 1 ,  "rapidfort/moodle-ib": 1 ,  "rapidfort/mysql": 1 ,  "rapidfort/mysql8-ib": 1 ,  "rapidfort/mysql-official": 1 ,  "rapidfort/nats": 1 ,  "rapidfort/nats-ib": 1 ,  "rapidfort/nats-official": 1 ,  "rapidfort/nginx": 1 ,  "rapidfort/nginx-ib": 1 ,  "rapidfort/nginx-official": 1 ,  "rapidfort/nifi-ib": 1 ,  "rapidfort/nifi-registry-ib": 1 ,  "rapidfort/node-exporter": 1 ,  "rapidfort/node-exporter-ib": 1 ,  "rapidfort/node-exporter-official": 1 ,  "rapidfort/oncall": 1 ,  "rapidfort/opa-ib": 1 ,  "rapidfort/openldap-ib": 1 ,  "rapidfort/osee-postgres-ib": 1 ,  "rapidfort/packetbeat-ib": 1 ,  "rapidfort/pause-ib": 1 ,  "rapidfort/pgadmin-ib": 1 ,  "rapidfort/podman-ib": 1 ,  "rapidfort/postfix-ib": 1 ,  "rapidfort/postgres-exporter-bitnami-ib": 1 ,  "rapidfort/postgres-exporter-ib": 1 ,  "rapidfort/postgresql": 1 ,  "rapidfort/postgresql12-ib": 1 ,  "rapidfort/postgresql-official": 1 ,  "rapidfort/prometheus": 1 ,  "rapidfort/prometheus-config-reloader-ib": 1 ,  "rapidfort/prometheus-ib": 1 ,  "rapidfort/prometheus-official": 1 ,  "rapidfort/prometheus-operator-ib": 1 ,  "rapidfort/rabbitmq": 1 ,  "rapidfort/rabbitmq-official": 1 ,  "rapidfort/redis": 1 ,  "rapidfort/redis-cluster": 1 ,  "rapidfort/redis-exporter-ib": 1 ,  "rapidfort/redis6-ib": 1 ,  "rapidfort/redis-official": 1 ,  "rapidfort/redis-sentinel-ib": 1 ,  "rapidfort/shellcheck-ib": 1 ,  "rapidfort/skopeo-ib": 1 ,  "rapidfort/solr-8-ib": 1 ,  "rapidfort/sqlite-ib": 1 ,  "rapidfort/telegraf": 1 ,  "rapidfort/tempo-query-ib": 1 ,  "rapidfort/terraform-ib": 1 ,  "rapidfort/terragrunt-ib": 1 ,  "rapidfort/tflint-ib": 1 ,  "rapidfort/thanos-ib": 1 ,  "rapidfort/tika-ib": 1 ,  "rapidfort/tomcat-openjdk11-ib": 1 ,  "rapidfort/tomcat10-openjdk17-ib": 1 ,  "rapidfort/tomcat9-openjdk11-ib": 1 ,  "rapidfort/traefik": 1 ,  "rapidfort/traefik-ib": 1 ,  "rapidfort/vale-ib": 1 ,  "rapidfort/vault": 1 ,  "rapidfort/vault-ib": 1 ,  "rapidfort/vault-k8s-ib": 1 ,  "rapidfort/vcluster-ib": 1 ,  "rapidfort/velero-ib": 1 ,  "rapidfort/wordpress": 1 ,  "rapidfort/wordpress-ib": 1 ,  "rapidfort/yourls": 1 ,  "rapidfort/yq-ib": 1 ,  "rapidfort/zeek-ib": 1 ,  "rapidfort/zookeeper": 1 ,  "rapidfort/zookeeper-ib": 1 ,  "rapidfort/zookeeper-official": 1  }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls

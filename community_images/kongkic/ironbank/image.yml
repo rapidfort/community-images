@@ -1,0 +1,45 @@
+name: kongkic-ib
+official_name: KongKIC IronBank
+official_website: https://docs.konghq.com/kubernetes-ingress-controller/latest/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/kong/kong/kongkic
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/kong%2Fkong%2Fkongkic
+source_image_readme: https://repo1.dso.mil/dsop/kong/kong/kongkic/-/blob/development/README.md
+rf_docker_link: rapidfort/kongkic-ib
+image_workflow_name: kongkic_ironbank
+github_location: kongkic/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fkong%2Fkong%2Fkongkic
+usage_instructions: |
+  # KongKIC can be deployed with:
+  $ helm repo add kong https://charts.konghq.com
+  $ helm install rf-kong-ib kong/ingress --set controller.ingressController.image.repository=rapidfort/kongkic-ib --set controller.ingressController.image.tag=latest --set controller.ingressController.image.effectiveSemver=<TAG_CORRESPONDING_TO_LATEST_TAG>
+what_is_text: |
+  The Kong Ingress Controller configures Kong Gateway using Ingress or Gateway API resources created inside a Kubernetes cluster.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+docker_links:
+  - "[`latest` (Dockerfile)](https://repo1.dso.mil/dsop/kong/kong/kongkic/-/blob/development/Dockerfile)"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - kong/kong/kongkic:
+      input_base_tag: "2.12."
+      output_repo: kongkic-ib
+runtimes:
+  - type: k8s
+    before_script: k8s_before.sh
+    script: k8s_coverage.sh
+    readiness_check_script: kongkic_health_check.sh
+    helm:
+      repo: kong
+      repo_url: https://charts.konghq.com
+      chart: ingress
+    wait_time_sec: 120
+    image_keys:
+      kongkic-ib:
+        repository: "controller.ingressController.image.repository"
+        tag: "controller.ingressController.image.tag"
+        semver: "controller.ingressController.image.effectiveSemver"
+    override_file: "overrides.yml"
+    harden_override_file: harden_overrides.yml

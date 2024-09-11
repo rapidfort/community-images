@@ -1,0 +1,32 @@
+name: minio-console-ib
+official_name: MinIo console Iron Bank
+official_website: https://min.io/docs/minio/linux/administration/minio-console.html
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/minio/console
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fminio%2Fconsole
+source_image_readme: https://repo1.dso.mil/dsop/opensource/minio/console/-/blob/development/README.md
+rf_docker_link: rapidfort/minio-console-ib
+image_workflow_name: minio-console_ironbank
+github_location: minio-console/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole
+usage_instructions:
+  $ docker run -d --name console -p 9090:9090 --network minio-network -e CONSOLE_MINIO_SERVER=http://minio:9000 -e CONSOLE_ACCESS_KEY=minio -e CONSOLE_SECRET_KEY=minio123 rapidfort/minio-console-ib
+what_is_text: |
+  A graphical user interface for MinIO
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/minio/console:
+      input_base_tag: "v1.7."
+      output_repo: console-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      console-ib:
+        repository: "CONSOLE_IMAGE_REPOSITORY"
+        tag: "CONSOLE_IMAGE_TAG"

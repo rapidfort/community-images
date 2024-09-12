@@ -68,7 +68,7 @@ The runtime instructions for this hardened container image are the same as the o
 $ helm repo add loft https://charts.loft.sh
 
 # install vcluster, just replace repository with RapidFort registry
-$ helm install rf-vcluster-ib loft/vcluster --set syncer.image=rapidfort/vcluster-ib --set service.type=<type_of_service> --set service.externalTrafficPolicy=<type_of_externalTrafficPolicy>
+$ helm install rf-vcluster-ib loft/vcluster --set controlPlane.statefulSet.image.repository=rapidfort/vcluster-ib --set controlPlane.service.spec.type=<type_of_service> --set controlPlane.statefulSet.image.registry=docker.io
 
 ```
 

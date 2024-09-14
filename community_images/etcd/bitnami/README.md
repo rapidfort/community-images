@@ -94,8 +94,8 @@ RapidFort’s hardened [rapidfort/etcd][rf-dh-image-link] image has been optimiz
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`3.5`, `3.5-debian-12`, `3.5.15`, `3.5.15-debian-12-r` (3.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-12/Dockerfile)
-* [`3.4`, `3.4-debian-12`, `3.4.33`, `3.4.33-debian-12-r` (3.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-12/Dockerfile)
+* [`3.5`, `3.5-debian-12`, `3.5.16`, `3.5.16-debian-12-r` (3.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.5/debian-12/Dockerfile)
+* [`3.4`, `3.4-debian-12`, `3.4.34`, `3.4.34-debian-12-r` (3.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/etcd/3.4/debian-12/Dockerfile)
 
 ## Need support
 

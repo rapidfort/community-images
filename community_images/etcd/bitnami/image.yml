@@ -26,9 +26,9 @@ input_registry:
   account: bitnami
 repo_sets:
   - etcd:
-      input_base_tag: "3.4.33-debian-12-r"
+      input_base_tag: "3.4.34-debian-12-r"
   - etcd:
-      input_base_tag: "3.5.15-debian-12-r"
+      input_base_tag: "3.5.16-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

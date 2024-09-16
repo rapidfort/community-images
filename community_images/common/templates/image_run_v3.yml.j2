@@ -47,6 +47,7 @@ jobs:
 {% endif %}
         with:
           memory: 6g
+          driver: none
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 {% if  output == "pull_request" %}

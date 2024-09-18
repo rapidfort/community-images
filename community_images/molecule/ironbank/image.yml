@@ -1,0 +1,35 @@
+name: molecule-ib
+official_name: Molecule Iron Bank
+official_website: https://ansible.readthedocs.io/projects/molecule/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/molecule/molecule
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fmolecule%2Fmolecule
+source_image_readme: https://repo1.dso.mil/dsop/opensource/molecule/molecule/-/blob/development/README.md
+rf_docker_link: rapidfort/molecule-ib
+image_workflow_name: molecule_ironbank
+github_location: molecule/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fmolecule%2Fmolecule
+usage_instructions: |
+  # Run the molecule container, replace the image with rapidfort image and override the default `molecule` entrypoint with `/bin/bash`:
+  $ docker run --rm -it --entrypoint /bin/bash rapidfort/molecule-ib:latest
+  $ molecule --help
+what_is_text: |
+  Molecule is designed to aid in the development and testing of Ansible roles.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/molecule/molecule:
+      input_base_tag: "24.8."
+      output_repo: molecule-ib
+runtimes:
+  - type: docker
+    script: docker_coverage.sh
+    molecule-ib:
+      entrypoint: sleep
+      exec_command: infinity
+      volumes:
+        docker_coverage_helper.sh: /home/python/docker_coverage_helper.sh

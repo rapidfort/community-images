@@ -1,0 +1,152 @@
+name: Report IB Build Failures
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+  actions: read
+
+jobs:
+  report-failures:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the last two runs of "Image Creation Run" workflow
+        id: get_runs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const workflowName = 'Image Creation Run';
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Get the workflows in the repo
+            const workflows = await github.rest.actions.listRepoWorkflows({
+              owner,
+              repo
+            });
+
+            // Find the workflow ID for "Image Creation Run"
+            const workflow = workflows.data.workflows.find(wf => wf.name === workflowName);
+            if (!workflow) {
+              core.setFailed(`Workflow "${workflowName}" not found.`);
+              return;
+            }
+            const workflow_id = workflow.id;
+
+            // Get the last two workflow runs
+            const runsResponse = await github.rest.actions.listWorkflowRuns({
+              owner,
+              repo,
+              workflow_id,
+              per_page: 2,
+            });
+            const runs = runsResponse.data.workflow_runs;
+            if (runs.length < 2) {
+              core.setFailed('Not enough workflow runs found.');
+              return;
+            }
+            // Output the run IDs
+            core.setOutput('run_id1', runs[0].id);
+            core.setOutput('run_id2', runs[1].id);
+
+      - name: Get failed jobs from the last two runs with suffix "-ib"
+        id: get_failed_jobs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const run_id1 = ${{ steps.get_runs.outputs.run_id1 }};
+            const run_id2 = ${{ steps.get_runs.outputs.run_id2 }};
+
+            // Function to get failed jobs ending with "-ib"
+            async function getFailedJobs(run_id) {
+              const jobsResponse = await github.rest.actions.listJobsForWorkflowRun({
+                owner,
+                repo,
+                run_id,
+                per_page: 200,
+              });
+              const jobs = jobsResponse.data.jobs;
+              const failedJobs = jobs.filter(job => {
+                return job.conclusion === 'failure' && job.name.endsWith('-ib');
+              });
+              return failedJobs.map(job => job.name);
+            }
+
+            const failedJobs1 = await getFailedJobs(run_id1);
+            const failedJobs2 = await getFailedJobs(run_id2);
+
+            // Find jobs that failed in both runs
+            const failedInBoth = failedJobs1.filter(job => failedJobs2.includes(job));
+            core.setOutput('failed_jobs', failedInBoth.join(','));
+
+      - name: Report jobs failed in last two runs
+        if: steps.get_failed_jobs.outputs.failed_jobs != ''
+        run: |
+          echo "Images failed in both of the last two runs: ${{ steps.get_failed_jobs.outputs.failed_jobs }}"
+
+      - name: Create issues for failed jobs
+        if: steps.get_failed_jobs.outputs.failed_jobs != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const failedJobs = '${{ steps.get_failed_jobs.outputs.failed_jobs }}'.split(',').map(job => job.trim()).filter(job => job !== '');
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const run_id = ${{ steps.get_runs.outputs.run_id1 }}; // Latest run ID
+
+            // Fetch jobs for the latest run
+            const jobsResponse = await github.rest.actions.listJobsForWorkflowRun({
+              owner,
+              repo,
+              run_id,
+              per_page: 200,
+            });
+            const jobs = jobsResponse.data.jobs;
+
+            // Create a map of job names to job URLs
+            const jobMap = {};
+            for (const job of jobs) {
+              jobMap[job.name] = job.html_url;
+            }
+
+            for (const jobName of failedJobs) {
+              // Get the job URL
+              const jobUrl = jobMap[jobName];
+
+              // Fetch all open issues
+              const { data: issues } = await github.rest.issues.listForRepo({
+                owner,
+                repo,
+                state: 'open',
+                per_page: 100,
+              });
+
+              // Check if an issue exists with the same job label and title
+              const existingIssue = issues.find(issue => {
+                const hasJobLabel = issue.labels.some(label => label.name === jobName);
+                return hasJobLabel;
+              });
+
+              if (!existingIssue) {
+                // Create a new issue
+                const issueTitle = `🚨 Build Failure`;
+                const issueBody = `The image **${jobName}** has failed consecutively in the last two runs of the **Image Creation Run** workflow.\n\nPlease investigate the cause of the failure and take necessary actions to fix it.\n\n### Failed Job Details:\n\n- **Workflow**: [Image Creation Run](../../actions/workflows/image_run_v3.yml)\n- **Job Name**: ${jobName}\n- **Latest Failed Job**: [View Job Log](${jobUrl})\n\n<sub>_This issue was automatically generated by the [Report IB Build Failures](../../actions/workflows/report-ib-build-failures.yml) workflow._</sub>`;
+                await github.rest.issues.create({
+                  owner,
+                  repo,
+                  title: issueTitle,
+                  body: issueBody,
+                  labels: [jobName],
+                });
+
+                console.log(`Created issue for ${jobName}`);
+              } else {
+                console.log(`An open issue already exists for ${jobName}: #${existingIssue.number}`);
+              }
+            }

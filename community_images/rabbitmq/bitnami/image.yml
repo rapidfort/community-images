@@ -44,5 +44,3 @@ runtimes:
       rabbitmq:
         repository: "RABBITMQ_IMAGE_REPOSITORY"
         tag: "RABBITMQ_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh

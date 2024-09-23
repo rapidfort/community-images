@@ -66,23 +66,44 @@ jobs:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const run_id1 = process.env.RUN_ID1;
-            const run_id2 = process.env.RUN_ID2;
+
+            // Function to get all jobs with pagination
+            async function getAllJobs(run_id) {
+              let jobs = [];
+              let page = 1;
+              let moreJobs = true;
+
+              while (moreJobs) {
+                const response = await github.rest.actions.listJobsForWorkflowRun({
+                  owner,
+                  repo,
+                  run_id: run_id,
+                  per_page: 100,
+                  page: page,
+                });
+
+                if (response.data.jobs.length > 0) {
+                  jobs = jobs.concat(response.data.jobs);
+                  page++;
+                } else {
+                  moreJobs = false;
+                }
+              }
+
+              return jobs;
+            }
 
             // Function to get failed jobs ending with "-ib"
             async function getFailedJobs(run_id) {
-              const jobsResponse = await github.rest.actions.listJobsForWorkflowRun({
-                owner,
-                repo,
-                run_id: run_id,
-                per_page: 200,
-              });
-              const jobs = jobsResponse.data.jobs;
+              const jobs = await getAllJobs(run_id);
               const failedJobs = jobs.filter((job) => {
                 return job.conclusion === 'failure' && job.name.endsWith('-ib');
               });
               return failedJobs.map((job) => job.name);
             }
+
+            const run_id1 = process.env.RUN_ID1;
+            const run_id2 = process.env.RUN_ID2;
 
             const failedJobs1 = await getFailedJobs(run_id1);
             const failedJobs2 = await getFailedJobs(run_id2);

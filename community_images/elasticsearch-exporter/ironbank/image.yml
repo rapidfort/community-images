@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/bitnami/elasticsearch-exporter:
-      input_base_tag: "1.7."
+      input_base_tag: "1.8."
       output_repo: elasticsearch-exporter-ib
 runtimes:
   - type: docker_compose

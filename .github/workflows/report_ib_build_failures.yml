@@ -26,11 +26,13 @@ jobs:
             // Get the workflows in the repo
             const workflows = await github.rest.actions.listRepoWorkflows({
               owner,
-              repo
+              repo,
             });
 
             // Find the workflow ID for "Image Creation Run"
-            const workflow = workflows.data.workflows.find(wf => wf.name === workflowName);
+            const workflow = workflows.data.workflows.find(
+              (wf) => wf.name === workflowName
+            );
             if (!workflow) {
               core.setFailed(`Workflow "${workflowName}" not found.`);
               return;
@@ -49,40 +51,50 @@ jobs:
               core.setFailed('Not enough workflow runs found.');
               return;
             }
+
             // Output the run IDs
-            core.setOutput('run_id1', runs[0].id);
-            core.setOutput('run_id2', runs[1].id);
+            core.setOutput('run_id1', runs[0].id.toString());
+            core.setOutput('run_id2', runs[1].id.toString());
 
       - name: Get failed jobs from the last two runs with suffix "-ib"
         id: get_failed_jobs
         uses: actions/github-script@v7
+        env:
+          RUN_ID1: ${{ steps.get_runs.outputs.run_id1 }}
+          RUN_ID2: ${{ steps.get_runs.outputs.run_id2 }}
         with:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const run_id1 = ${{ steps.get_runs.outputs.run_id1 }};
-            const run_id2 = ${{ steps.get_runs.outputs.run_id2 }};
+            const run_id1 = process.env.RUN_ID1;
+            const run_id2 = process.env.RUN_ID2;
 
             // Function to get failed jobs ending with "-ib"
             async function getFailedJobs(run_id) {
               const jobsResponse = await github.rest.actions.listJobsForWorkflowRun({
                 owner,
                 repo,
-                run_id,
+                run_id: run_id,
                 per_page: 200,
               });
               const jobs = jobsResponse.data.jobs;
-              const failedJobs = jobs.filter(job => {
+              const failedJobs = jobs.filter((job) => {
                 return job.conclusion === 'failure' && job.name.endsWith('-ib');
               });
-              return failedJobs.map(job => job.name);
+              return failedJobs.map((job) => job.name);
             }
 
             const failedJobs1 = await getFailedJobs(run_id1);
             const failedJobs2 = await getFailedJobs(run_id2);
 
             // Find jobs that failed in both runs
-            const failedInBoth = failedJobs1.filter(job => failedJobs2.includes(job));
+            const failedInBoth = failedJobs1.filter((job) => failedJobs2.includes(job));
+
+            // Log the results for debugging
+            console.log(`Failed Jobs in Run 1: ${failedJobs1}`);
+            console.log(`Failed Jobs in Run 2: ${failedJobs2}`);
+            console.log(`Failed in Both Runs: ${failedInBoth}`);
+
             core.setOutput('failed_jobs', failedInBoth.join(','));
 
       - name: Report jobs failed in last two runs

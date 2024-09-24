@@ -1,0 +1,40 @@
+name: camel-k-ib
+official_name: Apache Camel-K IronBank
+official_website: https://camel.apache.org/camel-k/2.4.x/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/apache/camel-k
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fapache%2Fcamel-k
+source_image_readme: https://repo1.dso.mil/dsop/opensource/apache/camel-k/-/blob/development/README.md
+rf_docker_link: rapidfort/camel-k-ib
+image_workflow_name: camel-k_ironbank
+github_location: camel-k/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fcamel-k%2Fcamel-k2
+usage_instructions: |
+  # Using docker run:
+  $ docker run -d -it --name my-camel-k-app rapidfort/camel-k-ib
+what_is_text: |
+  Apache Camel K is a lightweight integration framework built from Apache Camel that runs natively on Kubernetes and is specifically designed for serverless and microservice architectures.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/apache/camel-k:
+      input_base_tag: "2.4."
+      output_repo: camel-k-ib
+runtimes:
+  - type: k8s
+    script: k8s_coverage.sh
+    readiness_check_script: camel_k_readiness_check.sh
+    helm:
+      repo: camel-k
+      repo_url: https://apache.github.io/camel-k/charts/
+      chart: camel-k
+    image_keys:
+      camel-k-ib:
+        image: "operator.image"
+    override_file: "overrides.yml"
+    helm_additional_params:
+      platform.build.registry.address: "docker.io"

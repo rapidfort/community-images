@@ -1,0 +1,33 @@
+name: boundary-ib
+official_name: Boundary Iron Bank
+official_website: https://boundaryproject.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/hashicorp/boundary
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/hashicorp%2Fboundary%2Fboundary
+source_image_readme: https://repo1.dso.mil/dsop/hashicorp/boundary/boundary/-/blob/development/README.md
+rf_docker_link: rapidfort/boundary-ib
+image_workflow_name: boundary_ironbank
+github_location: boundary/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fboundary%2Fboundary
+usage_instructions: |
+  $ docker run -d --name boundary -v "$PWD"/config.hcl:/boundary/config.hcl rapidfort/boundary-ib [COMMAND]
+what_is_text: |
+  HashiCorp Boundary is an identity-aware proxy aimed at simplifying and securing least-privileged access to cloud infrastructure
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+is_locked: "False"
+repo_sets:
+  - hashicorp/boundary:
+      input_base_tag: "0.17."
+      output_repo: boundary-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      boundary-ib:
+        repository: "BOUNDARY_IMAGE_REPOSITORY"
+        tag: "BOUNDARY_IMAGE_TAG"

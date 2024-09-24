@@ -1,0 +1,33 @@
+name: clickhouse-ib
+official_name: clickhouse Iron Bank
+official_website: https://clickhouse.com
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/clickhouse
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fclickhouse
+source_image_readme: https://repo1.dso.mil/dsop/opensource/clickhouse/clickhouse/-/blob/development/README.md
+rf_docker_link: rapidfort/clickhouse-ib
+image_workflow_name: clickhouse_ironbank
+github_location: clickhouse/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fclickhouse
+usage_instructions: |
+  #Run the clickhouse container:
+  $ docker run -d --name clickhouse-server rapidfort/clickhouse-ib
+what_is_text: |
+  ClickHouse is an open-source column-oriented database management system that allows generating analytical data reports in real-time.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/clickhouse:
+      input_base_tag: "22.3."
+      output_repo: clickhouse-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      clickhouse-ib:
+        repository: "CLICKHOUSE_IMAGE_REPOSITORY"
+        tag: "CLICKHOUSE_IMAGE_TAG"

@@ -1,0 +1,37 @@
+name: postgresql-bitnami-ib
+official_name: PostgreSQL IronBank (Bitnami)
+official_website: https://www.postgresql.com/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/bitnami/postgres
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fpostgres
+source_image_readme: https://repo1.dso.mil/dsop/bitnami/postgres/postgresql16/-/blob/development/README.md
+rf_docker_link: rapidfort/postgresql-bitnami-ib
+image_workflow_name: postgresql_bitnami_ironbank
+github_location: postgresql/bitnami-ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres
+usage_instructions: |
+  $ docker run -e POSTGRES_PASSWORD=mysecretpassword -d rapidfort/postgresql16-bitnami-ib:latest
+what_is_text: |
+  PostgreSQL, often simply "Postgres", is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - bitnami/postgres:
+      input_base_tag: "16.3."
+      output_repo: postgresql16-bitnami-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      postgresql16-bitnami-ib:
+        repository: "PG_IMAGE_REPOSITORY"
+        tag: "PG_IMAGE_TAG"
+  - type: docker
+    postgresql16-bitnami-ib:
+      environment:
+        POSTGRES_PASSWORD: PgPwd

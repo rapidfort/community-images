@@ -39,7 +39,6 @@ runtimes:
       persistence.enabled: false
       server.dev.enabled: true
       injector.enabled: true
-      injector.image.pullPolicy: Always
     image_keys:
       vault-k8s-ib:
         repository: "injector.image.repository"

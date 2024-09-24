@@ -31,6 +31,7 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     readiness_check_script: gitaly_readiness_check.sh
+    readiness_check_timeout: 1200
     helm:
       repo: gitlab
       repo_url: http://charts.gitlab.io/

@@ -143,6 +143,15 @@ jobs:
           repository: rapidfort/ansible-lint-ib
           readme-filepath: ./community_images/ansible-lint/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Ansible-Lint Iron Bank
+      - name: Docker Hub Description Ansible-Operator Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/ansible-operator-ib
+          readme-filepath: ./community_images/ansible-operator/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Ansible-Operator Iron Bank
       - name: Docker Hub Description Apache
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -224,6 +233,15 @@ jobs:
           repository: rapidfort/blackbox-exporter-ib
           readme-filepath: ./community_images/blackbox-exporter/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Blackbox Exporter Iron Bank
+      - name: Docker Hub Description Boundary Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/boundary-ib
+          readme-filepath: ./community_images/boundary/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Boundary Iron Bank
       - name: Docker Hub Description buildah Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -233,6 +251,15 @@ jobs:
           repository: rapidfort/buildah-ib
           readme-filepath: ./community_images/buildah/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for buildah Iron Bank
+      - name: Docker Hub Description Apache Camel-K IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/camel-k-ib
+          readme-filepath: ./community_images/camel-k/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Apache Camel-K IronBank
       - name: Docker Hub Description CaSS Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -278,6 +305,15 @@ jobs:
           repository: rapidfort/chart-testing-ib
           readme-filepath: ./community_images/chart-testing/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Helm Chart Testing Ironbank
+      - name: Docker Hub Description clickhouse Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/clickhouse-ib
+          readme-filepath: ./community_images/clickhouse/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for clickhouse Iron Bank
       - name: Docker Hub Description Consul
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -737,6 +773,15 @@ jobs:
           repository: rapidfort/haproxy24-ib
           readme-filepath: ./community_images/haproxy/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for HAProxy IronBank
+      - name: Docker Hub Description HAProxy-latest IronBank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/haproxy-latest-ib
+          readme-filepath: ./community_images/haproxy-latest/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for HAProxy-latest IronBank
       - name: Docker Hub Description HAProxy Official
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -773,6 +818,24 @@ jobs:
           repository: rapidfort/jmx-exporter-ib
           readme-filepath: ./community_images/jmx-exporter/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for JMX Exporter Iron Bank
+      - name: Docker Hub Description JQ Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/jq-ib
+          readme-filepath: ./community_images/jq/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for JQ Iron Bank
+      - name: Docker Hub Description k6 Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/k6-ib
+          readme-filepath: ./community_images/k6/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for k6 Iron Bank
       - name: Docker Hub Description k8s-sidecar ironbank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1052,6 +1115,15 @@ jobs:
           repository: rapidfort/mkdocs-ib
           readme-filepath: ./community_images/mkdocs/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for MkDocs IronBank
+      - name: Docker Hub Description Molecule Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/molecule-ib
+          readme-filepath: ./community_images/molecule/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Molecule Iron Bank
       - name: Docker Hub Description MongoDB®
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1322,6 +1394,15 @@ jobs:
           repository: rapidfort/postgresql
           readme-filepath: ./community_images/postgresql/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PostgreSQL
+      - name: Docker Hub Description PostgreSQL IronBank (Bitnami)
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/postgresql-bitnami-ib
+          readme-filepath: ./community_images/postgresql/bitnami-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for PostgreSQL IronBank (Bitnami)
       - name: Docker Hub Description PostgreSQL IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1457,6 +1538,15 @@ jobs:
           repository: rapidfort/redis-sentinel-ib
           readme-filepath: ./community_images/redis-sentinel/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Redis-Sentinel Iron Bank
+      - name: Docker Hub Description Docker registry-v2 Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/registry-v2-ib
+          readme-filepath: ./community_images/registry-v2/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Docker registry-v2 Iron Bank
       - name: Docker Hub Description shellcheck Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

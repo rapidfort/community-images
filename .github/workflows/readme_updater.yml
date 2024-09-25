@@ -314,6 +314,15 @@ jobs:
           repository: rapidfort/clickhouse-ib
           readme-filepath: ./community_images/clickhouse/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for clickhouse Iron Bank
+      - name: Docker Hub Description CockroachDB Ironbank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/cockroachdb-ib
+          readme-filepath: ./community_images/cockroachdb/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for CockroachDB Ironbank
       - name: Docker Hub Description Consul
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -854,6 +863,15 @@ jobs:
           repository: rapidfort/k8s-sidecar-official
           readme-filepath: ./community_images/k8s-sidecar/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for k8s-sidecar Official
+      - name: Docker Hub Description Kafka Bridge Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/kafka-bridge-ib
+          readme-filepath: ./community_images/kafka-bridge/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Kafka Bridge Iron Bank
       - name: Docker Hub Description Kafka Exporter Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3

@@ -149,10 +149,9 @@ class PipelineChecker:
             pipeline_id = latest_pipeline['id']
             pipeline_web_url = latest_pipeline['web_url']
             pipeline_time_created = self.format_timestamp(latest_pipeline['created_at'])
-            pipeline_info = f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}"
+            pipeline_info = f"{project_name}\nPipeline URL: {pipeline_web_url}"
             if self.is_pipeline_inactive(latest_pipeline['created_at']):
                 self.inactive_pipelines.append(pipeline_info)
-                #self.inactive_pipelines.append(f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}")
             jobs = self.get_jobs(endpoint, pipeline_id)
             rf_scan_status = self.check_rapidfort_scan(jobs)
             self.write_to_csv(pipeline_time_created, pipeline_id, pipeline_web_url, rf_scan_status, project_name)
@@ -208,32 +207,40 @@ class PipelineChecker:
 
         if self.failed_pipelines:
             print("Failed Pipelines:")
-            for idx, failed_pipeline in enumerate(self.failed_pipelines, 1):
-                print(f"\n{idx}. {failed_pipeline}")
+            for pipeline in self.failed_pipelines:
+                print(pipeline)
+            #for idx, failed_pipeline in enumerate(self.failed_pipelines, 1):
+            #    print(f"\n{idx}. {failed_pipeline}")
         else:
             print("No pipelines failed the rapidfort-scan.")
         print("-" * 50)
 
         if self.not_found_pipelines:
             print("Not Found Pipelines:")
-            for idx, not_found_pipeline in enumerate(self.not_found_pipelines, 1):
-                print(f"\n{idx}. {not_found_pipeline}")
+            for pipeline in self.not_found_pipelines:
+                print(pipeline)
+            #for idx, not_found_pipeline in enumerate(self.not_found_pipelines, 1):
+            #    print(f"\n{idx}. {not_found_pipeline}")
         else:
             print("No pipelines had the rapidfort-scan job not found.")
         print("-" * 50)
 
         if self.skipped_pipelines:
             print("Skipped Pipelines:")
-            for idx, skipped_pipeline in enumerate(self.skipped_pipelines, 1):
-                print(f"\n{idx}. {skipped_pipeline}")
+            for pipeline in self.skipped_pipelines:
+                print(pipeline)
+            #for idx, skipped_pipeline in enumerate(self.skipped_pipelines, 1):
+            #    print(f"\n{idx}. {skipped_pipeline}")
         else:
             print("No pipelines skipped the rapidfort-scan job.")
         print("-" * 50)
 
         if self.inactive_pipelines:
             print("Inactive Pipelines (not run in last 3 days):")
-            for idx, inactive_pipeline in enumerate(self.inactive_pipelines, 1):
-                print(f"\n{idx}. {inactive_pipeline}")
+            for pipeline in self.inactive_pipelines:
+                print(pipeline)
+            #for idx, inactive_pipeline in enumerate(self.inactive_pipelines, 1):
+            #    print(f"\n{idx}. {inactive_pipeline}")
         else:
             print("All pipelines have been run in the last 3 days.")
         print("-" * 50)

@@ -146,7 +146,7 @@ class PipelineChecker:
         endpoint = self.get_project_endpoint(link)
         latest_pipeline = self.get_latest_pipeline(endpoint)
         if latest_pipeline:
-            #pipeline_id = latest_pipeline['id']
+            pipeline_id = latest_pipeline['id']
             pipeline_web_url = latest_pipeline['web_url']
             pipeline_time_created = self.format_timestamp(latest_pipeline['created_at'])
             pipeline_info = f"{project_name}\nPipeline ID: {pipeline_id}\nPipeline URL: {pipeline_web_url}"

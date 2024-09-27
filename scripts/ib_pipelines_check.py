@@ -149,13 +149,13 @@ class PipelineChecker:
             pipeline_id = latest_pipeline['id']
             pipeline_web_url = latest_pipeline['web_url']
             pipeline_time_created = self.format_timestamp(latest_pipeline['created_at'])
-            pipeline_info = f"{project_name}\nPipeline URL: {pipeline_web_url}"
+            pipeline_info = f"{project_name}\n{pipeline_web_url}"
             if self.is_pipeline_inactive(latest_pipeline['created_at']):
                 self.inactive_pipelines.append(pipeline_info)
             jobs = self.get_jobs(endpoint, pipeline_id)
             rf_scan_status = self.check_rapidfort_scan(jobs)
             self.write_to_csv(pipeline_time_created, pipeline_id, pipeline_web_url, rf_scan_status, project_name)
-            print(f"Time Created At: {pipeline_time_created}\nURL: {pipeline_web_url}\nrapidfort-scan status: {rf_scan_status}")
+            print(f"Created: {pipeline_time_created}\nURL: {pipeline_web_url}\nrapidfort-scan: {rf_scan_status}")
             print("-" * 50)
             if rf_scan_status == 'failed':
                 self.failed_pipelines.append(pipeline_info)
@@ -196,13 +196,13 @@ class PipelineChecker:
         """
         Print the summary of pipeline statuses.
         """
-        print("Summary of Pipelines:")
-        print(f"Total: {self.total_pipelines}")
-        print(f"Passed: {self.passed_pipelines}")
-        print(f"Failed: {len(self.failed_pipelines)}")
-        print(f"Skipped due to non-related failure: {len(self.skipped_pipelines)}")
-        print(f"Not found: {len(self.not_found_pipelines)}")
-        print(f"Inactive (not run in last 3 days): {len(self.inactive_pipelines)}")
+        print("Summary:")
+        print(f"Total:     {self.total_pipelines}")
+        print(f"Passed:    {self.passed_pipelines}")
+        print(f"Failed:    {len(self.failed_pipelines)}")
+        print(f"Skipped:   {len(self.skipped_pipelines)}")
+        print(f"Not Found: {len(self.not_found_pipelines)}")
+        print(f"Inactive:  {len(self.inactive_pipelines)}")
         print("-" * 50)
 
         if self.failed_pipelines:

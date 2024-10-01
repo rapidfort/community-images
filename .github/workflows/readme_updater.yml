@@ -1679,6 +1679,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/tomcat-openjdk8-ib
+          readme-filepath: ./community_images/tomcat10/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for Tomcat Ironbank
+      - name: Docker Hub Description Tomcat Ironbank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/tomcat10-openjdk17-ib
           readme-filepath: ./community_images/tomcat10/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Tomcat Ironbank

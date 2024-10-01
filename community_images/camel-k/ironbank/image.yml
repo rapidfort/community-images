@@ -26,6 +26,7 @@ repo_sets:
       output_repo: camel-k-ib
 runtimes:
   - type: k8s
+    before_script: before_script_camel_k.sh
     script: k8s_coverage.sh
     readiness_check_script: camel_k_readiness_check.sh
     helm:

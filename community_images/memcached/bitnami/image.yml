@@ -35,7 +35,9 @@ runtimes:
     readiness_wait_pod_name_suffix:
       - "master-0"
     image_keys:
-      memcached: {}
+      memcached:
+        repository: "image.repository"
+        tag: "image.tag"
     override_file: "overrides.yml"
   - type: docker_compose
     script: dc_coverage.sh

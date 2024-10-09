@@ -41,6 +41,7 @@ runtimes:
       certmanager.installCRDs: false
       certmanager.nameOverride: glcertmanager
       gitlab.gitlab-shell.sshDaemon: gitlab-sshd
+      gitlab-runner.install: false
     image_keys:
       gitlab-shell-ib:
         repository: "gitlab.gitlab-shell.image.repository"

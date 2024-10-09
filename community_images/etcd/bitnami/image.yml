@@ -21,6 +21,7 @@ disclaimer: |
 is_locked: "False"
 bitnami_excluded_branches:
   - "3.3"
+use_rapid_stub: true
 input_registry:
   registry: docker.io
   account: bitnami

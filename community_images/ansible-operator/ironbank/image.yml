@@ -13,18 +13,17 @@ usage_instructions: |
   ## Prerequisites:
   - Ensure you have a running Kubernetes cluster
   - Ensure you have the necessary CRDs (Custom Resource Definitions) applied in your Kubernetes cluster.
-  
+
   ## Running the Ansible Operator with Docker:
 
   The Ansible Operator runs as a container and requires access to a Kubernetes cluster to manage custom resources.
   $ docker run -d -v $HOME/.kube:/root/.kube:ro -v /path/to/watches.yml:/opt/ansible/watches.yml:ro rapidfort/ansible-operator-ib
-  
+
   After running the operator, apply the necessary CRDs in your Kubernetes cluster
   $ kubectl apply -f /path/to/crd.yml
 
   Once the CRD is applied, create custom resources for the Ansible Operator to manage
   $ kubectl apply -f /path/to/cr.yml
-
 what_is_text: |
   Ansible-Operator allows you to manage Kubernetes resources by running Ansible playbooks, providing a simplified way to automate Kubernetes operations using Ansible.
 disclaimer: |

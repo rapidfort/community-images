@@ -21,7 +21,7 @@ input_registry:
 is_locked: "False"
 repo_sets:
   - opensource/prometheus/jmx-exporter:
-      input_base_tag: "0.20."
+      input_base_tag: "1.0."
       output_repo: jmx-exporter-ib
 runtimes:
   - type: docker_compose

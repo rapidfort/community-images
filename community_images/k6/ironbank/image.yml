@@ -2,7 +2,7 @@ name: k6-ib
 official_name: k6 Iron Bank
 official_website: https://k6.io/
 source_image_provider: Platform One
-source_image_repo: registry1.dso.mil/ironbank/opensource/k6/k6 
+source_image_repo: registry1.dso.mil/ironbank/opensource/k6/k6
 source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/ironbank%2Fopensource%2Fk6%2Fk6
 source_image_readme: https://repo1.dso.mil/dsop/opensource/k6/k6/-/blob/development/README.md
 rf_docker_link: rapidfort/k6-ib
@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/k6/k6:
-      input_base_tag: "v0.53."
+      input_base_tag: "v0.54."
       output_repo: k6-ib
 runtimes:
   - type: docker_compose

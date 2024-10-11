@@ -19,14 +19,15 @@ what_is_text: |
 disclaimer: |
   Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by RapidFort is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
 is_locked: "False"
+use_rapid_stub: true
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - redis:
-      input_base_tag: "6.2.14-debian-12-r"
+      input_base_tag: "6.2.16-debian-12-r"
   - redis:
-      input_base_tag: "7.4.0-debian-12-r"
+      input_base_tag: "7.4.1-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

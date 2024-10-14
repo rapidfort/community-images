@@ -4,7 +4,7 @@ official_website: https://about.gitlab.com/
 source_image_provider: Platform One
 source_image_repo: registry1.dso.mil/ironbank/gitlab/gitlab/kas
 source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/gitlab%2Fgitlab%2Fkas
-source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab-kas/-/blob/development/README.md
+source_image_readme: https://repo1.dso.mil/dsop/gitlab/gitlab/gitlab-kas/-/blob/development/README.md
 rf_docker_link: rapidfort/gitlab-kas-ib
 image_workflow_name: gitlab-kas_ironbank
 github_location: gitlab-kas/ironbank
@@ -44,4 +44,3 @@ runtimes:
         tag: "gitlab.kas.image.tag"
     override_file: "overrides.yml"
     readiness_wait_pod_name_suffix: []
-

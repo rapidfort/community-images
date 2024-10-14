@@ -1,0 +1,37 @@
+name: registry-v2-ib
+official_name: Docker registry-v2 Iron Bank
+official_website: https://docs.docker.com/registry/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/docker/registry-v2
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fdocker%2Fregistry-v2
+source_image_readme: https://repo1.dso.mil/dsop/opensource/docker/registry-v2/-/blob/development/README.md
+rf_docker_link: rapidfort/registry-v2-ib
+image_workflow_name: registry-v2_ironbank
+github_location: registry-v2/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fdocker%2Fregistry-v2
+usage_instructions: |
+  # Using docker run
+  $ docker run -d -p 5000:5000 rapidfort/registry-v2-ib
+what_is_text: |
+  This image contains an implementation of the Docker Registry HTTP API V2 for use with Docker 1.6+
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/docker/registry-v2:
+      input_base_tag: "2.8."
+      output_repo: registry-v2-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    tls_certs:
+      generate: true
+      out_dir: certs
+    image_keys:
+      registry-v2-ib:
+        repository: "REGISTRY_IMAGE_REPOSITORY"
+        tag: "REGISTRY_IMAGE_TAG"

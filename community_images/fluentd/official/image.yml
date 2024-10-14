@@ -33,6 +33,7 @@ repo_sets:
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
+    before_script: dc_before.sh
     compose_file: docker-compose.yml
     image_keys:
       fluentd-official:

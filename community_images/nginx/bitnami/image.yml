@@ -19,6 +19,7 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"
+use_rapid_stub: true
 input_registry:
   registry: docker.io
   account: bitnami
@@ -26,7 +27,7 @@ repo_sets:
   - nginx:
       input_base_tag: "1.26.2-debian-12-r"
   - nginx:
-      input_base_tag: "1.27.1-debian-12-r"
+      input_base_tag: "1.27.2-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

@@ -19,12 +19,15 @@ what_is_text: |
 disclaimer: |
   Disclaimer: The respective trademarks mentioned in the offering are owned by the respective companies. We do not provide a commercial license for any of these products. This listing has an open-source license. MongoDB(R) is run and maintained by MongoDB, which is a completely separate project from RapidFort.
 is_locked: "False"
+use_rapid_stub: true
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - mongodb:
       input_base_tag: "7.0.14-debian-12-r"
+  - mongodb:
+      input_base_tag: "8.0.1-debian-12-r"
 runtimes:
   - type: k8s
     script: k8s_coverage.sh

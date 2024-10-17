@@ -14,9 +14,105 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Check Pipeline Status
-        run: python3 ./scripts/ib_pipelines_check.py
+        run: |
+          python3 -u ./scripts/ib_pipelines_check.py 2>&1 | tee output.txt
+
+      - name: Extract and Split Summary
+        id: extract_summary
+        shell: bash
+        run: |
+          # Extract the logs starting from Summary of Pipelines
+          summary=$(sed -n '/Summary of Pipelines:/,$p' output.txt)
+    
+          # If summary is empty, use entire output.txt
+          if [ -z "$summary" ]; then
+            echo "Warning: 'Summary of Pipelines:' not found. Using entire output.txt as summary."
+            summary=$(cat output.txt)
+          fi
+    
+          # Remove unwanted lines
+          summary=$(echo "$summary" | grep -v "::set-output name=workflow-status::passed")
+         
+          # Get the workflow conclusion
+          workflow_conclusion="${{ job.status }}"
+          # Determine emoji based on status
+          if [ "$workflow_conclusion" = "success" ]; then
+            status_emoji="✅"
+          elif [ "$workflow_conclusion" = "failure" ]; then
+            status_emoji="❌"
+          else
+            status_emoji="⚠️"
+          fi
+         
+          # Construct the pipeline run URL
+          pipeline_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      
+          # Format the summary as a code block
+          formatted_summary=$(printf '```\n%s\n```' "$summary")
+          
+          # Construct the Message
+          message=$(cat <<EOM
+          Pipeline run: [View Pipeline]($pipeline_url)
+          Status: $status_emoji **$workflow_conclusion**
+
+
+          $formatted_summary
+          EOM
+          )
+
+          # Save the message to summary.txt
+          echo "$message" > summary.txt
+          
+          # Split the message into chunks of up to 9999 characters
+          max_length=9999  # Zulip limit is 10,000 characters
+          total_length=${#message}
+          start=0
+          chunk_index=0
+          mkdir -p chunks
+          while [ $start -lt $total_length ]; do
+            chunk="${message:$start:$max_length}"
+            # Save each chunk to a separate file
+            echo "$chunk" > "chunks/chunk_${chunk_index}.txt"
+            start=$((start + max_length))
+            chunk_index=$((chunk_index + 1))
+          done
+          
+          # Save the number of chunks as an output
+          echo "chunks_count=$chunk_index" >> $GITHUB_OUTPUT
+
+      - name: Send to Zulip
+        shell: bash
+        env:
+          ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
+          ZULIP_BOT_EMAIL: ''
+          ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
+          ZULIP_STREAM_NAME: 'community images'
+          ZULIP_TOPIC_NAME: 'IB Pipeline Tracker 🤖'
+        run: |
+          chunks_count=${{ steps.extract_summary.outputs.chunks_count }}
+          for ((i=0; i<chunks_count; i++)); do
+            chunk_file="chunks/chunk_${i}.txt"
+            if [ -f "$chunk_file" ]; then
+              chunk=$(cat "$chunk_file")
+              # Send the chunk to Zulip
+              response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
+                -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
+                -d type="stream" \
+                -d to="$ZULIP_STREAM_NAME" \
+                -d topic="$ZULIP_TOPIC_NAME" \
+                --data-urlencode content="$chunk")
+              # Check if the curl command was successful
+              if [ $? -ne 0 ]; then
+                echo "Failed to send message to Zulip."
+                echo "Response: $response"
+                exit 1
+              fi
+            else
+              echo "Chunk file $chunk_file does not exist."
+              exit 1
+            fi
+          done

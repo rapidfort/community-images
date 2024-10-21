@@ -230,7 +230,7 @@ class PipelineChecker:
                 "Pipeline Time Created", "Pipeline ID", "Pipeline URL",
                 "rapidfort-scan Status", "Project Name"
             ])
-    # pylint: disable=too-many-arguments
+    # pylint: disable=R0913, R0917
     def write_to_csv(self, pipeline_time_created, pipeline_id, pipeline_web_url,
                      rf_scan_status, project_name):
         """

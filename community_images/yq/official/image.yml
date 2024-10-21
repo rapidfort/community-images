@@ -1,0 +1,33 @@
+name: yq-official
+official_name: YQ Official
+official_website: https://mikefarah.gitbook.io/yq
+source_image_provider: The Docker Community
+source_image_repo: docker.io/mikefarah/yq
+source_image_repo_link: https://hub.docker.com/r/mikefarah/yq
+source_image_readme: https://github.com/mikefarah/yq/blob/master/README.md
+rf_docker_link: rapidfort/yq-official
+image_workflow_name: yq_official
+github_location: yq/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fmikefarah%2Fyq
+usage_instructions: |
+  #Run the yq container:
+  $ docker run -d --name yq-new rapidfort/yq-official (command)
+what_is_text: |
+  YQ is a command line tool to query and manipulate yaml files. It is the yaml equivalent to JQ (same but for json files).
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: mikefarah
+repo_sets:
+  - yq:
+      input_base_tag: "4.44."
+      output_repo: yq-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      yq-official:
+        repository: "YQ_IMAGE_REPOSITORY"
+        tag: "YQ_IMAGE_TAG"

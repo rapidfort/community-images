@@ -1,0 +1,33 @@
+name: shellcheck-official
+official_name: Shellcheck Official
+official_website: https://www.shellcheck.net
+source_image_provider: The Docker Community
+source_image_repo: docker.io/koalaman/shellcheck-alpine
+source_image_repo_link: https://hub.docker.com/r/koalaman/shellcheck-alpine
+source_image_readme: https://github.com/koalaman/shellcheck/blob/master/README.md
+rf_docker_link: rapidfort/shellcheck-official
+image_workflow_name: shellcheck_official
+github_location: shellcheck/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fkoalaman%2Fshellcheck-alpine
+usage_instructions: |
+  #Run the shellcheck container:
+  $ docker run --rm -v "$PWD:/mnt" rapidfort/shellcheck-official myscript
+what_is_text: |
+  ShellCheck is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: koalaman
+repo_sets:
+  - shellcheck-alpine:
+      input_base_tag: "v0.10."
+      output_repo: shellcheck-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      shellcheck-official:
+        repository: "SHELLCHECK_IMAGE_REPOSITORY"
+        tag: "SHELLCHECK_IMAGE_TAG"

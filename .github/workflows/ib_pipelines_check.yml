@@ -2,8 +2,8 @@ name: IB Pipelines Tracker
 
 on:
   schedule:
-  - cron: '0 */3 * * *'
-  
+    - cron: '0 */3 * * *'
+
   workflow_dispatch:
 
 permissions: read-all
@@ -12,6 +12,7 @@ jobs:
   pipeline_check:
     name: Image Pipeline Check
     runs-on: ubuntu-latest
+    environment: actions-cicd
 
     steps:
       - name: Checkout Repository
@@ -29,16 +30,16 @@ jobs:
         run: |
           # Extract the content starting from Summary of Pipelines
           summary=$(sed -n '/Summary of Pipelines:/,$p' output.txt)
-    
+
           # If summary is empty, use entire output.txt
           if [ -z "$summary" ]; then
             echo "Warning: 'Summary of Pipelines:' not found. Using entire output.txt as summary."
             summary=$(cat output.txt)
           fi
-    
+
           # Remove unwanted lines
           summary=$(echo "$summary" | grep -v "::set-output name=workflow-status::passed")
-         
+
           # Get the workflow conclusion
           workflow_conclusion="${{ job.status }}"
           # Determine emoji based on status
@@ -49,13 +50,13 @@ jobs:
           else
             status_emoji="⚠️"
           fi
-         
+
           # Construct the pipeline run URL
           pipeline_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-      
+
           # Format the summary as a code block
           formatted_summary=$(printf '```\n%s\n```' "$summary")
-          
+
           # Create the Message
           message=$(cat <<EOM
           Pipeline run: [View Pipeline]($pipeline_url)
@@ -65,7 +66,7 @@ jobs:
           $formatted_summary
           EOM
           )
-          
+
           # Save the message to summary.txt
           echo "$message" > summary.txt
 

@@ -12,21 +12,37 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 gen_image_readme()
 {
-  while IFS="" read -r p || [ -n "$p" ]
-  do
-    rm -f community_images/"${p}"/image.tmp.yml
+  local config_name=$1
 
+  if [ -n "$config_name" ]; then
+    readme_path="${SCRIPTPATH}"/../community_images/"${config_name}"/README.md
+    echo "Target Image Readme: \"${readme_path}\""
     # this allows us to merge bitnami tags file into image.yml
     python3 "${SCRIPTPATH}"/prepare_image_yml.py \
-      "${SCRIPTPATH}"/../community_images/"${p}"/image.yml \
-      "${SCRIPTPATH}"/../community_images/"${p}"/image.tmp.yml
+      "${SCRIPTPATH}"/../community_images/"${config_name}"/image.yml \
+      "${SCRIPTPATH}"/../community_images/"${config_name}"/image.tmp.yml
 
-    jinja -d community_images/"${p}"/image.tmp.yml \
-      -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
+      jinja -d community_images/"${config_name}"/image.tmp.yml \
+        -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${config_name}"/README.md
 
-    rm -f community_images/"${p}"/image.tmp.yml
+      rm -f community_images/"${p}"/image.tmp.yml
+  else
+    while IFS="" read -r p || [ -n "$p" ]
+    do
+      rm -f community_images/"${p}"/image.tmp.yml
 
-  done < "${SCRIPTPATH}"/../image.lst
+      # this allows us to merge bitnami tags file into image.yml
+      python3 "${SCRIPTPATH}"/prepare_image_yml.py \
+        "${SCRIPTPATH}"/../community_images/"${p}"/image.yml \
+        "${SCRIPTPATH}"/../community_images/"${p}"/image.tmp.yml
+
+      jinja -d community_images/"${p}"/image.tmp.yml \
+        -f yaml "${SCRIPTPATH}"/../community_images/common/templates/image_readme.j2 > "${SCRIPTPATH}"/../community_images/"${p}"/README.md
+
+      rm -f community_images/"${p}"/image.tmp.yml
+
+    done < "${SCRIPTPATH}"/../image.lst
+  fi
 }
 
 gen_main_readme()
@@ -77,8 +93,7 @@ del_image_variants()
   done
 }
 
-main()
-{
+main() {
   python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
   "${SCRIPTPATH}"/prepare_ironbank_tags.sh
   gen_main_readme
@@ -87,4 +102,42 @@ main()
   del_image_variants
 }
 
-main
+# Argument handling
+usage() {
+  echo "Usage: $0 [--main-readme] [--image-readme] [--help]"
+  exit 1
+}
+
+if [ $# -eq 0 ]; then
+  main
+  exit 0
+fi
+
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    --main-readme)
+      gen_main_readme
+      del_image_variants
+      shift
+      ;;
+    --image-readme)
+      if [ -n "$2" ] && [[ $2 != --* ]]; then
+        CONFIG_NAME=$2
+        shift 2
+      else
+        CONFIG_NAME=""  # Set to empty if not provided
+        shift 1
+      fi
+      python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
+      gen_image_readme "$CONFIG_NAME"
+      del_image_variants
+      ;;
+    --help|-h)
+      usage
+      ;;
+    *)
+      echo "Unknown parameter: $1"
+      usage
+      ;;
+  esac
+done

@@ -7,6 +7,7 @@ It also logs the information to a CSV file for further analysis.
 import csv
 from datetime import datetime, timedelta, timezone
 import sys
+import os
 import re
 import requests
 
@@ -311,13 +312,14 @@ class PipelineChecker:
         self.print_summary()
 
         # Check if there are failed pipelines or pipelines with 'not found' rapidfort-scan jobs
-        if self.failed_pipelines or self.not_found_pipelines:
-            print("::set-output name=workflow-status::failed")
+        if self.failed_pipelines or self.not_found_pipelines or self.partial_coverage_pipelines:
+            with open(os.getenv('GITHUB_ENV'), 'a', encoding='utf-8') as env_file:
+                env_file.write("workflow_status=failed\n")
             sys.exit(1)  # Exit with non-zero status
         else:
-            print("::set-output name=workflow-status::passed")
+            with open(os.getenv('GITHUB_ENV'), 'a', encoding='utf-8') as env_file:
+                env_file.write("workflow_status=passed\n")
             sys.exit(0)  # Exit with zero status
-
 
 if __name__ == "__main__":
     checker = PipelineChecker()

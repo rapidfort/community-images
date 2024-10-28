@@ -19,12 +19,13 @@ what_is_text: |
 disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"
+use_rapid_stub: true
 input_registry:
   registry: docker.io
   account: bitnami
 repo_sets:
   - ghost:
-      input_base_tag: "5.97.0-debian-12-r"
+      input_base_tag: "5.97.3-debian-12-r"
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh

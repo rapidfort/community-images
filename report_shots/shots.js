@@ -1,11 +1,11 @@
-const puppeteer = require('puppeteer');
 const util = require('util');
 const fsPromise = require('fs/promises');
 const yaml = require('js-yaml')
 const fs = require('fs');
 const { parseJSON, parseCSVFormatV2, formatBytes } = require('./utils');
 const { convertVulnsData, vulnsColorScheme } = require('./vulnsParser');
-
+const sharp = require('sharp');
+const svgson = require('svgson');
 // Function to save SVG content to file
 function saveSVGToFile(svgContent, imageSavePath) {
   fs.writeFile(imageSavePath, svgContent, 'utf8', (err) => {
@@ -73,15 +73,142 @@ const generateCharts = async (imageName, platform, imageSavePath) => {
     const contextualSeverityChart = await generateContextualSeverityChart(vulnsOriginalSummary)
     const vulnsBySeverityChart = await generateVulnsBySeverityChart(vulnsOriginalSummary.default, vulnsHardenedSummary.default);
 
-    saveSVGToFile(vulnsSavingsChartSVG, util.format('%s/savings_chart_vulns.svg', imageSavePath));
-    saveSVGToFile(packagesSavingsChartSVG, util.format('%s/savings_chart_pkgs.svg', imageSavePath));
-    saveSVGToFile(sizeSavingsChartSVG, util.format('%s/savings_chart_size.svg', imageSavePath));
-    saveSVGToFile(contextualSeverityChart, util.format('%s/contextual_severity_chart.svg', imageSavePath));
-    saveSVGToFile(vulnsBySeverityChart, util.format('%s/vulns_by_severity_histogram.svg', imageSavePath));
+    // save individual charts as svg
+    // saveSVGToFile(vulnsSavingsChartSVG, util.format('%s/savings_chart_vulns.svg', imageSavePath));
+    // saveSVGToFile(packagesSavingsChartSVG, util.format('%s/savings_chart_pkgs.svg', imageSavePath));
+    // saveSVGToFile(sizeSavingsChartSVG, util.format('%s/savings_chart_size.svg', imageSavePath));
+    // saveSVGToFile(contextualSeverityChart, util.format('%s/contextual_severity_chart.svg', imageSavePath));
+    // saveSVGToFile(vulnsBySeverityChart, util.format('%s/vulns_by_severity_histogram.svg', imageSavePath));
+    generateReportViews(vulnsSavingsChartSVG, packagesSavingsChartSVG, sizeSavingsChartSVG, contextualSeverityChart, vulnsBySeverityChart, imageSavePath);
   } catch (error) {
     console.error(error);
   }
 }
+
+// Recursive function to find width and height in nested SVG tags
+const findSVGDimensions = (node) => {
+  if (node.name === 'svg' && node.attributes.width && node.attributes.height) {
+    return {
+      width: parseFloat(node.attributes.width),
+      height: parseFloat(node.attributes.height),
+    };
+  }
+  
+  for (const child of node.children || []) {
+    const dimensions = findSVGDimensions(child);
+    if (dimensions) return dimensions;
+  }
+
+  return null;
+};
+
+const parseSVGDimensions = async (svgContent) => {
+  const svgJSON = await svgson.parse(svgContent);
+  const dimensions = findSVGDimensions(svgJSON);
+  return dimensions || { width: 0, height: 0 };
+};
+
+const generateReportViews = async (
+  vulnsSavingsChartSVG,
+  packagesSavingsChartSVG,
+  sizeSavingsChartSVG,
+  contextualSeverityChartSVG,
+  vulnsBySeverityChartSVG,
+  imageSavePath
+) => {
+  const gap = 16;
+  let padding = 16;
+
+  const svgFiles = [
+    vulnsBySeverityChartSVG,
+    contextualSeverityChartSVG,
+    vulnsSavingsChartSVG,
+    packagesSavingsChartSVG,
+    sizeSavingsChartSVG,
+  ];
+  // Extract and deduplicate style content
+  // Extract and deduplicate @font-face and other style content
+  const uniqueFontFaces = new Set();
+  const otherStyles = new Set();
+
+  svgFiles.forEach((svgContent) => {
+    const styleMatch = svgContent.match(/<style[^>]*>([\s\S]*?)<\/style>/);
+    if (styleMatch) {
+      const styleContent = styleMatch[1];
+      
+      // Match and deduplicate @font-face
+      const fontFaceMatches = styleContent.match(/@font-face\s*{[^}]*}/g) || [];
+      fontFaceMatches.forEach(fontFace => uniqueFontFaces.add(fontFace));
+
+      // Extract remaining styles
+      const nonFontFaceStyles = styleContent.replace(/@font-face\s*{[^}]*}/g, "");
+      if (nonFontFaceStyles.trim()) {
+        otherStyles.add(nonFontFaceStyles.trim());
+      }
+    }
+  });
+
+  // Combine unique font faces and other styles
+  const combinedStyle = `
+    <style>
+      ${[...uniqueFontFaces].join("\n")}
+      ${[...otherStyles].join("\n")}
+    </style>
+  `;
+
+  // Remove individual <style> tags from SVGs
+  const cleanedSVGs = svgFiles.map(svgContent =>
+    svgContent.replace(/<style[^>]*>[\s\S]*?<\/style>/, "")
+  );
+  const dimensions = await Promise.all(svgFiles.map(parseSVGDimensions));
+
+  const severityVulnsDimensions = dimensions[0]
+  const maxHeight = Math.max(...dimensions.map((dim) => dim.height));
+  const totalWidth =
+    padding * 2 +
+    dimensions.reduce((sum, dim) => sum + dim.width, 0) +
+    gap * (svgFiles.length - 1);
+
+  let currentX = padding;
+  const combinedSVGContent = dimensions.map((dim, index) => {
+    const svgContent = cleanedSVGs[index];
+    const content = `
+      <g transform="translate(${currentX}, ${padding})">
+        ${svgContent}
+      </g>`;
+    currentX += (dim.width + gap) ;
+    return content;
+  }).join("\n");
+
+  const combinedSVG = `
+    <svg width="${totalWidth}" height="${maxHeight + padding * 2}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="#F1F1F3"/>
+      ${combinedStyle}
+      ${combinedSVGContent}
+    </svg>
+  `;
+
+  padding = 8;
+  const cveReductionSVG = `
+    <svg width="${severityVulnsDimensions.width + padding * 2}" height="${severityVulnsDimensions.height+ padding * 2}" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="#F1F1F3"/>
+      <g transform="translate(${padding}, ${padding})">
+        ${vulnsBySeverityChartSVG}
+      </g>
+    </svg>
+  `;
+
+  saveSVGToFile(combinedSVG,util.format('%s/metrics.svg', imageSavePath))
+  saveSVGToFile(cveReductionSVG, util.format('%s/cve_reduction.svg', imageSavePath))
+
+  await sharp(Buffer.from(combinedSVG), {density:72})
+    .webp({ lossless: true })
+    .toFile(`${imageSavePath}/metrics.webp`);
+
+  await sharp(Buffer.from(cveReductionSVG), {density:72})
+    .webp({ lossless: true })
+    .toFile(`${imageSavePath}/cve_reduction.webp`);
+};
 
 async function readSVGTemplate (filename) {
   // reading svg template
@@ -343,9 +470,6 @@ async function main() {
   const imgList = await fsPromise.readFile(imgListPath, { encoding: 'utf8' });
   const imgListArray = imgList.split("\n");
 
-  const browser = await puppeteer.launch({headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']});
-
   for await (const imagePath of imgListArray) {
     console.log("image name=", imagePath);
     
@@ -353,10 +477,11 @@ async function main() {
       let imageYmlPath = fs.realpathSync(util.format('../community_images/%s/image.yml', imagePath));
 
       const imageSavePath = fs.realpathSync(util.format('../community_images/%s/assets', imagePath));
-      console.log("image save path=", imageSavePath);
+      console.log("Image save path=", imageSavePath);
       let imageYmlContents = await fsPromise.readFile(imageYmlPath, { encoding: 'utf8' });
       let imageYml = await yaml.load(imageYmlContents);
       let imageName = imageYml.report_url?.replace('https://us01.rapidfort.com/app/community/imageinfo/', '');
+      console.log('Report URL ', imageYml.report_url)
       console.log('Generating charts for ', decodeURIComponent(imageName))
       await generateCharts(imageName, platform, imageSavePath);
     } catch (err) {
@@ -365,7 +490,6 @@ async function main() {
     }
   }
 
-  await browser.close();
 }
 
 main();

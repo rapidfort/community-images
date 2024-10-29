@@ -471,8 +471,7 @@ async function main() {
   const platform = process.argv[3]
 
   const imgList = await fsPromise.readFile(imgListPath, { encoding: 'utf8' });
-  // const imgListArray = imgList.split("\n");
-  const imgListArray = ['apache/bitnami']
+  const imgListArray = imgList.split("\n");
 
   for await (const imagePath of imgListArray) {
     console.log("image name=", imagePath);

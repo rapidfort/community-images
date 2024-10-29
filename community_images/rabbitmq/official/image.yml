@@ -30,6 +30,7 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
+    wait_time_sec: 55
     image_keys:
       rabbitmq-official:
         repository: "RABBITMQ_IMAGE_REPOSITORY"

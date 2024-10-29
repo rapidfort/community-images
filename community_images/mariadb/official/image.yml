@@ -17,38 +17,38 @@ disclaimer: |
   Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 is_locked: "False"
 docker_links:
-  - "[`11.4.1-rc-jammy`, `11.4-rc-jammy`, `11.4.1-rc`, `11.4-rc`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.4/Dockerfile)"
-  - "[`11.3.2-jammy`, `11.3-jammy`, `11-jammy`, `jammy`, `11.3.2`, `11.3`, `11`, `latest`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.3/Dockerfile)"
-  - "[`11.2.3-jammy`, `11.2-jammy`, `11.2.3`, `11.2`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.2/Dockerfile)"
-  - "[`11.1.4-jammy`, `11.1-jammy`, `11.1.4`, `11.1`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.1/Dockerfile)"
-  - "[`11.0.5-jammy`, `11.0-jammy`, `11.0.5`, `11.0`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.0/Dockerfile)"
-  - "[`10.11.7-jammy`, `10.11-jammy`, `10-jammy`, `lts-jammy`, `10.11.7`, `10.11`, `10`, `lts`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/10.11/Dockerfile)"
+  - "[`11.6.1-noble-rc`, `11.6-noble-rc`, `11.6.1-rc`, `11.6-rc`](https://github.com/MariaDB/mariadb-docker/blob/275297af91e85af864e70c70ce2a650ec128db9c/11.6/Dockerfile)"
+  - "[`11.5.2-noble`, `11.5-noble`, `11-noble`, `noble`, `11.5.2`, `11.5`, `11`, `latest`](https://github.com/MariaDB/mariadb-docker/blob/275297af91e85af864e70c70ce2a650ec128db9c/11.5/Dockerfile)"
+  - "[`11.4.3-noble`, `11.4-noble`, `lts-noble`, `11.4.3`, `11.4`, `lts`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/11.4/Dockerfile)"
+  - "[`11.2.5-jammy`, `11.2-jammy`, `11.2.5`, `11.2`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/11.2/Dockerfile)"
+  - "[`11.1.6-jammy`, `11.1-jammy`, `11.1.6`, `11.1`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/11.1/Dockerfile)"
+  - "[`10.11.9-jammy`, `10.11-jammy`, `10-jammy`, `10.11.9`, `10.11`, `10`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/10.11/Dockerfile)"
 input_registry:
   registry: docker.io
   account: library
 repo_sets:
   - mariadb:
-      input_base_tag: "10.11.*"
+      input_base_tag: "10.11.*-jammy"
       output_repo: mariadb-official
   - mariadb:
-      input_base_tag: "11.0.*"
+      input_base_tag: "11.1.*-jammy"
       output_repo: mariadb-official
   - mariadb:
-      input_base_tag: "11.1.*"
+      input_base_tag: "11.2.*-jammy"
       output_repo: mariadb-official
   - mariadb:
-      input_base_tag: "11.2.*"
+      input_base_tag: "11.4.*-noble"
       output_repo: mariadb-official
   - mariadb:
-      input_base_tag: "11.3.*"
+      input_base_tag: "11.5.*-noble"
       output_repo: mariadb-official
   - mariadb:
-      input_base_tag: "11.4.*"
+      input_base_tag: "11.6.*-noble-rc"
       output_repo: mariadb-official
 runtimes:
   - type: docker
     script: docker_coverage.sh
-    wait_time_sec: 60
+    wait_time_sec: 10
     mariadb-official:
       exec_command: --default-authentication-plugin=mysql_native_password
       environment:

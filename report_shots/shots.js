@@ -192,9 +192,10 @@ const generateReportViews = async (
   padding = 8;
   const cveReductionSVG = `
     <svg width="${severityVulnsDimensions.width + padding * 2}" height="${severityVulnsDimensions.height+ padding * 2}" xmlns="http://www.w3.org/2000/svg">
+      ${combinedStyle}
       <rect width="100%" height="100%" fill="#F1F1F3"/>
       <g transform="translate(${padding}, ${padding})">
-        ${vulnsBySeverityChartSVG}
+        ${cleanedSVGs[0]}
       </g>
     </svg>
   `;

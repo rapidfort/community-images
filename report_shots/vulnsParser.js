@@ -1,6 +1,26 @@
 const { parse : parseCVSS } = require('./cvss-parser/cvss');
 
 
+
+const vulnsColorScheme = {
+  exploited:'#C62A2F',
+  critical:'#DF1C41',
+  high:'#6E3FF3',
+  medium:'#F2AE40',
+  low:'#35B9E9',
+  unknown:'#8b8d98',
+  poc:'#C62A2F',
+  na:'#32D583',
+}
+const SEVERITY = {
+  CRITICAL: 'critical',
+  HIGH: 'high',
+  MEDIUM: 'medium',
+  LOW: 'low',
+  UNKNOWN: 'unknown'
+}
+
+
 const SEVERITY_DETAIL = {
   [SEVERITY.CRITICAL]: {
     id: SEVERITY.CRITICAL,
@@ -32,24 +52,6 @@ const SEVERITY_DETAIL = {
     label: 'Unknown',
     color: vulnsColorScheme.unknown
   },
-}
-
-const vulnsColorScheme = {
-  exploited:'#C62A2F',
-  critical:'#DF1C41',
-  high:'#6E3FF3',
-  medium:'#F2AE40',
-  low:'#35B9E9',
-  unknown:'#8b8d98',
-  poc:'#C62A2F',
-  na:'#32D583',
-}
-const SEVERITY = {
-  CRITICAL: 'critical',
-  HIGH: 'high',
-  MEDIUM: 'medium',
-  LOW: 'low',
-  UNKNOWN: 'unknown'
 }
 
 const applyVectorModifiers = (vector, version, pocAvailable, execPath) => {

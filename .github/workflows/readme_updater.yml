@@ -30,7 +30,7 @@ jobs:
         if: always()
         run: |
           pip install --upgrade pip
-          pip install requests
+          pip install requests ruamel
           ./scripts/image_generator.sh
 
       - name: Push changes

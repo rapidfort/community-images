@@ -49,7 +49,6 @@ runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
-    wait_time_sec: 30
     image_keys:
       postgresql:
         repository: "PG_IMAGE_REPOSITORY"

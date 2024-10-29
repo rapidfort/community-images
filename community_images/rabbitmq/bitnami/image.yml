@@ -38,10 +38,4 @@ runtimes:
         repository: "image.repository"
         tag: "image.tag"
     override_file: "overrides.yml"
-  - type: docker_compose
-    script: dc_coverage.sh
-    compose_file: docker-compose.yml
-    image_keys:
-      rabbitmq:
-        repository: "RABBITMQ_IMAGE_REPOSITORY"
-        tag: "RABBITMQ_IMAGE_TAG"
+

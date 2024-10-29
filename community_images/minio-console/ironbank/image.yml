@@ -20,12 +20,12 @@ input_registry:
 repo_sets:
   - opensource/minio/console:
       input_base_tag: "v1.7."
-      output_repo: console-ib
+      output_repo: minio-console-ib
 runtimes:
   - type: docker_compose
     script: dc_coverage.sh
     compose_file: docker-compose.yml
     image_keys:
-      console-ib:
+      minio-console-ib:
         repository: "CONSOLE_IMAGE_REPOSITORY"
         tag: "CONSOLE_IMAGE_TAG"

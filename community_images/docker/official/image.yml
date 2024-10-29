@@ -1,0 +1,33 @@
+name: docker
+official_name: Docker
+official_website: https://docker.com
+source_image_provider: The Docker Community
+source_image_repo: docker.io/library/docker
+source_image_repo_link: https://hub.docker.com/_/docker
+source_image_readme: https://github.com/docker-library/docker/blob/master/README.md
+rf_docker_link: rapidfort/docker
+image_workflow_name: docker_official
+github_location: docker/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fdocker
+usage_instructions: |
+  $ docker run -d --name my-docker rapidfort/docker:tag
+what_is_text: |
+  Docker is an open-source project that automates the deployment of applications inside software containers, by providing an additional layer of abstraction and automation of operating-system-level virtualization on Linux, Mac OS and Windows.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: library
+is_locked: "False"
+repo_sets:
+  - docker:
+      input_base_tag: "27.3.*-cli-alpine3.*"
+      output_repo: docker
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      docker:
+        repository: "DOCKER_IMAGE_REPOSITORY"
+        tag: "DOCKER_IMAGE_TAG"

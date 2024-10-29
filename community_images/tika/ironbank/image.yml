@@ -28,8 +28,7 @@ repo_sets:
 runtimes:
   - type: docker
     script: docker_coverage.sh
-    wait_time_sec: 60
     tika-ib:
-      ports: ["9998:9998"]
+      ports: ["::9998"]
       volumes:
         configs: /opt/tika/configs

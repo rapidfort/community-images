@@ -160,6 +160,7 @@ const generateReportViews = async (
   const cleanedSVGs = svgFiles.map(svgContent =>
     svgContent.replace(/<style[^>]*>[\s\S]*?<\/style>/, "")
   );
+  
   const dimensions = await Promise.all(svgFiles.map(parseSVGDimensions));
 
   const severityVulnsDimensions = dimensions[0]
@@ -209,6 +210,7 @@ const generateReportViews = async (
     .webp({ lossless: true })
     .toFile(`${imageSavePath}/cve_reduction.webp`);
 };
+
 
 async function readSVGTemplate (filename) {
   // reading svg template

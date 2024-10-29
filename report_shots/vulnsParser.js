@@ -1,54 +1,6 @@
 const { parse : parseCVSS } = require('./cvss-parser/cvss');
 
 
-
-const applyVectorModifiers = (vector, version, pocAvailable, execPath) => {
-  // Parse the vector string into an object
-  const vectorParams = vector.split('/').reduce((acc, param) => {
-    const [key, value] = param.split(':');
-    acc[key] = value;
-    return acc;
-  }, {});
-
-  // Update the Exploit Code Maturity if pocAvailable is true
-  if (!pocAvailable) {
-    vectorParams.E = 'U';
-    vectorParams.RL = version === 'V2' ? 'ND' : 'X';
-    vectorParams.RC = version === 'V2' ? 'ND' : 'X';
-  }
-
-  // Update the Attack Complexity and User Interaction if execPath is true
-  if (!execPath && version === 'V3') {
-    vectorParams.MAC = 'H';
-    vectorParams.MUI = 'R';
-  }
-
-  // Construct the updated vector string
-  const updatedVector = Object.entries(vectorParams)
-    .map(([key, value]) => `${key}:${value}`)
-    .join('/');
-
-  return updatedVector;
-};
-
-const vulnsColorScheme = {
-  exploited:'#C62A2F',
-  critical:'#DF1C41',
-  high:'#6E3FF3',
-  medium:'#F2AE40',
-  low:'#35B9E9',
-  unknown:'#8b8d98',
-  poc:'#C62A2F',
-  na:'#32D583',
-}
-const SEVERITY = {
-  CRITICAL: 'critical',
-  HIGH: 'high',
-  MEDIUM: 'medium',
-  LOW: 'low',
-  UNKNOWN: 'unknown'
-}
-
 const SEVERITY_DETAIL = {
   [SEVERITY.CRITICAL]: {
     id: SEVERITY.CRITICAL,
@@ -81,6 +33,54 @@ const SEVERITY_DETAIL = {
     color: vulnsColorScheme.unknown
   },
 }
+
+const vulnsColorScheme = {
+  exploited:'#C62A2F',
+  critical:'#DF1C41',
+  high:'#6E3FF3',
+  medium:'#F2AE40',
+  low:'#35B9E9',
+  unknown:'#8b8d98',
+  poc:'#C62A2F',
+  na:'#32D583',
+}
+const SEVERITY = {
+  CRITICAL: 'critical',
+  HIGH: 'high',
+  MEDIUM: 'medium',
+  LOW: 'low',
+  UNKNOWN: 'unknown'
+}
+
+const applyVectorModifiers = (vector, version, pocAvailable, execPath) => {
+  // Parse the vector string into an object
+  const vectorParams = vector.split('/').reduce((acc, param) => {
+    const [key, value] = param.split(':');
+    acc[key] = value;
+    return acc;
+  }, {});
+
+  // Update the Exploit Code Maturity if pocAvailable is true
+  if (!pocAvailable) {
+    vectorParams.E = 'U';
+    vectorParams.RL = version === 'V2' ? 'ND' : 'X';
+    vectorParams.RC = version === 'V2' ? 'ND' : 'X';
+  }
+
+  // Update the Attack Complexity and User Interaction if execPath is true
+  if (!execPath && version === 'V3') {
+    vectorParams.MAC = 'H';
+    vectorParams.MUI = 'R';
+  }
+
+  // Construct the updated vector string
+  const updatedVector = Object.entries(vectorParams)
+    .map(([key, value]) => `${key}:${value}`)
+    .join('/');
+
+  return updatedVector;
+};
+
 
 function getSeverity(version, score) {
   const ratings = {
@@ -115,7 +115,6 @@ const applyContextualCVSS = (item, type, imageHardened)=> {
   let score = item[type].SeverityScore;
   let severity = item[type].Severity;
   if (vector !== '-') {
-    // execPath = if image is not hardened then false, if hardened than based on image
     vector = applyVectorModifiers(vector, version, item.RRS === 1, !imageHardened || item.hardened)
     let parsedData = parseCVSS(vector, version);
     score = parsedData;
@@ -200,7 +199,6 @@ const convertVulnsData = (data, imageHardened, isHardened, flags) => {
   const seenVulns = new Map();
   const seenNotApplicableVulns = new Map();
   const hardenedVulnsFlags = {}
-  // if its app then dont group vulns
   let appKeyIndex = 0;
   data?.forEach?.((cur, index) => {
     cur?.Vulnerabilities?.forEach?.((item)=> {
@@ -209,14 +207,10 @@ const convertVulnsData = (data, imageHardened, isHardened, flags) => {
         appKey = cur.Type;
       }
       if (isHardened) {
-        item.marker = 'error'
         item.hardened = true;
-        item.inUse = true;
         hardenedVulnsFlags[`i:${item.VulnerabilityID}|v${item.InstalledVersion}|p${item.PkgName}`] = true
       } else {
         item.hardened = flags[`i:${item.VulnerabilityID}|v${item.InstalledVersion}|p${item.PkgName}`]
-        item.inUse = flags[`i:${item.VulnerabilityID}|v${item.InstalledVersion}|p${item.PkgName}`];
-        item.marker = item.hardened ? 'error' : 'success'
       }
       item.applicable = item.RFJustification?.status === 'na' ? false : true;
       item.Severity = (item.Severity) ? item.Severity : 'UNKNOWN'
@@ -235,7 +229,8 @@ const convertVulnsData = (data, imageHardened, isHardened, flags) => {
           seenNotApplicableVulns.set(key, item);
         }
       }
-      const advisories = ['nvd', 'default', 'rfcvss_default', 'rfcvss_nvd'];
+      const advisories = ['default', 'rfcvss_default'];
+      // const advisories = ['default', 'rfcvss_default', 'nvd', 'rfcvss_nvd'];
       advisories.forEach(advisory => {
         const severitykey = item[advisory]?.Severity.toLowerCase() ?? 'unknown'
         if (item.applicable) {

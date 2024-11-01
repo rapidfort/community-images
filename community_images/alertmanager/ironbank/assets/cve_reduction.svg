@@ -50,12 +50,12 @@
 <text id="Unknown" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="322" y="109.5">Unknown</tspan></text>
 <text id="N/A" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="393" y="109.5">N/A</tspan></text>
 
-<text class="value" id="original_poc" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="56.5" y="64">10</tspan></text>
-<text class="value" id="original_critical" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="122.523" y="76">2</tspan></text>
+<text class="value" id="original_poc" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="56.5" y="65">10</tspan></text>
+<text class="value" id="original_critical" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="122.523" y="77">2</tspan></text>
 <text class="value" id="original_high" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="178" y="79">0</tspan></text>
-<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="57">15</tspan></text>
-<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="43">24</tspan></text>
-<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="46">22</tspan></text>
+<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="56">16</tspan></text>
+<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="43">25</tspan></text>
+<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="48">22</tspan></text>
 <text class="value" id="original_na" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="402.5" y="69">7</tspan></text>
 
 <path id="horizintal_divider" text-anchor="middle" d="M28 92.5L431 92.5" stroke="#CCCCCC"></path>
@@ -79,23 +79,23 @@
     Z
   " fill="#32D58333" mask="url(#mask_na)"></path>
 <path id="column_original_poc" d="
-    M47.5,70 
+    M47.5,71 
     H65.5 
-    C70.5,70 70.5,70 70.5,75 
+    C70.5,71 70.5,71 70.5,76 
     V85 
     H42.5 
-    V75 
-    C42.5,70 42.5,70 47.5,70
+    V76 
+    C42.5,71 42.5,71 47.5,71
     Z
   " fill="#C62A2F33" mask="url(#mask_poc)"></path>
 <path id="column_original_critical" d="
-    M111.523,82 
-    H133.523 
-    C136.523,82 136.523,82 136.523,85 
+    M110.523,83 
+    H134.523 
+    C136.523,83 136.523,83 136.523,85 
     V85 
     H108.523 
     V85 
-    C108.523,82 108.523,82 111.523,82
+    C108.523,83 108.523,83 110.523,83
     Z
   " fill="#DF1C4133" mask="url(#mask_critical)"></path>
 <path id="column_original_high" d="
@@ -109,13 +109,13 @@
     Z
   " fill="#6E3FF333" mask="url(#mask_high)"></path>
 <path id="column_original_medium" d="
-    M226,63 
+    M226,62 
     H244 
-    C249,63 249,63 249,68 
+    C249,62 249,62 249,67 
     V85 
     H221 
-    V68 
-    C221,63 221,63 226,63
+    V67 
+    C221,62 221,62 226,62
     Z
   " fill="#F2AE4033" mask="url(#mask_medium)"></path>
 <path id="column_original_low" d="
@@ -129,13 +129,13 @@
     Z
   " fill="#35B9E933" mask="url(#mask_low)"></path>
 <path id="column_original_unknown" d="
-    M337.372,52 
+    M337.372,54 
     H355.372 
-    C360.372,52 360.372,52 360.372,57 
+    C360.372,54 360.372,54 360.372,59 
     V85 
     H332.372 
-    V57 
-    C332.372,52 332.372,52 337.372,52
+    V59 
+    C332.372,54 332.372,54 337.372,54
     Z
   " fill="#8b8d9833" mask="url(#mask_unknown)"></path>
 
@@ -150,13 +150,13 @@
     Z
   " fill="#32D583ff" mask="url(#mask_na)"></path>
 <path id="column_hardened_poc" d="
-    M45.5,82 
-    H67.5 
-    C70.5,82 70.5,82 70.5,85 
+    M44.5,83 
+    H68.5 
+    C70.5,83 70.5,83 70.5,85 
     V85 
     H42.5 
     V85 
-    C42.5,82 42.5,82 45.5,82
+    C42.5,83 42.5,83 44.5,83
     Z
   " fill="#C62A2Fff" mask="url(#mask_poc)"></path>
 <path id="column_hardened_critical" d="
@@ -180,13 +180,13 @@
     Z
   " fill="#6E3FF3ff" mask="url(#mask_high)"></path>
 <path id="column_hardened_medium" d="
-    M226,79 
+    M226,80 
     H244 
-    C249,79 249,79 249,84 
+    C249,80 249,80 249,85 
     V85 
     H221 
-    V84 
-    C221,79 221,79 226,79
+    V85 
+    C221,80 221,80 226,80
     Z
   " fill="#F2AE40ff" mask="url(#mask_medium)"></path>
 <path id="column_hardened_low" d="
@@ -200,13 +200,13 @@
     Z
   " fill="#35B9E9ff" mask="url(#mask_low)"></path>
 <path id="column_hardened_unknown" d="
-    M337.372,69 
+    M337.372,70 
     H355.372 
-    C360.372,69 360.372,69 360.372,74 
+    C360.372,70 360.372,70 360.372,75 
     V85 
     H332.372 
-    V74 
-    C332.372,69 332.372,69 337.372,69
+    V75 
+    C332.372,70 332.372,70 337.372,70
     Z
   " fill="#8b8d98ff" mask="url(#mask_unknown)"></path>
 
@@ -216,7 +216,7 @@
 <clipPath id="clip0_1_2">
 <rect width="463" height="138" fill="white"></rect>
 </clipPath>
-<mask id="mask_poc"><rect width="28" height="15" x="42.5" y="70" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="3" x="108.523" y="82" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="0" x="164" y="85" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="22" x="221" y="63" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="36" x="275.5" y="49" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="33" x="332.372" y="52" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="10" x="388.5" y="75" rx="5" ry="5" fill="white"></rect></mask></defs>
+<mask id="mask_poc"><rect width="28" height="14" x="42.5" y="71" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="2" x="108.523" y="83" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="0" x="164" y="85" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="23" x="221" y="62" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="36" x="275.5" y="49" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="31" x="332.372" y="54" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="10" x="388.5" y="75" rx="5" ry="5" fill="white"></rect></mask></defs>
 </svg></svg>
       </g>
     </svg>

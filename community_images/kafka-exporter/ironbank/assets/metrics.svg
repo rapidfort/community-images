@@ -51,12 +51,12 @@
 <text id="Unknown" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="322" y="109.5">Unknown</tspan></text>
 <text id="N/A" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="393" y="109.5">N/A</tspan></text>
 
-<text class="value" id="original_poc" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="56.5" y="61">12</tspan></text>
+<text class="value" id="original_poc" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="56.5" y="62">12</tspan></text>
 <text class="value" id="original_critical" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="122.523" y="78">1</tspan></text>
-<text class="value" id="original_high" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="178" y="76">2</tspan></text>
-<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="60">13</tspan></text>
-<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="43">24</tspan></text>
-<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="73">4</tspan></text>
+<text class="value" id="original_high" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="178" y="77">2</tspan></text>
+<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="59">14</tspan></text>
+<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="43">25</tspan></text>
+<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="74">4</tspan></text>
 <text class="value" id="original_na" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="402.5" y="69">7</tspan></text>
 
 <path id="horizintal_divider" text-anchor="middle" d="M28 92.5L431 92.5" stroke="#CCCCCC"></path>
@@ -80,13 +80,13 @@
     Z
   " fill="#32D58333" mask="url(#mask_na)"></path>
 <path id="column_original_poc" d="
-    M47.5,67 
+    M47.5,68 
     H65.5 
-    C70.5,67 70.5,67 70.5,72 
+    C70.5,68 70.5,68 70.5,73 
     V85 
     H42.5 
-    V72 
-    C42.5,67 42.5,67 47.5,67
+    V73 
+    C42.5,68 42.5,68 47.5,68
     Z
   " fill="#C62A2F33" mask="url(#mask_poc)"></path>
 <path id="column_original_critical" d="
@@ -100,23 +100,23 @@
     Z
   " fill="#DF1C4133" mask="url(#mask_critical)"></path>
 <path id="column_original_high" d="
-    M167,82 
-    H189 
-    C192,82 192,82 192,85 
+    M166,83 
+    H190 
+    C192,83 192,83 192,85 
     V85 
     H164 
     V85 
-    C164,82 164,82 167,82
+    C164,83 164,83 166,83
     Z
   " fill="#6E3FF333" mask="url(#mask_high)"></path>
 <path id="column_original_medium" d="
-    M226,66 
+    M226,65 
     H244 
-    C249,66 249,66 249,71 
+    C249,65 249,65 249,70 
     V85 
     H221 
-    V71 
-    C221,66 221,66 226,66
+    V70 
+    C221,65 221,65 226,65
     Z
   " fill="#F2AE4033" mask="url(#mask_medium)"></path>
 <path id="column_original_low" d="
@@ -130,13 +130,13 @@
     Z
   " fill="#35B9E933" mask="url(#mask_low)"></path>
 <path id="column_original_unknown" d="
-    M337.372,79 
+    M337.372,80 
     H355.372 
-    C360.372,79 360.372,79 360.372,84 
+    C360.372,80 360.372,80 360.372,85 
     V85 
     H332.372 
-    V84 
-    C332.372,79 332.372,79 337.372,79
+    V85 
+    C332.372,80 332.372,80 337.372,80
     Z
   " fill="#8b8d9833" mask="url(#mask_unknown)"></path>
 
@@ -171,13 +171,13 @@
     Z
   " fill="#DF1C41ff" mask="url(#mask_critical)"></path>
 <path id="column_hardened_high" d="
-    M167,82 
-    H189 
-    C192,82 192,82 192,85 
+    M166,83 
+    H190 
+    C192,83 192,83 192,85 
     V85 
     H164 
     V85 
-    C164,82 164,82 167,82
+    C164,83 164,83 166,83
     Z
   " fill="#6E3FF3ff" mask="url(#mask_high)"></path>
 <path id="column_hardened_medium" d="
@@ -191,23 +191,23 @@
     Z
   " fill="#F2AE40ff" mask="url(#mask_medium)"></path>
 <path id="column_hardened_low" d="
-    M280.5,67 
+    M280.5,68 
     H298.5 
-    C303.5,67 303.5,67 303.5,72 
+    C303.5,68 303.5,68 303.5,73 
     V85 
     H275.5 
-    V72 
-    C275.5,67 275.5,67 280.5,67
+    V73 
+    C275.5,68 275.5,68 280.5,68
     Z
   " fill="#35B9E9ff" mask="url(#mask_low)"></path>
 <path id="column_hardened_unknown" d="
-    M337.372,79 
+    M337.372,80 
     H355.372 
-    C360.372,79 360.372,79 360.372,84 
+    C360.372,80 360.372,80 360.372,85 
     V85 
     H332.372 
-    V84 
-    C332.372,79 332.372,79 337.372,79
+    V85 
+    C332.372,80 332.372,80 337.372,80
     Z
   " fill="#8b8d98ff" mask="url(#mask_unknown)"></path>
 
@@ -217,7 +217,7 @@
 <clipPath id="clip0_1_2">
 <rect width="463" height="138" fill="white"></rect>
 </clipPath>
-<mask id="mask_poc"><rect width="28" height="18" x="42.5" y="67" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="1" x="108.523" y="84" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="3" x="164" y="82" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="19" x="221" y="66" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="36" x="275.5" y="49" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="6" x="332.372" y="79" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="10" x="388.5" y="75" rx="5" ry="5" fill="white"></rect></mask></defs>
+<mask id="mask_poc"><rect width="28" height="17" x="42.5" y="68" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="1" x="108.523" y="84" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="2" x="164" y="83" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="20" x="221" y="65" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="36" x="275.5" y="49" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="5" x="332.372" y="80" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="10" x="388.5" y="75" rx="5" ry="5" fill="white"></rect></mask></defs>
 </svg></svg>
       </g>
 
@@ -228,7 +228,7 @@
 <rect id="bg" x="0.5" y="0.5" width="379" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"></rect>
 <rect id="horizontal_divider" x="55.3753" y="101" width="300" height="1" fill="#D9D9D9"></rect>
 <rect id="vertical_divider" x="55.3753" y="51" width="1" height="50" fill="#D9D9D9"></rect>
-<text id="grid_value_1" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" y="61"><tspan x="45" y="71.7557">20</tspan></text>
+<text id="grid_value_1" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" y="62.53846153846153"><tspan x="45" y="71.7557">20</tspan></text>
 <text id="grid_value_2" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" display="none"><tspan x="45" y="58.7557">40</tspan></text>
 <text id="grid_zero" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="45" y="104.447">0</tspan></text>
 <g id="low">
@@ -244,82 +244,82 @@
     Z
   " fill="#A8DAF1"></path>
 <path id="column_low_original" d="
-    M291.886,53 
+    M291.886,52.92307692307692 
     H309.886 
-    C314.886,53 314.886,53 314.886,58 
+    C314.886,52.92307692307692 314.886,52.92307692307692 314.886,57.92307692307692 
     V101 
     H286.886 
-    V58 
-    C286.886,53 286.886,53 291.886,53
+    V57.92307692307692 
+    C286.886,52.92307692307692 286.886,52.92307692307692 291.886,52.92307692307692
     Z
   " fill="#5EB7E4"></path>
 </g>
 <g id="medium">
 <text id="label_medium" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="221.43" y="122.743">Medium</tspan></text>
 <path id="column_medium_contextual" d="
-    M248.221,75 
+    M248.221,74.07692307692308 
     H266.221 
-    C271.221,75 271.221,75 271.221,80 
+    C271.221,74.07692307692308 271.221,74.07692307692308 271.221,79.07692307692308 
     V101 
     H243.221 
-    V80 
-    C243.221,75 243.221,75 248.221,75
+    V79.07692307692308 
+    C243.221,74.07692307692308 243.221,74.07692307692308 248.221,74.07692307692308
     Z
   " fill="#F4D8A7"></path>
 <path id="column_medium_original" d="
-    M217.886,75 
+    M217.886,74.07692307692308 
     H235.886 
-    C240.886,75 240.886,75 240.886,80 
+    C240.886,74.07692307692308 240.886,74.07692307692308 240.886,79.07692307692308 
     V101 
     H212.886 
-    V80 
-    C212.886,75 212.886,75 217.886,75
+    V79.07692307692308 
+    C212.886,74.07692307692308 212.886,74.07692307692308 217.886,74.07692307692308
     Z
   " fill="#E8B056"></path>
 </g>
 <g id="high">
 <text id="label_high" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="156.244" y="122.743">High</tspan></text>
 <path id="column_high_contextual" d="
-    M171.221,99 
-    H195.221 
-    C197.221,99 197.221,99 197.221,101 
+    M171.14407692307694,99.07692307692308 
+    H195.29792307692307 
+    C197.221,99.07692307692308 197.221,99.07692307692308 197.221,101 
     V101 
     H169.221 
     V101 
-    C169.221,99 169.221,99 171.221,99
+    C169.221,99.07692307692308 169.221,99.07692307692308 171.14407692307694,99.07692307692308
     Z
   " fill="#B3A1F3"></path>
 <path id="column_high_original" d="
-    M142.886,97 
-    H162.886 
-    C166.886,97 166.886,97 166.886,101 
+    M142.73215384615384,97.15384615384616 
+    H163.03984615384616 
+    C166.886,97.15384615384616 166.886,97.15384615384616 166.886,101 
     V101 
     H138.886 
     V101 
-    C138.886,97 138.886,97 142.886,97
+    C138.886,97.15384615384616 138.886,97.15384615384616 142.73215384615384,97.15384615384616
     Z
   " fill="#6647EA"></path>
 </g>
 <g id="critical">
 <text id="label_critical" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="76.0884" y="122.743">Critical</tspan></text>
 <path id="column_critical_contextual" d="
-    M97.2213,99 
-    H121.2213 
-    C123.2213,99 123.2213,99 123.2213,101 
+    M97.14437692307692,99.07692307692308 
+    H121.29822307692308 
+    C123.2213,99.07692307692308 123.2213,99.07692307692308 123.2213,101 
     V101 
     H95.2213 
     V101 
-    C95.2213,99 95.2213,99 97.2213,99
+    C95.2213,99.07692307692308 95.2213,99.07692307692308 97.14437692307692,99.07692307692308
     Z
   " fill="#E293A0"></path>
 <path id="column_critical_original" d="
-    M66.8859,99 
-    H90.8859 
-    C92.8859,99 92.8859,99 92.8859,101 
+    M66.80897692307693,99.07692307692308 
+    H90.96282307692309 
+    C92.8859,99.07692307692308 92.8859,99.07692307692308 92.8859,101 
     V101 
     H64.8859 
     V101 
-    C64.8859,99 64.8859,99 66.8859,99
+    C64.8859,99.07692307692308 64.8859,99.07692307692308 66.80897692307693,99.07692307692308
     Z
   " fill="#CD3546"></path>
 </g>
@@ -335,20 +335,20 @@
 <rect id="bg" x="1.19806" y="0.755676" width="339" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"></rect>
 <path id="horizintal_divider" d="M0.698059 41.5643H175.457" stroke="url(#paint0_linear_18_24)"></path>
 <text id="original_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="76.6193">Original image</tspan></text>
-<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">44</tspan></text>
+<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">46</tspan></text>
 <text id="hardened_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="108.619">Hardened image</tspan></text>
 <text id="hardened_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="108.619">26</tspan></text>
 <g id="reduction" transform="translate(273.361328125, 89)">
-  <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">18</tspan></text>
+  <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">20</tspan></text>
   <g id="arrows-down" transform="translate(6, -9.5)">
     <path d="M3.67014 4.70563L0.138794 0.805786H7.14007L3.67014 4.70563Z" fill="#4F986B"></path>
     <path d="M3.67014 9.70563L0.138794 5.80579H7.14007L3.67014 9.70563Z" fill="#4F986B"></path>
   </g>
 </g>
 <text id="title" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="25.1297" y="27.3466">Vulnerabilities</tspan></text>
-<text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">41%</tspan></text>
+<text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">43%</tspan></text>
 <circle id="progress_bg" cx="272.425" cy="69.988" r="42.8825" stroke="#E9EAEC" stroke-width="6"></circle>
-<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="159.21377368893963"></circle>
+<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="152.29143570246396"></circle>
 </g>
 <defs>
 <linearGradient id="paint0_linear_18_24" x1="0.698059" y1="42.0643" x2="175.457" y2="42.0643" gradientUnits="userSpaceOnUse">

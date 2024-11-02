@@ -47,8 +47,3 @@ runtimes:
       mongodb:
         repository: "MONGODB_IMAGE_REPOSITORY"
         tag: "MONGODB_IMAGE_TAG"
-  - type: docker
-    script: docker_coverage.sh
-    mongodb:
-      environment:
-        MONGODB_ROOT_PASSWORD: password123

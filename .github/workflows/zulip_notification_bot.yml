@@ -391,29 +391,30 @@ jobs:
 
         # Save message to summary.txt
         echo -e "$message" > summary.txt
+        cat summary.txt
 
-    - name: Send to Zulip
-      if: ${{ always() }}
-      shell: bash
-      env:
-        ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
-        ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
-        ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
-        ZULIP_STREAM_NAME: 'community images'
-        ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
-      run: |
-        message=$(cat summary.txt)
-        # Send the message to Zulip
-        response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
-          -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
-          -d type="stream" \
-          -d to="$ZULIP_STREAM_NAME" \
-          -d topic="$ZULIP_TOPIC_NAME" \
-          --data-urlencode content="$message")
+    # - name: Send to Zulip
+    #   if: ${{ always() }}
+    #   shell: bash
+    #   env:
+    #     ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
+    #     ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
+    #     ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
+    #     ZULIP_STREAM_NAME: 'community images'
+    #     ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
+    #   run: |
+    #     message=$(cat summary.txt)
+    #     # Send the message to Zulip
+    #     response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
+    #       -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
+    #       -d type="stream" \
+    #       -d to="$ZULIP_STREAM_NAME" \
+    #       -d topic="$ZULIP_TOPIC_NAME" \
+    #       --data-urlencode content="$message")
 
-        # Check if the curl command was successful
-        if [ $? -ne 0 ]; then
-          echo "Failed to send message to Zulip."
-          echo "Response: $response"
-          exit 1
-        fi
+    #     # Check if the curl command was successful
+    #     if [ $? -ne 0 ]; then
+    #       echo "Failed to send message to Zulip."
+    #       echo "Response: $response"
+    #       exit 1
+    #     fi

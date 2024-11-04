@@ -9,156 +9,156 @@ on:
 permissions: read-all
 
 jobs:
-  # ib_pipelines_tracker_alerts:
-  #   name: IB Pipelines Tracker Alerts
-  #   runs-on: ubuntu-latest
-  #   environment: actions-cicd
+  ib_pipelines_tracker_alerts:
+    name: IB Pipelines Tracker Alerts
+    runs-on: ubuntu-latest
+    environment: actions-cicd
 
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-  #     - name: Get Latest Completed Run ID
-  #       id: get_run_id
-  #       uses: actions/github-script@v7
-  #       with:
-  #         github-token: ${{ secrets.GITHUB_TOKEN }}
-  #         script: |
-  #           const workflow_id = 'ib_pipelines_check.yml';
-  #           const { data } = await github.rest.actions.listWorkflowRuns({
-  #             owner: context.repo.owner,
-  #             repo: context.repo.repo,
-  #             workflow_id,
-  #             status: 'completed',
-  #             per_page: 1
-  #           });
-  #           if (data.workflow_runs.length === 0) {
-  #             core.setFailed('No completed workflow runs found.');
-  #           } else {
-  #             const run = data.workflow_runs[0];
-  #             core.setOutput('run_id', run.id);
-  #             core.setOutput('conclusion', run.conclusion || 'unknown');
-  #           }
+      - name: Get Latest Completed Run ID
+        id: get_run_id
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const workflow_id = 'ib_pipelines_check.yml';
+            const { data } = await github.rest.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id,
+              status: 'completed',
+              per_page: 1
+            });
+            if (data.workflow_runs.length === 0) {
+              core.setFailed('No completed workflow runs found.');
+            } else {
+              const run = data.workflow_runs[0];
+              core.setOutput('run_id', run.id);
+              core.setOutput('conclusion', run.conclusion || 'unknown');
+            }
 
-  #     - name: Download Logs from Latest Run
-  #       run: |
-  #         run_id=${{ steps.get_run_id.outputs.run_id }}
-  #         auth_header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
-  #         api_url="https://api.github.com/repos/${{ github.repository }}/actions/runs/$run_id/logs"
-  #         curl -H "$auth_header" -L "$api_url" -o logs.zip
+      - name: Download Logs from Latest Run
+        run: |
+          run_id=${{ steps.get_run_id.outputs.run_id }}
+          auth_header="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
+          api_url="https://api.github.com/repos/${{ github.repository }}/actions/runs/$run_id/logs"
+          curl -H "$auth_header" -L "$api_url" -o logs.zip
 
-  #     - name: Unzip Logs
-  #       run: |
-  #         unzip logs.zip -d logs
+      - name: Unzip Logs
+        run: |
+          unzip logs.zip -d logs
 
-  #     - name: Extract and Process Log
-  #       id: extract_summary
-  #       shell: bash {0}
-  #       run: |
-  #         # Set the step name
-  #         step_name="Check Pipeline Status"
+      - name: Extract and Process Log
+        id: extract_summary
+        shell: bash {0}
+        run: |
+          # Set the step name
+          step_name="Check Pipeline Status"
 
-  #         # Find the log file for the required step
-  #         step_log=$(find logs -type f -name "*_${step_name}.txt" -print -quit)
-  #         if [ -z "$step_log" ]; then
-  #           echo "Step log file for '$step_name' not found."
-  #           echo "Available log files:"
-  #           find logs -type f -name '*.txt'
-  #           exit 1
-  #         fi
+          # Find the log file for the required step
+          step_log=$(find logs -type f -name "*_${step_name}.txt" -print -quit)
+          if [ -z "$step_log" ]; then
+            echo "Step log file for '$step_name' not found."
+            echo "Available log files:"
+            find logs -type f -name '*.txt'
+            exit 1
+          fi
 
-  #         # Extract the content starting from Summary of Pipelines
-  #         summary=$(sed -n '/Summary of Pipelines:/,$p' "$step_log")
+          # Extract the content starting from Summary of Pipelines
+          summary=$(sed -n '/Summary of Pipelines:/,$p' "$step_log")
      
-  #         # If summary is empty, use the entire log
-  #         if [ -z "$summary" ]; then
-  #           echo "Warning: 'Summary of Pipelines:' not found. Using entire log as summary."
-  #           summary=$(cat "$step_log")
-  #         fi
+          # If summary is empty, use the entire log
+          if [ -z "$summary" ]; then
+            echo "Warning: 'Summary of Pipelines:' not found. Using entire log as summary."
+            summary=$(cat "$step_log")
+          fi
         
-  #         # Remove unwanted lines (timestamps and whitespaces)
-  #         summary=$(echo "$summary" | sed -E 's/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:\.]+Z\s+//')
+          # Remove unwanted lines (timestamps and whitespaces)
+          summary=$(echo "$summary" | sed -E 's/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:\.]+Z\s+//')
         
-  #         # Get the workflow conclusion
-  #         workflow_conclusion="${{ steps.get_run_id.outputs.conclusion }}"
+          # Get the workflow conclusion
+          workflow_conclusion="${{ steps.get_run_id.outputs.conclusion }}"
 
-  #         # Determine emoji based on status
-  #         if [ "$workflow_conclusion" = "success" ]; then
-  #           status_emoji="✅"
-  #         elif [ "$workflow_conclusion" = "failure" ]; then
-  #           status_emoji="❌"
-  #         else
-  #           status_emoji="⚠️"
-  #         fi
+          # Determine emoji based on status
+          if [ "$workflow_conclusion" = "success" ]; then
+            status_emoji="✅"
+          elif [ "$workflow_conclusion" = "failure" ]; then
+            status_emoji="❌"
+          else
+            status_emoji="⚠️"
+          fi
 
-  #         # Construct the pipeline run URL
-  #         pipeline_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ steps.get_run_id.outputs.run_id }}"
+          # Construct the pipeline run URL
+          pipeline_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ steps.get_run_id.outputs.run_id }}"
           
-  #         # Format the summary as a code block
-  #         formatted_summary=$(printf '```\n%s\n```' "$summary")
+          # Format the summary as a code block
+          formatted_summary=$(printf '```\n%s\n```' "$summary")
          
-  #         # Create the Message
-  #         message=$(cat <<EOM
-  #         Pipeline run: [View Pipeline]($pipeline_url)
-  #         Date: $(date -u +"%b %d %Y")
-  #         Status: $status_emoji **$workflow_conclusion**
-  #         $formatted_summary
-  #         EOM
-  #                 )
+          # Create the Message
+          message=$(cat <<EOM
+          Pipeline run: [View Pipeline]($pipeline_url)
+          Date: $(date -u +"%b %d %Y")
+          Status: $status_emoji **$workflow_conclusion**
+          $formatted_summary
+          EOM
+                  )
           
-  #         # Save the message to summary.txt
-  #         echo "$message" > summary.txt
+          # Save the message to summary.txt
+          echo "$message" > summary.txt
           
-  #         # Split the message into chunks of up to 9999 characters
-  #         max_length=9999  # Zulip limit is 10,000 characters
-  #         total_length=${#message}
-  #         start=0
-  #         chunk_index=0
-  #         mkdir -p chunks
-  #         while [ $start -lt $total_length ]; do
-  #           chunk="${message:$start:$max_length}"
-  #           # Save each chunk to a separate file
-  #           echo "$chunk" > "chunks/chunk_${chunk_index}.txt"
-  #           start=$((start + max_length))
-  #           chunk_index=$((chunk_index + 1))
-  #         done
+          # Split the message into chunks of up to 9999 characters
+          max_length=9999  # Zulip limit is 10,000 characters
+          total_length=${#message}
+          start=0
+          chunk_index=0
+          mkdir -p chunks
+          while [ $start -lt $total_length ]; do
+            chunk="${message:$start:$max_length}"
+            # Save each chunk to a separate file
+            echo "$chunk" > "chunks/chunk_${chunk_index}.txt"
+            start=$((start + max_length))
+            chunk_index=$((chunk_index + 1))
+          done
           
-  #         # Save the number of chunks as an output
-  #         echo "chunks_count=$chunk_index" >> $GITHUB_OUTPUT
+          # Save the number of chunks as an output
+          echo "chunks_count=$chunk_index" >> $GITHUB_OUTPUT
 
-  #     - name: Send to Zulip
-  #       if: ${{ always() }}
-  #       shell: bash
-  #       env:
-  #         ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
-  #         ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
-  #         ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
-  #         ZULIP_STREAM_NAME: 'community images'
-  #         ZULIP_TOPIC_NAME: 'IB Pipeline Tracker 🤖'
-  #       run: |
-  #         chunks_count=${{ steps.extract_summary.outputs.chunks_count }}
-  #         for ((i=0; i<chunks_count; i++)); do
-  #           chunk_file="chunks/chunk_${i}.txt"
-  #           if [ -f "$chunk_file" ]; then
-  #             chunk=$(cat "$chunk_file")
-  #             # Send the chunk to Zulip
-  #             response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
-  #               -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
-  #               -d type="stream" \
-  #               -d to="$ZULIP_STREAM_NAME" \
-  #               -d topic="$ZULIP_TOPIC_NAME" \
-  #               --data-urlencode content="$chunk")
-  #             # Check if the curl command was successful
-  #             if [ $? -ne 0 ]; then
-  #               echo "Failed to send message to Zulip."
-  #               echo "Response: $response"
-  #               exit 1
-  #             fi
-  #           else
-  #             echo "Chunk file $chunk_file does not exist."
-  #             exit 1
-  #           fi
-  #         done
+      - name: Send to Zulip
+        if: ${{ always() }}
+        shell: bash
+        env:
+          ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
+          ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
+          ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
+          ZULIP_STREAM_NAME: 'community images'
+          ZULIP_TOPIC_NAME: 'IB Pipeline Tracker 🤖'
+        run: |
+          chunks_count=${{ steps.extract_summary.outputs.chunks_count }}
+          for ((i=0; i<chunks_count; i++)); do
+            chunk_file="chunks/chunk_${i}.txt"
+            if [ -f "$chunk_file" ]; then
+              chunk=$(cat "$chunk_file")
+              # Send the chunk to Zulip
+              response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
+                -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
+                -d type="stream" \
+                -d to="$ZULIP_STREAM_NAME" \
+                -d topic="$ZULIP_TOPIC_NAME" \
+                --data-urlencode content="$chunk")
+              # Check if the curl command was successful
+              if [ $? -ne 0 ]; then
+                echo "Failed to send message to Zulip."
+                echo "Response: $response"
+                exit 1
+              fi
+            else
+              echo "Chunk file $chunk_file does not exist."
+              exit 1
+            fi
+          done
 
 
   image_creation_run_alerts:
@@ -391,30 +391,29 @@ jobs:
 
         # Save message to summary.txt
         echo -e "$message" > summary.txt
-        cat summary.txt
 
-    # - name: Send to Zulip
-    #   if: ${{ always() }}
-    #   shell: bash
-    #   env:
-    #     ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
-    #     ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
-    #     ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
-    #     ZULIP_STREAM_NAME: 'community images'
-    #     ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
-    #   run: |
-    #     message=$(cat summary.txt)
-    #     # Send the message to Zulip
-    #     response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
-    #       -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
-    #       -d type="stream" \
-    #       -d to="$ZULIP_STREAM_NAME" \
-    #       -d topic="$ZULIP_TOPIC_NAME" \
-    #       --data-urlencode content="$message")
+    - name: Send to Zulip
+      if: ${{ always() }}
+      shell: bash
+      env:
+        ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
+        ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
+        ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
+        ZULIP_STREAM_NAME: 'community images'
+        ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
+      run: |
+        message=$(cat summary.txt)
+        # Send the message to Zulip
+        response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
+          -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
+          -d type="stream" \
+          -d to="$ZULIP_STREAM_NAME" \
+          -d topic="$ZULIP_TOPIC_NAME" \
+          --data-urlencode content="$message")
 
-    #     # Check if the curl command was successful
-    #     if [ $? -ne 0 ]; then
-    #       echo "Failed to send message to Zulip."
-    #       echo "Response: $response"
-    #       exit 1
-    #     fi
+        # Check if the curl command was successful
+        if [ $? -ne 0 ]; then
+          echo "Failed to send message to Zulip."
+          echo "Response: $response"
+          exit 1
+        fi

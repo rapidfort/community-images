@@ -1,14 +1,23 @@
-<svg width="341" height="139" viewBox="0 0 341 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="760" height="193" viewBox="0 0 760 193" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
   * {
     font-family: 'InterMedium', sans-serif;
   }
-  #original_label, #hardened_label {
-    font-weight: 400;
+  .label *{
+    font-family: 'Inter', sans-serif;
+    font-weight:400;
   }
-  #progress { 
+  .progress { 
     transform: rotate(-90deg);
-    transform-origin: 272.425px 69.988px;
+  }
+  #vulns_progress {
+    transform-origin: 58.5px 132.5px;
+  }
+  #packages_progress {
+    transform-origin: 316px 132.5px;
+  }
+  #size_progress {
+    transform-origin: 576.5px 132.5px;
   }
   @font-face {
       font-family: 'InterMedium';
@@ -23,29 +32,46 @@
       font-style: normal;
   }
 </style>
-<g id="template_savings_chart">
-<rect id="bg" x="1.19806" y="0.755676" width="339" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"/>
-<path id="horizintal_divider" d="M0.698059 41.5643H175.457" stroke="url(#paint0_linear_18_24)"/>
-<text id="original_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="76.6193">Original image</tspan></text>
-<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">53</tspan></text>
-<text id="hardened_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="108.619">Hardened image</tspan></text>
-<text id="hardened_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="108.619">11</tspan></text>
-<g id="reduction" transform="translate(275, 89)">
-  <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">-42</tspan></text>
-  <g id="arrows-down" transform="translate(6, -9.5)">
-    <path d="M3.67014 4.70563L0.138794 0.805786H7.14007L3.67014 4.70563Z" fill="#4F986B"/>
-    <path d="M3.67014 9.70563L0.138794 5.80579H7.14007L3.67014 9.70563Z" fill="#4F986B"/>
+<g id="template_savings_view">
+<path d="M16 1.08209H744C752.56 1.08209 759.5 8.02168 759.5 16.5821V176.582C759.5 185.143 752.56 192.082 744 192.082H16C7.43961 192.082 0.5 185.143 0.5 176.582V16.5821C0.5 8.02168 7.43959 1.08209 16 1.08209Z" fill="white"/>
+<path d="M16 1.08209H744C752.56 1.08209 759.5 8.02168 759.5 16.5821V176.582C759.5 185.143 752.56 192.082 744 192.082H16C7.43961 192.082 0.5 185.143 0.5 176.582V16.5821C0.5 8.02168 7.43959 1.08209 16 1.08209Z" stroke="#D9D9D9"/>
+<g id="title-row">
+  <text id="title" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="24" y="39.673">Savings</tspan></text>
+  <g id="external-link-line">
+    <path id="Vector" d="M724.5 30.0821V31.5821H720.75V39.8321H729V36.0821H730.5V40.5821C730.5 40.781 730.421 40.9718 730.28 41.1124C730.14 41.2531 729.949 41.3321 729.75 41.3321H720C719.801 41.3321 719.61 41.2531 719.47 41.1124C719.329 40.9718 719.25 40.781 719.25 40.5821V30.8321C719.25 30.6332 719.329 30.4424 719.47 30.3018C719.61 30.1611 719.801 30.0821 720 30.0821H724.5ZM732.75 27.8321V33.8321H731.25V30.3918L725.405 36.2373L724.345 35.1768L730.189 29.3321H726.75V27.8321H732.75Z" fill="#525866"/>
   </g>
 </g>
-<text id="title" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="25.1297" y="27.3466">Vulnerabilities</tspan></text>
-<text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">79%</tspan></text>
-<circle id="progress_bg" cx="272.425" cy="69.988" r="42.8825" stroke="#E9EAEC" stroke-width="6"/>
-<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100 100"/>
+<g id="savings_cards">
+<g id="vulns_card">
+<text id="vulns_title" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="24" y="82.9457">Vulnerabilities</tspan></text>
+<circle id="vulns_progress_bg" cx="58.5" cy="132.5" r="33.5" stroke="#E4E4E9"  stroke-width="6"/>
+<circle class="progress" transform-origin="" id="vulns_progress" cx="58.5" cy="132.5" r="33.5" stroke="#625DF5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100 100"/>
+<text id="vulns_percentage" text-anchor="middle" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="-0.006em"><tspan x="58.58858" y="137.673">-78%</tspan></text>
+<text class="label" id="vulns_hardened_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="104" y="127.946">This image</tspan></text>
+<text class="label" id="vulns_original_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="104" y="145.946">Original</tspan></text>
+<text id="vulns_hardened_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="176" y="127.946">174</tspan></text>
+<text id="vulns_original_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="176" y="145.946">699</tspan></text>
 </g>
-<defs>
-<linearGradient id="paint0_linear_18_24" x1="0.698059" y1="42.0643" x2="175.457" y2="42.0643" gradientUnits="userSpaceOnUse">
-<stop stop-color="#ECECEF"/>
-<stop offset="1" stop-color="#ECECEF" stop-opacity="0"/>
-</linearGradient>
-</defs>
+<g id="packages_card">
+<text id="packages_title" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="280" y="82.9457">Packages</tspan></text>
+<circle id="packages_progress_bg" cx="316" cy="132.5" r="33.5" stroke="#E4E4E9"  stroke-width="6"/>
+<circle class="progress" id="packages_progress" cx="316" cy="132.5" r="33.5" stroke="#625DF5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100 100"/>
+<text id="packages_percentage" text-anchor="middle" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="-0.006em"><tspan x="316" y="137.673">-78%</tspan></text>
+<text class="label" id="packages_hardened_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="360" y="127.946">This image</tspan></text>
+<text class="label" id="packages_original_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="360" y="145.946">Original</tspan></text>
+<text id="packages_hardened_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="432" y="127.946">174</tspan></text>
+<text id="packages_original_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="432" y="145.946">699</tspan></text>
+</g>
+<g id="size_card">
+<text id="size_title" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="541" y="82.9457">Size</tspan></text>
+<circle id="size_progress_bg" cx="576.5" cy="132.5" r="33.5" stroke="#E4E4E9"  stroke-width="6"/>
+<circle class="progress" id="size_progress" cx="576.5" cy="132.5" r="33.5" stroke="#625DF5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100 100"/>
+<text id="size_percentage" text-anchor="middle" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="-0.006em"><tspan x="576.5" y="137.673">-78%</tspan></text>
+<text class="label" id="size_hardened_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="621" y="127.946">This image</tspan></text>
+<text class="label" id="size_original_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="621" y="145.946">Original</tspan></text>
+<text id="size_hardened_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="693" y="127.946">174</tspan></text>
+<text id="size_original_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="693" y="145.946">699</tspan></text>
+</g>
+</g>
+</g>
 </svg>

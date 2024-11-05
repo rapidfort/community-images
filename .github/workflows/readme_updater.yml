@@ -13,7 +13,9 @@ on:
 
   workflow_dispatch:
 
-permissions: read-all
+permissions:
+  contents: write
+  actions: write
 
 jobs:
   build:

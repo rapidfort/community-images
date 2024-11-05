@@ -67,9 +67,34 @@ const parseCSVFormatV2 = ({fields, data}, topLevel) => {
   }
   return result
 }
+ 
+const  capitalizeFirstLetter = (string) => {
+  if (!string) {
+    return string
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function formatSizeString(sizeString) {
+  const [size, unit] = sizeString.split(' ');
+  let number = parseFloat(size);
+
+  // Determine the number of significant digits and format accordingly
+  const digitCount = Math.floor(Math.log10(number)) + 1;
+
+  // Format based on the number of digits
+  const formattedSize = digitCount >= 3
+    ? Math.floor(number) // Show as an integer if 3 or more digits
+    : parseFloat(number.toPrecision(3)); // Show up to 3 significant digits
+
+  // Return the formatted size with the unit (no space before the unit)
+  return `${formattedSize}${unit}`;
+}
 
 module.exports = {
   parseJSON,
   parseCSVFormatV2,
-  formatBytes
+  formatBytes,
+  capitalizeFirstLetter,
+  formatSizeString
 };

@@ -91,11 +91,10 @@ RapidFort’s hardened [rapidfort/envoy][rf-dh-image-link] image has been optimi
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`1.31`, `1.31-debian-12`, `1.31.0`, `1.31.0-debian-12-r` (1.31/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.31/debian-12/Dockerfile)
-* [`1.30`, `1.30-debian-12`, `1.30.4`, `1.30.4-debian-12-r` (1.30/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.30/debian-12/Dockerfile)
-* [`1.29`, `1.29-debian-12`, `1.29.7`, `1.29.7-debian-12-r` (1.29/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.29/debian-12/Dockerfile)
-* [`1.28`, `1.28-debian-12`, `1.28.5`, `1.28.5-debian-12-r` (1.28/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.28/debian-12/Dockerfile)
-* [`1.27`, `1.27-debian-12`, `1.27.7`, `1.27.7-debian-12-r` (1.27/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.27/debian-12/Dockerfile)
+* [`1.32`, `1.32-debian-12`, `1.32.1`, `1.32.1-debian-12-r` (1.32/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.32/debian-12/Dockerfile)
+* [`1.31`, `1.31-debian-12`, `1.31.3`, `1.31.3-debian-12-r` (1.31/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.31/debian-12/Dockerfile)
+* [`1.30`, `1.30-debian-12`, `1.30.7`, `1.30.7-debian-12-r` (1.30/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.30/debian-12/Dockerfile)
+* [`1.29`, `1.29-debian-12`, `1.29.10`, `1.29.10-debian-12-r` (1.29/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/envoy/1.29/debian-12/Dockerfile)
 
 ## Need support
 
@@ -144,8 +143,8 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/envoy/bitnami/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/envoy/bitnami/assets/cve_reduction.webp
+[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/envoy/bitnami/assets/metrics.svg
+[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/envoy/bitnami/assets/cve_reduction.svg
 
 [source-image-repo-link]: https://hub.docker.com/r/bitnami/envoy
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/envoy

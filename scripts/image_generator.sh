@@ -8,7 +8,7 @@ set -e
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-# pip install jinja-cli PyYAML ruamel.yaml
+pip install jinja-cli PyYAML ruamel.yaml
 
 gen_image_readme()
 {

@@ -13,9 +13,7 @@ on:
 
   workflow_dispatch:
 
-permissions:
-  contents: write
-  actions: write
+permissions: read-all
 
 jobs:
   build:
@@ -26,13 +24,13 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Generate new readme and image files
         if: always()
         run: |
           pip install --upgrade pip
-          pip install requests ruamel.yaml jinja-cli
+          pip install requests
           ./scripts/image_generator.sh
 
       - name: Push changes
@@ -316,15 +314,6 @@ jobs:
           repository: rapidfort/clickhouse-ib
           readme-filepath: ./community_images/clickhouse/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for clickhouse Iron Bank
-      - name: Docker Hub Description CockroachDB Ironbank
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/cockroachdb-ib
-          readme-filepath: ./community_images/cockroachdb/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for CockroachDB Ironbank
       - name: Docker Hub Description Consul
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -658,6 +647,15 @@ jobs:
           repository: rapidfort/gitaly-ib
           readme-filepath: ./community_images/gitaly/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for gitaly Iron Bank
+      - name: Docker Hub Description gitaly Iron Bank
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/gitaly-ib
+          readme-filepath: ./community_images/gitaly/ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for gitaly Iron Bank
       - name: Docker Hub Description GitLab Certificates Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -865,15 +863,6 @@ jobs:
           repository: rapidfort/k8s-sidecar-official
           readme-filepath: ./community_images/k8s-sidecar/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for k8s-sidecar Official
-      - name: Docker Hub Description Kafka Bridge Iron Bank
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/kafka-bridge-ib
-          readme-filepath: ./community_images/kafka-bridge/ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Kafka Bridge Iron Bank
       - name: Docker Hub Description Kafka Exporter Iron Bank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1414,15 +1403,6 @@ jobs:
           repository: rapidfort/postgresql
           readme-filepath: ./community_images/postgresql/bitnami/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PostgreSQL
-      - name: Docker Hub Description PostgreSQL IronBank (Bitnami)
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/postgresql-bitnami-ib
-          readme-filepath: ./community_images/postgresql/bitnami-ironbank/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for PostgreSQL IronBank (Bitnami)
       - name: Docker Hub Description PostgreSQL IronBank
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -1441,6 +1421,15 @@ jobs:
           repository: rapidfort/postgresql-official
           readme-filepath: ./community_images/postgresql/official/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PostgreSQL Official
+      - name: Docker Hub Description PostgreSQL IronBank (Bitnami)
+        if: always()
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rapidfort/postgresql-bitnami-ib
+          readme-filepath: ./community_images/postgresql/bitnami-ironbank/README.md.dockerhub
+          short-description: RapidFort optimized, hardened image for PostgreSQL IronBank (Bitnami)
       - name: Docker Hub Description Prometheus
         if: always()
         uses: peter-evans/dockerhub-description@v3

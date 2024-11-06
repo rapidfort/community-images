@@ -1,18 +1,20 @@
 <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=rapidfort_logo">
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/logo_light.svg" alt="RapidFort" width="200" />
 </a>
 
 <br>
+
 
 [![rf-h][rf-h-badge]][rf-view-report-button]
 [![DH Image][dh-rf-badge]][rf-dh-image-link]
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-<b>Near Zero CVE images available at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+<a href="https://hub.rapidfort.com/repositories?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=zero_vulns_cve">
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/zero_cve_images_link.svg" alt="Zero cve images" width="760" />
+</a>
+<br />
 
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
-<b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
 # RapidFort hardened image for MariaDB Official
 
@@ -22,25 +24,32 @@ RapidFort has optimized and hardened this MariaDB Official container image. This
 
 This optimized image is functionally equivalent to [MariaDB Developer Community MariaDB Official][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
-Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
-<br>
 
-[Get the full report here or click on the image below][rf-view-report-link]
+<p style="display: flex; justify-content: center; gap: 16px;">
+    <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=vulns_count_chart">
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/apache/bitnami/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
+    </a>
+    <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=original_vs_hardened_vulns_chart">
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/apache/bitnami/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
+    </a>
+</p>
 
-[![Metrics][metrics-link]][rf-image-metrics-link]
 
-<h2> Vulnerabilities: Original vs. Hardened
-
-</h2>
-
-[![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
+[![Savings][savings-link]][rf-image-savings-link]
 
 <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=get_full_report_button">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/full_report.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>
 
+
+Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. 
+
+Check out our [entire library of secured container images.](https://hub.docker.com/u/rapidfort)
+<br>
+
+[Get the full report here or click on the image below][rf-view-report-link]
 
 ## What is MariaDB Official?
 
@@ -59,7 +68,7 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [MariaDB Developer Community MariaDB Official][source-image-repo-link].
 
 <a href="https://github.com/MariaDB/mariadb-docker/tree/ee8996e7fd507cfbef594c0369af092e5cf9078a#readme">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_details.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>
@@ -80,7 +89,7 @@ RapidFort is the pioneering Software Attack Surface Management (SASM) platform i
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
 <a href="https://github.com/rapidfort/community-images/tree/main/community_images/mariadb/official">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_github.svg" alt="View on GitHub" height="50" />
 </a>
 <br>
 <br>
@@ -91,12 +100,12 @@ RapidFort’s hardened [rapidfort/mariadb-official][rf-dh-image-link] image has 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`11.4.1-rc-jammy`, `11.4-rc-jammy`, `11.4.1-rc`, `11.4-rc`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.4/Dockerfile)
-* [`11.3.2-jammy`, `11.3-jammy`, `11-jammy`, `jammy`, `11.3.2`, `11.3`, `11`, `latest`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.3/Dockerfile)
-* [`11.2.3-jammy`, `11.2-jammy`, `11.2.3`, `11.2`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.2/Dockerfile)
-* [`11.1.4-jammy`, `11.1-jammy`, `11.1.4`, `11.1`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.1/Dockerfile)
-* [`11.0.5-jammy`, `11.0-jammy`, `11.0.5`, `11.0`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/11.0/Dockerfile)
-* [`10.11.7-jammy`, `10.11-jammy`, `10-jammy`, `lts-jammy`, `10.11.7`, `10.11`, `10`, `lts`](https://github.com/MariaDB/mariadb-docker/blob/d7a950d41e9347ac94ad2d2f28469bff74858db7/10.11/Dockerfile)
+* [`11.6.1-noble-rc`, `11.6-noble-rc`, `11.6.1-rc`, `11.6-rc`](https://github.com/MariaDB/mariadb-docker/blob/275297af91e85af864e70c70ce2a650ec128db9c/11.6/Dockerfile)
+* [`11.5.2-noble`, `11.5-noble`, `11-noble`, `noble`, `11.5.2`, `11.5`, `11`, `latest`](https://github.com/MariaDB/mariadb-docker/blob/275297af91e85af864e70c70ce2a650ec128db9c/11.5/Dockerfile)
+* [`11.4.3-noble`, `11.4-noble`, `lts-noble`, `11.4.3`, `11.4`, `lts`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/11.4/Dockerfile)
+* [`11.2.5-jammy`, `11.2-jammy`, `11.2.5`, `11.2`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/11.2/Dockerfile)
+* [`11.1.6-jammy`, `11.1-jammy`, `11.1.6`, `11.1`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/11.1/Dockerfile)
+* [`10.11.9-jammy`, `10.11-jammy`, `10-jammy`, `10.11.9`, `10.11`, `10`](https://github.com/MariaDB/mariadb-docker/blob/ee80a97d5cc2fd4f8779dbfedeb8fc8c47941812/10.11/Dockerfile)
 
 ## Need support
 
@@ -116,7 +125,7 @@ If you find this project useful, please star this repo just like many [amazing p
 
 ## Have questions?
 
-[![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png)][rf-rapidfort-footer-logo-link]
+[![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/logo_light.svg)][rf-rapidfort-footer-logo-link]
 
 
 Learn more about RapidFort's pioneering Software Attack Surface Management platform at [RapidFort.com][rf-link].
@@ -135,8 +144,12 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=rapidfort_footer_logo
 [rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=view_report_button
 [rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=view_report_link
+
 [rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=image_cve_reduction_link
+
+[rf-image-savings-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=image_savings_link
+[rf-image-vulns-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fmariadb?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=mariadb-official&utm_content=vulns_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/mariadb-official?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/mariadb-official?logo=docker&logoColor=white
@@ -145,8 +158,8 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/mariadb/official/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/mariadb/official/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://hub.docker.com/_/mariadb
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/mariadb-official
+
+[savings-link]: https://github.com/rapidfort/community-images/raw/main/community_images/mariadb/official/assets/savings.svg

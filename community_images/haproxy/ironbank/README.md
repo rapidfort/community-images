@@ -26,10 +26,10 @@ This optimized image is functionally equivalent to [Platform One HAProxy IronBan
 
 <p style="display: flex; justify-content: center; gap: 16px;">
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fhaproxy%2Fhaproxy24?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=haproxy-ib&utm_content=vulns_count_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/haproxy/ironbank/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/haproxy/ironbank/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
     </a>
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fhaproxy%2Fhaproxy24?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=haproxy-ib&utm_content=original_vs_hardened_vulns_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/haproxy/ironbank/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/haproxy/ironbank/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
     </a>
 </p>
 

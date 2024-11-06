@@ -49,6 +49,7 @@ runtimes:
       mongodb-official:
         repository: "MONGODB_IMAGE_REPOSITORY"
         tag: "MONGODB_IMAGE_TAG"
+    wait_time_sec: 10
   - type: docker
     script: docker_coverage.sh
     mongodb:

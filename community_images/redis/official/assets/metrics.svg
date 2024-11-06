@@ -53,11 +53,11 @@
 
 <text class="value" id="original_poc" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="56.5" y="65">11</tspan></text>
 <text class="value" id="original_critical" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="122.523" y="70">7</tspan></text>
-<text class="value" id="original_high" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="178" y="46">26</tspan></text>
-<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="60">15</tspan></text>
-<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="76">3</tspan></text>
-<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="59">16</tspan></text>
-<text class="value" id="original_na" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="402.5" y="43">28</tspan></text>
+<text class="value" id="original_high" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="178" y="45">26</tspan></text>
+<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="58">16</tspan></text>
+<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="75">3</tspan></text>
+<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="58">16</tspan></text>
+<text class="value" id="original_na" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="402.5" y="43">27</tspan></text>
 
 <path id="horizintal_divider" text-anchor="middle" d="M28 92.5L431 92.5" stroke="#CCCCCC"></path>
 
@@ -100,54 +100,54 @@
     Z
   " fill="#DF1C4133" mask="url(#mask_critical)"></path>
 <path id="column_original_high" d="
-    M169,52 
+    M169,51 
     H187 
-    C192,52 192,52 192,57 
+    C192,51 192,51 192,56 
     V85 
     H164 
-    V57 
-    C164,52 164,52 169,52
+    V56 
+    C164,51 164,51 169,51
     Z
   " fill="#6E3FF333" mask="url(#mask_high)"></path>
 <path id="column_original_medium" d="
-    M226,66 
+    M226,64 
     H244 
-    C249,66 249,66 249,71 
+    C249,64 249,64 249,69 
     V85 
     H221 
-    V71 
-    C221,66 221,66 226,66
+    V69 
+    C221,64 221,64 226,64
     Z
   " fill="#F2AE4033" mask="url(#mask_medium)"></path>
 <path id="column_original_low" d="
-    M278.5,82 
-    H300.5 
-    C303.5,82 303.5,82 303.5,85 
+    M279.5,81 
+    H299.5 
+    C303.5,81 303.5,81 303.5,85 
     V85 
     H275.5 
     V85 
-    C275.5,82 275.5,82 278.5,82
+    C275.5,81 275.5,81 279.5,81
     Z
   " fill="#35B9E933" mask="url(#mask_low)"></path>
 <path id="column_original_unknown" d="
-    M337.372,65 
+    M337.372,64 
     H355.372 
-    C360.372,65 360.372,65 360.372,70 
+    C360.372,64 360.372,64 360.372,69 
     V85 
     H332.372 
-    V70 
-    C332.372,65 332.372,65 337.372,65
+    V69 
+    C332.372,64 332.372,64 337.372,64
     Z
   " fill="#8b8d9833" mask="url(#mask_unknown)"></path>
 
 <path id="column_hardened_na" d="
-    M393.5,70 
+    M393.5,69 
     H411.5 
-    C416.5,70 416.5,70 416.5,75 
+    C416.5,69 416.5,69 416.5,74 
     V85 
     H388.5 
-    V75 
-    C388.5,70 388.5,70 393.5,70
+    V74 
+    C388.5,69 388.5,69 393.5,69
     Z
   " fill="#32D583ff" mask="url(#mask_na)"></path>
 <path id="column_hardened_poc" d="
@@ -161,33 +161,33 @@
     Z
   " fill="#C62A2Fff" mask="url(#mask_poc)"></path>
 <path id="column_hardened_critical" d="
-    M113.523,78 
+    M113.523,77 
     H131.523 
-    C136.523,78 136.523,78 136.523,83 
+    C136.523,77 136.523,77 136.523,82 
     V85 
     H108.523 
-    V83 
-    C108.523,78 108.523,78 113.523,78
+    V82 
+    C108.523,77 108.523,77 113.523,77
     Z
   " fill="#DF1C41ff" mask="url(#mask_critical)"></path>
 <path id="column_hardened_high" d="
-    M169,53 
+    M169,52 
     H187 
-    C192,53 192,53 192,58 
+    C192,52 192,52 192,57 
     V85 
     H164 
-    V58 
-    C164,53 164,53 169,53
+    V57 
+    C164,52 164,52 169,52
     Z
   " fill="#6E3FF3ff" mask="url(#mask_high)"></path>
 <path id="column_hardened_medium" d="
-    M226,69 
+    M226,68 
     H244 
-    C249,69 249,69 249,74 
+    C249,68 249,68 249,73 
     V85 
     H221 
-    V74 
-    C221,69 221,69 226,69
+    V73 
+    C221,68 221,68 226,68
     Z
   " fill="#F2AE40ff" mask="url(#mask_medium)"></path>
 <path id="column_hardened_low" d="
@@ -201,13 +201,13 @@
     Z
   " fill="#35B9E9ff" mask="url(#mask_low)"></path>
 <path id="column_hardened_unknown" d="
-    M337.372,66 
+    M337.372,65 
     H355.372 
-    C360.372,66 360.372,66 360.372,71 
+    C360.372,65 360.372,65 360.372,70 
     V85 
     H332.372 
-    V71 
-    C332.372,66 332.372,66 337.372,66
+    V70 
+    C332.372,65 332.372,65 337.372,65
     Z
   " fill="#8b8d98ff" mask="url(#mask_unknown)"></path>
 
@@ -217,7 +217,7 @@
 <clipPath id="clip0_1_2">
 <rect width="463" height="138" fill="white"></rect>
 </clipPath>
-<mask id="mask_poc"><rect width="28" height="14" x="42.5" y="71" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="9" x="108.523" y="76" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="33" x="164" y="52" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="19" x="221" y="66" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="3" x="275.5" y="82" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="20" x="332.372" y="65" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="36" x="388.5" y="49" rx="5" ry="5" fill="white"></rect></mask></defs>
+<mask id="mask_poc"><rect width="28" height="14" x="42.5" y="71" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="9" x="108.523" y="76" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="34" x="164" y="51" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="21" x="221" y="64" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="4" x="275.5" y="81" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="21" x="332.372" y="64" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="36" x="388.5" y="49" rx="5" ry="5" fill="white"></rect></mask></defs>
 </svg></svg>
       </g>
 
@@ -228,29 +228,29 @@
 <rect id="bg" x="0.5" y="0.5" width="379" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"></rect>
 <rect id="horizontal_divider" x="55.3753" y="101" width="300" height="1" fill="#D9D9D9"></rect>
 <rect id="vertical_divider" x="55.3753" y="51" width="1" height="50" fill="#D9D9D9"></rect>
-<text id="grid_value_1" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" y="73.22222222222223"><tspan x="45" y="71.7557">20</tspan></text>
+<text id="grid_value_1" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" y="73.97297297297297"><tspan x="45" y="71.7557">20</tspan></text>
 <text id="grid_value_2" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" display="none"><tspan x="45" y="58.7557">40</tspan></text>
 <text id="grid_zero" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="45" y="104.447">0</tspan></text>
 <g id="low">
 <text id="label_low" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="305.479" y="122.743">Low</tspan></text>
 <path id="column_low_contextual" d="
-    M321.3876666666667,96.83333333333333 
-    H341.0543333333333 
-    C345.221,96.83333333333333 345.221,96.83333333333333 345.221,101 
+    M321.27505405405407,96.94594594594595 
+    H341.16694594594594 
+    C345.221,96.94594594594595 345.221,96.94594594594595 345.221,101 
     V101 
     H317.221 
     V101 
-    C317.221,96.83333333333333 317.221,96.83333333333333 321.3876666666667,96.83333333333333
+    C317.221,96.94594594594595 317.221,96.94594594594595 321.27505405405407,96.94594594594595
     Z
   " fill="#A8DAF1"></path>
 <path id="column_low_original" d="
-    M291.0526666666667,96.83333333333333 
-    H310.71933333333334 
-    C314.886,96.83333333333333 314.886,96.83333333333333 314.886,101 
+    M290.9400540540541,96.94594594594595 
+    H310.83194594594596 
+    C314.886,96.94594594594595 314.886,96.94594594594595 314.886,101 
     V101 
     H286.886 
     V101 
-    C286.886,96.83333333333333 286.886,96.83333333333333 291.0526666666667,96.83333333333333
+    C286.886,96.94594594594595 286.886,96.94594594594595 290.9400540540541,96.94594594594595
     Z
   " fill="#5EB7E4"></path>
 </g>
@@ -267,59 +267,59 @@
     Z
   " fill="#F4D8A7"></path>
 <path id="column_medium_original" d="
-    M217.886,80.16666666666666 
+    M217.886,79.37837837837839 
     H235.886 
-    C240.886,80.16666666666666 240.886,80.16666666666666 240.886,85.16666666666666 
+    C240.886,79.37837837837839 240.886,79.37837837837839 240.886,84.37837837837839 
     V101 
     H212.886 
-    V85.16666666666666 
-    C212.886,80.16666666666666 212.886,80.16666666666666 217.886,80.16666666666666
+    V84.37837837837839 
+    C212.886,79.37837837837839 212.886,79.37837837837839 217.886,79.37837837837839
     Z
   " fill="#E8B056"></path>
 </g>
 <g id="high">
 <text id="label_high" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="156.244" y="122.743">High</tspan></text>
 <path id="column_high_contextual" d="
-    M174.221,92.66666666666667 
+    M174.221,92.89189189189189 
     H192.221 
-    C197.221,92.66666666666667 197.221,92.66666666666667 197.221,97.66666666666667 
+    C197.221,92.89189189189189 197.221,92.89189189189189 197.221,97.89189189189189 
     V101 
     H169.221 
-    V97.66666666666667 
-    C169.221,92.66666666666667 169.221,92.66666666666667 174.221,92.66666666666667
+    V97.89189189189189 
+    C169.221,92.89189189189189 169.221,92.89189189189189 174.221,92.89189189189189
     Z
   " fill="#B3A1F3"></path>
 <path id="column_high_original" d="
-    M143.886,64.88888888888889 
+    M143.886,65.86486486486487 
     H161.886 
-    C166.886,64.88888888888889 166.886,64.88888888888889 166.886,69.88888888888889 
+    C166.886,65.86486486486487 166.886,65.86486486486487 166.886,70.86486486486487 
     V101 
     H138.886 
-    V69.88888888888889 
-    C138.886,64.88888888888889 138.886,64.88888888888889 143.886,64.88888888888889
+    V70.86486486486487 
+    C138.886,65.86486486486487 138.886,65.86486486486487 143.886,65.86486486486487
     Z
   " fill="#6647EA"></path>
 </g>
 <g id="critical">
 <text id="label_critical" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="76.0884" y="122.743">Critical</tspan></text>
 <path id="column_critical_contextual" d="
-    M100.2213,92.66666666666667 
+    M100.2213,92.89189189189189 
     H118.2213 
-    C123.2213,92.66666666666667 123.2213,92.66666666666667 123.2213,97.66666666666667 
+    C123.2213,92.89189189189189 123.2213,92.89189189189189 123.2213,97.89189189189189 
     V101 
     H95.2213 
-    V97.66666666666667 
-    C95.2213,92.66666666666667 95.2213,92.66666666666667 100.2213,92.66666666666667
+    V97.89189189189189 
+    C95.2213,92.89189189189189 95.2213,92.89189189189189 100.2213,92.89189189189189
     Z
   " fill="#E293A0"></path>
 <path id="column_critical_original" d="
-    M69.8859,91.27777777777777 
+    M69.8859,91.54054054054055 
     H87.8859 
-    C92.8859,91.27777777777777 92.8859,91.27777777777777 92.8859,96.27777777777777 
+    C92.8859,91.54054054054055 92.8859,91.54054054054055 92.8859,96.54054054054055 
     V101 
     H64.8859 
-    V96.27777777777777 
-    C64.8859,91.27777777777777 64.8859,91.27777777777777 69.8859,91.27777777777777
+    V96.54054054054055 
+    C64.8859,91.54054054054055 64.8859,91.54054054054055 69.8859,91.54054054054055
     Z
   " fill="#CD3546"></path>
 </g>
@@ -335,20 +335,20 @@
 <rect id="bg" x="1.19806" y="0.755676" width="339" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"></rect>
 <path id="horizintal_divider" d="M0.698059 41.5643H175.457" stroke="url(#paint0_linear_18_24)"></path>
 <text id="original_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="76.6193">Original image</tspan></text>
-<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">67</tspan></text>
+<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">68</tspan></text>
 <text id="hardened_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="108.619">Hardened image</tspan></text>
 <text id="hardened_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="108.619">60</tspan></text>
 <g id="reduction" transform="translate(269.9306640625, 89)">
-  <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">7</tspan></text>
+  <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">8</tspan></text>
   <g id="arrows-down" transform="translate(6, -9.5)">
     <path d="M3.67014 4.70563L0.138794 0.805786H7.14007L3.67014 4.70563Z" fill="#4F986B"></path>
     <path d="M3.67014 9.70563L0.138794 5.80579H7.14007L3.67014 9.70563Z" fill="#4F986B"></path>
   </g>
 </g>
 <text id="title" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="25.1297" y="27.3466">Vulnerabilities</tspan></text>
-<text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">10%</tspan></text>
+<text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">12%</tspan></text>
 <circle id="progress_bg" cx="272.425" cy="69.988" r="42.8825" stroke="#E9EAEC" stroke-width="6"></circle>
-<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="241.28838262847336"></circle>
+<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="237.74002406040756"></circle>
 </g>
 <defs>
 <linearGradient id="paint0_linear_18_24" x1="0.698059" y1="42.0643" x2="175.457" y2="42.0643" gradientUnits="userSpaceOnUse">

@@ -164,6 +164,7 @@ jobs:
   image_creation_run_alerts:
     name: Image Creation Run Alerts
     runs-on: ubuntu-latest
+    environment: actions-cicd
 
     steps:
     - name: Get the last two runs of Image Creation Run workflow
@@ -191,16 +192,17 @@ jobs:
           }
           const workflow_id = workflow.id;
 
-          // Get the last two workflow runs
           const runsResponse = await github.rest.actions.listWorkflowRuns({
             owner,
             repo,
             workflow_id,
-            per_page: 2,
+            status: 'completed', 
+            per_page: 10,
           });
           const runs = runsResponse.data.workflow_runs;
+
           if (runs.length < 2) {
-            core.setFailed('Not enough workflow runs found.');
+            core.setFailed('Not enough completed workflow runs found.');
             return;
           }
 
@@ -364,7 +366,7 @@ jobs:
 
         # Process jobs with '-ib' suffix
         if [[ -n "$failed_jobs_ib" ]]; then
-          message+="**Ironbank Images failed consecutively in last two runs**:\n"
+          message+="\n**Ironbank Images failing consecutively in last two runs**:\n"
           count=1
           IFS=',' read -ra JOBS_IB <<< "$failed_jobs_ib"
           for job in "${JOBS_IB[@]}"; do
@@ -375,7 +377,7 @@ jobs:
 
         # Process jobs without '-ib' suffix
         if [[ -n "$failed_jobs_no_ib" ]]; then
-          message+="\n**Non-Ironbank Images failed consecutively in last two runs**:\n"
+          message+="\n\n**Non-Ironbank Images failing consecutively in last two runs**:\n"
           count=1
           IFS=',' read -ra JOBS_NO_IB <<< "$failed_jobs_no_ib"
           for job in "${JOBS_NO_IB[@]}"; do
@@ -391,6 +393,7 @@ jobs:
 
         # Save message to summary.txt
         echo -e "$message" > summary.txt
+        cat summary.txt
 
     - name: Send to Zulip
       if: ${{ always() }}

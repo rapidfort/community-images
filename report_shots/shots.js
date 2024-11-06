@@ -78,6 +78,10 @@ const generateCharts = async (imageName, platform, imageSavePath) => {
 
     saveSVGToFile(vulnsCountChartSVG, util.format('%s/vulns_count_chart.svg', imageSavePath));
     saveSVGToFile(vulnsOriginalHardenedChartSVG, util.format('%s/original_vs_hardened_vulns_chart.svg', imageSavePath));
+    const vulnsChartMergedSvg = await mergeSvgHorizontally([vulnsCountChartSVG, vulnsOriginalHardenedChartSVG], 24);
+    
+    saveSVGToFile(vulnsChartMergedSvg, util.format('%s/vulns_charts.svg', imageSavePath));
+
     const savingsSVG = await generateSavingsCardsCompound([
       {
         type:'vulns',
@@ -102,7 +106,6 @@ const generateCharts = async (imageName, platform, imageSavePath) => {
       }
     ]);
     saveSVGToFile(savingsSVG, util.format('%s/savings.svg', imageSavePath));
-    
     // save individual charts as svg
     // saveSVGToFile(vulnsSavingsChartSVG, util.format('%s/savings_chart_vulns.svg', imageSavePath));
     // saveSVGToFile(packagesSavingsChartSVG, util.format('%s/savings_chart_pkgs.svg', imageSavePath));
@@ -608,7 +611,6 @@ async function generateVulnsCountChart(vulnsCount) {
   draw.findOne("#vulns_count_mask").attr('width', contentWidth)
   draw.findOne("#external-link").attr('transform', `translate(${contentWidth - initialContentWidth}, 0)`)
   draw.findOne("#vulns_count_mask_rect").attr('width', contentWidth)
-  console.log('contentWidth', contentWidth)
   drawVulnsChart(draw, 'vulns_count_view', contentWidth, vulnsCount, vulnsCount.total);
   // Update the total count text
   updateText(draw, '#vulns_total', vulnsCount.total);
@@ -642,10 +644,6 @@ async function generateVulnsOriginalHardenedChart(cardWidth, original, hardened)
   const originalValueTextWidth = originalValueText.bbox().width;
   originalValueText.remove(); // remove text after measure
   const initialContentWidth = 365;
-  const overflowWidth = parseInt(cardWidth) - (337 + originalValueTextWidth);
-  console.log('originalValueTextWidth', originalValueTextWidth)
-  console.log('overflowWidth', overflowWidth)
-  console.log('cardWidth', cardWidth)
   draw.findOne("#external-link").attr('transform', `translate(${cardWidth - initialContentWidth}, 0)`)
   draw.findOne(`#original_value_tspan`).attr('x', cardWidth - originalValueTextWidth - 24)
   draw.findOne(`#original_mask`).attr('width', cardWidth - originalValueTextWidth - 24 - 10 - 106)
@@ -721,6 +719,59 @@ async function generateSavingsCardsCompound(savingsData) {
   return draw.svg();
 }
 
+
+async function mergeSvgHorizontally(svgStrings, gap) {
+  const { SVG, registerWindow } = await import('@svgdotjs/svg.js');
+  const { createSVGWindow } = await import('svgdom');
+  const window = createSVGWindow();
+    const document = window.document;
+    registerWindow(window, document);
+
+    const remainingCSSList = []
+    const canvas = SVG(document.documentElement);
+    const uniqueCSSRules = new Set();
+    let totalWidth = 0;
+    let maxHeight = 0;
+    let fontFaceCaptured = false; // Track if font-face has already been captured
+
+    svgStrings.forEach((svgString, index) => {
+      // Extract all styles content
+      const styleMatch = svgString.match(/<style[^>]*>([\s\S]*?)<\/style>/);
+      if (styleMatch && styleMatch[1]) {
+          let styleContent = styleMatch[1];
+          // Extract `@font-face` and other CSS rules separately
+          const fontFaceRules = styleContent.match(/@font-face\s*{[^}]*}/g) || [];
+          const remainingCSS = styleContent.replace(/@font-face\s*{[^}]*}/g, '').trim();
+          // Add only the first set of `@font-face` rules
+          if (!fontFaceCaptured) {
+              fontFaceRules.forEach(rule => uniqueCSSRules.add(rule));
+              fontFaceCaptured = true;
+          }
+          remainingCSSList.push(remainingCSS);
+      }
+      
+      const svgWithoutStyle = svgString.replace(/<style[^>]*>([\s\S]*?)<\/style>/, '');
+      const svg = SVG(svgWithoutStyle);
+
+      const width = svg.width();
+      const height = svg.height();
+
+      if (index > 0) totalWidth += gap;
+      totalWidth += width;
+      maxHeight = Math.max(maxHeight, height);
+
+      svg.move(totalWidth - width, 0);
+      canvas.add(svg);
+    });
+    // Construct the final style tag with unique rules
+    const combinedStyle = `<style>${[...uniqueCSSRules, ...remainingCSSList].join('\n')}</style>`;
+
+    // Add the combined styles to the canvas and set the final canvas size
+    canvas.svg(combinedStyle + canvas.svg());
+    canvas.size(totalWidth, maxHeight);
+
+    return canvas.svg();
+}
 async function main() {
   const imgListPath = process.argv[2]
   const platform = process.argv[3]

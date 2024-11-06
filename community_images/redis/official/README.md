@@ -25,11 +25,8 @@ RapidFort has optimized and hardened this Redis™ Official container image. Thi
 This optimized image is functionally equivalent to [The Docker Community Redis™ Official][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
 <p style="display: flex; justify-content: center; gap: 16px;">
-    <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=vulns_count_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/redis/official/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="46.5%" />
-    </a>
-    <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=original_vs_hardened_vulns_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/redis/official/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="46.5%" />
+    <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=vulns_charts">
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/redis/official/assets/vulns_charts.svg" alt="Vulnerabilities by severity" width="100%" />
     </a>
 </p>
 

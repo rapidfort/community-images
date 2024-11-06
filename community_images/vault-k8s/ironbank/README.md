@@ -26,10 +26,10 @@ This optimized image is functionally equivalent to [Platform One Vault-k8s Iron 
 
 <p style="display: flex; justify-content: center; gap: 16px;">
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2Fvault-k8s?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-k8s-ib&utm_content=vulns_count_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/apache/bitnami/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/vault-k8s/ironbank/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
     </a>
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fhashicorp%2Fvault%2Fvault-k8s?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=vault-k8s-ib&utm_content=original_vs_hardened_vulns_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/apache/bitnami/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/vault-k8s/ironbank/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
     </a>
 </p>
 

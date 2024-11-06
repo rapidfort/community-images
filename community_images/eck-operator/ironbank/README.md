@@ -26,10 +26,10 @@ This optimized image is functionally equivalent to [Platform One ECK Operator Ir
 
 <p style="display: flex; justify-content: center; gap: 16px;">
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Feck-operator%2Feck-operator?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=eck-operator-ib&utm_content=vulns_count_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/apache/bitnami/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/eck-operator/ironbank/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
     </a>
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Feck-operator%2Feck-operator?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=eck-operator-ib&utm_content=original_vs_hardened_vulns_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/apache/bitnami/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/eck-operator/ironbank/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
     </a>
 </p>
 

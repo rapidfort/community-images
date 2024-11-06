@@ -26,10 +26,10 @@ This optimized image is functionally equivalent to [Platform One Helm Chart Test
 
 <p style="display: flex; justify-content: center; gap: 16px;">
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fhelm%2Fchart-testing?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=chart-testing-ib&utm_content=vulns_count_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/apache/bitnami/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/chart-testing/ironbank/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
     </a>
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fhelm%2Fchart-testing?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=chart-testing-ib&utm_content=original_vs_hardened_vulns_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/apache/bitnami/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/chart-testing/ironbank/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
     </a>
 </p>
 

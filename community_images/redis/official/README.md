@@ -1,18 +1,20 @@
 <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=rapidfort_logo">
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo.png" alt="RapidFort" width="200" />
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/logo_light.svg" alt="RapidFort" width="200" />
 </a>
 
 <br>
+
 
 [![rf-h][rf-h-badge]][rf-view-report-button]
 [![DH Image][dh-rf-badge]][rf-dh-image-link]
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-<b>Near Zero CVE images available at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a>.</b>
+<a href="https://hub.rapidfort.com/repositories?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=zero_vulns_cve">
+<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/zero_cve_images_link.svg" alt="Zero cve images" width="760" />
+</a>
+<br />
 
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
-<b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
 # RapidFort hardened image for Redis™ Official
 
@@ -22,25 +24,32 @@ RapidFort has optimized and hardened this Redis™ Official container image. Thi
 
 This optimized image is functionally equivalent to [The Docker Community Redis™ Official][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
-Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. Check out our [entire library](https://hub.docker.com/u/rapidfort) of secured container images.
-<br>
 
-[Get the full report here or click on the image below][rf-view-report-link]
+<p style="display: flex; justify-content: center; gap: 16px;">
+    <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=vulns_count_chart">
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/apache/bitnami/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
+    </a>
+    <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=original_vs_hardened_vulns_chart">
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/main/apache/bitnami/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
+    </a>
+</p>
 
-[![Metrics][metrics-link]][rf-image-metrics-link]
 
-<h2> Vulnerabilities: Original vs. Hardened
-
-</h2>
-
-[![CVE Reduction][cve-reduction-link]][rf-image-cve-reduction-link]
+[![Savings][savings-link]][rf-image-savings-link]
 
 <a href="https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=get_full_report_button">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_button_3.svg" alt="View Report" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/full_report.svg" alt="View Report" height="50" />
 </a>
 <br>
 <br>
 
+
+Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. 
+
+Check out our [entire library of secured container images.](https://hub.docker.com/u/rapidfort)
+<br>
+
+[Get the full report here or click on the image below][rf-view-report-link]
 
 ## What is Redis™ Official?
 
@@ -59,7 +68,7 @@ Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therei
 The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [The Docker Community Redis™ Official][source-image-repo-link].
 
 <a href="https://github.com/docker-library/docs/blob/master/redis/README.md">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_detailed_instructions_button.svg" alt="View Detailed Instructions" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_details.svg" alt="View Detailed Instructions" height="50" />
 </a>
 <br>
 <br>
@@ -80,7 +89,7 @@ RapidFort is the pioneering Software Attack Surface Management (SASM) platform i
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
 <a href="https://github.com/rapidfort/community-images/tree/main/community_images/redis/official">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_on_github_button.svg" alt="View on GitHub" height="50" />
+<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_github.svg" alt="View on GitHub" height="50" />
 </a>
 <br>
 <br>
@@ -91,14 +100,13 @@ RapidFort’s hardened [rapidfort/redis-official][rf-dh-image-link] image has be
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`7.2.4`, `7.2`, `7`, `latest`, `7.2.4-bookworm`, `7.2-bookworm`, `7-bookworm`, `bookworm`](https://github.com/docker-library/redis/blob/b77450d34ae54354f41970fc44bf840353f59ef4/7.2/debian/Dockerfile)
-* [`7.2.4-alpine`, `7.2-alpine`, `7-alpine`, `alpine`, `7.2.4-alpine3.19`, `7.2-alpine3.19`, `7-alpine3.19`, `alpine3.19`](https://github.com/docker-library/redis/blob/b77450d34ae54354f41970fc44bf840353f59ef4/7.2/alpine/Dockerfile)
-* [`7.0.15`, `7.0`, `7.0.15-bookworm`, `7.0-bookworm`](https://github.com/docker-library/redis/blob/313fd068a6751fd9f611e94addfa9ea56a23a3a7/7.0/debian/Dockerfile)
-* [`7.0.15-alpine`, `7.0-alpine`, `7.0.15-alpine3.19`, `7.0-alpine3.19`](https://github.com/docker-library/redis/blob/313fd068a6751fd9f611e94addfa9ea56a23a3a7/7.0/alpine/Dockerfile)
-* [`6.2.14`, `6.2`, `6`, `6.2.14-bookworm`, `6.2-bookworm`, `6-bookworm`](https://github.com/docker-library/redis/blob/76c393fd8ac537201fe4bc4f200b4b5daee03f24/6.2/debian/Dockerfile)
-* [`6.2.14-alpine`, `6.2-alpine`, `6-alpine`, `6.2.14-alpine3.19`, `6.2-alpine3.19`, `6-alpine3.19`](https://github.com/docker-library/redis/blob/531cfa59d944bbbfb22b8228646d12c926dfc010/6.2/alpine/Dockerfile)
-* [`6.0.20`, `6.0`, `6.0.20-bookworm`, `6.0-bookworm`](https://github.com/docker-library/redis/blob/76c393fd8ac537201fe4bc4f200b4b5daee03f24/6.0/debian/Dockerfile)
-* [`6.0.20-alpine`, `6.0-alpine`, `6.0.20-alpine3.19`, `6.0-alpine3.19`](https://github.com/docker-library/redis/blob/ac5605ebe2e7b4b371edcf94ad06e873986a6b63/6.0/alpine/Dockerfile)
+* [`8.0-M01`, `8.0-M01-bookworm`](https://github.com/redis/docker-library-redis/blob/1b88507c82861395a5c1b354baab795c73c051e3/debian/Dockerfile)
+* [`7.4.1`, `7.4`, `7`, `latest`, `7.4.1-bookworm`, `7.4-bookworm`, `7-bookworm`, `bookworm`](https://github.com/redis/docker-library-redis/blob/e5650da99bb377b2ed4f9f1ef993ff24729b1c16/7.4/debian/Dockerfile)
+* [`7.4.1-alpine`, `7.4-alpine`, `7-alpine`, `alpine`, `7.4.1-alpine3.20`, `7.4-alpine3.20`, `7-alpine3.20`, `alpine3.20`](https://github.com/redis/docker-library-redis/blob/e5650da99bb377b2ed4f9f1ef993ff24729b1c16/7.4/alpine/Dockerfile)
+* [`7.2.6`, `7.2`, `7.2.6-bookworm`, `7.2-bookworm`](https://github.com/redis/docker-library-redis/blob/e5650da99bb377b2ed4f9f1ef993ff24729b1c16/7.2/debian/Dockerfile)
+* [`7.2.6-alpine`, `7.2-alpine`, `7.2.6-alpine3.20`, `7.2-alpine3.20`](https://github.com/redis/docker-library-redis/blob/e5650da99bb377b2ed4f9f1ef993ff24729b1c16/7.2/alpine/Dockerfile)
+* [`6.2.16`, `6.2`, `6`, `6.2.16-bookworm`, `6.2-bookworm`, `6-bookworm`](https://github.com/redis/docker-library-redis/blob/e5650da99bb377b2ed4f9f1ef993ff24729b1c16/6.2/debian/Dockerfile)
+* [`6.2.16-alpine`, `6.2-alpine`, `6-alpine`, `6.2.16-alpine3.20`, `6.2-alpine3.20`, `6-alpine3.20`](https://github.com/redis/docker-library-redis/blob/e5650da99bb377b2ed4f9f1ef993ff24729b1c16/6.2/alpine/Dockerfile)
 
 ## Need support
 
@@ -118,7 +126,7 @@ If you find this project useful, please star this repo just like many [amazing p
 
 ## Have questions?
 
-[![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_logo_footer.png)][rf-rapidfort-footer-logo-link]
+[![RapidFort](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/logo_light.svg)][rf-rapidfort-footer-logo-link]
 
 
 Learn more about RapidFort's pioneering Software Attack Surface Management platform at [RapidFort.com][rf-link].
@@ -137,8 +145,12 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [rf-rapidfort-footer-logo-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=rapidfort_footer_logo
 [rf-view-report-button]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=view_report_button
 [rf-view-report-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=view_report_link
+
 [rf-image-metrics-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=image_metrics_link
 [rf-image-cve-reduction-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=image_cve_reduction_link
+
+[rf-image-savings-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=image_savings_link
+[rf-image-vulns-link]: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fredis?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=redis-official&utm_content=vulns_link
 
 [dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/redis-official?logo=docker&logoColor=white&sort=semver
 [dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/redis-official?logo=docker&logoColor=white
@@ -147,8 +159,8 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
 
 [rf-h-badge]: https://img.shields.io/static/v1?label=RapidFort&labelColor=333F48&message=hardened&color=50B4C4&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAkCAYAAAAKNyObAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHvSURBVHgB7ZjvTcMwEMUvEgNkhNuAjOAR2IAyQbsB2YAyQbsBYoKwQdjA3aAjHA514Xq1Hf9r6QeeFKVJ3tkv+cWOVYCAiKg124b82gZqe0+NNlsHJbLBxthg1o+RASetIEdTJxnBRvtUMCHgM6TIBtMZwY7SiQFfrhUsN+Ao/TJYR3WC5QY88/Nge6oXLBRwO+P/GcnNMZzZteBR0zQfogM0O4Q47Uz9TtSrUIHs71+paugw16Dn+qt5xJ/TD4viEcrE25tepaXPaHxP350GXtD10WwHQWjQxKhl7YUGRg/MuPaY9vxuzPFA+RpEW9rj0yCMbcCsmG9B+Xpk7YRo4RnjQEEttBiBtAefyI23BtoYpBrmRO6ZX0EZWo60c1yfaGBMOKRzdKVocYZO/NpuMss7E9cHitcc0gFS5Qig2LUUtCGkmmJwOsJJvLlokdWtfMFzAvLGctCOooYPtg2USoRQ7HwM2hXzIzuvKQenIxzHm4oWmZ9TKF1AnAR8sI2moB093nKcjoBvtnHFzoXQ8qeMDGcLtUW/i4NYtJ3jJhRcSnRYHMSg1Q5PD5cWHT4/ih0vIpDOf9QrhZtQLsWxlILT8AjXEol/iQRaiVTBX4pO57D6U0WJBFoFtyaLtuqLfwf19G62e7hFWbQKKuoLYovGDo9dW28AAAAASUVORK5CYII=
-[metrics-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis/official/assets/metrics.webp
-[cve-reduction-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis/official/assets/cve_reduction.webp
 
 [source-image-repo-link]: https://hub.docker.com/_/redis
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/redis-official
+
+[savings-link]: https://github.com/rapidfort/community-images/raw/main/community_images/redis/official/assets/savings.svg

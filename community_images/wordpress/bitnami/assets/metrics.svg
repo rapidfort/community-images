@@ -51,13 +51,13 @@
 <text id="Unknown" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="322" y="109.5">Unknown</tspan></text>
 <text id="N/A" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="393" y="109.5">N/A</tspan></text>
 
-<text class="value" id="original_poc" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="56.5" y="55">36</tspan></text>
+<text class="value" id="original_poc" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="56.5" y="55">37</tspan></text>
 <text class="value" id="original_critical" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="122.523" y="77">3</tspan></text>
 <text class="value" id="original_high" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="178" y="72">11</tspan></text>
-<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="71">12</tspan></text>
-<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="43">52</tspan></text>
-<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="70">14</tspan></text>
-<text class="value" id="original_na" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="402.5" y="54">37</tspan></text>
+<text class="value" id="original_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="235" y="71">13</tspan></text>
+<text class="value" id="original_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="289.5" y="43">54</tspan></text>
+<text class="value" id="original_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="346.372" y="71">13</tspan></text>
+<text class="value" id="original_na" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Arial" font-size="12" letter-spacing="0em"><tspan x="402.5" y="58">32</tspan></text>
 
 <path id="horizintal_divider" text-anchor="middle" d="M28 92.5L431 92.5" stroke="#CCCCCC"></path>
 
@@ -67,16 +67,16 @@
 <text class="value" id="hardened_medium" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="232.75" y="125.864">3</tspan></text>
 <text class="value" id="hardened_low" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="288.211" y="125.864">28</tspan></text>
 <text class="value" id="hardened_unknown" text-anchor="middle" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="344.15" y="125.864">7</tspan></text>
-<text class="value" id="hardened_na" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="396.17" y="125.864">17</tspan></text>
+<text class="value" id="hardened_na" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="396.17" y="125.864">18</tspan></text>
 
 <path id="column_original_na" d="
-    M393.5,60 
+    M393.5,64 
     H411.5 
-    C416.5,60 416.5,60 416.5,65 
+    C416.5,64 416.5,64 416.5,69 
     V85 
     H388.5 
-    V65 
-    C388.5,60 388.5,60 393.5,60
+    V69 
+    C388.5,64 388.5,64 393.5,64
     Z
   " fill="#32D58333" mask="url(#mask_na)"></path>
 <path id="column_original_poc" d="
@@ -130,24 +130,24 @@
     Z
   " fill="#35B9E933" mask="url(#mask_low)"></path>
 <path id="column_original_unknown" d="
-    M337.372,76 
+    M337.372,77 
     H355.372 
-    C360.372,76 360.372,76 360.372,81 
+    C360.372,77 360.372,77 360.372,82 
     V85 
     H332.372 
-    V81 
-    C332.372,76 332.372,76 337.372,76
+    V82 
+    C332.372,77 332.372,77 337.372,77
     Z
   " fill="#8b8d9833" mask="url(#mask_unknown)"></path>
 
 <path id="column_hardened_na" d="
-    M393.5,74 
+    M393.5,73 
     H411.5 
-    C416.5,74 416.5,74 416.5,79 
+    C416.5,73 416.5,73 416.5,78 
     V85 
     H388.5 
-    V79 
-    C388.5,74 388.5,74 393.5,74
+    V78 
+    C388.5,73 388.5,73 393.5,73
     Z
   " fill="#32D583ff" mask="url(#mask_na)"></path>
 <path id="column_hardened_poc" d="
@@ -191,13 +191,13 @@
     Z
   " fill="#F2AE40ff" mask="url(#mask_medium)"></path>
 <path id="column_hardened_low" d="
-    M280.5,66 
+    M280.5,67 
     H298.5 
-    C303.5,66 303.5,66 303.5,71 
+    C303.5,67 303.5,67 303.5,72 
     V85 
     H275.5 
-    V71 
-    C275.5,66 275.5,66 280.5,66
+    V72 
+    C275.5,67 275.5,67 280.5,67
     Z
   " fill="#35B9E9ff" mask="url(#mask_low)"></path>
 <path id="column_hardened_unknown" d="
@@ -217,7 +217,7 @@
 <clipPath id="clip0_1_2">
 <rect width="463" height="138" fill="white"></rect>
 </clipPath>
-<mask id="mask_poc"><rect width="28" height="24" x="42.5" y="61" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="2" x="108.523" y="83" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="7" x="164" y="78" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="8" x="221" y="77" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="36" x="275.5" y="49" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="9" x="332.372" y="76" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="25" x="388.5" y="60" rx="5" ry="5" fill="white"></rect></mask></defs>
+<mask id="mask_poc"><rect width="28" height="24" x="42.5" y="61" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_critical"><rect width="28" height="2" x="108.523" y="83" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_high"><rect width="28" height="7" x="164" y="78" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_medium"><rect width="28" height="8" x="221" y="77" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_low"><rect width="28" height="36" x="275.5" y="49" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_unknown"><rect width="28" height="8" x="332.372" y="77" rx="5" ry="5" fill="white"></rect></mask><mask id="mask_na"><rect width="28" height="21" x="388.5" y="64" rx="5" ry="5" fill="white"></rect></mask></defs>
 </svg></svg>
       </g>
 
@@ -228,7 +228,7 @@
 <rect id="bg" x="0.5" y="0.5" width="379" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"></rect>
 <rect id="horizontal_divider" x="55.3753" y="101" width="300" height="1" fill="#D9D9D9"></rect>
 <rect id="vertical_divider" x="55.3753" y="51" width="1" height="50" fill="#D9D9D9"></rect>
-<text id="grid_value_1" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" y="52.92307692307692"><tspan x="45" y="71.7557">50</tspan></text>
+<text id="grid_value_1" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" y="54.7037037037037"><tspan x="45" y="71.7557">50</tspan></text>
 <text id="grid_value_2" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em" display="none"><tspan x="45" y="58.7557">40</tspan></text>
 <text id="grid_zero" text-anchor="end" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="45" y="104.447">0</tspan></text>
 <g id="low">
@@ -257,69 +257,69 @@
 <g id="medium">
 <text id="label_medium" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="221.43" y="122.743">Medium</tspan></text>
 <path id="column_medium_contextual" d="
-    M248.221,83.6923076923077 
+    M248.221,83.4074074074074 
     H266.221 
-    C271.221,83.6923076923077 271.221,83.6923076923077 271.221,88.6923076923077 
+    C271.221,83.4074074074074 271.221,83.4074074074074 271.221,88.4074074074074 
     V101 
     H243.221 
-    V88.6923076923077 
-    C243.221,83.6923076923077 243.221,83.6923076923077 248.221,83.6923076923077
+    V88.4074074074074 
+    C243.221,83.4074074074074 243.221,83.4074074074074 248.221,83.4074074074074
     Z
   " fill="#F4D8A7"></path>
 <path id="column_medium_original" d="
-    M217.886,89.46153846153847 
+    M217.886,88.96296296296296 
     H235.886 
-    C240.886,89.46153846153847 240.886,89.46153846153847 240.886,94.46153846153847 
+    C240.886,88.96296296296296 240.886,88.96296296296296 240.886,93.96296296296296 
     V101 
     H212.886 
-    V94.46153846153847 
-    C212.886,89.46153846153847 212.886,89.46153846153847 217.886,89.46153846153847
+    V93.96296296296296 
+    C212.886,88.96296296296296 212.886,88.96296296296296 217.886,88.96296296296296
     Z
   " fill="#E8B056"></path>
 </g>
 <g id="high">
 <text id="label_high" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="156.244" y="122.743">High</tspan></text>
 <path id="column_high_contextual" d="
-    M174.221,95.23076923076923 
+    M174.221,95.44444444444444 
     H192.221 
-    C197.221,95.23076923076923 197.221,95.23076923076923 197.221,100.23076923076923 
+    C197.221,95.44444444444444 197.221,95.44444444444444 197.221,100.44444444444444 
     V101 
     H169.221 
-    V100.23076923076923 
-    C169.221,95.23076923076923 169.221,95.23076923076923 174.221,95.23076923076923
+    V100.44444444444444 
+    C169.221,95.44444444444444 169.221,95.44444444444444 174.221,95.44444444444444
     Z
   " fill="#B3A1F3"></path>
 <path id="column_high_original" d="
-    M143.886,90.42307692307692 
+    M143.886,90.81481481481481 
     H161.886 
-    C166.886,90.42307692307692 166.886,90.42307692307692 166.886,95.42307692307692 
+    C166.886,90.81481481481481 166.886,90.81481481481481 166.886,95.81481481481481 
     V101 
     H138.886 
-    V95.42307692307692 
-    C138.886,90.42307692307692 138.886,90.42307692307692 143.886,90.42307692307692
+    V95.81481481481481 
+    C138.886,90.81481481481481 138.886,90.81481481481481 143.886,90.81481481481481
     Z
   " fill="#6647EA"></path>
 </g>
 <g id="critical">
 <text id="label_critical" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="11" letter-spacing="0em"><tspan x="76.0884" y="122.743">Critical</tspan></text>
 <path id="column_critical_contextual" d="
-    M97.14437692307692,99.07692307692308 
-    H121.29822307692308 
-    C123.2213,99.07692307692308 123.2213,99.07692307692308 123.2213,101 
+    M97.07315185185185,99.14814814814815 
+    H121.36944814814815 
+    C123.2213,99.14814814814815 123.2213,99.14814814814815 123.2213,101 
     V101 
     H95.2213 
     V101 
-    C95.2213,99.07692307692308 95.2213,99.07692307692308 97.14437692307692,99.07692307692308
+    C95.2213,99.14814814814815 95.2213,99.14814814814815 97.07315185185185,99.14814814814815
     Z
   " fill="#E293A0"></path>
 <path id="column_critical_original" d="
-    M67.7705153846154,98.11538461538461 
-    H90.00128461538462 
-    C92.8859,98.11538461538461 92.8859,98.11538461538461 92.8859,101 
+    M67.66367777777778,98.22222222222223 
+    H90.10812222222224 
+    C92.8859,98.22222222222223 92.8859,98.22222222222223 92.8859,101 
     V101 
     H64.8859 
     V101 
-    C64.8859,98.11538461538461 64.8859,98.11538461538461 67.7705153846154,98.11538461538461
+    C64.8859,98.22222222222223 64.8859,98.22222222222223 67.66367777777778,98.22222222222223
     Z
   " fill="#CD3546"></path>
 </g>
@@ -335,20 +335,20 @@
 <rect id="bg" x="1.19806" y="0.755676" width="339" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"></rect>
 <path id="horizintal_divider" d="M0.698059 41.5643H175.457" stroke="url(#paint0_linear_18_24)"></path>
 <text id="original_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="76.6193">Original image</tspan></text>
-<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">92</tspan></text>
+<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">94</tspan></text>
 <text id="hardened_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="108.619">Hardened image</tspan></text>
 <text id="hardened_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="108.619">45</tspan></text>
 <g id="reduction" transform="translate(273.361328125, 89)">
-  <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">47</tspan></text>
+  <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">49</tspan></text>
   <g id="arrows-down" transform="translate(6, -9.5)">
     <path d="M3.67014 4.70563L0.138794 0.805786H7.14007L3.67014 4.70563Z" fill="#4F986B"></path>
     <path d="M3.67014 9.70563L0.138794 5.80579H7.14007L3.67014 9.70563Z" fill="#4F986B"></path>
   </g>
 </g>
 <text id="title" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="25.1297" y="27.3466">Vulnerabilities</tspan></text>
-<text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">51%</tspan></text>
+<text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">52%</tspan></text>
 <circle id="progress_bg" cx="272.425" cy="69.988" r="42.8825" stroke="#E9EAEC" stroke-width="6"></circle>
-<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="131.79066551174768"></circle>
+<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="128.9866087987318"></circle>
 </g>
 <defs>
 <linearGradient id="paint0_linear_18_24" x1="0.698059" y1="42.0643" x2="175.457" y2="42.0643" gradientUnits="userSpaceOnUse">
@@ -397,9 +397,9 @@
 <rect id="bg" x="1.19806" y="0.755676" width="339" height="137" rx="15.5" fill="#FCFCFD" stroke="#E1E1E6"></rect>
 <path id="horizintal_divider" d="M0.698059 41.5643H175.457" stroke="url(#paint0_linear_18_24)"></path>
 <text id="original_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="76.6193">Original image</tspan></text>
-<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">662.11 MB</tspan></text>
+<text id="original_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="76.6193">662.4 MB</tspan></text>
 <text id="hardened_label" fill="#60646c" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="25.1297" y="108.619">Hardened image</tspan></text>
-<text id="hardened_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="108.619">376.63 MB</tspan></text>
+<text id="hardened_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="135" y="108.619">376.94 MB</tspan></text>
 <g id="reduction" transform="translate(287.6552734375, 89)">
   <text id="reduction_value" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em" text-anchor="end"><tspan x="0" y="0">285 MB</tspan></text>
   <g id="arrows-down" transform="translate(6, -9.5)">
@@ -410,7 +410,7 @@
 <text id="title" fill="#1c2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="25.1297" y="27.3466">Attack surface</tspan></text>
 <text id="percentage" fill="#4F986B" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="20" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="275" y="68">43%</tspan></text>
 <circle id="progress_bg" cx="272.425" cy="69.988" r="42.8825" stroke="#E9EAEC" stroke-width="6"></circle>
-<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="153.26307773010166"></circle>
+<circle id="progress" cx="272.425" cy="69.988" r="42.8825" stroke="#4F986B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="269.4386939351286" stroke-dashoffset="153.32394298336686"></circle>
 </g>
 <defs>
 <linearGradient id="paint0_linear_18_24" x1="0.698059" y1="42.0643" x2="175.457" y2="42.0643" gradientUnits="userSpaceOnUse">

@@ -192,16 +192,17 @@ jobs:
           }
           const workflow_id = workflow.id;
 
-          // Get the last two workflow runs
           const runsResponse = await github.rest.actions.listWorkflowRuns({
             owner,
             repo,
             workflow_id,
-            per_page: 2,
+            status: 'completed', 
+            per_page: 10,
           });
           const runs = runsResponse.data.workflow_runs;
+
           if (runs.length < 2) {
-            core.setFailed('Not enough workflow runs found.');
+            core.setFailed('Not enough completed workflow runs found.');
             return;
           }
 
@@ -365,7 +366,7 @@ jobs:
 
         # Process jobs with '-ib' suffix
         if [[ -n "$failed_jobs_ib" ]]; then
-          message+="**Ironbank Images failed consecutively in last two runs**:\n"
+          message+="\n**Ironbank Images failing consecutively in last two runs**:\n"
           count=1
           IFS=',' read -ra JOBS_IB <<< "$failed_jobs_ib"
           for job in "${JOBS_IB[@]}"; do
@@ -376,7 +377,7 @@ jobs:
 
         # Process jobs without '-ib' suffix
         if [[ -n "$failed_jobs_no_ib" ]]; then
-          message+="\n**Non-Ironbank Images failed consecutively in last two runs**:\n"
+          message+="\n\n**Non-Ironbank Images failing consecutively in last two runs**:\n"
           count=1
           IFS=',' read -ra JOBS_NO_IB <<< "$failed_jobs_no_ib"
           for job in "${JOBS_NO_IB[@]}"; do
@@ -392,29 +393,30 @@ jobs:
 
         # Save message to summary.txt
         echo -e "$message" > summary.txt
+        cat summary.txt
 
-    - name: Send to Zulip
-      if: ${{ always() }}
-      shell: bash
-      env:
-        ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
-        ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
-        ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
-        ZULIP_STREAM_NAME: 'community images'
-        ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
-      run: |
-        message=$(cat summary.txt)
-        # Send the message to Zulip
-        response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
-          -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
-          -d type="stream" \
-          -d to="$ZULIP_STREAM_NAME" \
-          -d topic="$ZULIP_TOPIC_NAME" \
-          --data-urlencode content="$message")
+    # - name: Send to Zulip
+    #   if: ${{ always() }}
+    #   shell: bash
+    #   env:
+    #     ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
+    #     ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
+    #     ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
+    #     ZULIP_STREAM_NAME: 'community images'
+    #     ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
+    #   run: |
+    #     message=$(cat summary.txt)
+    #     # Send the message to Zulip
+    #     response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
+    #       -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
+    #       -d type="stream" \
+    #       -d to="$ZULIP_STREAM_NAME" \
+    #       -d topic="$ZULIP_TOPIC_NAME" \
+    #       --data-urlencode content="$message")
 
-        # Check if the curl command was successful
-        if [ $? -ne 0 ]; then
-          echo "Failed to send message to Zulip."
-          echo "Response: $response"
-          exit 1
-        fi
+    #     # Check if the curl command was successful
+    #     if [ $? -ne 0 ]; then
+    #       echo "Failed to send message to Zulip."
+    #       echo "Response: $response"
+    #       exit 1
+    #     fi

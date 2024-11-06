@@ -65,10 +65,6 @@ const generateCharts = async (imageName, platform, imageSavePath) => {
     const vulnsHardened = await fetchDataRequest(jsonInfo?.vulns_hardened);
     const {vulnsSeverityCount: vulnsHardenedSummary, hardenedVulnsFlags, } = convertVulnsData(vulnsHardened, true, true);
     const {vulnsSeverityCount: vulnsOriginalSummary} = convertVulnsData(vulns, true, false, hardenedVulnsFlags);
-
-    Object.keys(vulnsOriginalSummary.default).forEach((severity) => {
-      vulnsOriginalSummary.default[severity] = vulnsOriginalSummary.default[severity] * 100000;
-    });
     
     // generate SVGs
     // const vulnsSavingsChartSVG = await generateSavingsChart('Vulnerabilities', imageInfo.noVulns, imageInfo.noVulnsHardened, false);

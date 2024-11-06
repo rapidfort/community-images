@@ -26,15 +26,19 @@ This optimized image is functionally equivalent to [Platform One Gitlab Runner I
 
 <p style="display: flex; justify-content: center; gap: 16px;">
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab-runner%2Fgitlab-runner?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=gitlab-runner-ib&utm_content=vulns_count_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/gitlab-runner/ironbank/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/gitlab-runner/ironbank/assets/vulns_count_chart.svg" alt="Vulnerabilities by severity" width="46.5%" />
     </a>
     <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab-runner%2Fgitlab-runner?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=gitlab-runner-ib&utm_content=original_vs_hardened_vulns_chart">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/gitlab-runner/ironbank/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="100%" />
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/gitlab-runner/ironbank/assets/original_vs_hardened_vulns_chart.svg" alt="Original vs. this image" width="46.5%" />
     </a>
 </p>
 
 
-[![Savings][savings-link]][rf-image-savings-link]
+<p style="display: flex; justify-content: center; gap: 16px;">
+    <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab-runner%2Fgitlab-runner?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=gitlab-runner-ib&utm_content=image_savings_link">
+        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/gitlab-runner/ironbank/assets/savings.svg" alt="Original vs. this image" width="100%" />
+    </a>
+</p>
 
 <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fgitlab%2Fgitlab-runner%2Fgitlab-runner?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=gitlab-runner-ib&utm_content=get_full_report_button">
 <img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/full_report.svg" alt="View Report" height="50" />

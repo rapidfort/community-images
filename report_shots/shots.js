@@ -532,7 +532,7 @@ async function generateContextualSeverityChart(vulnsOriginalSummary) {
  * @param {number} total - Total value for filling the chart to 100%.
  */
 function drawVulnsChart(draw, groupId, maxWidth, vulnsCount, total) {
-  const severities = ['critical', 'high', 'medium', 'low', 'unknown'];
+  const severities = ['critical', 'high', 'medium', 'low', 'unknown'].filter(l => vulnsCount[l] > 0);
   
   const minWidth = 5;
   const spacing = 2;

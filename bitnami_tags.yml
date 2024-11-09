@@ -67,16 +67,16 @@ fluentd:
   - 1.17.1-debian-12-r
 ghost:
   docker_links:
-  - '[`5`, `5-debian-12`, `5.100.0`, `5.100.0-debian-12-r` (5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-12/Dockerfile)'
+  - '[`5`, `5-debian-12`, `5.100.1`, `5.100.1-debian-12-r` (5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/ghost/5/debian-12/Dockerfile)'
   search_tags:
-  - 5.100.0-debian-12-r
+  - 5.100.1-debian-12-r
 haproxy:
   docker_links:
   - '[`3`, `3-debian-12`, `3.0.6`, `3.0.6-debian-12-r` (3/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/3/debian-12/Dockerfile)'
-  - '[`2`, `2-debian-12`, `2.9.11`, `2.9.11-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-12/Dockerfile)'
+  - '[`2`, `2-debian-12`, `2.9.12`, `2.9.12-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/haproxy/2/debian-12/Dockerfile)'
   search_tags:
   - 3.0.6-debian-12-r
-  - 2.9.11-debian-12-r
+  - 2.9.12-debian-12-r
 influxdb:
   docker_links:
   - '[`2`, `2-debian-12`, `2.7.10`, `2.7.10-debian-12-r` (2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/influxdb/2/debian-12/Dockerfile)'

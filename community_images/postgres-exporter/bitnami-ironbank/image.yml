@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - bitnami/postgres-exporter:
-      input_base_tag: "0.15."
+      input_base_tag: "0.16."
       output_repo: postgres-exporter-bitnami-ib
 runtimes:
   - type: docker_compose

@@ -1,6 +1,4 @@
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=rapidfort_logo">
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/logo_light.svg" alt="RapidFort" width="200" />
-</a>
+[![RapidFort][rapidfort-logo-header-svg]][rapidfort-logo-header-link]
 
 <br>
 
@@ -10,9 +8,8 @@
 [![Slack][slack-badge]][slack-link]
 [![FOSSA Status][fossa-badge]][fossa-link]
 
-<a href="https://hub.rapidfort.com/repositories?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=zero_vulns_cve">
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/zero_cve_images_link.svg" alt="Zero cve images" width="760" />
-</a>
+
+[![Zero cve images][zero-cve-images-svg]][zero-cve-images-link]
 <br />
 
 
@@ -24,22 +21,12 @@ RapidFort has optimized and hardened this MinIo console Iron Bank container imag
 
 This optimized image is functionally equivalent to [Platform One MinIo console Iron Bank][source-image-repo-link] image but more secure with a significantly smaller software attack surface.
 
-<p style="display: flex; justify-content: center; gap: 16px;">
-    <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=vulns_charts">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/minio-console/ironbank/assets/vulns_charts.svg" alt="Vulnerabilities by severity" width="100%" />
-    </a>
-</p>
+[![Vulnerabilities by severity][vulns-chart-svg]][vulns-chart-link]
 
+[![Original vs. this image][savings-svg]][savings-link]
 
-<p style="display: flex; justify-content: center; gap: 16px;">
-    <a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=image_savings_link">
-        <img src="https://raw.githubusercontent.com/rapidfort/community-images/refs/heads/main/community_images/minio-console/ironbank/assets/savings.svg" alt="Original vs. this image" width="100%" />
-    </a>
-</p>
+[![View Report][full-report-svg]][full-report-link]
 
-<a href="https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=get_full_report_button">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/full_report.svg" alt="View Report" height="50" />
-</a>
 <br>
 <br>
 
@@ -67,9 +54,7 @@ Trademarks: This software listing is packaged by RapidFort. The respective trade
 
 The runtime instructions for this hardened container image are the same as the official release. Follow the instructions provided with the [Platform One MinIo console Iron Bank][source-image-repo-link].
 
-<a href="https://repo1.dso.mil/dsop/opensource/minio/console/-/blob/development/README.md">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_details.svg" alt="View Detailed Instructions" height="50" />
-</a>
+[![View Detailed Instructions][instructions-svg]][instructions-link]
 <br>
 <br>
 
@@ -87,9 +72,8 @@ RapidFort is the pioneering Software Attack Surface Management (SASM) platform i
 
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
-<a href="https://github.com/rapidfort/community-images/tree/main/community_images/minio-console/ironbank">
-<img align="center" src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_github.svg" alt="View on GitHub" height="50" />
-</a>
+
+[![View on GitHub][view-github-svg]][view-github-link]
 <br>
 <br>
 
@@ -104,9 +88,7 @@ We are big fans of open-source software and secure software development. RapidFo
 
 Join our slack community for any questions.
 
-<a href="https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q">
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_banner.png" alt="RapidFort Community Slack" width="600" />
-</a>
+[![RapidFort Community Slack][slack-png]][slack-link]
 
 ## 🌟 Support this project
 
@@ -125,6 +107,9 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 
 <br>
 <br>
+
+[rapidfort-logo-header-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=rapidfort_logo
+[rapidfort-logo-header-svg]: https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/logo_light.svg
 
 
 [dh-rf-badge]: https://img.shields.io/badge/dockerhub-images-important.svg?logo=Docker
@@ -155,4 +140,25 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fminio%2Fconsole
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/minio-console-ib
 
-[savings-link]: https://github.com/rapidfort/community-images/raw/main/community_images/minio-console/ironbank/assets/savings.svg
+
+
+[savings-svg]: https://github.com/rapidfort/community-images/raw/main/community_images/minio-console/ironbank/assets/savings.svg
+[savings-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=image_savings_link
+
+[vulns-chart-svg]: https://github.com/rapidfort/community-images/raw/main/community_images/minio-console/ironbank/assets/vulns_charts.svg
+[vulns-chart-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=vulns_charts
+
+[full-report-svg]: https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/full_report.svg
+[full-report-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fminio%2Fconsole?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=get_full_report_button
+
+[instructions-link]:https://repo1.dso.mil/dsop/opensource/minio/console/-/blob/development/README.md[instructions-svg]:  https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_details.svg
+
+
+[zero-cve-images-link]:  https://hub.rapidfort.com/repositories?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=minio-console-ib&utm_content=zero_vulns_cve
+[zero-cve-images-svg]:  https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/zero_cve_images_link.svg
+
+[slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q
+[slack-png]: https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/github_banner.png
+
+[view-github-link]: https://github.com/rapidfort/community-images/tree/main/community_images/minio-console/ironbank[view-github-svg]: https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_github.svg
+

@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/tomcat-openjdk11:
-      input_base_tag: "11.0."
+      input_base_tag: "10.1."
       output_repo: tomcat-openjdk11-ib
 runtimes:
   - type: k8s

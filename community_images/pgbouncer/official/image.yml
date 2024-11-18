@@ -1,0 +1,34 @@
+name: pgbouncer-official
+official_name: Pgbouncer Official
+official_website: https://www.pgbouncer.org/
+source_image_provider: pgbouncer
+source_image_repo: docker.io/pgbouncer/pgbouncer
+source_image_repo_link: https://hub.docker.com/r/pgbouncer/pgbouncer
+source_image_readme:  https://gitlab.com/aztek-io/oss/containers/pgbouncer-container/-/blob/master/README.md
+rf_docker_link: rapidfort/pgbouncer-official
+image_workflow_name: pgbouncer_official
+github_location: pgbouncer/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fpgbouncer%2Fpgbouncer
+usage_instructions: |
+  # Using Docker run
+  $ docker run -d --name pgbouncer --link postgres:postgres -p 6432:6432 -e DATABASES=yourdb=host=postgres dbname=yourdb user=youruser password=yourpassword rapidfort/pgbouncer-official
+  # Note: Pgbouncer expects a running postgresql instance to connect to. 
+what_is_text: |
+  PgBouncer is a lightweight connection pooler for PostgreSQL. It manages database connections by limiting the number of active connections between an application and a PostgreSQL database, improving scalability and performance. 
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: docker.io
+  account: pgbouncer
+repo_sets:
+  - pgbouncer:
+      input_base_tag: "latest"
+      output_repo: pgbouncer-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      pgbouncer-official:
+        repository: "PGBOUNCER_IMAGE_REPOSITORY"
+        tag: "PGBOUNCER_IMAGE_TAG"

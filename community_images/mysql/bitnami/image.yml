@@ -36,6 +36,8 @@ runtimes:
       repo: bitnami
       repo_url: https://charts.bitnami.com/bitnami
       chart: mysql
+    helm_additional_params:
+      image.registry: ""
     image_keys:
       mysql:
         repository: "image.repository"

@@ -27,13 +27,9 @@ repo_sets:
       input_base_tag: "v3.0."
       output_repo: prometheus-ib
 runtimes:
-  - type: k8s
-    script: k8s_coverage.sh
-    use_helm: False
+  - type: docker_compose
+    script: dc_coverage.sh
     image_keys:
       prometheus-ib:
-        repository: "image.repository"
-        tag: "image.tag"
-    override_file: "overrides.yml"
-    readiness_wait_pod_name_suffix:
-      - ""
+        repository: PROMETHEUS_IB_REPOSITORY
+        tag: PROMETHEUS_IB_TAG

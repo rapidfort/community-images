@@ -1,0 +1,36 @@
+name: concourse-official
+official_name: Concourse Official
+official_website: https://concourse-ci.org/
+source_image_provider: Concourse
+source_image_repo: docker.io/concourse/concourse
+source_image_repo_link: https://hub.docker.com/r/concourse/concourse
+source_image_readme: https://github.com/concourse/concourse/blob/master/README.md
+rf_docker_link: rapidfort/concourse-official
+image_workflow_name: concourse_official
+github_location: concourse/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fconcourse%2Fconcourse
+usage_instructions: |
+  # Using Docker Run:
+  $docker run --detach --name concourse --privileged --publish 8080:8080 concourse/concourse quickstart --add-local-user test:test --main-team-local-user test
+  # Note: Concourse requires a running PostgreSQL instance to start.
+what_is_text: |
+  Concourse is an open-source continuous thing-doer. Built on the simple mechanics of resources, tasks, and jobs, Concourse presents a general approach to automation that makes it great for CI/CD.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+use_rapid_stub: true
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: concourse
+repo_sets:
+  - concourse:
+      input_base_tag: "7.12."
+      output_repo: concourse-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      concourse-official:
+        repository: "CONCOURSE_IMAGE_REPOSITORY"
+        tag: "CONCOURSE_IMAGE_TAG"

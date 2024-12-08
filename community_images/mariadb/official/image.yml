@@ -48,7 +48,7 @@ repo_sets:
 runtimes:
   - type: docker
     script: docker_coverage.sh
-    wait_time_sec: 10
+    wait_time_sec: 5
     mariadb-official:
       exec_command: --default-authentication-plugin=mysql_native_password
       environment:

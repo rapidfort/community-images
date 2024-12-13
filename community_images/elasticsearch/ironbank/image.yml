@@ -1,0 +1,32 @@
+name: elasticsearch-ib
+official_name: Elasticsearch Iron Bank
+official_website: https://www.elastic.co/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/elastic%2Felasticsearch%2Felasticsearch
+source_image_readme: https://repo1.dso.mil/dsop/elastic/elasticsearch/elasticsearch/-/blob/development/README.md
+rf_docker_link: rapidfort/elasticsearch-ib
+github_location: elasticsearch/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Felastic%2Felasticsearch%2Felasticsearch
+usage_instructions: |
+  # Using docker run:
+    $ docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" rapidfort/elasticsearch-official
+what_is_text: |
+  Elasticsearch is a distributed search and analytics engine. It is used for web search, log monitoring, and real-time analytics. Ideal for Big Data applications.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - elastic/elasticsearch/elasticsearch:
+      input_base_tag: "8.14."
+      output_repo: elasticsearch-ib
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      elasticsearch-ib:
+        repository: "ELASTICSEARCH_IMAGE_REPOSITORY"
+        tag: "ELASTICSEARCH_IMAGE_TAG"

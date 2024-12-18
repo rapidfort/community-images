@@ -19,7 +19,7 @@ permissions: read-all
 jobs:
 {%- for image in image_list %}
   {{ image.name -}}:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 {% if  output == "pull_request" %}
     environment: actions-cicd-pr
 {% elif  output == "main_build" %}

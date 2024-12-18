@@ -1427,7 +1427,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/postgresql-bitnami-ib
+          repository: rapidfort/postgresql16-bitnami-ib
           readme-filepath: ./community_images/postgresql/bitnami-ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for PostgreSQL IronBank (Bitnami)
       - name: Docker Hub Description Prometheus
@@ -1671,7 +1671,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rapidfort/tomcat-openjdk8-ib
-          readme-filepath: ./community_images/tomcat10/ironbank/README.md.dockerhub
+          readme-filepath: ./community_images/tomcat-openjdk8/ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Tomcat Ironbank
       - name: Docker Hub Description Tomcat Ironbank
         if: always()

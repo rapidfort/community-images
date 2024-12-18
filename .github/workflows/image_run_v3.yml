@@ -12,7 +12,7 @@ permissions: read-all
 
 jobs:
   airflow:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -70,7 +70,7 @@ jobs:
            -d '{ "rapidfort/airflow": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   airflow-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -128,7 +128,7 @@ jobs:
            -d '{ "rapidfort/airflow-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   airflow-ib-bitnami:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -186,7 +186,7 @@ jobs:
            -d '{ "rapidfort/airflow-ib-bitnami": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   alertmanager-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -244,7 +244,7 @@ jobs:
            -d '{ "rapidfort/alertmanager-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   alloy-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -302,7 +302,7 @@ jobs:
            -d '{ "rapidfort/alloy-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   ansible-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -360,7 +360,7 @@ jobs:
            -d '{ "rapidfort/ansible-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   ansible-lint-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -418,7 +418,7 @@ jobs:
            -d '{ "rapidfort/ansible-lint-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   ansible-operator-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -476,7 +476,7 @@ jobs:
            -d '{ "rapidfort/ansible-operator-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   apache:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -534,7 +534,7 @@ jobs:
            -d '{ "rapidfort/apache": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   apache-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -592,7 +592,7 @@ jobs:
            -d '{ "rapidfort/apache2-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   apache-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -650,7 +650,7 @@ jobs:
            -d '{ "rapidfort/apache-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   argocd:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -708,7 +708,7 @@ jobs:
            -d '{ "rapidfort/argocd": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   argocd-bigbang-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -766,7 +766,7 @@ jobs:
            -d '{ "rapidfort/argocd-bigbang-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   argocd-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -824,7 +824,7 @@ jobs:
            -d '{ "rapidfort/argocd-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   auditbeat-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -882,7 +882,7 @@ jobs:
            -d '{ "rapidfort/auditbeat-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   bats-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -940,7 +940,7 @@ jobs:
            -d '{ "rapidfort/bats-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   blackbox-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -998,7 +998,7 @@ jobs:
            -d '{ "rapidfort/blackbox-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   boundary-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1056,7 +1056,7 @@ jobs:
            -d '{ "rapidfort/boundary-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   buildah-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1114,7 +1114,7 @@ jobs:
            -d '{ "rapidfort/buildah-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   camel-k-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1172,7 +1172,7 @@ jobs:
            -d '{ "rapidfort/camel-k-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   cass-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1230,7 +1230,7 @@ jobs:
            -d '{ "rapidfort/cass-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   cassandra-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1288,7 +1288,7 @@ jobs:
            -d '{ "rapidfort/cassandra-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   ceph-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1346,7 +1346,7 @@ jobs:
            -d '{ "rapidfort/ceph-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   certtool-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1404,7 +1404,7 @@ jobs:
            -d '{ "rapidfort/certtool-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   chart-testing-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1462,7 +1462,7 @@ jobs:
            -d '{ "rapidfort/chart-testing-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   clickhouse-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1520,7 +1520,7 @@ jobs:
            -d '{ "rapidfort/clickhouse-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   cockroachdb-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1578,7 +1578,7 @@ jobs:
            -d '{ "rapidfort/cockroachdb-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   consul:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1636,7 +1636,7 @@ jobs:
            -d '{ "rapidfort/consul": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   consul-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1694,7 +1694,7 @@ jobs:
            -d '{ "rapidfort/consul-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   consul-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1752,7 +1752,7 @@ jobs:
            -d '{ "rapidfort/consul-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   coredns-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1810,7 +1810,7 @@ jobs:
            -d '{ "rapidfort/coredns-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   couchdb:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1868,7 +1868,7 @@ jobs:
            -d '{ "rapidfort/couchdb": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   couchdb-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1926,7 +1926,7 @@ jobs:
            -d '{ "rapidfort/couchdb_3-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   couchdb-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -1984,7 +1984,7 @@ jobs:
            -d '{ "rapidfort/couchdb-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   curl:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2042,7 +2042,7 @@ jobs:
            -d '{ "rapidfort/curl": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   dex-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2100,7 +2100,7 @@ jobs:
            -d '{ "rapidfort/dex-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   eck-operator-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2158,7 +2158,7 @@ jobs:
            -d '{ "rapidfort/eck-operator-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   elasticsearch:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2216,7 +2216,7 @@ jobs:
            -d '{ "rapidfort/elasticsearch": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   elasticsearch-dump-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2274,7 +2274,7 @@ jobs:
            -d '{ "rapidfort/elasticsearch-dump-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   elasticsearch-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2332,7 +2332,7 @@ jobs:
            -d '{ "rapidfort/elasticsearch-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   elasticsearch-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2390,7 +2390,7 @@ jobs:
            -d '{ "rapidfort/elasticsearch-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   envoy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2448,7 +2448,7 @@ jobs:
            -d '{ "rapidfort/envoy": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   envoy-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2506,7 +2506,7 @@ jobs:
            -d '{ "rapidfort/envoy-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   etcd:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2564,7 +2564,7 @@ jobs:
            -d '{ "rapidfort/etcd": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   etcd-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2622,7 +2622,7 @@ jobs:
            -d '{ "rapidfort/etcd-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   filebeat-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2680,7 +2680,7 @@ jobs:
            -d '{ "rapidfort/filebeat-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluent-bit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2738,7 +2738,7 @@ jobs:
            -d '{ "rapidfort/fluent-bit": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluent-bit-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2796,7 +2796,7 @@ jobs:
            -d '{ "rapidfort/fluent-bit-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluent-bit-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2854,7 +2854,7 @@ jobs:
            -d '{ "rapidfort/fluent-bit-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluentd:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2912,7 +2912,7 @@ jobs:
            -d '{ "rapidfort/fluentd": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluentd-elasticsearch-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -2970,7 +2970,7 @@ jobs:
            -d '{ "rapidfort/fluentd-elasticsearch-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluentd-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3028,7 +3028,7 @@ jobs:
            -d '{ "rapidfort/fluentd-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluentd-kubernetes-daemonset-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3086,7 +3086,7 @@ jobs:
            -d '{ "rapidfort/fluentd-kubernetes-daemonset-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluentd-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3144,7 +3144,7 @@ jobs:
            -d '{ "rapidfort/fluentd-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluxcd-helm-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3202,7 +3202,7 @@ jobs:
            -d '{ "rapidfort/fluxcd-helm-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluxcd-image-automation-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3260,7 +3260,7 @@ jobs:
            -d '{ "rapidfort/fluxcd-image-automation-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluxcd-image-reflector-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3318,7 +3318,7 @@ jobs:
            -d '{ "rapidfort/fluxcd-image-reflector-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluxcd-kustomize-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3376,7 +3376,7 @@ jobs:
            -d '{ "rapidfort/fluxcd-kustomize-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluxcd-notification-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3434,7 +3434,7 @@ jobs:
            -d '{ "rapidfort/fluxcd-notification-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   fluxcd-source-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3492,7 +3492,7 @@ jobs:
            -d '{ "rapidfort/fluxcd-source-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gatekeeper-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3550,7 +3550,7 @@ jobs:
            -d '{ "rapidfort/gatekeeper-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   ghost:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3608,7 +3608,7 @@ jobs:
            -d '{ "rapidfort/ghost": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   git-lfs-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3666,7 +3666,7 @@ jobs:
            -d '{ "rapidfort/git-lfs-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitaly-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3724,7 +3724,7 @@ jobs:
            -d '{ "rapidfort/gitaly-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-certificates-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3782,7 +3782,7 @@ jobs:
            -d '{ "rapidfort/gitlab-certificates-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-cfssl-self-sign-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3840,7 +3840,7 @@ jobs:
            -d '{ "rapidfort/gitlab-cfssl-self-sign-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-container-registry-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3898,7 +3898,7 @@ jobs:
            -d '{ "rapidfort/gitlab-container-registry-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -3956,7 +3956,7 @@ jobs:
            -d '{ "rapidfort/gitlab-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-kas-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4014,7 +4014,7 @@ jobs:
            -d '{ "rapidfort/gitlab-kas-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-runner-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4072,7 +4072,7 @@ jobs:
            -d '{ "rapidfort/gitlab-runner-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-shell-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4130,7 +4130,7 @@ jobs:
            -d '{ "rapidfort/gitlab-shell-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   gitlab-workhorse-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4188,7 +4188,7 @@ jobs:
            -d '{ "rapidfort/gitlab-workhorse-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   grafana-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4246,7 +4246,7 @@ jobs:
            -d '{ "rapidfort/grafana-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   grafana-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4304,7 +4304,7 @@ jobs:
            -d '{ "rapidfort/grafana-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   grafana-plugins-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4362,7 +4362,7 @@ jobs:
            -d '{ "rapidfort/grafana-plugins-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   hadolint-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4420,7 +4420,7 @@ jobs:
            -d '{ "rapidfort/hadolint-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   haproxy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4478,7 +4478,7 @@ jobs:
            -d '{ "rapidfort/haproxy": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   haproxy-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4536,7 +4536,7 @@ jobs:
            -d '{ "rapidfort/haproxy24-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   haproxy-latest-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4594,7 +4594,7 @@ jobs:
            -d '{ "rapidfort/haproxy-latest-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   haproxy-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4652,7 +4652,7 @@ jobs:
            -d '{ "rapidfort/haproxy-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   heartbeat-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4710,7 +4710,7 @@ jobs:
            -d '{ "rapidfort/heartbeat-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   influxdb:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4768,7 +4768,7 @@ jobs:
            -d '{ "rapidfort/influxdb": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   jmx-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4826,7 +4826,7 @@ jobs:
            -d '{ "rapidfort/jmx-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   jq-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4884,7 +4884,7 @@ jobs:
            -d '{ "rapidfort/jq-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   k6-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -4942,7 +4942,7 @@ jobs:
            -d '{ "rapidfort/k6-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   k8s-sidecar-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5000,7 +5000,7 @@ jobs:
            -d '{ "rapidfort/k8s-sidecar-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   k8s-sidecar-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5058,7 +5058,7 @@ jobs:
            -d '{ "rapidfort/k8s-sidecar-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kafka-bridge-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5116,7 +5116,7 @@ jobs:
            -d '{ "rapidfort/kafka-bridge-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kafka-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5174,7 +5174,7 @@ jobs:
            -d '{ "rapidfort/kafka-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kafka-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5232,7 +5232,7 @@ jobs:
            -d '{ "rapidfort/kafka-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   keycloak-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5290,7 +5290,7 @@ jobs:
            -d '{ "rapidfort/keycloak-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kibana-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5348,7 +5348,7 @@ jobs:
            -d '{ "rapidfort/kibana-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kong:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5406,7 +5406,7 @@ jobs:
            -d '{ "rapidfort/kong": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kongkic-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5464,7 +5464,7 @@ jobs:
            -d '{ "rapidfort/kongkic-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kube-webhook-certgen-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5522,7 +5522,7 @@ jobs:
            -d '{ "rapidfort/kube-webhook-certgen-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kubectl-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5580,7 +5580,7 @@ jobs:
            -d '{ "rapidfort/kubectl-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kyverno-background-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5638,7 +5638,7 @@ jobs:
            -d '{ "rapidfort/kyverno-background-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kyverno-cleanup-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5696,7 +5696,7 @@ jobs:
            -d '{ "rapidfort/kyverno-cleanup-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   kyverno-reports-controller-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5754,7 +5754,7 @@ jobs:
            -d '{ "rapidfort/kyverno-reports-controller-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   logstash-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5812,7 +5812,7 @@ jobs:
            -d '{ "rapidfort/logstash-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mariadb:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5870,7 +5870,7 @@ jobs:
            -d '{ "rapidfort/mariadb": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mariadb-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5928,7 +5928,7 @@ jobs:
            -d '{ "rapidfort/mariadb-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mariadb-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -5986,7 +5986,7 @@ jobs:
            -d '{ "rapidfort/mariadb-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mc-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6044,7 +6044,7 @@ jobs:
            -d '{ "rapidfort/mc-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   memcached:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6102,7 +6102,7 @@ jobs:
            -d '{ "rapidfort/memcached": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   memcached-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6160,7 +6160,7 @@ jobs:
            -d '{ "rapidfort/memcached-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   memcached-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6218,7 +6218,7 @@ jobs:
            -d '{ "rapidfort/memcached-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   metabase-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6276,7 +6276,7 @@ jobs:
            -d '{ "rapidfort/metabase-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   metricbeat-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6334,7 +6334,7 @@ jobs:
            -d '{ "rapidfort/metricbeat-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   metrics-server-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6392,7 +6392,7 @@ jobs:
            -d '{ "rapidfort/metrics-server-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   microsoft-sql-server-2019-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6450,7 +6450,7 @@ jobs:
            -d '{ "rapidfort/microsoft-sql-server-2019-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   minio-console-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6508,7 +6508,7 @@ jobs:
            -d '{ "rapidfort/minio-console-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   minio-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6566,7 +6566,7 @@ jobs:
            -d '{ "rapidfort/minio-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   minio-operator-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6624,7 +6624,7 @@ jobs:
            -d '{ "rapidfort/minio-operator-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   minio-operator-sidecar-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6682,7 +6682,7 @@ jobs:
            -d '{ "rapidfort/minio-operator-sidecar-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mkdocs-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6740,7 +6740,7 @@ jobs:
            -d '{ "rapidfort/mkdocs-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   molecule-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6798,7 +6798,7 @@ jobs:
            -d '{ "rapidfort/molecule-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mongodb:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6856,7 +6856,7 @@ jobs:
            -d '{ "rapidfort/mongodb": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mongodb-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6914,7 +6914,7 @@ jobs:
            -d '{ "rapidfort/mongodb-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mongodb-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -6972,7 +6972,7 @@ jobs:
            -d '{ "rapidfort/mongodb-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   moodle-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7030,7 +7030,7 @@ jobs:
            -d '{ "rapidfort/moodle-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mysql:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7088,7 +7088,7 @@ jobs:
            -d '{ "rapidfort/mysql": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mysql-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7146,7 +7146,7 @@ jobs:
            -d '{ "rapidfort/mysql8-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   mysql-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7204,7 +7204,7 @@ jobs:
            -d '{ "rapidfort/mysql-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nats:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7262,7 +7262,7 @@ jobs:
            -d '{ "rapidfort/nats": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nats-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7320,7 +7320,7 @@ jobs:
            -d '{ "rapidfort/nats-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nats-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7378,7 +7378,7 @@ jobs:
            -d '{ "rapidfort/nats-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nginx:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7436,7 +7436,7 @@ jobs:
            -d '{ "rapidfort/nginx": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nginx-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7494,7 +7494,7 @@ jobs:
            -d '{ "rapidfort/nginx-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nginx-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7552,7 +7552,7 @@ jobs:
            -d '{ "rapidfort/nginx-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nifi-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7610,7 +7610,7 @@ jobs:
            -d '{ "rapidfort/nifi-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nifi-registry-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7668,7 +7668,7 @@ jobs:
            -d '{ "rapidfort/nifi-registry-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   node-exporter:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7726,7 +7726,7 @@ jobs:
            -d '{ "rapidfort/node-exporter": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   node-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7784,7 +7784,7 @@ jobs:
            -d '{ "rapidfort/node-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   node-exporter-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7842,7 +7842,7 @@ jobs:
            -d '{ "rapidfort/node-exporter-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   oncall:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7900,7 +7900,7 @@ jobs:
            -d '{ "rapidfort/oncall": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   opa-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -7958,7 +7958,7 @@ jobs:
            -d '{ "rapidfort/opa-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   openldap-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8016,7 +8016,7 @@ jobs:
            -d '{ "rapidfort/openldap-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   osee-postgres-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8074,7 +8074,7 @@ jobs:
            -d '{ "rapidfort/osee-postgres-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   packetbeat-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8132,7 +8132,7 @@ jobs:
            -d '{ "rapidfort/packetbeat-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   pause-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8190,7 +8190,7 @@ jobs:
            -d '{ "rapidfort/pause-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   pgadmin-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8248,7 +8248,7 @@ jobs:
            -d '{ "rapidfort/pgadmin-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   podman-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8306,7 +8306,7 @@ jobs:
            -d '{ "rapidfort/podman-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postfix-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8364,7 +8364,7 @@ jobs:
            -d '{ "rapidfort/postfix-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postgres-exporter-bitnami-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8422,7 +8422,7 @@ jobs:
            -d '{ "rapidfort/postgres-exporter-bitnami-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postgres-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8480,7 +8480,7 @@ jobs:
            -d '{ "rapidfort/postgres-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postgresql:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8538,7 +8538,7 @@ jobs:
            -d '{ "rapidfort/postgresql": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postgresql-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8596,7 +8596,7 @@ jobs:
            -d '{ "rapidfort/postgresql12-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postgresql-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8654,7 +8654,7 @@ jobs:
            -d '{ "rapidfort/postgresql-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   postgresql16-bitnami-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8709,10 +8709,10 @@ jobs:
           curl -X POST \
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
-           -d '{ "rapidfort/postgresql-bitnami-ib": 1 }' \
+           -d '{ "rapidfort/postgresql16-bitnami-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   prometheus:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8770,7 +8770,7 @@ jobs:
            -d '{ "rapidfort/prometheus": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   prometheus-config-reloader-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8828,7 +8828,7 @@ jobs:
            -d '{ "rapidfort/prometheus-config-reloader-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   prometheus-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8886,7 +8886,7 @@ jobs:
            -d '{ "rapidfort/prometheus-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   prometheus-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -8944,7 +8944,7 @@ jobs:
            -d '{ "rapidfort/prometheus-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   prometheus-operator-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9002,7 +9002,7 @@ jobs:
            -d '{ "rapidfort/prometheus-operator-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   rabbitmq:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9060,7 +9060,7 @@ jobs:
            -d '{ "rapidfort/rabbitmq": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   rabbitmq-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9118,7 +9118,7 @@ jobs:
            -d '{ "rapidfort/rabbitmq-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   redis:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9176,7 +9176,7 @@ jobs:
            -d '{ "rapidfort/redis": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   redis-cluster:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9234,7 +9234,7 @@ jobs:
            -d '{ "rapidfort/redis-cluster": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   redis-exporter-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9292,7 +9292,7 @@ jobs:
            -d '{ "rapidfort/redis-exporter-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   redis-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9350,7 +9350,7 @@ jobs:
            -d '{ "rapidfort/redis6-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   redis-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9408,7 +9408,7 @@ jobs:
            -d '{ "rapidfort/redis-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   redis-sentinel-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9466,7 +9466,7 @@ jobs:
            -d '{ "rapidfort/redis-sentinel-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   registry-v2-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9524,7 +9524,7 @@ jobs:
            -d '{ "rapidfort/registry-v2-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   shellcheck-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9582,7 +9582,7 @@ jobs:
            -d '{ "rapidfort/shellcheck-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   skopeo-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9640,7 +9640,7 @@ jobs:
            -d '{ "rapidfort/skopeo-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   solr-8-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9698,7 +9698,7 @@ jobs:
            -d '{ "rapidfort/solr-8-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   sqlite-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9756,7 +9756,7 @@ jobs:
            -d '{ "rapidfort/sqlite-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   telegraf:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9814,7 +9814,7 @@ jobs:
            -d '{ "rapidfort/telegraf": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   tempo-query-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9872,7 +9872,7 @@ jobs:
            -d '{ "rapidfort/tempo-query-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   terraform-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9930,7 +9930,7 @@ jobs:
            -d '{ "rapidfort/terraform-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   terragrunt-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -9988,7 +9988,7 @@ jobs:
            -d '{ "rapidfort/terragrunt-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   tflint-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10046,7 +10046,7 @@ jobs:
            -d '{ "rapidfort/tflint-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   thanos-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10104,7 +10104,7 @@ jobs:
            -d '{ "rapidfort/thanos-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   tika-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10162,7 +10162,7 @@ jobs:
            -d '{ "rapidfort/tika-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   tomcat-openjdk11-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10220,7 +10220,7 @@ jobs:
            -d '{ "rapidfort/tomcat-openjdk11-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   tomcat-openjdk8-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10264,7 +10264,7 @@ jobs:
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
         if: github.event_name != 'pull_request'
-        run: python3 community_images/common/orchestrator/main.py hourly_run tomcat10/ironbank --publish
+        run: python3 community_images/common/orchestrator/main.py hourly_run tomcat-openjdk8/ironbank --publish
 
 
       - name: Report pulls
@@ -10278,7 +10278,7 @@ jobs:
            -d '{ "rapidfort/tomcat-openjdk8-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   tomcat10-openjdk17-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10336,7 +10336,7 @@ jobs:
            -d '{ "rapidfort/tomcat10-openjdk17-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   tomcat9-openjdk11-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10394,7 +10394,7 @@ jobs:
            -d '{ "rapidfort/tomcat9-openjdk11-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   traefik:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10452,7 +10452,7 @@ jobs:
            -d '{ "rapidfort/traefik": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   traefik-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10510,7 +10510,7 @@ jobs:
            -d '{ "rapidfort/traefik-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   vale-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10568,7 +10568,7 @@ jobs:
            -d '{ "rapidfort/vale-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   vault:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10626,7 +10626,7 @@ jobs:
            -d '{ "rapidfort/vault": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   vault-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10684,7 +10684,7 @@ jobs:
            -d '{ "rapidfort/vault-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   vault-k8s-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10742,7 +10742,7 @@ jobs:
            -d '{ "rapidfort/vault-k8s-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   vcluster-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10800,7 +10800,7 @@ jobs:
            -d '{ "rapidfort/vcluster-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   velero-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10858,7 +10858,7 @@ jobs:
            -d '{ "rapidfort/velero-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   wordpress:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10916,7 +10916,7 @@ jobs:
            -d '{ "rapidfort/wordpress": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   wordpress-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -10974,7 +10974,7 @@ jobs:
            -d '{ "rapidfort/wordpress-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   yourls:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -11032,7 +11032,7 @@ jobs:
            -d '{ "rapidfort/yourls": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   yq-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -11090,7 +11090,7 @@ jobs:
            -d '{ "rapidfort/yq-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   zeek-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -11148,7 +11148,7 @@ jobs:
            -d '{ "rapidfort/zeek-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   zookeeper:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -11206,7 +11206,7 @@ jobs:
            -d '{ "rapidfort/zookeeper": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   zookeeper-ib:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 
@@ -11264,7 +11264,7 @@ jobs:
            -d '{ "rapidfort/zookeeper-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   zookeeper-official:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: actions-cicd
 

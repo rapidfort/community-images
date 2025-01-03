@@ -126,300 +126,297 @@ jobs:
           # Save the number of chunks as an output
           echo "chunks_count=$chunk_index" >> $GITHUB_OUTPUT
 
-          # Display the message
-          cat summary.txt
-          
-      # - name: Send to Zulip
-      #   if: ${{ always() }}
-      #   shell: bash
-      #   env:
-      #     ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
-      #     ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
-      #     ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
-      #     ZULIP_STREAM_NAME: 'community images'
-      #     ZULIP_TOPIC_NAME: 'IB Pipeline Tracker 🤖'
-      #   run: |
-      #     chunks_count=${{ steps.extract_summary.outputs.chunks_count }}
-      #     for ((i=0; i<chunks_count; i++)); do
-      #       chunk_file="chunks/chunk_${i}.txt"
-      #       if [ -f "$chunk_file" ]; then
-      #         chunk=$(cat "$chunk_file")
-      #         # Send the chunk to Zulip
-      #         response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
-      #           -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
-      #           -d type="stream" \
-      #           -d to="$ZULIP_STREAM_NAME" \
-      #           -d topic="$ZULIP_TOPIC_NAME" \
-      #           --data-urlencode content="$chunk")
-      #         # Check if the curl command was successful
-      #         if [ $? -ne 0 ]; then
-      #           echo "Failed to send message to Zulip."
-      #           echo "Response: $response"
-      #           exit 1
-      #         fi
-      #       else
-      #         echo "Chunk file $chunk_file does not exist."
-      #         exit 1
-      #       fi
-      #     done
+      - name: Send to Zulip
+        if: ${{ always() }}
+        shell: bash
+        env:
+          ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
+          ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
+          ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
+          ZULIP_STREAM_NAME: 'community images'
+          ZULIP_TOPIC_NAME: 'IB Pipeline Tracker 🤖'
+        run: |
+          chunks_count=${{ steps.extract_summary.outputs.chunks_count }}
+          for ((i=0; i<chunks_count; i++)); do
+            chunk_file="chunks/chunk_${i}.txt"
+            if [ -f "$chunk_file" ]; then
+              chunk=$(cat "$chunk_file")
+              # Send the chunk to Zulip
+              response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
+                -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
+                -d type="stream" \
+                -d to="$ZULIP_STREAM_NAME" \
+                -d topic="$ZULIP_TOPIC_NAME" \
+                --data-urlencode content="$chunk")
+              # Check if the curl command was successful
+              if [ $? -ne 0 ]; then
+                echo "Failed to send message to Zulip."
+                echo "Response: $response"
+                exit 1
+              fi
+            else
+              echo "Chunk file $chunk_file does not exist."
+              exit 1
+            fi
+          done
 
 
-  # image_creation_run_alerts:
-  #   name: Image Creation Run Alerts
-  #   runs-on: ubuntu-latest
-  #   environment: actions-cicd
+  image_creation_run_alerts:
+    name: Image Creation Run Alerts
+    runs-on: ubuntu-latest
+    environment: actions-cicd
 
-  #   steps:
-  #   - name: Get the last two runs of Image Creation Run workflow
-  #     id: get_runs
-  #     uses: actions/github-script@v7
-  #     with:
-  #       script: |
-  #         const workflowName = 'Image Creation Run';
-  #         const owner = context.repo.owner;
-  #         const repo = context.repo.repo;
+    steps:
+    - name: Get the last two runs of Image Creation Run workflow
+      id: get_runs
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const workflowName = 'Image Creation Run';
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
 
-  #         // Get the workflows in the repo
-  #         const workflows = await github.rest.actions.listRepoWorkflows({
-  #           owner,
-  #           repo,
-  #         });
+          // Get the workflows in the repo
+          const workflows = await github.rest.actions.listRepoWorkflows({
+            owner,
+            repo,
+          });
 
-  #         // Find the workflow ID for "Image Creation Run"
-  #         const workflow = workflows.data.workflows.find(
-  #           (wf) => wf.name === workflowName
-  #         );
-  #         if (!workflow) {
-  #           core.setFailed(`Workflow "${workflowName}" not found.`);
-  #           return;
-  #         }
-  #         const workflow_id = workflow.id;
+          // Find the workflow ID for "Image Creation Run"
+          const workflow = workflows.data.workflows.find(
+            (wf) => wf.name === workflowName
+          );
+          if (!workflow) {
+            core.setFailed(`Workflow "${workflowName}" not found.`);
+            return;
+          }
+          const workflow_id = workflow.id;
 
-  #         const runsResponse = await github.rest.actions.listWorkflowRuns({
-  #           owner,
-  #           repo,
-  #           workflow_id,
-  #           status: 'completed', 
-  #           per_page: 10,
-  #         });
-  #         const runs = runsResponse.data.workflow_runs;
+          const runsResponse = await github.rest.actions.listWorkflowRuns({
+            owner,
+            repo,
+            workflow_id,
+            status: 'completed', 
+            per_page: 10,
+          });
+          const runs = runsResponse.data.workflow_runs;
 
-  #         if (runs.length < 2) {
-  #           core.setFailed('Not enough completed workflow runs found.');
-  #           return;
-  #         }
+          if (runs.length < 2) {
+            core.setFailed('Not enough completed workflow runs found.');
+            return;
+          }
 
-  #         // Output the run IDs, conclusions, URLs, and dates
-  #         core.setOutput('run_id1', runs[0].id.toString());
-  #         core.setOutput('run_id2', runs[1].id.toString());
-  #         core.setOutput('conclusion1', runs[0].conclusion || 'unknown');
-  #         core.setOutput('url1', runs[0].html_url);
-  #         core.setOutput('url2', runs[1].html_url);
+          // Output the run IDs, conclusions, URLs, and dates
+          core.setOutput('run_id1', runs[0].id.toString());
+          core.setOutput('run_id2', runs[1].id.toString());
+          core.setOutput('conclusion1', runs[0].conclusion || 'unknown');
+          core.setOutput('url1', runs[0].html_url);
+          core.setOutput('url2', runs[1].html_url);
 
-  #   - name: Get failed ironbank images from the last two runs
-  #     id: get_failed_jobs
-  #     uses: actions/github-script@v7
-  #     env:
-  #       RUN_ID1: ${{ steps.get_runs.outputs.run_id1 }}
-  #       RUN_ID2: ${{ steps.get_runs.outputs.run_id2 }}
-  #     with:
-  #       script: |
-  #         const owner = context.repo.owner;
-  #         const repo = context.repo.repo;
+    - name: Get failed ironbank images from the last two runs
+      id: get_failed_jobs
+      uses: actions/github-script@v7
+      env:
+        RUN_ID1: ${{ steps.get_runs.outputs.run_id1 }}
+        RUN_ID2: ${{ steps.get_runs.outputs.run_id2 }}
+      with:
+        script: |
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
 
-  #         // Function to get all jobs with pagination
-  #         async function getAllJobs(run_id) {
-  #           let jobs = [];
-  #           let page = 1;
-  #           let moreJobs = true;
+          // Function to get all jobs with pagination
+          async function getAllJobs(run_id) {
+            let jobs = [];
+            let page = 1;
+            let moreJobs = true;
 
-  #           while (moreJobs) {
-  #             const response = await github.rest.actions.listJobsForWorkflowRun({
-  #               owner,
-  #               repo,
-  #               run_id: run_id,
-  #               per_page: 100,
-  #               page: page,
-  #             });
+            while (moreJobs) {
+              const response = await github.rest.actions.listJobsForWorkflowRun({
+                owner,
+                repo,
+                run_id: run_id,
+                per_page: 100,
+                page: page,
+              });
 
-  #             if (response.data.jobs.length > 0) {
-  #               jobs = jobs.concat(response.data.jobs);
-  #               page++;
-  #             } else {
-  #               moreJobs = false;
-  #             }
-  #           }
+              if (response.data.jobs.length > 0) {
+                jobs = jobs.concat(response.data.jobs);
+                page++;
+              } else {
+                moreJobs = false;
+              }
+            }
 
-  #           return jobs;
-  #         }
+            return jobs;
+          }
 
-  #         // Function to get failed jobs ending with "-ib"
-  #         async function getFailedJobs(run_id) {
-  #           const jobs = await getAllJobs(run_id);
-  #           const failedJobs = jobs.filter((job) => {
-  #             return job.conclusion === 'failure' && job.name.endsWith('-ib');
-  #           });
-  #           return failedJobs.map((job) => job.name);
-  #         }
+          // Function to get failed jobs ending with "-ib"
+          async function getFailedJobs(run_id) {
+            const jobs = await getAllJobs(run_id);
+            const failedJobs = jobs.filter((job) => {
+              return job.conclusion === 'failure' && job.name.endsWith('-ib');
+            });
+            return failedJobs.map((job) => job.name);
+          }
 
-  #         const run_id1 = process.env.RUN_ID1;
-  #         const run_id2 = process.env.RUN_ID2;
+          const run_id1 = process.env.RUN_ID1;
+          const run_id2 = process.env.RUN_ID2;
 
-  #         const failedJobs1 = await getFailedJobs(run_id1);
-  #         const failedJobs2 = await getFailedJobs(run_id2);
+          const failedJobs1 = await getFailedJobs(run_id1);
+          const failedJobs2 = await getFailedJobs(run_id2);
 
-  #         // Find jobs that failed in both runs
-  #         const failedInBoth = failedJobs1.filter((job) => failedJobs2.includes(job));
+          // Find jobs that failed in both runs
+          const failedInBoth = failedJobs1.filter((job) => failedJobs2.includes(job));
 
-  #         core.setOutput('failed_jobs', failedInBoth.join(','));
+          core.setOutput('failed_jobs', failedInBoth.join(','));
 
-  #   - name: Get failed non-ironbank images from the last two runs
-  #     id: get_failed_jobs_no_ib
-  #     uses: actions/github-script@v7
-  #     env:
-  #       RUN_ID1: ${{ steps.get_runs.outputs.run_id1 }}
-  #       RUN_ID2: ${{ steps.get_runs.outputs.run_id2 }}
-  #     with:
-  #       script: |
-  #         const owner = context.repo.owner;
-  #         const repo = context.repo.repo;
+    - name: Get failed non-ironbank images from the last two runs
+      id: get_failed_jobs_no_ib
+      uses: actions/github-script@v7
+      env:
+        RUN_ID1: ${{ steps.get_runs.outputs.run_id1 }}
+        RUN_ID2: ${{ steps.get_runs.outputs.run_id2 }}
+      with:
+        script: |
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
 
-  #         // Function to get all jobs with pagination
-  #         async function getAllJobs(run_id) {
-  #           let jobs = [];
-  #           let page = 1;
-  #           let moreJobs = true;
+          // Function to get all jobs with pagination
+          async function getAllJobs(run_id) {
+            let jobs = [];
+            let page = 1;
+            let moreJobs = true;
 
-  #           while (moreJobs) {
-  #             const response = await github.rest.actions.listJobsForWorkflowRun({
-  #               owner,
-  #               repo,
-  #               run_id: run_id,
-  #               per_page: 100,
-  #               page: page,
-  #             });
+            while (moreJobs) {
+              const response = await github.rest.actions.listJobsForWorkflowRun({
+                owner,
+                repo,
+                run_id: run_id,
+                per_page: 100,
+                page: page,
+              });
 
-  #             if (response.data.jobs.length > 0) {
-  #               jobs = jobs.concat(response.data.jobs);
-  #               page++;
-  #             } else {
-  #               moreJobs = false;
-  #             }
-  #           }
+              if (response.data.jobs.length > 0) {
+                jobs = jobs.concat(response.data.jobs);
+                page++;
+              } else {
+                moreJobs = false;
+              }
+            }
 
-  #           return jobs;
-  #         }
+            return jobs;
+          }
 
-  #         // Function to get failed jobs NOT ending with "-ib"
-  #         async function getFailedJobs(run_id) {
-  #           const jobs = await getAllJobs(run_id);
-  #           const failedJobs = jobs.filter((job) => {
-  #             return job.conclusion === 'failure' && !job.name.endsWith('-ib');
-  #           });
-  #           return failedJobs.map((job) => job.name);
-  #         }
+          // Function to get failed jobs NOT ending with "-ib"
+          async function getFailedJobs(run_id) {
+            const jobs = await getAllJobs(run_id);
+            const failedJobs = jobs.filter((job) => {
+              return job.conclusion === 'failure' && !job.name.endsWith('-ib');
+            });
+            return failedJobs.map((job) => job.name);
+          }
 
-  #         const run_id1 = process.env.RUN_ID1;
-  #         const run_id2 = process.env.RUN_ID2;
+          const run_id1 = process.env.RUN_ID1;
+          const run_id2 = process.env.RUN_ID2;
 
-  #         const failedJobs1 = await getFailedJobs(run_id1);
-  #         const failedJobs2 = await getFailedJobs(run_id2);
+          const failedJobs1 = await getFailedJobs(run_id1);
+          const failedJobs2 = await getFailedJobs(run_id2);
 
-  #         // Find jobs that failed in both runs
-  #         const failedInBoth = failedJobs1.filter((job) => failedJobs2.includes(job));
+          // Find jobs that failed in both runs
+          const failedInBoth = failedJobs1.filter((job) => failedJobs2.includes(job));
 
-  #         core.setOutput('failed_jobs', failedInBoth.join(','));
+          core.setOutput('failed_jobs', failedInBoth.join(','));
 
-  #   - name: Extract and Process Log
-  #     id: extract_summary
-  #     shell: bash {0}
-  #     run: |
-  #       # Get the failed jobs from outputs
-  #       failed_jobs_ib="${{ steps.get_failed_jobs.outputs.failed_jobs }}"
-  #       failed_jobs_no_ib="${{ steps.get_failed_jobs_no_ib.outputs.failed_jobs }}"
+    - name: Extract and Process Log
+      id: extract_summary
+      shell: bash {0}
+      run: |
+        # Get the failed jobs from outputs
+        failed_jobs_ib="${{ steps.get_failed_jobs.outputs.failed_jobs }}"
+        failed_jobs_no_ib="${{ steps.get_failed_jobs_no_ib.outputs.failed_jobs }}"
 
-  #       # Get the conclusions and URLs
-  #       conclusion1="${{ steps.get_runs.outputs.conclusion1 }}"
-  #       url1="${{ steps.get_runs.outputs.url1 }}"
-  #       url2="${{ steps.get_runs.outputs.url2 }}"
+        # Get the conclusions and URLs
+        conclusion1="${{ steps.get_runs.outputs.conclusion1 }}"
+        url1="${{ steps.get_runs.outputs.url1 }}"
+        url2="${{ steps.get_runs.outputs.url2 }}"
 
-  #       # Function to get status emoji
-  #       get_status_emoji() {
-  #         local conclusion="$1"
-  #         if [ "$conclusion" = "success" ]; then
-  #           echo "✅"
-  #         elif [ "$conclusion" = "failure" ]; then
-  #           echo "❌"
-  #         else
-  #           echo "⚠️"
-  #         fi
-  #       }
+        # Function to get status emoji
+        get_status_emoji() {
+          local conclusion="$1"
+          if [ "$conclusion" = "success" ]; then
+            echo "✅"
+          elif [ "$conclusion" = "failure" ]; then
+            echo "❌"
+          else
+            echo "⚠️"
+          fi
+        }
 
-  #       emoji1=$(get_status_emoji "$conclusion1")
+        emoji1=$(get_status_emoji "$conclusion1")
 
-  #       # Initialize message
-  #       message=""
+        # Initialize message
+        message=""
 
-  #       # Add run details
-  #       message+="**Date:** $(date -u +"%b %d %Y")\n"
-  #       message+="**Status:** $emoji1 $conclusion1\n\n"
+        # Add run details
+        message+="**Date:** $(date -u +"%b %d %Y")\n"
+        message+="**Status:** $emoji1 $conclusion1\n\n"
 
-  #       message+="Pipeline Run 1: [View Run]($url1)\n"
-  #       message+="Pipeline Run 2: [View Run]($url2)\n\n"
+        message+="Pipeline Run 1: [View Run]($url1)\n"
+        message+="Pipeline Run 2: [View Run]($url2)\n\n"
 
-  #       # Process jobs with '-ib' suffix
-  #       if [[ -n "$failed_jobs_ib" ]]; then
-  #         message+="\n**Ironbank Images failing consecutively in last two runs**:\n"
-  #         count=1
-  #         IFS=',' read -ra JOBS_IB <<< "$failed_jobs_ib"
-  #         for job in "${JOBS_IB[@]}"; do
-  #           message+="$count. $job\n"
-  #           count=$((count + 1))
-  #         done
-  #       fi
+        # Process jobs with '-ib' suffix
+        if [[ -n "$failed_jobs_ib" ]]; then
+          message+="\n**Ironbank Images failing consecutively in last two runs**:\n"
+          count=1
+          IFS=',' read -ra JOBS_IB <<< "$failed_jobs_ib"
+          for job in "${JOBS_IB[@]}"; do
+            message+="$count. $job\n"
+            count=$((count + 1))
+          done
+        fi
 
-  #       # Process jobs without '-ib' suffix
-  #       if [[ -n "$failed_jobs_no_ib" ]]; then
-  #         message+="\n\n**Non-Ironbank Images failing consecutively in last two runs**:\n"
-  #         count=1
-  #         IFS=',' read -ra JOBS_NO_IB <<< "$failed_jobs_no_ib"
-  #         for job in "${JOBS_NO_IB[@]}"; do
-  #           message+="$count. $job\n"
-  #           count=$((count + 1))
-  #         done
-  #       fi
+        # Process jobs without '-ib' suffix
+        if [[ -n "$failed_jobs_no_ib" ]]; then
+          message+="\n\n**Non-Ironbank Images failing consecutively in last two runs**:\n"
+          count=1
+          IFS=',' read -ra JOBS_NO_IB <<< "$failed_jobs_no_ib"
+          for job in "${JOBS_NO_IB[@]}"; do
+            message+="$count. $job\n"
+            count=$((count + 1))
+          done
+        fi
 
-  #       # If no failed jobs, set message accordingly
-  #       if [[ -z "$failed_jobs_ib" && -z "$failed_jobs_no_ib" ]]; then
-  #         message+="All images passed in the last two runs."
-  #       fi
+        # If no failed jobs, set message accordingly
+        if [[ -z "$failed_jobs_ib" && -z "$failed_jobs_no_ib" ]]; then
+          message+="All images passed in the last two runs."
+        fi
 
-  #       # Save message to summary.txt
-  #       echo -e "$message" > summary.txt
-  #       cat summary.txt
+        # Save message to summary.txt
+        echo -e "$message" > summary.txt
+        cat summary.txt
 
-  #   - name: Send to Zulip
-  #     if: ${{ always() }}
-  #     shell: bash
-  #     env:
-  #       ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
-  #       ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
-  #       ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
-  #       ZULIP_STREAM_NAME: 'community images'
-  #       ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
-  #     run: |
-  #       message=$(cat summary.txt)
-  #       # Send the message to Zulip
-  #       response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
-  #         -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
-  #         -d type="stream" \
-  #         -d to="$ZULIP_STREAM_NAME" \
-  #         -d topic="$ZULIP_TOPIC_NAME" \
-  #         --data-urlencode content="$message")
+    - name: Send to Zulip
+      if: ${{ always() }}
+      shell: bash
+      env:
+        ZULIP_SERVER_URL: ${{ secrets.ZULIP_SERVER_URL }}
+        ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
+        ZULIP_BOT_API_KEY: ${{ secrets.ZULIP_BOT_API_KEY }}
+        ZULIP_STREAM_NAME: 'community images'
+        ZULIP_TOPIC_NAME: 'Image Creation Run Alerts 🤖'
+      run: |
+        message=$(cat summary.txt)
+        # Send the message to Zulip
+        response=$(curl -sSf -X POST "$ZULIP_SERVER_URL/api/v1/messages" \
+          -u "$ZULIP_BOT_EMAIL:$ZULIP_BOT_API_KEY" \
+          -d type="stream" \
+          -d to="$ZULIP_STREAM_NAME" \
+          -d topic="$ZULIP_TOPIC_NAME" \
+          --data-urlencode content="$message")
 
-  #       # Check if the curl command was successful
-  #       if [ $? -ne 0 ]; then
-  #         echo "Failed to send message to Zulip."
-  #         echo "Response: $response"
-  #         exit 1
-  #       fi
+        # Check if the curl command was successful
+        if [ $? -ne 0 ]; then
+          echo "Failed to send message to Zulip."
+          echo "Response: $response"
+          exit 1
+        fi

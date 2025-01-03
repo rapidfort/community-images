@@ -66,7 +66,7 @@ class PipelineChecker:
             dict or None: The latest pipeline or None if no pipeline is found.
         """
         url = f"{self.GITLAB_BASE_URL}/{endpoint}"
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=30)
         if response.status_code == 401:
             print(f"Unauthorized access to {url}. This project may require authentication.")
             return None
@@ -88,7 +88,7 @@ class PipelineChecker:
             list: The list of jobs in the pipeline.
         """
         url = f"{self.GITLAB_BASE_URL}/{endpoint}/{pipeline_id}/jobs"
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=30)
         if response.status_code == 401:
             print(f"Unauthorized access to {url}. This project may require authentication.")
             return []
@@ -106,7 +106,7 @@ class PipelineChecker:
             str: The job log trace.
         """
         raw_log_url = job_web_url + '/trace'
-        response = requests.get(raw_log_url, timeout=20)
+        response = requests.get(raw_log_url, timeout=60)
         if response.status_code != 200:
             print(
                 f"Failed to retrieve job trace from {raw_log_url}. "

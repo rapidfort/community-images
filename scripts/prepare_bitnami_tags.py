@@ -185,7 +185,7 @@ class BitnamiTagsHelper:
         image_paths = [line.strip() for line in lines]
 
         for image_path in image_paths:
-            if image_path.endswith("/bitnami") and not image_path.startswith("airflow"):
+            if image_path.endswith("/bitnami"):
                 print(">  Picked : ", image_path)
 
                 with open(f'{self.script_path}/../community_images/{image_path}/image.yml', 'r', encoding="utf8") as f1:
@@ -225,41 +225,41 @@ class BitnamiTagsHelper:
                     print(f"Repo set '{repo_set_name}' not found in image.yml.")
 
         # Add repo set to airflow by replacing
-        print('>  Picked :  airflow/airflow/bitnami')
-        with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'r', encoding="utf8") as f1:
-            image_data = ru_yaml.load(f1)
+        # print('>  Picked :  airflow/airflow/bitnami')
+        # with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'r', encoding="utf8") as f1:
+        #     image_data = ru_yaml.load(f1)
 
-        all_airflow_tags = [item['airflow']["input_base_tag"] for item in image_data["repo_sets"]]
+        # all_airflow_tags = [item['airflow']["input_base_tag"] for item in image_data["repo_sets"]]
 
-        if not tags_data['airflow']['search_tags'][0] in all_airflow_tags:
-            airflow_repo_set = {
-                "airflow": {
-                    "input_base_tag": f"\"{tags_data['airflow']['search_tags'][0]}\""
-                 },
-                "airflow-worker": {
-                    "input_base_tag": f"\"{tags_data['airflow-worker']['search_tags'][0]}\""
-                },
-                "airflow-scheduler": {
-                    "input_base_tag": f"\"{tags_data['airflow-scheduler']['search_tags'][0]}\""
-                }
-            }
+        # if not tags_data['airflow']['search_tags'][0] in all_airflow_tags:
+        #     airflow_repo_set = {
+        #         "airflow": {
+        #             "input_base_tag": f"\"{tags_data['airflow']['search_tags'][0]}\""
+        #          },
+        #         "airflow-worker": {
+        #             "input_base_tag": f"\"{tags_data['airflow-worker']['search_tags'][0]}\""
+        #         },
+        #         "airflow-scheduler": {
+        #             "input_base_tag": f"\"{tags_data['airflow-scheduler']['search_tags'][0]}\""
+        #         }
+        #     }
 
-            image_data['repo_sets'] = []
-            image_data['repo_sets'].append(airflow_repo_set)
-            with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'w', encoding="utf8") as f1:
-                ru_yaml.dump(image_data, f1)
+        #     image_data['repo_sets'] = []
+        #     image_data['repo_sets'].append(airflow_repo_set)
+        #     with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'w', encoding="utf8") as f1:
+        #         ru_yaml.dump(image_data, f1)
 
-            with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'r', encoding="utf8") as file:
-                content = file.read()
+        #     with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'r', encoding="utf8") as file:
+        #         content = file.read()
 
-            modified_content = re.sub(r'(\'\")|(\"\')', '"', content, flags=re.MULTILINE)
-            modified_content = re.sub(r'report_url:.[\t\s]*\n[\t\s]*', 'report_url: ', modified_content, flags=re.MULTILINE)
+        #     modified_content = re.sub(r'(\'\")|(\"\')', '"', content, flags=re.MULTILINE)
+        #     modified_content = re.sub(r'report_url:.[\t\s]*\n[\t\s]*', 'report_url: ', modified_content, flags=re.MULTILINE)
 
-            with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'w', encoding="utf8") as file:
-                file.write(modified_content)
-            print("<  Dumped :  airflow/airflow/bitnami")
-        else:
-            print("x  Collide: ", tags_data['airflow']['search_tags'][0])
+        #     with open(f'{self.script_path}/../community_images/airflow/airflow/bitnami/image.yml', 'w', encoding="utf8") as file:
+        #         file.write(modified_content)
+        #     print("<  Dumped :  airflow/airflow/bitnami")
+        # else:
+        #     print("x  Collide: ", tags_data['airflow']['search_tags'][0])
 
 
 def main():

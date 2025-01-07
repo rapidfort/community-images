@@ -71,15 +71,6 @@ jobs:
           repository: rapidfort/airflow-ib-bitnami
           readme-filepath: ./community_images/airflow/airflow/bitnami-ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Airflow Ironbank (Bitnami)
-      - name: Docker Hub Description Apache Airflow Scheduler
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/airflow-scheduler
-          readme-filepath: ./community_images/airflow/airflow-scheduler/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Apache Airflow Scheduler
       - name: Docker Hub Description Airflow Scheduler Ironbank (Bitnami)
         if: always()
         uses: peter-evans/dockerhub-description@v3
@@ -89,15 +80,6 @@ jobs:
           repository: rapidfort/airflow-scheduler-ib-bitnami
           readme-filepath: ./community_images/airflow/airflow-scheduler/bitnami-ironbank/README.md.dockerhub
           short-description: RapidFort optimized, hardened image for Airflow Scheduler Ironbank (Bitnami)
-      - name: Docker Hub Description Apache Airflow Worker
-        if: always()
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rapidfort/airflow-worker
-          readme-filepath: ./community_images/airflow/airflow-worker/bitnami/README.md.dockerhub
-          short-description: RapidFort optimized, hardened image for Apache Airflow Worker
       - name: Docker Hub Description Airflow Worker Ironbank (Bitnami)
         if: always()
         uses: peter-evans/dockerhub-description@v3

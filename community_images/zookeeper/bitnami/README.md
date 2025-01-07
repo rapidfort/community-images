@@ -90,7 +90,6 @@ We are big fans of open-source software and secure software development. RapidFo
 
 ## Supported tags and respective `Dockerfile` links
 * [`3.9`, `3.9-debian-12`, `3.9.3`, `3.9.3-debian-12-r` (3.9/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper/3.9/debian-12/Dockerfile)
-* [`3.8`, `3.8-debian-12`, `3.8.4`, `3.8.4-debian-12-r` (3.8/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper/3.8/debian-12/Dockerfile)
 
 ## Need support
 

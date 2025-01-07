@@ -81,7 +81,7 @@ Vulnerability reports for RapidFort's hardened images are updated daily to inclu
 <br>
 
 ## What’s the difference between the official [Platform One PostgreSQL IronBank (Bitnami)][source-image-repo-link] image and this hardened image?
-RapidFort’s hardened [rapidfort/postgresql-bitnami-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
+RapidFort’s hardened [rapidfort/postgresql16-bitnami-ib][rf-dh-image-link] image has been optimized by RapidFort's SASM platform and is functionally equivalent to the original image.
 
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
@@ -138,9 +138,9 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 
 [rf-image-vulns-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fbitnami%2Fpostgres?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=postgresql16-bitnami-ib&utm_content=vulns_link
 
-[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/postgresql-bitnami-ib?logo=docker&logoColor=white&sort=semver
+[dh-img-size-badge]: https://img.shields.io/docker/image-size/rapidfort/postgresql16-bitnami-ib?logo=docker&logoColor=white&sort=semver
 
-[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql-bitnami-ib?logo=docker&logoColor=white
+[dh-img-pulls-badge]: https://img.shields.io/docker/pulls/rapidfort/postgresql16-bitnami-ib?logo=docker&logoColor=white
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 
@@ -150,7 +150,7 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 
 [source-image-repo-link]: https://registry1.dso.mil/harbor/projects/3/repositories/bitnami%2Fpostgres
 
-[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql-bitnami-ib
+[rf-dh-image-link]: https://hub.docker.com/r/rapidfort/postgresql16-bitnami-ib
 
 
 [savings-svg]: https://github.com/rapidfort/community-images/raw/main/community_images/postgresql/bitnami-ironbank/assets/savings.svg

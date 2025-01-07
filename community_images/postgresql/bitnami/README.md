@@ -89,11 +89,8 @@ RapidFort’s hardened [rapidfort/postgresql][rf-dh-image-link] image has been o
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`17`, `17-debian-12`, `17.1.0`, `17.1.0-debian-12-r` (17/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/17/debian-12/Dockerfile)
-* [`16`, `16-debian-12`, `16.5.0`, `16.5.0-debian-12-r` (16/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/16/debian-12/Dockerfile)
-* [`15`, `15-debian-12`, `15.9.0`, `15.9.0-debian-12-r` (15/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/15/debian-12/Dockerfile)
-* [`14`, `14-debian-12`, `14.14.0`, `14.14.0-debian-12-r` (14/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-12/Dockerfile)
-* [`13`, `13-debian-12`, `13.17.0`, `13.17.0-debian-12-r` (13/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/13/debian-12/Dockerfile)
+* [`17`, `17-debian-12`, `17.2.0`, `17.2.0-debian-12-r` (17/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/17/debian-12/Dockerfile)
+* [`14`, `14-debian-12`, `14.15.0`, `14.15.0-debian-12-r` (14/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/postgresql/14/debian-12/Dockerfile)
 
 ## Need support
 

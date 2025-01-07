@@ -89,12 +89,8 @@ RapidFort’s hardened [rapidfort/mariadb][rf-dh-image-link] image has been opti
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`11.5`, `11.5-debian-12`, `11.5.2`, `11.5.2-debian-12-r` (11.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.5/debian-12/Dockerfile)
 * [`11.4`, `11.4-debian-12`, `11.4.4`, `11.4.4-debian-12-r` (11.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.4/debian-12/Dockerfile)
-* [`11.2`, `11.2-debian-12`, `11.2.6`, `11.2.6-debian-12-r` (11.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/11.2/debian-12/Dockerfile)
 * [`10.11`, `10.11-debian-12`, `10.11.10`, `10.11.10-debian-12-r` (10.11/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.11/debian-12/Dockerfile)
-* [`10.6`, `10.6-debian-12`, `10.6.20`, `10.6.20-debian-12-r` (10.6/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.6/debian-12/Dockerfile)
-* [`10.5`, `10.5-debian-12`, `10.5.27`, `10.5.27-debian-12-r` (10.5/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/mariadb/10.5/debian-12/Dockerfile)
 
 ## Need support
 

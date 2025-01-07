@@ -90,7 +90,6 @@ We are big fans of open-source software and secure software development. RapidFo
 
 ## Supported tags and respective `Dockerfile` links
 * [`7.4`, `7.4-debian-12`, `7.4.1`, `7.4.1-debian-12-r` (7.4/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/7.4/debian-12/Dockerfile)
-* [`6.2`, `6.2-debian-12`, `6.2.16`, `6.2.16-debian-12-r` (6.2/debian-12/Dockerfile)](https://github.com/bitnami/containers/tree/main/bitnami/redis/6.2/debian-12/Dockerfile)
 
 ## Need support
 

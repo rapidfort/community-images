@@ -78,7 +78,7 @@ RapidFort is the pioneering Software Attack Surface Management (SASM) platform i
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
 
-[![View on GitHub](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_github.svg)](https://github.com/rapidfort/community-images/tree/main/community_images/tomcat10/ironbank)
+[![View on GitHub](https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/view_github.svg)](https://github.com/rapidfort/community-images/tree/main/community_images/tomcat-openjdk8/ironbank)
 <br>
 <br>
 
@@ -155,11 +155,11 @@ Learn more about RapidFort's pioneering Software Attack Surface Management platf
 [rf-dh-image-link]: https://hub.docker.com/r/rapidfort/tomcat-openjdk8-ib
 
 
-[savings-svg]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat10/ironbank/assets/savings.svg
+[savings-svg]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat-openjdk8/ironbank/assets/savings.svg
 
 [savings-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk8?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk8-ib&utm_content=image_savings_link
 
-[vulns-chart-svg]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat10/ironbank/assets/vulns_charts.svg
+[vulns-chart-svg]: https://github.com/rapidfort/community-images/raw/main/community_images/tomcat-openjdk8/ironbank/assets/vulns_charts.svg
 
 [vulns-chart-link]: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fapache%2Ftomcat-openjdk8?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term=tomcat-openjdk8-ib&utm_content=vulns_charts
 

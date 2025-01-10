@@ -1,12 +1,3 @@
-airflow-scheduler-ib-bitnami:
-  search_tags:
-    - 2.9.
-airflow-worker-ib-bitnami:
-  search_tags:
-    - 2.9.
-airflow-ib-bitnami:
-  search_tags:
-    - 2.9.
 airflow-ib:
   search_tags:
     - 2.10.
@@ -85,9 +76,6 @@ eck-operator-ib:
 elasticsearch-dump-ib:
   search_tags:
     - 6.115.
-elasticsearch-exporter-ib:
-  search_tags:
-    - 1.8.
 etcd-ib:
   search_tags:
     - v3.5.
@@ -183,16 +171,10 @@ jq-ib:
     - 1.7.
 k6-ib:
   search_tags:
-    - v0.55.
+    - v0.56.
 k8s-sidecar-ib:
   search_tags:
     - 1.28.
-kafka-exporter-ib:
-  search_tags:
-    - 1.7.
-kafka-ib:
-  search_tags:
-    - 3.4.
 kaniko-ib:
   search_tags:
     - v1.22.
@@ -307,15 +289,9 @@ podman-ib:
 postfix-ib:
   search_tags:
     - "3."
-postgres-exporter-bitnami-ib:
-  search_tags:
-    - 0.16.
 postgres-exporter-ib:
   search_tags:
     - v0.16.
-postgresql16-bitnami-ib:
-  search_tags:
-    - 16.3.
 postgresql-ib:
   search_tags:
     - "12."
@@ -327,10 +303,7 @@ prometheus-operator-ib:
     - v0.79.
 prometheus-ib:
   search_tags:
-    - v3.0.
-redis-exporter-ib:
-  search_tags:
-    - v1.67.
+    - v3.1.
 redis-sentinel-ib:
   search_tags:
     - 7.4.
@@ -384,7 +357,7 @@ tomcat9-openjdk11-ib:
     - 9.0.
 traefik-ib:
   search_tags:
-    - v3.2.
+    - v3.3.
 vale-ib:
   search_tags:
     - v3.9.
@@ -408,7 +381,7 @@ yq-ib:
     - 4.44.
 zeek-ib:
   search_tags:
-    - 7.0.
+    - 7.1.
 zookeeper-ib:
   search_tags:
     - 3.9.

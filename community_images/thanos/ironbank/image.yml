@@ -1,0 +1,25 @@
+name: thanos-ib
+official_name: Thanos Iron Bank
+official_website: https://thanos.io/
+source_image_provider: Platform One
+source_image_repo: registry1.dso.mil/ironbank/opensource/thanos/thanos
+source_image_repo_link: https://registry1.dso.mil/harbor/projects/3/repositories/opensource%2Fthanos%2Fthanos
+source_image_readme: https://repo1.dso.mil/dsop/opensource/thanos/thanos/-/blob/development/README.md
+rf_docker_link: rapidfort/thanos-ib
+image_workflow_name: thanos_ironbank
+github_location: thanos/ironbank
+report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil%2Fironbank%2Fopensource%2Fthanos%2Fthanos
+usage_instructions: |
+  $ docker run --name rf-thanos rapidfort/thanos-ib
+what_is_text: |
+  Thanos is a set of components that can be composed into a highly available metric system with unlimited storage capacity, which can be added seamlessly on top of existing Prometheus deployments.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: registry1.dso.mil
+  account: ironbank
+repo_sets:
+  - opensource/thanos/thanos:
+      input_base_tag: "v0.37."
+      output_repo: thanos-ib

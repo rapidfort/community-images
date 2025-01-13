@@ -12,7 +12,7 @@ report_url: https://us01.rapidfort.com/app/community/imageinfo/registry1.dso.mil
 usage_instructions: |
   # Create a network
   docker network create airflow-tier
-  
+
   # Create a volume for PostgreSQL persistence and create a PostgreSQL container
   docker volume create --name postgresql_data
   docker run -d --name postgresql \
@@ -22,7 +22,7 @@ usage_instructions: |
     --net airflow-tier \
     --volume postgresql_data:/bitnami/postgresql \
     rapidfort/postgresql:latest
-  
+
   # Create a volume for Redis(R) persistence and create a Redis(R) container
   docker volume create --name redis_data
   docker run -d --name redis \
@@ -30,7 +30,7 @@ usage_instructions: |
     --net airflow-tier \
     --volume redis_data:/bitnami \
     rapidfort/redis:latest
-  
+
   # Launch the Apache Airflow web container
   docker run -d --name airflow -p 8080:8080 \
     -e AIRFLOW_FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho= \
@@ -45,7 +45,7 @@ usage_instructions: |
     -e AIRFLOW_EMAIL=user@example.com \
     --net airflow-tier \
     rapidfort/airflow-ib:latest
-  
+
   # Launch the Apache Airflow scheduler container
   docker run -d --name airflow-scheduler \
     -e AIRFLOW_COMPONENT_TYPE=scheduler \
@@ -59,7 +59,7 @@ usage_instructions: |
     -e AIRFLOW_WEBSERVER_HOST=airflow \
     --net airflow-tier \
     rapidfort/airflow-ib:latest
-  
+
   # Launch the Apache Airflow worker container
   docker run -d --name airflow-worker \
     -e AIRFLOW_COMPONENT_TYPE=worker \
@@ -84,3 +84,6 @@ is_locked: "False"
 input_registry:
   registry: registry1.dso.mil
   account: ironbank
+repo_sets:
+  - '*':
+      input_base_tag: 2.10.

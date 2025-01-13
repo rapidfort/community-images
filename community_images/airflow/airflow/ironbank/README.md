@@ -76,7 +76,7 @@ docker run -d --name postgresql \
   -e POSTGRESQL_DATABASE=rapidfort_airflow \
   --net airflow-tier \
   --volume postgresql_data:/bitnami/postgresql \
-  bitnami/postgresql:latest
+  rapidfort/postgresql:latest
 
 # Create a volume for Redis(R) persistence and create a Redis(R) container
 docker volume create --name redis_data
@@ -84,7 +84,7 @@ docker run -d --name redis \
   -e ALLOW_EMPTY_PASSWORD=yes \
   --net airflow-tier \
   --volume redis_data:/bitnami \
-  bitnami/redis:latest
+  rapidfort/redis:latest
 
 # Launch the Apache Airflow web container
 docker run -d --name airflow -p 8080:8080 \

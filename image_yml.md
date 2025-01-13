@@ -6,7 +6,7 @@
    | `name` | name of the image | `""` | yes |
    | `official_name` | Official name of the image | `""` | yes |
    | `official_website` | official website of the image | `""` | yes |
-   | `source_image_provider` | source image provider, ex: Bitnami | `""` | yes |
+   | `source_image_provider` | source image provider, ex: Docker Library | `""` | yes |
    | `source_image_repo` | source image docker repo, used for linking image in frontrow | `""` | yes |
    | `source_image_repo_link` | source image docker repo url | `""` | yes |
    | `rf_docker_link` | rapidfort docker link, ex: rapidfort/<image> | `""` | yes |
@@ -17,10 +17,9 @@
    | `what_is_text` | description about image, usually copied from official image What is? | `""` | yes |
    | `disclaimer` | disclaimer or any legal liability notice to be added | `""` | yes |
    | `is_locked` | if the image needs RF_ACCESS_TOKEN to be used or not | `False` | yes |
-   | `bitnami_excluded_branches` | bitnami tags are auto generated, this list allows specific branches to be exculded | `['""', '""']` | yes |
    | `docker_links` | array of all the different image versions build along with link to original Dockerfile | `['""', '""']` | yes |
    | `input_registry.registry` | source registry used to pull docker image, ex: docker.io | `""` | yes |
-   | `input_registry.account` | accout in registry from which source image is pulled, ex: bitnami | `""` | yes |
+   | `input_registry.account` | accout in registry from which source image is pulled, ex: hashicorp, fluent | `""` | yes |
    | `repo_sets` | array of repo_set object describe below. | `['repo_set', 'repo_set']` | yes |
    | `needs_common_commands` | needs to run common commands or not | `true` | yes |
    | `runtimes` | array of runtime object describe below. | `['runtime', 'runtime']` | yes |
@@ -40,8 +39,8 @@
 ### k8s runtime parameters
 | Name                      | Description                                            | Value | Required |
 | ------------------------- | ------------------------------------------------------ | ----- | ----- |
-   | `helm.repo` | helm repo to use for k8s runtime, ex: 'bitnami' | `""` | yes |
-   | `helm.repo_url` | helm repo URL to use for k8s runtime, ex: 'https://charts.bitnami.com/bitnami' | `""` | yes |
+   | `helm.repo` | helm repo to use for k8s runtime, ex: 'nats' | `""` | yes |
+   | `helm.repo_url` | helm repo URL to use for k8s runtime, ex: 'https://nats-io.github.io/k8s/helm/charts/' | `""` | yes |
    | `helm.chart` | helm chart to use for k8s runtime, ex: 'nats' | `""` | yes |
    | `readiness_wait_pod_name_suffix` | only valid for wait_type: pod, defaults to 0 | `["0"]` | False |
    | `readiness_wait_deployments_suffix` | wait for list of deployment suffix, {release_name}-suffix | `[""]` | False |

@@ -17,7 +17,7 @@ gen_image_readme()
   if [ -n "$config_name" ]; then
     readme_path="${SCRIPTPATH}"/../community_images/"${config_name}"/README.md
     echo "Target Image Readme: \"${readme_path}\""
-    # this allows us to merge bitnami tags file into image.yml
+    # this allows us to merge tags file into image.yml
     python3 "${SCRIPTPATH}"/prepare_image_yml.py \
       "${SCRIPTPATH}"/../community_images/"${config_name}"/image.yml \
       "${SCRIPTPATH}"/../community_images/"${config_name}"/image.tmp.yml
@@ -31,7 +31,7 @@ gen_image_readme()
     do
       rm -f community_images/"${p}"/image.tmp.yml
 
-      # this allows us to merge bitnami tags file into image.yml
+      # this allows us to merge tags file into image.yml
       python3 "${SCRIPTPATH}"/prepare_image_yml.py \
         "${SCRIPTPATH}"/../community_images/"${p}"/image.yml \
         "${SCRIPTPATH}"/../community_images/"${p}"/image.tmp.yml
@@ -84,22 +84,12 @@ gen_new_image_actions()
   rm -f "${SCRIPTPATH}"/../image_list.yml
 }
 
-del_image_variants()
-{
-  declare -a image_variants=( "airflow_airflow-scheduler_bitnami" "airflow_airflow-worker_bitnami" )
-
-  for image_variant in "${image_variants[@]}"; do
-    rm -f "${SCRIPTPATH}"/../.github/workflows/"${image_variant}".yml
-  done
-}
 
 main() {
-  python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
   "${SCRIPTPATH}"/prepare_ironbank_tags.sh
   gen_main_readme
   gen_image_readme
   gen_new_image_actions
-  del_image_variants
 }
 
 # Argument handling
@@ -117,7 +107,6 @@ while [[ "$#" -gt 0 ]]; do
   case $1 in
     --main-readme)
       gen_main_readme
-      del_image_variants
       shift
       ;;
     --image-readme)
@@ -128,9 +117,7 @@ while [[ "$#" -gt 0 ]]; do
         CONFIG_NAME=""  # Set to empty if not provided
         shift 1
       fi
-      python3 "${SCRIPTPATH}"/prepare_bitnami_tags.py
       gen_image_readme "$CONFIG_NAME"
-      del_image_variants
       ;;
     --help|-h)
       usage

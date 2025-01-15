@@ -35,7 +35,7 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 ## Getting Started
 
-![Demo][demo]
+![Demo][contrib/rf-ci-demo.svg]
 
 [RapidFort][rf-link-getting-started] scans your Docker containers for vulnerabilities and looks for unused components that can be removed.
 

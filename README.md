@@ -35,7 +35,7 @@ Stop downloading container images with thousands of vulnerabilities. Start using
 
 ## Getting Started
 
-![Demo][./contrib/rf-ci-demo.svg]
+![Demo][demo]
 
 [RapidFort][rf-link-getting-started] scans your Docker containers for vulnerabilities and looks for unused components that can be removed.
 
@@ -414,7 +414,7 @@ Learn more about container optimization at [RapidFort.com][rf-link-additonal-res
 [dh-rf]: https://hub.docker.com/u/rapidfort
 [license-badge]: https://img.shields.io/github/license/rapidfort/community-images?color=lightgray&style=flat-square
 [license]: https://github.com/rapidfort/community-images/blob/main/LICENSE
-[demo]: contrib/demo.gif
+[demo]: contrib/rf-ci-demo.svg
 
 [slack-badge]: https://img.shields.io/static/v1?label=Join&message=slack&logo=slack&logoColor=E01E5A&color=4A154B
 [slack-link]: https://join.slack.com/t/rapidfortcommunity/shared_invite/zt-1g3wy28lv-DaeGexTQ5IjfpbmYW7Rm_Q

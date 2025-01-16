@@ -1,6 +1,5 @@
 """ Merges tags into image.yml """
 import sys
-import os
 import logging
 import yaml
 

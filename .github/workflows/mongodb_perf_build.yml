@@ -26,4 +26,4 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
       - name: Build docker image
-        run: ./community_images/mongodb/bitnami/perf_test/build_docker.sh
+        run: ./community_images/mongodb/official/perf_test/build_docker.sh

@@ -362,7 +362,7 @@ $ helm repo add argo https://argoproj.github.io/argo-helm
 $ helm install my-argocd argo/argo-cd --set image.repository=rapidfort/argocd
 
 # install nats
-$ helm install my-postgresql nats/nats --set image.repository=rapidfort/nats
+$ helm install my-nats nats/nats --set image.repository=rapidfort/nats
 
 ```
 ## How Community Images are Built

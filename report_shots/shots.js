@@ -17,22 +17,22 @@ function saveSVGToFile(svgContent, imageSavePath) {
   });
 }
 
-// generate rect path with rounded top left and right corners 
+// generate rect path with rounded top left and right corners
 function createRoundedRectPath(x, y, width, height, radius) {
   if (height < radius) {
     radius = height;
   }
   return `
-    M${x + radius},${y} 
-    H${x + width - radius} 
-    C${x + width},${y} ${x + width},${y} ${x + width},${y + radius} 
-    V${y + height} 
-    H${x} 
-    V${y + radius} 
+    M${x + radius},${y}
+    H${x + width - radius}
+    C${x + width},${y} ${x + width},${y} ${x + width},${y + radius}
+    V${y + height}
+    H${x}
+    V${y + radius}
     C${x},${y} ${x},${y} ${x + radius},${y}
     Z
   `;
-}  
+}
 
 const generateCharts = async (imageName, platform, imageSavePath) => {
   const fetchDataRequest = async (path)=> {
@@ -65,7 +65,7 @@ const generateCharts = async (imageName, platform, imageSavePath) => {
     const vulnsHardened = await fetchDataRequest(jsonInfo?.vulns_hardened);
     const {vulnsSeverityCount: vulnsHardenedSummary, hardenedVulnsFlags, } = convertVulnsData(vulnsHardened, true, true);
     const {vulnsSeverityCount: vulnsOriginalSummary} = convertVulnsData(vulns, true, false, hardenedVulnsFlags);
-    
+
     // generate SVGs
     // const vulnsSavingsChartSVG = await generateSavingsChart('Vulnerabilities', imageInfo.noVulns, imageInfo.noVulnsHardened, false);
     // const packagesSavingsChartSVG = await generateSavingsChart('Packages', imageInfo.noPkgs, imageInfo.noPkgsHardened, false);
@@ -74,20 +74,20 @@ const generateCharts = async (imageName, platform, imageSavePath) => {
     // const vulnsBySeverityChart = await generateVulnsBySeverityChart(vulnsOriginalSummary.default, vulnsHardenedSummary.default);
     const {width, svg:vulnsCountChartSVG} = await generateVulnsCountChart(vulnsHardenedSummary.default);
     const vulnsOriginalHardenedChartSVG = await generateVulnsOriginalHardenedChart(width, vulnsOriginalSummary.default, vulnsHardenedSummary.default);
-    
+
 
     saveSVGToFile(vulnsCountChartSVG, util.format('%s/vulns_count_chart.svg', imageSavePath));
     saveSVGToFile(vulnsOriginalHardenedChartSVG, util.format('%s/original_vs_hardened_vulns_chart.svg', imageSavePath));
     const vulnsChartMergedSvg = await mergeSvgHorizontally([vulnsCountChartSVG, vulnsOriginalHardenedChartSVG], 24);
-    
+
     saveSVGToFile(vulnsChartMergedSvg, util.format('%s/vulns_charts.svg', imageSavePath));
 
     const savingsSVG = await generateSavingsCardsCompound([
       {
         type:'vulns',
-        title:'Vulnerabilities', 
-        original: imageInfo.noVulns, 
-        hardened:imageInfo.noVulnsHardened, 
+        title:'Vulnerabilities',
+        original: imageInfo.noVulns,
+        hardened:imageInfo.noVulnsHardened,
         isSize:false,
       },
       {
@@ -113,7 +113,7 @@ const generateCharts = async (imageName, platform, imageSavePath) => {
     // saveSVGToFile(contextualSeverityChart, util.format('%s/contextual_severity_chart.svg', imageSavePath));
     // saveSVGToFile(vulnsBySeverityChart, util.format('%s/vulns_by_severity_histogram.svg', imageSavePath));
     // generateReportViews(vulnsSavingsChartSVG, packagesSavingsChartSVG, sizeSavingsChartSVG, contextualSeverityChart, vulnsBySeverityChart, imageSavePath);
-    
+
   } catch (error) {
     console.error(error);
   }
@@ -127,7 +127,7 @@ const findSVGDimensions = (node) => {
       height: parseFloat(node.attributes.height),
     };
   }
-  
+
   for (const child of node.children || []) {
     const dimensions = findSVGDimensions(child);
     if (dimensions) return dimensions;
@@ -169,7 +169,7 @@ const generateReportViews = async (
     const styleMatch = svgContent.match(/<style[^>]*>([\s\S]*?)<\/style>/);
     if (styleMatch) {
       const styleContent = styleMatch[1];
-      
+
       // Match and deduplicate @font-face
       const fontFaceMatches = styleContent.match(/@font-face\s*{[^}]*}/g) || [];
       fontFaceMatches.forEach(fontFace => uniqueFontFaces.add(fontFace));
@@ -194,7 +194,7 @@ const generateReportViews = async (
   const cleanedSVGs = svgFiles.map(svgContent =>
     svgContent.replace(/<style[^>]*>[\s\S]*?<\/style>/, "")
   );
-  
+
   const dimensions = await Promise.all(svgFiles.map(parseSVGDimensions));
 
   const severityVulnsDimensions = dimensions[0]
@@ -302,12 +302,12 @@ const updateText = (draw, selector, newText) => {
 
 // Generating chart savings chart (vulns, packages, size)
 /**
- * 
+ *
  * @param {String} title chart title
  * @param {Number} original original value
  * @param {Number} hardened  hardened value
  * @param {Boolean} isSize if size then need to show values with metrics suffix
- * @returns 
+ * @returns
  */
 async function generateSavingsChart(title, original, hardened, isSize) {
   // preparing data
@@ -363,12 +363,12 @@ async function generateSavingsChart(title, original, hardened, isSize) {
 }
 
 /**
- * 
+ *
  * @param {*} original original data usual severity object {critical:n, high:m, ...}
  * @param {*} hardened hardened data usual severity object {critical:n, high:m, ...}
  * @returns {String} svg string
  */
-async function generateVulnsBySeverityChart(original, hardened) { 
+async function generateVulnsBySeverityChart(original, hardened) {
   // preparing data for chart
   const severities = ['poc', 'critical', 'high', 'medium', 'low', 'unknown', 'na'];
   const datasets = ['original', 'hardened'];
@@ -390,27 +390,27 @@ async function generateVulnsBySeverityChart(original, hardened) {
 
   severities.forEach((severity) => {
     const mask = draw.defs().mask().id(`mask_${severity}`);
-  
+
     datasets.forEach((dataset) => {
       const summary = dataset === 'original' ? original : hardened;
       const value = summary[severity];
       const columnId = `column_${dataset}_${severity}`;
       const pathElement = draw.findOne(`#${columnId}`);
-  
+
       if (pathElement) {
         const width = 28; // Bar width
         const radius = 5; // border radius for bar
         const height = calculateHeight(value);
         const baseY = 85; // bottom line y for bars (all bars aligned at bottom)
-  
+
         // get new y value and generate new value for path element
         const x = parseFloat(pathElement.attr('d').match(/M(\d+\.?\d*)/)[1]);
         const newPath = createRoundedRectPath(x - 26, baseY - height, width, height, radius);
-        
+
         // updating d and fill attributes
         pathElement.attr('d', newPath);
         pathElement.attr('fill', `${vulnsColorScheme[severity]}${dataset === 'original' ? '33' : 'ff'}`);
-  
+
         // creating mask only for original (original view will be always bg for hardened)
         if (dataset === 'original') {
           // adding rectangular mask with border radius for certain coords and size
@@ -421,7 +421,7 @@ async function generateVulnsBySeverityChart(original, hardened) {
         }
         // applying mask to current element
         pathElement.attr('mask', `url(#mask_${severity})`);
-  
+
         // updating text value
         const textSpanElement = updateText(draw, `#${dataset}_${severity}`, value.toString());
         if (textSpanElement && dataset === 'original') {
@@ -432,7 +432,7 @@ async function generateVulnsBySeverityChart(original, hardened) {
     });
   });
 
-  // return svg string 
+  // return svg string
   return draw.svg();
 }
 
@@ -454,7 +454,7 @@ async function generateContextualSeverityChart(vulnsOriginalSummary) {
   // compute step for chart y ticks
   function calculateStep(maxValue) {
     const magnitude = Math.pow(10, Math.floor(Math.log10(maxValue)));
-    const factors = [1, 2, 5]; 
+    const factors = [1, 2, 5];
     for (let factor of factors) {
         const step = magnitude * factor;
         if (maxValue / step <= 2) {
@@ -462,7 +462,7 @@ async function generateContextualSeverityChart(vulnsOriginalSummary) {
         }
     }
 
-    return magnitude * 10; 
+    return magnitude * 10;
   }
 
   const step = calculateStep(maxVal);
@@ -472,9 +472,9 @@ async function generateContextualSeverityChart(vulnsOriginalSummary) {
     const maxHeight = 50; // max bar height
     return (value / maxVal) * maxHeight;
   };
-  
+
   const draw = await prepareSVG('template_contextual_severity');
-  
+
   // updating height and position for every bar
   severities.forEach((severity) => {
     datasets.forEach((dataset) => {
@@ -524,7 +524,7 @@ async function generateContextualSeverityChart(vulnsOriginalSummary) {
 }
 /**
  * Draws a chart in an SVG based on the provided data.
- * 
+ *
  * @param {Object} draw - SVG.js object.
  * @param {string} groupId - ID of the group where the chart will be added.
  * @param {number} maxWidth - Maximum width of the chart.
@@ -533,7 +533,7 @@ async function generateContextualSeverityChart(vulnsOriginalSummary) {
  */
 function drawVulnsChart(draw, groupId, maxWidth, vulnsCount, total) {
   const severities = ['critical', 'high', 'medium', 'low', 'unknown'].filter(l => vulnsCount[l] > 0);
-  
+
   const minWidth = 5;
   const spacing = 2;
 
@@ -580,9 +580,9 @@ function drawVulnsChart(draw, groupId, maxWidth, vulnsCount, total) {
 
 
 /**
- * 
- * @param {*} vulnsCount 
- * @returns 
+ *
+ * @param {*} vulnsCount
+ * @returns
  */
 async function generateVulnsCountChart(vulnsCount) {
   // Preparing data for chart
@@ -615,8 +615,8 @@ async function generateVulnsCountChart(vulnsCount) {
   // Update the total count text
   updateText(draw, '#vulns_total', vulnsCount.total);
 
-  draw.width(contentWidth + 48); 
-  const currentViewBox = draw.attr('viewBox') || '0 0 100 100'; 
+  draw.width(contentWidth + 48);
+  const currentViewBox = draw.attr('viewBox') || '0 0 100 100';
   const [x, y, , originalHeight] = currentViewBox.split(' ').map(Number);
   const newWidth = contentWidth + 48;
   const updatedViewBox = `${x} ${y} ${newWidth} ${originalHeight}`;
@@ -628,9 +628,9 @@ async function generateVulnsCountChart(vulnsCount) {
 
 
 /**
- * 
- * @param {*} vulnsCount 
- * @returns 
+ *
+ * @param {*} vulnsCount
+ * @returns
  */
 async function generateVulnsOriginalHardenedChart(cardWidth, original, hardened) {
   // Preparing data for chart
@@ -648,10 +648,10 @@ async function generateVulnsOriginalHardenedChart(cardWidth, original, hardened)
   draw.findOne(`#original_value_tspan`).attr('x', cardWidth - originalValueTextWidth - 24)
   draw.findOne(`#original_mask`).attr('width', cardWidth - originalValueTextWidth - 24 - 10 - 106)
   draw.findOne(`#original_mask_rect`).attr('width', cardWidth - originalValueTextWidth - 24 - 10 - 106)
-      
+
   Object.entries(data).forEach(([key, vulnsCount]) => {
     if (original.total === 0) {
-      return 
+      return
     }
     let contentWidth = cardWidth - originalValueTextWidth - 24 - 10 - 106;
     if (key === 'hardened') {
@@ -667,8 +667,8 @@ async function generateVulnsOriginalHardenedChart(cardWidth, original, hardened)
     updateText(draw, `#${key}_value`, vulnsCount.total);
   })
 
-  draw.width(cardWidth); 
-  const currentViewBox = draw.attr('viewBox'); 
+  draw.width(cardWidth);
+  const currentViewBox = draw.attr('viewBox');
   const [x, y, , originalHeight] = currentViewBox.split(' ').map(Number);
   const updatedViewBox = `${x} ${y} ${cardWidth} ${originalHeight}`;
   draw.attr('viewBox', updatedViewBox);
@@ -678,12 +678,12 @@ async function generateVulnsOriginalHardenedChart(cardWidth, original, hardened)
 
 // Generating chart savings chart (vulns, packages, size)
 /**
- * 
+ *
  * @param {String} title chart title
  * @param {Number} original original value
  * @param {Number} hardened  hardened value
  * @param {Boolean} isSize if size then need to show values with metrics suffix
- * @returns 
+ * @returns
  */
 async function generateSavingsCardsCompound(savingsData) {
   const draw = await prepareSVG('template_savings_view')
@@ -708,7 +708,7 @@ async function generateSavingsCardsCompound(savingsData) {
     const dashOffset = calculateDashoffset(100 - percentage, dashArray);
     // set value for circle as progress bar
     const progressCircle = draw.findOne(`#${type}_progress`);
-    
+
     progressCircle.attr({
       'stroke-dasharray': dashArray,
       'stroke-dashoffset': dashOffset,
@@ -791,10 +791,10 @@ async function main() {
 
   const imgList = await fsPromise.readFile(imgListPath, { encoding: 'utf8' });
   const imgListArray = imgList.split("\n");
-  // const imgListArray = ['apache/bitnami'];
+  // const imgListArray = ['apache/official'];
 
   for await (const imagePath of imgListArray) {
-    
+
     try {
       let imageYmlPath = fs.realpathSync(util.format('../community_images/%s/image.yml', imagePath));
 

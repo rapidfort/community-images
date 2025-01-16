@@ -31,7 +31,7 @@ This optimized image is functionally equivalent to [Platform One Apache Airflow 
 <br>
 
 
-Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. 
+Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images.
 
 Check out our [entire library of secured container images.](https://hub.docker.com/u/rapidfort)
 <br>
@@ -65,69 +65,15 @@ The runtime instructions for this hardened container image are the same as the o
 <br>
 
 ```sh
-# Create a network
-docker network create airflow-tier
-
-# Create a volume for PostgreSQL persistence and create a PostgreSQL container
-docker volume create --name postgresql_data
-docker run -d --name postgresql \
-  -e POSTGRESQL_USERNAME=rf_airflow \
-  -e POSTGRESQL_PASSWORD=rapidfort1 \
-  -e POSTGRESQL_DATABASE=rapidfort_airflow \
-  --net airflow-tier \
-  --volume postgresql_data:/bitnami/postgresql \
-  rapidfort/postgresql:latest
-
-# Create a volume for Redis(R) persistence and create a Redis(R) container
-docker volume create --name redis_data
-docker run -d --name redis \
-  -e ALLOW_EMPTY_PASSWORD=yes \
-  --net airflow-tier \
-  --volume redis_data:/bitnami \
-  rapidfort/redis:latest
-
-# Launch the Apache Airflow web container
-docker run -d --name airflow -p 8080:8080 \
-  -e AIRFLOW_FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho= \
-  -e AIRFLOW_SECRET_KEY=a25mQ1FHTUh3MnFRSk5KMEIyVVU2YmN0VGRyYTVXY08= \
-  -e AIRFLOW_EXECUTOR=CeleryExecutor \
-  -e AIRFLOW_DATABASE_NAME=rapidfort_airflow \
+# Run airflow worker scheduler and worker in same image
+docker run -d --name airflow \
+  -e AIRFLOW_DATABASE_NAME=rf_airflow \
   -e AIRFLOW_DATABASE_USERNAME=rf_airflow \
-  -e AIRFLOW_DATABASE_PASSWORD=rapidfort1 \
-  -e AIRFLOW_LOAD_EXAMPLES=yes \
-  -e AIRFLOW_PASSWORD=rapidfort123 \
-  -e AIRFLOW_USERNAME=user \
-  -e AIRFLOW_EMAIL=user@example.com \
-  --net airflow-tier \
-  rapidfort/airflow-ib:latest
-
-# Launch the Apache Airflow scheduler container
-docker run -d --name airflow-scheduler \
-  -e AIRFLOW_COMPONENT_TYPE=scheduler \
-  -e AIRFLOW_FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho= \
-  -e AIRFLOW_SECRET_KEY=a25mQ1FHTUh3MnFRSk5KMEIyVVU2YmN0VGRyYTVXY08= \
+  -e AIRFLOW_DATABASE_PASSWORD=s3cR31 \
   -e AIRFLOW_EXECUTOR=CeleryExecutor \
-  -e AIRFLOW_DATABASE_NAME=rapidfort_airflow \
-  -e AIRFLOW_DATABASE_USERNAME=rf_airflow \
-  -e AIRFLOW_DATABASE_PASSWORD=rapidfort1 \
-  -e AIRFLOW_LOAD_EXAMPLES=yes \
-  -e AIRFLOW_WEBSERVER_HOST=airflow \
-  --net airflow-tier \
-  rapidfort/airflow-ib:latest
-
-# Launch the Apache Airflow worker container
-docker run -d --name airflow-worker \
-  -e AIRFLOW_COMPONENT_TYPE=worker \
-  -e AIRFLOW_FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho= \
-  -e AIRFLOW_SECRET_KEY=a25mQ1FHTUh3MnFRSk5KMEIyVVU2YmN0VGRyYTVXY08= \
-  -e AIRFLOW_EXECUTOR=CeleryExecutor \
-  -e AIRFLOW_DATABASE_NAME=rapidfort_airflow \
-  -e AIRFLOW_DATABASE_USERNAME=rf_airflow \
-  -e AIRFLOW_DATABASE_PASSWORD=rapidfort1 \
-  -e AIRFLOW_WEBSERVER_HOST=airflow \
-  --net airflow-tier \
-  rapidfort/airflow-ib:latest
-
+  -e AIRFLOW__CORE__LOAD_EXAMPLES=true \
+  rapidfort/airflow-ib:latest \
+  bash -c "airflow db init && (airflow webserver & airflow scheduler)"
 ```
 
 ## What is a hardened image?

@@ -1,19 +1,19 @@
 name: community-image
 official_name: RapidFort Community Images
 official_website: https://rapidfort.com
-source_image_provider: Bitnami
+source_image_provider: Provider
 source_image_repo: docker.io/provider/template
 source_image_repo_link: https://hub.docker.com/r/provider/template
-source_image_readme: https://github.com/bitnami/containers/blob/main/bitnami/consul/README.md
+source_image_readme: https://github.com/provider/containers/blob/main/image/README.md
 rf_docker_link: rapidfort/template
 image_workflow_name: template_provider
 github_location: template/provider
-report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fbitnami%2Fredis
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Fprovider%2Ftemplate
 usage_instructions: |
-  $ helm repo add bitnami https://charts.bitnami.com/bitnami
+  $ helm repo add provider https://charts.provider.com/provider
 
-  # install mariadb, just replace repository with RapidFort registry
-  $ helm install my-nginx bitnami/template --set image.repository=rapidfort/template
+  # install image, just replace repository with RapidFort registry
+  $ helm install my-image provider/template --set image.repository=rapidfort/template
 what_is_text: |
   Please replace this with the details about the source image you are hardening.
 disclaimer: |
@@ -21,7 +21,7 @@ disclaimer: |
 is_locked: "False"
 input_registry:
   registry: docker.io
-  account: bitnami
+  account: provider
 repo_sets:
   - redis:
       input_base_tag: "7.0.3-debian-11-r"
@@ -31,8 +31,8 @@ runtimes:
   - type: k8s
     script: k8s_coverage.sh
     helm:
-      repo: bitnami
-      repo_url: https://charts.bitnami.com/bitnami
+      repo: provider
+      repo_url: https://charts.provider.com/provider
       chart: nats
     tls_certs:
       generate: true
@@ -60,5 +60,5 @@ runtimes:
       environment:
         KEY_FOO: VAL_BAR
       volumes:
-        configs/dynamic/bootstrap.yaml: /opt/bitnami/redis/conf/redis.yaml
+        configs/dynamic/bootstrap.yaml: /opt/provider/image/conf/redis.yaml
         configs/dynamic: /etc/redis

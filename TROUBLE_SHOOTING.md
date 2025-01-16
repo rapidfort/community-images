@@ -22,7 +22,7 @@ The community images project relies on the upstream source images to work correc
     > Remediation: Please file a report and update the documentation for the image.
 
 1. ### Upstream source image has introduced a defect (Source image error).
-    > Remediation: Please file a report on the source project. For eg: Bitnami Postgres image.
+    > Remediation: Please file a report on the source project. For eg: Docker Library Postgres image.
 
 1. ### RapidFort hardened image is introducing a defect (RF error).
     > Remediation: Please report an issue, and we will work with our core engineering team to investigate and fix this issue.

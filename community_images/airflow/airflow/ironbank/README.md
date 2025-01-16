@@ -31,7 +31,7 @@ This optimized image is functionally equivalent to [Platform One Apache Airflow 
 <br>
 
 
-Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images.
+Every day, RapidFort automatically optimizes and hardens a growing bank of Docker Hub’s most important container images. 
 
 Check out our [entire library of secured container images.](https://hub.docker.com/u/rapidfort)
 <br>
@@ -74,6 +74,7 @@ docker run -d --name airflow \
   -e AIRFLOW__CORE__LOAD_EXAMPLES=true \
   rapidfort/airflow-ib:latest \
   bash -c "airflow db init && (airflow webserver & airflow scheduler)"
+
 ```
 
 ## What is a hardened image?

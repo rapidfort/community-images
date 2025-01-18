@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus/alertmanager:
-      input_base_tag: "v0.28.0-rc."
+      input_base_tag: "v0.28."
       output_repo: alertmanager-ib
 runtimes:
   - type: docker_compose

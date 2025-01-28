@@ -1,0 +1,51 @@
+name: neo4j-official 
+official_name: Neo4j Official
+official_website: https://neo4j.com/
+source_image_provider: The Neo4j Team
+source_image_repo: docker.io/library/neo4j
+source_image_repo_link: https://hub.docker.com/_/neo4j
+source_image_readme: https://github.com/neo4j/docker-neo4j/blob/master/README.md
+rf_docker_link: rapidfort/neo4j-official
+image_workflow_name: neo4j_official
+github_location: neo4j/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fneo4j
+usage_instructions: |
+  # Using docker run:
+  $ docker run -d --name neo4j --restart always --publish=7474:7474 --publish=7687:7687 rapidfort/neo4j-official
+
+  # Using helm
+  $ helm repo add neo4j https://helm.neo4j.com/neo4j
+  # Install neo4j, just replace repository with RapidFort registry
+  $ helm install neo4j neo4j --set helmController.image=rapidfort/neo4j-official
+what_is_text: |
+  Neo4j is a native graph database, which means that it implements a true graph model all the way down to the storage level. Instead of using a "graph abstraction" on top of another technology, the data is stored in Neo4j in the same way you may whiteboard your ideas.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - neo4j:
+      input_base_tag: "5.26.0-community*"
+      output_repo: neo4j-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 30
+    image_keys:
+      neo4j-official:
+        repository: "NEO4J_IMAGE_REPOSITORY"
+        tag: "NEO4J_IMAGE_TAG"
+  - type: k8s
+    script: k8s_coverage.sh
+    helm:
+      repo: neo4j
+      repo_url: https://helm.neo4j.com/neo4j
+      chart: neo4j
+    image_keys:
+      neo4j:
+        repository: "image.repository"
+        tag: "image.tag"
+    override_file: "overrides.yml"

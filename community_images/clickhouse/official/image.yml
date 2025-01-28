@@ -1,0 +1,53 @@
+name: clickhouse-official
+official_name: ClickHouse Official
+official_website: https://clickhouse.com/
+source_image_provider: ClickHouse Inc.
+source_image_repo: docker.io/library/clickhouse
+source_image_repo_link: https://hub.docker.com/_/clickhouse
+source_image_readme: https://github.com/docker-library/docs/blob/master/clickhouse/README.md
+rf_docker_link: rapidfort/clickhouse-official
+image_workflow_name: clickhouse_official
+github_location: clickhouse/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Fclickhouse
+usage_instructions: |
+  # Using docker run:
+  # start server instance
+  $ docker run -d --name some-clickhouse-server --ulimit nofile=262144:262144 rapidfort/clickhouse-official
+what_is_text: |
+  ClickHouse is an open-source column-oriented DBMS (columnar database management system) for online analytical processing (OLAP) that allows users to generate analytical reports using SQL queries in real-time.
+disclaimer: |
+  Trademarks: This software listing is packaged by RapidFort. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+is_locked: "False"
+docker_links:
+ - "[`latest`, `focal`, `24`, `24-focal`, `24.10`, `24.10-focal`, `24.10.2`, `24.10.2-focal`, `24.10.2.80`, `24.10.2.80-focal`](https://github.com/ClickHouse/docker-library/blob/5e5cd0415e8ba326f35f5066ab1b3b7314df153d/server/24.10.2.80/Dockerfile.ubuntu)"
+ - "[`24.9`, `24.9-focal`, `24.9.3`, `24.9.3-focal`, `24.9.3.128`, `24.9.3.128-focal`](https://github.com/ClickHouse/docker-library/blob/5e5cd0415e8ba326f35f5066ab1b3b7314df153d/server/24.9.3.128/Dockerfile.ubuntu)"
+ - "[`lts`, `lts-focal`, `24.8`, `24.8-focal`, `24.8.7`, `24.8.7-focal`, `24.8.7.41`, `24.8.7.41-focal`](https://github.com/ClickHouse/docker-library/blob/5e5cd0415e8ba326f35f5066ab1b3b7314df153d/server/24.8.7.41/Dockerfile.ubuntu)"
+ - "[`24.3`, `24.3-focal`, `24.3.14`, `24.3.14-focal`, `24.3.14.35`, `24.3.14.35-focal`](https://github.com/ClickHouse/docker-library/blob/5e5cd0415e8ba326f35f5066ab1b3b7314df153d/server/24.3.14.35/Dockerfile.ubuntu)"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - clickhouse:
+      input_base_tag: "lts*"
+      output_repo: clickhouse-official
+  - clickhouse:
+      input_base_tag: "24.3.*"
+      output_repo: clickhouse-official
+  - clickhouse:
+      input_base_tag: "24.9.*"
+      output_repo: clickhouse-official
+  - clickhouse:
+      input_base_tag: "24.8.*"
+      output_repo: clickhouse-official
+  - clickhouse:
+      input_base_tag: "24.10.*"
+      output_repo: clickhouse-official
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    wait_time_sec: 10
+    image_keys:
+      clickhouse-official:
+        repository: "CLICKHOUSE_IMAGE_REPOSITORY"
+        tag: "CLICKHOUSE_IMAGE_TAG"

@@ -1,0 +1,37 @@
+name: influxdb
+official_name: InfluxDB™
+official_website: https://www.influxdata.com/products/influxdb-overview
+source_image_provider: InfluxData
+source_image_repo: docker.io/library/influxdb
+source_image_repo_link: https://hub.docker.com/_/influxdb
+source_image_readme: https://github.com/docker-library/docs/blob/master/influxdb/README.md
+rf_docker_link: rapidfort/influxdb-official
+image_workflow_name: influxdb_official
+github_location: influxdb/official
+report_url: https://us01.rapidfort.com/app/community/imageinfo/docker.io%2Flibrary%2Finfluxdb
+usage_instructions: |
+  # Using Docker run: 
+    docker run -d --name=influxdb -p 8086:8086 -v influxdb_data:/var/lib/influxdb -e INFLUXDB_ADMIN_USER=admin -e INFLUXDB_ADMIN_PASSWORD=admin_password -e INFLUXDB_DB=mydatabase rapidfort/influxdb-official
+what_is_text: |
+  InfluxDB is a time series database built from the ground up to handle high write and query loads. InfluxDB is meant to be used as a backing store for any use case involving large amounts of timestamped data, including DevOps monitoring, application metrics, IoT sensor data, and real-time analytics.
+disclaimer: |
+  InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
+is_locked: "False"
+input_registry:
+  registry: docker.io
+  account: library
+repo_sets:
+  - influxdb:
+      input_base_tag: "^2\\.7\\.\\d+$"
+runtimes:
+  - type: docker_compose
+    script: dc_coverage.sh
+    compose_file: docker-compose.yml
+    image_keys:
+      influxdb:
+        repository: "INFLUXDB_IMAGE_REPOSITORY"
+        tag: "INFLUXDB_IMAGE_TAG"
+  - type: docker
+    script: docker_coverage.sh
+    influxdb:
+      env_file: docker.env

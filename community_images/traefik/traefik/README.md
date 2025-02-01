@@ -89,8 +89,8 @@ RapidFort’s hardened [rapidfort/traefik][rf-dh-image-link] image has been opti
 We are big fans of open-source software and secure software development. RapidFort's community images are our way of giving back to the community and helping reduce the burden on security and development teams.
 
 ## Supported tags and respective `Dockerfile` links
-* [`v3.0.0-rc3`, `3.0.0-rc3`, `v3.0`, `3.0`, `beaufort`](https://github.com/traefik/traefik-library-image/blob/912cc37ab2fb33dffbe653d3b98a224cdc833c48/alpine/Dockerfile)
-* [`v2.11.0`, `2.11.0`, `v2.11`, `2.11`, `mimolette`, `latest`](https://github.com/traefik/traefik-library-image/blob/fccb66b9845fc4266154377b774ac95127d38078/alpine/Dockerfile)
+* [`v3.2.5`, `3.2.5`, `v3.2`, `3.2`, `v3`, `3`, `mimolette`](https://github.com/traefik/traefik-library-image/blob/master/v3.2/alpine/Dockerfile)
+* [`v3.3.2`, `3.3.2`, `v3.3`, `3.3`, `v3`, `3`, `saintnectaire`, `latest`](https://github.com/traefik/traefik-library-image/blob/4fc0980f9d74f7c3be2ef4bf2513cb39b3d2226b/v3.3/alpine/Dockerfile)
 
 ## Need support
 

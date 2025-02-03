@@ -15,8 +15,6 @@
 
 <b>Near Zero CVE images available at <a style="color:blue;" href="https://hub.rapidfort.com/repositories">hub.rapidfort.com/repositories</a></b>
 
-<img src="https://raw.githubusercontent.com/rapidfort/community-images/main/contrib/critical_button.png" alt="⚠️ CRITICAL NOTICE" width="150" /> <br>
-<b>As of 7/2024 community-images will be gated. Please register for free at <a style="color:blue;" href="https://www.rapidfort.com/get-a-demo">www.rapidfort.com</a> to access these images</b>
 
 [Getting started](#getting-started) ·
 [Supported containers](#supported-containers) ·
@@ -26,11 +24,14 @@
 
 **RapidFort is a solution for building secure, optimized Docker containers.**
 
-Every day, we scan the most popular Docker Hub container images and remove unused code. Then we publish the results to share with you.
+RapidFort provides free, <b>Hardened Images</b> on its GitHub community page, empowering developers to build secure and reliable applications effortlessly. These <b>Hardened Images</b> are optimized versions of popular base images, significantly reducing vulnerabilities and attack surfaces. Leveraging its innovative optimization and vulnerability management tools, RapidFort analyzes container images, removes unnecessary components, and ensures that only essential, secure elements remain. This proactive approach removes 60-70%  of Common Known Vulnerabilities (CVEs), minimizes potential entry points for attackers, enhances compliance, and improves overall security posture.
 
-Our container optimization process reduces the software attack surface and the chance of a vulnerability exploit.
+To explore RapidFort's <b>Near-Zero CVE Curated Images</b> (and start building with confidence, visit [hub.rapidfort.com](hub.rapidfort.com).
 
-Stop downloading container images with thousands of vulnerabilities. Start using secure containers with minimized attack surfaces.
+RapidFort’s RapidFort Platform and Near-Zero CVE Curated Images remediate 95% of software vulnerabilities.
+
+For more information please visit [rapidfort.com](rapidfort.com).
+
 
 
 ## Getting Started
@@ -46,7 +47,7 @@ We’ve optimized and hardened some of the most popular container images on Dock
 | Repository                        | View Report                                   | RapidFort Image                     | Pull Count |
 |-----------------------------------| ------------------------------------------     | ------------------------------- | ------------------------------- |
 {%- for image in image_list_sorted %}
-| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/{{- image.rf_docker_link }}"> <img src="/contrib/view_on_dockerhub.svg" alt="View on Dockerhub" height="25" /> </a> | <b> {{ image.pull_count_formatted }} </b> |
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/full_report_sm.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/{{- image.rf_docker_link }}"> <img src="/contrib/view_dockerhub_sm.svg" alt="View on Dockerhub" height="25" /> </a> | <b> {{ image.pull_count_formatted }} </b> |
 {%- endfor %}
 
 <h2 id="supported-iron-bank-containers">What IronBank containers are supported?</h2>
@@ -57,7 +58,7 @@ We’ve optimized and hardened some of the most popular container images on Iron
 |-----------------------------------| ------------------------------------------     | ------------------------------- | ------------------------------- |
 {%- for image in image_list_sorted %}
 {%- if 'input_registry' in image and image['input_registry']['registry'] == 'registry1.dso.mil' and image['input_registry']['account'] == 'ironbank' %}
-| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/github_button_3.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/{{- image.rf_docker_link }}"> <img src="/contrib/view_on_dockerhub.svg" alt="View on Dockerhub" height="25" /> </a> | <b> {{ image.pull_count_formatted }} </b> |
+| [ {{- image.official_name -}} ][ {{ image.name -}} -github-link]| <a href="{{- image.report_url -}}?utm_source=github&utm_medium=ci_view_report&utm_campaign=sep_01_sprint&utm_term={{- image.name -}}&utm_content=landing_get_full_report_button"> <img src="/contrib/full_report_sm.svg" alt="View Report" height="25" /> </a> | <a href="https://hub.docker.com/r/{{- image.rf_docker_link }}"> <img src="/contrib/view_dockerhub_sm.svg" alt="View on Dockerhub" height="25" /> </a> | <b> {{ image.pull_count_formatted }} </b> |
 {%- endif %}
 {%- endfor %}
 

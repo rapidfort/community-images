@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/pgadmin4:
-      input_base_tag: "8."
+      input_base_tag: "9."
       output_repo: pgadmin-ib
 runtimes:
   - type: docker_compose

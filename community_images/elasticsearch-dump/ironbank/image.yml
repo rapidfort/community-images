@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/elasticdump/elasticsearch-dump:
-      input_base_tag: "6.117."
+      input_base_tag: "6.119."
       output_repo: elasticsearch-dump-ib
 runtimes:
   - type: docker_compose

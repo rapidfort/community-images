@@ -1,37 +1,38 @@
 name: MySQL DBT2 Benchmark Test Build
 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 permissions: read-all
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        environment: actions-cicd
+  build:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
 
-        steps:
-            - name: Import Coverage Tests
-              uses: actions/checkout@v4
-              with:
-                  repository: rapidfort/community-images-core
-                  token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
-            - name: Login to Docker Hub
-              uses: docker/login-action@v3
-              with:
-                  username: ${{ secrets.DOCKERHUB_USERNAME }}
-                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
 
-            - name: Set up QEMU
-              uses: docker/setup-qemu-action@v3
+      - name: Docker login
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
 
-            - name: Set up Docker Buildx
-              uses: docker/setup-buildx-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-            - name: Build and push
-              uses: docker/build-push-action@v6
-              with:
-                  platforms: linux/amd64,linux/arm64
-                  context: ./community_images/mysql/official/mysql_dbt2/
-                  push: true
-                  tags: rapidfort/mysql-dbt2-benchmark:latest
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64,linux/arm64
+          context: ./community_images/mysql/official/mysql_dbt2/
+          push: true
+          tags: rapidfort/mysql-dbt2-benchmark:latest

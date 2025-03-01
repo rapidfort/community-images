@@ -6,7 +6,7 @@ alertmanager-ib:
     - v0.28.
 alloy-ib:
   search_tags:
-    - v1.5.
+    - v1.7.
 ansible-lint-ib:
   search_tags:
     - 25.1.
@@ -15,16 +15,16 @@ ansible-operator-ib:
     - v1.37.
 ansible-ib:
   search_tags:
-    - 11.1.
+    - 11.3.
 apache-ib:
   search_tags:
     - 2.4.
 argocd-bigbang-ib:
   search_tags:
-    - v2.13.
+    - v2.14.
 argocd-ib:
   search_tags:
-    - v2.13.
+    - v2.14.
 auditbeat-ib:
   search_tags:
     - 8.17.
@@ -33,19 +33,19 @@ bats-ib:
     - 1.11.
 blackbox-exporter-ib:
   search_tags:
-    - v0.25.
+    - v0.26.
 boundary-ib:
   search_tags:
-    - 0.18.
+    - 0.19.
 buildah-ib:
   search_tags:
     - 1.33.
 camel-k-ib:
   search_tags:
-    - 2.5.
+    - 2.6.
 cass-ib:
   search_tags:
-    - 1.5.
+    - 1.6.
 ceph-ib:
   search_tags:
     - v18.2.
@@ -75,7 +75,10 @@ eck-operator-ib:
     - 2.16.
 elasticsearch-dump-ib:
   search_tags:
-    - 6.115.
+    - 6.119.
+elasticsearch-ib:
+  search_tags:
+    - 8.17.
 etcd-ib:
   search_tags:
     - v3.5.
@@ -96,7 +99,7 @@ fluentd-ib:
     - 1.18.
 fluxcd-helm-controller-ib:
   search_tags:
-    - v1.1.
+    - v1.2.
 fluxcd-image-automation-controller-ib:
   search_tags:
     - v0.38.
@@ -105,13 +108,13 @@ fluxcd-image-reflector-controller-ib:
     - v0.33.
 fluxcd-kustomize-controller-ib:
   search_tags:
-    - v1.4.
+    - v1.5.
 fluxcd-notification-controller-ib:
   search_tags:
-    - v1.4.
+    - v1.5.
 fluxcd-source-controller-ib:
   search_tags:
-    - v1.4.
+    - v1.5.
 gatekeeper-ib:
   search_tags:
     - v3.18.
@@ -147,16 +150,16 @@ gitlab-workhorse-ib:
     - 17.2.
 grafana-plugins-ib:
   search_tags:
-    - 11.4.
+    - 11.5.
 grafana-ib:
   search_tags:
-    - 11.4.
+    - 11.5.
 hadolint-ib:
   search_tags:
     - v2.12.
 haproxy-latest-ib:
   search_tags:
-    - 3.0.
+    - 3.1.
 haproxy-ib:
   search_tags:
     - 2.4.
@@ -171,10 +174,10 @@ jq-ib:
     - 1.7.
 k6-ib:
   search_tags:
-    - v0.56.
+    - v0.57.
 k8s-sidecar-ib:
   search_tags:
-    - 1.29.
+    - 1.30.
 kaniko-ib:
   search_tags:
     - v1.22.
@@ -213,7 +216,7 @@ memcached-ib:
     - 1.6.
 metabase-ib:
   search_tags:
-    - v0.52.
+    - v0.53.
 metricbeat-ib:
   search_tags:
     - 8.17.
@@ -240,7 +243,7 @@ mkdocs-ib:
     - 9.5.
 molecule-ib:
   search_tags:
-    - 24.12.
+    - 25.3.
 mongodb-ib:
   search_tags:
     - 6.0.
@@ -258,16 +261,16 @@ nginx-ib:
     - 1.27.
 nifi-registry-ib:
   search_tags:
-    - 2.1.
+    - 2.2.
 nifi-ib:
   search_tags:
-    - 2.1.
+    - 2.2.
 node-exporter-ib:
   search_tags:
-    - v1.8.
+    - v1.9.
 opa-ib:
   search_tags:
-    - 1.0.
+    - 1.1.
 openldap-ib:
   search_tags:
     - 2.6.
@@ -282,7 +285,7 @@ pause-ib:
     - "3."
 pgadmin-ib:
   search_tags:
-    - "8."
+    - "9."
 podman-ib:
   search_tags:
     - 5.2.
@@ -297,13 +300,13 @@ postgresql-ib:
     - "12."
 prometheus-config-reloader-ib:
   search_tags:
-    - v0.79.
+    - v0.80.
 prometheus-operator-ib:
   search_tags:
-    - v0.79.
+    - v0.80.
 prometheus-ib:
   search_tags:
-    - v3.1.
+    - v3.2.
 redis-sentinel-ib:
   search_tags:
     - 7.4.
@@ -330,10 +333,10 @@ tempo-query-ib:
     - 2.7.
 terraform-ib:
   search_tags:
-    - 1.9.
+    - 1.11.
 terragrunt-ib:
   search_tags:
-    - v0.72.
+    - v0.73.
 tflint-ib:
   search_tags:
     - v0.55.
@@ -369,7 +372,7 @@ vault-ib:
     - 1.15.
 vcluster-ib:
   search_tags:
-    - 0.22.
+    - 0.23.
 velero-ib:
   search_tags:
     - v1.15.

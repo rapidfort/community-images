@@ -1345,6 +1345,64 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/clickhouse-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  clickhouse-official:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run clickhouse/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/clickhouse-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   cockroachdb-ib:
     runs-on: ubuntu-22.04
 
@@ -1402,6 +1460,64 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/cockroachdb-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  concourse-official:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run concourse/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/concourse-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   consul-ib:
     runs-on: ubuntu-22.04
@@ -1866,6 +1982,64 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/elasticsearch-dump-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  elasticsearch-ib:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/ironbank --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/elasticsearch-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   elasticsearch-official:
     runs-on: ubuntu-22.04
@@ -3607,6 +3781,64 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/grafana-plugins-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  grafana-promtail-official:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run grafana-promtail/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/grafana-promtail-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   hadolint-ib:
     runs-on: ubuntu-22.04
 
@@ -3896,6 +4128,64 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/heartbeat-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  influxdb:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/influxdb-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   jq-ib:
     runs-on: ubuntu-22.04
@@ -6043,6 +6333,64 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/nats-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  neo4j-official:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run neo4j/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/neo4j-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   nginx-ib:
     runs-on: ubuntu-22.04
 
@@ -7667,6 +8015,64 @@ jobs:
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/shellcheck-ib": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  shellcheck-official:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run shellcheck/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/shellcheck-official": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
   skopeo-ib:
     runs-on: ubuntu-22.04
 
@@ -9000,6 +9406,64 @@ jobs:
            -H "Accept: application/json" \
            -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
            -d '{ "rapidfort/yq-ib": 1 }' \
+           https://data-receiver.rapidfort.com/counts/internal_image_pulls
+  yq-official:
+    runs-on: ubuntu-22.04
+
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+
+      - name: Start minikube
+
+        with:
+          memory: 6g
+          driver: none
+        uses: medyagh/setup-minikube@master
+      - name: Check k8s cluster !
+
+        run: kubectl get pods -A
+      - name: Setup ubuntu
+        env:
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+
+        run: ./scripts/github-pipelines/setup.sh
+
+      - name: Set RF CLI Path
+        run: echo "/home/runner/work/community-images/community-images" >> $GITHUB_PATH
+
+
+      - name: Create images and publish to dockerhub
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
+          IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
+          IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+        if: github.event_name != 'pull_request'
+        run: python3 community_images/common/orchestrator/main.py hourly_run yq/official --publish
+
+
+      - name: Report pulls
+        env:
+          PULL_COUNTER_MAGIC_TOKEN: ${{ secrets.PULL_COUNTER_MAGIC_TOKEN }}
+
+        run: |
+          curl -X POST \
+           -H "Accept: application/json" \
+           -H "Authorization: Bearer ${PULL_COUNTER_MAGIC_TOKEN}" \
+           -d '{ "rapidfort/yq-official": 1 }' \
            https://data-receiver.rapidfort.com/counts/internal_image_pulls
   zookeeper-ib:
     runs-on: ubuntu-22.04

@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/argoproj/argocd:
-      input_base_tag: "v2.13."
+      input_base_tag: "v2.14."
       output_repo: argocd-ib
 runtimes:
   - type: k8s

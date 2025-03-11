@@ -1,9 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="364" height="186" viewBox="0 0 364 186" fill="none"><style>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="193" viewBox="0 0 760 193" fill="none"><style>
   * {
     font-family: 'InterMedium', sans-serif;
   }
-  .value {
+  .label *{
     font-family: 'Inter', sans-serif;
+    font-weight:400;
+  }
+  .progress { 
+    transform: rotate(-90deg);
+  }
+  #vulns_progress {
+    transform-origin: 58.5px 132.5px;
+  }
+  #packages_progress {
+    transform-origin: 316px 132.5px;
+  }
+  #size_progress {
+    transform-origin: 576.5px 132.5px;
   }
   @font-face {
       font-family: 'InterMedium';
@@ -17,68 +30,45 @@
       font-weight: normal;
       font-style: normal;
   }
-</style><g id="template_vulns_count">
-<rect x="0" y="0" width="100%" height="100%" rx="16" stroke="#D9D9D9" fill="white"></rect>
+</style><g id="template_savings_view">
+<path d="M16 1.08209H744C752.56 1.08209 759.5 8.02168 759.5 16.5821V176.582C759.5 185.143 752.56 192.082 744 192.082H16C7.43961 192.082 0.5 185.143 0.5 176.582V16.5821C0.5 8.02168 7.43959 1.08209 16 1.08209Z" fill="white"></path>
+<path d="M16 1.08209H744C752.56 1.08209 759.5 8.02168 759.5 16.5821V176.582C759.5 185.143 752.56 192.082 744 192.082H16C7.43961 192.082 0.5 185.143 0.5 176.582V16.5821C0.5 8.02168 7.43959 1.08209 16 1.08209Z" stroke="#D9D9D9"></path>
 <g id="title-row">
-<text id="title" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="24" y="39.0909">Vulnerabilities</tspan></text>
-<g id="external-link" transform="translate(0, 0)">
-<path id="Vector" d="M328.5 29.5V31H324.75V39.25H333V35.5H334.5V40C334.5 40.1989 334.421 40.3897 334.28 40.5303C334.14 40.671 333.949 40.75 333.75 40.75H324C323.801 40.75 323.61 40.671 323.47 40.5303C323.329 40.3897 323.25 40.1989 323.25 40V30.25C323.25 30.0511 323.329 29.8603 323.47 29.7197C323.61 29.579 323.801 29.5 324 29.5H328.5ZM336.75 27.25V33.25H335.25V29.8098L329.405 35.6552L328.345 34.5948L334.189 28.75H330.75V27.25H336.75Z" fill="#525866"></path>
+  <text id="title" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan x="24" y="39.673">Savings</tspan></text>
+  <g id="external-link-line">
+    <path id="Vector" d="M724.5 30.0821V31.5821H720.75V39.8321H729V36.0821H730.5V40.5821C730.5 40.781 730.421 40.9718 730.28 41.1124C730.14 41.2531 729.949 41.3321 729.75 41.3321H720C719.801 41.3321 719.61 41.2531 719.47 41.1124C719.329 40.9718 719.25 40.781 719.25 40.5821V30.8321C719.25 30.6332 719.329 30.4424 719.47 30.3018C719.61 30.1611 719.801 30.0821 720 30.0821H724.5ZM732.75 27.8321V33.8321H731.25V30.3918L725.405 36.2373L724.345 35.1768L730.189 29.3321H726.75V27.8321H732.75Z" fill="#525866"></path>
+  </g>
 </g>
+<g id="savings_cards">
+<g id="vulns_card">
+<text id="vulns_title" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="24" y="82.9457">Vulnerabilities</tspan></text>
+<circle id="vulns_progress_bg" cx="58.5" cy="132.5" r="33.5" stroke="#E4E4E9" stroke-width="6"></circle>
+<circle class="progress" transform-origin="" id="vulns_progress" cx="58.5" cy="132.5" r="33.5" stroke="#625DF5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="210.48670779051614" stroke-dashoffset="189.43803701146453"></circle>
+<text id="vulns_percentage" text-anchor="middle" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="-0.006em"><tspan x="58.58858" y="137.673">-90%</tspan></text>
+<text class="label" id="vulns_hardened_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="104" y="127.946">This image</tspan></text>
+<text class="label" id="vulns_original_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="104" y="145.946">Original</tspan></text>
+<text id="vulns_hardened_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="176" y="127.946">1</tspan></text>
+<text id="vulns_original_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="176" y="145.946">10</tspan></text>
 </g>
-<g id="vulns-view">
-  <g id="line-chart">
-  <text id="vulns_total" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="500" letter-spacing="0em"><tspan x="24" y="69.5455">45</tspan></text>
-  <mask id="vulns_count_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(24, 82)" width="316" height="8">
-    <rect id="vulns_count_mask_rect" x="0" y="0" width="316" height="8" rx="4" fill="#D9D9D9"></rect>
-  </mask>
-  <g mask="url(#vulns_count_mask)" id="vulns_count_view" transform="translate(24, 82)"><rect width="13.777777777777779" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="151.55555555555554" height="8" x="15.777777777777779" y="0" fill="#f2ae40"></rect><rect width="96.44444444444444" height="8" x="169.33333333333331" y="0" fill="#35b9e9"></rect><rect width="48.22222222222222" height="8" x="267.77777777777777" y="0" fill="#8b8d98"></rect></g>
+<g id="packages_card">
+<text id="packages_title" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="280" y="82.9457">Packages</tspan></text>
+<circle id="packages_progress_bg" cx="316" cy="132.5" r="33.5" stroke="#E4E4E9" stroke-width="6"></circle>
+<circle class="progress" id="packages_progress" cx="316" cy="132.5" r="33.5" stroke="#625DF5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="210.48670779051614" stroke-dashoffset="140.32447186034412"></circle>
+<text id="packages_percentage" text-anchor="middle" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="-0.006em"><tspan x="316" y="137.673">-67%</tspan></text>
+<text class="label" id="packages_hardened_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="360" y="127.946">This image</tspan></text>
+<text class="label" id="packages_original_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="360" y="145.946">Original</tspan></text>
+<text id="packages_hardened_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="432" y="127.946">7</tspan></text>
+<text id="packages_original_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="432" y="145.946">21</tspan></text>
 </g>
-<g id="legend">
-<g id="legend_critical" transform="translate(0, 0)">
-<g id="dot_critical">
-<path id="Vector_2" d="M34 110C34 111.657 32.6569 113 31 113C29.3431 113 28 111.657 28 110C28 108.343 29.3431 107 31 107C32.6569 107 34 108.343 34 110Z" fill="#C62A2F"></path>
-</g>
-<g>
-<text fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="38" y="114.364">Critical: </tspan></text>
-<text id="text_critical" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="85.0742" y="114.364">0</tspan></text>
-</g>
-</g>
-<g id="legend_high" transform="translate(-1.115234375, 0)">
-<g id="dot_high">
-<path id="Vector_3" d="M126 110C126 111.657 124.657 113 123 113C121.343 113 120 111.657 120 110C120 108.343 121.343 107 123 107C124.657 107 126 108.343 126 110Z" fill="#6E3FF3"></path>
-</g>
-<g>
-<text fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="130" y="114.364">High: </tspan></text>
-<text id="text_high" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="163.094" y="114.364">2</tspan></text>
-</g>
-</g>
-<g id="legend_medium" transform="translate(-2.23046875, 0)">
-<g id="dot_medium">
-<path id="Vector_4" d="M218 110C218 111.657 216.657 113 215 113C213.343 113 212 111.657 212 110C212 108.343 213.343 107 215 107C216.657 107 218 108.343 218 110Z" fill="#35B9E9"></path>
-</g>
-<g>
-<text fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="222" y="114.364">Medium: </tspan></text>
-<text id="text_medium" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="274.629" y="114.364">22</tspan></text>
-</g>
-</g>
-<g id="legend_low" transform="translate(0, 0)">
-<g id="dot_low">
-<path id="Vector_5" d="M34 134C34 135.657 32.6569 137 31 137C29.3431 137 28 135.657 28 134C28 132.343 29.3431 131 31 131C32.6569 131 34 132.343 34 134Z" fill="#F2AE40"></path>
-</g>
-<g>
-<text fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="38" y="138.364">Low: </tspan></text>
-<text id="text_low" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="68.2812" y="138.364">14</tspan></text>
-</g>
-</g>
-<g id="legend_unknown" transform="translate(-1.115234375, 0)">
-<g>
-<path id="Vector_6" d="M126 134C126 135.657 124.657 137 123 137C121.343 137 120 135.657 120 134C120 132.343 121.343 131 123 131C124.657 131 126 132.343 126 134Z" fill="#000030" fill-opacity="0.106"></path>
-</g>
-<g>
-<text fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="130" y="138.364">Unknown: </tspan></text>
-<text id="text_unknown" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="190.551" y="138.364">7</tspan></text>
-</g>
-</g>
+<g id="size_card">
+<text id="size_title" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="541" y="82.9457">Size</tspan></text>
+<circle id="size_progress_bg" cx="576.5" cy="132.5" r="33.5" stroke="#E4E4E9" stroke-width="6"></circle>
+<circle class="progress" id="size_progress" cx="576.5" cy="132.5" r="33.5" stroke="#625DF5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="210.48670779051614" stroke-dashoffset="137.51975607871614"></circle>
+<text id="size_percentage" text-anchor="middle" fill="#525866" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="-0.006em"><tspan x="576.5" y="137.673">-65%</tspan></text>
+<text class="label" id="size_hardened_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="621" y="127.946">This image</tspan></text>
+<text class="label" id="size_original_label" fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="621" y="145.946">Original</tspan></text>
+<text id="size_hardened_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="693" y="127.946">5.94MB</tspan></text>
+<text id="size_original_value" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="693" y="145.946">17.1MB</tspan></text>
 </g>
 </g>
 </g></svg>

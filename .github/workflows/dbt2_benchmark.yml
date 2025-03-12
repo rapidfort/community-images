@@ -1,0 +1,46 @@
+name: DBT2 Benchmark Test Build
+
+on:
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: actions-cicd
+
+    steps:
+      - name: Import Coverage Tests
+        uses: actions/checkout@v4
+        with:
+          repository: rapidfort/community-images-core
+          token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
+
+      - name: Docker login
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_PASSWORD}"
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push MySQL DBT2 image
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64,linux/arm64
+          context: ./community_images/mysql/official/mysql_dbt2/
+          push: true
+          tags: rapidfort/mysql-dbt2-benchmark:latest
+
+      - name: Build and push MariaDB DBT2 image
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64,linux/arm64
+          context: ./community_images/mariadb/official/mariadb_dbt2/
+          push: true
+          tags: rapidfort/mariadb-dbt2-benchmark:latest

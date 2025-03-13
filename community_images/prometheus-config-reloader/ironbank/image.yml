@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus-operator/prometheus-config-reloader:
-      input_base_tag: "v0.80."
+      input_base_tag: "v0.81."
       output_repo: prometheus-config-reloader-ib
 runtimes:
   - type: k8s

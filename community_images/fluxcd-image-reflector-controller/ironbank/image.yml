@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - fluxcd/image-reflector-controller:
-      input_base_tag: "v0.33."
+      input_base_tag: "v0.34."
       output_repo: fluxcd-image-reflector-controller-ib
 runtimes:
   - type: k8s

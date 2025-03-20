@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/loft-sh/vcluster:
-      input_base_tag: "0.23."
+      input_base_tag: "0.24."
       output_repo: vcluster-ib
 runtimes:
   - type: k8s

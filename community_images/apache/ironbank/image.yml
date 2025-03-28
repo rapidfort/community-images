@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/apache2:
-      input_base_tag: "2.4."
+      input_base_tag: "2."
       output_repo: apache2-ib
 runtimes:
   - type: docker_compose

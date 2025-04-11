@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/docker/registry-v2:
-      input_base_tag: "3.0."
+      input_base_tag: "2.8."
       output_repo: registry-v2-ib
 runtimes:
   - type: docker_compose

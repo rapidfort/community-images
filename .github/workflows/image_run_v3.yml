@@ -41,6 +41,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -59,7 +61,8 @@ jobs:
           RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
-          RF_ROOT_URL: https://us01.rapidfort.com
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank --publish
 
@@ -104,6 +107,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -118,6 +123,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run alertmanager/ironbank --publish
 
@@ -162,6 +173,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -176,6 +189,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run alloy/ironbank --publish
 
@@ -220,6 +239,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -234,6 +255,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run ansible/ironbank --publish
 
@@ -278,6 +305,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -292,6 +321,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run ansible-lint/ironbank --publish
 
@@ -336,6 +371,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -350,6 +387,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run ansible-operator/ironbank --publish
 
@@ -394,6 +437,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -408,6 +453,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/ironbank --publish
 
@@ -452,6 +503,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -466,6 +519,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run apache/official --publish
 
@@ -510,6 +569,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -524,6 +585,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/quay --publish
 
@@ -568,6 +635,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -582,6 +651,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/bigbang-ironbank --publish
 
@@ -626,6 +701,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -640,6 +717,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run argocd/ironbank --publish
 
@@ -684,6 +767,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -698,6 +783,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run auditbeat/ironbank --publish
 
@@ -742,6 +833,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -756,6 +849,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run bats/ironbank --publish
 
@@ -800,6 +899,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -814,6 +915,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run blackbox-exporter/ironbank --publish
 
@@ -858,6 +965,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -872,6 +981,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run boundary/ironbank --publish
 
@@ -916,6 +1031,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -930,6 +1047,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run buildah/ironbank --publish
 
@@ -974,6 +1097,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -988,6 +1113,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run camel-k/ironbank --publish
 
@@ -1032,6 +1163,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1046,6 +1179,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run cass/ironbank --publish
 
@@ -1090,6 +1229,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1104,6 +1245,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run cassandra/official --publish
 
@@ -1148,6 +1295,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1162,6 +1311,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run ceph/ironbank --publish
 
@@ -1206,6 +1361,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1220,6 +1377,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run certtool/ironbank --publish
 
@@ -1264,6 +1427,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1278,6 +1443,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run chart-testing/ironbank --publish
 
@@ -1322,6 +1493,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1336,6 +1509,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run clickhouse/ironbank --publish
 
@@ -1380,6 +1559,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1394,6 +1575,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run clickhouse/official --publish
 
@@ -1438,6 +1625,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1452,6 +1641,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run cockroachdb/ironbank --publish
 
@@ -1496,6 +1691,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1510,6 +1707,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run concourse/official --publish
 
@@ -1554,6 +1757,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1568,6 +1773,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/ironbank --publish
 
@@ -1612,6 +1823,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1626,6 +1839,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run consul/official --publish
 
@@ -1670,6 +1889,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1684,6 +1905,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run coredns/ironbank --publish
 
@@ -1728,6 +1955,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1742,6 +1971,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run couchdb/official --publish
 
@@ -1786,6 +2021,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1800,6 +2037,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run curl/curlimages --publish
 
@@ -1844,6 +2087,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1858,6 +2103,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run dex/ironbank --publish
 
@@ -1902,6 +2153,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1916,6 +2169,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run eck-operator/ironbank --publish
 
@@ -1960,6 +2219,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -1974,6 +2235,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch-dump/ironbank --publish
 
@@ -2018,6 +2285,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2032,6 +2301,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/ironbank --publish
 
@@ -2076,6 +2351,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2090,6 +2367,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run elasticsearch/official --publish
 
@@ -2134,6 +2417,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2148,6 +2433,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run envoy/official --publish
 
@@ -2192,6 +2483,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2206,6 +2499,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run etcd/ironbank --publish
 
@@ -2250,6 +2549,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2264,6 +2565,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run filebeat/ironbank --publish
 
@@ -2308,6 +2615,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2322,6 +2631,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/ironbank --publish
 
@@ -2366,6 +2681,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2380,6 +2697,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluent-bit/official --publish
 
@@ -2424,6 +2747,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2438,6 +2763,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd-elasticsearch/ironbank --publish
 
@@ -2482,6 +2813,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2496,6 +2829,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/ironbank --publish
 
@@ -2540,6 +2879,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2554,6 +2895,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd-kubernetes-daemonset/ironbank --publish
 
@@ -2598,6 +2945,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2612,6 +2961,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluentd/official --publish
 
@@ -2656,6 +3011,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2670,6 +3027,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-helm-controller/ironbank --publish
 
@@ -2714,6 +3077,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2728,6 +3093,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-image-automation-controller/ironbank --publish
 
@@ -2772,6 +3143,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2786,6 +3159,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-image-reflector-controller/ironbank --publish
 
@@ -2830,6 +3209,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2844,6 +3225,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-kustomize-controller/ironbank --publish
 
@@ -2888,6 +3275,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2902,6 +3291,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-notification-controller/ironbank --publish
 
@@ -2946,6 +3341,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -2960,6 +3357,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run fluxcd-source-controller/ironbank --publish
 
@@ -3004,6 +3407,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3018,6 +3423,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gatekeeper/ironbank --publish
 
@@ -3062,6 +3473,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3076,6 +3489,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run git-lfs/ironbank --publish
 
@@ -3120,6 +3539,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3134,6 +3555,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gitaly/ironbank --publish
 
@@ -3178,6 +3605,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3192,6 +3621,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-certificates/ironbank --publish
 
@@ -3236,6 +3671,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3250,6 +3687,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-cfssl-self-sign/ironbank --publish
 
@@ -3294,6 +3737,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3308,6 +3753,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-container-registry/ironbank --publish
 
@@ -3352,6 +3803,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3366,6 +3819,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-exporter/ironbank --publish
 
@@ -3410,6 +3869,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3424,6 +3885,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-runner/ironbank --publish
 
@@ -3468,6 +3935,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3482,6 +3951,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run gitlab-workhorse/ironbank --publish
 
@@ -3526,6 +4001,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3540,6 +4017,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana/ironbank --publish
 
@@ -3584,6 +4067,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3598,6 +4083,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana/official --publish
 
@@ -3642,6 +4133,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3656,6 +4149,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana-plugins/ironbank --publish
 
@@ -3700,6 +4199,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3714,6 +4215,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run grafana-promtail/official --publish
 
@@ -3758,6 +4265,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3772,6 +4281,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run hadolint/ironbank --publish
 
@@ -3816,6 +4331,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3830,6 +4347,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/ironbank --publish
 
@@ -3874,6 +4397,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3888,6 +4413,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy-latest/ironbank --publish
 
@@ -3932,6 +4463,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -3946,6 +4479,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run haproxy/official --publish
 
@@ -3990,6 +4529,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4004,6 +4545,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run heartbeat/ironbank --publish
 
@@ -4048,6 +4595,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4062,6 +4611,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run influxdb/official --publish
 
@@ -4106,6 +4661,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4120,6 +4677,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run jq/ironbank --publish
 
@@ -4164,6 +4727,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4178,6 +4743,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run k6/ironbank --publish
 
@@ -4222,6 +4793,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4236,6 +4809,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run k8s-sidecar/ironbank --publish
 
@@ -4280,6 +4859,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4294,6 +4875,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run k8s-sidecar/official --publish
 
@@ -4338,6 +4925,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4352,6 +4941,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kafka-bridge/ironbank --publish
 
@@ -4396,6 +4991,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4410,6 +5007,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run keycloak/official --publish
 
@@ -4454,6 +5057,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4468,6 +5073,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kibana/ironbank --publish
 
@@ -4512,6 +5123,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4526,6 +5139,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kong/official --publish
 
@@ -4570,6 +5189,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4584,6 +5205,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kongkic/ironbank --publish
 
@@ -4628,6 +5255,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4642,6 +5271,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kube-webhook-certgen/ironbank --publish
 
@@ -4686,6 +5321,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4700,6 +5337,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kubectl/ironbank --publish
 
@@ -4744,6 +5387,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4758,6 +5403,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kyverno-background-controller/ironbank --publish
 
@@ -4802,6 +5453,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4816,6 +5469,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kyverno-cleanup-controller/ironbank --publish
 
@@ -4860,6 +5519,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4874,6 +5535,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run kyverno-reports-controller/ironbank --publish
 
@@ -4918,6 +5585,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4932,6 +5601,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run logstash/ironbank --publish
 
@@ -4976,6 +5651,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -4990,6 +5667,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/ironbank --publish
 
@@ -5034,6 +5717,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5048,6 +5733,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mariadb/official --publish
 
@@ -5092,6 +5783,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5106,6 +5799,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mc/ironbank --publish
 
@@ -5150,6 +5849,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5164,6 +5865,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/ironbank --publish
 
@@ -5208,6 +5915,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5222,6 +5931,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run memcached/official --publish
 
@@ -5266,6 +5981,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5280,6 +5997,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run metabase/ironbank --publish
 
@@ -5324,6 +6047,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5338,6 +6063,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run metricbeat/ironbank --publish
 
@@ -5382,6 +6113,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5396,6 +6129,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run metrics-server/ironbank --publish
 
@@ -5440,6 +6179,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5454,6 +6195,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run microsoft-sql-server-2019/ironbank --publish
 
@@ -5498,6 +6245,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5512,6 +6261,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run minio-console/ironbank --publish
 
@@ -5556,6 +6311,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5570,6 +6327,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run minio/ironbank --publish
 
@@ -5614,6 +6377,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5628,6 +6393,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run minio-operator/ironbank --publish
 
@@ -5672,6 +6443,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5686,6 +6459,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run minio-operator-sidecar/ironbank --publish
 
@@ -5730,6 +6509,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5744,6 +6525,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mkdocs/ironbank --publish
 
@@ -5788,6 +6575,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5802,6 +6591,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run molecule/ironbank --publish
 
@@ -5846,6 +6641,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5860,6 +6657,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/ironbank --publish
 
@@ -5904,6 +6707,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5918,6 +6723,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mongodb/official --publish
 
@@ -5962,6 +6773,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -5976,6 +6789,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run moodle/ironbank --publish
 
@@ -6020,6 +6839,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6034,6 +6855,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/ironbank --publish
 
@@ -6078,6 +6905,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6092,6 +6921,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run mysql/official --publish
 
@@ -6136,6 +6971,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6150,6 +6987,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/ironbank --publish
 
@@ -6194,6 +7037,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6208,6 +7053,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nats/official --publish
 
@@ -6252,6 +7103,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6266,6 +7119,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run neo4j/official --publish
 
@@ -6310,6 +7169,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6324,6 +7185,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/ironbank --publish
 
@@ -6368,6 +7235,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6382,6 +7251,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nginx/official --publish
 
@@ -6426,6 +7301,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6440,6 +7317,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nifi/ironbank --publish
 
@@ -6484,6 +7367,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6498,6 +7383,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run nifi-registry/ironbank --publish
 
@@ -6542,6 +7433,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6556,6 +7449,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/ironbank --publish
 
@@ -6600,6 +7499,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6614,6 +7515,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run node-exporter/official --publish
 
@@ -6658,6 +7565,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6672,6 +7581,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run oncall/grafana --publish
 
@@ -6716,6 +7631,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6730,6 +7647,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run opa/ironbank --publish
 
@@ -6774,6 +7697,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6788,6 +7713,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run openldap/ironbank --publish
 
@@ -6832,6 +7763,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6846,6 +7779,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run osee-postgres/ironbank --publish
 
@@ -6890,6 +7829,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6904,6 +7845,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run packetbeat/ironbank --publish
 
@@ -6948,6 +7895,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -6962,6 +7911,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run pause/ironbank --publish
 
@@ -7006,6 +7961,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7020,6 +7977,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run pgadmin/ironbank --publish
 
@@ -7064,6 +8027,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7078,6 +8043,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run pgbouncer/official --publish
 
@@ -7122,6 +8093,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7136,6 +8109,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run podman/ironbank --publish
 
@@ -7180,6 +8159,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7194,6 +8175,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run postfix/ironbank --publish
 
@@ -7238,6 +8225,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7252,6 +8241,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run postgres-exporter/ironbank --publish
 
@@ -7296,6 +8291,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7310,6 +8307,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/ironbank --publish
 
@@ -7354,6 +8357,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7368,6 +8373,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run postgresql/official --publish
 
@@ -7412,6 +8423,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7426,6 +8439,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus-config-reloader/ironbank --publish
 
@@ -7470,6 +8489,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7484,6 +8505,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/ironbank --publish
 
@@ -7528,6 +8555,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7542,6 +8571,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus/official --publish
 
@@ -7586,6 +8621,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7600,6 +8637,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run prometheus-operator/ironbank --publish
 
@@ -7644,6 +8687,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7658,6 +8703,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run rabbitmq/official --publish
 
@@ -7702,6 +8753,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7716,6 +8769,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/ironbank --publish
 
@@ -7760,6 +8819,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7774,6 +8835,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run redis/official --publish
 
@@ -7818,6 +8885,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7832,6 +8901,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run redis-sentinel/ironbank --publish
 
@@ -7876,6 +8951,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7890,6 +8967,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run registry-v2/ironbank --publish
 
@@ -7934,6 +9017,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -7948,6 +9033,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run shellcheck/ironbank --publish
 
@@ -7992,6 +9083,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8006,6 +9099,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run shellcheck/official --publish
 
@@ -8050,6 +9149,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8064,6 +9165,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run skopeo/ironbank --publish
 
@@ -8108,6 +9215,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8122,6 +9231,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run solr-8/ironbank --publish
 
@@ -8166,6 +9281,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8180,6 +9297,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run sqlite/ironbank --publish
 
@@ -8224,6 +9347,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8238,6 +9363,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run tempo-query/ironbank --publish
 
@@ -8282,6 +9413,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8296,6 +9429,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run terraform/ironbank --publish
 
@@ -8340,6 +9479,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8354,6 +9495,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run terragrunt/ironbank --publish
 
@@ -8398,6 +9545,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8412,6 +9561,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run tflint/ironbank --publish
 
@@ -8456,6 +9611,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8470,6 +9627,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run thanos/ironbank --publish
 
@@ -8514,6 +9677,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8528,6 +9693,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run tika/ironbank --publish
 
@@ -8572,6 +9743,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8586,6 +9759,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run tomcat/ironbank --publish
 
@@ -8630,6 +9809,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8644,6 +9825,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run tomcat-openjdk8/ironbank --publish
 
@@ -8688,6 +9875,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8702,6 +9891,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run tomcat10/ironbank --publish
 
@@ -8746,6 +9941,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8760,6 +9957,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run tomcat9/ironbank --publish
 
@@ -8804,6 +10007,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8818,6 +10023,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/traefik --publish
 
@@ -8862,6 +10073,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8876,6 +10089,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run traefik/ironbank --publish
 
@@ -8920,6 +10139,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8934,6 +10155,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run vale/ironbank --publish
 
@@ -8978,6 +10205,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -8992,6 +10221,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/hashicorp --publish
 
@@ -9036,6 +10271,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9050,6 +10287,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run vault/ironbank --publish
 
@@ -9094,6 +10337,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9108,6 +10353,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run vault-k8s/ironbank --publish
 
@@ -9152,6 +10403,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9166,6 +10419,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run vcluster/ironbank --publish
 
@@ -9210,6 +10469,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9224,6 +10485,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run velero/ironbank --publish
 
@@ -9268,6 +10535,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9282,6 +10551,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run yourls/official --publish
 
@@ -9326,6 +10601,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9340,6 +10617,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run yq/ironbank --publish
 
@@ -9384,6 +10667,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9398,6 +10683,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run yq/official --publish
 
@@ -9442,6 +10733,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9456,6 +10749,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/ironbank --publish
 
@@ -9500,6 +10799,8 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
 
         run: ./scripts/github-pipelines/setup.sh
 
@@ -9514,6 +10815,12 @@ jobs:
           RAPIDFORT_ACCOUNT: ${{ secrets.RAPIDFORT_ACCOUNT }}
           IB_DOCKER_USERNAME: ${{ secrets.IB_DOCKER_USERNAME }}
           IB_DOCKER_PASSWORD: ${{ secrets.IB_DOCKER_PASSWORD }}
+          RF_ACCESS_ID: ${{ secrets.RF_ACCESS_ID }}
+          RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
+          RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
+          RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: ${{ vars.RF_ROOT_URL }}
+          RF_CONTAINER_ENGINE: ${{ vars.RF_CONTAINER_ENGINE }}
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run zookeeper/official --publish
 

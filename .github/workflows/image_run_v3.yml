@@ -59,6 +59,7 @@ jobs:
           RF_SECRET_ACCESS_KEY: ${{ secrets.RF_SECRET_ACCESS_KEY }}
           RF_PLATFORM_HOST: ${{ secrets.RF_PLATFORM_HOST }}
           RF_APP_HOST: ${{ secrets.RF_APP_HOST }}
+          RF_ROOT_URL: https://us01.rapidfort.com
         if: github.event_name != 'pull_request'
         run: python3 community_images/common/orchestrator/main.py hourly_run airflow/airflow/ironbank --publish
 

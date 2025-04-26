@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/kyverno/kyverno/reports-controller:
-      input_base_tag: "v1.13."
+      input_base_tag: "v1.14."
       output_repo: kyverno-reports-controller-ib
 runtimes:
   - type: k8s

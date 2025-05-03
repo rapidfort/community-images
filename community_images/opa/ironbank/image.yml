@@ -26,7 +26,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/openpolicyagent/opa:
-      input_base_tag: "1.3."
+      input_base_tag: "1.4."
       output_repo: opa-ib
 runtimes:
   - type: docker_compose

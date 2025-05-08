@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - big-bang/grafana/grafana-plugins:
-      input_base_tag: "11.6."
+      input_base_tag: "12.0."
       output_repo: grafana-plugins-ib
 runtimes:
   - type: docker_compose

@@ -29,6 +29,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -95,6 +96,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -161,6 +163,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -227,6 +230,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -293,6 +297,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -359,6 +364,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -425,6 +431,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -491,6 +498,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -557,6 +565,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -623,6 +632,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -689,6 +699,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -755,6 +766,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -821,6 +833,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -887,6 +900,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -953,6 +967,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1019,6 +1034,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1085,6 +1101,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1151,6 +1168,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1217,6 +1235,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1283,6 +1302,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1349,6 +1369,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1415,6 +1436,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1481,6 +1503,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1547,6 +1570,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1613,6 +1637,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1679,6 +1704,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1745,6 +1771,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1811,6 +1838,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1877,6 +1905,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -1943,6 +1972,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2009,6 +2039,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2075,6 +2106,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2141,6 +2173,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2207,6 +2240,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2273,6 +2307,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2339,6 +2374,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2405,6 +2441,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2471,6 +2508,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2537,6 +2575,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2603,6 +2642,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2669,6 +2709,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2735,6 +2776,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2801,6 +2843,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2867,6 +2910,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2933,6 +2977,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -2999,6 +3044,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3065,6 +3111,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3131,6 +3178,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3197,6 +3245,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3263,6 +3312,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3329,6 +3379,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3395,6 +3446,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3461,6 +3513,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3527,6 +3580,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3593,6 +3647,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3659,6 +3714,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3725,6 +3781,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3791,6 +3848,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3857,6 +3915,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3923,6 +3982,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -3989,6 +4049,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4055,6 +4116,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4121,6 +4183,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4187,6 +4250,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4253,6 +4317,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4319,6 +4384,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4385,6 +4451,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4451,6 +4518,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4517,6 +4585,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4583,6 +4652,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4649,6 +4719,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4715,6 +4786,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4781,6 +4853,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4847,6 +4920,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4913,6 +4987,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -4979,6 +5054,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5045,6 +5121,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5111,6 +5188,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5177,6 +5255,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5243,6 +5322,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5309,6 +5389,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5375,6 +5456,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5441,6 +5523,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5507,6 +5590,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5573,6 +5657,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5639,6 +5724,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5705,6 +5791,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5771,6 +5858,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5837,6 +5925,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5903,6 +5992,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -5969,6 +6059,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6035,6 +6126,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6101,6 +6193,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6167,6 +6260,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6233,6 +6327,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6299,6 +6394,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6365,6 +6461,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6431,6 +6528,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6497,6 +6595,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6563,6 +6662,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6629,6 +6729,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6695,6 +6796,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6761,6 +6863,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6827,6 +6930,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6893,6 +6997,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -6959,6 +7064,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7025,6 +7131,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7091,6 +7198,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7157,6 +7265,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7223,6 +7332,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7289,6 +7399,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7355,6 +7466,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7421,6 +7533,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7487,6 +7600,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7553,6 +7667,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7619,6 +7734,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7685,6 +7801,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7751,6 +7868,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7817,6 +7935,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7883,6 +8002,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -7949,6 +8069,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8015,6 +8136,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8081,6 +8203,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8147,6 +8270,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8213,6 +8337,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8279,6 +8404,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8345,6 +8471,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8411,6 +8538,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8477,6 +8605,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8543,6 +8672,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8609,6 +8739,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8675,6 +8806,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8741,6 +8873,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8807,6 +8940,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8873,6 +9007,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -8939,6 +9074,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9005,6 +9141,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9071,6 +9208,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9137,6 +9275,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9203,6 +9342,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9269,6 +9409,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9335,6 +9476,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9401,6 +9543,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9467,6 +9610,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9533,6 +9677,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9599,6 +9744,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9665,6 +9811,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9731,6 +9878,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9797,6 +9945,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9863,6 +10012,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9929,6 +10079,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -9995,6 +10146,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10061,6 +10213,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10127,6 +10280,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10193,6 +10347,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10259,6 +10414,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10325,6 +10481,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10391,6 +10548,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10457,6 +10615,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10523,6 +10682,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10589,6 +10749,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10655,6 +10816,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10721,6 +10883,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 
@@ -10787,6 +10950,7 @@ jobs:
         with:
           memory: 6g
           driver: none
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 

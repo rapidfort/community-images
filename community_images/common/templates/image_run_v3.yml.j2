@@ -47,7 +47,8 @@ jobs:
 {% endif %}
         with:
           memory: 6g
-          driver: none
+          driver: docker
+          start-args: "--wait-timeout=10m"
         uses: medyagh/setup-minikube@master
       - name: Check k8s cluster !
 {% if  output == "pull_request" %}

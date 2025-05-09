@@ -19,7 +19,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/minio/console:
-      input_base_tag: "v1.7."
+      input_base_tag: "v2.0."
       output_repo: minio-console-ib
 runtimes:
   - type: docker_compose

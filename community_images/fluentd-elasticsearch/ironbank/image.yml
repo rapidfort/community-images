@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/fluentd/fluentd-elasticsearch:
-      input_base_tag: "5.4."
+      input_base_tag: "6.0."
       output_repo: fluentd-elasticsearch-ib
 runtimes:
   - type: docker_compose

@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/ceph/ceph:
-      input_base_tag: "v18.2."
+      input_base_tag: "v19.2."
       output_repo: ceph-ib
 runtimes:
   - type: docker_compose

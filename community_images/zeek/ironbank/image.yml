@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/zeek/zeek:
-      input_base_tag: "7.1."
+      input_base_tag: "7.2."
       output_repo: zeek-ib
 runtimes:
   - type: docker_compose

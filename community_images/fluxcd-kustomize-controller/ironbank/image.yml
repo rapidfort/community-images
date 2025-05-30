@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - fluxcd/kustomize-controller:
-      input_base_tag: "v1.5."
+      input_base_tag: "v1.6."
       output_repo: fluxcd-kustomize-controller-ib
 runtimes:
   - type: k8s

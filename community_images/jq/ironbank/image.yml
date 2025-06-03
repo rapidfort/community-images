@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - stedolan/jq:
-      input_base_tag: "1.7."
+      input_base_tag: "1.8."
       output_repo: jq-ib
 runtimes:
   - type: docker_compose

@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - hashicorp/vault/vault-k8s:
-      input_base_tag: "v1.6."
+      input_base_tag: "v1.7."
       output_repo: vault-k8s-ib
 runtimes:
   - type: k8s

@@ -8,11 +8,11 @@
 </g>
 <g id="vulns-view">
   <g id="line-chart">
-  <text id="vulns_total" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="500" letter-spacing="0em"><tspan x="24" y="69.5455">36</tspan></text>
+  <text id="vulns_total" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="500" letter-spacing="0em"><tspan x="24" y="69.5455">35</tspan></text>
   <mask id="vulns_count_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(24, 82)" width="316" height="8">
     <rect id="vulns_count_mask_rect" x="0" y="0" width="316" height="8" rx="4" fill="#D9D9D9"></rect>
   </mask>
-  <g mask="url(#vulns_count_mask)" id="vulns_count_view" transform="translate(24, 82)"><rect width="68.88888888888889" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="34.44444444444444" height="8" x="70.88888888888889" y="0" fill="#f2ae40"></rect><rect width="68.88888888888889" height="8" x="107.33333333333333" y="0" fill="#35b9e9"></rect><rect width="137.77777777777777" height="8" x="178.22222222222223" y="0" fill="#8b8d98"></rect></g>
+  <g mask="url(#vulns_count_mask)" id="vulns_count_view" transform="translate(24, 82)"><rect width="70.85714285714286" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="26.571428571428573" height="8" x="72.85714285714286" y="0" fill="#f2ae40"></rect><rect width="70.85714285714286" height="8" x="101.42857142857143" y="0" fill="#35b9e9"></rect><rect width="141.71428571428572" height="8" x="174.28571428571428" y="0" fill="#8b8d98"></rect></g>
 </g>
 <g id="legend">
 <g id="legend_critical" transform="translate(0, 0)">
@@ -39,7 +39,7 @@
 </g>
 <g>
 <text fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="222" y="114.364">Medium: </tspan></text>
-<text id="text_medium" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="274.629" y="114.364">4</tspan></text>
+<text id="text_medium" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="274.629" y="114.364">3</tspan></text>
 </g>
 </g>
 <g id="legend_low" transform="translate(0, 0)">
@@ -73,19 +73,19 @@
     </g>
     <g id="data-row">
       <text class="label" id="hardened_label" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="24.0204" y="87.9457">This image</tspan></text>
-      <text id="hardened_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="hardened_value_tspan" x="192.25806451612902" y="89.673">36</tspan></text>
-      <mask id="hardened_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(106, 81)" width="76.25806451612902" height="8">
-        <rect id="hardened_mask_rect" x="0" y="0" width="76.25806451612902" height="8" rx="4" fill="#D9D9D9"></rect>
+      <text id="hardened_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="hardened_value_tspan" x="190.94565217391306" y="89.673">35</tspan></text>
+      <mask id="hardened_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(106, 81)" width="74.94565217391305" height="8">
+        <rect id="hardened_mask_rect" x="0" y="0" width="74.94565217391305" height="8" rx="4" fill="#D9D9D9"></rect>
       </mask>
-      <g mask="url(#hardened_mask)" id="hardened_count_view" transform="translate(106, 81)"><rect width="15.612903225806448" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="7.806451612903224" height="8" x="17.61290322580645" y="0" fill="#f2ae40"></rect><rect width="15.612903225806448" height="8" x="27.419354838709673" y="0" fill="#35b9e9"></rect><rect width="31.225806451612897" height="8" x="45.03225806451612" y="0" fill="#8b8d98"></rect></g>
+      <g mask="url(#hardened_mask)" id="hardened_count_view" transform="translate(106, 81)"><rect width="15.759006211180125" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="5.9096273291925465" height="8" x="17.759006211180125" y="0" fill="#f2ae40"></rect><rect width="15.759006211180125" height="8" x="25.66863354037267" y="0" fill="#35b9e9"></rect><rect width="31.51801242236025" height="8" x="43.427639751552796" y="0" fill="#8b8d98"></rect></g>
 
 
       <text class="label" id="original_label" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="24.0204" y="108.946">Original</tspan></text>
-      <text id="original_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="original_value_tspan" x="323.990234375" y="110.673">93</tspan></text>
+      <text id="original_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="original_value_tspan" x="323.990234375" y="110.673">92</tspan></text>
       <mask id="original_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(106, 102)" width="207.990234375" height="8">
         <rect id="original_mask_rect" x="0" y="0" width="207.990234375" height="8" rx="4" fill="#D9D9D9"></rect>
       </mask>
-      <g mask="url(#original_mask)" id="original_count_view" transform="translate(106, 102)"><rect width="32.57907006048387" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="47.78263608870968" height="8" x="34.57907006048387" y="0" fill="#f2ae40"></rect><rect width="84.70558215725806" height="8" x="84.36170614919355" y="0" fill="#35b9e9"></rect><rect width="36.92294606854839" height="8" x="171.06728830645162" y="0" fill="#8b8d98"></rect></g>
+      <g mask="url(#original_mask)" id="original_count_view" transform="translate(106, 102)"><rect width="32.93319038722826" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="46.10646654211956" height="8" x="34.93319038722826" y="0" fill="#f2ae40"></rect><rect width="85.62629500679348" height="8" x="83.03965692934781" y="0" fill="#35b9e9"></rect><rect width="37.324282438858695" height="8" x="170.6659519361413" y="0" fill="#8b8d98"></rect></g>
     </g>
   </g></svg><style>@font-face {
       font-family: 'InterMedium';
@@ -120,11 +120,11 @@
 </g>
 <g id="vulns-view">
   <g id="line-chart">
-  <text id="vulns_total" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="500" letter-spacing="0em"><tspan x="24" y="69.5455">36</tspan></text>
+  <text id="vulns_total" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="500" letter-spacing="0em"><tspan x="24" y="69.5455">35</tspan></text>
   <mask id="vulns_count_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(24, 82)" width="316" height="8">
     <rect id="vulns_count_mask_rect" x="0" y="0" width="316" height="8" rx="4" fill="#D9D9D9"></rect>
   </mask>
-  <g mask="url(#vulns_count_mask)" id="vulns_count_view" transform="translate(24, 82)"><rect width="68.88888888888889" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="34.44444444444444" height="8" x="70.88888888888889" y="0" fill="#f2ae40"></rect><rect width="68.88888888888889" height="8" x="107.33333333333333" y="0" fill="#35b9e9"></rect><rect width="137.77777777777777" height="8" x="178.22222222222223" y="0" fill="#8b8d98"></rect></g>
+  <g mask="url(#vulns_count_mask)" id="vulns_count_view" transform="translate(24, 82)"><rect width="70.85714285714286" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="26.571428571428573" height="8" x="72.85714285714286" y="0" fill="#f2ae40"></rect><rect width="70.85714285714286" height="8" x="101.42857142857143" y="0" fill="#35b9e9"></rect><rect width="141.71428571428572" height="8" x="174.28571428571428" y="0" fill="#8b8d98"></rect></g>
 </g>
 <g id="legend">
 <g id="legend_critical" transform="translate(0, 0)">
@@ -151,7 +151,7 @@
 </g>
 <g>
 <text fill="#60646C" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="222" y="114.364">Medium: </tspan></text>
-<text id="text_medium" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="274.629" y="114.364">4</tspan></text>
+<text id="text_medium" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="274.629" y="114.364">3</tspan></text>
 </g>
 </g>
 <g id="legend_low" transform="translate(0, 0)">
@@ -185,18 +185,18 @@
     </g>
     <g id="data-row">
       <text class="label" id="hardened_label" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="24.0204" y="87.9457">This image</tspan></text>
-      <text id="hardened_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="hardened_value_tspan" x="192.25806451612902" y="89.673">36</tspan></text>
-      <mask id="hardened_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(106, 81)" width="76.25806451612902" height="8">
-        <rect id="hardened_mask_rect" x="0" y="0" width="76.25806451612902" height="8" rx="4" fill="#D9D9D9"></rect>
+      <text id="hardened_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="hardened_value_tspan" x="190.94565217391306" y="89.673">35</tspan></text>
+      <mask id="hardened_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(106, 81)" width="74.94565217391305" height="8">
+        <rect id="hardened_mask_rect" x="0" y="0" width="74.94565217391305" height="8" rx="4" fill="#D9D9D9"></rect>
       </mask>
-      <g mask="url(#hardened_mask)" id="hardened_count_view" transform="translate(106, 81)"><rect width="15.612903225806448" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="7.806451612903224" height="8" x="17.61290322580645" y="0" fill="#f2ae40"></rect><rect width="15.612903225806448" height="8" x="27.419354838709673" y="0" fill="#35b9e9"></rect><rect width="31.225806451612897" height="8" x="45.03225806451612" y="0" fill="#8b8d98"></rect></g>
+      <g mask="url(#hardened_mask)" id="hardened_count_view" transform="translate(106, 81)"><rect width="15.759006211180125" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="5.9096273291925465" height="8" x="17.759006211180125" y="0" fill="#f2ae40"></rect><rect width="15.759006211180125" height="8" x="25.66863354037267" y="0" fill="#35b9e9"></rect><rect width="31.51801242236025" height="8" x="43.427639751552796" y="0" fill="#8b8d98"></rect></g>
 
 
       <text class="label" id="original_label" fill="#1C2024" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="12" letter-spacing="0em"><tspan x="24.0204" y="108.946">Original</tspan></text>
-      <text id="original_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="original_value_tspan" x="323.990234375" y="110.673">93</tspan></text>
+      <text id="original_value" fill="#7E808A" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="500" letter-spacing="0em"><tspan id="original_value_tspan" x="323.990234375" y="110.673">92</tspan></text>
       <mask id="original_mask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" transform="translate(106, 102)" width="207.990234375" height="8">
         <rect id="original_mask_rect" x="0" y="0" width="207.990234375" height="8" rx="4" fill="#D9D9D9"></rect>
       </mask>
-      <g mask="url(#original_mask)" id="original_count_view" transform="translate(106, 102)"><rect width="32.57907006048387" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="47.78263608870968" height="8" x="34.57907006048387" y="0" fill="#f2ae40"></rect><rect width="84.70558215725806" height="8" x="84.36170614919355" y="0" fill="#35b9e9"></rect><rect width="36.92294606854839" height="8" x="171.06728830645162" y="0" fill="#8b8d98"></rect></g>
+      <g mask="url(#original_mask)" id="original_count_view" transform="translate(106, 102)"><rect width="32.93319038722826" height="8" x="0" y="0" fill="#6e3ff3"></rect><rect width="46.10646654211956" height="8" x="34.93319038722826" y="0" fill="#f2ae40"></rect><rect width="85.62629500679348" height="8" x="83.03965692934781" y="0" fill="#35b9e9"></rect><rect width="37.324282438858695" height="8" x="170.6659519361413" y="0" fill="#8b8d98"></rect></g>
     </g>
   </g></svg></svg></svg>

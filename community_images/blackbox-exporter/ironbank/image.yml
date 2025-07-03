@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus/blackbox_exporter:
-      input_base_tag: "v0.26."
+      input_base_tag: "v0.27."
       output_repo: blackbox-exporter-ib
 runtimes:
   - type: docker_compose

@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/kubernetes-sigs/metrics-server:
-      input_base_tag: "v0.7."
+      input_base_tag: "v0.8."
       output_repo: metrics-server-ib
 runtimes:
   - type: k8s

@@ -27,7 +27,7 @@ argocd-ib:
     - v3.0.
 auditbeat-ib:
   search_tags:
-    - 8.18.
+    - 8.19.
 bats-ib:
   search_tags:
     - 1.12.
@@ -84,7 +84,7 @@ etcd-ib:
     - v3.6.
 filebeat-ib:
   search_tags:
-    - 8.18.
+    - 8.19.
 fluent-bit-ib:
   search_tags:
     - 4.0.
@@ -121,33 +121,12 @@ gatekeeper-ib:
 git-lfs-ib:
   search_tags:
     - 2.44.0-3.5.
-gitaly-ib:
-  search_tags:
-    - 17.2.
-gitlab-certificates-ib:
-  search_tags:
-    - 17.2.
 gitlab-cfssl-self-sign-ib:
   search_tags:
     - 1.6.
-gitlab-container-registry-ib:
-  search_tags:
-    - 17.2.
-gitlab-exporter-ib:
-  search_tags:
-    - 17.2.
-gitlab-kas-ib:
-  search_tags:
-    - 17.2.
 gitlab-runner-ib:
   search_tags:
     - v18.2.
-gitlab-shell-ib:
-  search_tags:
-    - 17.2.
-gitlab-workhorse-ib:
-  search_tags:
-    - 17.2.
 grafana-plugins-ib:
   search_tags:
     - 12.1.
@@ -183,7 +162,7 @@ kaniko-ib:
     - v1.22.
 kibana-ib:
   search_tags:
-    - 8.18.
+    - 8.19.
 kongkic-ib:
   search_tags:
     - 3.5.
@@ -204,7 +183,7 @@ kyverno-reports-controller-ib:
     - v1.14.
 logstash-ib:
   search_tags:
-    - 8.18.
+    - 8.19.
 mariadb-ib:
   search_tags:
     - 10.6.
@@ -219,7 +198,7 @@ metabase-ib:
     - v0.55.
 metricbeat-ib:
   search_tags:
-    - 8.18.
+    - 8.19.
 metrics-server-ib:
   search_tags:
     - v0.8.
@@ -279,7 +258,7 @@ osee-postgres-ib:
     - 1.0.0.
 packetbeat-ib:
   search_tags:
-    - 8.18.
+    - 8.19.
 pause-ib:
   search_tags:
     - "3."

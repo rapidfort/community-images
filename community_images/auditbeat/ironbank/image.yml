@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - elastic/beats/auditbeat:
-      input_base_tag: "8.18."
+      input_base_tag: "8.19."
       output_repo: auditbeat-ib
 runtimes:
   - type: docker_compose

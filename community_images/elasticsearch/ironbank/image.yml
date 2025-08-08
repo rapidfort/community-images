@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - elastic/elasticsearch/elasticsearch:
-      input_base_tag: "8.18."
+      input_base_tag: "8.19."
       output_repo: elasticsearch-ib
 runtimes:
   - type: docker_compose

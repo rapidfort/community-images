@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - big-bang/argocd:
-      input_base_tag: "v3.0."
+      input_base_tag: "v3.1."
       output_repo: argocd-bigbang-ib
 runtimes:
   - type: k8s

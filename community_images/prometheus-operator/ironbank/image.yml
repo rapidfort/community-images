@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus-operator/prometheus-operator:
-      input_base_tag: "v0.84."
+      input_base_tag: "v0.85."
       output_repo: prometheus-operator-ib
 runtimes:
   - type: docker_compose

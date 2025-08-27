@@ -2,7 +2,7 @@ name: IB Pipelines Tracker
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 */6 * * *'
 
   workflow_dispatch:
 

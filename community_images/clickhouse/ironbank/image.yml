@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/clickhouse:
-      input_base_tag: "22.3.8."
+      input_base_tag: "25.3.6."
       output_repo: clickhouse-ib
 runtimes:
   - type: docker_compose

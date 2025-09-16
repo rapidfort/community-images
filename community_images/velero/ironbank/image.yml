@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/velero/velero:
-      input_base_tag: "v1.16."
+      input_base_tag: "v1.17."
       output_repo: velero-ib
 runtimes:
   - type: k8s

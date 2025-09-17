@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - fluxcd/source-controller:
-      input_base_tag: "v1.6."
+      input_base_tag: "v1.7."
       output_repo: fluxcd-source-controller-ib
 runtimes:
   - type: k8s

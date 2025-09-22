@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/camel-k:
-      input_base_tag: "2.7."
+      input_base_tag: "2.8."
       output_repo: camel-k-ib
 runtimes:
   - type: k8s

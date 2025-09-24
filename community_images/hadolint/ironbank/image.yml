@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/hadolint/hadolint:
-      input_base_tag: "v2.13."
+      input_base_tag: "v2.14."
       output_repo: hadolint-ib
 runtimes:
   - type: docker_compose

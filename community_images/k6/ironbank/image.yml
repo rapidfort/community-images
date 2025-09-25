@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/k6/k6:
-      input_base_tag: "v1.2."
+      input_base_tag: "v1.3."
       output_repo: k6-ib
 runtimes:
   - type: docker_compose

@@ -21,7 +21,7 @@ input_registry:
 is_locked: "False"
 repo_sets:
   - hashicorp/boundary:
-      input_base_tag: "0.19."
+      input_base_tag: "0.20."
       output_repo: boundary-ib
 runtimes:
   - type: docker_compose

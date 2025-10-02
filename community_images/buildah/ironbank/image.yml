@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/containers/buildah:
-      input_base_tag: "1.33."
+      input_base_tag: "1.39."
       output_repo: buildah-ib
 runtimes:
   - type: docker_compose

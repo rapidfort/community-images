@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/coredns/coredns:
-      input_base_tag: "1.12."
+      input_base_tag: "1.13."
       output_repo: coredns-ib
 runtimes:
   - type: docker_compose

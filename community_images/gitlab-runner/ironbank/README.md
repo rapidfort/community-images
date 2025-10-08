@@ -72,8 +72,6 @@ A hardened container image is a functionally equivalent copy of a container imag
 
 This image is a hardened version of the official [Platform One Gitlab Runner Iron Bank][source-image-repo-link] image on Docker Hub.
 
-RapidFort is the pioneering Software Attack Surface Management (SASM) platform in the market. Many container images can be reduced by 60-90%, have far fewer vulnerabilities, and load much faster because of their reduced size. Learn more at [RapidFort.com][rf-link].
-
 Vulnerability reports for RapidFort's hardened images are updated daily to include newly discovered vulnerabilities and fixes.
 
 

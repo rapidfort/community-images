@@ -24,7 +24,7 @@
 
 **RapidFort is a solution for building secure, optimized Docker containers.**
 
-RapidFort provides free, <b>Hardened Images</b> on its GitHub community page, empowering developers to build secure and reliable applications effortlessly. These <b>Hardened Images</b> are optimized versions of popular base images, significantly reducing vulnerabilities and attack surfaces. Leveraging its innovative optimization and vulnerability management tools, RapidFort analyzes container images, removes unnecessary components, and ensures that only essential, secure elements remain. This proactive approach removes 60-70%  of Common Known Vulnerabilities (CVEs), minimizes potential entry points for attackers, enhances compliance, and improves overall security posture.
+RapidFort provides free, <b>Hardened Images</b> on its GitHub community page, empowering developers to build secure and reliable applications effortlessly. These <b>Hardened Images</b> are optimized versions of popular base images, significantly reducing vulnerabilities and attack surfaces. Leveraging its innovative optimization and vulnerability management tools, RapidFort analyzes container images, removes unnecessary components, and ensures that only essential, secure elements remain. This proactive approach removes most of the Common Known Vulnerabilities (CVEs), minimizes potential entry points for attackers, enhances compliance, and improves overall security posture.
 
 To explore RapidFort's <b>Near-Zero CVE Curated Images</b> (and start building with confidence, visit [hub.rapidfort.com](hub.rapidfort.com).
 

@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus/prometheus:
-      input_base_tag: "v3.6."
+      input_base_tag: "v3.7."
       output_repo: prometheus-ib
 runtimes:
   - type: docker_compose

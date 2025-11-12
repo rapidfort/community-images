@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/bats/bats:
-      input_base_tag: "1.12."
+      input_base_tag: "1.13."
       output_repo: bats-ib
 runtimes:
   - type: docker_compose

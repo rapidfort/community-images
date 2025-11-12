@@ -34,7 +34,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/ansible/ansible-operator:
-      input_base_tag: "v1.41."
+      input_base_tag: "v1.42."
       output_repo: ansible-operator-ib
 runtimes:
   - type: docker_compose

@@ -24,7 +24,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/openpolicyagent/gatekeeper:
-      input_base_tag: "v3.20."
+      input_base_tag: "v3.21."
       output_repo: gatekeeper-ib
 runtimes:
   - type: k8s

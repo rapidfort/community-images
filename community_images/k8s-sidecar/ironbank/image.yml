@@ -21,7 +21,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - kiwigrid/k8s-sidecar:
-      input_base_tag: "2.3."
+      input_base_tag: "2.4."
       output_repo: k8s-sidecar-ib
 runtimes:
   - type: docker_compose

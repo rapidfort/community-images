@@ -23,7 +23,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/grafana/tempo-query:
-      input_base_tag: "2.9."
+      input_base_tag: "2.10."
       output_repo: tempo-query-ib
 runtimes:
   - type: k8s

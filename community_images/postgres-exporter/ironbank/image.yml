@@ -20,7 +20,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/prometheus/postgres-exporter:
-      input_base_tag: "v0.18."
+      input_base_tag: "v0.19."
       output_repo: postgres-exporter-ib
 runtimes:
   - type: docker_compose

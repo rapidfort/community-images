@@ -22,7 +22,7 @@ input_registry:
   account: ironbank
 repo_sets:
   - opensource/apache/nifi-registry:
-      input_base_tag: "2.7."
+      input_base_tag: "2.8."
       output_repo: nifi-registry-ib
 runtimes:
   - type: docker_compose

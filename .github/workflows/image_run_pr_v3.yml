@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -99,7 +99,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -179,7 +179,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -259,7 +259,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -339,7 +339,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -419,7 +419,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -499,7 +499,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -579,7 +579,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -659,7 +659,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -739,7 +739,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -819,7 +819,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -899,7 +899,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -979,7 +979,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1059,7 +1059,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1139,7 +1139,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1219,7 +1219,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1299,7 +1299,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1379,7 +1379,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1459,7 +1459,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1539,7 +1539,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1619,7 +1619,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1699,7 +1699,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1779,7 +1779,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1859,7 +1859,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -1939,7 +1939,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2019,7 +2019,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2099,7 +2099,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2179,7 +2179,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2259,7 +2259,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2339,7 +2339,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2419,7 +2419,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2499,7 +2499,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2579,7 +2579,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2659,7 +2659,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2739,7 +2739,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2819,7 +2819,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2899,7 +2899,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -2979,7 +2979,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3059,7 +3059,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3139,7 +3139,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3219,7 +3219,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3299,7 +3299,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3379,7 +3379,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3459,7 +3459,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3539,7 +3539,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3619,7 +3619,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3699,7 +3699,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3779,7 +3779,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3859,7 +3859,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -3939,7 +3939,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4019,7 +4019,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4099,7 +4099,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4179,7 +4179,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4259,7 +4259,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4339,7 +4339,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4419,7 +4419,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4499,7 +4499,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4579,7 +4579,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4659,7 +4659,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4739,7 +4739,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4819,7 +4819,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4899,7 +4899,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -4979,7 +4979,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5059,7 +5059,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5139,7 +5139,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5219,7 +5219,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5299,7 +5299,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5379,7 +5379,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5459,7 +5459,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5539,7 +5539,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5619,7 +5619,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5699,7 +5699,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5779,7 +5779,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5859,7 +5859,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -5939,7 +5939,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6019,7 +6019,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6099,7 +6099,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6179,7 +6179,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6259,7 +6259,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6339,7 +6339,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6419,7 +6419,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6499,7 +6499,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6579,7 +6579,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6659,7 +6659,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6739,7 +6739,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6819,7 +6819,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6899,7 +6899,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -6979,7 +6979,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7059,7 +7059,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7139,7 +7139,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7219,7 +7219,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7299,7 +7299,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7379,7 +7379,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7459,7 +7459,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7539,7 +7539,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7619,7 +7619,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7699,7 +7699,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7779,7 +7779,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7859,7 +7859,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -7939,7 +7939,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8019,7 +8019,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8099,7 +8099,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8179,7 +8179,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8259,7 +8259,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8339,7 +8339,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8419,7 +8419,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8499,7 +8499,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8579,7 +8579,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8659,7 +8659,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8739,7 +8739,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8819,7 +8819,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8899,7 +8899,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -8979,7 +8979,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9059,7 +9059,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9139,7 +9139,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9219,7 +9219,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9299,7 +9299,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9379,7 +9379,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9459,7 +9459,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9539,7 +9539,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9619,7 +9619,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9699,7 +9699,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9779,7 +9779,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9859,7 +9859,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -9939,7 +9939,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10019,7 +10019,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10099,7 +10099,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10179,7 +10179,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10259,7 +10259,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10339,7 +10339,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10419,7 +10419,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10499,7 +10499,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10579,7 +10579,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10659,7 +10659,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10739,7 +10739,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10819,7 +10819,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10899,7 +10899,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -10979,7 +10979,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11059,7 +11059,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11139,7 +11139,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11219,7 +11219,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11299,7 +11299,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11379,7 +11379,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11459,7 +11459,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11539,7 +11539,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11619,7 +11619,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11699,7 +11699,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11779,7 +11779,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11859,7 +11859,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -11939,7 +11939,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12019,7 +12019,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12099,7 +12099,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12179,7 +12179,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12259,7 +12259,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12339,7 +12339,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12419,7 +12419,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12499,7 +12499,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12579,7 +12579,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12659,7 +12659,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12739,7 +12739,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12819,7 +12819,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12899,7 +12899,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -12979,7 +12979,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}
@@ -13059,7 +13059,7 @@ jobs:
 
     steps:
       - name: Import Coverage Tests
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: rapidfort/community-images-core
           token: ${{ secrets.COVERAGE_ACCESS_TOKEN }}

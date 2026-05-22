@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Get the last two runs of "Image Creation Run" workflow
         id: get_runs
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const workflowName = 'Image Creation Run';
@@ -58,7 +58,7 @@ jobs:
 
       - name: Get failed jobs from the last two runs with suffix "-ib"
         id: get_failed_jobs
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           RUN_ID1: ${{ steps.get_runs.outputs.run_id1 }}
           RUN_ID2: ${{ steps.get_runs.outputs.run_id2 }}
